@@ -34,13 +34,11 @@ python -m uvicorn backend.app:app --host 0.0.0.0 --port 8000 --workers 1
 
 `LLM_TIMEOUT_SECONDS` 是一次请求的整体等待上限（默认 25 秒，允许 1–90 秒）。自由剧本生成最多请求 3000 输出 tokens；场景润色和角色扮演最多 900。生成失败保留大厅，不会静默替换为预设剧本。生成期间若其他玩家改变房间版本，结果不会覆盖新状态，房主同步后可重新开始。已经开始的混合冒险在等待模型时仍可暂停或聊天；过期回应会被丢弃。请求取消或服务重启会清除未完成的回应标记，避免一直显示“正在回应”。
 
-## 内容工坊管理
+## 账号与内容管理
 
-在 `.env` 设置随机且独立的 `HEXBOUND_ADMIN_TOKEN`，重启服务。可用 `python -c "import secrets; print(secrets.token_urlsafe(32))"` 在自己的终端生成凭证。打开 `/studio.html`，点击管理员解锁并输入凭证；它只保存在当前标签页的 sessionStorage。未设置时管理写入关闭，公开内容摘要和游玩仍可使用。
+首次启动前配置 `HEXBOUND_BOOTSTRAP_ADMIN_USERNAME` 和 `HEXBOUND_BOOTSTRAP_ADMIN_PASSWORD`，创建初始管理员。注册默认获得玩家角色；管理员在 `/account.html` 分配创作者或管理员角色，获得工坊管理权限。初始化仅执行一次，后续重启不会重置密码。
 
-凭证授权整个内容库的管理能力，不要作为玩家邀请码分享。轮换凭证需修改环境变量并重启；旧凭证立即失效。内容库及修订历史与房间保存在同一 SQLite，使用相同备份策略。导入内容包只创建草稿，不自动发布；导出内容不携带凭证。
-
-当前是单部署者内容管理，尚无独立账号或细粒度角色权限。管理页面应经 HTTPS 与可信入口访问。恢复历史会创建新草稿，已发布内容保持不变，需再次校验发布。
+详细角色矩阵、HTTPS Cookie、关闭注册、会话期限与旧存档认领见 [账号与权限说明](accounts.md)。共享 `HEXBOUND_ADMIN_TOKEN` 默认不再授权；迁移兼容需要显式开关。
 
 ## 公网访问
 
@@ -50,20 +48,24 @@ python -m uvicorn backend.app:app --host 0.0.0.0 --port 8000 --workers 1
 location / {
     proxy_pass http://127.0.0.1:8000;
     proxy_http_version 1.1;
-    proxy_set_header Host $host;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
     proxy_read_timeout 300s;
 }
 ```
 
-首版面向自托管的小型私团；邀请码和浏览器恢复令牌属于持有即授权。使用 HTTPS，勿公开邀请码。尚未提供账号系统、密码恢复、全局限流或多租户计费；开放到公网前建议部署入口认证、请求速率限制和备份。模型端点只由部署者配置，玩家不能指定任意网络目标。
+反向代理与应用不在同一回环接口时，需要将实际代理源 IP 配置到 Uvicorn 的 `FORWARDED_ALLOW_IPS` 环境变量，才能可信地识别原始 HTTPS 协议和客户端地址。不要对公网连接使用无条件信任；协议识别错误会导致同源校验拒绝请求。
+
+当前版本面向自托管的小型私团；新席位绑定账号；邀请码只能用于入席，不能冒领现有角色。使用 HTTPS，并设置 `HEXBOUND_COOKIE_SECURE=1`。已有账号角色、管理员重置密码、注册与登录限流；尚无邮箱找回、MFA、分布式全局限流或多租户计费。公网入口仍需请求速率限制和备份。模型端点只由部署者配置，玩家不能指定任意网络目标。
 
 ## 存档与并发
 
 必须运行 **1 个 worker / 1 个应用实例**。房间锁与在线状态位于该进程；SQLite 持久化房间与命令回执。多副本部署需要替换存储并加入跨进程消息与房间调度，不能直接增加 `--workers`。
 
-备份 SQLite 时使用 SQLite backup API 或停服后复制数据库及 WAL，不能在写入期间仅复制主数据库文件。恢复时设置 `HEXBOUND_DB` 指向恢复文件；玩家保留原浏览器会话凭证即可继续。丢失凭证后首版不提供身份恢复；邀请码不能冒领现有角色。
+备份 SQLite 时使用 SQLite backup API 或停服后复制数据库及 WAL，不能在写入期间仅复制主数据库文件。恢复时设置 `HEXBOUND_DB` 指向恢复文件；玩家登录原账号即可恢复席位。旧匿名席位需先凭原令牌认领；丢失旧凭证时不支持仅凭邀请码恢复。
 
 ## 验证
 
@@ -75,6 +77,8 @@ node --check frontend/studio.js
 npm ci
 npm run test:ui
 npm run test:studio
+npm run test:accounts
+npm run test:rooms
 ```
 
 存活检查：`GET /api/health`。测试使用独立临时数据库，不应连接实际团存档。GitHub Actions 自动执行同一组测试。

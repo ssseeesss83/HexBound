@@ -57,7 +57,7 @@ def test_admin_auth_and_public_secrecy(setup, monkeypatch):
     create(client, "skill", skill())
     assert all(item["id"] != "new-check" for item in client.get("/api/content?q=调查").json()["items"])
     monkeypatch.delenv("HEXBOUND_ADMIN_TOKEN")
-    assert client.get("/api/studio/status").json()["write_enabled"] is False
+    assert client.get("/api/studio/status").json()["legacy_write_enabled"] is False
     assert client.post("/api/studio/items", headers=AUTH, json={"kind": "skill", "data": skill("disabled")}).status_code == 503
 
 

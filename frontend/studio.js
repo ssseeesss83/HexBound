@@ -25,6 +25,9 @@ const effects = { attack: "攻击", heal: "治疗", check: "检定", defend: "�
   },
   targets = { self: "自身", ally: "队友", enemy: "敌人", scene: "场景" };
 let token = sessionStorage.getItem("hexbound-studio-token") || "",
+  account = null,
+  csrfToken = "",
+  legacyEnabled = false,
   admin = false,
   writeEnabled = false,
   kind = "skill",
@@ -54,7 +57,10 @@ async function api(path, options = {}) {
     ...options,
     headers: {
       "Content-Type": "application/json",
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...(csrfToken ? { "X-CSRF-Token": csrfToken } : {}),
+      ...(legacyEnabled && !account && token
+        ? { Authorization: `Bearer ${token}` }
+        : {}),
       ...options.headers,
     },
   });
@@ -196,7 +202,7 @@ function listHtml() {
     )}</select></div><div class="content-list">${filtered.map((i) => `<button class="content-item ${selected?.id === i.id ? "selected" : ""}" data-open="${e(i.id)}"><h3>${e(i.name)}</h3><p>${e(i.description || i.draft?.description || "尚未添加简介")}</p><div class="row"><span class="badge ${admin ? status(i) : "published"}">${admin ? statusLabel(i) : "已发布"}</span><span class="muted">${admin ? "r" + i.revision : (i.tags || []).slice(0, 2).map(e).join(" · ")}</span></div></button>`).join("") || '<p class="helper" style="padding:20px 4px">没有符合条件的内容。试试更改筛选，或创建第一张卡片。</p>'}</div>`;
 }
 function shell() {
-  root.innerHTML = `<div class="studio-shell"><header class="studio-header"><a href="/" class="brand"><span class="symbol">⬡</span><div>HEXBOUND<div class="studio-subtitle">内容工坊 / THE ATELIER</div></div></a><div class="row"><a href="/" class="inline-link">返回冒险桌 ↗</a><span class="chip">${admin ? "管理员模式" : "公开内容目录"}</span><button id="auth" class="small">${admin ? "退出管理" : "管理员解锁"}</button></div></header><div class="admin-banner">${admin ? "<strong>草稿与发布分离。</strong> 保存只更新草稿；校验通过并发布后，内容才可用于新冒险。已开始的冒险保持原有版本。" : writeEnabled ? "你正在浏览已发布内容摘要。管理员解锁后可编辑技能、怪兽与完整剧情。" : "你正在浏览公开目录。部署者设置 <strong>HEXBOUND_ADMIN_TOKEN</strong> 后，即可解锁内容管理。"}</div><main class="studio-layout"><nav class="studio-nav" aria-label="内容分类">${Object.entries(
+  root.innerHTML = `<div class="studio-shell"><header class="studio-header"><a href="/" class="brand"><span class="symbol">⬡</span><div>HEXBOUND<div class="studio-subtitle">内容工坊 / THE ATELIER</div></div></a><div class="row"><a href="/" class="inline-link">返回冒险桌 ↗</a><span class="chip">${admin ? "内容管理" : "公开内容目录"}</span><button id="auth" class="small">${account ? "账号中心" : legacyEnabled ? (admin ? "退出管理" : "管理员解锁") : "登录 / 注册"}</button></div></header><div class="admin-banner">${admin ? "<strong>草稿与发布分离。</strong> 保存只更新草稿；校验通过并发布后，内容才可用于新冒险。已开始的冒险保持原有版本。" : writeEnabled ? "你正在浏览已发布内容摘要。创作者或管理员登录后可编辑技能、怪兽与完整剧情。" : "你正在浏览公开目录。请登录具有创作者或管理员权限的账号管理内容。"}</div><main class="studio-layout"><nav class="studio-nav" aria-label="内容分类">${Object.entries(
     kinds,
   )
     .map(
@@ -210,7 +216,11 @@ function shell() {
   renderDetail();
 }
 function bindShell() {
-  $("#auth").onclick = admin ? logout : authDialog;
+  $("#auth").onclick = () => {
+    if (account || !legacyEnabled) {
+      if (dirtyConfirm()) location.href = "/account.html?next=%2Fstudio.html";
+    } else (admin ? logout : authDialog)();
+  };
   root.querySelectorAll("[data-kind]").forEach(
     (b) =>
       (b.onclick = () => {
@@ -250,7 +260,7 @@ function bindList() {
 function renderDetail() {
   const detail = $("#detail");
   if (!selected) {
-    detail.innerHTML = `<div class="studio-empty"><div class="symbol">${kinds[kind].symbol}</div><h2>每一张卡，都是故事的可能。</h2><p>${admin ? "从左侧选择内容，或新建一份草稿。这里的规则字段会进入服务端脚本判定，叙事不会覆盖数值。" : "选择一份已发布内容，阅读其简介与标签。完整剧情仅向管理员开放，避免提前揭露冒险。"}</p>${admin ? '<button class="primary" id="empty-new">新建' + kinds[kind].name + " ↗</button>" : ""}</div>`;
+    detail.innerHTML = `<div class="studio-empty"><div class="symbol">${kinds[kind].symbol}</div><h2>每一张卡，都是故事的可能。</h2><p>${admin ? "从左侧选择内容，或新建一份草稿。这里的规则字段会进入服务端脚本判定，叙事不会覆盖数值。" : "选择一份已发布内容，阅读其简介与标签。完整剧情仅向创作者与管理员开放，避免提前揭露冒险。"}</p>${admin ? '<button class="primary" id="empty-new">新建' + kinds[kind].name + " ↗</button>" : ""}</div>`;
     $("#empty-new")?.addEventListener("click", newItem);
     return;
   }
@@ -1106,8 +1116,26 @@ window.addEventListener("beforeunload", (event) => {
 async function boot() {
   try {
     const state = await api("/api/studio/status");
-    writeEnabled = !!state.write_enabled;
-    if (token && writeEnabled) {
+    legacyEnabled = !!state.legacy_enabled;
+    writeEnabled = legacyEnabled
+      ? !!state.legacy_write_enabled
+      : !!state.write_enabled;
+    try {
+      const identity = await api("/api/auth/me");
+      account = identity.user;
+      csrfToken = identity.csrf_token;
+      admin =
+        !account.must_change_password &&
+        ["creator", "admin"].includes(account.role);
+    } catch (error) {
+      if (error.status !== 401) throw error;
+      account = null;
+    }
+    if (!legacyEnabled) {
+      token = "";
+      sessionStorage.removeItem("hexbound-studio-token");
+    }
+    if (!account && legacyEnabled && token && writeEnabled) {
       try {
         await api("/api/studio/items");
         admin = true;

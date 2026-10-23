@@ -44,6 +44,8 @@ async function run() {
     cwd: project,
     env: {
       ...process.env,
+      HEXBOUND_ALLOW_GUESTS: "1",
+      HEXBOUND_LEGACY_ADMIN_TOKEN: "1",
       HEXBOUND_DB: path.join(temporary, 'studio.sqlite'),
       HEXBOUND_ADMIN_TOKEN: adminToken,
       LLM_API_KEY: '',

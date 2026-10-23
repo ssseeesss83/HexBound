@@ -13,6 +13,7 @@ from typing import Literal
 
 from fastapi import FastAPI, Header, HTTPException, Request, WebSocket, WebSocketDisconnect
 from fastapi.responses import JSONResponse
+from fastapi.exceptions import RequestValidationError
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -20,6 +21,7 @@ from . import content, rules, campaign
 from .dm import DM
 from .store import Store
 from .studio import create_studio_router, compile_scenario
+from .accounts import create_accounts_router, require_user, authenticate_websocket
 
 
 class Input(BaseModel):
@@ -40,6 +42,10 @@ class JoinRoom(Input):
     invite_code: str = Field(min_length=6, max_length=20)
     player_name: str = Field(min_length=1, max_length=32)
     character_id: str = Field(min_length=1, max_length=50)
+
+
+class ClaimSeat(Input):
+    token: str = Field(min_length=16, max_length=200)
 
 
 class Command(Input):
@@ -69,14 +75,24 @@ class SceneEditPayload(Input):
 
 
 def create_app(db_path: str | None = None) -> FastAPI:
-    app = FastAPI(title="HEXBOUND", version="0.2.0")
+    app = FastAPI(title="HEXBOUND", version="0.3.0")
+    @app.exception_handler(RequestValidationError)
+    async def invalid_request(request: Request, exc: RequestValidationError):
+        # Validation responses must never echo passwords or other submitted secrets.
+        return JSONResponse(status_code=422, content={"detail": [
+            {key: error[key] for key in ("loc", "msg", "type") if key in error}
+            for error in exc.errors()
+        ]}, headers={"Cache-Control": "no-store"})
+
     store = Store(db_path or os.getenv("HEXBOUND_DB", "data/hexbound.sqlite3"))
     dm = DM()
     locks: dict[str, asyncio.Lock] = defaultdict(asyncio.Lock)
     peers: dict[str, dict[WebSocket, str]] = defaultdict(dict)
+    peer_tokens: dict[WebSocket, str] = {}
     limits: dict[str, deque] = defaultdict(deque)
     app.state.store = store
     app.state.dm = dm
+    app.include_router(create_accounts_router(store))
     app.include_router(create_studio_router(store, dm))
 
     def actions_for(state, member_id):
@@ -105,13 +121,35 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 if not limits[old_key] or limits[old_key][-1] < now - 60:
                     del limits[old_key]
 
-    def auth(room_id: str, authorization: str | None) -> str:
+    def allow_guests() -> bool:
+        return os.getenv("HEXBOUND_ALLOW_GUESTS", "0") == "1"
+
+    def room_user(request: Request) -> dict | None:
+        # An invalid or revoked account cookie must never fall back to guest access.
+        if request.cookies.get("hexbound_session") or not allow_guests():
+            return require_user(request)
+        return None
+
+    def auth(room_id: str, authorization: str | None, request: Request) -> str:
+        user = room_user(request)
+        if user:
+            member_id = store.account_member(room_id, user["id"])
+            if not member_id:
+                raise HTTPException(403, "此账号不是房间成员；旧存档请先认领席位")
+            return member_id
         if not authorization or not authorization.startswith("Bearer "):
             raise HTTPException(401, "请使用此房间的成员凭证")
         member_id = store.authenticate(room_id, authorization[7:])
         if not member_id:
             raise HTTPException(401, "房间凭证无效或已失效")
         return member_id
+
+    def socket_member(ws: WebSocket, room_id: str) -> str | None:
+        if ws.cookies.get("hexbound_session") or not allow_guests():
+            user = authenticate_websocket(ws)
+            return store.account_member(room_id, user["id"])
+        token = peer_tokens.get(ws)
+        return store.authenticate(room_id, token) if token else None
 
     def get_state(room_id: str) -> dict:
         state = store.get(room_id)
@@ -149,9 +187,19 @@ def create_app(db_path: str | None = None) -> FastAPI:
         state = get_state(room_id)
         async def send(ws, member_id):
             try:
+                if socket_member(ws, room_id) != member_id:
+                    await ws.close(code=1008, reason="会话已失效")
+                    peers[room_id].pop(ws, None)
+                    peer_tokens.pop(ws, None)
+                    return
                 await asyncio.wait_for(ws.send_json({"type": "snapshot", "room": public(state, member_id)}), timeout=3)
             except Exception:
                 peers[room_id].pop(ws, None)
+                peer_tokens.pop(ws, None)
+                try:
+                    await ws.close(code=1008, reason="会话已失效")
+                except Exception:
+                    pass
         await asyncio.gather(*(send(ws, member_id) for ws, member_id in list(peers[room_id].items())))
 
     async def add_dm_response(room_id: str, base_version: int, request_id: str, kind: str,
@@ -215,10 +263,11 @@ def create_app(db_path: str | None = None) -> FastAPI:
 
     @app.get("/api/catalog")
     async def catalog():
-        return {**content.catalog(), "llm": {"configured": dm.configured, "model": dm.model if dm.configured else "本地叙事"}}
+        return {**content.catalog(), "auth": {"allow_guests": allow_guests()}, "llm": {"configured": dm.configured, "model": dm.model if dm.configured else "本地叙事"}}
 
     @app.post("/api/rooms", status_code=201)
     async def create_room(body: CreateRoom, request: Request):
+        user = room_user(request)
         throttle("create:" + (request.client.host if request.client else "local"), 15)
         if body.mode == "free" and not dm.configured:
             raise HTTPException(422, "自由生成需要服务端配置 LLM；可先选择预设冒险或混合模式")
@@ -245,11 +294,12 @@ def create_app(db_path: str | None = None) -> FastAPI:
             state["scene"] = {"id": "lobby", "title": package["scenario"]["name"],
                               "text": "已锁定发布版本。邀请同伴后开始探索。", "objective": "等待队伍集结"}
         event(state, "system", "六席之间，故事等待第一位讲述者。")
-        store.create(state, member_id, token)
-        return {"room": public(state, member_id), "member_id": member_id, "token": token, "invite_code": state["invite_code"]}
+        store.create(state, member_id, token, user["id"] if user else None)
+        return {"room": public(state, member_id), "member_id": member_id, "token": None if user else token, "invite_code": state["invite_code"]}
 
     @app.post("/api/rooms/join")
     async def join_room(body: JoinRoom, request: Request):
+        user = room_user(request)
         throttle("join:" + (request.client.host if request.client else "local"), 30)
         room_id = store.find_invite(body.invite_code.upper())
         if room_id is None:
@@ -258,21 +308,52 @@ def create_app(db_path: str | None = None) -> FastAPI:
         try:
             character = content.new_character(body.character_id, body.player_name)
             async with locks[room_id]:
+                user = room_user(request)
                 state = store.join(room_id, {"id": member_id, "name": body.player_name,
-                                           "character_id": body.character_id, "character": character}, token)
+                                           "character_id": body.character_id, "character": character}, token, user["id"] if user else None)
+                if user:
+                    member_id = store.account_member(room_id, user["id"])
         except (ValueError, KeyError) as exc:
             raise HTTPException(409, str(exc)) from exc
         await broadcast(room_id)
-        return {"room": public(state, member_id), "member_id": member_id, "token": token, "invite_code": state["invite_code"]}
+        return {"room": public(state, member_id), "member_id": member_id, "token": None if user else token, "invite_code": state["invite_code"]}
+
+    @app.get("/api/my/rooms")
+    async def my_rooms(request: Request):
+        user = require_user(request)
+        return {"items": store.account_rooms(user["id"])}
+
+    @app.post("/api/rooms/{room_id}/resume")
+    async def resume_seat(room_id: str, request: Request):
+        user = require_user(request)
+        member_id = store.account_member(room_id, user["id"])
+        if not member_id:
+            raise HTTPException(403, "此账号没有该房间的席位")
+        state = get_state(room_id)
+        return {"room": public(state, member_id), "member_id": member_id, "token": None, "invite_code": state["invite_code"]}
+
+    @app.post("/api/rooms/{room_id}/claim")
+    async def claim_seat(room_id: str, body: ClaimSeat, request: Request):
+        user = require_user(request)
+        throttle("claim:" + user["id"], 20)
+        async with locks[room_id]:
+            user = require_user(request)
+            try:
+                member_id = store.claim(room_id, body.token, user["id"])
+            except ValueError as exc:
+                raise HTTPException(409, str(exc)) from exc
+            state = get_state(room_id)
+        await broadcast(room_id)
+        return {"room": public(state, member_id), "member_id": member_id, "token": None, "invite_code": state["invite_code"]}
 
     @app.get("/api/rooms/{room_id}")
-    async def room(room_id: str, authorization: str | None = Header(default=None)):
-        member_id = auth(room_id, authorization)
+    async def room(room_id: str, request: Request, authorization: str | None = Header(default=None)):
+        member_id = auth(room_id, authorization, request)
         return public(get_state(room_id), member_id)
 
     @app.get("/api/rooms/{room_id}/events")
-    async def events(room_id: str, after: int = 0, authorization: str | None = Header(default=None)):
-        auth(room_id, authorization)
+    async def events(room_id: str, request: Request, after: int = 0, authorization: str | None = Header(default=None)):
+        auth(room_id, authorization, request)
         if after < 0:
             raise HTTPException(422, "事件序号不能为负数")
         state = get_state(room_id)
@@ -280,8 +361,8 @@ def create_app(db_path: str | None = None) -> FastAPI:
         return {"events": result, "last_event_seq": len(state["events"]), "has_more": after + len(result) < len(state["events"])}
 
     @app.post("/api/rooms/{room_id}/commands")
-    async def command(room_id: str, body: Command, authorization: str | None = Header(default=None)):
-        member_id = auth(room_id, authorization)
+    async def command(room_id: str, body: Command, request: Request, authorization: str | None = Header(default=None)):
+        member_id = auth(room_id, authorization, request)
         throttle("command:" + member_id, 120)
         # Validate payloads before performing any mutation.
         try:
@@ -315,6 +396,9 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 raise HTTPException(502, "自由剧本生成失败，房间仍在大厅；请检查模型配置后重试") from exc
         pending = None
         async with locks[room_id]:
+            # Recheck after a potentially long model call; revoked sessions cannot commit.
+            if auth(room_id, authorization, request) != member_id:
+                raise HTTPException(403, "房间身份已变化")
             prior = store.prior_command(room_id, member_id, body.command_id)
             if prior is not None:
                 # Current snapshot avoids regressing UI after a successfully retried write.
@@ -404,6 +488,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
             await add_dm_response(room_id, state["version"], request_id, pending, copy.deepcopy(state["scene"]),
                                   state["mode"], state["theme"], payload.get("text", "请依据刚刚确认的结果描述后果，并建议下一步合法行动。"), copy.deepcopy(state["events"][-8:]), actions_for(state, member_id), state.get("interaction_mode", "guided"))
             response = {"room": public(get_state(room_id), member_id)}
+        auth(room_id, authorization, request)
         return response
 
     @app.websocket("/api/rooms/{room_id}/ws")
@@ -416,23 +501,40 @@ def create_app(db_path: str | None = None) -> FastAPI:
         try:
             hello = await asyncio.wait_for(ws.receive_json(), timeout=10)
             token = hello.get("token") if isinstance(hello, dict) else None
-            member_id = store.authenticate(room_id, token) if isinstance(token, str) and len(token) <= 200 else None
+            if isinstance(token, str) and len(token) <= 200:
+                peer_tokens[ws] = token
+            member_id = socket_member(ws, room_id)
             if not member_id:
                 await ws.close(code=1008, reason="无效成员凭证")
                 return
             peers[room_id][ws] = member_id
             await broadcast(room_id)
             while True:
-                message = await ws.receive_text()
+                if socket_member(ws, room_id) != member_id:
+                    await ws.close(code=1008, reason="会话已失效")
+                    break
+                try:
+                    message = await asyncio.wait_for(ws.receive_text(), timeout=2)
+                except asyncio.TimeoutError:
+                    continue
+                if socket_member(ws, room_id) != member_id:
+                    await ws.close(code=1008, reason="会话已失效")
+                    break
                 if len(message) > 1024:
                     await ws.close(code=1009)
                     break
                 if message == "ping":
                     await ws.send_json({"type": "pong"})
-        except (WebSocketDisconnect, asyncio.TimeoutError, ValueError):
+        except HTTPException:
+            try:
+                await ws.close(code=1008, reason="账号会话已失效")
+            except Exception:
+                pass
+        except (WebSocketDisconnect, asyncio.TimeoutError, ValueError, RuntimeError):
             pass
         finally:
             peers[room_id].pop(ws, None)
+            peer_tokens.pop(ws, None)
             if peers[room_id]:
                 await broadcast(room_id)
 

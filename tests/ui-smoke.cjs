@@ -2,6 +2,10 @@
  * Set HEXBOUND_TEST_URL to use an existing disposable test server instead.
  */
 const { JSDOM } = require("jsdom");
+const accountMode = process.argv.includes("--accounts");
+const NodeWebSocket = require("ws");
+let accountCounter = 0;
+const cookies = new Map();
 const { readFileSync, mkdtempSync, rmSync } = require("node:fs");
 const { tmpdir } = require("node:os");
 const { spawn } = require("node:child_process");
@@ -18,6 +22,9 @@ const server = process.env.HEXBOUND_TEST_URL
         cwd: resolve(__dirname, ".."),
         env: {
           ...process.env,
+          HEXBOUND_ALLOW_GUESTS: accountMode ? "0" : "1",
+          HEXBOUND_LEGACY_ADMIN_TOKEN: "0",
+          HEXBOUND_ALLOW_REGISTRATION: "1",
           HEXBOUND_DB: resolve(temporary, "test.sqlite3"),
           LLM_API_KEY: "",
           LLM_MODEL: "",
@@ -36,7 +43,21 @@ async function waitFor(fn, label) {
   }
   throw new Error(`Timeout: ${label}`);
 }
-async function page() {
+async function page(existingCookie) {
+  let cookie = existingCookie || "";
+  if (accountMode && !cookie) {
+    const response = await fetch(base + "/api/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: "adventurer" + accountCounter++,
+        password: "A-durable-test-passphrase",
+        display_name: "同行者",
+      }),
+    });
+    assert.equal(response.status, 201, await response.clone().text());
+    cookie = response.headers.get("set-cookie").split(";")[0];
+  }
   const dom = new JSDOM('<div id="app"></div><div id="toast" hidden></div>', {
     url: base,
     runScripts: "outside-only",
@@ -44,10 +65,17 @@ async function page() {
   });
   const w = dom.window;
   windows.push(w);
-  w.fetch = (url, options) => fetch(new URL(url, base), options);
-  w.WebSocket = class extends WebSocket {
+  cookies.set(w, cookie);
+  w.fetch = (url, options = {}) =>
+    fetch(new URL(url, base), {
+      ...options,
+      headers: { ...options.headers, ...(cookie ? { Cookie: cookie } : {}) },
+    });
+  w.WebSocket = class extends NodeWebSocket {
     constructor(url) {
-      super(url);
+      super(url, {
+        headers: cookie ? { Cookie: cookie, Origin: base } : { Origin: base },
+      });
       sockets.push(this);
     }
   };
@@ -89,7 +117,8 @@ async function main() {
     "created and websocket authenticated",
   );
   const identity = JSON.parse(host.sessionStorage.getItem("hexbound-session"));
-  assert(identity.token && identity.invite_code);
+  assert(identity.invite_code);
+  assert(accountMode ? !identity.token : identity.token);
   const guests = [];
   for (let i = 1; i <= 5; i++) {
     const guest = await page();
@@ -182,9 +211,33 @@ async function main() {
     () => host.document.querySelector('[data-action="advance"]:not(:disabled)'),
     "resume",
   );
-  assert(host.localStorage.length > 0, "recovery identities persisted");
+  if (accountMode) {
+    assert.equal(
+      host.localStorage.getItem("hexbound-seats"),
+      null,
+      "account seats need no local bearer storage",
+    );
+    const restored = await page(cookies.get(host));
+    await waitFor(
+      () => restored.document.querySelector("[data-restore]"),
+      "server-side rooms across devices",
+    );
+    click(restored, "[data-restore]");
+    await waitFor(
+      () =>
+        restored.document
+          .querySelector(".header-status")
+          ?.textContent.includes("已连接"),
+      "account room restored without local storage",
+    );
+    const identity2 = JSON.parse(
+      restored.sessionStorage.getItem("hexbound-session"),
+    );
+    assert.equal(identity2.member_id, identity.member_id);
+  } else assert(host.localStorage.length > 0, "recovery identities persisted");
   console.log(
-    "PASS: DOM create/join, six live WebSocket seats, capacity, start, dice, escaped chat, pause/resume, insecure-origin UUID, persisted identity.",
+    (accountMode ? "ACCOUNT MODE: " : "GUEST MODE: ") +
+      "PASS: DOM create/join, six live WebSocket seats, capacity, start, dice, escaped chat, pause/resume, insecure-origin UUID, persisted identity.",
   );
 }
 main()

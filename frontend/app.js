@@ -14,7 +14,7 @@ const newCommandId = () =>
     : Array.from(crypto.getRandomValues(new Uint8Array(16)), (x) =>
         x.toString(16).padStart(2, "0"),
       ).join("");
-const savedSeats = () => {
+const localSeats = () => {
   try {
     const saved = JSON.parse(localStorage.getItem("hexbound-seats") || "[]");
     return Array.isArray(saved)
@@ -24,9 +24,33 @@ const savedSeats = () => {
     return [];
   }
 };
+const savedSeats = () => {
+  const owned = accountRooms || [];
+  return [
+    ...owned,
+    ...localSeats().filter(
+      (s) =>
+        !owned.some(
+          (r) => r.room_id === s.room_id && r.member_id === s.member_id,
+        ),
+    ),
+  ];
+};
 function saveSeat() {
   if (!session || !room) return;
-  const seats = savedSeats().filter(
+  if (account && !session.token) {
+    accountRooms = [
+      {
+        ...session,
+        room_name: room.name,
+        player_name: me()?.name || account.display_name,
+        status: room.status,
+      },
+      ...accountRooms.filter((s) => s.room_id !== session.room_id),
+    ];
+    return;
+  }
+  const seats = localSeats().filter(
     (s) =>
       !(s.room_id === session.room_id && s.member_id === session.member_id),
   );
@@ -61,6 +85,9 @@ const abilities = {
   wis: "感知",
   cha: "魅力",
 };
+let account = null,
+  csrfToken = "",
+  accountRooms = [];
 let catalog = {},
   session = null,
   room = null,
@@ -95,6 +122,7 @@ async function api(path, options = {}) {
     ...options,
     headers: {
       "Content-Type": "application/json",
+      ...(csrfToken ? { "X-CSRF-Token": csrfToken } : {}),
       ...(session?.token ? { Authorization: `Bearer ${session.token}` } : {}),
       ...options.headers,
     },
@@ -122,11 +150,15 @@ function home() {
       ? `<section class="saved-seats"><div class="eyebrow">Your unfinished chapters / 继续冒险</div><div class="saved-grid">${savedSeats()
           .map(
             (s, i) =>
-              `<button data-restore="${i}"><strong>${esc(s.room_name || "未完的冒险")}</strong><small>${esc(s.player_name)} · 恢复席位 ↗</small></button>`,
+              `<button data-restore="${i}"><strong>${esc(s.room_name || "未完的冒险")}</strong><small>${esc(s.player_name)} · ${account && s.token ? "认领旧席位" : "恢复席位"} ↗</small></button>`,
           )
           .join("")}</div></section>`
       : ""
   }<section class="feature-grid"><div class="feature"><div class="eyebrow">01 / Your story</div><h3>沿着剧本，或走出地图</h3><p>预设、自由与混合模式，为不同的冒险留出空间。</p></div><div class="feature"><div class="eyebrow">02 / True consequence</div><h3>每次掷骰，都有据可查</h3><p>脚本执行检定与战斗。模型讲述结果，不替你决定命运。</p></div><div class="feature"><div class="eyebrow">03 / Together</div><h3>六个席位，一段共同记忆</h3><p>实时同行、自动保存。暂时离席，也不会失去故事。</p></div></section><footer class="footer"><span>HEXBOUND / 六席之间 · 原创文字冒险</span><button class="ghost small" id="rules">查看本版规则范围 ↗</button></footer></main>`;
+  $(".home-header").insertAdjacentHTML(
+    "beforeend",
+    `<a class="small" href="/account.html">${account ? esc(account.display_name) + " · 账号中心" : "登录 / 注册"}</a>`,
+  );
   $("#create").onclick = () => entryDialog("create");
   $("#join").onclick = () => entryDialog("join");
   $("#rules").onclick = rulesDialog;
@@ -189,6 +221,16 @@ function rulesDialog() {
   );
 }
 function entryDialog(kind) {
+  if (
+    (!account && !catalog.auth?.allow_guests) ||
+    account?.must_change_password
+  ) {
+    const next = new URL(location.href);
+    next.searchParams.set("entry", kind);
+    location.href =
+      "/account.html?next=" + encodeURIComponent(next.pathname + next.search);
+    return;
+  }
   let mode = "preset";
   const create = kind === "create";
   const descriptions = {
@@ -315,7 +357,17 @@ function returnHome() {
   draft = "";
   mobileTab = "story";
   sessionStorage.removeItem("hexbound-session");
-  home();
+  if (account) {
+    api("/api/my/rooms")
+      .then((data) => {
+        accountRooms = data.items || [];
+        home();
+      })
+      .catch((error) => {
+        home();
+        toast(error.message);
+      });
+  } else home();
 }
 async function restoreSeat(seat) {
   if (!seat) return;
@@ -326,25 +378,43 @@ async function restoreSeat(seat) {
     invite_code: seat.invite_code,
   };
   try {
-    room = await api(`/api/rooms/${session.room_id}`);
-    sessionStorage.setItem("hexbound-session", JSON.stringify(session));
-    saveSeat();
-    renderRoom();
-    connect();
-  } catch (error) {
-    if ([401, 403, 404].includes(error.status)) {
-      try {
+    if (account) {
+      const data = await api(
+        `/api/rooms/${session.room_id}/${seat.token ? "claim" : "resume"}`,
+        {
+          method: "POST",
+          body: JSON.stringify(seat.token ? { token: seat.token } : {}),
+        },
+      );
+      room = data.room;
+      session = {
+        room_id: room.id,
+        member_id: data.member_id,
+        token: data.token,
+        invite_code: data.invite_code,
+      };
+      if (seat.token)
         localStorage.setItem(
           "hexbound-seats",
           JSON.stringify(
-            savedSeats().filter(
+            localSeats().filter(
               (s) =>
                 !(s.room_id === seat.room_id && s.member_id === seat.member_id),
             ),
           ),
         );
-      } catch {}
+    } else {
+      if (!catalog.auth?.allow_guests) {
+        location.href = "/account.html";
+        return;
+      }
+      room = await api(`/api/rooms/${session.room_id}`);
     }
+    sessionStorage.setItem("hexbound-session", JSON.stringify(session));
+    saveSeat();
+    renderRoom();
+    connect();
+  } catch (error) {
     session = null;
     room = null;
     toast(error.message);
@@ -463,6 +533,10 @@ function renderRoom() {
   $("#invite").onclick = invite;
   $("#copy-code").onclick = invite;
   $("#room-menu").onclick = roomMenu;
+  $(".sidebar-bottom").insertAdjacentHTML(
+    "beforeend",
+    '<p><a href="/account.html">账号与安全 ↗</a></p>',
+  );
   if ($("#start")) $("#start").disabled = !connected || busy;
   $("#start")?.addEventListener("click", () => command("start"));
   $("#end-turn")?.addEventListener("click", () => command("end_turn"));
@@ -750,7 +824,7 @@ function connect() {
     connected = false;
     renderRoom();
     if (e.code === 4401 || e.code === 4403 || e.code === 1008) {
-      toast("身份验证失败，请确认服务器存档仍然存在。");
+      toast("会话已失效或账号权限已变更，请前往账号中心重新登录。");
       return;
     }
     reconnectTimer = setTimeout(connect, Math.min(15000, 1000 * 2 ** retry++));
@@ -761,10 +835,30 @@ async function boot() {
   try {
     catalog = await api("/api/catalog");
     try {
+      const identity = await api("/api/auth/me");
+      account = identity.user;
+      csrfToken = identity.csrf_token;
+      if (account.must_change_password) {
+        location.href = "/account.html";
+        return;
+      }
+      accountRooms = (await api("/api/my/rooms")).items || [];
+    } catch (error) {
+      if (error.status !== 401) throw error;
+      account = null;
+      csrfToken = "";
+      accountRooms = [];
+    }
+    try {
       catalog.publishedScenarios =
         (await api("/api/content?kind=scenario")).items || [];
     } catch {
       catalog.publishedScenarios = [];
+    }
+    if (session?.token && account) {
+      // Legacy seats are claimed explicitly from the home page, never silently.
+      sessionStorage.removeItem("hexbound-session");
+      session = null;
     }
     if (session) {
       try {
@@ -782,8 +876,12 @@ async function boot() {
       }
     }
     home();
-    if (new URLSearchParams(location.search).has("scenario"))
-      entryDialog("create");
+    const query = new URLSearchParams(location.search);
+    if (
+      query.has("scenario") ||
+      ["create", "join"].includes(query.get("entry"))
+    )
+      entryDialog(query.get("entry") === "join" ? "join" : "create");
   } catch (error) {
     app.innerHTML = `<div class="loading"><div>冒险桌暂时无法连接</div><span>${esc(error.message)}</span><button id="retry">重新连接</button></div>`;
     $("#retry").onclick = boot;

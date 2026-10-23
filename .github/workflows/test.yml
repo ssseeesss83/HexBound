@@ -18,6 +18,9 @@ jobs:
       - run: python -m pytest -q
       - run: node --check frontend/app.js
       - run: node --check frontend/studio.js
+      - run: node --check frontend/account.js
       - run: npm ci
       - run: npm run test:ui
       - run: npm run test:studio
+      - run: npm run test:accounts
+      - run: npm run test:rooms
