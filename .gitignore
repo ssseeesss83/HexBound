@@ -5,7 +5,7 @@ __pycache__/
 *.py[cod]
 *.sqlite*
 *.db*
-data/
+/data/
 test-results/
 node_modules/
 node_modules

@@ -1,6 +1,7 @@
 """Server-authoritative, testable SRD 5.1 subset. No LLM dependency."""
 import re
 import secrets
+import uuid
 from . import content
 
 def modifier(score):
@@ -35,18 +36,26 @@ def attack_roll(bonus, ac, damage_dice, damage_bonus=0, *, advantage=False, disa
         result["damage"] = max(0, damage["total"] + damage_bonus)
     return result
 
-def damage_character(c, amount, critical=False):
+def damage_character(c, amount, critical=False, damage_type=None, state=None):
+    from . import abilities
     if c.get("dead"):
-        return
+        return {"damage": 0, "hp_damage": 0, "concentration": None}
+    amount = abilities.adjust_damage(c, amount, damage_type)
+    absorbed = min(c.get("temp_hp", 0), amount)
+    if absorbed:
+        c["temp_hp"] -= absorbed
+    health_damage = amount - absorbed
     before = c["hp"]
-    c["hp"] = max(0, before - amount)
-    if c["hp"] == 0 and amount > 0:
+    c["hp"] = max(0, before - health_damage)
+    if c["hp"] == 0 and health_damage > 0:
         c["stable"] = False
-        if amount - before >= c["max_hp"]:
+        if health_damage - before >= c["max_hp"]:
             c["dead"] = True
         elif before == 0:
             c["death_failures"] += 2 if critical else 1
             c["dead"] = c["death_failures"] >= 3
+    concentration = abilities.on_damage(c, amount, state)
+    return {"damage": amount, "hp_damage": health_damage, "concentration": concentration}
 
 def death_save(c):
     if c["hp"] > 0 or c.get("stable") or c.get("dead"):
@@ -96,6 +105,8 @@ def start_combat(state):
     order = [p[1] for p in sorted(participants, key=lambda p: (-p[0], p[1]))]
     hp = 7 + 3 * len(state["members"])
     state["combat"] = {"active": True, "round": 1, "order": order, "index": 0, "turn_actor_id": order[0], "action_used": False, "dodging": [], "enemy": {"id": "enemy", "name": state.get("enemy_name", "守卫" if state.get("mode") == "free" else "盐壳守卫"), "hp": hp, "max_hp": hp, "ac": 11}}
+    state["combat"].update(encounter_id=uuid.uuid4().hex, scene_id=state.get("scene_id"), bonus_action_used=False, reactions_used=[])
+    state["combat"]["enemy"].update(xp=50, attack_bonus=2, damage_dice="1d4", damage_type="bludgeoning")
     state["combat"]["enemies"] = [state["combat"]["enemy"]]
     events.append(event("combat", f"{state['combat']['enemy']['name']}阻断了前路。战斗开始。"))
     _auto_turns(state, events)
@@ -108,6 +119,8 @@ def _step(state):
         combat["round"] += 1
     combat["turn_actor_id"] = combat["order"][combat["index"]]
     combat["action_used"] = False
+    from .abilities import start_turn
+    start_turn(state, combat["turn_actor_id"])
 
 def _auto_turns(state, events):
     combat = state["combat"]
@@ -126,12 +139,26 @@ def _auto_turns(state, events):
         targets = [m for m in state["members"] if m["character"]["hp"] > 0 and not m["character"].get("dead")]
         if targets:
             target = targets[secrets.randbelow(len(targets))]
-            r = attack_roll(2, target["character"]["ac"], "1d4", disadvantage=target["id"] in combat["dodging"])
-            damage_character(target["character"], r["damage"], r["critical"])
+            from . import abilities
+            r = attack_roll(2, abilities.armor_class(state, target["character"]), "1d4", disadvantage=target["id"] in combat["dodging"] or abilities.has_condition(state, combat["enemy"], "attack-disadvantage"))
+            outcome = damage_character(target["character"], r["damage"], r["critical"], "bludgeoning", state)
+            r["damage"] = outcome["damage"]
+            if outcome["concentration"]:
+                events.append(event("roll", "进行专注豁免。", actor_id=target["id"], roll=outcome["concentration"]))
+            combat["enemy"]["conditions"] = [x for x in combat["enemy"].get("conditions", []) if x.get("id") != "attack-disadvantage"]
             events.append(event("roll", f"{combat['enemy']['name']}攻击 {target['name']}，造成 {r['damage']} 点伤害。", actor_id="enemy", target_id=target["id"], roll=r))
         _step(state)
 
 def apply_action(state, member_id, action_id, target_id=None):
+    from . import abilities
+    if action_id == "rest" and any(abilities.modern(m["character"]) for m in state["members"]):
+        raise ValueError("请使用角色面板的短休或长休；现代角色不能使用简化全队满血休整")
+    if action_id != "end_turn" and state.get("combat", {}) and state["combat"].get("active"):
+        reason = abilities._budget_reason(state, member_id, "attack" if action_id == "attack" else "action")
+        if reason:
+            raise ValueError(reason)
+    if action_id == "attack" and abilities.modern(_member(state, member_id)["character"]):
+        return abilities.weapon_attack(state, member_id, target_id)
     if action_id not in {a["id"] for a in content.available_actions(state, member_id)}:
         raise ValueError("当前不可执行此动作")
     if action_id in {"advance", "rest"} and state.get("host_member_id", state.get("host_id")) not in (None, member_id):
@@ -167,10 +194,11 @@ def apply_action(state, member_id, action_id, target_id=None):
             events.append(event("roll", f"{m['name']} 使用{c['weapon']['name']}，造成 {r['damage']} 点伤害。", actor_id=member_id, roll=r))
             if combat["enemy"]["hp"] == 0:
                 combat["active"] = False
-                state.setdefault("flags", {})["scene_resolved"] = True
-                if state.get("scene_index") == 1:
+                if not combat.get("director_encounter"):
+                    state.setdefault("flags", {})["scene_resolved"] = True
+                if not combat.get("director_encounter") and state.get("scene_index") == 1:
                     state["flags"]["lens"] = True
-                if state.get("scene_index") == 3:
+                if not combat.get("director_encounter") and state.get("scene_index") == 3:
                     state["flags"]["resolution"] = "fight"
                 for member in state["members"]:
                     # Adventure-specific aftermath: surviving downed heroes are stabilized.
@@ -215,7 +243,17 @@ def apply_action(state, member_id, action_id, target_id=None):
         flags = state.setdefault("flags", {})
         # The complete oath is a scenario-specific source of advantage, locked before rolling.
         oath_advantage = state.get("mode") != "free" and index == 3 and action_id == "parley" and bool(flags.get("oath"))
-        r = check(modifier(c["abilities"][action["ability"]]), action["dc"], advantage=oath_advantage)
+        # Explicit, authored semantics only; a generated action with the same id
+        # does not inherit the original adventure's training bonus.
+        skill_id = action.get("proficiency_skill") or action.get("skill_id")
+        if not skill_id and not state.get("scenes") and state.get("mode") != "free":
+            skill_id = {
+                ("dock", "investigate"): "survival", ("dock", "parley"): "persuasion",
+                ("customs", "investigate"): "investigation", ("customs", "parley"): "persuasion",
+                ("stairs", "investigate"): "investigation", ("stairs", "repair"): "athletics",
+                ("lantern", "parley"): "persuasion",
+            }.get((content.scene_for(state)["id"], action_id))
+        r = abilities.ability_check(state, c, action["ability"], action["dc"], skill_id, advantage=oath_advantage)
         r["ability"] = action["ability"]
         flags.setdefault("attempted", {})[f"{state.get('scene_index', 0)}:{action_id}"] = True
         flags["scene_resolved"] = True

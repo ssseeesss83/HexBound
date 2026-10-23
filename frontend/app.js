@@ -101,6 +101,17 @@ let catalog = {},
   mobileTab = "story",
   selectedTarget = "",
   toastTimer;
+let combatView = "battle",
+  combatLogView = "combat",
+  combatCategory = "all",
+  combatQuery = "";
+let encounterRoomId = null,
+  previousCombatActive = false,
+  showSettlement = false;
+let sheetState = null,
+  sheetTab = "overview",
+  characterChoices = null,
+  vaultCharacters = [];
 try {
   session = JSON.parse(sessionStorage.getItem("hexbound-session") || "null");
 } catch {
@@ -162,6 +173,13 @@ function home() {
   $("#create").onclick = () => entryDialog("create");
   $("#join").onclick = () => entryDialog("join");
   $("#rules").onclick = rulesDialog;
+  if (account) {
+    $(".hero-actions").insertAdjacentHTML(
+      "beforeend",
+      '<button id="character-vault">我的角色 ↗</button>',
+    );
+    $("#character-vault").onclick = openCharacterVault;
+  }
   $(".hero-actions").insertAdjacentHTML(
     "afterend",
     '<p class="studio-link"><a href="/studio.html">进入内容工坊 · 技能卡 / 怪兽卡 / 剧情本 ↗</a></p>',
@@ -268,6 +286,18 @@ function entryDialog(kind) {
             )}</select></label><p class="helper">预设引导：场景选项推进。自由创作：玩家共同叙述，房主可编辑场景。LLM 引导：模型建议、玩家确认、脚本裁定。已发布剧情会锁定当前版本。</p>`,
         );
       }
+      if (account && vaultCharacters.length) {
+        $("#character-description", form).insertAdjacentHTML(
+          "afterend",
+          `<label>使用已保存的角色<select name="hero_id"><option value="">新建上述职业的角色</option>${vaultCharacters.map((hero) => `<option value="${esc(hero.id)}" ${!hero.available ? "disabled" : ""}>${esc(hero.character.name)} · ${esc(hero.character.class_name || hero.character.class_id)} Lv.${hero.character.level}${!hero.available ? " · 正在另一场冒险中" : ""}</option>`).join("")}</select></label>`,
+        );
+        const heroSelect = $("[name=hero_id]", form);
+        heroSelect.onchange = () => {
+          const hero = vaultCharacters.find((h) => h.id === heroSelect.value);
+          characterSelect.disabled = !!hero;
+          if (hero) $("[name=player_name]", form).value = hero.character.name;
+        };
+      }
       const requestedScenario = new URLSearchParams(location.search).get(
         "scenario",
       );
@@ -317,6 +347,9 @@ function entryDialog(kind) {
             body.mode = mode;
             if (!body.scenario_id) delete body.scenario_id;
           } else body.invite_code = body.invite_code.trim();
+          if (!body.hero_id) delete body.hero_id;
+          if (body.hero_id && !body.character_id)
+            body.character_id = characterSelect.value;
           const data = await api(create ? "/api/rooms" : "/api/rooms/join", {
             method: "POST",
             body: JSON.stringify(body),
@@ -433,7 +466,7 @@ function partyHtml() {
     (room.party || [])
       .map(
         (p) =>
-          `<div class="party-member ${p.id === session.member_id ? "mine" : ""}"><div class="avatar">${esc((p.name || "?")[0])}</div><div class="member-info"><div class="member-name">${esc(p.name)} ${p.id === session.member_id ? "<small>· 你</small>" : ""}${p.id === room.host_id ? ' <span class="mode-badge">♔</span>' : ""}</div><div class="member-class">${esc(p.class_name || p.character_id)} · ${p.online ? "在线" : "离线"}${room.combat?.turn_actor_id === p.id ? " · 当前回合" : ""}</div>${hp(p)}</div></div>`,
+          `<div class="party-member sheet-trigger ${p.id === session.member_id ? "mine" : ""}" data-sheet="${esc(p.id)}" role="button" tabindex="0" aria-label="查看${esc(p.name)}的人物卡"><div class="avatar">${esc((p.name || "?")[0])}</div><div class="member-info"><div class="member-name">${esc(p.name)} ${p.id === session.member_id ? "<small>· 你</small>" : ""}${p.id === room.host_id ? ' <span class="mode-badge">♔</span>' : ""}</div><div class="member-class">${esc(p.class_name || p.character_id)} · ${p.online ? "在线" : "离线"}${room.combat?.turn_actor_id === p.id ? " · 当前回合" : ""}</div>${hp(p)}</div></div>`,
       )
       .join("") +
     Array.from(
@@ -469,6 +502,11 @@ function eventHtml(event) {
 }
 function renderRoom() {
   if (!room) return;
+  trackEncounter();
+  if ((room.combat?.active && combatView === "battle") || showSettlement) {
+    renderBattleRoom();
+    return;
+  }
   const oldLog = $("#journal-log"),
     oldScroll = oldLog?.scrollTop || 0,
     atBottom =
@@ -498,11 +536,11 @@ function renderRoom() {
     .filter((a) => !a.host_only || host)
     .map(
       (a) =>
-        `<button data-action="${esc(a.id)}" title="${esc(a.description || "")}" ${!canAct ? "disabled" : ""}>${esc(a.label)}${a.uses_remaining != null ? ` · 剩余 ${esc(a.uses_remaining)} 次` : ""} ↗</button>`,
+        `<button data-action="${esc(a.id)}" title="${esc(a.description || "")}" ${actionDisabledReason(a) ? `disabled title="${esc(actionDisabledReason(a))}"` : ""}>${esc(a.label)}${a.uses_remaining != null ? ` · 剩余 ${esc(a.uses_remaining)} 次` : ""} ↗</button>`,
     )
     .join(
       "",
-    )}${combat && !(room.available_actions || []).some((a) => a.id === "end_turn") ? `<button id="end-turn" ${!canAct ? "disabled" : ""}>结束回合 →</button>` : ""}</div><form class="compose-box" id="intent-form"><textarea id="intent" aria-label="你的角色行动或聊天" maxlength="1500" placeholder="${active ? "描述你的角色如何行动，或与同伴交谈…" : "与同伴打个招呼…"}">${esc(draft)}</textarea><div class="compose-bottom"><select id="compose-mode" aria-label="发言类型"><option value="narrate" ${composeMode === "narrate" ? "selected" : ""}>角色扮演</option><option value="chat" ${composeMode === "chat" ? "selected" : ""}>桌边聊天</option></select><button class="primary" type="submit" ${!connected || busy ? "disabled" : ""}>${busy ? "处理中…" : "发送 ↗"}</button></div></form><div class="compose-hint"><span>数值判定请使用上方行动 · Ctrl/⌘ + Enter 发送</span><span>自动存档 · v${esc(room.version)}</span></div></div></section><aside class="sidebar scene-sidebar ${mobileTab === "scene" ? "mobile-visible" : ""}"><div class="section-title"><h2>此刻 / THE SCENE</h2><span>◇</span></div>${mapArt}<div class="eyebrow">Current location</div><h3>${esc(scene.title || "冒险尚未开始")}</h3><p>${esc(scene.text || "在这里，你将看到场景、目标和角色状态。")}</p>${scene.objective ? `<div class="objective"><div class="eyebrow">当前目标</div><p>${esc(scene.objective)}</p></div>` : ""}${enemies.length ? `<div class="objective"><div class="eyebrow">选择战斗目标</div>${enemies.map((e) => `<div class="enemy ${selectedTarget === e.id ? "selected" : ""}"><div class="row between"><strong>${esc(e.name)}</strong><span>${e.hp > 0 ? "敌对" : "已倒下"}</span></div>${hp(e)}${e.hp > 0 ? `<button class="small" data-target="${esc(e.id)}">${selectedTarget === e.id ? "✓ 当前目标" : "选择目标"}</button>` : ""}</div>`).join("")}</div>` : ""}${
+    )}${combat && !(room.available_actions || []).some((a) => a.id === "end_turn") ? `<button id="end-turn" ${!canAct ? "disabled" : ""}>结束回合 →</button>` : ""}</div><form class="compose-box" id="intent-form"><textarea id="intent" aria-label="你的角色行动或聊天" maxlength="1500" placeholder="${active ? "描述你的角色如何行动，或与同伴交谈…" : "与同伴打个招呼…"}">${esc(draft)}</textarea><div class="compose-bottom"><select id="compose-mode" aria-label="发言类型"><option value="narrate" ${composeMode === "narrate" ? "selected" : ""}>角色扮演</option><option value="chat" ${composeMode === "chat" ? "selected" : ""}>桌边聊天</option><option value="director_propose" ${composeMode === "director_propose" ? "selected" : ""}>向 DM 提出行动</option></select><button class="primary" type="submit" ${!connected || busy ? "disabled" : ""}>${busy ? "处理中…" : "发送 ↗"}</button></div></form><div class="compose-hint"><span>数值判定请使用上方行动 · Ctrl/⌘ + Enter 发送</span><span>自动存档 · v${esc(room.version)}</span></div></div></section><aside class="sidebar scene-sidebar ${mobileTab === "scene" ? "mobile-visible" : ""}"><div class="section-title"><h2>此刻 / THE SCENE</h2><span>◇</span></div>${mapArt}<div class="eyebrow">Current location</div><h3>${esc(scene.title || "冒险尚未开始")}</h3><p>${esc(scene.text || "在这里，你将看到场景、目标和角色状态。")}</p>${scene.objective ? `<div class="objective"><div class="eyebrow">当前目标</div><p>${esc(scene.objective)}</p></div>` : ""}${enemies.length ? `<div class="objective"><div class="eyebrow">选择战斗目标</div>${enemies.map((e) => `<div class="enemy ${selectedTarget === e.id ? "selected" : ""}"><div class="row between"><strong>${esc(e.name)}</strong><span>${e.hp > 0 ? "敌对" : "已倒下"}</span></div>${hp(e)}${e.hp > 0 ? `<button class="small" data-target="${esc(e.id)}">${selectedTarget === e.id ? "✓ 当前目标" : "选择目标"}</button>` : ""}</div>`).join("")}</div>` : ""}${
     mine
       ? `<div class="objective"><div class="eyebrow">你的角色属性</div><div class="stat-grid">${Object.entries(
           mine.abilities || {},
@@ -531,6 +569,24 @@ function renderRoom() {
     $("#intent").setSelectionRange(selection, selection);
   }
   $("#invite").onclick = invite;
+  bindSheetTriggers();
+  if (combat) {
+    $(".journal-heading").insertAdjacentHTML(
+      "beforeend",
+      '<button id="return-battle" class="small">返回战斗场景 ↗</button>',
+    );
+    $("#return-battle").onclick = () => {
+      combatView = "battle";
+      renderRoom();
+    };
+  }
+  $(".sidebar-bottom").insertAdjacentHTML(
+    "beforeend",
+    '<button id="my-sheet" class="small" style="margin-top:14px">完整人物卡 ↗</button>',
+  );
+  $("#my-sheet").onclick = () => openCharacterSheet(session.member_id);
+  refreshSheetVitals();
+  installDmProposals();
   $("#copy-code").onclick = invite;
   $("#room-menu").onclick = roomMenu;
   $(".sidebar-bottom").insertAdjacentHTML(
@@ -551,29 +607,7 @@ function renderRoom() {
         renderRoom();
       }),
   );
-  app.querySelectorAll("[data-action]").forEach(
-    (b) =>
-      (b.onclick = () => {
-        const action = (room.available_actions || []).find(
-          (a) => a.id === b.dataset.action,
-        );
-        if (action?.target === "ally") {
-          skillTargetDialog(action);
-          return;
-        }
-        if (b.dataset.action === "heal") {
-          healDialog();
-          return;
-        }
-        command("action", {
-          action_id: b.dataset.action,
-          ...((b.dataset.action === "attack" || action?.target === "enemy") &&
-          selectedTarget
-            ? { target_id: selectedTarget }
-            : {}),
-        });
-      }),
-  );
+  bindActionTriggers();
   app.querySelectorAll("[data-target]").forEach(
     (b) =>
       (b.onclick = () => {
@@ -633,7 +667,11 @@ async function invite() {
 }
 function skillTargetDialog(action) {
   const allies = room.party.filter(
-    (p) => !p.dead && (action.effect !== "heal" || p.hp < p.max_hp),
+    (p) =>
+      !p.dead &&
+      (action.targets
+        ? action.targets.some((target) => target.id === p.id)
+        : action.effect !== "heal" || p.hp < p.max_hp),
   );
   openDialog(
     `<div class="row between"><h2 id="dialog-title">${esc(action.label)} · 选择目标</h2><button data-close class="ghost">×</button></div><div class="form">${allies.map((p) => `<button data-skill-target="${esc(p.id)}">${esc(p.name)} · HP ${esc(p.hp)} / ${esc(p.max_hp)}</button>`).join("") || '<p class="helper">没有合法目标。</p>'}</div>`,
@@ -847,6 +885,11 @@ async function boot() {
         return;
       }
       accountRooms = (await api("/api/my/rooms")).items || [];
+      try {
+        vaultCharacters = (await api("/api/my/characters")).items || [];
+      } catch {
+        vaultCharacters = [];
+      }
     } catch (error) {
       if (error.status !== 401) throw error;
       account = null;
@@ -891,4 +934,1046 @@ async function boot() {
     $("#retry").onclick = boot;
   }
 }
+
+function trackEncounter() {
+  if (encounterRoomId !== room.id) {
+    encounterRoomId = room.id;
+    previousCombatActive = false;
+    showSettlement = false;
+    combatView = "battle";
+  }
+  const active = !!room.combat?.active;
+  if (active && !previousCombatActive) {
+    combatView = "battle";
+    showSettlement = false;
+    combatCategory = "all";
+    combatQuery = "";
+  }
+  if (!active && previousCombatActive) {
+    showSettlement = true;
+    combatView = "battle";
+  }
+  previousCombatActive = active;
+}
+function signed(value) {
+  return Number(value) >= 0 ? `+${value}` : String(value);
+}
+function conditionLabels(actor) {
+  const names = {
+    poisoned: "中毒",
+    prone: "倒地",
+    restrained: "束缚",
+    stunned: "震慑",
+    unconscious: "昏迷",
+    frightened: "恐慌",
+    blinded: "目盲",
+    charmed: "魅惑",
+    paralyzed: "麻痹",
+    deafened: "耳聋",
+    invisible: "隐形",
+    incapacitated: "失能",
+    grappled: "擒抱",
+    petrified: "石化",
+    exhaustion: "力竭",
+  };
+  const values = (actor.conditions || []).map((c) =>
+    typeof c === "string" ? c : c.name || c.id || c.condition || "状态",
+  );
+  if (actor.dead) values.push("死亡");
+  else if (actor.hp <= 0)
+    values.push(actor.stable ? "伤势稳定" : "倒地 / 死亡豁免");
+  return (
+    values
+      .map(
+        (value) =>
+          `<span class="condition bad">${esc(names[value] || value)}</span>`,
+      )
+      .join("") +
+    (actor.concentration
+      ? `<span class="condition focus">专注 · ${esc(actor.concentration.name || actor.concentration.spell_name || actor.concentration.spell_id || "法术")}</span>`
+      : "")
+  );
+}
+function actionDisabledReason(action) {
+  if (!connected) return "连接恢复后可行动";
+  if (busy) return "上一项行动仍在处理中";
+  if (room.status !== "playing")
+    return room.status === "paused" ? "冒险已暂停" : "当前不是冒险进行阶段";
+  if (action.host_only && room.host_id !== session.member_id)
+    return "由房主推进队伍";
+  if (action.supported === false)
+    return action.disabled_reason || "仅供参考，尚未自动化";
+  if (action.disabled_reason) return action.disabled_reason;
+  if (action.disabled || action.enabled === false)
+    return action.reason || "当前不可用";
+  if (
+    room.combat?.active &&
+    room.combat.turn_actor_id !== session.member_id &&
+    action.action_cost !== "reaction"
+  )
+    return "等待你的回合";
+  return "";
+}
+function ownedActions() {
+  const all = new Map(
+    (room.available_actions || []).map((action) => [action.id, action]),
+  );
+  for (const action of room.combat_capabilities || [])
+    all.set(action.id, { ...(all.get(action.id) || {}), ...action });
+  return [...all.values()];
+}
+function actionGroup(action) {
+  if (action.kind === "spell" || action.id.startsWith("cast:")) return "spells";
+  if (action.kind === "feature" || action.id.startsWith("feature:"))
+    return "features";
+  if (action.kind === "item" || action.id === "heal") return "items";
+  return "actions";
+}
+function actionPaletteHtml() {
+  const actions = ownedActions().filter(
+    (a) =>
+      a.id !== "end_turn" &&
+      (!a.host_only || room.host_id === session.member_id),
+  );
+  const selected = actions.filter(
+    (a) =>
+      (combatCategory === "all" || actionGroup(a) === combatCategory) &&
+      (!combatQuery ||
+        `${a.label} ${a.description || ""}`
+          .toLowerCase()
+          .includes(combatQuery.toLowerCase())),
+  );
+  return (
+    selected
+      .map((action) => {
+        const reason = actionDisabledReason(action);
+        return `<button class="combat-action" data-action="${esc(action.id)}" ${reason ? "disabled" : ""} title="${esc(reason || action.description || "")}"><span class="row between"><strong>${esc(action.label || action.name)}</strong><span class="action-cost">${{ action: "动作", bonus: "附赠动作", bonus_action: "附赠动作", reaction: "反应", free: "自由", none: "自由", attack: "攻击" }[action.action_cost] || "动作"}</span></span><small>${esc(action.description || "按服务端规则执行")}</small>${action.uses_remaining != null ? `<small>剩余 ${esc(action.uses_remaining)} 次</small>` : ""}${reason ? `<small class="action-unavailable">${esc(reason)}</small>` : `<small>${action.cast_levels?.length ? "选择法术位与目标 ↗" : action.target === "enemy" ? "对选中敌人使用 ↗" : action.target === "ally" ? "选择队友 ↗" : "执行行动 ↗"}</small>`}</button>`;
+      })
+      .join("") ||
+    '<div class="combat-action-empty">没有匹配的能力。更改筛选或在人物卡中查看完整能力。</div>'
+  );
+}
+function combatEvents() {
+  const events = room.events || [];
+  if (combatLogView === "story") return events;
+  const combatKinds = new Set([
+    "roll",
+    "combat",
+    "action",
+    "damage",
+    "healing",
+    "death",
+    "initiative",
+    "spell",
+    "condition",
+    "resource",
+  ]);
+  return events.filter((event) => event.roll || combatKinds.has(event.kind));
+}
+function battleAllyHtml(member) {
+  return `<article class="ally-card ${room.combat?.turn_actor_id === member.id ? "current" : ""}"><div class="row"><div class="avatar">${esc(member.name[0])}</div><div><button class="member-name" data-sheet="${esc(member.id)}">${esc(member.name)}${member.id === session.member_id ? " · 你" : ""} ↗</button><div class="member-class">${esc(member.class_name || member.class_id || member.character_id)} · Lv.${esc(member.level || 1)}</div></div></div>${hp(member)}<div class="conditions">${conditionLabels(member)}</div></article>`;
+}
+function renderBattleRoom() {
+  const previousInput = $("#intent");
+  if (previousInput) draft = previousInput.value;
+  const oldLog = $("#journal-log"),
+    oldScroll = oldLog?.scrollTop || 0,
+    atBottom =
+      !oldLog || oldLog.scrollHeight - oldScroll - oldLog.clientHeight < 90;
+  const combat = room.combat || {},
+    enemies = combat.enemies || [],
+    mine = me(),
+    myTurn = combat.turn_actor_id === session.member_id;
+  const actors = [...(room.party || []), ...enemies],
+    current = actors.find((a) => a.id === combat.turn_actor_id);
+  if (!enemies.some((enemy) => enemy.id === selectedTarget && enemy.hp > 0))
+    selectedTarget = enemies.find((enemy) => enemy.hp > 0)?.id || "";
+  const order = (combat.order || []).map((entry) =>
+    typeof entry === "string" ? { id: entry } : entry,
+  );
+  const endAction = (room.available_actions || []).find(
+    (a) => a.id === "end_turn",
+  );
+  app.innerHTML = `<div class="encounter-shell"><header class="encounter-top"><div class="encounter-title"><div class="eyebrow">${showSettlement ? "ENCOUNTER RESOLVED" : "THE ENCOUNTER"} / ${esc(room.name)}</div><h1>${showSettlement ? "战斗结束，故事继续。" : esc(room.scene?.title || "遭遇战")}</h1></div><div class="row"><button class="small" id="battle-sheet">人物卡 ↗</button><button class="small" id="battle-story">探索日志</button><button class="ghost" id="room-menu" ${busy ? "disabled" : ""}>•••</button></div></header>${!connected ? '<div class="notice">正在重连。战斗状态由服务端保存。</div>' : room.status === "paused" ? '<div class="notice">冒险已暂停，等待房主继续。</div>' : ""}<main class="encounter-layout"><aside class="encounter-allies"><div class="section-title"><h2>你的队伍 / PARTY</h2><span class="mode-badge">${room.party.length} / 6</span></div>${room.party.map(battleAllyHtml).join("")}</aside><section class="encounter-center">${
+    showSettlement
+      ? settlementHtml()
+      : `<div class="initiative-track" aria-label="先攻顺序"><span class="initiative-label">先攻顺序<br>ROUND ${esc(combat.round || 1)}</span>${order
+          .map((entry) => {
+            const actor = actors.find(
+              (a) => a.id === (entry.id || entry.actor_id),
+            );
+            return `<div class="initiative-token ${(entry.id || entry.actor_id) === combat.turn_actor_id ? "current" : ""} ${enemies.some((e) => e.id === (entry.id || entry.actor_id)) ? "enemy-turn" : ""}"><strong>${esc(actor?.name || entry.name || entry.id || entry.actor_id)}</strong><small>${(entry.id || entry.actor_id) === combat.turn_actor_id ? "当前回合" : actor?.hp <= 0 ? "已倒下" : entry.initiative != null ? `先攻 ${entry.initiative}` : "等待行动"}</small></div>`;
+          })
+          .join(
+            "",
+          )}</div><div class="battlefield"><div class="battlefield-heading"><div><h2>选择你的目标</h2><p>点击敌方卡片，再选择一个行动。</p></div><span class="chip">${enemies.filter((e) => e.hp > 0).length} 个存活敌人</span></div><div class="enemy-grid">${enemies.map((enemy) => `<button class="combatant-card ${selectedTarget === enemy.id ? "targeted" : ""} ${enemy.hp <= 0 ? "defeated" : ""}" data-target="${esc(enemy.id)}" ${enemy.hp <= 0 ? "disabled" : ""} aria-pressed="${selectedTarget === enemy.id}"><div class="eyebrow">${enemy.hp <= 0 ? "DEFEATED" : "HOSTILE"}</div><div class="card-sigil" aria-hidden="true">♜</div><h3>${esc(enemy.name)}</h3>${hp(enemy)}<div class="conditions">${conditionLabels(enemy)}</div><div class="target-label">${enemy.hp <= 0 ? "已击倒" : selectedTarget === enemy.id ? "◎ 当前目标" : "选择为目标"}</div></button>`).join("")}</div></div><div class="combat-turn-panel"><div><h3>${myTurn ? "轮到你行动" : `等待 ${esc(current?.name || "下一位角色")}`}</h3><p>${myTurn ? "每次消耗都会实时同步给队伍。" : "可以查看人物卡、阅读记录或与同伴交谈。"}</p><div class="turn-resources"><span class="turn-resource ${combat.action_used ? "used" : ""}"><i></i>动作 ${combat.action_used ? "已使用" : "可用"}</span><span class="turn-resource ${combat.bonus_action_used ? "used" : ""}"><i></i>附赠 ${combat.bonus_action_used ? "已使用" : "可用"}</span><span class="turn-resource ${(combat.reactions_used || []).includes(session.member_id) ? "used" : ""}"><i></i>反应 ${(combat.reactions_used || []).includes(session.member_id) ? "已使用" : "保留"}</span>${combat.attacks_remaining != null ? `<span class="turn-resource">剩余攻击 ${esc(combat.attacks_remaining)}</span>` : ""}</div></div><button id="battle-end-turn" class="primary" ${!endAction || actionDisabledReason(endAction) ? "disabled" : ""}>结束回合 →</button></div><section class="combat-actions"><div class="action-toolbar"><div class="action-tabs">${Object.entries(
+          {
+            all: "全部",
+            actions: "动作",
+            spells: "法术",
+            features: "特性",
+            items: "物品",
+          },
+        )
+          .map(
+            ([id, label]) =>
+              `<button data-action-category="${id}" class="${combatCategory === id ? "active" : ""}">${label}</button>`,
+          )
+          .join(
+            "",
+          )}</div><input class="action-search" id="combat-action-search" placeholder="搜索能力…" aria-label="搜索可用能力" value="${esc(combatQuery)}"></div><div class="action-grid" id="action-grid">${actionPaletteHtml()}</div></section>`
+  }</section><aside class="encounter-ledger"><div class="encounter-subnav"><button data-combat-log="combat" class="${combatLogView === "combat" ? "active" : ""}">战斗记录</button><button data-combat-log="story" class="${combatLogView === "story" ? "active" : ""}">全部日志</button></div><div class="journal-log" id="journal-log" role="log" aria-label="战斗与规则记录">${combatEvents().map(eventHtml).join("") || '<p class="helper">行动发生后，规则凭据会显示在这里。</p>'}</div><div class="composer"><form class="compose-box" id="intent-form"><textarea id="intent" maxlength="1500" aria-label="战斗中的发言" placeholder="与队伍交谈，或描述行动意图…">${esc(draft)}</textarea><div class="compose-bottom"><select id="compose-mode" aria-label="发言类型"><option value="chat" ${composeMode === "chat" ? "selected" : ""}>桌边聊天</option><option value="narrate" ${composeMode === "narrate" ? "selected" : ""}>角色扮演</option><option value="director_propose" ${composeMode === "director_propose" ? "selected" : ""}>向 DM 提出行动</option></select><button class="primary" type="submit" ${!connected || busy ? "disabled" : ""}>发送 ↗</button></div></form></div></aside></main></div>`;
+  $("#battle-sheet").onclick = () => openCharacterSheet(session.member_id);
+  $("#room-menu").onclick = roomMenu;
+  $("#battle-story").onclick = () => {
+    showSettlement = false;
+    combatView = "story";
+    renderRoom();
+  };
+  $("#return-exploration")?.addEventListener("click", () => {
+    showSettlement = false;
+    combatView = "story";
+    renderRoom();
+  });
+  $("#battle-end-turn")?.addEventListener("click", () => command("end_turn"));
+  app.querySelectorAll("[data-target]").forEach(
+    (button) =>
+      (button.onclick = () => {
+        selectedTarget = button.dataset.target;
+        renderRoom();
+      }),
+  );
+  app.querySelectorAll("[data-action-category]").forEach(
+    (button) =>
+      (button.onclick = () => {
+        combatCategory = button.dataset.actionCategory;
+        renderRoom();
+      }),
+  );
+  app.querySelectorAll("[data-combat-log]").forEach(
+    (button) =>
+      (button.onclick = () => {
+        combatLogView = button.dataset.combatLog;
+        renderRoom();
+      }),
+  );
+  $("#combat-action-search")?.addEventListener("input", (event) => {
+    combatQuery = event.target.value;
+    $("#action-grid").innerHTML = actionPaletteHtml();
+    bindActionTriggers();
+  });
+  bindSheetTriggers();
+  bindActionTriggers();
+  refreshSheetVitals();
+  installDmProposals();
+  $("#compose-mode").onchange = (event) => (composeMode = event.target.value);
+  $("#intent").oninput = (event) => (draft = event.target.value);
+  $("#intent").onkeydown = (event) => {
+    if (event.key === "Enter" && (event.ctrlKey || event.metaKey)) {
+      event.preventDefault();
+      $("#intent-form").requestSubmit();
+    }
+  };
+  $("#intent-form").onsubmit = async (event) => {
+    event.preventDefault();
+    const text = $("#intent").value.trim();
+    if (!text || busy) return;
+    if (
+      await command(room.status === "playing" ? composeMode : "chat", { text })
+    ) {
+      draft = "";
+      if ($("#intent")) $("#intent").value = "";
+    }
+  };
+  const log = $("#journal-log");
+  log.scrollTop = atBottom ? log.scrollHeight : oldScroll;
+}
+function settlementHtml() {
+  const enemies = room.combat?.enemies || [],
+    standing = room.party.filter((p) => p.hp > 0 && !p.dead).length;
+  const won = enemies.length > 0 && enemies.every((enemy) => enemy.hp <= 0);
+  return `<section class="settlement"><div class="eyebrow">${won ? "VICTORY" : "ENCOUNTER CLOSED"}</div><h2>${won ? "余音散去，灯火未熄。" : "这一场战斗，已写入记录。"}</h2><p>骰点、伤害和资源消耗已保存。查看队伍状态，再决定下一步。</p><div class="settlement-stats"><span><strong>${room.combat?.round || "—"}</strong>战斗轮数</span><span><strong>${enemies.filter((enemy) => enemy.hp <= 0).length}</strong>击倒敌人</span><span><strong>${standing} / ${room.party.length}</strong>仍站立的同伴</span></div><button id="return-exploration" class="primary">返回探索与结算记录 ↗</button></section>`;
+}
+function bindActionTriggers() {
+  app.querySelectorAll("[data-action]").forEach(
+    (button) =>
+      (button.onclick = () => {
+        const action = [
+          ...(room.available_actions || []),
+          ...(room.combat_capabilities || []),
+        ].find((item) => item.id === button.dataset.action);
+        if (!action) {
+          toast("此行动已不可用，请查看最新场景。");
+          return;
+        }
+        const reason = actionDisabledReason(action);
+        if (reason) {
+          toast(reason);
+          return;
+        }
+        if (action.id === "end_turn") {
+          command("end_turn");
+          return;
+        }
+        if (
+          action.kind === "spell" ||
+          action.id.startsWith("cast:") ||
+          action.cast_levels?.length ||
+          action.max_targets > 1 ||
+          action.resource_amount ||
+          action.id === "feature:lay-on-hands"
+        ) {
+          castActionDialog(action);
+          return;
+        }
+        if (action.target === "ally") {
+          skillTargetDialog(action);
+          return;
+        }
+        if (action.id === "heal") {
+          healDialog();
+          return;
+        }
+        let target =
+          action.target === "self"
+            ? session.member_id
+            : action.target === "enemy" || action.id === "attack"
+              ? selectedTarget
+              : null;
+        if (
+          action.target === "enemy" &&
+          action.targets?.length &&
+          !action.targets.some((item) => item.id === target)
+        ) {
+          selectedTarget = action.targets[0].id;
+          target = selectedTarget;
+        }
+        command("action", {
+          action_id: action.id,
+          ...(target
+            ? { target_id: action.target === "enemy" ? selectedTarget : target }
+            : {}),
+        });
+      }),
+  );
+}
+function castActionDialog(action) {
+  const targetList =
+    action.targets ||
+    (action.target === "ally"
+      ? room.party
+      : action.target === "enemy"
+        ? room.combat?.enemies || []
+        : [{ id: session.member_id, name: me()?.name || "自己" }]);
+  const multiple = Number(action.max_targets || 1) > 1;
+  const levels = action.cast_levels || [];
+  openDialog(
+    `<div class="row between"><div><div class="eyebrow">CONFIRM YOUR ACTION</div><h2 id="dialog-title" style="margin-top:8px">${esc(action.label)}</h2></div><button class="ghost" data-close aria-label="关闭">×</button></div><form class="form" id="cast-form"><p class="helper">${esc(action.description || "效果与资源消耗由服务端规则执行。")}${action.area_mode === "encounter-selection" ? "<br>当前为无网格遭遇范围：从合法目标中选择。" : ""}</p>${levels.length ? `<label>消耗法术位<select name="slot">${levels.map((slot, index) => `<option value="${index}" ${slot.current <= 0 ? "disabled" : ""}>${slot.source === "pact" ? "契约法术位" : "法术位"} · ${slot.level} 环 · 剩余 ${slot.current}</option>`).join("")}</select></label>` : ""}<div><p class="helper" style="margin-bottom:10px">${multiple ? `选择 ${action.min_targets || 1}–${action.max_targets} 个目标` : "选择目标"}</p><div class="target-checklist">${targetList.map((target, index) => `<label><input type="${multiple ? "checkbox" : "radio"}" name="target" value="${esc(target.id)}" ${!multiple && (target.id === selectedTarget || action.target === "self" || (index === 0 && !targetList.some((t) => t.id === selectedTarget))) ? "checked" : ""}>${esc(target.name)}</label>`).join("")}</div></div>${action.resource_amount || action.id === "feature:lay-on-hands" ? `<label>投入治疗点数<input name="resource_amount" type="number" min="1" max="${esc(action.max_amount || action.resource_amount?.max || me()?.resources?.["lay-on-hands"]?.current || 500)}" value="1" required></label>` : ""}<p id="cast-error" class="error" role="alert"></p><button type="submit" class="primary">确认目标并执行 ↗</button></form>`,
+    (overlay, close) => {
+      $("#cast-form", overlay).onsubmit = async (event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        const targets = [...form.querySelectorAll("[name=target]:checked")].map(
+          (input) => input.value,
+        );
+        if (
+          targets.length < Number(action.min_targets || 1) ||
+          (multiple && targets.length > Number(action.max_targets))
+        ) {
+          $("#cast-error", overlay).textContent = "请选择规定数量的合法目标。";
+          return;
+        }
+        const payload = {
+          action_id: action.id,
+          ...(multiple ? { target_ids: targets } : { target_id: targets[0] }),
+        };
+        const slotInput = $("[name=slot]", form);
+        if (slotInput) {
+          const slot = levels[Number(slotInput.value)];
+          payload.slot_level = slot.level;
+          payload.slot_source = slot.source;
+        }
+        const amount = $("[name=resource_amount]", form);
+        if (amount) payload.resource_amount = Number(amount.value);
+        close();
+        await command("action", payload);
+      };
+    },
+  );
+}
+
+const skillNames = {
+  acrobatics: "杂技",
+  "animal-handling": "驯兽",
+  arcana: "奥秘",
+  athletics: "运动",
+  deception: "欺瞒",
+  history: "历史",
+  insight: "洞悉",
+  intimidation: "威吓",
+  investigation: "调查",
+  medicine: "医药",
+  nature: "自然",
+  perception: "察觉",
+  performance: "表演",
+  persuasion: "游说",
+  religion: "宗教",
+  "sleight-of-hand": "巧手",
+  stealth: "隐匿",
+  survival: "求生",
+};
+const resourceNames = {
+  rage: "狂暴",
+  ki: "气",
+  sorcery_points: "术法点",
+  lay_on_hands: "圣疗池",
+  channel_divinity: "引导神力",
+  wild_shape: "荒野形态",
+  bardic_inspiration: "诗人激励",
+  second_wind: "回气",
+  action_surge: "动作如潮",
+  superiority_dice: "卓越骰",
+  arcane_recovery: "奥术回想",
+  indomitable: "不屈",
+  luck: "幸运",
+  hit_dice: "生命骰",
+};
+let sheetCatalog = { spells: [], classes: [], loaded: false };
+function bindSheetTriggers() {
+  app.querySelectorAll("[data-sheet]").forEach((element) => {
+    element.onclick = () => openCharacterSheet(element.dataset.sheet);
+    element.onkeydown = (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openCharacterSheet(element.dataset.sheet);
+      }
+    };
+  });
+}
+function refreshSheetVitals() {
+  if (!sheetState) return;
+  const latest = room.party.find((member) => member.id === sheetState.memberId);
+  if (latest)
+    document
+      .querySelectorAll(".sheet-live-hp")
+      .forEach(
+        (label) =>
+          (label.textContent = `HP ${latest.hp} / ${latest.max_hp} · AC ${latest.ac}`),
+      );
+}
+async function fetchCompendium(kind, classId = "") {
+  const items = [];
+  let page = 1;
+  while (true) {
+    const data = await api(
+      `/api/compendium?kind=${kind}${classId ? `&class_id=${encodeURIComponent(classId)}` : ""}&page=${page}&page_size=50`,
+    );
+    items.push(...(data.items || []));
+    if (
+      !data.items?.length ||
+      items.length >= data.total ||
+      data.items.length < 50
+    )
+      break;
+    page++;
+  }
+  return items;
+}
+async function ensureSheetCatalog() {
+  if (sheetCatalog.loaded) return;
+  const [spells, classes] = await Promise.all([
+    fetchCompendium("spells"),
+    fetchCompendium("classes"),
+  ]);
+  sheetCatalog = { spells, classes, loaded: true };
+}
+async function openCharacterSheet(memberId) {
+  const member = room.party.find((p) => p.id === memberId);
+  if (!member) return;
+  openDialog(
+    `<div class="row between"><h2 id="dialog-title">${esc(member.name)} · 人物档案</h2><button class="ghost" data-close aria-label="关闭">×</button></div><div id="character-sheet" style="margin-top:22px"><p class="helper" role="status">正在读取完整人物卡与成长状态…</p></div>`,
+    async (overlay, close) => {
+      $(".modal", overlay).classList.add("sheet-modal");
+      sheetTab = "overview";
+      sheetState = {
+        memberId,
+        overlay,
+        close,
+        loading: true,
+        character: member,
+        owner: memberId === session.member_id,
+      };
+      try {
+        const data = await api(
+          `/api/rooms/${session.room_id}/characters/${memberId}`,
+        );
+        if (!overlay.isConnected) return;
+        sheetState = {
+          ...sheetState,
+          ...data,
+          memberId,
+          overlay,
+          close,
+          loading: false,
+        };
+        renderCharacterSheet();
+      } catch (error) {
+        if (overlay.isConnected)
+          $("#character-sheet", overlay).innerHTML =
+            `<p class="error">${esc(error.message)}</p><p class="helper">完整人物数据尚未读取。当前生命 ${member.hp} / ${member.max_hp}。</p>`;
+      }
+    },
+  );
+}
+async function reloadCharacterSheet() {
+  if (!sheetState?.overlay?.isConnected) return;
+  const state = sheetState;
+  const data = await api(
+    `/api/rooms/${session.room_id}/characters/${state.memberId}`,
+  );
+  if (!state.overlay.isConnected) return;
+  sheetState = { ...state, ...data };
+  renderCharacterSheet();
+}
+function characterData() {
+  const c = sheetState?.character || {};
+  return c.character || c;
+}
+function classLabel(character) {
+  return (
+    character.class_name ||
+    sheetCatalog.classes.find((item) => item.id === character.class_id)?.name ||
+    character.class_id ||
+    character.class ||
+    "冒险者"
+  );
+}
+function sheetResourcesHtml(character) {
+  const list = Object.entries(character.resources || {});
+  if (character.hit_dice) list.unshift(["hit_dice", character.hit_dice]);
+  if (!list.length)
+    return '<p class="helper">当前角色没有可追踪的职业资源。</p>';
+  return `<div class="sheet-resources">${list.map(([id, value]) => `<div class="sheet-resource">${esc(value.name || resourceNames[id] || id)}<strong>${esc(value.current ?? value.remaining ?? "—")} / ${esc(value.max ?? "—")}</strong><small>${id === "hit_dice" ? `d${esc(value.die || "—")}` : { short: "短休恢复", long: "长休恢复", short_rest: "短休恢复", long_rest: "长休恢复" }[value.recharge] || value.recharge || "按规则恢复"}${value.automated === false ? " · 需人工裁定" : ""}</small></div>`).join("")}</div>`;
+}
+function featuresHtml(character) {
+  const features = character.features || [];
+  return (
+    features
+      .map((feature) => {
+        if (typeof feature === "string")
+          feature = { id: feature, name: feature };
+        return `<article class="sheet-feature"><div class="row between"><h4>${esc(feature.name || feature.id)}</h4><span class="badge">${feature.automated ? "规则自动化" : "参考 / 人工裁定"}</span></div><p>${esc(feature.description || feature.note || "详情见对应职业规则。")}</p>${feature.level ? `<p>获得等级 · ${esc(feature.level)}</p>` : ""}</article>`;
+      })
+      .join("") || '<p class="helper">暂无已获得的职业特性。</p>'
+  );
+}
+function sheetOverviewHtml(character) {
+  return `<div class="sheet-stats">${Object.entries(abilities)
+    .map(([id, label]) => {
+      const score = character.abilities?.[id];
+      return `<div class="sheet-stat"><small>${label}</small><strong>${esc(score ?? "—")}</strong><em>${score != null ? signed(Math.floor((score - 10) / 2)) : "—"}</em></div>`;
+    })
+    .join(
+      "",
+    )}</div><div class="sheet-columns"><section class="sheet-section"><h3>战斗与成长</h3><div class="sheet-list"><div class="sheet-list-row"><span>生命 / 护甲</span><strong class="sheet-live-hp">HP ${character.hp} / ${character.max_hp} · AC ${character.ac}</strong></div><div class="sheet-list-row"><span>等级 / 经验</span><strong>Lv.${character.level || 1} · ${character.xp ?? 0} XP</strong></div><div class="sheet-list-row"><span>熟练加值</span><strong>${signed(character.proficiency ?? 2)}</strong></div><div class="sheet-list-row"><span>子职业</span><span>${esc(character.subclass_name || character.subclass_id || "尚未选择")}</span></div><div class="sheet-list-row"><span>死亡豁免</span><span>成功 ${character.death_successes || 0} / 失败 ${character.death_failures || 0}</span></div></div><div class="conditions">${conditionLabels(character)}</div></section><section class="sheet-section"><h3>可追踪资源</h3>${sheetResourcesHtml(character)}</section></div><section class="sheet-section"><h3>职业特性</h3>${featuresHtml(character)}</section>`;
+}
+function sheetSkillsHtml(character) {
+  const proficient = character.skills || [],
+    expertise = character.expertise || [];
+  return `<div class="sheet-columns"><section class="sheet-section"><h3>18 项技能</h3><div class="sheet-list">${Object.entries(
+    skillNames,
+  )
+    .map(
+      ([id, label]) =>
+        `<div class="sheet-list-row"><span>${label} <small>${expertise.includes(id) ? "专精" : proficient.includes(id) ? "熟练" : ""}</small></span><strong>${character.skill_modifiers?.[id] != null ? signed(character.skill_modifiers[id]) : "—"}</strong></div>`,
+    )
+    .join(
+      "",
+    )}</div></section><section class="sheet-section"><h3>六项豁免</h3><div class="sheet-list">${Object.entries(
+    abilities,
+  )
+    .map(
+      ([id, label]) =>
+        `<div class="sheet-list-row"><span>${label} <small>${(character.saving_throws || []).includes(id) ? "熟练" : ""}</small></span><strong>${character.save_modifiers?.[id] != null ? signed(character.save_modifiers[id]) : "—"}</strong></div>`,
+    )
+    .join(
+      "",
+    )}</div><p class="helper" style="margin-top:16px">所有修正值读取服务端人物卡。场景需要检定时，请通过对应行动或 DM 提案执行。</p></section></div>`;
+}
+function spellInfo(id) {
+  return (
+    characterData().spell_details?.find((spell) => spell.id === id) ||
+    sheetCatalog.spells.find((spell) => spell.id === id) || { id, name: id }
+  );
+}
+function belongsToClass(spell, classId) {
+  return (spell.classes || spell.class_ids || []).some(
+    (value) =>
+      (typeof value === "string" ? value : value.index || value.id) === classId,
+  );
+}
+function spellLabel(spell) {
+  return spell.display_name || spell.name_zh || spell.name || spell.id;
+}
+function spellDescription(spell) {
+  const value = spell.description || spell.desc || "";
+  return Array.isArray(value) ? value.join("\n") : value;
+}
+function slotHtml(character) {
+  const slots = Object.entries(character.spell_slots || {});
+  return `<div class="sheet-resources">${slots.map(([level, value]) => `<div class="sheet-resource">${level} 环法术位<strong>${value.current} / ${value.max}</strong><small>长休恢复</small></div>`).join("")}${character.pact_slots?.max ? `<div class="sheet-resource">契约法术位 · ${character.pact_slots.level} 环<strong>${character.pact_slots.current} / ${character.pact_slots.max}</strong><small>短休恢复</small></div>` : ""}</div>`;
+}
+function sheetSpellsHtml(character) {
+  if (!sheetCatalog.loaded)
+    return '<p class="helper" role="status">正在读取法术目录…</p>';
+  const known = new Set([
+    ...(character.cantrips || []),
+    ...(character.known_spells || []),
+    ...(character.prepared_spells || []),
+    ...(character.spellbook || []),
+    ...(character.ritual_spells || []),
+    ...(character.always_prepared_spells || []),
+    ...Object.values(character.arcanum || {}),
+  ]);
+  const casting = character.spellcasting || {};
+  return `<section class="sheet-section"><div class="row between"><h3>施法能力</h3>${sheetState.owner && casting.prepared_limit > 0 ? '<button class="small" id="manage-spells">调整准备法术</button>' : ""}</div><p>${casting.ability ? `${abilities[casting.ability] || casting.ability} · 法术豁免 DC ${casting.save_dc ?? "—"} · 法术攻击 ${casting.attack_bonus != null ? signed(casting.attack_bonus) : "—"}` : "此职业当前没有施法能力。"}</p><p class="helper" style="margin:12px 0">目录收录不等于自动结算。只有规则引擎支持且当前合法的法术可以施放；其他法术显示规则参考。</p>${slotHtml(character)}</section><div class="spell-list">${
+    [...known]
+      .map((id) => {
+        const spell = spellInfo(id),
+          action = ownedActions().find((a) => a.id === `cast:${id}`),
+          reason = action
+            ? actionDisabledReason(action)
+            : "当前没有可执行的施放动作";
+        return `<article class="spell-card"><div class="spell-label">${spell.level === 0 || character.cantrips?.includes(id) ? "戏法" : `${spell.level ?? "—"} 环`} · ${character.prepared_spells?.includes(id) ? "已准备" : character.known_spells?.includes(id) ? "已知" : character.cantrips?.includes(id) ? "已掌握" : character.spellbook?.includes(id) ? "法术书" : "仪式"}</div><h4>${esc(spellLabel(spell) || id)}</h4><p>${esc(spellDescription(spell) || "该法术已列入人物记录。")}</p><p>${spell.concentration ? "需要专注 · " : ""}${esc(spell.casting_time || "")}${spell.range ? ` · ${esc(spell.range)}` : ""}</p>${action && sheetState.owner ? `<button data-sheet-cast="${esc(id)}" ${reason ? "disabled" : ""} title="${esc(reason)}">${reason ? esc(reason) : "选择法术位与目标 ↗"}</button>` : '<p style="margin-top:9px">规则参考 · 此刻不可自动施放</p>'}</article>`;
+      })
+      .join("") ||
+    '<p class="helper">此角色尚未掌握法术。升级或法术管理中可选择当前等级允许的法术。</p>'
+  }</div>`;
+}
+function itemName(item) {
+  return typeof item === "string"
+    ? item
+    : item?.name || item?.label || item?.id || "物品";
+}
+function sheetEquipmentHtml(character) {
+  const equipment = character.equipment || character.inventory || [];
+  const entries = Array.isArray(equipment)
+    ? equipment
+    : Object.entries(equipment).map(([id, value]) =>
+        typeof value === "object"
+          ? { id, ...value }
+          : { name: id, quantity: value },
+      );
+  return `<div class="sheet-columns"><section class="sheet-section"><h3>当前装备</h3><div class="sheet-list"><div class="sheet-list-row"><span>武器</span><strong>${esc(itemName(character.weapon))}</strong></div>${character.weapon ? `<div class="sheet-list-row"><span>武器伤害</span><span>${esc(character.weapon.dice || character.weapon.damage || "—")} · ${esc(abilities[character.weapon.ability] || character.weapon.ability || "")}</span></div>` : ""}<div class="sheet-list-row"><span>护甲</span><span>${esc(itemName(character.armor) || "—")}</span></div><div class="sheet-list-row"><span>治疗药水</span><span>${character.potions ?? "—"}</span></div></div></section><section class="sheet-section"><h3>随身物品</h3><div class="sheet-list">${entries.map((item) => `<div class="sheet-list-row"><span>${esc(itemName(item))}</span><span>${esc(item.quantity ?? item.count ?? 1)}</span></div>`).join("") || '<p class="helper">暂无额外物品记录。</p>'}</div></section></div><section class="sheet-section"><h3>剧情赋予的能力</h3>${(sheetState.equipped_custom_skill_ids || character.equipped_custom_skill_ids || []).map((id) => `<div class="sheet-list-row"><span>${esc(id)}</span><span>剧情能力</span></div>`).join("") || '<p class="helper">剧情能力由当前冒险允许的卡片决定。</p>'}${sheetState.owner ? '<button id="equip-skills" class="small" style="margin-top:14px">选择剧情能力卡</button>' : ""}</section><p class="helper">装备数据来自角色记录。当前页面不提供未实现的自由数值编辑。</p>`;
+}
+function renderCharacterSheet() {
+  if (!sheetState?.overlay?.isConnected) return;
+  const character = characterData(),
+    container = $("#character-sheet", sheetState.overlay);
+  $("#dialog-title", sheetState.overlay).textContent =
+    `${character.name || room.party.find((p) => p.id === sheetState.memberId)?.name || "冒险者"} · 完整人物卡`;
+  container.innerHTML = `<div class="character-sheet-top"><div class="avatar">${esc((character.name || "旅")[0])}</div><div><div class="eyebrow">CHARACTER DOSSIER / ${sheetState.owner ? "你的角色" : "队友档案 · 只读"}</div><h2 style="margin-top:8px">${esc(classLabel(character))} · Lv.${character.level || 1}</h2><p class="sheet-live-hp">HP ${character.hp} / ${character.max_hp} · AC ${character.ac}</p></div></div><nav class="sheet-tabs" aria-label="人物卡分类">${Object.entries(
+    {
+      overview: "属性与特性",
+      skills: "技能与豁免",
+      spells: "法术与法术位",
+      equipment: "装备与能力",
+      growth: "成长与休息",
+    },
+  )
+    .map(
+      ([id, label]) =>
+        `<button data-sheet-tab="${id}" class="${sheetTab === id ? "active" : ""}">${label}</button>`,
+    )
+    .join(
+      "",
+    )}</nav><div id="sheet-body">${sheetTab === "overview" ? sheetOverviewHtml(character) : sheetTab === "skills" ? sheetSkillsHtml(character) : sheetTab === "spells" ? sheetSpellsHtml(character) : sheetTab === "equipment" ? sheetEquipmentHtml(character) : sheetGrowthHtml(character)}</div>`;
+  container.querySelectorAll("[data-sheet-tab]").forEach(
+    (button) =>
+      (button.onclick = async () => {
+        sheetTab = button.dataset.sheetTab;
+        renderCharacterSheet();
+        if (
+          (sheetTab === "spells" || sheetTab === "growth") &&
+          !sheetCatalog.loaded
+        ) {
+          try {
+            await ensureSheetCatalog();
+            renderCharacterSheet();
+          } catch (error) {
+            const body = $("#sheet-body");
+            if (body)
+              body.insertAdjacentHTML(
+                "afterbegin",
+                `<p class="error">法术目录读取失败：${esc(error.message)}</p>`,
+              );
+          }
+        }
+      }),
+  );
+  container.querySelectorAll("[data-sheet-cast]").forEach(
+    (button) =>
+      (button.onclick = () => {
+        const action = ownedActions().find(
+          (a) => a.id === `cast:${button.dataset.sheetCast}`,
+        );
+        if (action) {
+          sheetState.close();
+          castActionDialog(action);
+        }
+      }),
+  );
+  $("#manage-spells", container)?.addEventListener(
+    "click",
+    spellManagementDialog,
+  );
+  $("#equip-skills", container)?.addEventListener("click", equipSkillsDialog);
+  $("#rest-short", container)?.addEventListener("click", () =>
+    restDialog("short"),
+  );
+  $("#rest-long", container)?.addEventListener("click", () =>
+    restDialog("long"),
+  );
+  $("#level-up-form", container)?.addEventListener("submit", confirmLevelUp);
+}
+function sheetGrowthHtml(character) {
+  const preview = sheetState.advancement || {},
+    target = preview.target_level || Math.min(20, (character.level || 1) + 1),
+    choices = preview.required_choices || {};
+  const canLevel =
+    sheetState.owner && preview.can_level_up && !room.combat?.active && !busy;
+  const blockers = preview.reasons || preview.errors || [];
+  return `<section class="sheet-section"><h3>休息与恢复</h3><p>个人短休推进游戏时间 1 小时，按投入的生命骰恢复资源；全队长休由房主发起，耗时 8 小时，24 小时内不能重复。战斗中不能休息。</p><div class="row wrap" style="margin-top:14px"><button id="rest-short" class="small" ${!sheetState.owner || room.combat?.active || busy ? "disabled" : ""}>短休 · 选择生命骰</button><button id="rest-long" class="small" ${!sheetState.owner || room.host_id !== session.member_id || room.combat?.active || busy ? "disabled" : ""} title="由房主发起全队长休">全队长休 · 房主</button></div></section><section class="growth-preview"><div class="eyebrow">YOUR NEXT CHAPTER</div><h3>${character.level >= 20 ? "已达 20 级" : "Lv." + character.level + " → Lv." + target}</h3><p>当前 ${character.xp ?? 0} XP · 下一级需要 ${preview.xp_required ?? "—"} XP</p>${preview.hp_gain_before_asi != null ? `<p>最大生命基础增加 ${preview.hp_gain_before_asi}</p>` : ""}${(preview.features || preview.new_features || []).length ? `<p>本级特性：${(preview.features || preview.new_features).map((f) => esc(typeof f === "string" ? f : f.name || f.id)).join("、")}</p>` : ""}${!preview.can_level_up ? `<p class="error" style="margin-top:12px">${esc(preview.reason || blockers.join("；") || (character.level >= 20 ? "已达到当前等级上限。" : "当前尚未满足升级条件。"))}</p>` : ""}${!sheetState.owner ? '<p class="helper" style="margin-top:12px">只有角色所属玩家可以确认升级；房主不能代替他人选择。</p>' : ""}<form id="level-up-form"><div class="growth-choices">${growthChoiceHtml(character, choices, preview)}</div><p id="growth-error" class="error" role="alert"></p><button class="primary" type="submit" ${canLevel ? "" : "disabled"}>确认选择并升至 ${target} 级 ↗</button></form></section>`;
+}
+function optionId(item) {
+  return typeof item === "string" ? item : item.id;
+}
+function optionLabel(item) {
+  return typeof item === "string"
+    ? skillNames[item] || spellLabel(spellInfo(item)) || item
+    : item.display_name || item.name_zh || item.name || item.label || item.id;
+}
+function checkChoice(name, label, options, selected = [], maxHint = "") {
+  return `<div><p class="helper" style="margin-bottom:9px">${label}${maxHint ? ` · ${maxHint}` : ""}</p><div class="growth-checklist">${
+    options
+      .map((item) => {
+        const id = optionId(item);
+        return `<label><input type="checkbox" name="${name}" value="${esc(id)}" ${selected.includes(id) ? "checked" : ""}>${esc(optionLabel(item))}${typeof item === "object" && item.level != null ? ` · ${item.level === 0 ? "戏法" : item.level + "环"}` : ""}</label>`;
+      })
+      .join("") || '<p class="helper">没有可选项目，或目录仍在载入。</p>'
+  }</div></div>`;
+}
+function growthChoiceHtml(character, choices, preview) {
+  let html = "";
+  const subclasses = choices.subclass || choices.subclasses || [];
+  if (subclasses.length)
+    html += `<label>选择子职业<select name="subclass_id" required><option value="">请选择</option>${subclasses.map((item) => `<option value="${esc(optionId(item))}">${esc(optionLabel(item))}</option>`).join("")}</select></label>`;
+  if (choices.asi)
+    html += `<div><p class="helper" style="margin-bottom:10px">属性提升 · 分配 ${choices.asi.points || 2} 点，单项不超过 ${choices.asi.max || 20}</p><div class="field-grid">${Object.entries(
+      abilities,
+    )
+      .map(
+        ([id, label]) =>
+          `<label>${label} (${character.abilities?.[id] ?? "—"})<input type="number" name="asi_${id}" value="0" min="0" max="${Math.max(0, Math.min(choices.asi.points || 2, (choices.asi.max || 20) - (character.abilities?.[id] || 10)))}"></label>`,
+      )
+      .join("")}</div></div>`;
+  const eligible = (
+    preview.eligible_spells ||
+    sheetCatalog.spells.filter((spell) =>
+      belongsToClass(spell, character.class_id),
+    )
+  ).map((item) => (typeof item === "string" ? spellInfo(item) : item));
+  const cantrips = (preview.eligible_cantrips || []).map((item) =>
+    typeof item === "string" ? spellInfo(item) : item,
+  );
+  const secrets = (preview.eligible_magical_secrets || []).map(spellInfo);
+  if (choices.magical_secrets_count)
+    html += checkChoice(
+      "magical_secrets",
+      "魔法奥秘（同时勾选到已知法术）",
+      secrets,
+      character.magical_secrets || [],
+      `目标数量 ${choices.magical_secrets_count}`,
+    );
+  for (const [level, ids] of Object.entries(
+    choices.arcanum_choices || preview.arcanum_choices || {},
+  ))
+    html += `<label>${level} 环秘法<select name="arcanum_${level}" required><option value="">请选择</option>${ids.map((id) => `<option value="${esc(id)}">${esc(spellLabel(spellInfo(id)))}</option>`).join("")}</select></label>`;
+  if (choices.bonus_skills_count)
+    html += checkChoice(
+      "bonus_skills",
+      "额外熟练技能",
+      Object.keys(skillNames)
+        .filter((id) => !(character.skills || []).includes(id))
+        .map((id) => ({ id, name: skillNames[id] })),
+      [],
+      `选择 ${choices.bonus_skills_count} 项`,
+    );
+  if (choices.known_spells_count > 0)
+    html += checkChoice(
+      "known_spells",
+      "已知法术",
+      [...new Map([...eligible, ...secrets].map((s) => [s.id, s])).values()],
+      character.known_spells || [],
+      `目标数量 ${choices.known_spells_count}`,
+    );
+  if (choices.prepared_spells_limit > 0)
+    html += checkChoice(
+      "prepared_spells",
+      "准备法术",
+      eligible.filter((spell) => typeof spell === "string" || spell.level > 0),
+      character.prepared_spells || [],
+      `最多 ${choices.prepared_spells_limit}`,
+    );
+  if (choices.cantrips_count > 0)
+    html += checkChoice(
+      "cantrips",
+      "戏法",
+      cantrips,
+      character.cantrips || [],
+      `目标数量 ${choices.cantrips_count}`,
+    );
+  if (choices.spellbook_count > 0)
+    html += checkChoice(
+      "spellbook",
+      "法术书",
+      eligible,
+      character.spellbook || [],
+      `目标数量 ${choices.spellbook_count}，保留已有法术`,
+    );
+  if (choices.expertise_count)
+    html += checkChoice(
+      "expertise",
+      "选择专精技能",
+      (character.skills || []).map((id) => ({
+        id,
+        name: skillNames[id] || id,
+      })),
+      character.expertise || [],
+      `数量 ${choices.expertise_count}`,
+    );
+  return (
+    html ||
+    '<p class="helper">此等级没有额外必选项。确认后将由服务端应用成长。</p>'
+  );
+}
+async function confirmLevelUp(event) {
+  event.preventDefault();
+  if (!sheetState.owner || busy) return;
+  const form = event.currentTarget,
+    values = new FormData(form),
+    choices = {},
+    required = sheetState.advancement?.required_choices || {};
+  if (values.get("subclass_id"))
+    choices.subclass_id = values.get("subclass_id");
+  if (required.asi) {
+    choices.asi = Object.fromEntries(
+      Object.keys(abilities)
+        .map((id) => [id, Number(values.get(`asi_${id}`) || 0)])
+        .filter(([, value]) => value),
+    );
+    const count = Object.values(choices.asi).reduce((a, b) => a + b, 0);
+    if (count !== (required.asi.points || 2)) {
+      $("#growth-error", form).textContent =
+        `请恰好分配 ${required.asi.points || 2} 点属性。`;
+      return;
+    }
+  }
+  for (const name of [
+    "known_spells",
+    "prepared_spells",
+    "cantrips",
+    "spellbook",
+    "expertise",
+    "magical_secrets",
+    "bonus_skills",
+  ])
+    if (form.querySelector(`[name=${name}]`))
+      choices[name] = values.getAll(name);
+  const arcanumFields = [...form.querySelectorAll("[name^=arcanum_]")];
+  if (arcanumFields.length)
+    choices.arcanum = {
+      ...(characterData().arcanum || {}),
+      ...Object.fromEntries(
+        arcanumFields.map((field) => [field.name.slice(8), field.value]),
+      ),
+    };
+  const button = $("[type=submit]", form);
+  button.disabled = true;
+  if (await command("level_up", { choices })) {
+    toast("角色已升级，成长记录已保存。");
+    await reloadCharacterSheet();
+  } else {
+    button.disabled = false;
+    $("#growth-error", form).textContent =
+      "升级未完成，请根据提示检查选择后重试。";
+  }
+}
+async function spellManagementDialog() {
+  const character = characterData(),
+    casting = character.spellcasting || {};
+  const classSpells = sheetCatalog.spells.filter(
+    (spell) =>
+      belongsToClass(spell, character.class_id) &&
+      spell.level <= (casting.max_spell_level || 0) &&
+      !(character.always_prepared_spells || []).includes(spell.id),
+  );
+  const preparedOptions =
+    character.class_id === "wizard"
+      ? classSpells.filter((spell) =>
+          (character.spellbook || []).includes(spell.id),
+        )
+      : classSpells;
+  openDialog(
+    `<div class="row between"><h2 id="dialog-title">管理法术</h2><button data-close class="ghost">×</button></div><form id="spell-manage-form" class="form"><p class="helper">当前房规允许在战斗外调整准备法术，无需等待长休。已知法术、戏法和法术书只能在建角或升级时选择，不能免费重新学习。</p>${
+      casting.prepared_limit != null
+        ? checkChoice(
+            "prepared_spells",
+            "准备法术",
+            preparedOptions.filter((spell) => spell.level > 0),
+            character.prepared_spells || [],
+            `上限 ${casting.prepared_limit}`,
+          )
+        : ""
+    }<p id="spell-manage-error" class="error" role="alert"></p><button class="primary" ${room.combat?.active ? "disabled" : ""}>保存法术选择</button>${room.combat?.active ? '<p class="helper">战斗中不能更换法术。</p>' : ""}</form>`,
+    (overlay, close) => {
+      $("#spell-manage-form", overlay).onsubmit = async (event) => {
+        event.preventDefault();
+        const form = event.currentTarget,
+          values = new FormData(form),
+          payload = {};
+        payload.prepared_spells = values.getAll("prepared_spells");
+        const button = $("button.primary", form);
+        button.disabled = true;
+        if (await command("manage_spells", payload)) {
+          close();
+          await reloadCharacterSheet();
+          toast("法术选择已保存。");
+        } else {
+          button.disabled = false;
+          $("#spell-manage-error", form).textContent =
+            "保存未完成，请检查数量、等级与规则限制。";
+        }
+      };
+    },
+  );
+}
+function restDialog(kind) {
+  const character = characterData();
+  openDialog(
+    `<div class="row between"><h2 id="dialog-title">${kind === "short" ? "短休" : "长休"}</h2><button class="ghost" data-close>×</button></div><form id="rest-form" class="form"><p class="helper">${kind === "short" ? "投入生命骰恢复生命，并恢复短休职业资源。可以投入 0 枚，只恢复资源。" : "由房主为全队发起 8 小时长休。未死亡成员恢复生命、法术位与资源；24 小时内不能重复长休。"}</p>${kind === "short" ? `<label>使用生命骰（剩余 ${character.hit_dice?.current ?? 0} 枚）<input name="hit_dice" type="number" min="0" max="${character.hit_dice?.current ?? 0}" value="0" required></label>` : ""}<p id="rest-error" class="error" role="alert"></p><button class="primary">确认${kind === "short" ? "短休" : "长休"}</button></form>`,
+    (overlay, close) => {
+      $("#rest-form", overlay).onsubmit = async (event) => {
+        event.preventDefault();
+        const form = event.currentTarget,
+          button = $("button.primary", form);
+        button.disabled = true;
+        const hitDice = Number($("[name=hit_dice]", form)?.value || 0);
+        if (await command("rest", { kind, hit_dice: hitDice })) {
+          close();
+          await reloadCharacterSheet();
+          toast("休息已完成，资源状态已同步。");
+        } else {
+          button.disabled = false;
+          $("#rest-error", form).textContent = "当前无法休息，请查看操作提示。";
+        }
+      };
+    },
+  );
+}
+async function equipSkillsDialog() {
+  const character = characterData();
+  const skills =
+    sheetState.available_custom_skills ||
+    character.available_custom_skills ||
+    [];
+  openDialog(
+    `<div class="row between"><h2 id="dialog-title">选择剧情能力卡</h2><button class="ghost" data-close>×</button></div><form class="form" id="equip-skills-form"><p class="helper">最多装备 4 张当前冒险包允许的能力卡。它们独立于职业技能与法术，不能修改卡片数值。</p>${checkChoice("skill_ids", "剧情能力", skills, sheetState.equipped_custom_skill_ids || character.equipped_custom_skill_ids || [])}<p id="equip-error" class="error"></p><button class="primary" ${room.combat?.active ? "disabled" : ""}>保存个人能力</button></form>`,
+    (overlay, close) => {
+      $("#equip-skills-form", overlay).onsubmit = async (event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        const button = $("button.primary", form);
+        button.disabled = true;
+        const chosen = new FormData(form).getAll("skill_ids");
+        if (chosen.length > 4) {
+          button.disabled = false;
+          $("#equip-error", form).textContent = "最多选择 4 张剧情能力卡。";
+          return;
+        }
+        if (await command("equip_skills", { skill_ids: chosen })) {
+          close();
+          await reloadCharacterSheet();
+        } else {
+          button.disabled = false;
+          $("#equip-error", form).textContent =
+            "保存失败，请选择当前剧情允许的技能。";
+        }
+      };
+    },
+  );
+}
+
+function installDmProposals() {
+  const raw = room.director_proposals || [];
+  const proposals = Array.isArray(raw) ? raw : Object.values(raw);
+  const pending = proposals.filter(
+    (p) => !p.resolved && (!p.status || p.status === "pending"),
+  );
+  if (!pending.length) return;
+  const composer = $(".composer");
+  if (!composer) return;
+  composer.insertAdjacentHTML(
+    "beforebegin",
+    `<section class="dm-proposals" style="padding:0 24px">${pending.map((proposal) => `<article class="dm-proposal"><div class="eyebrow">${proposal.source === "llm" ? "AI DM" : "规则导演"} / 待确认提案</div><h3>${esc(proposal.label || "你的行动意图")}</h3><p>${esc(proposal.text || "")}</p>${proposal.kind === "check" ? `<p><strong>${esc(proposal.skill_name || "检定")} · DC ${esc(proposal.dc)}</strong></p><p>成功：${esc(proposal.success_text || "按照提案推进")}</p><p>失败：${esc(proposal.failure_text || "按照提案承受后果")}</p>` : ""}${proposal.cost ? `<p>代价：${esc(typeof proposal.cost === "string" ? proposal.cost : JSON.stringify(proposal.cost))}</p>` : ""}<div class="row"><button class="primary" data-director-resolve="${esc(proposal.id)}" ${busy || !connected || (proposal.requires_host && room.host_id !== session.member_id) ? "disabled" : ""}>${proposal.kind === "encounter" ? "确认进入遭遇战" : proposal.kind === "check" ? "确认风险并进行检定" : "确认行动"} ↗</button>${proposal.requires_host && room.host_id !== session.member_id ? "<small>需要房主确认</small>" : "<small>确认前不会掷骰或改变世界状态</small>"}</div></article>`).join("")}</section>`,
+  );
+  app
+    .querySelectorAll("[data-director-resolve]")
+    .forEach(
+      (button) =>
+        (button.onclick = () =>
+          command("director_resolve", {
+            proposal_id: button.dataset.directorResolve,
+          })),
+    );
+}
+async function openCharacterVault() {
+  if (!account) {
+    location.href = "/account.html?next=%2F";
+    return;
+  }
+  try {
+    vaultCharacters = (await api("/api/my/characters")).items || [];
+    await ensureSheetCatalog();
+  } catch (error) {
+    toast(error.message);
+    return;
+  }
+  openDialog(
+    `<div class="row between"><div><div class="eyebrow">YOUR ADVENTURERS</div><h2 id="dialog-title" style="margin-top:8px">我的角色</h2></div><button class="ghost" data-close>×</button></div><p class="helper" style="margin-top:18px">角色绑定账号，保留经验、职业成长、装备与法术记录。正在冒险中的角色不能同时加入第二个房间。</p><div class="form">${vaultCharacters.map((hero) => `<details class="sheet-feature"><summary style="cursor:pointer;font-size:14px">${esc(hero.character.name)} · ${esc(classLabel(hero.character))} Lv.${hero.character.level} <small>${hero.available ? "可用于新冒险" : "冒险进行中"}</small></summary><div style="margin-top:18px">${sheetOverviewHtml(hero.character)}${hero.character.spell_details?.length ? `<section class="sheet-section"><h3>已掌握的法术</h3>${hero.character.spell_details.map((spell) => `<div class="sheet-list-row"><span>${esc(spell.name)}</span><small>${spell.level === 0 ? "戏法" : spell.level + "环"} · ${spell.prepared ? "已准备" : spell.known ? "已知" : "法术书"}</small></div>`).join("")}</section>` : ""}<p class="helper">${hero.active_room_id ? "进入所属冒险后，可管理升级、准备法术和个人资源。" : "创建冒险或加入房间时，在“使用已保存的角色”中选择此人物。"}</p></div></details>`).join("") || '<p class="helper">还没有角色。先选择一个职业，创建属于你的旅人。</p>'}</div><section class="sheet-section" style="border-top:1px solid var(--line);padding-top:22px;margin-top:22px"><h3>创建新角色 · 12 职业</h3><form id="new-hero-form" class="form"><label>角色姓名<input name="name" maxlength="32" required placeholder="旅人的名字"></label><label>选择职业<select name="class_id">${sheetCatalog.classes.map((cls) => `<option value="${esc(cls.id)}">${esc(cls.display_name || cls.name_zh || cls.name)}</option>`).join("")}</select></label><p class="helper">以标准数组和职业默认初始选项创建 1 级角色。完整成长覆盖 1–20 级；目录收录、自动结算和人工裁定会分别标注。</p><p class="error" id="hero-error" role="alert"></p><button class="primary" type="submit">创建并保存角色 ↗</button></form></section>`,
+    (overlay, close) => {
+      $(".modal", overlay).classList.add("sheet-modal");
+      $("#new-hero-form", overlay).onsubmit = async (event) => {
+        event.preventDefault();
+        const form = event.currentTarget,
+          button = $("button.primary", form);
+        button.disabled = true;
+        try {
+          const values = Object.fromEntries(new FormData(form));
+          await api("/api/my/characters", {
+            method: "POST",
+            body: JSON.stringify({ ...values, choices: {} }),
+          });
+          close();
+          toast("角色已保存。开房或加入房间时可以选择它。");
+          await openCharacterVault();
+        } catch (error) {
+          $("#hero-error", overlay).textContent = error.message;
+          button.disabled = false;
+        }
+      };
+    },
+  );
+}
+
 boot();

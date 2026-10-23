@@ -24,3 +24,4 @@ jobs:
       - run: npm run test:studio
       - run: npm run test:accounts
       - run: npm run test:rooms
+      - run: npm run test:combat

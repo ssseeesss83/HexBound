@@ -323,12 +323,41 @@ function editorHtml() {
   if (kind === "skill")
     return (
       base +
-      `<section class="editor-section"><h2>规则配置 <small>由服务端执行</small></h2><div class="field-grid">${select("效果类型", "effect", model.effect, effects)}${select("作用目标", "target", model.target, allowedTargets(model.effect))}${select("使用属性", "ability", model.ability, abilities)}${field("使用次数 · 留空表示不限次", "uses", model.uses, "number", 'min="1" max="20"')}${field("骰子表达式", "dice", model.dice, "text", 'placeholder="例如 1d8"')}${field("固定加值", "bonus", model.bonus, "number", 'min="-10" max="20"')}${field("检定难度 DC", "dc", model.dc, "number", 'min="5" max="30"')}</div><p class="helper" style="margin-top:12px">${model.effect === "check" ? "检定固定使用 d20 + 属性修正 + 固定加值，对抗 DC。骰子字段不参与检定；剧情通过成功 / 失败出口推进。" : model.effect === "attack" ? "命中 = d20 + 属性修正 + 熟练加值 + 固定加值；伤害 = 伤害骰 + 属性修正 + 固定加值。暴击翻倍伤害骰。" : model.effect === "heal" ? "治疗量为骰子 + 固定加值，不使用属性修正，且不超过目标最大生命值。请明确作用于自身或队友。" : "防御消耗一次动作，使攻击者在针对你的攻击中承受劣势，持续到你的下一回合。此效果不使用属性、骰子、加值和 DC 字段。"}</p></section>`
+      `<section class="editor-section"><h2>规则配置 <small>由服务端执行</small></h2><div class="field-grid">${select("效果类型", "effect", model.effect, effects)}${select("作用目标", "target", model.target, allowedTargets(model.effect))}${select("使用属性", "ability", model.ability, abilities)}${
+        model.effect === "check"
+          ? select(
+              "熟练技能 · 可选",
+              "proficiency_skill",
+              model.proficiency_skill || "",
+              Object.fromEntries([
+                ["", "纯属性检定"],
+                ["acrobatics", "杂技 · 敏捷"],
+                ["animal-handling", "驯兽 · 感知"],
+                ["arcana", "奥秘 · 智力"],
+                ["athletics", "运动 · 力量"],
+                ["deception", "欺瞒 · 魅力"],
+                ["history", "历史 · 智力"],
+                ["insight", "洞悉 · 感知"],
+                ["intimidation", "威吓 · 魅力"],
+                ["investigation", "调查 · 智力"],
+                ["medicine", "医药 · 感知"],
+                ["nature", "自然 · 智力"],
+                ["perception", "察觉 · 感知"],
+                ["performance", "表演 · 魅力"],
+                ["persuasion", "游说 · 魅力"],
+                ["religion", "宗教 · 智力"],
+                ["sleight-of-hand", "巧手 · 敏捷"],
+                ["stealth", "隐匿 · 敏捷"],
+                ["survival", "求生 · 感知"],
+              ]),
+            )
+          : ""
+      }${field("使用次数 · 留空表示不限次", "uses", model.uses, "number", 'min="1" max="20"')}${field("骰子表达式", "dice", model.dice, "text", 'placeholder="例如 1d8"')}${field("固定加值", "bonus", model.bonus, "number", 'min="-10" max="20"')}${field("检定难度 DC", "dc", model.dc, "number", 'min="5" max="30"')}</div><p class="helper" style="margin-top:12px">${model.effect === "check" ? "检定使用 d20 + 属性修正 + 所选技能熟练/专精 + 固定加值，对抗 DC；未选技能时只用属性。骰子字段不参与检定；剧情通过成功 / 失败出口推进。" : model.effect === "attack" ? "命中 = d20 + 属性修正 + 熟练加值 + 固定加值；伤害 = 伤害骰 + 属性修正 + 固定加值。暴击翻倍伤害骰。" : model.effect === "heal" ? "治疗量为骰子 + 固定加值，不使用属性修正，且不超过目标最大生命值。请明确作用于自身或队友。" : "防御消耗一次动作，使攻击者在针对你的攻击中承受劣势，持续到你的下一回合。此效果不使用属性、骰子、加值和 DC 字段。"}</p></section>`
     );
   if (kind === "monster")
     return (
       base +
-      `<section class="editor-section"><h2>战斗数据</h2><div class="field-grid three">${field("生命 HP", "hp", model.hp, "number", 'min="1" max="500"')}${field("护甲 AC", "ac", model.ac, "number", 'min="5" max="30"')}${field("先攻加值", "initiative_bonus", model.initiative_bonus, "number", 'min="-5" max="20"')}${field("攻击加值", "attack_bonus", model.attack_bonus, "number", 'min="-5" max="20"')}${field("伤害骰", "damage_dice", model.damage_dice)}${field("伤害加值", "damage_bonus", model.damage_bonus, "number", 'min="-5" max="20"')}</div><p class="helper" style="margin-top:12px">怪兽数值是固定模板。引用此怪兽的剧情发布后，会将版本固定到新房间。</p></section>`
+      `<section class="editor-section"><h2>战斗数据</h2><div class="field-grid three">${field("击败经验 XP", "xp", model.xp ?? 50, "number", 'min="0" max="155000"')}${field("生命 HP", "hp", model.hp, "number", 'min="1" max="500"')}${field("护甲 AC", "ac", model.ac, "number", 'min="5" max="30"')}${field("先攻加值", "initiative_bonus", model.initiative_bonus, "number", 'min="-5" max="20"')}${field("攻击加值", "attack_bonus", model.attack_bonus, "number", 'min="-5" max="20"')}${field("伤害骰", "damage_dice", model.damage_dice)}${field("伤害加值", "damage_bonus", model.damage_bonus, "number", 'min="-5" max="20"')}</div><p class="helper" style="margin-top:12px">怪兽数值是固定模板。引用此怪兽的剧情发布后，会将版本固定到新房间。</p></section>`
     );
   return (
     base +
@@ -423,6 +452,7 @@ function bindEditor() {
             .split(/[,，]/)
             .map((t) => t.trim())
             .filter(Boolean);
+        if (path === "proficiency_skill") value = value || null;
         const previous = getPath(model, path);
         setPath(model, path, value);
         if (/^nodes\.\d+\.id$/.test(path)) {
@@ -444,7 +474,34 @@ function bindEditor() {
           redrawEditor();
           return;
         }
+        if (path === "proficiency_skill" && value) {
+          model.ability = {
+            acrobatics: "dex",
+            "animal-handling": "wis",
+            arcana: "int",
+            athletics: "str",
+            deception: "cha",
+            history: "int",
+            insight: "wis",
+            intimidation: "cha",
+            investigation: "int",
+            medicine: "wis",
+            nature: "int",
+            perception: "wis",
+            performance: "cha",
+            persuasion: "cha",
+            religion: "int",
+            "sleight-of-hand": "dex",
+            stealth: "dex",
+            survival: "wis",
+          }[value];
+          touch();
+          redrawEditor();
+          return;
+        }
+        if (path === "ability") model.proficiency_skill = null;
         if (path === "effect") {
+          if (value !== "check") model.proficiency_skill = null;
           model.target = Object.keys(allowedTargets(value))[0];
           if (value === "check") model.dice = "1d20";
           touch();
@@ -648,6 +705,7 @@ function defaultData(type) {
     return {
       ...common,
       hp: 12,
+      xp: 50,
       ac: 12,
       attack_bonus: 3,
       damage_dice: "1d6",

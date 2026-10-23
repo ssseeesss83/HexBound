@@ -1,0 +1,17 @@
+{
+  "description": "Reviewed SRD 5.1 corrections applied only to the runtime view. Vendored upstream JSON remains byte-identical.",
+  "corrections": [
+    {
+      "id": "life-domain-guardian-of-faith",
+      "collection": "subclasses",
+      "record": "life",
+      "operation": "append_missing_spell",
+      "spell_id": "guardian-of-faith",
+      "class_id": "cleric",
+      "class_level": 7,
+      "source_url": "https://media.wizards.com/2023/downloads/dnd/SRD_CC_v5.1.pdf#page=17",
+      "source_page": 17,
+      "reason": "The official Life Domain Spells table includes both death ward and guardian of faith at cleric level 7. The upstream JSON omits the second entry."
+    }
+  ]
+}

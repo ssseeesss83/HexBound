@@ -17,9 +17,10 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 
-from . import content, rules, campaign
+from . import content, rules, campaign, characters, abilities, compendium, director, progression
 from .dm import DM
 from .store import Store
+from .heroes import create_hero_router
 from .studio import create_studio_router, compile_scenario
 from .accounts import create_accounts_router, require_user, authenticate_websocket
 
@@ -31,17 +32,20 @@ class Input(BaseModel):
 class CreateRoom(Input):
     name: str = Field(default="六席之间", min_length=1, max_length=60)
     player_name: str = Field(min_length=1, max_length=32)
-    character_id: str = Field(min_length=1, max_length=50)
+    character_id: str = Field(default="fighter", min_length=1, max_length=50)
+    hero_id: str | None = Field(default=None, min_length=1, max_length=64)
     mode: Literal["preset", "free", "hybrid"] = "preset"
     theme: str = Field(default="", max_length=600)
     scenario_id: str | None = Field(default=None, max_length=80)
     interaction_mode: Literal["guided", "freeform", "assisted"] = "guided"
+    progression_mode: Literal["xp", "milestone"] = "xp"
 
 
 class JoinRoom(Input):
     invite_code: str = Field(min_length=6, max_length=20)
     player_name: str = Field(min_length=1, max_length=32)
-    character_id: str = Field(min_length=1, max_length=50)
+    character_id: str = Field(default="fighter", min_length=1, max_length=50)
+    hero_id: str | None = Field(default=None, min_length=1, max_length=64)
 
 
 class ClaimSeat(Input):
@@ -51,7 +55,7 @@ class ClaimSeat(Input):
 class Command(Input):
     command_id: str = Field(min_length=8, max_length=100)
     expected_version: int = Field(ge=0)
-    type: Literal["start", "pause", "resume", "action", "chat", "narrate", "end_turn", "set_interaction", "scene_edit"]
+    type: Literal["start", "pause", "resume", "action", "chat", "narrate", "end_turn", "set_interaction", "scene_edit", "level_up", "manage_spells", "rest", "equip_skills", "director_propose", "director_resolve"]
     payload: dict = Field(default_factory=dict)
 
 
@@ -62,6 +66,10 @@ class TextPayload(Input):
 class ActionPayload(Input):
     action_id: str = Field(min_length=1, max_length=80)
     target_id: str | None = Field(default=None, max_length=80)
+    slot_level: int | None = Field(default=None, ge=1, le=9)
+    slot_source: Literal["spell", "pact"] = "spell"
+    target_ids: list[str] = Field(default_factory=list, max_length=12)
+    resource_amount: int | None = Field(default=None, ge=1, le=100)
 
 
 class InteractionPayload(Input):
@@ -74,8 +82,29 @@ class SceneEditPayload(Input):
     objective: str = Field(default="", max_length=180)
 
 
+class LevelPayload(Input):
+    choices: dict = Field(default_factory=dict)
+
+
+class SpellPayload(Input):
+    prepared_spells: list[str] = Field(max_length=40)
+
+
+class RestPayload(Input):
+    kind: Literal["short", "long"]
+    hit_dice: int = Field(default=0, ge=0, le=20)
+
+
+class SkillsPayload(Input):
+    skill_ids: list[str] = Field(max_length=4)
+
+
+class ProposalPayload(Input):
+    proposal_id: str = Field(min_length=1, max_length=100)
+
+
 def create_app(db_path: str | None = None) -> FastAPI:
-    app = FastAPI(title="HEXBOUND", version="0.3.0")
+    app = FastAPI(title="HEXBOUND", version="0.4.0")
     @app.exception_handler(RequestValidationError)
     async def invalid_request(request: Request, exc: RequestValidationError):
         # Validation responses must never echo passwords or other submitted secrets.
@@ -93,10 +122,15 @@ def create_app(db_path: str | None = None) -> FastAPI:
     app.state.store = store
     app.state.dm = dm
     app.include_router(create_accounts_router(store))
+    app.include_router(create_hero_router(store))
+    store.migrate_heroes()
     app.include_router(create_studio_router(store, dm))
 
     def actions_for(state, member_id):
-        return (campaign if state.get("campaign") else content).available_actions(state, member_id)
+        base = (campaign if state.get("campaign") else content).available_actions(state, member_id)
+        if any(m["character"].get("class_id") for m in state["members"]):
+            base = [a for a in base if a["id"] != "rest"]
+        return base + [a for a in abilities.available_actions(state, member_id) if a["id"] not in {x["id"] for x in base}]
 
     def append_rule_events(state, items, fallback_actor):
         for item in items:
@@ -166,7 +200,15 @@ def create_app(db_path: str | None = None) -> FastAPI:
         party = []
         for member in state["members"]:
             character = member["character"]
-            party.append({**copy.deepcopy(character), "id": member["id"], "name": member["name"],
+            visible = {key:copy.deepcopy(character[key]) for key in (
+                "name","class_id","class_name","class","template_id","level","xp","proficiency","abilities",
+                "hp","max_hp","ac","weapon","potions","death_successes","death_failures","stable","dead",
+                "resources","spell_slots","pact_slots","hit_dice","conditions","concentration","skill_proficiencies",
+                "expertise","saving_throw_proficiencies","milestone_credits"
+            ) if key in character}
+            if member["id"] == viewer:
+                visible["hero_id"] = member.get("hero_id")
+            party.append({**visible, "id": member["id"], "name": member["name"],
                           "character_id": character.get("id", member.get("character_id", "")),
                           "online": member["id"] in online})
         scene = state.get("scene") or {"id": "lobby", "title": "故事尚未开始", "text": "邀请伙伴入席，由房主开启冒险。", "objective": "等待队伍集结"}
@@ -181,6 +223,9 @@ def create_app(db_path: str | None = None) -> FastAPI:
             "dm_source": state.get("dm_source", "local"), "dm_pending": bool(state.get("dm_pending")),
             "interaction_mode": state.get("interaction_mode", "guided"),
             "scenario": state.get("scenario_summary"),
+            "progression": state.get("progression", {"mode":"xp","world_minutes":0}),
+            "combat_capabilities": abilities.capabilities(state,viewer),
+            "director_proposals": [director.public_proposal(p) for actor,p in state.get("director",{}).get("proposals",{}).items() if actor==viewer],
         }
 
     async def broadcast(room_id: str):
@@ -263,7 +308,17 @@ def create_app(db_path: str | None = None) -> FastAPI:
 
     @app.get("/api/catalog")
     async def catalog():
-        return {**content.catalog(), "auth": {"allow_guests": allow_guests()}, "llm": {"configured": dm.configured, "model": dm.model if dm.configured else "本地叙事"}}
+        base = content.catalog()
+        presets=[]
+        for cid, item in compendium.CLASSES.items():
+            c=characters.create_character(cid, item.get("name_zh") or item["name"])
+            presets.append({"id":cid,"name":item.get("name_zh") or item["name"],"label":item.get("name_zh") or item["name"],
+                            "class_name":item.get("name_zh") or item["name"],"role":"SRD 5.1 核心职业","max_hp":c["max_hp"],"ac":c["ac"],"abilities":c["abilities"],"description":"1—20级成长与独立角色档案"})
+        base["characters"]=presets
+        base["templates"]=presets
+        base["rules"]["supported"] += ["12核心职业与18技能档案","1—20级升级与法术管理","个人动作和法术资源"]
+        base["rules"]["limitations"] = ["2014 SRD 5.1规则；完整目录与自动化能力分别标识","复杂空间、召唤及未注册效果仅供规则查阅","不包含扩展书专有职业与全部子职业；暂不支持多职业","种族/背景目前使用明确的通用预设，非完整选择系统"]
+        return {**base, "auth": {"allow_guests": allow_guests()}, "llm": {"configured": dm.configured, "model": dm.model if dm.configured else "本地叙事"}}
 
     @app.post("/api/rooms", status_code=201)
     async def create_room(body: CreateRoom, request: Request):
@@ -275,7 +330,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
             raise HTTPException(422, "已发布剧情本与即时生成请选择一种内容来源")
         package = compile_scenario(store, body.scenario_id) if body.scenario_id else None
         try:
-            character = content.new_character(body.character_id, body.player_name)
+            character = characters.create_character(body.character_id, body.player_name)
         except (ValueError, KeyError) as exc:
             raise HTTPException(422, "未知角色模板") from exc
         member_id, token, room_id = uuid.uuid4().hex, secrets.token_urlsafe(32), uuid.uuid4().hex
@@ -285,7 +340,9 @@ def create_app(db_path: str | None = None) -> FastAPI:
             "mode": body.mode, "theme": body.theme, "host_id": member_id,
             "status": "lobby", "version": 0, "events": [], "dm_pending": None,
             "interaction_mode": body.interaction_mode,
-            "members": [{"id": member_id, "name": body.player_name, "character_id": body.character_id, "character": character}],
+            "progression": {"mode":body.progression_mode,"world_minutes":0},
+            "reward_ledger": [],
+            "members": [{"id": member_id, "name": body.player_name, "character_id": body.character_id, "character": character, "hero_id":body.hero_id}],
         }
         if package:
             state["campaign_package"] = copy.deepcopy(package)
@@ -294,7 +351,10 @@ def create_app(db_path: str | None = None) -> FastAPI:
             state["scene"] = {"id": "lobby", "title": package["scenario"]["name"],
                               "text": "已锁定发布版本。邀请同伴后开始探索。", "objective": "等待队伍集结"}
         event(state, "system", "六席之间，故事等待第一位讲述者。")
-        store.create(state, member_id, token, user["id"] if user else None)
+        try:
+            store.create(state, member_id, token, user["id"] if user else None)
+        except ValueError as exc:
+            raise HTTPException(409,str(exc)) from exc
         return {"room": public(state, member_id), "member_id": member_id, "token": None if user else token, "invite_code": state["invite_code"]}
 
     @app.post("/api/rooms/join")
@@ -306,11 +366,11 @@ def create_app(db_path: str | None = None) -> FastAPI:
             raise HTTPException(404, "邀请码无效")
         member_id, token = uuid.uuid4().hex, secrets.token_urlsafe(32)
         try:
-            character = content.new_character(body.character_id, body.player_name)
+            character = characters.create_character(body.character_id, body.player_name)
             async with locks[room_id]:
                 user = room_user(request)
                 state = store.join(room_id, {"id": member_id, "name": body.player_name,
-                                           "character_id": body.character_id, "character": character}, token, user["id"] if user else None)
+                                           "character_id": body.character_id, "character": character, "hero_id":body.hero_id}, token, user["id"] if user else None)
                 if user:
                     member_id = store.account_member(room_id, user["id"])
         except (ValueError, KeyError) as exc:
@@ -351,6 +411,20 @@ def create_app(db_path: str | None = None) -> FastAPI:
         member_id = auth(room_id, authorization, request)
         return public(get_state(room_id), member_id)
 
+    @app.get("/api/rooms/{room_id}/characters/{target_member_id}")
+    async def character_detail(room_id: str, target_member_id: str, request: Request, authorization: str | None = Header(default=None)):
+        viewer=auth(room_id,authorization,request)
+        state=get_state(room_id)
+        target=next((m for m in state["members"] if m["id"]==target_member_id),None)
+        if not target:
+            raise HTTPException(404,"角色不存在")
+        c=characters.migrate_character(target["character"])
+        sheet=characters.character_sheet(c)
+        package=state.get("campaign",{}).get("package") or state.get("campaign_package") or {}
+        sheet["available_custom_skills"]=[card for card in package.get("skills",{}).values() if card["effect"]!="check"]
+        sheet["equipped_custom_skill_ids"]=c.get("custom_skill_ids",[])
+        return {"character":sheet,"advancement":characters.level_up_preview(c),"owner":viewer==target_member_id and store.owns_active_hero(room_id,target_member_id),"hero_id":target.get("hero_id") if viewer==target_member_id else None}
+
     @app.get("/api/rooms/{room_id}/events")
     async def events(room_id: str, request: Request, after: int = 0, authorization: str | None = Header(default=None)):
         auth(room_id, authorization, request)
@@ -366,7 +440,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
         throttle("command:" + member_id, 120)
         # Validate payloads before performing any mutation.
         try:
-            if body.type in ("chat", "narrate"):
+            if body.type in ("chat", "narrate", "director_propose"):
                 payload = TextPayload.model_validate(body.payload).model_dump()
             elif body.type == "action":
                 payload = ActionPayload.model_validate(body.payload).model_dump()
@@ -374,6 +448,9 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 payload = InteractionPayload.model_validate(body.payload).model_dump()
             elif body.type == "scene_edit":
                 payload = SceneEditPayload.model_validate(body.payload).model_dump()
+            elif body.type in ("level_up","manage_spells","rest","equip_skills","director_resolve"):
+                model={"level_up":LevelPayload,"manage_spells":SpellPayload,"rest":RestPayload,"equip_skills":SkillsPayload,"director_resolve":ProposalPayload}[body.type]
+                payload=model.model_validate(body.payload).model_dump()
             else:
                 if body.payload:
                     raise ValueError("该命令不接受附加参数")
@@ -383,6 +460,16 @@ def create_app(db_path: str | None = None) -> FastAPI:
         generated_scenes = None
         # Generation may take seconds; do not hold a database transaction or room lock.
         candidate = get_state(room_id)
+        if store.prior_command(room_id,member_id,body.command_id) is not None:
+            return {"room":public(candidate,member_id),"replayed":True}
+        if candidate["version"] != body.expected_version:
+            raise HTTPException(409,"房间已更新，请同步后重试")
+        proposed = None
+        if body.type == "director_propose":
+            if candidate["status"] != "playing":
+                raise HTTPException(409,"请先开始或恢复冒险")
+            throttle("director:"+member_id,12)
+            proposed = await director.propose(dm,copy.deepcopy(candidate),member_id,payload["text"])
         if body.type == "start" and candidate["mode"] == "free" and not candidate.get("scenes"):
             if store.prior_command(room_id, member_id, body.command_id) is not None:
                 return {"room": public(candidate, member_id), "replayed": True}
@@ -408,6 +495,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 raise HTTPException(409, "房间已更新，请同步后重试")
             member = next(m for m in state["members"] if m["id"] == member_id)
             previous = state["version"]
+            before_action = copy.deepcopy(state)
             if body.type in ("start", "pause", "resume", "set_interaction", "scene_edit") and member_id != state["host_id"]:
                 raise HTTPException(403, "只有房主可以执行此操作")
             if body.type == "start":
@@ -415,6 +503,10 @@ def create_app(db_path: str | None = None) -> FastAPI:
                     raise HTTPException(409, "冒险已经开始")
                 state["status"] = "playing"
                 if state.get("campaign_package"):
+                    for player in state["members"]:
+                        pool = [sid for sid in state["campaign_package"]["scenario"].get("skill_ids",[]) if state["campaign_package"]["skills"][sid]["effect"] != "check"]
+                        chosen = player["character"].get("custom_skill_ids")
+                        player["character"]["custom_skill_ids"] = pool[:4] if chosen is None else [sid for sid in chosen if sid in pool][:4]
                     append_rule_events(state, campaign.start_campaign(state, state["campaign_package"]), member_id)
                     if state.get("completed"):
                         state["status"] = "finished"
@@ -460,6 +552,73 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 event(state, "intent", payload["text"], member["name"])
                 if state.get("interaction_mode", "guided") != "freeform":
                     pending = "narrate"
+            elif body.type == "director_propose":
+                state.setdefault("director",{}).setdefault("proposals",{})[member_id]=proposed["proposal"]
+                event(state,"intent",payload["text"],member["name"])
+                event(state,"dm",proposed["text"],source=proposed["source"])
+            elif body.type == "director_resolve":
+                if state["status"] != "playing":
+                    raise HTTPException(409,"请先恢复冒险")
+                proposal=state.get("director",{}).get("proposals",{}).get(member_id)
+                if not proposal or proposal["id"] != payload["proposal_id"]:
+                    raise HTTPException(409,"提案不存在或已被处理，请重新表达行动")
+                try:
+                    append_rule_events(state,director.resolve(state,member_id,proposal),member_id)
+                except (ValueError,KeyError) as exc:
+                    raise HTTPException(422,str(exc)) from exc
+                state["director"]["proposals"].pop(member_id,None)
+                if state.get("completed"):
+                    state["status"]="finished"
+            elif body.type in ("level_up","manage_spells","rest","equip_skills"):
+                if state.get("combat",{}) and state["combat"].get("active"):
+                    raise HTTPException(409,"请在战斗结束后管理成长、准备能力或休息")
+                if not store.owns_active_hero(room_id,member_id):
+                    raise HTTPException(409,"该角色已进入另一场冒险，请在那里管理成长")
+                c=characters.migrate_character(member["character"])
+                try:
+                    if body.type=="level_up":
+                        mode=state.get("progression",{}).get("mode","xp")
+                        if mode=="milestone" and c.get("milestone_credits",0)<1:
+                            raise ValueError("尚未获得升级里程碑")
+                        updated=characters.level_up(c,payload["choices"],progression=mode)
+                        if mode=="milestone": updated["milestone_credits"]=c.get("milestone_credits",0)-1
+                        member["character"]=updated
+                        event(state,"level_up",f"{member['name']} 升至 {updated['level']} 级。",member["name"])
+                    elif body.type=="manage_spells":
+                        member["character"]=characters.manage_spells(c,payload)
+                        event(state,"character","更新了准备法术。",member["name"])
+                    elif body.type=="equip_skills":
+                        skills=payload["skill_ids"]
+                        package=state.get("campaign",{}).get("package") or state.get("campaign_package") or {}
+                        pool=package.get("skills",{})
+                        if len(set(skills))!=len(skills) or any(sid not in pool or pool[sid]["effect"]=="check" for sid in skills):
+                            raise ValueError("请选择剧情提供的个人能力卡，不能重复或装备场景检定")
+                        c["custom_skill_ids"]=skills
+                        member["character"]=c
+                        event(state,"character","调整了个人剧情能力。剩余次数不会因重新装备而恢复。",member["name"])
+                    else:
+                        clock=state.setdefault("progression",{"mode":"xp","world_minutes":0})
+                        if payload["kind"]=="long":
+                            if member_id!=state["host_id"]:
+                                raise HTTPException(403,"由房主发起全队长休")
+                            now=clock.get("world_minutes",0)
+                            if now-clock.get("last_long_rest_end",-1440)<1440:
+                                raise ValueError("游戏时间24小时内只能受益于一次长休")
+                            resting = [p for p in state["members"] if not p["character"].get("dead") and store.owns_active_hero(room_id,p["id"])]
+                            if any(now-p["character"].get("last_long_rest_end",-1440)<1440 for p in resting):
+                                raise ValueError("队伍中有人在游戏时间24小时内已经长休；冷却会随角色跨冒险保留")
+                            for player in resting:
+                                player["character"]=characters.long_rest(player["character"])
+                                player["character"]["last_long_rest_end"]=now+480
+                            clock["world_minutes"]=now+480
+                            clock["last_long_rest_end"]=now+480
+                            event(state,"rest","队伍完成8小时长休，恢复生命与相应职业资源。",member["name"])
+                        else:
+                            member["character"]=characters.short_rest(c,payload["hit_dice"])
+                            clock["world_minutes"]=clock.get("world_minutes",0)+60
+                            event(state,"rest",f"{member['name']} 完成1小时短休，消耗 {payload['hit_dice']} 枚生命骰。",member["name"])
+                except (ValueError,KeyError) as exc:
+                    raise HTTPException(422,str(exc)) from exc
             else:
                 if state["status"] != "playing":
                     raise HTTPException(409, "当前不能执行游戏行动")
@@ -467,7 +626,10 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 action_id = "end_turn" if body.type == "end_turn" else payload["action_id"]
                 try:
                     executor = campaign if state.get("campaign") else rules
-                    action_events = executor.apply_action(state, member_id, action_id, payload.get("target_id"))
+                    if abilities.handles(action_id):
+                        action_events = abilities.apply_action(state,member_id,action_id,payload.get("target_id"),{k:v for k,v in payload.items() if k not in ("action_id","target_id")})
+                    else:
+                        action_events = executor.apply_action(state, member_id, action_id, payload.get("target_id"))
                 except (ValueError, KeyError) as exc:
                     raise HTTPException(422, str(exc)) from exc
                 append_rule_events(state, action_events, member_id)
@@ -478,6 +640,8 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 elif state.get("interaction_mode") == "assisted" and dm.configured and not state.get("dm_pending"):
                     pending = "narrate"
             state["version"] += 1
+            if body.type in ("action","end_turn","director_resolve"):
+                append_rule_events(state,progression.award(state,before_action),member_id)
             if pending:
                 request_id = uuid.uuid4().hex
                 state["dm_pending"] = request_id

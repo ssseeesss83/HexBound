@@ -5,6 +5,7 @@ campaign starts, so editing/publishing its source cannot rewrite a live game.
 """
 from copy import deepcopy
 import secrets
+import uuid
 from . import rules
 
 
@@ -140,6 +141,7 @@ def _start_combat(state, node, events):
         events.append(rules.event("roll", f"{m['name']} 的先攻为 {r['total']}。", actor_id=m["id"], roll={**r, "kind": "initiative"}))
     order = [actor for _, actor in sorted(rolls, key=lambda x: (-x[0], x[1]))]
     state["combat"] = {"active": True, "round": 1, "index": 0, "order": order, "turn_actor_id": order[0], "action_used": False, "dodging": [], "enemies": enemies}
+    state["combat"].update(encounter_id=uuid.uuid4().hex, scene_id=state.get("scene_id"), bonus_action_used=False, reactions_used=[])
     events.append(rules.event("combat", "遭遇开始。行动顺序已经由服务器确定。"))
     _auto(state, events)
 
@@ -169,8 +171,13 @@ def _auto(state, events):
             targets = _conscious(state)
             if enemy["hp"] > 0 and targets:
                 target = targets[secrets.randbelow(len(targets))]
-                r = rules.attack_roll(enemy["attack_bonus"], target["character"]["ac"], enemy["damage_dice"], enemy.get("damage_bonus", 0), disadvantage=target["id"] in c["dodging"])
-                rules.damage_character(target["character"], r["damage"], r["critical"])
+                from . import abilities
+                r = rules.attack_roll(enemy["attack_bonus"], abilities.armor_class(state, target["character"]), enemy["damage_dice"], enemy.get("damage_bonus", 0), disadvantage=target["id"] in c["dodging"] or abilities.has_condition(state, enemy, "attack-disadvantage"))
+                outcome = rules.damage_character(target["character"], r["damage"], r["critical"], enemy.get("damage_type", "bludgeoning"), state)
+                r["damage"] = outcome["damage"]
+                if outcome["concentration"]:
+                    events.append(rules.event("roll", "进行专注豁免。", actor_id=target["id"], roll=outcome["concentration"]))
+                enemy["conditions"] = [x for x in enemy.get("conditions", []) if x.get("id") != "attack-disadvantage"]
                 events.append(rules.event("roll", f"{enemy['name']} 攻击 {target['name']}，造成 {r['damage']} 点伤害。", actor_id=actor, target_id=target["id"], roll=r))
             _step(state)
             continue
@@ -199,6 +206,8 @@ def available_actions(state, member_id):
         enemy_targets = [{"id": e["id"], "name": e["name"]} for e in combat["enemies"] if e["hp"] > 0]
         actions = [{"id": "attack", "label": "使用装备武器攻击", "effect": "attack", "target": "enemy", "targets": enemy_targets, "uses_remaining": None}, {"id": "dodge", "label": "闪避", "effect": "defend", "target": "self", "uses_remaining": None}, end]
         for sid in package["scenario"].get("skill_ids", []):
+            if character.get("class_id") and sid not in character.get("custom_skill_ids", []):
+                continue
             skill = _skill(state, sid)
             remaining = _remaining(state, member_id, skill)
             if skill["effect"] == "check" or remaining == 0:
@@ -221,6 +230,8 @@ def available_actions(state, member_id):
         actions.append({"id": f"node:{action['id']}", "label": action["label"], "party_action": not bool(sid), "host_only": not bool(sid), "effect": "check" if sid else "move", "target": "none", "uses_remaining": _remaining(state, member_id, _skill(state, sid)) if sid else None, "remaining": _remaining(state, member_id, _skill(state, sid)) if sid else None})
     if character["hp"] > 0 and not character.get("dead"):
         for sid in package["scenario"].get("skill_ids", []):
+            if character.get("class_id") and sid not in character.get("custom_skill_ids", []):
+                continue
             card = _skill(state, sid)
             remaining = _remaining(state, member_id, card)
             if card["effect"] != "heal" or remaining == 0:
@@ -288,7 +299,8 @@ def _effect_check(state, member_id, skill, target_id):
         raise ValueError("检定不能使用客户端目标")
     character = _member(state, member_id)["character"]
     _spend(state, member_id, skill)
-    r = rules.check(rules.modifier(character["abilities"][skill["ability"]]) + skill.get("bonus", 0), skill.get("dc", 12))
+    from . import abilities
+    r = abilities.ability_check(state, character, skill["ability"], skill.get("dc", 12), skill.get("proficiency_skill"), bonus=skill.get("bonus", 0))
     r["ability"] = skill["ability"]
     return rules.event("roll", f"{skill['name']}：{'成功' if r['success'] else '失败'}。", actor_id=member_id, roll=r)
 
@@ -297,6 +309,13 @@ EFFECT_HANDLERS = {"attack": _effect_attack, "heal": _effect_heal, "check": _eff
 EFFECT_TARGETS = {"attack": {"enemy"}, "heal": {"self", "ally"}, "check": {"scene"}, "defend": {"self"}}
 
 def apply_action(state, member_id, action_id, target_id=None):
+    from . import abilities
+    if action_id != "end_turn" and state.get("combat", {}) and state["combat"].get("active"):
+        reason = abilities._budget_reason(state, member_id, "attack" if action_id == "attack" else "action")
+        if reason:
+            raise ValueError(reason)
+    if action_id == "attack" and abilities.modern(_member(state, member_id)["character"]):
+        return abilities.weapon_attack(state, member_id, target_id)
     if action_id not in {a["id"] for a in available_actions(state, member_id)}:
         raise ValueError("当前不可执行此动作")
     character = _member(state, member_id)["character"]
@@ -333,9 +352,11 @@ def apply_action(state, member_id, action_id, target_id=None):
     in_combat = bool(combat and combat.get("active"))
     if in_combat:
         combat["action_used"] = True
+        combat["attacks_remaining"] = 0
     if in_combat and all(e["hp"] <= 0 for e in combat["enemies"]):
         combat["active"] = False
-        state["campaign"]["cleared"].append(state["campaign"]["node_id"])
+        if not combat.get("director_encounter"):
+            state["campaign"]["cleared"].append(state["campaign"]["node_id"])
         for m in state["members"]:
             if m["character"]["hp"] == 0 and not m["character"].get("dead"):
                 m["character"]["stable"] = True

@@ -4,6 +4,8 @@ from __future__ import annotations
 import hashlib
 import json
 import sqlite3
+import uuid
+from copy import deepcopy
 from pathlib import Path
 from contextlib import contextmanager
 
@@ -28,6 +30,12 @@ class Store:
                     token_hash TEXT NOT NULL UNIQUE
                 );
                 CREATE INDEX IF NOT EXISTS members_room ON members(room_id);
+                CREATE TABLE IF NOT EXISTS heroes (
+                    id TEXT PRIMARY KEY, owner_id TEXT NOT NULL,
+                    version INTEGER NOT NULL, payload TEXT NOT NULL,
+                    active_room_id TEXT
+                );
+                CREATE INDEX IF NOT EXISTS heroes_owner ON heroes(owner_id);
                 CREATE TABLE IF NOT EXISTS commands (
                     room_id TEXT NOT NULL, member_id TEXT NOT NULL,
                     command_id TEXT NOT NULL, response TEXT NOT NULL,
@@ -53,6 +61,7 @@ class Store:
     def create(self, state: dict, member_id: str, token: str, user_id: str | None = None):
         with self.connect() as db:
             db.execute("BEGIN IMMEDIATE")
+            self._bind_hero(db, state, state["members"][0], user_id)
             db.execute("INSERT INTO rooms VALUES (?, ?, ?, ?)",
                        (state["id"], state["invite_code"], state["version"], json.dumps(state, ensure_ascii=False)))
             db.execute("INSERT INTO members (id,room_id,token_hash,user_id) VALUES (?, ?, ?, ?)", (member_id, state["id"], token_hash(token), user_id))
@@ -99,6 +108,13 @@ class Store:
             updated = db.execute("UPDATE members SET user_id=? WHERE id=? AND user_id IS NULL", (user_id, row["id"])).rowcount
             if updated != 1:
                 raise ValueError("此席位已经认领")
+            state_row = db.execute("SELECT state FROM rooms WHERE id=?", (room_id,)).fetchone()
+            state = json.loads(state_row["state"])
+            member = next((m for m in state.get("members",[]) if m["id"] == row["id"]), None)
+            if member is not None:
+                self._bind_hero(db,state,member,user_id)
+            state["version"] = state.get("version",0) + 1
+            db.execute("UPDATE rooms SET state=?,version=? WHERE id=?", (json.dumps(state,ensure_ascii=False),state["version"],room_id))
             return row["id"]
 
     def join(self, room_id: str, member: dict, token: str, user_id: str | None = None) -> dict:
@@ -114,6 +130,7 @@ class Store:
                 raise ValueError("冒险已开始，无法加入新角色")
             if len(state["members"]) >= 6:
                 raise ValueError("六席已满，请加入其他房间")
+            self._bind_hero(db, state, member, user_id)
             state["members"].append(member)
             state["version"] += 1
             db.execute("INSERT INTO members (id,room_id,token_hash,user_id) VALUES (?, ?, ?, ?)", (member["id"], room_id, token_hash(token), user_id))
@@ -130,6 +147,7 @@ class Store:
     def save(self, state: dict, previous_version: int, receipt: tuple[str, str, dict] | None = None):
         with self.connect() as db:
             db.execute("BEGIN IMMEDIATE")
+            self._sync_heroes(db, state)
             changed = db.execute("UPDATE rooms SET state=?, version=? WHERE id=? AND version=?",
                                  (json.dumps(state, ensure_ascii=False), state["version"], state["id"], previous_version)).rowcount
             if changed != 1:
@@ -138,3 +156,74 @@ class Store:
                 member_id, command_id, response = receipt
                 db.execute("INSERT INTO commands VALUES (?, ?, ?, ?)",
                            (state["id"], member_id, command_id, json.dumps(response, ensure_ascii=False)))
+
+    def _bind_hero(self, db, state, member, user_id):
+        if not user_id:
+            if member.get("hero_id"):
+                raise ValueError("请登录后使用永久角色")
+            return
+        hero_id = member.get("hero_id")
+        if hero_id:
+            hero = db.execute("SELECT * FROM heroes WHERE id=? AND owner_id=?", (hero_id,user_id)).fetchone()
+            if not hero:
+                raise ValueError("角色不存在或不属于此账号")
+            if hero["active_room_id"] and hero["active_room_id"] != state["id"]:
+                old = db.execute("SELECT state FROM rooms WHERE id=?", (hero["active_room_id"],)).fetchone()
+                if old and json.loads(old["state"])["status"] != "finished":
+                    raise ValueError("该角色仍在另一场冒险中，请完成后再加入新冒险")
+            member["character"] = deepcopy(json.loads(hero["payload"]))
+            member["character"]["name"] = member["name"]
+            member["character_id"] = member["character"].get("class_id",member.get("character_id"))
+            clock = state.setdefault("progression", {"mode":"xp","world_minutes":0})
+            clock["world_minutes"] = max(clock.get("world_minutes",0),member["character"].get("world_minutes",0))
+            db.execute("UPDATE heroes SET active_room_id=?,version=version+1 WHERE id=?", (state["id"],hero_id))
+        else:
+            if db.execute("SELECT COUNT(*) FROM heroes WHERE owner_id=?", (user_id,)).fetchone()[0] >= 100:
+                raise ValueError("账号最多保留100名角色")
+            hero_id = uuid.uuid4().hex
+            member["hero_id"] = hero_id
+            db.execute("INSERT INTO heroes VALUES(?,?,1,?,?)", (hero_id,user_id,json.dumps(member["character"],ensure_ascii=False),state["id"]))
+
+    def _sync_heroes(self, db, state):
+        for member in state["members"]:
+            member["character"]["world_minutes"] = max(member["character"].get("world_minutes",0),state.get("progression",{}).get("world_minutes",0))
+            hero_id = member.get("hero_id")
+            if not hero_id:
+                continue
+            hero = db.execute("SELECT payload,active_room_id FROM heroes WHERE id=?", (hero_id,)).fetchone()
+            if not hero or hero["active_room_id"] != state["id"]:
+                continue
+            payload = json.dumps(member["character"],ensure_ascii=False)
+            if json.loads(hero["payload"]) != member["character"]:
+                db.execute("UPDATE heroes SET payload=?,version=version+1 WHERE id=?", (payload,hero_id))
+
+    def owns_active_hero(self, room_id, member_id):
+        state = self.get(room_id)
+        member = next((m for m in state["members"] if m["id"]==member_id), None) if state else None
+        if not member or not member.get("hero_id"):
+            return True  # legacy guest characters live solely in their room
+        with self.connect() as db:
+            row = db.execute("SELECT active_room_id FROM heroes WHERE id=?", (member["hero_id"],)).fetchone()
+            return bool(row and row["active_room_id"] == room_id)
+
+    def migrate_heroes(self):
+        """Bind old account-owned seats once; preserve wounded characters and progress."""
+        from .characters import migrate_character
+        with self.connect() as db:
+            db.execute("BEGIN IMMEDIATE")
+            for row in db.execute("SELECT id,state FROM rooms").fetchall():
+                state = json.loads(row["state"])
+                changed = False
+                for member in state["members"]:
+                    owner = db.execute("SELECT user_id FROM members WHERE id=?",(member["id"],)).fetchone()
+                    migrated = migrate_character(member["character"])
+                    if migrated != member["character"]:
+                        member["character"] = migrated
+                        changed = True
+                    if owner and owner["user_id"] and not member.get("hero_id"):
+                        self._bind_hero(db,state,member,owner["user_id"])
+                        changed = True
+                if changed:
+                    self._sync_heroes(db,state)
+                    state["version"] += 1
+                    db.execute("UPDATE rooms SET state=?,version=? WHERE id=?",(json.dumps(state,ensure_ascii=False),state["version"],row["id"]))

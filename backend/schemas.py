@@ -25,6 +25,7 @@ class Card(StrictModel):
 class SkillCard(Card):
     effect: Literal["attack", "heal", "check", "defend"]
     ability: Ability = "str"
+    proficiency_skill: Literal["acrobatics","animal-handling","arcana","athletics","deception","history","insight","intimidation","investigation","medicine","nature","perception","performance","persuasion","religion","sleight-of-hand","stealth","survival"] | None = None
     dice: Dice = "1d8"
     bonus: int = Field(default=0, ge=-10, le=20)
     dc: int = Field(default=12, ge=5, le=30)
@@ -33,6 +34,10 @@ class SkillCard(Card):
 
     @model_validator(mode="after")
     def compatible_target(self):
+        if self.proficiency_skill:
+            from .characters import SKILL_ABILITIES
+            if self.effect != "check" or SKILL_ABILITIES[self.proficiency_skill] != self.ability:
+                raise ValueError("熟练技能仅用于检定，且必须与技能属性一致")
         allowed = {"attack": {"enemy"}, "heal": {"self", "ally"}, "check": {"scene"}, "defend": {"self"}}
         if self.target not in allowed[self.effect]:
             raise ValueError(f"{self.effect} 的目标必须为 {', '.join(sorted(allowed[self.effect]))}")
@@ -40,6 +45,7 @@ class SkillCard(Card):
 
 
 class MonsterCard(Card):
+    xp: int = Field(default=50, ge=0, le=155000)
     hp: int = Field(ge=1, le=500)
     ac: int = Field(ge=5, le=30)
     attack_bonus: int = Field(default=2, ge=-5, le=20)
