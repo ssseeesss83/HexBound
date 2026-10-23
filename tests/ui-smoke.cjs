@@ -6,6 +6,7 @@ const accountMode = process.argv.includes("--accounts");
 const NodeWebSocket = require("ws");
 let accountCounter = 0;
 const cookies = new Map();
+const pauseResponses = new Map();
 const { readFileSync, mkdtempSync, rmSync } = require("node:fs");
 const { tmpdir } = require("node:os");
 const { spawn } = require("node:child_process");
@@ -66,11 +67,20 @@ async function page(existingCookie) {
   const w = dom.window;
   windows.push(w);
   cookies.set(w, cookie);
-  w.fetch = (url, options = {}) =>
-    fetch(new URL(url, base), {
+  w.fetch = async (url, options = {}) => {
+    // Hold the HTTP pause response until the test observes its earlier WS update.
+    // This deterministically exercises the real-time/HTTP completion race.
+    const gate =
+      options.body && JSON.parse(options.body).type === "pause"
+        ? new Promise((resolve) => pauseResponses.set(w, resolve))
+        : null;
+    const response = await fetch(new URL(url, base), {
       ...options,
       headers: { ...options.headers, ...(cookie ? { Cookie: cookie } : {}) },
     });
+    if (gate) await gate;
+    return response;
+  };
   w.WebSocket = class extends NodeWebSocket {
     constructor(url) {
       super(url, {
@@ -199,11 +209,24 @@ async function main() {
     0,
     "player input escaped",
   );
+  await waitFor(
+    () => host.document.querySelector("#room-menu:not(:disabled)"),
+    "menu ready before pause",
+  );
   click(host, "#room-menu");
   click(host, "#pause");
   await waitFor(
     () => host.document.body.textContent.includes("冒险已暂停"),
     "pause",
+  );
+  assert(
+    host.document.querySelector("#room-menu").disabled,
+    "Room mutations remain unavailable until the pause request completes",
+  );
+  pauseResponses.get(host)();
+  await waitFor(
+    () => host.document.querySelector("#room-menu:not(:disabled)"),
+    "pause HTTP completion",
   );
   click(host, "#room-menu");
   click(host, "#resume");
