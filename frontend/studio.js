@@ -387,9 +387,29 @@ function referenceChecks(label, path, refKind) {
       .join("") || '<p class="helper">请先创建并发布引用内容。</p>'
   }</div></div>`;
 }
+const objectTags = {
+  movable: "可移动",
+  cover: "可遮挡",
+  flammable: "可燃",
+  fire: "火源",
+  searchable: "可搜索",
+  interactable: "可交互",
+  sand: "沙土",
+};
+function objectHtml(obj, index, oi) {
+  const path = `nodes.${index}.objects.${oi}`;
+  return `<div class="node-action"><div class="row between"><h4>环境对象 ${oi + 1}</h4><button data-remove-object="${index}:${oi}">移除</button></div><div class="field-grid">${field("名称", `${path}.name`, obj.name)}${field("对象 ID", `${path}.id`, obj.id)}</div>${area("可观察描述", `${path}.description`, obj.description, 2)}<div class="field-grid">${field("耐久 HP（1–100）", `${path}.hp`, obj.hp, "number", 'min="1" max="100"')}${field("难度 DC（5–25）", `${path}.dc`, obj.dc, "number", 'min="5" max="25"')}</div><div class="field-grid">${Object.entries(
+    objectTags,
+  )
+    .map(
+      ([tag, label]) =>
+        `<label><input type="checkbox" data-object-tag="${path}.tags" value="${tag}" ${(obj.tags || []).includes(tag) ? "checked" : ""}>${label}</label>`,
+    )
+    .join("")}</div></div>`;
+}
 function nodeHtml(node, index) {
   const path = `nodes.${index}`;
-  return `<section class="node-editor" data-node="${index}"><div class="node-heading"><strong>${index + 1}. ${e(node.title || "未命名节点")} ${node.ending ? "· 结局" : ""}</strong><button data-remove-node="${index}">删除节点</button></div><div class="node-fields"><div class="field-grid">${field("节点名称", `${path}.title`, node.title)}${field("节点 ID", `${path}.id`, node.id)}</div>${area("场景叙述", `${path}.text`, node.text, 4)}${field("当前目标", `${path}.objective`, node.objective)}<label style="flex-direction:row;align-items:center"><input type="checkbox" data-field="${path}.ending" ${node.ending ? "checked" : ""} style="width:auto">这是结局节点（无后续行动与遭遇）</label>${!node.ending ? `${referenceChecks("此节点遭遇", `${path}.monster_ids`, "monster")}<div>${(node.actions || []).map((action, aIndex) => actionHtml(action, index, aIndex)).join("")}</div><button class="small" data-add-action="${index}">＋ 添加玩家选项</button>` : ""}</div></section>`;
+  return `<section class="node-editor" data-node="${index}"><div class="node-heading"><strong>${index + 1}. ${e(node.title || "未命名节点")} ${node.ending ? "· 结局" : ""}</strong><button data-remove-node="${index}">删除节点</button></div><div class="node-fields"><div class="field-grid">${field("节点名称", `${path}.title`, node.title)}${field("节点 ID", `${path}.id`, node.id)}</div>${area("场景叙述", `${path}.text`, node.text, 4)}${field("当前目标", `${path}.objective`, node.objective)}<h4>环境对象 · ${(node.objects || []).length}/20</h4><p class="helper">仅这些明确存在的对象可供环境行动选择；标签不执行任意代码。未配置即无对象。</p>${(node.objects || []).map((obj, oi) => objectHtml(obj, index, oi)).join("")}<button data-add-object="${index}" ${(node.objects || []).length >= 20 ? "disabled" : ""}>＋ 添加环境对象</button><label style="flex-direction:row;align-items:center"><input type="checkbox" data-field="${path}.ending" ${node.ending ? "checked" : ""} style="width:auto">这是结局节点（无后续行动与遭遇）</label>${!node.ending ? `${referenceChecks("此节点遭遇", `${path}.monster_ids`, "monster")}<div>${(node.actions || []).map((action, aIndex) => actionHtml(action, index, aIndex)).join("")}</div><button class="small" data-add-action="${index}">＋ 添加玩家选项</button>` : ""}</div></section>`;
 }
 function actionHtml(action, index, aIndex) {
   const path = `nodes.${index}.actions.${aIndex}`;
@@ -560,6 +580,48 @@ function bindEditor() {
         touch();
       }),
   );
+  editor.querySelectorAll("[data-object-tag]").forEach(
+    (input) =>
+      (input.onchange = () => {
+        const path = input.dataset.objectTag,
+          values = getPath(model, path) || [];
+        setPath(
+          model,
+          path,
+          input.checked
+            ? [...new Set([...values, input.value])]
+            : values.filter((t) => t !== input.value),
+        );
+        touch();
+      }),
+  );
+  editor.querySelectorAll("[data-add-object]").forEach(
+    (button) =>
+      (button.onclick = () => {
+        const node = model.nodes[Number(button.dataset.addObject)];
+        node.objects ||= [];
+        if (node.objects.length >= 20) return;
+        node.objects.push({
+          id: uniqueId("object", node.objects),
+          name: "环境对象",
+          description: "",
+          tags: [],
+          hp: 10,
+          dc: 12,
+        });
+        touch();
+        redrawEditor();
+      }),
+  );
+  editor.querySelectorAll("[data-remove-object]").forEach(
+    (button) =>
+      (button.onclick = () => {
+        const [ni, oi] = button.dataset.removeObject.split(":").map(Number);
+        model.nodes[ni].objects.splice(oi, 1);
+        touch();
+        redrawEditor();
+      }),
+  );
   $("#add-node")?.addEventListener("click", () => {
     model.nodes.push({
       id: uniqueId("node", model.nodes),
@@ -568,6 +630,7 @@ function bindEditor() {
       objective: "",
       actions: [],
       monster_ids: [],
+      objects: [],
       ending: false,
     });
     touch();
@@ -633,7 +696,7 @@ function updatePreview() {
     stats = `<div><strong>${e(model.hp)}</strong><small>生命</small></div><div><strong>${e(model.ac)}</strong><small>护甲</small></div><div><strong>${e(model.initiative_bonus)}</strong><small>先攻</small></div>`;
     rule = `攻击 ${Number(model.attack_bonus) >= 0 ? "+" : ""}${e(model.attack_bonus)} · 伤害 ${e(model.damage_dice)} + ${e(model.damage_bonus)}`;
   }
-  preview.innerHTML = `<div class="preview-card"><div class="eyebrow">${kinds[kind].sub}</div><div class="preview-mark">${kinds[kind].symbol}</div><h2>${e(model.name || "未命名内容")}</h2><p>${e(model.description || "在左侧填写简介，让旅人了解它的来历。")}</p>${stats ? `<div class="preview-stats">${stats}</div>` : ""}${rule ? `<div class="preview-rule">${rule}</div>` : ""}${kind === "scenario" ? `<div class="preview-rule">${(model.nodes || []).length} 个节点 · ${(model.nodes || []).filter((n) => n.ending).length} 个结局<br>${graphWarnings().map(e).join("<br>")}${graphWarnings().length ? "<br>" : ""}起点：${e(model.nodes?.find((n) => n.id === model.entry_node_id)?.title || "尚未选择")}</div>${(model.nodes || []).map((n) => `<div class="preview-scene"><strong>${e(n.title)} ${n.ending ? "· 结局" : ""}</strong><p>${e(n.objective || n.text?.slice(0, 90))}</p>${(n.actions || []).map((a) => `<p>↳ ${e(a.label)} → ${e(a.skill_id ? `成功：${nodeName(a.success_node_id)} / 失败：${nodeName(a.failure_node_id)}` : nodeName(a.next_node_id))}</p>`).join("")}${n.monster_ids?.length ? `<p>遭遇：${n.monster_ids.map((id) => e(items.find((i) => i.id === id)?.name || id)).join("、")}</p>` : ""}</div>`).join("")}` : ""}<div class="preview-tags">${(model.tags || []).map((t) => `<span class="badge">${e(t)}</span>`).join("")}</div></div><p class="helper" style="margin-top:12px">预览反映当前未保存的表单。实际效果以发布时的服务端校验与运行规则为准。</p>`;
+  preview.innerHTML = `<div class="preview-card"><div class="eyebrow">${kinds[kind].sub}</div><div class="preview-mark">${kinds[kind].symbol}</div><h2>${e(model.name || "未命名内容")}</h2><p>${e(model.description || "在左侧填写简介，让旅人了解它的来历。")}</p>${stats ? `<div class="preview-stats">${stats}</div>` : ""}${rule ? `<div class="preview-rule">${rule}</div>` : ""}${kind === "scenario" ? `<div class="preview-rule">${(model.nodes || []).length} 个节点 · ${(model.nodes || []).filter((n) => n.ending).length} 个结局<br>${graphWarnings().map(e).join("<br>")}${graphWarnings().length ? "<br>" : ""}起点：${e(model.nodes?.find((n) => n.id === model.entry_node_id)?.title || "尚未选择")}</div>${(model.nodes || []).map((n) => `<div class="preview-scene"><strong>${e(n.title)} ${n.ending ? "· 结局" : ""}</strong><p>${e(n.objective || n.text?.slice(0, 90))}</p>${(n.actions || []).map((a) => `<p>↳ ${e(a.label)} → ${e(a.skill_id ? `成功：${nodeName(a.success_node_id)} / 失败：${nodeName(a.failure_node_id)}` : nodeName(a.next_node_id))}</p>`).join("")}${(n.objects || []).map((o) => `<p>◈ ${e(o.name)} · ${e((o.tags || []).map((t) => objectTags[t] || t).join(" / "))} · HP ${e(o.hp)} · DC ${e(o.dc)}</p>`).join("")}${n.monster_ids?.length ? `<p>遭遇：${n.monster_ids.map((id) => e(items.find((i) => i.id === id)?.name || id)).join("、")}</p>` : ""}</div>`).join("")}` : ""}<div class="preview-tags">${(model.tags || []).map((t) => `<span class="badge">${e(t)}</span>`).join("")}</div></div><p class="helper" style="margin-top:12px">预览反映当前未保存的表单。实际效果以发布时的服务端校验与运行规则为准。</p>`;
 }
 function nodeName(id) {
   return model.nodes?.find((n) => n.id === id)?.title || "未连接";
@@ -651,11 +714,39 @@ function graphWarnings() {
       for (const k of ["next_node_id", "success_node_id", "failure_node_id"])
         if (a[k]) todo.push(a[k]);
   }
-  return nodes
-    .filter((n) => !visited.has(n.id))
-    .map(
-      (n) => `⚠ ${n.ending ? "不可达结局" : "不可达节点"}：${n.title || n.id}`,
-    );
+  const objectIssues = nodes.flatMap((n) => {
+    const objects = n.objects || [],
+      ids = objects.map((o) => o.id);
+    const invalid =
+      objects.length > 20 ||
+      new Set(ids).size !== ids.length ||
+      objects.some(
+        (o) =>
+          !/^[a-zA-Z0-9][a-zA-Z0-9_-]{0,63}$/.test(o.id || "") ||
+          !o.name?.trim() ||
+          o.name.length > 80 ||
+          (o.description || "").length > 1000 ||
+          !Number.isInteger(o.hp) ||
+          o.hp < 1 ||
+          o.hp > 100 ||
+          !Number.isInteger(o.dc) ||
+          o.dc < 5 ||
+          o.dc > 25 ||
+          (o.tags || []).some((t) => !objectTags[t]) ||
+          new Set(o.tags || []).size !== (o.tags || []).length,
+      );
+    return invalid
+      ? [`⚠ ${n.title || n.id}：环境对象 ID、标签或 HP/DC 不合法`]
+      : [];
+  });
+  return objectIssues.concat(
+    nodes
+      .filter((n) => !visited.has(n.id))
+      .map(
+        (n) =>
+          `⚠ ${n.ending ? "不可达结局" : "不可达节点"}：${n.title || n.id}`,
+      ),
+  );
 }
 function bindValidation() {
   document.querySelectorAll("[data-issue]").forEach(
@@ -667,7 +758,7 @@ function bindValidation() {
           renderDetail();
         }
         let field = issue.match(
-          /(?:nodes\.\d+\.)?(?:actions\.\d+\.)?(?:name|description|id|text|title|entry_node_id|next_node_id|success_node_id|failure_node_id|skill_id|hp|ac|dice|damage_dice|effect|target|uses|bonus|dc)/,
+          /(?:nodes\.\d+\.)?(?:(?:actions|objects)\.\d+\.)?(?:name|description|id|text|title|entry_node_id|next_node_id|success_node_id|failure_node_id|skill_id|hp|ac|dice|damage_dice|effect|target|uses|bonus|dc)/,
         )?.[0];
         const match = (model.nodes || []).findIndex((n) =>
           issue.includes(`节点 ${n.id}`),

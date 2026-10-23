@@ -184,8 +184,21 @@ def active_conditions(state, c):
     for condition in c.get('conditions', []):
         if not isinstance(condition, dict):
             continue
+        if condition.get('encounter_scoped'):
+            combat = _combat(state)
+            if not combat or condition.get('encounter_id') != combat.get('encounter_id'):
+                continue
         if condition.get('expires_round') is not None and _round(state) >= condition['expires_round']:
             continue
+        if condition.get('scene_id') and condition['scene_id'] != str(state.get('scene_id')):
+            continue
+        if condition.get('object_id') and state.get('environment', {}).get(str(state.get('scene_id')), {}).get('objects', {}).get(condition['object_id'], {}).get('destroyed'):
+            continue
+        if condition.get('id') == 'grappled':
+            source_id = condition.get('source')
+            source = next((m['character'] for m in state.get('members',[]) if m['id']==source_id),None) or next((e for e in (state.get('combat') or {}).get('enemies',[]) if e['id']==source_id),None)
+            if not source or source.get('hp',0)<=0 or source.get('dead') or source.get('position')=='withdrawn' or c.get('position')=='withdrawn':
+                continue
         owner = condition.get('concentration_owner')
         if owner:
             source = next((m['character'] for m in state['members'] if m['id'] == owner), None)
@@ -204,7 +217,44 @@ def _condition(state, c, name, rounds=1, **extra):
 
 
 def armor_class(state, c):
-    return c.get('ac', 10) + (2 if has_condition(state, c, 'shield-of-faith') else 0)
+    return c.get('ac', 10) + (2 if has_condition(state, c, 'shield-of-faith') else 0) + (2 if has_condition(state, c, 'half-cover') else 0)
+
+
+def attack_advantage(state, attacker, target, *, melee=True):
+    return any(has_condition(state, attacker, x) for x in ('helped','hidden')) or any(has_condition(state,target,x) for x in ('blinded','next-hit-advantage')) or (melee and has_condition(state,target,'prone'))
+
+
+def attack_disadvantage(state, attacker, target=None, *, melee=True):
+    return any(has_condition(state,attacker,x) for x in ('blinded','prone','poisoned','attack-disadvantage')) or (not melee and target is not None and has_condition(state,target,'prone'))
+
+
+def consume_attack_conditions(attacker, target):
+    attacker['conditions']=[x for x in attacker.get('conditions',[]) if x.get('id') not in {'helped','hidden','attack-disadvantage'}]
+    target['conditions']=[x for x in target.get('conditions',[]) if x.get('id')!='next-hit-advantage']
+
+
+def prepare_enemy_melee(state, enemy, target):
+    """Enemies stand/close using the same abstract movement; grapple stops closing."""
+    from .free_actions import _grapple
+    spent=0
+    if has_condition(state,enemy,'prone') and not _grapple(state,enemy):
+        spent+=15
+        enemy['conditions']=[x for x in enemy.get('conditions',[]) if x.get('id')!='prone']
+    if enemy.get('position')=='withdrawn' or target.get('position')=='withdrawn':
+        if _grapple(state,enemy):
+            return False
+        spent+=15
+        enemy['position']='engaged'
+        target['position']='engaged'
+    state['combat']['movement_spent']=spent
+    return True
+
+
+def end_turn(state, actor):
+    from .free_actions import advance_environment
+    advance_environment(state)
+    for c in [m['character'] for m in state['members']] + (state.get('combat') or {}).get('enemies',[]):
+        c['conditions']=[x for x in c.get('conditions',[]) if x.get('expires_on_turn_end')!=actor]
 
 
 def _budget_reason(state, actor, cost):
@@ -490,9 +540,8 @@ def _spell(state, actor, sid, target_id, options, cap):
                 if target['hp'] <= 0:
                     break
                 if kind == 'attack':
-                    r = rules.attack_roll(_check_bonus(state, c, _casting_bonus(c) + c.get('proficiency', 2)), armor_class(state, target), expression, advantage=has_condition(state, target, 'next-hit-advantage'), disadvantage=has_condition(state, c, 'poisoned') or has_condition(state, c, 'attack-disadvantage'))
-                    target['conditions'] = [x for x in target.get('conditions', []) if x.get('id') != 'next-hit-advantage']
-                    c['conditions'] = [x for x in c.get('conditions', []) if x.get('id') != 'attack-disadvantage']
+                    r = rules.attack_roll(_check_bonus(state, c, _casting_bonus(c) + c.get('proficiency', 2)), armor_class(state, target), expression, advantage=attack_advantage(state,c,target,melee=spell.get('range')=='Touch'), disadvantage=attack_disadvantage(state,c,target,melee=spell.get('range')=='Touch'))
+                    consume_attack_conditions(c,target)
                     amount = r['damage']
                 elif kind == 'save':
                     r = saving_throw(state, target, recipe['save'], 8 + c.get('proficiency', 2) + _casting_bonus(c))
@@ -565,6 +614,8 @@ def weapon_attack(state, actor, target_id=None, *, smite=None, unarmed=False, sp
     target = next((e for e in living if e['id'] == target_id), None) if target_id else (living[0] if len(living) == 1 else None)
     if target is None:
         raise ValueError('请选择存活的敌方目标')
+    if c.get('position') == 'withdrawn' or target.get('position') == 'withdrawn':
+        raise ValueError('目标已撤远，请先移动接近（抽象近战规则）')
     if spend_action:
         if not combat.get('action_used'):
             combat['attacks_remaining'] = attacks_per_action(c)
@@ -582,11 +633,10 @@ def weapon_attack(state, actor, target_id=None, *, smite=None, unarmed=False, sp
         bonus_damage = 4 if c['level'] >= 16 else 3 if c['level'] >= 9 else 2
     else:
         bonus_damage = 0
-    advantage = has_condition(state, target, 'next-hit-advantage')
-    disadvantage = has_condition(state, c, 'attack-disadvantage') or has_condition(state, c, 'poisoned')
+    advantage = attack_advantage(state,c,target)
+    disadvantage = attack_disadvantage(state,c)
     r = rules.attack_roll(_check_bonus(state, c, bonus + c.get('proficiency', 2)), armor_class(state, target), damage, bonus + bonus_damage, advantage=advantage, disadvantage=disadvantage)
-    target['conditions'] = [x for x in target.get('conditions', []) if x.get('id') != 'next-hit-advantage']
-    c['conditions'] = [x for x in c.get('conditions', []) if x.get('id') != 'attack-disadvantage']
+    consume_attack_conditions(c,target)
     if r['success']:
         # In the abstract encounter model conscious allies engage the same foes.
         eligible = advantage or any(m['id'] != actor and m['character']['hp'] > 0 and not m['character'].get('dead') for m in state['members'])
@@ -702,11 +752,10 @@ def apply_action(state, actor, action_id, target_id=None, options=None):
 
 def start_turn(state, actor):
     combat = state['combat']
-    combat.update(bonus_action_used=False, attacks_remaining=0, attack_action_taken=False, bonus_spell_cast=False, leveled_spell_action=False, surge_used=False, sneak_used=False)
+    combat.update(movement_spent=0,movement_budget=30,bonus_action_used=False, attacks_remaining=0, attack_action_taken=False, bonus_spell_cast=False, leveled_spell_action=False, surge_used=False, sneak_used=False)
     combat['reactions_used'] = [x for x in combat.get('reactions_used', []) if x != actor]
-    for m in state['members']:
-        c = m['character']
-        c['conditions'] = active_conditions(state, c)
+    for c in [m['character'] for m in state['members']] + combat.get('enemies',[]):
+        c['conditions'] = [x for x in active_conditions(state, c) if x.get('expires_on_turn_start') != actor]
         if c.get('concentration') and c['concentration'].get('expires_round', float('inf')) <= _round(state):
             c['concentration'] = None
         if c.get('rage') and c['rage'].get('expires_round', float('inf')) <= _round(state):

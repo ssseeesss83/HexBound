@@ -15,6 +15,22 @@ class StrictModel(BaseModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True, strict=True)
 
 
+class SceneObject(StrictModel):
+    """Authored environmental affordances, never executable instructions."""
+    id: Identifier
+    name: str = Field(min_length=1, max_length=80)
+    description: str = Field(default="", max_length=1000)
+    tags: list[Literal["movable", "cover", "flammable", "fire", "searchable", "interactable", "sand"]] = Field(default_factory=list, max_length=7)
+    hp: int = Field(default=10, ge=1, le=100)
+    dc: int = Field(default=12, ge=5, le=25)
+
+    @model_validator(mode="after")
+    def unique_tags(self):
+        if len(set(self.tags)) != len(self.tags):
+            raise ValueError("环境对象标签不能重复")
+        return self
+
+
 class Card(StrictModel):
     id: Identifier
     name: str = Field(min_length=1, max_length=80)
@@ -79,10 +95,13 @@ class ScenarioNode(StrictModel):
     objective: str = Field(default="", max_length=300)
     actions: list[NodeAction] = Field(default_factory=list, max_length=12)
     monster_ids: list[Identifier] = Field(default_factory=list, max_length=6)
+    objects: list[SceneObject] = Field(default_factory=list, max_length=20)
     ending: bool = False
 
     @model_validator(mode="after")
     def topology(self):
+        if len({obj.id for obj in self.objects}) != len(self.objects):
+            raise ValueError("节点内环境对象 ID 不能重复")
         if len({a.id for a in self.actions}) != len(self.actions):
             raise ValueError("节点内行动 ID 不能重复")
         if len(set(self.monster_ids)) != len(self.monster_ids):

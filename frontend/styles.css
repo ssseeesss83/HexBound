@@ -1969,3 +1969,185 @@ small,
     padding-right: 15px !important;
   }
 }
+
+/* Skill and intent entry points share the same rule-authoritative action flow. */
+.action-entry-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 12px 0;
+}
+.action-entry-tabs button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  padding: 14px 16px;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  font-weight: 700;
+}
+.action-entry-tabs small {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted);
+}
+.action-entry-tabs [aria-pressed="true"] {
+  border-color: var(--brass);
+  background: rgba(197, 161, 100, 0.1);
+}
+.action-entry-hidden {
+  display: none !important;
+}
+.free-action-panel {
+  padding: 20px;
+  border: 1px solid var(--line);
+  background: rgba(197, 161, 100, 0.035);
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+.free-action-panel h3 {
+  margin: 10px 0;
+}
+.free-action-panel textarea {
+  width: 100%;
+  min-height: 100px;
+  margin: 16px 0 10px;
+  resize: vertical;
+}
+.free-action-panel .row small {
+  max-width: 65%;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.free-action-status {
+  margin-top: 12px;
+  color: var(--brass);
+  font-size: 13px;
+}
+.free-action-status:empty {
+  display: none;
+}
+.encounter-center > .action-entry-tabs {
+  margin: 16px 0 0;
+}
+.proposal-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 16px 0;
+}
+.proposal-fact {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.proposal-fact dt {
+  font-size: 11px;
+  color: var(--brass);
+  margin-bottom: 6px;
+}
+.proposal-fact dd {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.proposal-effects {
+  padding-left: 20px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+.proposal-warning {
+  border-left: 2px solid var(--brass);
+  padding-left: 12px;
+  font-size: 13px;
+  color: var(--brass);
+}
+.proposal-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.free-action-panel .dm-proposal {
+  margin-top: 16px;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+@media (max-width: 600px) {
+  .proposal-facts {
+    grid-template-columns: 1fr;
+  }
+  .action-entry-tabs button {
+    padding: 12px;
+  }
+  .free-action-panel {
+    padding: 14px;
+  }
+  .free-action-panel .row {
+    flex-wrap: wrap;
+  }
+  .free-action-panel .row small {
+    max-width: 100%;
+  }
+}
+.free-context {
+  margin: 14px 0;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+.free-context summary {
+  cursor: pointer;
+  color: var(--brass);
+  font-size: 12px;
+}
+.free-object-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+.free-object {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: left;
+  padding: 12px;
+}
+.free-object small,
+.free-object span {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.free-recipes {
+  max-height: 300px;
+  overflow: auto;
+  margin-top: 12px;
+  display: grid;
+  gap: 10px;
+}
+.free-recipes > div {
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.free-recipes small {
+  display: block;
+  color: var(--brass);
+  font-size: 11px;
+  margin: 5px 0;
+}
+.free-recipes p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+}

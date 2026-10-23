@@ -112,7 +112,7 @@ def _enter(state, node_id, events):
     node = _node(state)
     state["scene_id"] = node_id
     # Never put the full graph or routes in scene; API serializes only this view.
-    state["scene"] = {"id": node_id, "title": node["title"], "text": node["text"], "objective": node.get("objective", ""), "eyebrow": state["campaign"]["package"]["scenario"]["name"]}
+    state["scene"] = {"id": node_id, "title": node["title"], "text": node["text"], "objective": node.get("objective", ""), "eyebrow": state["campaign"]["package"]["scenario"]["name"], "objects": deepcopy(node.get("objects", []))}
     state["combat"] = None
     state["campaign"]["visited"].append(node_id)
     state["completed"] = bool(node.get("ending"))
@@ -148,11 +148,14 @@ def _start_combat(state, node, events):
 
 def _step(state):
     c = state["combat"]
+    from . import abilities
+    abilities.end_turn(state,c["turn_actor_id"])
     c["index"] = (c["index"] + 1) % len(c["order"])
     if c["index"] == 0:
         c["round"] += 1
     c["turn_actor_id"] = c["order"][c["index"]]
     c["action_used"] = False
+    abilities.start_turn(state,c["turn_actor_id"])
 
 
 def _auto(state, events):
@@ -172,7 +175,11 @@ def _auto(state, events):
             if enemy["hp"] > 0 and targets:
                 target = targets[secrets.randbelow(len(targets))]
                 from . import abilities
-                r = rules.attack_roll(enemy["attack_bonus"], abilities.armor_class(state, target["character"]), enemy["damage_dice"], enemy.get("damage_bonus", 0), disadvantage=target["id"] in c["dodging"] or abilities.has_condition(state, enemy, "attack-disadvantage"))
+                if not abilities.prepare_enemy_melee(state,enemy,target["character"]):
+                    _step(state)
+                    continue
+                r = rules.attack_roll(enemy["attack_bonus"], abilities.armor_class(state, target["character"]), enemy["damage_dice"], enemy.get("damage_bonus", 0), advantage=abilities.attack_advantage(state,enemy,target["character"]), disadvantage=target["id"] in c["dodging"] or abilities.attack_disadvantage(state,enemy))
+                abilities.consume_attack_conditions(enemy,target["character"])
                 outcome = rules.damage_character(target["character"], r["damage"], r["critical"], enemy.get("damage_type", "bludgeoning"), state)
                 r["damage"] = outcome["damage"]
                 if outcome["concentration"]:

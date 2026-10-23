@@ -17,7 +17,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 
-from . import content, rules, campaign, characters, abilities, compendium, director, progression
+from . import content, rules, campaign, characters, abilities, compendium, director, progression, free_actions
 from .dm import DM
 from .store import Store
 from .heroes import create_hero_router
@@ -55,7 +55,7 @@ class ClaimSeat(Input):
 class Command(Input):
     command_id: str = Field(min_length=8, max_length=100)
     expected_version: int = Field(ge=0)
-    type: Literal["start", "pause", "resume", "action", "chat", "narrate", "end_turn", "set_interaction", "scene_edit", "level_up", "manage_spells", "rest", "equip_skills", "director_propose", "director_resolve"]
+    type: Literal["start", "pause", "resume", "action", "chat", "narrate", "end_turn", "set_interaction", "scene_edit", "level_up", "manage_spells", "rest", "equip_skills", "director_propose", "director_resolve", "director_cancel"]
     payload: dict = Field(default_factory=dict)
 
 
@@ -104,7 +104,7 @@ class ProposalPayload(Input):
 
 
 def create_app(db_path: str | None = None) -> FastAPI:
-    app = FastAPI(title="HEXBOUND", version="0.4.0")
+    app = FastAPI(title="HEXBOUND", version="0.5.0")
     @app.exception_handler(RequestValidationError)
     async def invalid_request(request: Request, exc: RequestValidationError):
         # Validation responses must never echo passwords or other submitted secrets.
@@ -225,7 +225,8 @@ def create_app(db_path: str | None = None) -> FastAPI:
             "scenario": state.get("scenario_summary"),
             "progression": state.get("progression", {"mode":"xp","world_minutes":0}),
             "combat_capabilities": abilities.capabilities(state,viewer),
-            "director_proposals": [director.public_proposal(p) for actor,p in state.get("director",{}).get("proposals",{}).items() if actor==viewer],
+            "free_actions": free_actions.context(state,viewer),
+            "director_proposals": [director.public_proposal(p,state) for actor,p in state.get("director",{}).get("proposals",{}).items() if actor==viewer],
         }
 
     async def broadcast(room_id: str):
@@ -448,8 +449,8 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 payload = InteractionPayload.model_validate(body.payload).model_dump()
             elif body.type == "scene_edit":
                 payload = SceneEditPayload.model_validate(body.payload).model_dump()
-            elif body.type in ("level_up","manage_spells","rest","equip_skills","director_resolve"):
-                model={"level_up":LevelPayload,"manage_spells":SpellPayload,"rest":RestPayload,"equip_skills":SkillsPayload,"director_resolve":ProposalPayload}[body.type]
+            elif body.type in ("level_up","manage_spells","rest","equip_skills","director_resolve","director_cancel"):
+                model={"level_up":LevelPayload,"manage_spells":SpellPayload,"rest":RestPayload,"equip_skills":SkillsPayload,"director_resolve":ProposalPayload,"director_cancel":ProposalPayload}[body.type]
                 payload=model.model_validate(body.payload).model_dump()
             else:
                 if body.payload:
@@ -469,7 +470,10 @@ def create_app(db_path: str | None = None) -> FastAPI:
             if candidate["status"] != "playing":
                 raise HTTPException(409,"请先开始或恢复冒险")
             throttle("director:"+member_id,12)
-            proposed = await director.propose(dm,copy.deepcopy(candidate),member_id,payload["text"])
+            try:
+                proposed = await director.propose(dm,copy.deepcopy(candidate),member_id,payload["text"])
+            except ValueError as exc:
+                raise HTTPException(422,str(exc)) from exc
         if body.type == "start" and candidate["mode"] == "free" and not candidate.get("scenes"):
             if store.prior_command(room_id, member_id, body.command_id) is not None:
                 return {"room": public(candidate, member_id), "replayed": True}
@@ -556,6 +560,11 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 state.setdefault("director",{}).setdefault("proposals",{})[member_id]=proposed["proposal"]
                 event(state,"intent",payload["text"],member["name"])
                 event(state,"dm",proposed["text"],source=proposed["source"])
+            elif body.type == "director_cancel":
+                own = state.get("director",{}).get("proposals",{}).get(member_id)
+                if not own or own["id"] != payload["proposal_id"]:
+                    raise HTTPException(409,"提案已变化，请刷新后重试")
+                state["director"]["proposals"].pop(member_id,None)
             elif body.type == "director_resolve":
                 if state["status"] != "playing":
                     raise HTTPException(409,"请先恢复冒险")
@@ -567,6 +576,8 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 except (ValueError,KeyError) as exc:
                     raise HTTPException(422,str(exc)) from exc
                 state["director"]["proposals"].pop(member_id,None)
+                if proposal["decision"]["kind"] == "free_action" and dm.configured and not state.get("dm_pending"):
+                    pending = "narrate"
                 if state.get("completed"):
                     state["status"]="finished"
             elif body.type in ("level_up","manage_spells","rest","equip_skills"):

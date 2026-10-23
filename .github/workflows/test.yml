@@ -25,3 +25,4 @@ jobs:
       - run: npm run test:accounts
       - run: npm run test:rooms
       - run: npm run test:combat
+      - run: npm run test:free-action

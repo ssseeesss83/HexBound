@@ -54,6 +54,18 @@ def seed_items():
         {"id": "dawn", "title": "归航之光", "text": "旧守灯人终于松开手。你们的誓言化为晨光，第一艘归船缓缓靠岸。", "objective": "冒险完成", "ending": True},
         {"id": "quiet-dawn", "title": "无言的黎明", "text": "没人再提起誓言。你们陪老人一起点亮透镜，海上回应了第一声汽笛。", "objective": "冒险完成", "ending": True},
     ]}
+    # Published snapshots created previously remain unchanged.
+    from copy import deepcopy
+    from .content import SCENE_OBJECTS
+    for node in scenario["nodes"]:
+        source = {"tower": "lantern"}.get(node["id"], node["id"])
+        node["objects"] = deepcopy(SCENE_OBJECTS.get(source, [])) if not node.get("ending") else []
+        if node["id"] == "dock":
+            node["text"] += " 石板边堆着潮湿沙土。"
+        elif node["id"] == "stairs":
+            node["text"] += " 旧绞盘锈死在梯旁，墙上刻着守夜誓言。"
+        elif node["id"] == "tower":
+            node["text"] += " 灯座中留着被盐壳束住的干燥灯芯。"
     return [("skill", card) for card in skills] + [("monster", monster), ("scenario", scenario)]
 
 

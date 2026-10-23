@@ -798,6 +798,7 @@ function roomMenu() {
 }
 async function command(type, payload = {}) {
   if (busy || !connected) return false;
+  if (type === "director_propose") actionEntry = "free";
   busy = true;
   renderRoom();
   const body = {
@@ -1106,7 +1107,7 @@ function renderBattleRoom() {
           })
           .join(
             "",
-          )}</div><div class="battlefield"><div class="battlefield-heading"><div><h2>选择你的目标</h2><p>点击敌方卡片，再选择一个行动。</p></div><span class="chip">${enemies.filter((e) => e.hp > 0).length} 个存活敌人</span></div><div class="enemy-grid">${enemies.map((enemy) => `<button class="combatant-card ${selectedTarget === enemy.id ? "targeted" : ""} ${enemy.hp <= 0 ? "defeated" : ""}" data-target="${esc(enemy.id)}" ${enemy.hp <= 0 ? "disabled" : ""} aria-pressed="${selectedTarget === enemy.id}"><div class="eyebrow">${enemy.hp <= 0 ? "DEFEATED" : "HOSTILE"}</div><div class="card-sigil" aria-hidden="true">♜</div><h3>${esc(enemy.name)}</h3>${hp(enemy)}<div class="conditions">${conditionLabels(enemy)}</div><div class="target-label">${enemy.hp <= 0 ? "已击倒" : selectedTarget === enemy.id ? "◎ 当前目标" : "选择为目标"}</div></button>`).join("")}</div></div><div class="combat-turn-panel"><div><h3>${myTurn ? "轮到你行动" : `等待 ${esc(current?.name || "下一位角色")}`}</h3><p>${myTurn ? "每次消耗都会实时同步给队伍。" : "可以查看人物卡、阅读记录或与同伴交谈。"}</p><div class="turn-resources"><span class="turn-resource ${combat.action_used ? "used" : ""}"><i></i>动作 ${combat.action_used ? "已使用" : "可用"}</span><span class="turn-resource ${combat.bonus_action_used ? "used" : ""}"><i></i>附赠 ${combat.bonus_action_used ? "已使用" : "可用"}</span><span class="turn-resource ${(combat.reactions_used || []).includes(session.member_id) ? "used" : ""}"><i></i>反应 ${(combat.reactions_used || []).includes(session.member_id) ? "已使用" : "保留"}</span>${combat.attacks_remaining != null ? `<span class="turn-resource">剩余攻击 ${esc(combat.attacks_remaining)}</span>` : ""}</div></div><button id="battle-end-turn" class="primary" ${!endAction || actionDisabledReason(endAction) ? "disabled" : ""}>结束回合 →</button></div><section class="combat-actions"><div class="action-toolbar"><div class="action-tabs">${Object.entries(
+          )}</div><div class="battlefield"><div class="battlefield-heading"><div><h2>选择你的目标</h2><p>点击敌方卡片，再选择一个行动。</p></div><span class="chip">${enemies.filter((e) => e.hp > 0).length} 个存活敌人</span></div><div class="enemy-grid">${enemies.map((enemy) => `<button class="combatant-card ${selectedTarget === enemy.id ? "targeted" : ""} ${enemy.hp <= 0 ? "defeated" : ""}" data-target="${esc(enemy.id)}" ${enemy.hp <= 0 ? "disabled" : ""} aria-pressed="${selectedTarget === enemy.id}"><div class="eyebrow">${enemy.hp <= 0 ? "DEFEATED" : "HOSTILE"}</div><div class="card-sigil" aria-hidden="true">♜</div><h3>${esc(enemy.name)}</h3>${hp(enemy)}<div class="conditions">${conditionLabels(enemy)}</div><div class="target-label">${enemy.hp <= 0 ? "已击倒" : selectedTarget === enemy.id ? "◎ 当前目标" : "选择为目标"}</div></button>`).join("")}</div></div><div class="combat-turn-panel"><div><h3>${myTurn ? "轮到你行动" : `等待 ${esc(current?.name || "下一位角色")}`}</h3><p>${myTurn ? "每次消耗都会实时同步给队伍。" : "可以查看人物卡、阅读记录或与同伴交谈。"}</p><div class="turn-resources"><span class="turn-resource ${combat.action_used ? "used" : ""}"><i></i>动作 ${combat.action_used ? "已使用" : "可用"}</span><span class="turn-resource ${combat.bonus_action_used ? "used" : ""}"><i></i>附赠 ${combat.bonus_action_used ? "已使用" : "可用"}</span><span class="turn-resource ${(combat.reactions_used || []).includes(session.member_id) ? "used" : ""}"><i></i>反应 ${(combat.reactions_used || []).includes(session.member_id) ? "已使用" : "保留"}</span>${combat.movement_budget != null ? `<span class="turn-resource">移动 ${Math.max(0, combat.movement_budget - (combat.movement_spent || 0))} / ${combat.movement_budget} 尺</span>` : ""}${combat.attacks_remaining != null ? `<span class="turn-resource">剩余攻击 ${esc(combat.attacks_remaining)}</span>` : ""}</div></div><button id="battle-end-turn" class="primary" ${!endAction || actionDisabledReason(endAction) ? "disabled" : ""}>结束回合 →</button></div><section class="combat-actions"><div class="action-toolbar"><div class="action-tabs">${Object.entries(
           {
             all: "全部",
             actions: "动作",
@@ -1914,28 +1915,162 @@ async function equipSkillsDialog() {
   );
 }
 
-function installDmProposals() {
-  const raw = room.director_proposals || [];
-  const proposals = Array.isArray(raw) ? raw : Object.values(raw);
-  const pending = proposals.filter(
-    (p) => !p.resolved && (!p.status || p.status === "pending"),
-  );
-  if (!pending.length) return;
-  const composer = $(".composer");
-  if (!composer) return;
-  composer.insertAdjacentHTML(
+let actionEntry = "skills",
+  freeActionDraft = "",
+  freeActionPending = false;
+const failedProposals = new Set();
+function installActionEntries() {
+  if (room.status === "lobby" || room.status === "finished") return;
+  const skillArea = $(".combat-actions") || $(".composer .actions");
+  if (!skillArea) return;
+  skillArea.insertAdjacentHTML(
     "beforebegin",
-    `<section class="dm-proposals" style="padding:0 24px">${pending.map((proposal) => `<article class="dm-proposal"><div class="eyebrow">${proposal.source === "llm" ? "AI DM" : "规则导演"} / 待确认提案</div><h3>${esc(proposal.label || "你的行动意图")}</h3><p>${esc(proposal.text || "")}</p>${proposal.kind === "check" ? `<p><strong>${esc(proposal.skill_name || "检定")} · DC ${esc(proposal.dc)}</strong></p><p>成功：${esc(proposal.success_text || "按照提案推进")}</p><p>失败：${esc(proposal.failure_text || "按照提案承受后果")}</p>` : ""}${proposal.cost ? `<p>代价：${esc(typeof proposal.cost === "string" ? proposal.cost : JSON.stringify(proposal.cost))}</p>` : ""}<div class="row"><button class="primary" data-director-resolve="${esc(proposal.id)}" ${busy || !connected || (proposal.requires_host && room.host_id !== session.member_id) ? "disabled" : ""}>${proposal.kind === "encounter" ? "确认进入遭遇战" : proposal.kind === "check" ? "确认风险并进行检定" : "确认行动"} ↗</button>${proposal.requires_host && room.host_id !== session.member_id ? "<small>需要房主确认</small>" : "<small>确认前不会掷骰或改变世界状态</small>"}</div></article>`).join("")}</section>`,
+    `<nav class="action-entry-tabs" aria-label="行动方式"><button data-action-entry="skills" aria-pressed="${actionEntry === "skills"}">⚔ 技能行动<small>职业、法术与规则动作</small></button><button data-action-entry="free" aria-pressed="${actionEntry === "free"}">✦ 自由行动<small>描述意图，先裁定后执行${(room.director_proposals || []).length ? ` · ${(room.director_proposals || []).length} 项待处理` : ""}</small></button></nav>`,
   );
-  app
-    .querySelectorAll("[data-director-resolve]")
-    .forEach(
-      (button) =>
-        (button.onclick = () =>
-          command("director_resolve", {
-            proposal_id: button.dataset.directorResolve,
-          })),
+  skillArea.classList.toggle("action-entry-hidden", actionEntry !== "skills");
+  skillArea.insertAdjacentHTML(
+    "afterend",
+    `<section class="free-action-panel ${actionEntry === "free" ? "" : "action-entry-hidden"}"><div class="eyebrow">INTENT → RULING → CONFIRM</div><h3>你想如何改变眼前的局面？</h3><p class="helper">自由描述不等于免费行动。DM 将给出目标、检定、风险与资源代价；确认后由规则脚本执行。</p>${freeActionContextHtml()}<form id="free-action-form"><label class="sr-only" for="free-action-intent">描述你的自由行动</label><textarea id="free-action-intent" maxlength="1500" required placeholder="例如：推倒木箱挡住敌人，借掩体接近门口…">${esc(freeActionDraft)}</textarea><div class="row between"><small>${room.combat?.active ? "战斗中仍受回合、动作与移动资源限制。" : "探索行动也可能消耗时间、资源或触发风险。"}</small><button class="primary" ${busy || !connected || room.status !== "playing" ? "disabled" : ""}>${freeActionPending ? "正在裁定…" : "请求裁定 ↗"}</button></div><p class="free-action-status" role="status">${freeActionPending ? "DM 正在把你的意图转换为可审核的规则计划；尚未执行行动。" : ""}</p></form><div id="free-action-proposals"></div></section>`,
+  );
+  app.querySelectorAll("[data-action-entry]").forEach(
+    (button) =>
+      (button.onclick = () => {
+        actionEntry = button.dataset.actionEntry;
+        renderRoom();
+        if (actionEntry === "free") $("#free-action-intent")?.focus();
+      }),
+  );
+  app.querySelectorAll("[data-free-object]").forEach(
+    (button) =>
+      (button.onclick = () => {
+        const obj = (room.free_actions?.objects || []).find(
+          (item) => item.id === button.dataset.freeObject,
+        );
+        freeActionDraft =
+          (freeActionDraft ? freeActionDraft + " " : "") + (obj?.name || "");
+        $("#free-action-intent").value = freeActionDraft;
+        $("#free-action-intent").focus();
+      }),
+  );
+  $("#free-action-intent").oninput = (event) =>
+    (freeActionDraft = event.target.value);
+  $("#free-action-form").onsubmit = async (event) => {
+    event.preventDefault();
+    const text = $("#free-action-intent").value.trim();
+    if (!text || busy) return;
+    freeActionDraft = text;
+    freeActionPending = true;
+    await command("director_propose", { text });
+    freeActionPending = false;
+    renderRoom();
+  };
+}
+function humanPlanValue(value) {
+  if (value == null) return "未指定";
+  if (Array.isArray(value)) return value.map(humanPlanValue).join("、") || "无";
+  if (typeof value === "object")
+    return Object.entries(value)
+      .map(
+        ([key, item]) =>
+          `${{ action: "动作", bonus: "附赠动作", movement: "移动", reaction: "反应", minutes: "分钟", amount: "数量", type: "类型", target_id: "目标", dc: "DC", ability: "属性", skill: "技能", skill_id: "技能", damage: "伤害", condition: "状态", duration: "持续时间", dice: "骰式", on: "触发时机" }[key] || key}：${humanPlanValue(item)}`,
+      )
+      .join("；");
+  return (
+    {
+      true: "需要",
+      false: "不消耗",
+      self: "自己",
+      enemy: "敌人",
+      ally: "队友",
+      success: "成功时",
+      failure: "失败时",
+      always: "始终",
+    }[String(value)] || String(value)
+  );
+}
+function freeActionContextHtml() {
+  const context = room.free_actions || {},
+    tags = {
+      movable: "可移动",
+      cover: "可作掩护",
+      flammable: "可燃",
+      interactable: "可操作",
+      searchable: "可搜索",
+      sand: "沙土",
+      fire: "火源",
+    };
+  return `<details class="free-context" open><summary>眼前可以互动的场景物件 · ${(context.objects || []).length}</summary><div class="free-object-grid">${(context.objects || []).map((obj) => `<button type="button" class="free-object" data-free-object="${esc(obj.id)}"><strong>${esc(obj.name)}</strong><small>${esc(obj.description || "")}</small><span>${(obj.tags || []).map((tag) => esc(tags[tag] || tag)).join(" · ")}</span><small>${obj.hp != null ? `耐久 ${esc(obj.hp)}` : ""}${obj.burning ? " · 燃烧中" : ""}${obj.collapsed ? " · 已倒塌" : ""}${obj.searched ? " · 已搜索" : ""}${obj.state ? ` · ${esc(humanPlanValue(obj.state))}` : ""}</small></button>`).join("") || '<p class="helper">此场景尚未登记可操作物件。可以描述针对角色的行动；不会凭空创建道具或奖励。</p>'}</div></details><details class="free-context"><summary>当前规则支持的自由行动</summary><div class="free-recipes">${(context.recipes || []).map((recipe) => `<div><strong>${esc(recipe.label)}</strong><small>${esc(recipe.cost_label || humanPlanValue(recipe.cost))}</small><p>${esc((recipe.summary || []).join(" "))}</p>${recipe.disabled_reason ? `<p class="action-unavailable">${esc(recipe.disabled_reason)}</p>` : ""}${recipe.targets?.length ? `<small>可选目标：${recipe.targets.map((t) => esc(t.name)).join("、")}</small>` : ""}${recipe.objects?.length ? `<small>可用物件：${recipe.objects.map((t) => esc(t.name)).join("、")}</small>` : ""}</div>`).join("") || '<p class="helper">规则上下文正在同步。</p>'}</div></details>`;
+}
+function proposalDetails(proposal) {
+  const plan = proposal.plan;
+  if (!plan)
+    return `${proposal.kind === "check" ? `<p><strong>${esc(proposal.skill_name || "检定")} · DC ${esc(proposal.dc)}</strong></p><p>成功：${esc(proposal.success_text || "按照提案推进")}</p><p>失败：${esc(proposal.failure_text || "按照提案承受后果")}</p>` : ""}${proposal.cost ? `<p>代价：${esc(humanPlanValue(proposal.cost))}</p>` : ""}`;
+  const target =
+    (plan.targets || []).find((item) => item.id === plan.target_id) ||
+    room.party.find((item) => item.id === plan.target_id) ||
+    (room.combat?.enemies || []).find((item) => item.id === plan.target_id);
+  const object =
+    (plan.objects || []).find((item) => item.id === plan.object_id) ||
+    (room.free_actions?.objects || []).find(
+      (item) => item.id === plan.object_id,
     );
+  return `<dl class="proposal-facts"><div class="proposal-fact"><dt>资源代价</dt><dd>${esc(plan.cost_label || humanPlanValue(plan.cost || proposal.cost))}</dd></div><div class="proposal-fact"><dt>执行目标</dt><dd>${esc([target?.name, object?.name].filter(Boolean).join(" · ") || "自己 / 当前环境")}</dd></div></dl><p><strong>检定与规则效果</strong></p><ul class="proposal-effects">${(plan.summary || []).map((text) => `<li>${esc(text)}</li>`).join("") || `<li>${esc(humanPlanValue(plan.check || plan.effects || "按规则计划执行"))}</li>`}</ul><p class="proposal-warning">${esc(proposal.risk || plan.risk || proposal.failure_text || "需要检定的行动可能失败。失败不会退还已使用的动作或移动；不会保证造成效果。")}</p>`;
+}
+function installDmProposals() {
+  installActionEntries();
+  const raw = room.director_proposals || [],
+    proposals = Array.isArray(raw) ? raw : Object.values(raw);
+  const pending = proposals.filter((p) => !p.resolved);
+  if (!pending.length) return;
+  const destination = $("#free-action-proposals") || $(".composer");
+  if (!destination) return;
+  destination.insertAdjacentHTML(
+    "beforeend",
+    `<section class="dm-proposals">${pending
+      .map((proposal) => {
+        const stale =
+          failedProposals.has(proposal.id) ||
+          proposal.stale ||
+          proposal.status === "expired" ||
+          proposal.status === "invalid";
+        return `<article class="dm-proposal" data-proposal-id="${esc(proposal.id)}"><div class="eyebrow">${proposal.source === "llm" ? "AI DM" : "规则导演"} / ${stale ? "需要重新裁定" : "待确认提案"}</div><h3>${esc(proposal.label || "你的行动意图")}</h3><p>${esc(proposal.text || "")}</p>${proposalDetails(proposal)}${stale ? '<p class="proposal-warning" role="alert">提案未执行或场景已变化。请核对当前状态，重新请求裁定。</p>' : ""}<div class="proposal-buttons"><button class="primary" data-director-resolve="${esc(proposal.id)}" ${stale || busy || !connected || room.status !== "playing" || (proposal.requires_host && room.host_id !== session.member_id) ? "disabled" : ""}>${proposal.kind === "encounter" ? "确认进入遭遇战" : "确认代价并执行"} ↗</button><button data-director-cancel="${esc(proposal.id)}" ${busy ? "disabled" : ""}>取消提案</button>${stale ? `<button data-director-revise="${esc(proposal.id)}">修改并重新裁定</button>` : ""}</div><p class="helper">${proposal.requires_host && room.host_id !== session.member_id ? "需要房主确认" : "确认前不会掷骰或消耗行动资源；世界变化后可能需要重新裁定。"}</p></article>`;
+      })
+      .join("")}</section>`,
+  );
+  app.querySelectorAll("[data-director-resolve]").forEach(
+    (button) =>
+      (button.onclick = async () => {
+        const id = button.dataset.directorResolve;
+        if (!(await command("director_resolve", { proposal_id: id }))) {
+          failedProposals.add(id);
+          renderRoom();
+        }
+      }),
+  );
+  app.querySelectorAll("[data-director-cancel]").forEach(
+    (button) =>
+      (button.onclick = async () => {
+        if (
+          await command("director_cancel", {
+            proposal_id: button.dataset.directorCancel,
+          })
+        )
+          toast("提案已取消，没有执行或消耗行动。");
+      }),
+  );
+  app.querySelectorAll("[data-director-revise]").forEach(
+    (button) =>
+      (button.onclick = () => {
+        const proposal = pending.find(
+          (item) => item.id === button.dataset.directorRevise,
+        );
+        if (!freeActionDraft)
+          freeActionDraft = proposal?.intent || proposal?.text || "";
+        actionEntry = "free";
+        renderRoom();
+        $("#free-action-intent")?.focus();
+      }),
+  );
 }
 async function openCharacterVault() {
   if (!account) {

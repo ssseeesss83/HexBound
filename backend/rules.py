@@ -114,6 +114,8 @@ def start_combat(state):
 
 def _step(state):
     combat = state["combat"]
+    from . import abilities
+    abilities.end_turn(state,combat["turn_actor_id"])
     combat["index"] = (combat["index"] + 1) % len(combat["order"])
     if combat["index"] == 0:
         combat["round"] += 1
@@ -140,7 +142,11 @@ def _auto_turns(state, events):
         if targets:
             target = targets[secrets.randbelow(len(targets))]
             from . import abilities
-            r = attack_roll(2, abilities.armor_class(state, target["character"]), "1d4", disadvantage=target["id"] in combat["dodging"] or abilities.has_condition(state, combat["enemy"], "attack-disadvantage"))
+            if not abilities.prepare_enemy_melee(state,combat["enemy"],target["character"]):
+                _step(state)
+                continue
+            r = attack_roll(2, abilities.armor_class(state, target["character"]), "1d4", advantage=abilities.attack_advantage(state,combat["enemy"],target["character"]), disadvantage=target["id"] in combat["dodging"] or abilities.attack_disadvantage(state,combat["enemy"]))
+            abilities.consume_attack_conditions(combat["enemy"],target["character"])
             outcome = damage_character(target["character"], r["damage"], r["critical"], "bludgeoning", state)
             r["damage"] = outcome["damage"]
             if outcome["concentration"]:
