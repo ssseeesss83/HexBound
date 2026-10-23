@@ -1,0 +1,16 @@
+services:
+  hexbound:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      HEXBOUND_DB: /app/data/hexbound.sqlite3
+    volumes:
+      - adventure-data:/app/data
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+volumes:
+  adventure-data:
