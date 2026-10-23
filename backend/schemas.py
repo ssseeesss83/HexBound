@@ -114,6 +114,7 @@ class ScenarioNode(StrictModel):
 
 
 class ScenarioBook(Card):
+    starting_level: int = Field(default=3, ge=1, le=20)
     entry_node_id: Identifier
     nodes: list[ScenarioNode] = Field(min_length=2, max_length=50)
     skill_ids: list[Identifier] = Field(default_factory=list, max_length=40)

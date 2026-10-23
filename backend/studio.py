@@ -45,7 +45,7 @@ def seed_items():
         return {"id": id, "label": label, "next_node_id": target}
     def check(id, label, skill, yes, no):
         return {"id": id, "label": label, "skill_id": skill, "success_node_id": yes, "failure_node_id": no}
-    scenario = {"id": "book-last-lantern", "name": "雾港最后一盏灯 · 分支剧本", "description": "调查失落的透镜，与旧日守卫交涉，沿不同道路重新点亮灯塔。", "tags": ["原创", "入门", "分支"], "entry_node_id": "dock", "skill_ids": [s["id"] for s in skills], "monster_ids": [monster["id"]], "nodes": [
+    scenario = {"id": "book-last-lantern", "starting_level": 3, "name": "雾港最后一盏灯 · 分支剧本", "description": "调查失落的透镜，与旧日守卫交涉，沿不同道路重新点亮灯塔。", "tags": ["原创", "入门", "分支"], "entry_node_id": "dock", "skill_ids": [s["id"] for s in skills], "monster_ids": [monster["id"]], "nodes": [
         {"id": "dock", "title": "雨夜码头", "text": "海雾盖住熄灭的灯塔。摆渡人把一把铜钥匙推到你们面前：天亮前，让归船看见那束光。", "objective": "找到前往海关的道路", "actions": [check("follow-traces", "沿足迹寻找海关侧门", "read-traces", "customs", "alley"), check("ask-boatman", "向摆渡人询问安全路线", "steady-voice", "customs", "alley")]},
         {"id": "alley", "title": "盐雾小巷", "text": "巡逻的盐壳守卫挡住窄巷。它已经认不出你们，只记得不许任何人通过。", "objective": "击败守卫并抵达海关", "monster_ids": ["salt-warden"], "actions": [direct("enter-customs", "推开海关的侧门", "customs")]},
         {"id": "customs", "title": "失落透镜", "text": "铁柜下压着灯塔透镜。旧账册记录了一句誓言：灯在，人归。", "objective": "带走透镜，寻找塔顶的入口", "actions": [check("read-ledger", "辨认旧账册上的机关图", "read-traces", "tower", "stairs"), direct("take-stairs", "带着透镜绕行长阶", "stairs")]},
@@ -252,7 +252,7 @@ def create_studio_router(store, dm):
             card = json.loads(row["published_json"])
             if kind and row["kind"] != kind or q and q.casefold() not in (card["name"] + card["description"]).casefold() or tag and tag not in card["tags"]:
                 continue
-            items.append({"id": row["id"], "kind": row["kind"], "name": card["name"], "description": card["description"], "tags": card["tags"], "revision": row["published_revision"], "published_revision": row["published_revision"]})
+            items.append({"id": row["id"], "kind": row["kind"], "name": card["name"], "description": card["description"], "tags": card["tags"], "revision": row["published_revision"], "published_revision": row["published_revision"], **({"starting_level": card.get("starting_level", 3)} if row["kind"] == "scenario" else {})})
         return {"items": items, "total": len(items)}
 
     @secured.get("/schema/{kind}")

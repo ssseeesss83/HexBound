@@ -91,6 +91,7 @@ async function page(existingCookie) {
   };
   // Non-secure LAN origins do not expose randomUUID; exercise that path.
   Object.defineProperty(w.crypto, "randomUUID", { value: undefined });
+  w.eval(readFileSync(resolve(__dirname, "../frontend/live-log.js"), "utf8"));
   w.eval(source);
   await waitFor(() => w.document.querySelector("#create"), "home");
   return w;
@@ -121,6 +122,7 @@ async function main() {
   const host = await page();
   click(host, "#create");
   fill(host, "player_name", "灯塔旅人");
+  fill(host, "starting_level", "1");
   submit(host);
   await waitFor(
     () => host.document.querySelector("#start:not(:disabled)"),

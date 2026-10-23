@@ -224,8 +224,9 @@ function openDialog(content, setup) {
       }
     }
   });
-  setup?.(overlay, close);
+  const ready = setup?.(overlay, close);
   overlay.querySelector("input,button")?.focus();
+  return ready;
 }
 function rulesDialog() {
   const rules = Array.isArray(catalog.rules)
@@ -257,7 +258,7 @@ function entryDialog(kind) {
     hybrid: "保留预设冒险主线，让 LLM 丰富场景与角色回应。",
   };
   openDialog(
-    `<div class="row between"><div><div class="eyebrow">${create ? "Begin a chapter" : "Take your seat"}</div><h2 id="dialog-title" style="margin-top:8px">${create ? "让冒险从这里开始" : "你的同伴正在等你"}</h2></div><button class="ghost" data-close aria-label="关闭">×</button></div><form class="form" id="entry-form">${create ? '<label>冒险名称<input name="name" maxlength="60" value="雾港来信" required></label>' : '<label>房间邀请码<input name="invite_code" maxlength="32" placeholder="输入同伴发来的邀请码" autocomplete="off" required></label>'}<div class="columns"><label>冒险者名字<input name="player_name" maxlength="30" placeholder="你的名字" required></label><label>选择角色<select name="character_id">${(catalog.characters || []).map((c) => `<option value="${esc(c.id)}">${esc(c.name || c.label)} · ${esc(c.class_name || c.role || c.class || "")}</option>`).join("")}</select></label></div><p class="helper" id="character-description"></p>${
+    `<div class="row between"><div><div class="eyebrow">${create ? "Begin a chapter" : "Take your seat"}</div><h2 id="dialog-title" style="margin-top:8px">${create ? "让冒险从这里开始" : "你的同伴正在等你"}</h2></div><button class="ghost" data-close aria-label="关闭">×</button></div><form class="form" id="entry-form">${create ? '<label>冒险名称<input name="name" maxlength="60" value="雾港来信" required></label><label>起始等级<input name="starting_level" type="number" min="1" max="20" value="3" required></label><p class="helper">默认 3 级。新角色入席后逐级构筑；已有角色低于此等级需补全，高于此等级不能加入。</p>' : '<label>房间邀请码<input name="invite_code" maxlength="32" placeholder="输入同伴发来的邀请码" autocomplete="off" required></label>'}<div class="columns"><label>冒险者名字<input name="player_name" maxlength="30" placeholder="你的名字" required></label><label>选择角色<select name="character_id">${(catalog.characters || []).map((c) => `<option value="${esc(c.id)}">${esc(c.name || c.label)} · ${esc(c.class_name || c.role || c.class || "")}</option>`).join("")}</select></label></div><p class="helper" id="character-description"></p>${
       create
         ? '<div><div class="eyebrow" style="margin-bottom:10px">选择故事模式</div><div class="modes">' +
           Object.entries(modeNames)
@@ -289,7 +290,7 @@ function entryDialog(kind) {
       if (account && vaultCharacters.length) {
         $("#character-description", form).insertAdjacentHTML(
           "afterend",
-          `<label>使用已保存的角色<select name="hero_id"><option value="">新建上述职业的角色</option>${vaultCharacters.map((hero) => `<option value="${esc(hero.id)}" ${!hero.available ? "disabled" : ""}>${esc(hero.character.name)} · ${esc(hero.character.class_name || hero.character.class_id)} Lv.${hero.character.level}${!hero.available ? " · 正在另一场冒险中" : ""}</option>`).join("")}</select></label>`,
+          `<label>人物来源：已有角色或新模板<select name="hero_id"><option value="">新建所选职业模板（入席后定制）</option>${vaultCharacters.map((hero) => `<option value="${esc(hero.id)}" ${!hero.available ? "disabled" : ""}>${esc(hero.character.name)} · ${esc(hero.character.class_name || hero.character.class_id)} Lv.${hero.character.level}${!hero.available ? " · 正在另一场冒险中" : ""}</option>`).join("")}</select></label>`,
         );
         const heroSelect = $("[name=hero_id]", form);
         heroSelect.onchange = () => {
@@ -309,6 +310,7 @@ function entryDialog(kind) {
         )
       )
         $("[name=scenario_id]", form).value = requestedScenario;
+      if(create){const scenarioSelect=$('[name=scenario_id]',form);const useScenarioLevel=()=>{const scenario=(catalog.publishedScenarios||[]).find(item=>item.id===scenarioSelect.value);$('[name=starting_level]',form).value=scenario?.starting_level||3;};scenarioSelect.onchange=useScenarioLevel;if(requestedScenario)useScenarioLevel();}
       const showCharacter = () => {
         const c = (catalog.characters || []).find(
           (c) => c.id === characterSelect.value,
@@ -345,6 +347,7 @@ function entryDialog(kind) {
           const body = Object.fromEntries(new FormData(form));
           if (create) {
             body.mode = mode;
+            body.starting_level = Number(body.starting_level || 3);
             if (!body.scenario_id) delete body.scenario_id;
           } else body.invite_code = body.invite_code.trim();
           if (!body.hero_id) delete body.hero_id;
@@ -378,6 +381,7 @@ function me() {
   return room?.party?.find((p) => p.id === session?.member_id);
 }
 function returnHome() {
+  window.HexBoundLiveLog?.clear(); activeJournalKey=null;
   saveSeat();
   clearTimeout(reconnectTimer);
   const oldSocket = socket;
@@ -391,9 +395,10 @@ function returnHome() {
   mobileTab = "story";
   sessionStorage.removeItem("hexbound-session");
   if (account) {
-    api("/api/my/rooms")
-      .then((data) => {
+    Promise.all([api("/api/my/rooms"),api("/api/my/characters")])
+      .then(([data,heroes]) => {
         accountRooms = data.items || [];
+        vaultCharacters = heroes.items || [];
         home();
       })
       .catch((error) => {
@@ -500,8 +505,10 @@ function eventHtml(event) {
   const dm = ["dm", "narrative", "scene"].includes(kind);
   return `<article class="event ${kind === "chat" ? "chat" : ""}"><div class="event-meta"><span class="${dm ? "dm-label" : ""}">${dm ? `✦ ${event.source === "llm" ? "AI 主持人" : event.source === "fallback" ? "本地主持 · 模型回退" : "本地主持"}` : esc(event.actor_name || "规则引擎")}</span><span>·</span><span>${esc(kind === "chat" ? "桌边交谈" : event.roll ? "权威判定" : dm ? "冒险日志" : "角色行动")}</span><span style="margin-left:auto">${String(event.seq || event.id || "").padStart(3, "0")}</span></div><p>${esc(event.text)}</p>${event.roll ? rollHtml(event.roll) : ""}${event.suggested_action_id && (room.available_actions || []).some((a) => a.id === event.suggested_action_id && (!a.host_only || room.host_id === session.member_id)) ? `<button class="small" data-action="${esc(event.suggested_action_id)}" ${busy || !connected || room.status !== "playing" ? "disabled" : ""}>建议行动：${esc((room.available_actions || []).find((a) => a.id === event.suggested_action_id)?.label)} ↗</button>` : ""}</article>`;
 }
+let activeJournalKey = null;
 function renderRoom() {
   if (!room) return;
+  if(activeJournalKey) window.HexBoundLiveLog?.capture(activeJournalKey);
   trackEncounter();
   if ((room.combat?.active && combatView === "battle") || showSettlement) {
     renderBattleRoom();
@@ -561,8 +568,9 @@ function renderRoom() {
         `<button data-tab="${id}" class="${mobileTab === id ? "active" : ""}">${label}</button>`,
     )
     .join("")}</nav></div>`;
-  const log = $("#journal-log");
-  if (atBottom) log.scrollTop = log.scrollHeight;
+  let log = $("#journal-log");
+  if(window.HexBoundLiveLog){activeJournalKey=room.id+':story';window.HexBoundLiveLog.mount({key:activeJournalKey,placeholder:log,events,renderEvent:eventHtml,prefixHtml:$('.welcome-scene',log)?.outerHTML||'',emptyHtml:room.status==='lobby'?'':`<article class="event"><p>${esc(scene.text||'冒险日志正在载入…')}</p></article>`});log=$('#journal-log');}
+  else if (atBottom) log.scrollTop = log.scrollHeight;
   else log.scrollTop = oldScroll;
   if (focused) {
     $("#intent").focus();
@@ -593,7 +601,8 @@ function renderRoom() {
     "beforeend",
     '<p><a href="/account.html">账号与安全 ↗</a></p>',
   );
-  if ($("#start")) $("#start").disabled = !connected || busy;
+  installLobbyBuilder();
+  if ($("#start")) $("#start").disabled = !connected || busy || room.party.some(member=>member.build_ready===false);
   $("#start")?.addEventListener("click", () => command("start"));
   $("#end-turn")?.addEventListener("click", () => command("end_turn"));
   $("[id=scene-toggle]")?.addEventListener("click", () => {
@@ -1124,6 +1133,7 @@ function renderBattleRoom() {
             "",
           )}</div><input class="action-search" id="combat-action-search" placeholder="搜索能力…" aria-label="搜索可用能力" value="${esc(combatQuery)}"></div><div class="action-grid" id="action-grid">${actionPaletteHtml()}</div></section>`
   }</section><aside class="encounter-ledger"><div class="encounter-subnav"><button data-combat-log="combat" class="${combatLogView === "combat" ? "active" : ""}">战斗记录</button><button data-combat-log="story" class="${combatLogView === "story" ? "active" : ""}">全部日志</button></div><div class="journal-log" id="journal-log" role="log" aria-label="战斗与规则记录">${combatEvents().map(eventHtml).join("") || '<p class="helper">行动发生后，规则凭据会显示在这里。</p>'}</div><div class="composer"><form class="compose-box" id="intent-form"><textarea id="intent" maxlength="1500" aria-label="战斗中的发言" placeholder="与队伍交谈，或描述行动意图…">${esc(draft)}</textarea><div class="compose-bottom"><select id="compose-mode" aria-label="发言类型"><option value="chat" ${composeMode === "chat" ? "selected" : ""}>桌边聊天</option><option value="narrate" ${composeMode === "narrate" ? "selected" : ""}>角色扮演</option><option value="director_propose" ${composeMode === "director_propose" ? "selected" : ""}>向 DM 提出行动</option></select><button class="primary" type="submit" ${!connected || busy ? "disabled" : ""}>发送 ↗</button></div></form></div></aside></main></div>`;
+  if(window.HexBoundLiveLog){activeJournalKey=room.id+':combat:'+combatLogView;window.HexBoundLiveLog.mount({key:activeJournalKey,placeholder:$('#journal-log'),events:combatEvents(),renderEvent:eventHtml,prefixHtml:'',emptyHtml:'<p class="helper">行动发生后，规则凭据会显示在这里。</p>'});}
   $("#battle-sheet").onclick = () => openCharacterSheet(session.member_id);
   $("#room-menu").onclick = roomMenu;
   $("#battle-story").onclick = () => {
@@ -1187,7 +1197,7 @@ function renderBattleRoom() {
     }
   };
   const log = $("#journal-log");
-  log.scrollTop = atBottom ? log.scrollHeight : oldScroll;
+  if(!window.HexBoundLiveLog) log.scrollTop = atBottom ? log.scrollHeight : oldScroll;
 }
 function settlementHtml() {
   const enemies = room.combat?.enemies || [],
@@ -1353,6 +1363,12 @@ function bindSheetTriggers() {
 }
 function refreshSheetVitals() {
   if (!sheetState) return;
+  if(sheetState.overlay?.isConnected){
+    const submit=$('#level-up-form [type=submit]',sheetState.overlay);
+    if(submit)submit.disabled=!connected||busy||sheetState.loading||sheetState.mutationPending||!sheetState.owner||!sheetState.advancement?.can_level_up||!!room.combat?.active;
+    const status=$('[data-sheet-connection]',sheetState.overlay);
+    if(status)status.textContent=connected?'':'正在连接冒险桌，恢复连接后可确认成长。';
+  }
   const latest = room.party.find((member) => member.id === sheetState.memberId);
   if (latest)
     document
@@ -1388,14 +1404,14 @@ async function ensureSheetCatalog() {
   ]);
   sheetCatalog = { spells, classes, loaded: true };
 }
-async function openCharacterSheet(memberId) {
+async function openCharacterSheet(memberId, initialTab = "overview") {
   const member = room.party.find((p) => p.id === memberId);
   if (!member) return;
-  openDialog(
+  return openDialog(
     `<div class="row between"><h2 id="dialog-title">${esc(member.name)} · 人物档案</h2><button class="ghost" data-close aria-label="关闭">×</button></div><div id="character-sheet" style="margin-top:22px"><p class="helper" role="status">正在读取完整人物卡与成长状态…</p></div>`,
     async (overlay, close) => {
       $(".modal", overlay).classList.add("sheet-modal");
-      sheetTab = "overview";
+      sheetTab = initialTab;
       sheetState = {
         memberId,
         overlay,
@@ -1568,7 +1584,7 @@ function sheetEquipmentHtml(character) {
   return `<div class="sheet-columns"><section class="sheet-section"><h3>当前装备</h3><div class="sheet-list"><div class="sheet-list-row"><span>武器</span><strong>${esc(itemName(character.weapon))}</strong></div>${character.weapon ? `<div class="sheet-list-row"><span>武器伤害</span><span>${esc(character.weapon.dice || character.weapon.damage || "—")} · ${esc(abilities[character.weapon.ability] || character.weapon.ability || "")}</span></div>` : ""}<div class="sheet-list-row"><span>护甲</span><span>${esc(itemName(character.armor) || "—")}</span></div><div class="sheet-list-row"><span>治疗药水</span><span>${character.potions ?? "—"}</span></div></div></section><section class="sheet-section"><h3>随身物品</h3><div class="sheet-list">${entries.map((item) => `<div class="sheet-list-row"><span>${esc(itemName(item))}</span><span>${esc(item.quantity ?? item.count ?? 1)}</span></div>`).join("") || '<p class="helper">暂无额外物品记录。</p>'}</div></section></div><section class="sheet-section"><h3>剧情赋予的能力</h3>${(sheetState.equipped_custom_skill_ids || character.equipped_custom_skill_ids || []).map((id) => `<div class="sheet-list-row"><span>${esc(id)}</span><span>剧情能力</span></div>`).join("") || '<p class="helper">剧情能力由当前冒险允许的卡片决定。</p>'}${sheetState.owner ? '<button id="equip-skills" class="small" style="margin-top:14px">选择剧情能力卡</button>' : ""}</section><p class="helper">装备数据来自角色记录。当前页面不提供未实现的自由数值编辑。</p>`;
 }
 function renderCharacterSheet() {
-  if (!sheetState?.overlay?.isConnected) return;
+  if (!sheetState?.overlay?.isConnected || sheetState.loading) return;
   const character = characterData(),
     container = $("#character-sheet", sheetState.overlay);
   $("#dialog-title", sheetState.overlay).textContent =
@@ -1642,9 +1658,9 @@ function sheetGrowthHtml(character) {
     target = preview.target_level || Math.min(20, (character.level || 1) + 1),
     choices = preview.required_choices || {};
   const canLevel =
-    sheetState.owner && preview.can_level_up && !room.combat?.active && !busy;
+    sheetState.owner && preview.can_level_up && !room.combat?.active && !busy && connected && !sheetState.loading && !sheetState.mutationPending;
   const blockers = preview.reasons || preview.errors || [];
-  return `<section class="sheet-section"><h3>休息与恢复</h3><p>个人短休推进游戏时间 1 小时，按投入的生命骰恢复资源；全队长休由房主发起，耗时 8 小时，24 小时内不能重复。战斗中不能休息。</p><div class="row wrap" style="margin-top:14px"><button id="rest-short" class="small" ${!sheetState.owner || room.combat?.active || busy ? "disabled" : ""}>短休 · 选择生命骰</button><button id="rest-long" class="small" ${!sheetState.owner || room.host_id !== session.member_id || room.combat?.active || busy ? "disabled" : ""} title="由房主发起全队长休">全队长休 · 房主</button></div></section><section class="growth-preview"><div class="eyebrow">YOUR NEXT CHAPTER</div><h3>${character.level >= 20 ? "已达 20 级" : "Lv." + character.level + " → Lv." + target}</h3><p>当前 ${character.xp ?? 0} XP · 下一级需要 ${preview.xp_required ?? "—"} XP</p>${preview.hp_gain_before_asi != null ? `<p>最大生命基础增加 ${preview.hp_gain_before_asi}</p>` : ""}${(preview.features || preview.new_features || []).length ? `<p>本级特性：${(preview.features || preview.new_features).map((f) => esc(typeof f === "string" ? f : f.name || f.id)).join("、")}</p>` : ""}${!preview.can_level_up ? `<p class="error" style="margin-top:12px">${esc(preview.reason || blockers.join("；") || (character.level >= 20 ? "已达到当前等级上限。" : "当前尚未满足升级条件。"))}</p>` : ""}${!sheetState.owner ? '<p class="helper" style="margin-top:12px">只有角色所属玩家可以确认升级；房主不能代替他人选择。</p>' : ""}<form id="level-up-form"><div class="growth-choices">${growthChoiceHtml(character, choices, preview)}</div><p id="growth-error" class="error" role="alert"></p><button class="primary" type="submit" ${canLevel ? "" : "disabled"}>确认选择并升至 ${target} 级 ↗</button></form></section>`;
+  return `<section class="sheet-section"><h3>休息与恢复</h3><p>个人短休推进游戏时间 1 小时，按投入的生命骰恢复资源；全队长休由房主发起，耗时 8 小时，24 小时内不能重复。战斗中不能休息。</p><div class="row wrap" style="margin-top:14px"><button id="rest-short" class="small" ${!sheetState.owner || room.combat?.active || busy ? "disabled" : ""}>短休 · 选择生命骰</button><button id="rest-long" class="small" ${!sheetState.owner || room.host_id !== session.member_id || room.combat?.active || busy ? "disabled" : ""} title="由房主发起全队长休">全队长休 · 房主</button></div></section><section class="growth-preview"><div class="eyebrow">YOUR NEXT CHAPTER</div><h3>${character.level >= 20 ? "已达 20 级" : "Lv." + character.level + " → Lv." + target}</h3><p>当前 ${character.xp ?? 0} XP · 下一级需要 ${preview.xp_required ?? "—"} XP</p>${preview.hp_gain_before_asi != null ? `<p>最大生命基础增加 ${preview.hp_gain_before_asi}</p>` : ""}${(preview.features || preview.new_features || []).length ? `<p>本级特性：${(preview.features || preview.new_features).map((f) => esc(typeof f === "string" ? f : f.name || f.id)).join("、")}</p>` : ""}${!preview.can_level_up ? `<p class="error" style="margin-top:12px">${esc(preview.reason || blockers.join("；") || (character.level >= 20 ? "已达到当前等级上限。" : "当前尚未满足升级条件。"))}</p>` : ""}${!sheetState.owner ? '<p class="helper" style="margin-top:12px">只有角色所属玩家可以确认升级；房主不能代替他人选择。</p>' : ""}<form id="level-up-form"><div class="growth-choices">${growthChoiceHtml(character, choices, preview)}</div><p data-sheet-connection role="status" class="helper">${connected?'':'正在连接冒险桌，恢复连接后可确认成长。'}</p><p id="growth-error" class="error" role="alert"></p><button class="primary" type="submit" ${canLevel ? "" : "disabled"}>确认选择并升至 ${target} 级 ↗</button></form></section>`;
 }
 function optionId(item) {
   return typeof item === "string" ? item : item.id;
@@ -1760,7 +1776,7 @@ function growthChoiceHtml(character, choices, preview) {
 }
 async function confirmLevelUp(event) {
   event.preventDefault();
-  if (!sheetState.owner || busy) return;
+  if (!sheetState.owner || busy || !connected || sheetState.loading || sheetState.mutationPending) return;
   const form = event.currentTarget,
     values = new FormData(form),
     choices = {},
@@ -1801,13 +1817,17 @@ async function confirmLevelUp(event) {
     };
   const button = $("[type=submit]", form);
   button.disabled = true;
-  if (await command("level_up", { choices })) {
-    toast("角色已升级，成长记录已保存。");
-    await reloadCharacterSheet();
-  } else {
-    button.disabled = false;
-    $("#growth-error", form).textContent =
-      "升级未完成，请根据提示检查选择后重试。";
+  sheetState.mutationPending=true;
+  try {
+    if (await command(room.status === "lobby" ? "prepare_level_up" : "level_up", { choices })) {
+      toast("角色已升级，成长记录已保存。");
+      await reloadCharacterSheet();
+    } else if(form.isConnected) {
+      $('#growth-error',form).textContent='升级未完成，请检查规则或连接状态后重试。';
+    }
+  } finally {
+    sheetState.mutationPending=false;
+    refreshSheetVitals();
   }
 }
 async function spellManagementDialog() {
@@ -2073,42 +2093,94 @@ function installDmProposals() {
   );
 }
 async function openCharacterVault() {
-  if (!account) {
-    location.href = "/account.html?next=%2F";
-    return;
+  if(!account){location.href='/account.html?next=%2F';return;}
+  try{vaultCharacters=(await api('/api/my/characters')).items||[];await ensureSheetCatalog();}catch(error){toast(error.message);return;}
+  openDialog(`<div class="row between"><div><div class="eyebrow">YOUR ADVENTURERS</div><h2 id="dialog-title">我的角色</h2></div><button class="ghost" data-close>×</button></div><p class="helper">人物绑定账号。未进入冒险的角色可以重新编辑构筑；已使用的角色保留成长历史。</p><button id="new-character-builder" class="primary" style="margin:20px 0">自定义创建角色 ↗</button><div class="form">${vaultCharacters.map(hero=>`<details class="sheet-feature"><summary>${esc(hero.character.name)} · ${esc(classLabel(hero.character))} Lv.${hero.character.level}</summary><div style="margin-top:16px">${sheetOverviewHtml(hero.character)}<p>${esc(hero.character.profile?.background||'')}</p>${hero.can_rebuild?`<button data-edit-hero="${esc(hero.id)}">编辑人物构筑 ↗</button>`:'<p class="helper">此角色已有冒险历史，不能重新分配属性或职业。</p>'}</div></details>`).join('')||'<p class="helper">还没有角色。从职业、属性与人物设定开始。</p>'}</div>`,(overlay,close)=>{$('.modal',overlay).classList.add('sheet-modal');$('#new-character-builder',overlay).onclick=()=>{close();openCharacterBuilder();};overlay.querySelectorAll('[data-edit-hero]').forEach(button=>button.onclick=()=>{const hero=vaultCharacters.find(item=>item.id===button.dataset.editHero);close();openCharacterBuilder({hero});});});
+}
+
+let builderState = null;
+function installLobbyBuilder() {
+  $('.lobby-build')?.remove();
+  if(room.status!=='lobby')return;
+  const member=me();if(!member)return;
+  const target=room.starting_level||1;
+  const welcome=$('.welcome-scene')||$('.journal-heading');
+  welcome?.insertAdjacentHTML('beforeend',`<section class="lobby-build"><strong>本桌起始等级 · Lv.${target}</strong><p>${member.build_ready===false?'你的构筑尚未完成。每一级的法术、专精和子职业需由你确认。':'你的角色已满足起始等级。'}${room.party.some(p=>p.build_ready===false)?' 所有玩家准备完毕后才能启程。':''}</p>${member.can_rebuild?'<button id="configure-character" class="primary">定制我的人物 ↗</button>':member.build_ready===false?'<button id="prepare-character" class="primary">补全起始等级选择 ↗</button>':''}</section>`);
+  $('#configure-character')?.addEventListener('click',()=>openCharacterBuilder({roomMember:member,targetLevel:target}));
+  $('#prepare-character')?.addEventListener('click',async()=>{try{await ensureSheetCatalog();await openCharacterSheet(session.member_id,'growth');}catch(error){toast(error.message);}});
+}
+function baseCharacterBuild(character={}) {
+  return {class_id:character.class_id||'fighter',name:character.name||'',abilities:{str:15,dex:14,con:13,int:12,wis:10,cha:8,...character.abilities},profile:{appearance:'',personality:'',background:'',talents:[],...character.profile},choices:{},levels:[]};
+}
+async function openCharacterBuilder(options={}) {
+  try{await ensureSheetCatalog();}catch(error){toast(error.message);return;}
+  let character=options.hero?.character||options.roomMember||{};
+  if(options.roomMember){try{const detail=await api(`/api/rooms/${session.room_id}/characters/${options.roomMember.id}`);character=detail.character;}catch(error){toast(error.message);return;}}
+  const build=JSON.parse(JSON.stringify(options.hero?.build||character.build||baseCharacterBuild(character)));
+  const actualTarget=options.targetLevel||character.level||1;
+  builderState={...options,build,targetLevel:actualTarget,stage:'identity',preview:null,pending:false,error:'',notes:[],editingLevel:null};
+  openDialog('<div id="character-builder"></div>',(overlay,close)=>{builderState.overlay=overlay;builderState.close=close;$('.modal',overlay).classList.add('builder-modal');renderCharacterBuilder();});
+}
+function readBuilderIdentity(form) {
+  const data=new FormData(form),s=builderState;
+  const classId=data.get('class_id');
+  if(s.build.class_id!==classId){s.build.choices={};s.build.levels=[];}
+  s.build.class_id=classId;s.build.name=String(data.get('name')||'').trim();
+  s.build.abilities=Object.fromEntries(Object.keys(abilities).map(id=>[id,Number(data.get('ability_'+id))]));
+  s.build.profile={appearance:data.get('appearance')||'',personality:data.get('personality')||'',background:data.get('background')||'',talents:String(data.get('talents')||'').split('\n').map(item=>item.trim()).filter(Boolean)};
+  if(!s.roomMember)s.targetLevel=Number(data.get('target_level')||1);
+}
+async function previewCharacterBuild() {
+  return api('/api/character-builds/preview',{method:'POST',body:JSON.stringify({build:builderState.build,target_level:builderState.targetLevel})});
+}
+function builderIdentityHtml(s) {
+ const p=s.build.profile||{};
+ return `<form id="builder-identity" class="form"><div class="field-grid"><label>角色姓名<input name="name" maxlength="32" required value="${esc(s.build.name)}"></label><label>职业<select name="class_id">${sheetCatalog.classes.map(cls=>`<option value="${esc(cls.id)}" ${cls.id===s.build.class_id?'selected':''}>${esc(cls.name)}</option>`).join('')}</select></label><label>套用预设模板<select id="builder-template"><option value="">自定义职业与属性</option>${(catalog.characters||[]).map(c=>`<option value="${esc(c.id)}">${esc(c.name)} · ${esc(c.class_name)}</option>`).join('')}</select></label><label>目标起始等级<input name="target_level" type="number" min="1" max="20" value="${s.targetLevel}" ${s.roomMember?'disabled':''} required></label></div><section class="builder-section"><h3>六项属性</h3><p class="helper">自定义房规：每项 8–20，可自由填写；不是标准购点或随机掷骰。所有修正值由服务器计算。请预留属性成长空间：上限为 20，目前属性提升不能替换为专长；六项全部 20 会导致后续属性提升等级没有合法选择。</p><div class="builder-abilities">${Object.entries(abilities).map(([id,label])=>`<label>${label}<input name="ability_${id}" type="number" min="8" max="20" required value="${s.build.abilities?.[id]??10}"></label>`).join('')}</div></section><div class="field-grid"><label>外貌<textarea name="appearance" maxlength="3000">${esc(p.appearance)}</textarea></label><label>性格<textarea name="personality" maxlength="3000">${esc(p.personality)}</textarea></label></div><label>背景故事<textarea name="background" maxlength="3000">${esc(p.background)}</textarea></label><label>叙事天赋（每行一项）<textarea name="talents" placeholder="例如：能凭星象辨认故乡的方向">${esc((p.talents||[]).join('\n'))}</textarea></label><p class="helper">外貌、背景与叙事天赋不会增加属性、技能熟练、伤害或资源。机械效果必须来自合法职业选项。</p><section class="builder-ai"><label>AI 精细化要求<textarea id="builder-ai-prompt" placeholder="描述你希望保留、修改或补充的细节…"></textarea></label><button type="button" id="builder-ai">生成可审阅草稿 ✦</button><small>只填充草稿，不保存人物，不跳过逐级选择。</small></section><button class="primary" type="submit">审阅 1 级合法选项 →</button></form>`;
+}
+function builderChoiceHtml(s) {
+ const p=s.preview,initial=!p.character||p.next_level===1,c=p.character||{...s.build,skills:s.build.choices.skills||[]},o=initial?p.creation_options:p.advancement;
+ const required=initial?o.required_choices:o.required_choices;
+ const saved=initial?s.build.choices:(s.build.levels[s.editingLevel-2]?.choices||s.suggestedLevels?.[s.editingLevel-2]?.choices||{});
+ return `<form id="builder-choice" class="form"><p class="helper">${initial?'配置一级职业能力。每项均来自合法目录。':`准备从 ${c.level} 级升至 ${p.next_level} 级。逐级确认，不自动跳级。`}</p>${initial?checkChoice('skills','职业熟练技能',o.skills.options,saved.skills||[],`恰好 ${o.skills.count} 项`):''}<div class="growth-choices">${growthChoiceHtml({...c,...saved,skills:saved.skills||(initial?o.skills.options.map(item=>item.id):c.skills)||[]},{...required,subclass:initial?o.subclass:required.subclass},o)}</div><button class="primary" type="submit">验证并确认 ${p.next_level||1} 级选择 →</button></form>`;
+}
+function renderCharacterBuilder() {
+ const s=builderState;if(!s?.overlay?.isConnected)return;
+ const root=$('#character-builder',s.overlay),p=s.preview;
+ root.innerHTML=`<header class="row between"><div><div class="eyebrow">CHARACTER WORKSHOP / REVIEW EVERY LEVEL</div><h2 id="dialog-title">${s.hero?'编辑人物构筑':s.roomMember?'完成入席构筑':'创造你的旅人'}</h2></div><button class="ghost" id="builder-close" aria-label="关闭建角">×</button></header><nav class="builder-progress" aria-label="建角步骤"><button data-build-stage="identity" aria-current="${s.stage==='identity'?'step':'false'}">人物与属性</button>${Array.from({length:s.targetLevel},(_,i)=>`<button data-build-level="${i+1}" ${!p||i+1>(p.character?.level||0)?'disabled':''} aria-current="${s.stage==='choice'&&p?.next_level===i+1?'step':'false'}">Lv.${i+1}</button>`).join('')}<span>${s.stage==='review'?'最终审阅':'逐级确认'}</span></nav>${s.notes.length?`<div class="builder-notes">${s.notes.map(note=>`<p>${esc(note)}</p>`).join('')}</div>`:''}<p id="builder-error" class="error" role="alert">${esc(s.error)}</p>${s.pending?'<p role="status">正在验证构筑，请稍候…</p>':s.stage==='identity'?builderIdentityHtml(s):s.stage==='choice'?builderChoiceHtml(s):`<section class="builder-review"><div class="eyebrow">READY FOR YOUR REVIEW</div><h3>${esc(p.character.name)} · ${esc(classLabel(p.character))} Lv.${p.character.level}</h3>${sheetOverviewHtml(p.character)}<p>${esc(p.character.profile?.background||s.build.profile.background)}</p><p class="helper">你已逐级确认 ${s.targetLevel} 级构筑。保存后才会写入人物记录；不会为真实冒险授予额外经验。</p><button id="builder-save" class="primary">${s.roomMember?'确认构筑并准备入席':'保存人物构筑'} ↗</button></section>`}`;
+ $('#builder-close',root).onclick=()=>s.close();
+ $('[data-build-stage]',root).onclick=()=>{s.stage='identity';s.error='';renderCharacterBuilder();};
+ root.querySelectorAll('[data-build-level]').forEach(button=>button.onclick=async()=>{const level=Number(button.dataset.buildLevel);s.build.levels=s.build.levels.slice(0,Math.max(0,level-2));if(level===1)s.build.choices={};s.error='';await runBuilderPreview();});
+ if(s.pending)return;
+ if(s.stage==='choice'){
+  const saved=p.next_level===1?s.build.choices:(s.build.levels[p.next_level-2]?.choices||s.suggestedLevels?.[p.next_level-2]?.choices||{});
+  if(saved.subclass_id&&$('[name=subclass_id]',root))$('[name=subclass_id]',root).value=saved.subclass_id;
+  for(const [id,value] of Object.entries(saved.asi||{}))if($(`[name=asi_${id}]`,root))$(`[name=asi_${id}]`,root).value=value;
+  for(const [level,id] of Object.entries(saved.arcanum||{}))if($(`[name=arcanum_${level}]`,root))$(`[name=arcanum_${level}]`,root).value=id;
+  if(s.build.class_id==='wizard'){
+   const syncPrepared=()=>{const book=[...root.querySelectorAll('[name=spellbook]:checked')].map(box=>box.value);root.querySelectorAll('[name=prepared_spells]').forEach(box=>{box.disabled=!book.includes(box.value);if(box.disabled)box.checked=false;});};
+   root.querySelectorAll('[name=spellbook]').forEach(box=>box.addEventListener('change',syncPrepared));syncPrepared();
   }
-  try {
-    vaultCharacters = (await api("/api/my/characters")).items || [];
-    await ensureSheetCatalog();
-  } catch (error) {
-    toast(error.message);
-    return;
-  }
-  openDialog(
-    `<div class="row between"><div><div class="eyebrow">YOUR ADVENTURERS</div><h2 id="dialog-title" style="margin-top:8px">我的角色</h2></div><button class="ghost" data-close>×</button></div><p class="helper" style="margin-top:18px">角色绑定账号，保留经验、职业成长、装备与法术记录。正在冒险中的角色不能同时加入第二个房间。</p><div class="form">${vaultCharacters.map((hero) => `<details class="sheet-feature"><summary style="cursor:pointer;font-size:14px">${esc(hero.character.name)} · ${esc(classLabel(hero.character))} Lv.${hero.character.level} <small>${hero.available ? "可用于新冒险" : "冒险进行中"}</small></summary><div style="margin-top:18px">${sheetOverviewHtml(hero.character)}${hero.character.spell_details?.length ? `<section class="sheet-section"><h3>已掌握的法术</h3>${hero.character.spell_details.map((spell) => `<div class="sheet-list-row"><span>${esc(spell.name)}</span><small>${spell.level === 0 ? "戏法" : spell.level + "环"} · ${spell.prepared ? "已准备" : spell.known ? "已知" : "法术书"}</small></div>`).join("")}</section>` : ""}<p class="helper">${hero.active_room_id ? "进入所属冒险后，可管理升级、准备法术和个人资源。" : "创建冒险或加入房间时，在“使用已保存的角色”中选择此人物。"}</p></div></details>`).join("") || '<p class="helper">还没有角色。先选择一个职业，创建属于你的旅人。</p>'}</div><section class="sheet-section" style="border-top:1px solid var(--line);padding-top:22px;margin-top:22px"><h3>创建新角色 · 12 职业</h3><form id="new-hero-form" class="form"><label>角色姓名<input name="name" maxlength="32" required placeholder="旅人的名字"></label><label>选择职业<select name="class_id">${sheetCatalog.classes.map((cls) => `<option value="${esc(cls.id)}">${esc(cls.display_name || cls.name_zh || cls.name)}</option>`).join("")}</select></label><p class="helper">以标准数组和职业默认初始选项创建 1 级角色。完整成长覆盖 1–20 级；目录收录、自动结算和人工裁定会分别标注。</p><p class="error" id="hero-error" role="alert"></p><button class="primary" type="submit">创建并保存角色 ↗</button></form></section>`,
-    (overlay, close) => {
-      $(".modal", overlay).classList.add("sheet-modal");
-      $("#new-hero-form", overlay).onsubmit = async (event) => {
-        event.preventDefault();
-        const form = event.currentTarget,
-          button = $("button.primary", form);
-        button.disabled = true;
-        try {
-          const values = Object.fromEntries(new FormData(form));
-          await api("/api/my/characters", {
-            method: "POST",
-            body: JSON.stringify({ ...values, choices: {} }),
-          });
-          close();
-          toast("角色已保存。开房或加入房间时可以选择它。");
-          await openCharacterVault();
-        } catch (error) {
-          $("#hero-error", overlay).textContent = error.message;
-          button.disabled = false;
-        }
-      };
-    },
-  );
+ }
+ $('#builder-identity',root)?.addEventListener('submit',async event=>{event.preventDefault();readBuilderIdentity(event.currentTarget);await startBuilderReview();});
+ $('#builder-template',root)?.addEventListener('change',event=>{readBuilderIdentity($('#builder-identity',root));const c=(catalog.characters||[]).find(item=>item.id===event.target.value);if(c){s.build={...baseCharacterBuild(c),name:s.build.name||c.name,profile:s.build.profile};renderCharacterBuilder();}});
+ $('#builder-ai',root)?.addEventListener('click',async()=>{readBuilderIdentity($('#builder-identity',root));const prompt=$('#builder-ai-prompt',root).value.trim();if(!prompt){s.error='请填写希望 AI 修改的具体内容。';renderCharacterBuilder();return;}s.pending=true;renderCharacterBuilder();try{const result=await api('/api/character-builds/ai',{method:'POST',body:JSON.stringify({build:s.build,target_level:s.targetLevel,prompt})});s.build=result.build;s.notes=[`来源：${result.source==='llm'?'AI 草稿':'本地草稿'}；请逐项审阅。`,...(result.notes||[])];s.error='';}catch(error){s.error=error.message;}finally{s.pending=false;s.stage='identity';renderCharacterBuilder();}});
+ $('#builder-choice',root)?.addEventListener('submit',async event=>{event.preventDefault();const form=event.currentTarget,values=new FormData(form),choices={};for(const key of ['skills','known_spells','prepared_spells','cantrips','spellbook','expertise','magical_secrets','bonus_skills'])if(form.querySelector(`[name=${key}]`))choices[key]=values.getAll(key);if(values.get('subclass_id'))choices.subclass_id=values.get('subclass_id');if(form.querySelector('[name^=asi_]'))choices.asi=Object.fromEntries(Object.keys(abilities).map(id=>[id,Number(values.get('asi_'+id)||0)]));const arcanum=[...form.querySelectorAll('[name^=arcanum_]')];if(arcanum.length)choices.arcanum={...(p.character?.arcanum||{}),...Object.fromEntries(arcanum.map(field=>[field.name.slice(8),field.value]))};const initial=!p.character||p.next_level===1;if(initial)s.build.choices=choices;else {s.build.levels=s.build.levels.slice(0,p.next_level-2);s.build.levels.push({choices});}await runBuilderPreview({rollbackLevel:!initial});});
+ $('#builder-save',root)?.addEventListener('click',saveCharacterBuild);
+}
+async function startBuilderReview() {
+ const s=builderState,selected=s.build.choices;s.suggestedLevels=s.build.levels;s.build.levels=[];s.build.choices={};s.pending=true;renderCharacterBuilder();
+ try{s.preview=await previewCharacterBuild();s.stage='choice';s.editingLevel=1;s.error='';}catch(error){s.error=error.message;}finally{s.build.choices=selected;s.pending=false;renderCharacterBuilder();}
+}
+async function runBuilderPreview({rollbackLevel=false}={}) {
+ const s=builderState;s.pending=true;renderCharacterBuilder();
+ try{s.preview=await previewCharacterBuild();s.error='';s.stage=s.preview.ready?'review':'choice';s.editingLevel=s.preview.next_level;if(s.preview.missing_choices?.length)s.notes=[`需要确认：${s.preview.missing_choices.join('、')}`];else s.notes=[];}
+ catch(error){if(rollbackLevel)s.build.levels.pop();s.error=error.message;}
+ finally{s.pending=false;renderCharacterBuilder();}
+}
+async function saveCharacterBuild() {
+ const s=builderState;s.pending=true;renderCharacterBuilder();
+ try{if(s.roomMember){if(!await command('configure_character',{build:s.build}))throw Error('构筑未保存，请检查规则要求后重试。');}else await api(s.hero?`/api/my/characters/${s.hero.id}`:'/api/my/characters',{method:s.hero?'PATCH':'POST',body:JSON.stringify({...(s.hero?{operation:'rebuild',expected_version:s.hero.version}:{class_id:s.build.class_id,name:s.build.name}),build:s.build,starting_level:s.targetLevel})});s.close();toast('人物构筑已保存。');if(!s.roomMember)await openCharacterVault();}
+ catch(error){s.pending=false;s.error=error.message;renderCharacterBuilder();}
 }
 
 boot();

@@ -16,6 +16,7 @@ jobs:
           node-version: '22'
       - run: pip install -r requirements-dev.txt
       - run: python -m pytest -q
+      - run: node --check frontend/live-log.js
       - run: node --check frontend/app.js
       - run: node --check frontend/studio.js
       - run: node --check frontend/account.js
@@ -26,3 +27,5 @@ jobs:
       - run: npm run test:rooms
       - run: npm run test:combat
       - run: npm run test:free-action
+      - run: npm run test:logs
+      - run: npm run test:builder

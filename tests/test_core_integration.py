@@ -28,7 +28,7 @@ def hero(c):
 
 
 def room(c, hid=None):
-    data = {'player_name': 'Reviewer', 'character_id': 'fighter', 'interaction_mode': 'freeform'}
+    data = {'starting_level': 1, 'player_name': 'Reviewer', 'character_id': 'fighter', 'interaction_mode': 'freeform'}
     if hid:
         data['hero_id'] = hid
     return c.post('/api/rooms', json=data)
@@ -82,6 +82,7 @@ def test_room_upgrade_receipt_and_vault_sync(env):
     a, _, store, _ = env
     session = room(a).json()
     rid = session['room']['id']
+    assert cmd(a, rid, 'start')[0].status_code == 200
     seed(store, rid, lambda s: s['members'][0]['character'].update(xp=300))
     result, body = cmd(a, rid, 'level_up', {'choices': {}})
     assert result.status_code == 200, result.text

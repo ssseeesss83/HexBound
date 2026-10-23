@@ -325,7 +325,31 @@ def _default_equipment(class_id, abilities):
     return {"name": name, "ability": ability, "dice": dice}, ac
 
 
-def create_character(class_id, name="冒险者", choices=None):
+def validate_abilities(abilities):
+    if not isinstance(abilities, dict) or set(abilities) != set(ABILITIES) or any(type(value) is not int or not 8 <= value <= 20 for value in abilities.values()):
+        raise ValueError("自定义属性必须为六项 8–20 的整数（自定义房规）")
+    return deepcopy(abilities)
+
+
+def validate_profile(profile):
+    if profile is None:
+        return {"appearance": "", "personality": "", "background": "", "talents": []}
+    if not isinstance(profile, dict) or set(profile) - {"appearance", "personality", "background", "talents"}:
+        raise ValueError("人物叙事资料包含未知字段")
+    result = {}
+    for key in ("appearance", "personality", "background"):
+        value = profile.get(key, "")
+        if not isinstance(value, str) or len(value) > 3000:
+            raise ValueError(f"{key}必须为最多3000字符的文本")
+        result[key] = value.strip()
+    talents = profile.get("talents", [])
+    if not isinstance(talents, list) or len(talents) > 20 or any(not isinstance(value, str) or not 1 <= len(value.strip()) <= 300 for value in talents):
+        raise ValueError("叙事天赋最多20项，每项1–300字符；不赋予数值能力")
+    result["talents"] = [value.strip() for value in talents]
+    return result
+
+
+def create_character(class_id, name="冒险者", choices=None, *, abilities=None, profile=None):
     choices = _choice_dict(choices)
     if class_id not in CLASS_NAMES or class_id not in _data().CLASSES:
         raise ValueError("请选择SRD十二职业之一")
@@ -335,7 +359,9 @@ def create_character(class_id, name="冒险者", choices=None):
         raise ValueError("1级创建不能获得属性提升")
     if choices.get("bonus_skills"):
         raise ValueError("1级创建没有学院额外技能")
-    abilities = dict(zip(PRIORITIES[class_id].split(), (15, 14, 13, 12, 10, 8)))
+    custom_abilities = abilities is not None
+    abilities = validate_abilities(abilities) if custom_abilities else dict(zip(PRIORITIES[class_id].split(), (15, 14, 13, 12, 10, 8)))
+    profile = validate_profile(profile)
     count, options = _class_skills(class_id)
     skills = _ids(choices.get("skills", options[:count]), "skills")
     if len(skills) != count or not set(skills).issubset(options):
@@ -352,6 +378,10 @@ def create_character(class_id, name="冒险者", choices=None):
     die = _data().CLASSES[class_id]["hit_die"]
     hp = die + modifier(abilities["con"])
     c = {"id": class_id, "template_id": class_id, "class_id": class_id, "name": name.strip(), "level": 1, "xp": 0, "milestone_credits": 0, "abilities": abilities, "skills": skills, "expertise": [], "subclass_id": subclass, "hp": hp, "max_hp": hp, "ac": ac, "weapon": weapon, "hit_dice": {"die": die, "max": 1, "current": 1}, "resources": {}, "spell_slots": {}, "pact_slots": {}, "death_successes": 0, "death_failures": 0, "stable": False, "dead": False, "potions": 2, "growth_history": [], "notes": ["标准数组按职业固定分配；尚未叠加种族、背景或专长收益。", "此人物提供完整单职业成长数据；仅标记自动化的能力会由脚本执行。"]}
+    c["profile"] = profile
+    c["ability_generation"] = "custom-house-rule" if custom_abilities else "standard-array"
+    if custom_abilities:
+        c["notes"][0] = "自定义属性8–20房规；叙事背景与天赋不授予数值收益。"
     if class_id == "rogue":
         expert = _ids(choices.get("expertise", skills[:2]), "expertise")
         if len(expert) != 2 or not set(expert).issubset(skills):

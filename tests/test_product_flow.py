@@ -28,7 +28,7 @@ def publish(client, admin, kind, data):
 
 
 def room(client, **kwargs):
-    response = client.post("/api/rooms", json={"player_name": "旅人", "character_id": "fighter", **kwargs})
+    response = client.post("/api/rooms", json={"starting_level": 1, "player_name": "旅人", "character_id": "fighter", **kwargs})
     assert response.status_code == 201, response.text
     return response.json()
 
@@ -72,7 +72,7 @@ def test_authored_cards_publish_and_play_with_frozen_versions(setup, monkeypatch
     roll = [e["roll"] for e in result["events"] if e.get("roll", {}).get("kind") == "attack"][-1]
     assert roll["damage_dice"] == [4, 4]  # old frozen d4, not new d12
     assert client.post("/api/studio/items/test-book/archive", headers=admin, json={"expected_revision": published_book["revision"]}).status_code == 200
-    assert client.post("/api/rooms", json={"player_name": "新人", "character_id": "fighter", "scenario_id": "test-book"}).status_code != 201
+    assert client.post("/api/rooms", json={"starting_level": 1, "player_name": "新人", "character_id": "fighter", "scenario_id": "test-book"}).status_code != 201
     end = command(client, session, "action", {"action_id": "node:finish"}).json()["room"]
     assert end["status"] == "finished" and end["scene"]["id"] == "end"
 

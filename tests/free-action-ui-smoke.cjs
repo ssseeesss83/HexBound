@@ -176,6 +176,7 @@ async function main() {
       sockets.push(this);
     }
   };
+  w.eval(fs.readFileSync(path.join(root, "frontend/live-log.js"), "utf8"));
   w.eval(fs.readFileSync(path.join(root, "frontend/app.js"), "utf8"));
   const click = (s) => {
     assert(q(s), s);
@@ -188,6 +189,7 @@ async function main() {
     );
   await until(() => q("#create"), "home");
   click("#create");
+  q("[name=starting_level]").value = "1";
   q("[name=hero_id]").value = hero.id;
   q("[name=scenario_id]").value = "ui-scenario";
   q("[name=player_name]").value = "试炼法师";

@@ -13,19 +13,49 @@ class HeroInput(BaseModel):
 
 
 class NewHero(HeroInput):
-    class_id: str = Field(min_length=1, max_length=40)
-    name: str = Field(min_length=1, max_length=32)
+    class_id: str | None = Field(default=None, min_length=1, max_length=40)
+    name: str | None = Field(default=None, min_length=1, max_length=32)
     choices: dict = Field(default_factory=dict)
+    build: dict | None = None
+    starting_level: int = Field(default=1, ge=1, le=20, strict=True)
 
 
 class EditHero(HeroInput):
     expected_version: int = Field(ge=1)
-    operation: Literal["level_up", "spells"]
+    operation: Literal["level_up", "spells", "rebuild"]
     choices: dict = Field(default_factory=dict)
+    build: dict | None = None
+    starting_level: int = Field(default=1, ge=1, le=20, strict=True)
 
 
 def encode(value):
     return json.dumps(value, ensure_ascii=False, sort_keys=True)
+
+
+def can_rebuild(row, db, character):
+    """An unbound, unused build can be revised; adventure state cannot be reset."""
+    from . import characters
+    from .character_builds import finalize
+    if row["active_room_id"] or character.get("ever_adventured"):
+        return False
+    # A historical room reference remains disqualifying even after manual unbind.
+    history = db.execute("SELECT 1 FROM rooms, json_each(rooms.state, '$.members') AS member WHERE json_extract(member.value, '$.hero_id')=? LIMIT 1", (row["id"],)).fetchone()
+    if history:
+        return False
+    try:
+        if character.get("build"):
+            original = finalize(character["build"], character.get("starting_level", 1))
+        else:
+            if character.get("level", 1) != 1 or character.get("growth_history"):
+                return False
+            choices = {key: character[key] for key in ("skills", "expertise", "subclass_id", "cantrips", "known_spells", "prepared_spells", "spellbook") if key in character}
+            original = characters.create_character(character["class_id"], character["name"], choices,
+                abilities=character["abilities"] if character.get("ability_generation") == "custom-house-rule" else None,
+                profile=character.get("profile"))
+    except (ValueError, KeyError, TypeError):
+        return False
+    fields = ("level", "xp", "milestone_credits", "abilities", "hp", "max_hp", "resources", "spell_slots", "pact_slots", "hit_dice", "growth_history", "dead", "stable", "death_successes", "death_failures", "potions")
+    return not character.get("conditions") and all(character.get(key) == original.get(key) for key in fields)
 
 
 def hero_view(row, db):
@@ -36,7 +66,8 @@ def hero_view(row, db):
     room_status = json.loads(room["state"])["status"] if room else None
     return {"id": row["id"], "version": row["version"], "character": characters.character_sheet(character),
             "active_room_id": active, "active_room_status": room_status,
-            "available": not room or room_status == "finished", "advancement": characters.level_up_preview(character)}
+            "available": not room or room_status == "finished", "advancement": characters.level_up_preview(character),
+            "can_rebuild": can_rebuild(row, db, character), "build": character.get("build")}
 
 
 def create_hero_router(store):
@@ -54,7 +85,17 @@ def create_hero_router(store):
         from . import characters
         user = require_user(request)
         try:
-            character = characters.create_character(body.class_id, body.name, body.choices)
+            if body.build is not None:
+                from .character_builds import finalize
+                if body.choices or (body.class_id is not None and body.class_id != body.build.get("class_id")) or (body.name is not None and body.name != body.build.get("name")):
+                    raise ValueError("build路径不能提交冲突的职业、姓名或独立choices")
+                character = finalize(body.build, body.starting_level)
+            else:
+                if body.starting_level != 1:
+                    raise ValueError("高等级创建必须提交完整逐级build")
+                if body.class_id is None or body.name is None:
+                    raise ValueError("创建角色需提供职业和姓名，或完整build")
+                character = characters.create_character(body.class_id, body.name, body.choices)
         except (ValueError, KeyError) as exc:
             raise HTTPException(422, str(exc)) from exc
         with store.connect() as db:
@@ -91,7 +132,16 @@ def create_hero_router(store):
                 raise HTTPException(409, "请进入角色所属冒险管理成长和法术；可在新冒险继续使用已结束冒险的角色")
             character = characters.migrate_character(json.loads(row["payload"]))
             try:
-                if body.operation == "level_up":
+                if body.operation != "rebuild" and (body.build is not None or "starting_level" in body.model_fields_set):
+                    raise ValueError("build与starting_level仅用于rebuild")
+                if body.operation == "rebuild":
+                    from .character_builds import finalize
+                    if not can_rebuild(row, db, character):
+                        raise HTTPException(409, "仅未绑定且从未冒险或成长的原始角色可重建")
+                    if body.build is None or body.choices:
+                        raise ValueError("重建需完整build，不能混用独立choices")
+                    character = finalize(body.build, body.starting_level)
+                elif body.operation == "level_up":
                     character = characters.level_up(character, body.choices)
                 else:
                     character = characters.manage_spells(character, body.choices)

@@ -17,7 +17,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 
-from . import content, rules, campaign, characters, abilities, compendium, director, progression, free_actions
+from . import content, rules, campaign, characters, abilities, compendium, director, progression, free_actions, character_builds, character_ai
 from .dm import DM
 from .store import Store
 from .heroes import create_hero_router
@@ -38,6 +38,7 @@ class CreateRoom(Input):
     theme: str = Field(default="", max_length=600)
     scenario_id: str | None = Field(default=None, max_length=80)
     interaction_mode: Literal["guided", "freeform", "assisted"] = "guided"
+    starting_level: int | None = Field(default=None, ge=1, le=20, strict=True)
     progression_mode: Literal["xp", "milestone"] = "xp"
 
 
@@ -55,7 +56,7 @@ class ClaimSeat(Input):
 class Command(Input):
     command_id: str = Field(min_length=8, max_length=100)
     expected_version: int = Field(ge=0)
-    type: Literal["start", "pause", "resume", "action", "chat", "narrate", "end_turn", "set_interaction", "scene_edit", "level_up", "manage_spells", "rest", "equip_skills", "director_propose", "director_resolve", "director_cancel"]
+    type: Literal["start", "pause", "resume", "action", "chat", "narrate", "end_turn", "set_interaction", "scene_edit", "level_up", "manage_spells", "rest", "equip_skills", "director_propose", "director_resolve", "director_cancel", "configure_character", "prepare_level_up"]
     payload: dict = Field(default_factory=dict)
 
 
@@ -86,6 +87,18 @@ class LevelPayload(Input):
     choices: dict = Field(default_factory=dict)
 
 
+class BuildPayload(Input):
+    build: dict
+
+
+class BuildPreviewPayload(BuildPayload):
+    target_level: int = Field(default=1, ge=1, le=20, strict=True)
+
+
+class BuildAIPayload(BuildPreviewPayload):
+    prompt: str = Field(default="", max_length=2000)
+
+
 class SpellPayload(Input):
     prepared_spells: list[str] = Field(max_length=40)
 
@@ -104,7 +117,7 @@ class ProposalPayload(Input):
 
 
 def create_app(db_path: str | None = None) -> FastAPI:
-    app = FastAPI(title="HEXBOUND", version="0.5.0")
+    app = FastAPI(title="HEXBOUND", version="0.6.0")
     @app.exception_handler(RequestValidationError)
     async def invalid_request(request: Request, exc: RequestValidationError):
         # Validation responses must never echo passwords or other submitted secrets.
@@ -210,7 +223,9 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 visible["hero_id"] = member.get("hero_id")
             party.append({**visible, "id": member["id"], "name": member["name"],
                           "character_id": character.get("id", member.get("character_id", "")),
-                          "online": member["id"] in online})
+                          "online": member["id"] in online,
+                          "build_ready": member.get("build_ready", True),
+                          "can_rebuild": state["status"] == "lobby" and member.get("can_rebuild", False)})
         scene = state.get("scene") or {"id": "lobby", "title": "故事尚未开始", "text": "邀请伙伴入席，由房主开启冒险。", "objective": "等待队伍集结"}
         scene = {key: scene.get(key, "") for key in ("id", "title", "text", "objective")}
         actions = actions_for(state, viewer) if state["status"] == "playing" else []
@@ -218,6 +233,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
             "id": state["id"], "name": state["name"], "mode": state["mode"],
             "status": state["status"], "version": state["version"], "host_id": state["host_id"],
             "invite_code": state["invite_code"], "party": party, "scene": scene,
+            "starting_level": state.get("starting_level", 1),
             "events": copy.deepcopy(state["events"][-150:]), "last_event_seq": len(state["events"]),
             "available_actions": actions, "combat": copy.deepcopy(state.get("combat")),
             "dm_source": state.get("dm_source", "local"), "dm_pending": bool(state.get("dm_pending")),
@@ -321,6 +337,23 @@ def create_app(db_path: str | None = None) -> FastAPI:
         base["rules"]["limitations"] = ["2014 SRD 5.1规则；完整目录与自动化能力分别标识","复杂空间、召唤及未注册效果仅供规则查阅","不包含扩展书专有职业与全部子职业；暂不支持多职业","种族/背景目前使用明确的通用预设，非完整选择系统"]
         return {**base, "auth": {"allow_guests": allow_guests()}, "llm": {"configured": dm.configured, "model": dm.model if dm.configured else "本地叙事"}}
 
+    @app.post("/api/character-builds/preview")
+    async def preview_build(body: BuildPreviewPayload, request: Request):
+        room_user(request)
+        try:
+            return character_builds.build_preview(body.build, body.target_level)
+        except (ValueError, KeyError) as exc:
+            raise HTTPException(422, str(exc)) from exc
+
+    @app.post("/api/character-builds/ai")
+    async def suggest_build(body: BuildAIPayload, request: Request):
+        user = room_user(request)
+        throttle("build-ai:" + (user["id"] if user else request.client.host), 12)
+        try:
+            return await character_ai.suggest(dm, body.build, body.target_level, body.prompt)
+        except (ValueError, KeyError) as exc:
+            raise HTTPException(422, str(exc)) from exc
+
     @app.post("/api/rooms", status_code=201)
     async def create_room(body: CreateRoom, request: Request):
         user = room_user(request)
@@ -341,6 +374,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
             "mode": body.mode, "theme": body.theme, "host_id": member_id,
             "status": "lobby", "version": 0, "events": [], "dm_pending": None,
             "interaction_mode": body.interaction_mode,
+            "starting_level": body.starting_level or (package["scenario"].get("starting_level",3) if package else 3),
             "progression": {"mode":body.progression_mode,"world_minutes":0},
             "reward_ledger": [],
             "members": [{"id": member_id, "name": body.player_name, "character_id": body.character_id, "character": character, "hero_id":body.hero_id}],
@@ -424,7 +458,11 @@ def create_app(db_path: str | None = None) -> FastAPI:
         package=state.get("campaign",{}).get("package") or state.get("campaign_package") or {}
         sheet["available_custom_skills"]=[card for card in package.get("skills",{}).values() if card["effect"]!="check"]
         sheet["equipped_custom_skill_ids"]=c.get("custom_skill_ids",[])
-        return {"character":sheet,"advancement":characters.level_up_preview(c),"owner":viewer==target_member_id and store.owns_active_hero(room_id,target_member_id),"hero_id":target.get("hero_id") if viewer==target_member_id else None}
+        setup = {"target_level": state.get("starting_level",1), "can_rebuild": state["status"] == "lobby" and target.get("can_rebuild",False), "ready": target.get("build_ready",True)}
+        preview_character = copy.deepcopy(c)
+        if state["status"] == "lobby" and c["level"] < setup["target_level"]:
+            preview_character["milestone_credits"] = max(1, c.get("milestone_credits",0))
+        return {"character":sheet,"setup":setup,"advancement":characters.level_up_preview(preview_character),"owner":viewer==target_member_id and store.owns_active_hero(room_id,target_member_id),"hero_id":target.get("hero_id") if viewer==target_member_id else None}
 
     @app.get("/api/rooms/{room_id}/events")
     async def events(room_id: str, request: Request, after: int = 0, authorization: str | None = Header(default=None)):
@@ -449,8 +487,10 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 payload = InteractionPayload.model_validate(body.payload).model_dump()
             elif body.type == "scene_edit":
                 payload = SceneEditPayload.model_validate(body.payload).model_dump()
-            elif body.type in ("level_up","manage_spells","rest","equip_skills","director_resolve","director_cancel"):
-                model={"level_up":LevelPayload,"manage_spells":SpellPayload,"rest":RestPayload,"equip_skills":SkillsPayload,"director_resolve":ProposalPayload,"director_cancel":ProposalPayload}[body.type]
+            elif body.type == "configure_character":
+                payload = BuildPayload.model_validate(body.payload).model_dump()
+            elif body.type in ("prepare_level_up","level_up","manage_spells","rest","equip_skills","director_resolve","director_cancel"):
+                model={"prepare_level_up":LevelPayload,"level_up":LevelPayload,"manage_spells":SpellPayload,"rest":RestPayload,"equip_skills":SkillsPayload,"director_resolve":ProposalPayload,"director_cancel":ProposalPayload}[body.type]
                 payload=model.model_validate(body.payload).model_dump()
             else:
                 if body.payload:
@@ -465,6 +505,10 @@ def create_app(db_path: str | None = None) -> FastAPI:
             return {"room":public(candidate,member_id),"replayed":True}
         if candidate["version"] != body.expected_version:
             raise HTTPException(409,"房间已更新，请同步后重试")
+        if body.type == "start" and candidate["host_id"] != member_id:
+            raise HTTPException(403,"只有房主可以开始冒险")
+        if body.type == "start" and any(not m.get("build_ready",True) for m in candidate["members"]):
+            raise HTTPException(409,"所有玩家须先完成起始等级构筑")
         proposed = None
         if body.type == "director_propose":
             if candidate["status"] != "playing":
@@ -505,6 +549,8 @@ def create_app(db_path: str | None = None) -> FastAPI:
             if body.type == "start":
                 if state["status"] != "lobby":
                     raise HTTPException(409, "冒险已经开始")
+                if any(not m.get("build_ready",True) for m in state["members"]):
+                    raise HTTPException(409,"所有玩家须先完成起始等级构筑")
                 state["status"] = "playing"
                 if state.get("campaign_package"):
                     for player in state["members"]:
@@ -580,7 +626,31 @@ def create_app(db_path: str | None = None) -> FastAPI:
                     pending = "narrate"
                 if state.get("completed"):
                     state["status"]="finished"
+            elif body.type in ("configure_character", "prepare_level_up"):
+                if state["status"] != "lobby":
+                    raise HTTPException(409,"起始构筑只能在开团前调整")
+                if not store.owns_active_hero(room_id,member_id):
+                    raise HTTPException(409,"该角色已进入另一场冒险")
+                target_level = state.get("starting_level",1)
+                try:
+                    if body.type == "configure_character":
+                        if not member.get("can_rebuild",False):
+                            raise HTTPException(409,"已有角色保留历史构筑，请逐级补足等级")
+                        updated = character_builds.build_character(payload["build"],target_level)
+                    else:
+                        if member["character"].get("level",1) >= target_level:
+                            raise HTTPException(409,"已达到本桌起始等级")
+                        updated = character_builds.prepare_level(member["character"],payload["choices"])
+                    member["character"] = updated
+                    member["name"] = updated["name"]
+                    member["character_id"] = updated["class_id"]
+                    member["build_ready"] = updated["level"] == target_level
+                    event(state,"character",f"{member['name']} 已确认 {updated['level']} 级构筑。",member["name"])
+                except (ValueError,KeyError) as exc:
+                    raise HTTPException(422,str(exc)) from exc
             elif body.type in ("level_up","manage_spells","rest","equip_skills"):
+                if body.type == "level_up" and state["status"] == "lobby" and "starting_level" in state:
+                    raise HTTPException(409,"开团前请通过起始等级流程确认升级")
                 if state.get("combat",{}) and state["combat"].get("active"):
                     raise HTTPException(409,"请在战斗结束后管理成长、准备能力或休息")
                 if not store.owns_active_hero(room_id,member_id):

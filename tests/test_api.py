@@ -25,7 +25,7 @@ def client(app):
 
 
 def create(client, **kwargs):
-    response = client.post("/api/rooms", json={"name": "测试团", "player_name": "旅人", "character_id": "fighter", **kwargs})
+    response = client.post("/api/rooms", json={"starting_level": 1, "name": "测试团", "player_name": "旅人", "character_id": "fighter", **kwargs})
     assert response.status_code == 201, response.text
     return response.json()
 
@@ -127,7 +127,7 @@ def test_local_roleplay_never_changes_mechanics(client):
 
 
 def test_free_requires_llm_and_generated_scenes_are_persisted(app, client):
-    rejected = client.post("/api/rooms", json={"player_name": "旅人", "character_id": "fighter", "mode": "free"})
+    rejected = client.post("/api/rooms", json={"starting_level": 1, "player_name": "旅人", "character_id": "fighter", "mode": "free"})
     assert rejected.status_code == 422
     app.state.dm.configured = True
     from backend.content import SCENES
@@ -166,7 +166,7 @@ def test_llm_await_does_not_lock_room_and_stale_response_is_discarded(app):
             return "过期叙述不能出现", "llm", None
         app.state.dm.narrate = slow
         async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url="http://test") as client:
-            session = (await client.post("/api/rooms", json={"player_name": "旅人", "character_id": "fighter"})).json()
+            session = (await client.post("/api/rooms", json={"starting_level": 1, "player_name": "旅人", "character_id": "fighter"})).json()
             url = "/api/rooms/" + session["room"]["id"]
             async def send(kind, version, payload={}):
                 return await client.post(url + "/commands", headers=headers(session), json={"command_id": uuid.uuid4().hex, "expected_version": version, "type": kind, "payload": payload})
@@ -248,7 +248,7 @@ def test_free_generation_concurrent_chat_keeps_lobby_and_allows_retry(app):
             return copy.deepcopy(SCENES)
         app.state.dm.adventure = slow
         async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url="http://test") as client:
-            host = (await client.post("/api/rooms", json={"player_name": "房主", "character_id": "fighter", "mode": "free"})).json()
+            host = (await client.post("/api/rooms", json={"starting_level": 1, "player_name": "房主", "character_id": "fighter", "mode": "free"})).json()
             guest = (await client.post("/api/rooms/join", json={"invite_code": host["invite_code"], "player_name": "同伴", "character_id": "rogue"})).json()
             url = "/api/rooms/" + host["room"]["id"]
             async def send(session, kind, version, payload={}):
@@ -277,7 +277,7 @@ def test_pause_during_hybrid_start_discards_response_without_pending_lock(app):
             return {**scene, "text": "不应写入的过期场景"}, "llm"
         app.state.dm.scene = slow
         async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url="http://test") as client:
-            session = (await client.post("/api/rooms", json={"player_name": "房主", "character_id": "fighter", "mode": "hybrid"})).json()
+            session = (await client.post("/api/rooms", json={"starting_level": 1, "player_name": "房主", "character_id": "fighter", "mode": "hybrid"})).json()
             url = "/api/rooms/" + session["room"]["id"]
             async def send(kind, version):
                 return await client.post(url + "/commands", headers=headers(session), json={"command_id": uuid.uuid4().hex, "expected_version": version, "type": kind})
@@ -301,7 +301,7 @@ def test_cancelled_narration_clears_pending_and_preserves_intent(app):
             await asyncio.Event().wait()
         app.state.dm.narrate = slow
         async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url="http://test") as client:
-            session = (await client.post("/api/rooms", json={"player_name": "旅人", "character_id": "fighter"})).json()
+            session = (await client.post("/api/rooms", json={"starting_level": 1, "player_name": "旅人", "character_id": "fighter"})).json()
             url = "/api/rooms/" + session["room"]["id"]
             async def send(kind, version, payload={}):
                 return await client.post(url + "/commands", headers=headers(session), json={"command_id": uuid.uuid4().hex, "expected_version": version, "type": kind, "payload": payload})

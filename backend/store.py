@@ -157,10 +157,18 @@ class Store:
                 db.execute("INSERT INTO commands VALUES (?, ?, ?, ?)",
                            (state["id"], member_id, command_id, json.dumps(response, ensure_ascii=False)))
 
-    def _bind_hero(self, db, state, member, user_id):
+    def _bind_hero(self, db, state, member, user_id, *, mark_build=True):
+        target_level = state.get("starting_level", 1)
+
+        def mark_template():
+            if mark_build:
+                member.update(build_ready=member["character"].get("level", 1) >= target_level,
+                              can_rebuild=True, character_origin="template")
+
         if not user_id:
             if member.get("hero_id"):
                 raise ValueError("请登录后使用永久角色")
+            mark_template()
             return
         hero_id = member.get("hero_id")
         if hero_id:
@@ -171,7 +179,13 @@ class Store:
                 old = db.execute("SELECT state FROM rooms WHERE id=?", (hero["active_room_id"],)).fetchone()
                 if old and json.loads(old["state"])["status"] != "finished":
                     raise ValueError("该角色仍在另一场冒险中，请完成后再加入新冒险")
-            member["character"] = deepcopy(json.loads(hero["payload"]))
+            canonical = deepcopy(json.loads(hero["payload"]))
+            level = canonical.get("level", 1)
+            if level > target_level:
+                raise ValueError(f"角色等级 {level} 高于冒险起始等级 {target_level}，无法加入")
+            member["character"] = canonical
+            if mark_build:
+                member.update(build_ready=level == target_level, can_rebuild=False, character_origin="existing")
             member["character"]["name"] = member["name"]
             member["character_id"] = member["character"].get("class_id",member.get("character_id"))
             clock = state.setdefault("progression", {"mode":"xp","world_minutes":0})
@@ -180,6 +194,7 @@ class Store:
         else:
             if db.execute("SELECT COUNT(*) FROM heroes WHERE owner_id=?", (user_id,)).fetchone()[0] >= 100:
                 raise ValueError("账号最多保留100名角色")
+            mark_template()
             hero_id = uuid.uuid4().hex
             member["hero_id"] = hero_id
             db.execute("INSERT INTO heroes VALUES(?,?,1,?,?)", (hero_id,user_id,json.dumps(member["character"],ensure_ascii=False),state["id"]))
@@ -221,7 +236,7 @@ class Store:
                         member["character"] = migrated
                         changed = True
                     if owner and owner["user_id"] and not member.get("hero_id"):
-                        self._bind_hero(db,state,member,owner["user_id"])
+                        self._bind_hero(db,state,member,owner["user_id"], mark_build="starting_level" in state)
                         changed = True
                 if changed:
                     self._sync_heroes(db,state)

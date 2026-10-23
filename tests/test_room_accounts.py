@@ -37,7 +37,7 @@ def register(client, username):
 
 
 def create(client):
-    response = client.post("/api/rooms", json={"name": "账号冒险", "player_name": "旅人", "character_id": "fighter"})
+    response = client.post("/api/rooms", json={"starting_level": 1, "name": "账号冒险", "player_name": "旅人", "character_id": "fighter"})
     assert response.status_code == 201, response.text
     return response.json()
 
@@ -54,7 +54,7 @@ def command(client, room_id, command_type, payload=None):
 def test_secure_default_requires_account(app):
     with TestClient(app) as c:
         assert c.get("/api/catalog").json()["auth"]["allow_guests"] is False
-        assert c.post("/api/rooms", json={"player_name": "旅人", "character_id": "fighter"}).status_code == 401
+        assert c.post("/api/rooms", json={"starting_level": 1, "player_name": "旅人", "character_id": "fighter"}).status_code == 401
         assert join(c, "ANYTHING").status_code == 401
         assert c.get("/api/my/rooms").status_code == 401
 
@@ -168,7 +168,7 @@ def test_disabled_account_websocket_stops_and_guest_mode_cannot_bypass(app, monk
                 ws.receive_json()
         monkeypatch.setenv("HEXBOUND_ALLOW_GUESTS", "1")
         assert c.get(f"/api/rooms/{rid}").status_code in (401, 403)
-        assert c.post("/api/rooms", json={"player_name": "降级尝试", "character_id": "fighter"}).status_code in (401, 403)
+        assert c.post("/api/rooms", json={"starting_level": 1, "player_name": "降级尝试", "character_id": "fighter"}).status_code in (401, 403)
 
 
 def test_account_room_survives_app_restart(app):

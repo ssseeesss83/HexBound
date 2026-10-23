@@ -7,7 +7,9 @@
     "test:accounts": "node tests/account-smoke.cjs",
     "test:rooms": "node tests/ui-smoke.cjs --accounts",
     "test:combat": "node tests/combat-ui-smoke.cjs",
-    "test:free-action": "node tests/free-action-ui-smoke.cjs"
+    "test:free-action": "node tests/free-action-ui-smoke.cjs",
+    "test:logs": "node tests/log-ui-smoke.cjs",
+    "test:builder": "node tests/character-builder-ui-smoke.cjs"
   },
   "devDependencies": {
     "jsdom": "26.1.0",
