@@ -17,5 +17,7 @@ jobs:
       - run: pip install -r requirements-dev.txt
       - run: python -m pytest -q
       - run: node --check frontend/app.js
+      - run: node --check frontend/studio.js
       - run: npm ci
       - run: npm run test:ui
+      - run: npm run test:studio

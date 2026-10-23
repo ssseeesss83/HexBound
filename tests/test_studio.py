@@ -1,0 +1,206 @@
+import copy
+import json
+
+import pytest
+from fastapi import FastAPI
+from fastapi.testclient import TestClient
+
+from backend.dm import DM
+from backend.schemas import parse_card
+from backend.store import Store
+from backend.studio import ContentService, FORMAT, compile_scenario, create_studio_router
+
+
+@pytest.fixture
+def setup(tmp_path, monkeypatch):
+    monkeypatch.setenv("HEXBOUND_ADMIN_TOKEN", "studio-test-secret")
+    monkeypatch.delenv("LLM_API_KEY", raising=False)
+    monkeypatch.delenv("LLM_MODEL", raising=False)
+    store = Store(str(tmp_path / "studio.sqlite3"))
+    dm = DM()
+    app = FastAPI()
+    app.include_router(create_studio_router(store, dm))
+    with TestClient(app) as client:
+        yield client, store, dm
+
+
+AUTH = {"Authorization": "Bearer studio-test-secret"}
+
+
+def skill(id="new-check", **kwargs):
+    return {"id": id, "name": "调查", "description": "调查场景", "tags": ["调查"], "effect": "check", "ability": "wis", "dice": "1d20", "bonus": 0, "dc": 12, "uses": None, "target": "scene", **kwargs}
+
+
+def book(id="new-book", skill_id="new-check"):
+    return {"id": id, "name": "新故事", "description": "公开摘要", "tags": ["测试"], "entry_node_id": "start", "skill_ids": [skill_id], "monster_ids": [], "nodes": [
+        {"id": "start", "title": "入口", "text": "秘密正文不应公开", "actions": [{"id": "look", "label": "调查", "skill_id": skill_id, "success_node_id": "end", "failure_node_id": "end"}]},
+        {"id": "end", "title": "终点", "text": "故事结局", "ending": True}]}
+
+
+def create(client, kind, data):
+    response = client.post("/api/studio/items", headers=AUTH, json={"kind": kind, "data": data})
+    assert response.status_code == 201, response.text
+    return response.json()
+
+
+def publish(client, item):
+    return client.post(f"/api/studio/items/{item['id']}/publish", headers=AUTH, json={"expected_revision": item["revision"]})
+
+
+def test_admin_auth_and_public_secrecy(setup, monkeypatch):
+    client, _, _ = setup
+    assert client.get("/api/studio/items").status_code == 401
+    assert client.get("/api/studio/items", headers={"Authorization": "Bearer room-member"}).status_code == 401
+    public = client.get("/api/content?kind=scenario").json()
+    assert public["items"] and "nodes" not in str(public)
+    assert "published_revision" in public["items"][0]
+    create(client, "skill", skill())
+    assert all(item["id"] != "new-check" for item in client.get("/api/content?q=调查").json()["items"])
+    monkeypatch.delenv("HEXBOUND_ADMIN_TOKEN")
+    assert client.get("/api/studio/status").json()["write_enabled"] is False
+    assert client.post("/api/studio/items", headers=AUTH, json={"kind": "skill", "data": skill("disabled")}).status_code == 503
+
+
+def test_draft_publish_revision_and_history_restore(setup):
+    client, _, _ = setup
+    draft = create(client, "skill", skill())
+    published = publish(client, draft).json()
+    assert published["revision"] == 2 and published["published_revision"] == 2
+    changed = {**draft["draft"], "name": "尚未发布的新名称"}
+    edited = client.put("/api/studio/items/new-check", headers=AUTH, json={"expected_revision": 2, "data": changed}).json()
+    assert edited["revision"] == 3 and edited["published"]["name"] == "调查"
+    public = client.get("/api/content?tag=调查").json()["items"]
+    assert public[0]["name"] == "调查"
+    assert client.put("/api/studio/items/new-check", headers=AUTH, json={"expected_revision": 2, "data": changed}).status_code == 409
+    history = client.get("/api/studio/items/new-check/history", headers=AUTH).json()["items"]
+    assert [row["action"] for row in history] == ["update", "publish", "create"]
+    restored = client.post("/api/studio/items/new-check/restore", headers=AUTH, json={"expected_revision": 3, "revision": 1}).json()
+    assert restored["draft"]["name"] == "调查" and restored["published_revision"] == 2
+
+
+def test_duplicate_is_unpublished_and_archive_preserves_history(setup):
+    client, _, _ = setup
+    copied = client.post("/api/studio/items/blade-strike/duplicate", headers=AUTH, json={"id": "blade-copy", "name": "副本"}).json()
+    assert copied["published"] is None and copied["revision"] == 1
+    archived = client.post("/api/studio/items/blade-copy/archive", headers=AUTH, json={"expected_revision": 1}).json()
+    assert archived["archived"] and archived["revision"] == 2
+    assert client.get("/api/studio/items?archived=true", headers=AUTH).json()["items"][0]["id"] == "blade-copy"
+    assert publish(client, archived).status_code == 409
+    assert client.get("/api/studio/items/blade-copy/history", headers=AUTH).status_code == 200
+
+
+def test_publish_requires_published_references_and_valid_graph(setup):
+    client, _, _ = setup
+    dependency = create(client, "skill", skill())
+    scenario = create(client, "scenario", book())
+    result = client.post("/api/studio/items/new-book/validate", headers=AUTH).json()
+    assert not result["valid"] and "new-check" in str(result["issues"])
+    assert publish(client, scenario).status_code == 422
+    assert publish(client, dependency).status_code == 200
+    assert publish(client, scenario).status_code == 200
+    broken = book("broken-book")
+    broken["nodes"][0]["actions"][0]["success_node_id"] = "missing-node"
+    broken["nodes"].append({"id": "unreachable", "title": "无路可达", "text": "秘密", "ending": True})
+    item = create(client, "scenario", broken)
+    validation = client.post("/api/studio/items/broken-book/validate", headers=AUTH).json()
+    assert not validation["valid"] and "missing-node" in str(validation["issues"])
+    assert publish(client, item).status_code == 422
+
+
+def test_snapshot_is_immutable_and_dependency_archive_blocked(setup):
+    client, store, _ = setup
+    snapshot = compile_scenario(store, "book-last-lantern")
+    snapshot["skills"]["blade-strike"]["bonus"] = 19
+    fresh = compile_scenario(store, "book-last-lantern")
+    assert fresh["skills"]["blade-strike"]["bonus"] == 0
+    assert client.post("/api/studio/items/blade-strike/archive", headers=AUTH, json={"expected_revision": 1}).status_code == 409
+    original = client.get("/api/studio/items/blade-strike", headers=AUTH).json()
+    changed = {**original["draft"], "bonus": 5}
+    updated = client.put("/api/studio/items/blade-strike", headers=AUTH, json={"expected_revision": 1, "data": changed}).json()
+    assert publish(client, updated).status_code == 200
+    assert fresh["skills"]["blade-strike"]["bonus"] == 0
+    assert compile_scenario(store, "book-last-lantern")["skills"]["blade-strike"]["bonus"] == 5
+
+
+def test_skill_changes_cannot_break_published_books(setup):
+    client, _, _ = setup
+    original = client.get("/api/studio/items/read-traces", headers=AUTH).json()
+    changed = {**original["draft"], "effect": "attack", "target": "enemy"}
+    updated = client.put("/api/studio/items/read-traces", headers=AUTH, json={"expected_revision": 1, "data": changed}).json()
+    response = publish(client, updated)
+    assert response.status_code == 422 and "check" in response.text
+
+
+def test_limited_skill_only_exit_rejected(setup):
+    client, _, _ = setup
+    limited = create(client, "skill", skill(uses=1))
+    assert publish(client, limited).status_code == 200
+    scenario = create(client, "scenario", book())
+    response = publish(client, scenario)
+    assert response.status_code == 422 and "耗尽" in response.text
+
+
+def test_import_export_dependencies_atomic_and_default_conflict_reject(setup):
+    client, store, _ = setup
+    package = {"format": FORMAT, "items": [{"kind": "scenario", "data": book()}, {"kind": "skill", "data": skill()}]}
+    imported = client.post("/api/studio/import", headers=AUTH, json={"package": package})
+    assert imported.status_code == 201 and imported.json()["total"] == 2
+    assert all(item["published"] is None for item in imported.json()["items"])
+    exported = client.post("/api/studio/export", headers=AUTH, json={"ids": ["new-book"]}).json()
+    assert exported["format"] == FORMAT and len(exported["items"]) == 2
+    conflict_package = copy.deepcopy(package)
+    conflict_package["items"].append({"kind": "skill", "data": skill("must-not-exist")})
+    assert client.post("/api/studio/import", headers=AUTH, json={"package": conflict_package}).status_code == 409
+    assert client.get("/api/studio/items/must-not-exist", headers=AUTH).status_code == 404
+    missing = {"format": FORMAT, "items": [{"kind": "skill", "data": skill("atomic-skill")}, {"kind": "scenario", "data": book("invalid-book", "absent-skill")}]}
+    assert client.post("/api/studio/import", headers=AUTH, json={"package": missing}).status_code == 422
+    assert client.get("/api/studio/items/atomic-skill", headers=AUTH).status_code == 404
+
+
+def test_schema_rejects_code_invalid_dice_target_and_duplicate_nodes(setup):
+    client, _, _ = setup
+    for extra in ({"python": "import os"}, {"dice": "100d100"}, {"target": "enemy"}, {"uses": 0}):
+        response = client.post("/api/studio/items", headers=AUTH, json={"kind": "skill", "data": skill(**extra)})
+        assert response.status_code == 422, response.text
+    invalid = book()
+    invalid["nodes"].append(copy.deepcopy(invalid["nodes"][0]))
+    assert client.post("/api/studio/items", headers=AUTH, json={"kind": "scenario", "data": invalid}).status_code == 422
+
+
+def test_llm_draft_is_never_saved_or_published(setup):
+    client, _, dm = setup
+    assert client.post("/api/studio/generate", headers=AUTH, json={"kind": "skill", "prompt": "治疗技能"}).status_code == 503
+    dm.configured = True
+    async def generated(*args, **kwargs):
+        return json.dumps(skill("llm-draft"))
+    dm._complete = generated
+    response = client.post("/api/studio/generate", headers=AUTH, json={"kind": "skill", "prompt": "新的调查技能"})
+    assert response.status_code == 200
+    assert response.json()["saved"] is False and response.json()["published"] is False
+    assert client.get("/api/studio/items/llm-draft", headers=AUTH).status_code == 404
+
+
+def test_seed_idempotent_and_graph_playable(setup):
+    client, store, _ = setup
+    before = client.get("/api/studio/items", headers=AUTH).json()["total"]
+    ContentService(store)
+    assert client.get("/api/studio/items", headers=AUTH).json()["total"] == before
+    assert client.post("/api/studio/items/book-last-lantern/validate", headers=AUTH).json()["valid"]
+
+
+def test_import_size_limit_before_any_write(setup):
+    client, _, _ = setup
+    huge = {"format": FORMAT, "items": [{"kind": "skill", "data": skill("oversized", description="x" * 2_000_001)}]}
+    assert client.post("/api/studio/import", headers=AUTH, json={"package": huge}).status_code == 413
+    assert client.get("/api/studio/items/oversized", headers=AUTH).status_code == 404
+
+
+def test_seed_published_snapshot_runs_to_real_ending(setup, monkeypatch):
+    from backend import campaign, content
+    _, store, _ = setup
+    monkeypatch.setattr(campaign.secrets, "randbelow", lambda n: n - 1)
+    state = {**content.initialize_state(), "host_id": "hero", "members": [{"id": "hero", "name": "旅人", "character": content.new_character("fighter")}]}
+    campaign.start_campaign(state, compile_scenario(store, "book-last-lantern"))
+    for action in ("follow-traces", "read-ledger", "promise"):
+        campaign.apply_action(state, "hero", "node:" + action)
+    assert state["completed"] and state["scene"]["id"] == "dawn"

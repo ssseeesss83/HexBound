@@ -42,6 +42,11 @@ function saveSeat() {
   }
 }
 const modeNames = { preset: "预设剧本", free: "自由冒险", hybrid: "混合冒险" };
+const interactionNames = {
+  guided: "预设引导",
+  freeform: "自由创作",
+  assisted: "LLM 引导",
+};
 const statusNames = {
   lobby: "等候启程",
   playing: "冒险进行中",
@@ -125,6 +130,10 @@ function home() {
   $("#create").onclick = () => entryDialog("create");
   $("#join").onclick = () => entryDialog("join");
   $("#rules").onclick = rulesDialog;
+  $(".hero-actions").insertAdjacentHTML(
+    "afterend",
+    '<p class="studio-link"><a href="/studio.html">进入内容工坊 · 技能卡 / 怪兽卡 / 剧情本 ↗</a></p>',
+  );
   app
     .querySelectorAll("[data-restore]")
     .forEach(
@@ -205,6 +214,29 @@ function entryDialog(kind) {
     (overlay, close) => {
       const form = $("#entry-form", overlay),
         characterSelect = $("[name=character_id]", form);
+      if (create) {
+        $("#entry-error", form).insertAdjacentHTML(
+          "beforebegin",
+          `<label>选择剧情本<select name="scenario_id"><option value="">经典冒险 · 雾港最后一盏灯</option>${(catalog.publishedScenarios || []).map((s) => `<option value="${esc(s.id)}">${esc(s.name)} · 发布 v${esc(s.published_revision)}</option>`).join("")}</select></label><label>交互方式<select name="interaction_mode">${Object.entries(
+            interactionNames,
+          )
+            .map(([id, label]) => `<option value="${id}">${label}</option>`)
+            .join(
+              "",
+            )}</select></label><p class="helper">预设引导：场景选项推进。自由创作：玩家共同叙述，房主可编辑场景。LLM 引导：模型建议、玩家确认、脚本裁定。已发布剧情会锁定当前版本。</p>`,
+        );
+      }
+      const requestedScenario = new URLSearchParams(location.search).get(
+        "scenario",
+      );
+      if (
+        create &&
+        requestedScenario &&
+        (catalog.publishedScenarios || []).some(
+          (s) => s.id === requestedScenario,
+        )
+      )
+        $("[name=scenario_id]", form).value = requestedScenario;
       const showCharacter = () => {
         const c = (catalog.characters || []).find(
           (c) => c.id === characterSelect.value,
@@ -225,6 +257,11 @@ function entryDialog(kind) {
               .querySelectorAll("[data-mode]")
               .forEach((b) => b.classList.toggle("active", b === button));
             $("#mode-description", overlay).textContent = descriptions[mode];
+            const scenarioSelect = $("[name=scenario_id]", form);
+            if (scenarioSelect) {
+              scenarioSelect.disabled = mode === "free";
+              if (mode === "free") scenarioSelect.value = "";
+            }
           }),
       );
       form.onsubmit = async (e) => {
@@ -234,8 +271,10 @@ function entryDialog(kind) {
         $("#entry-error", form).textContent = "";
         try {
           const body = Object.fromEntries(new FormData(form));
-          if (create) body.mode = mode;
-          else body.invite_code = body.invite_code.trim();
+          if (create) {
+            body.mode = mode;
+            if (!body.scenario_id) delete body.scenario_id;
+          } else body.invite_code = body.invite_code.trim();
           const data = await api(create ? "/api/rooms" : "/api/rooms/join", {
             method: "POST",
             body: JSON.stringify(body),
@@ -337,7 +376,19 @@ function partyHtml() {
 function rollHtml(roll) {
   const total = roll.total ?? roll.attack?.total ?? roll.damage?.total;
   const success = roll.success ?? roll.hit;
-  return `<details class="roll-ticket"><summary><span>⬡ ${esc(roll.label || (roll.ability && `${abilities[roll.ability] || roll.ability}检定`) || roll.kind || "规则凭据")} ${roll.dc != null ? `· DC ${esc(roll.dc)}` : ""}${success != null ? ` · ${success ? "成功" : "未成功"}` : ""}</span><strong class="die-number">${total != null ? esc(total) : "查看"}</strong></summary><pre>${esc(JSON.stringify(roll, null, 2))}</pre></details>`;
+  const kinds = {
+    attack: "攻击检定",
+    check: "属性检定",
+    initiative: "先攻",
+    death_save: "死亡豁免",
+    healing: "治疗",
+  };
+  const modifier = Number(roll.modifier || 0);
+  const formula =
+    roll.selected != null
+      ? `${roll.selected} ${modifier < 0 ? "−" : "+"} ${Math.abs(modifier)} = ${total}`
+      : `骰面 ${(roll.dice || []).join(" + ")}${roll.modifier != null ? ` + ${roll.modifier}` : ""} = ${total ?? "—"}`;
+  return `<details class="roll-ticket"><summary><span>⬡ ${esc(roll.label || (roll.ability && `${abilities[roll.ability] || roll.ability}检定`) || kinds[roll.kind] || "规则凭据")} ${roll.ac != null ? `· AC ${esc(roll.ac)}` : roll.dc != null ? `· DC ${esc(roll.dc)}` : ""}${success != null ? ` · ${success ? "成功" : "未成功"}` : ""}</span><strong class="die-number">${total != null ? esc(total) : "查看"}</strong></summary><div class="roll-explanation"><p>${esc(formula)}</p><p>${roll.advantage ? "优势：取较高骰面。" : roll.disadvantage ? "劣势：取较低骰面。" : ""}${roll.critical ? "自然 20 · 暴击，伤害骰加倍。" : ""}</p>${roll.damage != null ? `<p>伤害骰 [${esc((roll.damage_dice || []).join(", "))}] · 实际伤害 ${esc(roll.damage)}</p>` : ""}<details><summary>原始规则凭据</summary><pre>${esc(JSON.stringify(roll, null, 2))}</pre></details></div></details>`;
 }
 function eventHtml(event) {
   const kind = event.kind || "narrative";
@@ -371,13 +422,13 @@ function renderRoom() {
   const scene = room.scene || {},
     events = room.events || [],
     canAct = active && connected && !busy && myTurn;
-  app.innerHTML = `<div class="table-shell"><header class="table-header">${brand}<div class="room-title"><strong>${esc(room.name)}</strong><small>${esc(modeNames[room.mode])} / ${esc(statusNames[room.status] || room.status)}</small></div><div class="row"><span class="chip header-status"><span class="dot" style="background:${connected ? "var(--jade)" : "var(--brass)"}"></span>${connected ? "已连接" : "正在重连"}</span><button class="small" id="invite">邀请同伴 ↗</button><button class="small scene-toggle" id="scene-toggle">场景</button><button class="ghost" id="room-menu" aria-label="房间设置">•••</button></div></header>${!connected ? '<div class="notice">正在连接冒险桌，写入操作将在连接恢复后可用。</div>' : room.status === "paused" ? '<div class="notice">冒险已暂停。聊天仍然开放，等待房主继续。</div>' : ""}<main class="table-main"><aside class="sidebar party-sidebar ${mobileTab === "party" ? "mobile-visible" : ""}"><div class="section-title"><h2>同行者 / THE PARTY</h2><span class="mode-badge">${room.party.length} / 6</span></div>${partyHtml()}<div class="sidebar-bottom"><button class="small" id="copy-code">邀请码 ${esc(room.invite_code || session.invite_code)} ⧉</button><p>每个席位都有自己的命运。<br>你们将共同书写这段故事。</p></div></aside><section class="journal"><div class="journal-heading"><div><div class="eyebrow">${room.status === "lobby" ? "Before the journey" : "The adventure journal"}</div><h1>${esc(scene.title || room.name)}</h1></div><span class="chip">${esc(statusNames[room.status])}</span></div>${combat ? `<div class="combat-bar"><strong>第 ${esc(combat.round)} 轮</strong><span>${myTurn ? "轮到你行动" : `等待 ${esc(current?.name || "下一位角色")}`}</span><span style="margin-left:auto">${enemies.filter((e) => e.hp > 0).length} 名敌人</span></div>` : ""}<div class="journal-log" id="journal-log" role="log" aria-label="冒险记录">${room.status === "lobby" ? `<div class="welcome-scene"><div class="eyebrow">The first page is yours</div><h2>空白的一页，等你们落笔。</h2><p>邀请同伴入席，或独自开启旅程。<br>${host ? "准备好后，开始属于你们的冒险。" : "等待房主开始冒险。"}</p>${host ? '<button class="primary" id="start">启程 ↗</button>' : ""}</div>` : ""}${events.map(eventHtml).join("")}${!events.length && room.status !== "lobby" ? `<article class="event"><p>${esc(scene.text || "冒险日志正在载入…")}</p></article>` : ""}</div><div class="composer">${room.dm_pending ? '<p class="helper" role="status" style="margin-bottom:10px">✦ 主持人正在组织故事…</p>' : ""}<div class="actions">${(
+  app.innerHTML = `<div class="table-shell"><header class="table-header">${brand}<div class="room-title"><strong>${esc(room.name)}</strong><small>${esc(interactionNames[room.interaction_mode] || modeNames[room.mode])} / ${esc(statusNames[room.status] || room.status)}</small></div><div class="row"><span class="chip header-status"><span class="dot" style="background:${connected ? "var(--jade)" : "var(--brass)"}"></span>${connected ? "已连接" : "正在重连"}</span><button class="small" id="invite">邀请同伴 ↗</button><button class="small scene-toggle" id="scene-toggle">场景</button><button class="ghost" id="room-menu" aria-label="房间设置">•••</button></div></header>${!connected ? '<div class="notice">正在连接冒险桌，写入操作将在连接恢复后可用。</div>' : room.status === "paused" ? '<div class="notice">冒险已暂停。聊天仍然开放，等待房主继续。</div>' : ""}<main class="table-main"><aside class="sidebar party-sidebar ${mobileTab === "party" ? "mobile-visible" : ""}"><div class="section-title"><h2>同行者 / THE PARTY</h2><span class="mode-badge">${room.party.length} / 6</span></div>${partyHtml()}<div class="sidebar-bottom"><button class="small" id="copy-code">邀请码 ${esc(room.invite_code || session.invite_code)} ⧉</button><p>每个席位都有自己的命运。<br>你们将共同书写这段故事。</p></div></aside><section class="journal"><div class="journal-heading"><div><div class="eyebrow">${room.status === "lobby" ? "Before the journey" : "The adventure journal"}</div><h1>${esc(scene.title || room.name)}</h1></div><span class="chip">${esc(statusNames[room.status])}</span></div>${combat ? `<div class="combat-bar"><strong>第 ${esc(combat.round)} 轮</strong><span>${myTurn ? "轮到你行动" : `等待 ${esc(current?.name || "下一位角色")}`}</span><span style="margin-left:auto">${enemies.filter((e) => e.hp > 0).length} 名敌人</span></div>` : ""}<div class="journal-log" id="journal-log" role="log" aria-label="冒险记录">${room.status === "lobby" ? `<div class="welcome-scene"><div class="eyebrow">The first page is yours</div><h2>空白的一页，等你们落笔。</h2><p>邀请同伴入席，或独自开启旅程。<br>${host ? "准备好后，开始属于你们的冒险。" : "等待房主开始冒险。"}</p>${host ? '<button class="primary" id="start">启程 ↗</button>' : ""}</div>` : ""}${events.map(eventHtml).join("")}${!events.length && room.status !== "lobby" ? `<article class="event"><p>${esc(scene.text || "冒险日志正在载入…")}</p></article>` : ""}</div><div class="composer">${room.dm_pending ? '<p class="helper" role="status" style="margin-bottom:10px">✦ 主持人正在组织故事…</p>' : ""}<div class="actions">${(
     room.available_actions || []
   )
     .filter((a) => !a.host_only || host)
     .map(
       (a) =>
-        `<button data-action="${esc(a.id)}" ${!canAct ? "disabled" : ""}>${esc(a.label)} ↗</button>`,
+        `<button data-action="${esc(a.id)}" title="${esc(a.description || "")}" ${!canAct ? "disabled" : ""}>${esc(a.label)}${a.uses_remaining != null ? ` · 剩余 ${esc(a.uses_remaining)} 次` : ""} ↗</button>`,
     )
     .join(
       "",
@@ -429,13 +480,21 @@ function renderRoom() {
   app.querySelectorAll("[data-action]").forEach(
     (b) =>
       (b.onclick = () => {
+        const action = (room.available_actions || []).find(
+          (a) => a.id === b.dataset.action,
+        );
+        if (action?.target === "ally") {
+          skillTargetDialog(action);
+          return;
+        }
         if (b.dataset.action === "heal") {
           healDialog();
           return;
         }
         command("action", {
           action_id: b.dataset.action,
-          ...(b.dataset.action === "attack" && selectedTarget
+          ...((b.dataset.action === "attack" || action?.target === "enemy") &&
+          selectedTarget
             ? { target_id: selectedTarget }
             : {}),
         });
@@ -498,11 +557,69 @@ async function invite() {
     );
   }
 }
+function skillTargetDialog(action) {
+  const allies = room.party.filter(
+    (p) => !p.dead && (action.effect !== "heal" || p.hp < p.max_hp),
+  );
+  openDialog(
+    `<div class="row between"><h2 id="dialog-title">${esc(action.label)} · 选择目标</h2><button data-close class="ghost">×</button></div><div class="form">${allies.map((p) => `<button data-skill-target="${esc(p.id)}">${esc(p.name)} · HP ${esc(p.hp)} / ${esc(p.max_hp)}</button>`).join("") || '<p class="helper">没有合法目标。</p>'}</div>`,
+    (overlay, close) => {
+      overlay.querySelectorAll("[data-skill-target]").forEach(
+        (b) =>
+          (b.onclick = () => {
+            close();
+            command("action", {
+              action_id: action.id,
+              target_id: b.dataset.skillTarget,
+            });
+          }),
+      );
+    },
+  );
+}
+function sceneEditor() {
+  const scene = room.scene;
+  openDialog(
+    `<div class="row between"><h2 id="dialog-title">共同创作 · 当前场景</h2><button data-close class="ghost">×</button></div><form class="form" id="scene-form"><p class="helper">只修改叙述，不改变骰点、生命、技能、分支或胜负。修改会记入全队日志。</p><label>场景标题<input name="title" maxlength="80" required value="${esc(scene.title)}"></label><label>叙事<textarea name="text" maxlength="1800" required>${esc(scene.text)}</textarea></label><label>目标说明<input name="objective" maxlength="180" value="${esc(scene.objective)}"></label><button type="submit" class="primary">保存到当前冒险</button></form>`,
+    (overlay, close) => {
+      $("#scene-form", overlay).onsubmit = async (e) => {
+        e.preventDefault();
+        const payload = Object.fromEntries(new FormData(e.target));
+        close();
+        await command("scene_edit", payload);
+      };
+    },
+  );
+}
 function roomMenu() {
   const host = room.host_id === session.member_id;
   openDialog(
     `<div class="row between"><h2 id="dialog-title">冒险桌设置</h2><button class="ghost" data-close>×</button></div><div class="form"><p class="helper">${esc(room.name)} · ${esc(modeNames[room.mode])}<br>进度自动保存在服务器，刷新会恢复当前角色。</p>${host && room.status === "playing" ? '<button id="pause">暂停冒险</button>' : ""}${host && room.status === "paused" ? '<button id="resume">继续冒险</button>' : ""}<button id="export-log">导出冒险日志</button><button id="view-rules">查看规则范围</button><button id="return-home" ${busy ? "disabled" : ""}>返回首页 · 保留我的席位</button><p class="helper">身份已保存在此浏览器。关闭标签页或返回首页会离线，席位仍保留；可从首页继续冒险。清除浏览器数据会丢失身份。</p></div>`,
     (overlay, close) => {
+      if (host && room.status !== "finished") {
+        $(".form", overlay).insertAdjacentHTML(
+          "afterbegin",
+          `<label>交互方式<select id="interaction-mode">${Object.entries(
+            interactionNames,
+          )
+            .map(
+              ([id, label]) =>
+                `<option value="${id}" ${room.interaction_mode === id ? "selected" : ""}>${label}</option>`,
+            )
+            .join(
+              "",
+            )}</select></label><button id="apply-interaction">应用交互方式</button>${room.interaction_mode === "freeform" && room.status !== "lobby" ? '<button id="edit-scene">编辑当前场景叙述</button>' : ""}`,
+        );
+        $("#apply-interaction", overlay).onclick = () => {
+          const mode = $("#interaction-mode", overlay).value;
+          close();
+          command("set_interaction", { mode });
+        };
+        $("#edit-scene", overlay)?.addEventListener("click", () => {
+          close();
+          sceneEditor();
+        });
+      }
       $("#pause", overlay)?.addEventListener("click", () => {
         close();
         command("pause");
@@ -643,6 +760,12 @@ function connect() {
 async function boot() {
   try {
     catalog = await api("/api/catalog");
+    try {
+      catalog.publishedScenarios =
+        (await api("/api/content?kind=scenario")).items || [];
+    } catch {
+      catalog.publishedScenarios = [];
+    }
     if (session) {
       try {
         room = await api(`/api/rooms/${session.room_id}`);
@@ -659,6 +782,8 @@ async function boot() {
       }
     }
     home();
+    if (new URLSearchParams(location.search).has("scenario"))
+      entryDialog("create");
   } catch (error) {
     app.innerHTML = `<div class="loading"><div>冒险桌暂时无法连接</div><span>${esc(error.message)}</span><button id="retry">重新连接</button></div>`;
     $("#retry").onclick = boot;

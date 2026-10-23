@@ -16,9 +16,10 @@ from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 
-from . import content, rules
+from . import content, rules, campaign
 from .dm import DM
 from .store import Store
+from .studio import create_studio_router, compile_scenario
 
 
 class Input(BaseModel):
@@ -31,6 +32,8 @@ class CreateRoom(Input):
     character_id: str = Field(min_length=1, max_length=50)
     mode: Literal["preset", "free", "hybrid"] = "preset"
     theme: str = Field(default="", max_length=600)
+    scenario_id: str | None = Field(default=None, max_length=80)
+    interaction_mode: Literal["guided", "freeform", "assisted"] = "guided"
 
 
 class JoinRoom(Input):
@@ -42,7 +45,7 @@ class JoinRoom(Input):
 class Command(Input):
     command_id: str = Field(min_length=8, max_length=100)
     expected_version: int = Field(ge=0)
-    type: Literal["start", "pause", "resume", "action", "chat", "narrate", "end_turn"]
+    type: Literal["start", "pause", "resume", "action", "chat", "narrate", "end_turn", "set_interaction", "scene_edit"]
     payload: dict = Field(default_factory=dict)
 
 
@@ -55,8 +58,18 @@ class ActionPayload(Input):
     target_id: str | None = Field(default=None, max_length=80)
 
 
+class InteractionPayload(Input):
+    mode: Literal["guided", "freeform", "assisted"]
+
+
+class SceneEditPayload(Input):
+    title: str = Field(min_length=1, max_length=80)
+    text: str = Field(min_length=1, max_length=1800)
+    objective: str = Field(default="", max_length=180)
+
+
 def create_app(db_path: str | None = None) -> FastAPI:
-    app = FastAPI(title="HEXBOUND", version="0.1.0")
+    app = FastAPI(title="HEXBOUND", version="0.2.0")
     store = Store(db_path or os.getenv("HEXBOUND_DB", "data/hexbound.sqlite3"))
     dm = DM()
     locks: dict[str, asyncio.Lock] = defaultdict(asyncio.Lock)
@@ -64,6 +77,20 @@ def create_app(db_path: str | None = None) -> FastAPI:
     limits: dict[str, deque] = defaultdict(deque)
     app.state.store = store
     app.state.dm = dm
+    app.include_router(create_studio_router(store, dm))
+
+    def actions_for(state, member_id):
+        return (campaign if state.get("campaign") else content).available_actions(state, member_id)
+
+    def append_rule_events(state, items, fallback_actor):
+        for item in items:
+            item = dict(item)
+            actor_id = item.get("actor_id", fallback_actor)
+            actors = [{"id": m["id"], "name": m["name"]} for m in state["members"]]
+            actors += (state.get("combat") or {}).get("enemies", [])
+            actor_name = next((a["name"] for a in actors if a["id"] == actor_id), "DM")
+            event(state, item.pop("kind", "rule"), item.pop("text", ""),
+                  item.pop("actor_name", actor_name), **{k: v for k, v in item.items() if k != "id"})
 
     def throttle(key: str, maximum: int):
         now = time.monotonic()
@@ -106,7 +133,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
                           "online": member["id"] in online})
         scene = state.get("scene") or {"id": "lobby", "title": "故事尚未开始", "text": "邀请伙伴入席，由房主开启冒险。", "objective": "等待队伍集结"}
         scene = {key: scene.get(key, "") for key in ("id", "title", "text", "objective")}
-        actions = content.available_actions(state, viewer) if state["status"] == "playing" else []
+        actions = actions_for(state, viewer) if state["status"] == "playing" else []
         return {
             "id": state["id"], "name": state["name"], "mode": state["mode"],
             "status": state["status"], "version": state["version"], "host_id": state["host_id"],
@@ -114,6 +141,8 @@ def create_app(db_path: str | None = None) -> FastAPI:
             "events": copy.deepcopy(state["events"][-150:]), "last_event_seq": len(state["events"]),
             "available_actions": actions, "combat": copy.deepcopy(state.get("combat")),
             "dm_source": state.get("dm_source", "local"), "dm_pending": bool(state.get("dm_pending")),
+            "interaction_mode": state.get("interaction_mode", "guided"),
+            "scenario": state.get("scenario_summary"),
         }
 
     async def broadcast(room_id: str):
@@ -126,10 +155,14 @@ def create_app(db_path: str | None = None) -> FastAPI:
         await asyncio.gather(*(send(ws, member_id) for ws, member_id in list(peers[room_id].items())))
 
     async def add_dm_response(room_id: str, base_version: int, request_id: str, kind: str,
-                              scene: dict, mode: str, theme: str, intent: str, recent: list, actions: list):
+                              scene: dict, mode: str, theme: str, intent: str, recent: list, actions: list,
+                              interaction_mode: str = "guided"):
         # Network calls intentionally occur outside the room lock and transaction.
         try:
-            if kind == "scene":
+            if kind == "scene" and interaction_mode == "assisted" and dm.configured:
+                text, source, suggestion = await dm.narrate(scene, "介绍眼前的局势，并建议一个可选行动；不要代替玩家决定。", recent, actions)
+                generated = None
+            elif kind == "scene":
                 generated, source = await dm.scene(scene, mode, theme)
                 text = generated["text"]
                 suggestion = None
@@ -189,6 +222,9 @@ def create_app(db_path: str | None = None) -> FastAPI:
         throttle("create:" + (request.client.host if request.client else "local"), 15)
         if body.mode == "free" and not dm.configured:
             raise HTTPException(422, "自由生成需要服务端配置 LLM；可先选择预设冒险或混合模式")
+        if body.scenario_id and body.mode == "free":
+            raise HTTPException(422, "已发布剧情本与即时生成请选择一种内容来源")
+        package = compile_scenario(store, body.scenario_id) if body.scenario_id else None
         try:
             character = content.new_character(body.character_id, body.player_name)
         except (ValueError, KeyError) as exc:
@@ -199,8 +235,15 @@ def create_app(db_path: str | None = None) -> FastAPI:
             "id": room_id, "name": body.name, "invite_code": secrets.token_hex(4).upper(),
             "mode": body.mode, "theme": body.theme, "host_id": member_id,
             "status": "lobby", "version": 0, "events": [], "dm_pending": None,
+            "interaction_mode": body.interaction_mode,
             "members": [{"id": member_id, "name": body.player_name, "character_id": body.character_id, "character": character}],
         }
+        if package:
+            state["campaign_package"] = copy.deepcopy(package)
+            state["scenario_summary"] = {"id": body.scenario_id, "name": package["scenario"]["name"],
+                                         "revisions": package.get("revisions", {})}
+            state["scene"] = {"id": "lobby", "title": package["scenario"]["name"],
+                              "text": "已锁定发布版本。邀请同伴后开始探索。", "objective": "等待队伍集结"}
         event(state, "system", "六席之间，故事等待第一位讲述者。")
         store.create(state, member_id, token)
         return {"room": public(state, member_id), "member_id": member_id, "token": token, "invite_code": state["invite_code"]}
@@ -246,6 +289,10 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 payload = TextPayload.model_validate(body.payload).model_dump()
             elif body.type == "action":
                 payload = ActionPayload.model_validate(body.payload).model_dump()
+            elif body.type == "set_interaction":
+                payload = InteractionPayload.model_validate(body.payload).model_dump()
+            elif body.type == "scene_edit":
+                payload = SceneEditPayload.model_validate(body.payload).model_dump()
             else:
                 if body.payload:
                     raise ValueError("该命令不接受附加参数")
@@ -277,12 +324,16 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 raise HTTPException(409, "房间已更新，请同步后重试")
             member = next(m for m in state["members"] if m["id"] == member_id)
             previous = state["version"]
-            if body.type in ("start", "pause", "resume") and member_id != state["host_id"]:
+            if body.type in ("start", "pause", "resume", "set_interaction", "scene_edit") and member_id != state["host_id"]:
                 raise HTTPException(403, "只有房主可以执行此操作")
             if body.type == "start":
                 if state["status"] != "lobby":
                     raise HTTPException(409, "冒险已经开始")
                 state["status"] = "playing"
+                if state.get("campaign_package"):
+                    append_rule_events(state, campaign.start_campaign(state, state["campaign_package"]), member_id)
+                    if state.get("completed"):
+                        state["status"] = "finished"
                 if generated_scenes:
                     state["scenes"] = generated_scenes
                     state["scene"] = copy.deepcopy(generated_scenes[0])
@@ -291,8 +342,20 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 event(state, "system", "冒险开始。每一个选择，都将留下回声。")
                 if generated_scenes:
                     event(state, "dm", state["scene"]["text"], source="llm")
+                elif state.get("interaction_mode") == "freeform":
+                    event(state, "scene", state["scene"]["text"], source="author")
                 else:
                     pending = "scene"
+            elif body.type == "set_interaction":
+                if state["status"] == "finished":
+                    raise HTTPException(409, "冒险已经结束")
+                state["interaction_mode"] = payload["mode"]
+                event(state, "system", {"guided": "切换为预设引导：通过场景行动推进。", "freeform": "切换为自由创作：房主可编辑当前场景叙述，数值仍由规则裁定。", "assisted": "切换为 LLM 引导：提出意图，由主持建议合法行动，玩家确认执行。"}[payload["mode"]])
+            elif body.type == "scene_edit":
+                if state["status"] not in ("playing", "paused") or state.get("interaction_mode") != "freeform":
+                    raise HTTPException(409, "仅自由创作中的房主可以编辑当前场景")
+                state["scene"].update(payload)
+                event(state, "scene", payload["text"], member["name"], source="author")
             elif body.type == "pause":
                 if state["status"] != "playing":
                     raise HTTPException(409, "当前无法暂停")
@@ -311,27 +374,25 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 if state.get("dm_pending"):
                     raise HTTPException(409, "DM 正在回应，请稍候")
                 event(state, "intent", payload["text"], member["name"])
-                pending = "narrate"
+                if state.get("interaction_mode", "guided") != "freeform":
+                    pending = "narrate"
             else:
                 if state["status"] != "playing":
                     raise HTTPException(409, "当前不能执行游戏行动")
                 old_scene = state.get("scene_id")
                 action_id = "end_turn" if body.type == "end_turn" else payload["action_id"]
                 try:
-                    action_events = rules.apply_action(state, member_id, action_id, payload.get("target_id"))
+                    executor = campaign if state.get("campaign") else rules
+                    action_events = executor.apply_action(state, member_id, action_id, payload.get("target_id"))
                 except (ValueError, KeyError) as exc:
                     raise HTTPException(422, str(exc)) from exc
-                for item in action_events:
-                    item = dict(item)
-                    actor_id = item.get("actor_id", member_id)
-                    actor_name = next((m["name"] for m in state["members"] if m["id"] == actor_id),
-                                      (state.get("combat") or {}).get("enemy", {}).get("name", "DM"))
-                    event(state, item.pop("kind", "rule"), item.pop("text", ""),
-                          item.pop("actor_name", actor_name), **{k: v for k, v in item.items() if k != "id"})
+                append_rule_events(state, action_events, member_id)
                 if state.get("completed"):
                     state["status"] = "finished"
-                elif state.get("scene_id") != old_scene:
+                elif state.get("scene_id") != old_scene and state.get("interaction_mode") != "freeform":
                     pending = "scene"
+                elif state.get("interaction_mode") == "assisted" and dm.configured and not state.get("dm_pending"):
+                    pending = "narrate"
             state["version"] += 1
             if pending:
                 request_id = uuid.uuid4().hex
@@ -341,7 +402,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
         await broadcast(room_id)
         if pending:
             await add_dm_response(room_id, state["version"], request_id, pending, copy.deepcopy(state["scene"]),
-                                  state["mode"], state["theme"], payload.get("text", ""), copy.deepcopy(state["events"][-8:]), content.available_actions(state, member_id))
+                                  state["mode"], state["theme"], payload.get("text", "请依据刚刚确认的结果描述后果，并建议下一步合法行动。"), copy.deepcopy(state["events"][-8:]), actions_for(state, member_id), state.get("interaction_mode", "guided"))
             response = {"room": public(get_state(room_id), member_id)}
         return response
 

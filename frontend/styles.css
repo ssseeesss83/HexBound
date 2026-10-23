@@ -1062,3 +1062,19 @@ small,
     min-height: 44px;
   }
 }
+
+.studio-link {
+  margin: 18px 0 0;
+  font-size: 13px;
+}
+.studio-link a {
+  text-underline-offset: 5px;
+}
+.roll-explanation {
+  padding-top: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.roll-explanation details {
+  margin-top: 10px;
+}

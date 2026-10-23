@@ -2,7 +2,8 @@
   "name": "hexbound-ui-tests",
   "private": true,
   "scripts": {
-    "test:ui": "node tests/ui-smoke.cjs"
+    "test:ui": "node tests/ui-smoke.cjs",
+    "test:studio": "node tests/studio-smoke.cjs"
   },
   "devDependencies": {
     "jsdom": "26.1.0"

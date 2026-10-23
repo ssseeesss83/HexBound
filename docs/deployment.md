@@ -34,6 +34,14 @@ python -m uvicorn backend.app:app --host 0.0.0.0 --port 8000 --workers 1
 
 `LLM_TIMEOUT_SECONDS` 是一次请求的整体等待上限（默认 25 秒，允许 1–90 秒）。自由剧本生成最多请求 3000 输出 tokens；场景润色和角色扮演最多 900。生成失败保留大厅，不会静默替换为预设剧本。生成期间若其他玩家改变房间版本，结果不会覆盖新状态，房主同步后可重新开始。已经开始的混合冒险在等待模型时仍可暂停或聊天；过期回应会被丢弃。请求取消或服务重启会清除未完成的回应标记，避免一直显示“正在回应”。
 
+## 内容工坊管理
+
+在 `.env` 设置随机且独立的 `HEXBOUND_ADMIN_TOKEN`，重启服务。可用 `python -c "import secrets; print(secrets.token_urlsafe(32))"` 在自己的终端生成凭证。打开 `/studio.html`，点击管理员解锁并输入凭证；它只保存在当前标签页的 sessionStorage。未设置时管理写入关闭，公开内容摘要和游玩仍可使用。
+
+凭证授权整个内容库的管理能力，不要作为玩家邀请码分享。轮换凭证需修改环境变量并重启；旧凭证立即失效。内容库及修订历史与房间保存在同一 SQLite，使用相同备份策略。导入内容包只创建草稿，不自动发布；导出内容不携带凭证。
+
+当前是单部署者内容管理，尚无独立账号或细粒度角色权限。管理页面应经 HTTPS 与可信入口访问。恢复历史会创建新草稿，已发布内容保持不变，需再次校验发布。
+
 ## 公网访问
 
 本项目包含 Python 服务与 WebSocket，不能仅部署到 GitHub Pages。公网使用可信 HTTPS 反向代理，转发同源 `/api` 与 WebSocket 升级请求。参考 Nginx location（TLS 证书与域名按环境配置）：
@@ -63,6 +71,10 @@ location / {
 pip install -r requirements-dev.txt
 python -m pytest -q
 node --check frontend/app.js
+node --check frontend/studio.js
+npm ci
+npm run test:ui
+npm run test:studio
 ```
 
 存活检查：`GET /api/health`。测试使用独立临时数据库，不应连接实际团存档。GitHub Actions 自动执行同一组测试。
