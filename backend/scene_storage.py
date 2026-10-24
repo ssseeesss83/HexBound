@@ -28,6 +28,7 @@ def pack(view):
     all_members = room.pop("_room_members", None)
     previous_status = room.pop("_room_status", None)
     room.pop("_text_channel", None)
+    room.pop("_scene_leader_id", None)
     if all_members is not None:
         room["members"] = all_members
     instances = room.setdefault("scene_instances", {})
@@ -49,7 +50,8 @@ def pack(view):
     contexts = room.setdefault("member_contexts", {})
     for member in room.get("members", []):
         contexts.setdefault(member["id"], {"scene_instance_id": MAIN_SCENE, "epoch": 1})
-    if previous_status and room.get("status") == "finished" and not all(row["local"].get("completed") for row in instances.values()):
+    occupied = {contexts[member["id"]]["scene_instance_id"] for member in room.get("members", [])}
+    if previous_status and room.get("status") == "finished" and not all(instances[sid]["local"].get("completed") for sid in occupied):
         room["status"] = previous_status
     if previous_status and room.get("status") != previous_status and room.get("status") in {"paused", "playing"}:
         for sid, other in instances.items():
@@ -98,6 +100,9 @@ def for_scene(room, scene_id):
                        if view["member_contexts"].get(member["id"], {}).get("scene_instance_id") == scene_id]
     view["_room_status"] = view.get("status")
     view["_text_channel"] = view["scene_instances"][scene_id].get("channel_id", "party-main")
+    eligible = [member["id"] for member in view["members"]]
+    leader = view["scene_instances"][scene_id].get("leader_id")
+    view["_scene_leader_id"] = leader if leader in eligible else (view.get("host_id") if view.get("host_id") in eligible else next(iter(eligible), None))
     return view
 
 
@@ -115,7 +120,7 @@ def legacy_shape(view):
     value = deepcopy(view)
     for key in ("scene_instances", "member_contexts", "scene_storage_version", "_scene_execution_view", "_room_members", "_room_status", "_text_channel",
                 "world_schema", "world_places", "world_entities", "world_environment_version", "_object_origin_place", "_object_read_set",
-                "world_combat_version", "world_encounter_receipts", "_creature_read_set"):
+                "world_combat_version", "world_encounter_receipts", "_creature_read_set", "_scene_leader_id"):
         value.pop(key, None)
     for env in value.get("environment", {}).values():
         env.pop("entity_refs", None)

@@ -177,8 +177,8 @@ def apply_action(state, member_id, action_id, target_id=None):
         return abilities.weapon_attack(state, member_id, target_id)
     if action_id not in {a["id"] for a in content.available_actions(state, member_id)}:
         raise ValueError("当前不可执行此动作")
-    if action_id in {"advance", "rest"} and state.get("host_member_id", state.get("host_id")) not in (None, member_id):
-        raise ValueError("仅房主可以执行此动作")
+    if action_id in {"advance", "rest"} and state.get("_scene_leader_id", state.get("host_member_id", state.get("host_id"))) not in (None, member_id):
+        raise ValueError("仅当前小队领队可以执行此动作" if "_scene_leader_id" in state else "仅房主可以执行此动作")
     m = _member(state, member_id)
     c = m["character"]
     events = []

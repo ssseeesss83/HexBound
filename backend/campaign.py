@@ -41,7 +41,7 @@ def _spend(state, actor, skill):
 
 
 def _is_host(state, actor):
-    return state.get("host_member_id", state.get("host_id")) in (None, actor)
+    return state.get("_scene_leader_id", state.get("host_member_id", state.get("host_id"))) in (None, actor)
 
 
 def _conscious(state):
@@ -245,7 +245,7 @@ def available_actions(state, member_id):
                 continue
         elif not _is_host(state, member_id):
             continue
-        actions.append({"id": f"node:{action['id']}", "label": action["label"], "party_action": not bool(sid), "host_only": not bool(sid), "effect": "check" if sid else "move", "target": "none", "uses_remaining": _remaining(state, member_id, _skill(state, sid)) if sid else None, "remaining": _remaining(state, member_id, _skill(state, sid)) if sid else None})
+        actions.append({"id": f"node:{action['id']}", "label": action["label"], "party_action": not bool(sid), "host_only": not bool(sid) and "_scene_leader_id" not in state, "leader_only": not bool(sid), "effect": "check" if sid else "move", "target": "none", "uses_remaining": _remaining(state, member_id, _skill(state, sid)) if sid else None, "remaining": _remaining(state, member_id, _skill(state, sid)) if sid else None})
     if character["hp"] > 0 and not character.get("dead"):
         for sid in package["scenario"].get("skill_ids", []):
             if character.get("class_id") and sid not in character.get("custom_skill_ids", []):

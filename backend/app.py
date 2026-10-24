@@ -71,6 +71,25 @@ class TextPayload(Input):
     text: str = Field(min_length=1, max_length=1500)
 
 
+class GroupScope(Input):
+    scene_instance_id: str = Field(min_length=1, max_length=100)
+    membership_epoch: int = Field(ge=1, strict=True)
+    action_revision: int = Field(ge=0, strict=True)
+
+
+class GroupPrepare(Input):
+    operation: Literal["split", "merge"]
+    expected_scope: GroupScope
+    members: list[str] = Field(default_factory=list, max_length=5)
+    source: str | None = Field(default=None, min_length=1, max_length=100)
+    target: str | None = Field(default=None, min_length=1, max_length=100)
+
+
+class GroupCommit(Input):
+    plan_id: str = Field(pattern=r"^[a-f0-9]{32}$")
+    command_id: str = Field(min_length=8, max_length=100)
+
+
 class ActionPayload(Input):
     action_id: str = Field(min_length=1, max_length=80)
     target_id: str | None = Field(default=None, max_length=80)
@@ -256,6 +275,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
             "status": state["status"], "version": state["version"], "host_id": state["host_id"],
             "action_revision": state["action_revision"],
             "scene_instance_id": state["_scene_execution_view"],
+            "scene_leader_id": state["_scene_leader_id"],
             "membership_epoch": state["member_contexts"][viewer]["epoch"],
             "invite_code": state["invite_code"], "party": party, "scene": scene,
             "starting_level": state.get("starting_level", 1),
@@ -484,6 +504,54 @@ def create_app(db_path: str | None = None) -> FastAPI:
     async def room(room_id: str, request: Request, authorization: str | None = Header(default=None)):
         member_id = auth(room_id, authorization, request)
         return public(get_state(room_id), member_id)
+
+    @app.get("/api/rooms/{room_id}/groups")
+    async def groups(room_id: str, request: Request, authorization: str | None = Header(default=None)):
+        actor = auth(room_id, authorization, request)
+        state = get_state(room_id)
+        if state["host_id"] != actor:
+            raise HTTPException(403, "只有房主可以查看分组桌务")
+        # Table administration shows a roster, never foreign scenes or counters.
+        result = []
+        for sid in state["scene_instances"]:
+            occupants = [{"id":m["id"], "name":m["name"]} for m in state["members"]
+                         if state["member_contexts"][m["id"]]["scene_instance_id"] == sid]
+            if occupants:
+                result.append({"id":sid, "members":occupants})
+        return {"groups":result}
+
+    @app.post("/api/rooms/{room_id}/groups/prepare")
+    async def prepare_groups(room_id: str, body: GroupPrepare, request: Request, authorization: str | None = Header(default=None)):
+        actor = auth(room_id, authorization, request)
+        throttle("groups:" + actor, 20)
+        if (body.operation == "split" and (body.source is not None or body.target is not None)) or (body.operation == "merge" and (body.members or not body.source or not body.target)):
+            raise HTTPException(422, "分组参数无效")
+        async with locks[room_id]:
+            if auth(room_id, authorization, request) != actor:
+                raise HTTPException(403, "房间身份已变化")
+            if get_state(room_id)["host_id"] != actor:
+                raise HTTPException(403, "只有房主可以准备分组桌务")
+            try:
+                return store.prepare_group_change(room_id, actor, body.operation, members=body.members,
+                    source=body.source, target=body.target, expected_scope=body.expected_scope.model_dump())
+            except ValueError as exc:
+                raise HTTPException(409, str(exc)) from exc
+
+    @app.post("/api/rooms/{room_id}/groups/commit")
+    async def commit_groups(room_id: str, body: GroupCommit, request: Request, authorization: str | None = Header(default=None)):
+        actor = auth(room_id, authorization, request)
+        async with locks[room_id]:
+            if auth(room_id, authorization, request) != actor:
+                raise HTTPException(403, "房间身份已变化")
+            if get_state(room_id)["host_id"] != actor:
+                raise HTTPException(403, "只有房主可以提交分组桌务")
+            try:
+                receipt = store.commit_group_change(room_id,actor,body.plan_id,body.command_id)
+            except ValueError as exc:
+                raise HTTPException(409, str(exc)) from exc
+            result = {"room":public(get_state(room_id),actor), "group_change":receipt}
+        await broadcast(room_id)
+        return result
 
     @app.get("/api/rooms/{room_id}/characters/{target_member_id}")
     async def character_detail(room_id: str, target_member_id: str, request: Request, authorization: str | None = Header(default=None)):

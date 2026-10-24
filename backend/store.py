@@ -59,6 +59,7 @@ class Store:
             db.execute("CREATE TABLE IF NOT EXISTS rules_packages (version TEXT PRIMARY KEY, ruleset_id TEXT NOT NULL, digest TEXT NOT NULL, metadata TEXT NOT NULL)")
             db.execute("CREATE TABLE IF NOT EXISTS rules_records (package_version TEXT NOT NULL REFERENCES rules_packages(version), kind TEXT NOT NULL, id TEXT NOT NULL, payload TEXT NOT NULL, PRIMARY KEY(package_version,kind,id))")
             db.execute("CREATE TABLE IF NOT EXISTS rules_activation (ruleset_id TEXT PRIMARY KEY, package_version TEXT NOT NULL REFERENCES rules_packages(version))")
+            db.execute("CREATE TABLE IF NOT EXISTS group_plans (id TEXT PRIMARY KEY, room_id TEXT NOT NULL REFERENCES rooms(id), actor_id TEXT NOT NULL, created_at REAL NOT NULL, payload TEXT NOT NULL)")
             db.execute("CREATE TABLE IF NOT EXISTS rules_documents (package_version TEXT NOT NULL REFERENCES rules_packages(version), page INTEGER NOT NULL, payload TEXT NOT NULL, PRIMARY KEY(package_version,page))")
             from .session_scope import initialize
             from .world_environment import migrate
@@ -347,3 +348,91 @@ class Store:
                     self._sync_heroes(db,state)
                     state["version"] += 1
                     db.execute("UPDATE rooms SET state=?,version=? WHERE id=?",(json.dumps(pack_scene(state),ensure_ascii=False),state["version"],row["id"]))
+
+    def prepare_group_change(self, room_id, actor, operation, *, members=None, source=None, target=None, expected_scope=None):
+        """Persist an opaque server plan; expose no foreign scene revisions."""
+        from dataclasses import asdict
+        import time
+        from .scene_groups import prepare_split
+        from .world_state import prepare_merge, WorldConflict
+        now = time.time()
+        with self.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            row = db.execute('SELECT state FROM rooms WHERE id=?', (room_id,)).fetchone()
+            room = json.loads(row['state']) if row else None
+            if not room or room.get('host_id') != actor:
+                raise WorldConflict('只有房主可以准备分队或合队')
+            context = room['member_contexts'].get(actor)
+            if not context:
+                raise WorldConflict('房主没有主动场景')
+            own_scene = room['scene_instances'][context['scene_instance_id']]
+            current_scope = {'scene_instance_id':context['scene_instance_id'], 'membership_epoch':context['epoch'],
+                             'action_revision':own_scene['local'].get('action_revision',0)}
+            if expected_scope != current_scope:
+                raise WorldConflict('当前场景已变化，请刷新后准备桌务操作')
+            if operation == 'split':
+                source = context['scene_instance_id']
+                target = 'scene-' + uuid.uuid4().hex
+                channel = 'group-' + uuid.uuid4().hex
+                plan = prepare_split(room,source,target,channel,members)
+                arguments = {'source':source,'target':target,'channel':channel,'members':list(plan.members)}
+                moved = list(plan.members)
+            elif operation == 'merge':
+                plan = prepare_merge(room,source,target)
+                arguments = {'source':source,'target':target}
+                moved = [m['id'] for m in room['members'] if room['member_contexts'][m['id']]['scene_instance_id'] == source]
+            else:
+                raise WorldConflict('未知分组操作')
+            plan_id = uuid.uuid4().hex
+            payload = {'operation':operation,'arguments':arguments,'proof':asdict(plan)}
+            db.execute('DELETE FROM group_plans WHERE created_at<? OR (room_id=? AND actor_id=?)', (now-1800,room_id,actor))
+            db.execute('INSERT INTO group_plans VALUES(?,?,?,?,?)', (plan_id,room_id,actor,now,json.dumps(payload,ensure_ascii=False)))
+            return {'plan_id':plan_id,'operation':operation,'source':source,'target':target,'members':moved,'expires_in_seconds':1800}
+
+    def commit_group_change(self, room_id, actor, plan_id, command_id):
+        """Validate the saved read-set, then commit scope, events and receipt."""
+        from dataclasses import asdict
+        import time
+        from .scene_groups import prepare_split, commit_split
+        from .world_state import prepare_merge, commit_merge, WorldConflict
+        from .session_scope import stamp_event
+        with self.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            row = db.execute('SELECT state FROM rooms WHERE id=?', (room_id,)).fetchone()
+            room = json.loads(row['state']) if row else None
+            if not room or room.get('host_id') != actor:
+                raise WorldConflict('只有房主可以提交分队或合队')
+            prior = db.execute('SELECT response FROM commands WHERE room_id=? AND member_id=? AND command_id=?', (room_id,actor,command_id)).fetchone()
+            if prior:
+                response = json.loads(prior['response'])
+                if response.get('group_plan_id') != plan_id:
+                    raise WorldConflict('命令 ID 已用于其他操作')
+                return {**response,'replayed':True}
+            saved = db.execute('SELECT * FROM group_plans WHERE id=? AND room_id=? AND actor_id=?', (plan_id,room_id,actor)).fetchone()
+            if not saved or time.time()-saved['created_at'] > 1800:
+                raise WorldConflict('分组计划不存在或已过期，请重新准备')
+            payload = json.loads(saved['payload'])
+            args = payload['arguments']
+            if payload['operation'] == 'split':
+                plan = prepare_split(room,**args)
+            else:
+                plan = prepare_merge(room,**args)
+            if json.loads(json.dumps(asdict(plan))) != payload['proof']:
+                raise WorldConflict('分组计划已过期，场景、成员或实体发生变化')
+            if payload['operation'] == 'split':
+                result = commit_split(room,plan)
+            else:
+                result = {**commit_merge(room,plan,command_id),'operation':'scene_merge'}
+            room['version'] += 1
+            channels = {room['scene_instances'][sid]['channel_id'] for sid in (plan.source,plan.target)}
+            for channel in sorted(channels):
+                if not any(room['text_scope']['members'][m['id']]['channel'] == channel for m in room['members']):
+                    continue
+                item = {'id':len(room['events'])+1,'kind':'system','actor_name':'DM','text':'队伍已在安全检查点调整分组。'}
+                stamp_event(room,item,channel=channel)
+                room['events'].append(item)
+            response = {**result,'group_plan_id':plan_id,'version':room['version'],'replayed':False}
+            db.execute('UPDATE rooms SET state=?,version=? WHERE id=?', (json.dumps(room,ensure_ascii=False),room['version'],room_id))
+            db.execute('INSERT INTO commands VALUES(?,?,?,?)', (room_id,actor,command_id,json.dumps(response,ensure_ascii=False)))
+            db.execute('DELETE FROM group_plans WHERE id=?', (plan_id,))
+            return response

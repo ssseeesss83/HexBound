@@ -86,6 +86,13 @@ def _entity_versions(room, place):
     return tuple(sorted((eid, room["world_entities"][eid]["revision"]) for eid in place["entity_ids"]))
 
 
+def _logical_seconds(scene):
+    local = scene['local']
+    node_id = local.get('scene_id') or local.get('scene',{}).get('id')
+    elapsed = local.get('environment',{}).get(node_id,{}).get('elapsed_seconds',0)
+    return local.get('progression_clock',{}).get('world_minutes',0) * 60 + elapsed
+
+
 @dataclass(frozen=True)
 class EnterPlan:
     actor: str
@@ -225,7 +232,7 @@ def prepare_merge(room, source, target):
             raise WorldConflict("目标文字频道不存在")
         if any(room["text_scope"]["members"][actor]["channel"] != scene["channel_id"] for actor in _members(room, scene["id"])):
             raise WorldConflict("成员场景与文字频道不一致")
-        clocks.append(local.get("progression_clock", {}).get("world_minutes", 0))
+        clocks.append(_logical_seconds(scene))
     if clocks[0] != clocks[1]:
         raise WorldConflict("逻辑时间不同，不能自动快进合队")
     return MergePlan(source, target, a["place_id"], clocks[0],

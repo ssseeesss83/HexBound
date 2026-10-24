@@ -134,12 +134,12 @@ def available_actions(state, member_id):
     # must not prevent conscious companions from finishing the adventure.
     party_actions = []
     conscious_party = any(m["character"]["hp"] > 0 and not m["character"].get("dead") for m in members)
-    is_host = state.get("host_member_id", state.get("host_id")) in (None, member_id)
+    is_host = state.get("_scene_leader_id", state.get("host_member_id", state.get("host_id"))) in (None, member_id)
     if not (combat and combat.get("active")) and conscious_party and is_host:
         if state.get("flags", {}).get("scene_resolved"):
-            party_actions.append({"id": "advance", "label": "与队伍继续前行", "host_only": True, "party_action": True})
+            party_actions.append({"id": "advance", "label": "与队伍继续前行", "host_only": "_scene_leader_id" not in state, "leader_only": True, "party_action": True})
         if not state.get("rest_used") and any(not m["character"].get("dead") and m["character"]["hp"] < m["character"]["max_hp"] for m in members):
-            party_actions.append({"id": "rest", "label": "在避风处休整（全队一次）", "host_only": True, "party_action": True})
+            party_actions.append({"id": "rest", "label": "在避风处休整（全队一次）", "host_only": "_scene_leader_id" not in state, "leader_only": True, "party_action": True})
     if c.get("dead"):
         return party_actions
     if combat and combat.get("active"):
