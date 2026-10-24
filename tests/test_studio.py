@@ -17,6 +17,8 @@ def setup(tmp_path, monkeypatch):
     monkeypatch.delenv("LLM_API_KEY", raising=False)
     monkeypatch.delenv("LLM_MODEL", raising=False)
     store = Store(str(tmp_path / "studio.sqlite3"))
+    from backend.rules_packages import install_package, build_legacy_package
+    install_package(store, build_legacy_package())
     dm = DM()
     app = FastAPI()
     app.include_router(create_studio_router(store, dm))
@@ -27,7 +29,7 @@ def setup(tmp_path, monkeypatch):
 AUTH = {"Authorization": "Bearer studio-test-secret"}
 
 
-def test_graph_draft_is_separate_revision_checked_and_cannot_run_or_publish(setup):
+def test_graph_draft_is_separate_revision_checked_and_can_publish(setup):
     client, store, _ = setup
     original = client.get('/api/studio/items/book-last-lantern', headers=AUTH).json()
     package = compile_scenario(store, original['id'])
@@ -43,14 +45,15 @@ def test_graph_draft_is_separate_revision_checked_and_cannot_run_or_publish(setu
     assert client.get(f"/api/studio/items/{original['id']}", headers=AUTH).json() == original
     assert compile_scenario(store, original['id']) == package
     result = client.post('/api/studio/items/graph-copy/validate', headers=AUTH).json()
-    assert result['valid'] and result['warnings']
-    assert publish(client, graph).status_code == 422
-    assert not any(x['id'] == 'graph-copy' for x in client.get('/api/content').json()['items'])
+    assert result['valid'] and not result['warnings']
+    assert publish(client, graph).status_code == 200
+    assert any(x['id'] == 'graph-copy' for x in client.get('/api/content').json()['items'])
     assert client.post(f"/api/studio/items/{original['id']}/graph-draft", headers=AUTH, json=body).status_code == 409
-    # Defense in depth also rejects direct entry into the old runtime.
+    # Defense in depth checks the full frozen dependency package.
     from backend.campaign import validate_package
-    with pytest.raises(ValueError, match='运行器'):
+    with pytest.raises(ValueError, match='规则包'):
         validate_package({'scenario': graph['draft'], 'skills': {}, 'monsters': {}})
+    validate_package(compile_scenario(store, 'graph-copy'))
 
 
 def test_graph_drafts_can_save_incomplete_topology_validate_and_round_trip(setup):

@@ -52,8 +52,16 @@ def _conscious(state):
 def validate_package(package):
     """Defense in depth; Studio performs the full publishing validation."""
     scenario = package["scenario"]
-    if scenario.get('schema_version', 1) != 1:
-        raise ValueError('此剧情图尚未接入当前运行器')
+    if scenario.get('schema_version', 1) == 2:
+        from .story_graph import parse_book, graph_issues
+        scenario = parse_book(scenario)
+        issues = graph_issues(scenario)
+        if issues:
+            raise ValueError('；'.join(issues))
+        if package.get('rules_package_version') != scenario['rules_package_version']:
+            raise ValueError('剧本与冻结规则包版本不一致')
+    elif scenario.get('schema_version', 1) != 1:
+        raise ValueError('不支持的剧本格式')
     nodes = scenario["nodes"]
     if not nodes or len({n["id"] for n in nodes}) != len(nodes):
         raise ValueError("节点为空或ID重复")
@@ -102,7 +110,13 @@ def _validate_dice(expression):
 
 def start_campaign(state, package):
     validate_package(package)
+    if package['scenario'].get('schema_version') == 2:
+        if state.get('rules_package_version') != package['scenario']['rules_package_version']:
+            raise ValueError('房间与剧本规则版本不一致')
     state["campaign"] = {"package": deepcopy(package), "node_id": package["scenario"]["entry_node_id"], "spent": {}, "cleared": [], "visited": []}
+    if package['scenario'].get('schema_version') == 2:
+        from .story_runtime import initialize
+        state['campaign'].update(initialize(package['scenario']))
     state["completed"] = False
     state["combat"] = None
     events = []

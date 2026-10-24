@@ -15,7 +15,6 @@ from .schemas import Identifier, Kind, MODELS, StrictModel, graph_issues, parse_
 
 FORMAT = "hexbound-content-v1"
 MAX_PACKAGE_BYTES = 2_000_000
-GRAPH_RUNTIME_PENDING = '稀疏剧情图已支持作者草稿；运行图接入完成前暂不能发布或开团'
 
 
 def now():
@@ -122,6 +121,10 @@ class ContentService:
         if graph_v2:
             from .story_graph import graph_issues as story_issues
             issues = story_issues(data)
+            with self.store.connect() as db:
+                if not db.execute('SELECT 1 FROM rules_packages WHERE version=? AND ruleset_id=?',
+                                  (data['rules_package_version'], data['ruleset_id'])).fetchone():
+                    issues.append('剧本指定的规则包未安装')
         else:
             issues = graph_issues(data) if kind == "scenario" else []
         if kind == "skill":
@@ -172,13 +175,13 @@ class ContentService:
             item = self.get(db, scenario_id)
             if item["kind"] != "scenario" or item["archived"] or item["published"] is None:
                 raise HTTPException(422, "只能载入未归档的已发布剧情本")
-            if item['published'].get('schema_version', 1) != 1:
-                raise HTTPException(422, GRAPH_RUNTIME_PENDING)
             catalog = self.catalog(db, published=True)
             issues = self.issues("scenario", item["published"], catalog)
             if issues:
                 raise HTTPException(422, "；".join(issues))
             package = {"scenario": item["published"], "skills": {}, "monsters": {}, "revisions": {item["id"]: item["published_revision"]}}
+            if item['published'].get('schema_version') == 2:
+                package['rules_package_version'] = item['published']['rules_package_version']
             for ref, kind in references("scenario", item["published"]):
                 dependency = self.get(db, ref)
                 package["skills" if kind == "skill" else "monsters"][ref] = dependency["published"]
@@ -372,8 +375,6 @@ def create_studio_router(store, dm):
             item = service.get(db, item_id)
             issues = service.issues(item["kind"], item["draft"], service.catalog(db, published=True))
         warnings = ['已归档内容不能发布'] if item['archived'] else []
-        if item['kind'] == 'scenario' and item['draft'].get('schema_version') == 2:
-            warnings.append(GRAPH_RUNTIME_PENDING)
         return {"valid": not issues, "issues": issues, "warnings": warnings}
 
     @secured.post("/items/{item_id}/publish")
@@ -384,8 +385,6 @@ def create_studio_router(store, dm):
             service.check_revision(item, body.expected_revision)
             if item["archived"]:
                 raise HTTPException(409, "已归档内容不能发布")
-            if item['kind'] == 'scenario' and item['draft'].get('schema_version') == 2:
-                raise HTTPException(422, GRAPH_RUNTIME_PENDING)
             catalog = service.catalog(db, published=True)
             catalog[item_id] = (item["kind"], item["draft"])
             issues = service.issues(item["kind"], item["draft"], catalog)

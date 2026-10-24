@@ -179,7 +179,7 @@ async function run() {
   click('[data-tab=edit]');
   click('#graph-draft');
   await eventually(() => q('[data-g-field=outline]'), 'Independent graph draft did not render');
-  assert.ok(q('#publish').disabled, 'Graph draft must not publish through the old runtime');
+  assert.ok(!q('#publish').disabled, 'Validated graph drafts must be publishable');
   assert.ok(q('#preview').textContent.includes('作者预览'), 'Graph draft preview failed');
   q('[data-g-field=outline]').value = '沿主线探索，允许临场续写。';
   q('[data-g-field=outline]').dispatchEvent(new w.Event('input', {bubbles:true}));

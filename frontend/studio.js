@@ -286,10 +286,6 @@ function renderDetail() {
       `<button id="graph-draft" ${busy || dirty ? 'disabled' : ''}>创建独立图草稿</button>`);
     $('#graph-draft').onclick = createGraphDraft;
   }
-  if (model.schema_version === 2) {
-    $('#publish').disabled = true;
-    $('#publish').title = '图草稿暂不能发布开团';
-  }
   detail.querySelectorAll("[data-tab]").forEach(
     (b) =>
       (b.onclick = () => {

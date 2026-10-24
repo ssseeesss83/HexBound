@@ -96,7 +96,7 @@ class Store:
         from .rules_identity import RULESET_ID, PACKAGE_VERSION, ENGINE_PROFILE
         from .rules_context import active_version
         state.setdefault("ruleset_id", RULESET_ID)
-        state.setdefault("rules_package_version", active_version())
+        state.setdefault("rules_package_version", (state.get('campaign_package') or {}).get('rules_package_version') or active_version())
         state.setdefault("engine_profile", ENGINE_PROFILE)
         if state.get("campaign_package"):
             state["campaign_package"].setdefault("rules_package_version", state["rules_package_version"])
