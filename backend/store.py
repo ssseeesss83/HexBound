@@ -180,6 +180,45 @@ class Store:
                              (room_id, member_id, command_id)).fetchone()
         return json.loads(row["response"]) if row else None
 
+    def prepare_scene_merge(self, room_id, actor, source, target):
+        """Internal table operation; keep its read-set on the server."""
+        from .world_state import prepare_merge, WorldConflict
+        room = self.get(room_id)
+        if not room or room.get("host_id") != actor:
+            raise WorldConflict("只有房主可以准备桌务合队")
+        return prepare_merge(pack_scene(room), source, target)
+
+    def commit_scene_merge(self, room_id, actor, plan, command_id):
+        """Membership, revocation, one table event and receipt commit together.
+
+        No public route calls this until place/entity/runtime integration passes.
+        """
+        from .world_state import commit_merge, WorldConflict, MergePlan
+        from .session_scope import stamp_event
+        if not isinstance(plan, MergePlan):
+            raise WorldConflict("合队需要服务端保存的计划")
+        with self.connect() as db:
+            db.execute("BEGIN IMMEDIATE")
+            row = db.execute("SELECT state FROM rooms WHERE id=?", (room_id,)).fetchone()
+            room = json.loads(row["state"]) if row else None
+            if not room or room.get("host_id") != actor:
+                raise WorldConflict("只有房主可以提交桌务合队")
+            prior = db.execute("SELECT response FROM commands WHERE room_id=? AND member_id=? AND command_id=?", (room_id, actor, command_id)).fetchone()
+            if prior:
+                response = json.loads(prior["response"])
+                if response.get("operation") != "scene_merge" or response.get("source") != plan.source or response.get("target") != plan.target:
+                    raise WorldConflict("命令 ID 已用于其他操作")
+                return {**response, "replayed": True}
+            receipt = commit_merge(room, plan, command_id)
+            room["version"] += 1
+            item = {"id": len(room["events"]) + 1, "kind": "system", "actor_name": "DM", "text": "小队已在安全检查点合队。"}
+            stamp_event(room, item, channel=room["scene_instances"][plan.target]["channel_id"])
+            room["events"].append(item)
+            response = {**receipt, "operation": "scene_merge", "version": room["version"]}
+            db.execute("UPDATE rooms SET state=?,version=? WHERE id=?", (json.dumps(room, ensure_ascii=False), room["version"], room_id))
+            db.execute("INSERT INTO commands VALUES (?,?,?,?)", (room_id, actor, command_id, json.dumps(response, ensure_ascii=False)))
+            return response
+
     def save(self, state: dict, previous_version: int, receipt: tuple[str, str, dict] | None = None):
         from .session_scope import initialize
         initialize(state)
