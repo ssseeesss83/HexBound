@@ -1,0 +1,1009 @@
+{
+  "profile": "official-magic-scrying-variants-v1",
+  "official_families": 2,
+  "normalized_variants": 7,
+  "checks": [
+    {
+      "record": "crystal-ball-of-mind-reading",
+      "field": "name",
+      "expected": "Crystal Ball of Mind Reading",
+      "actual": "Crystal Ball of Mind Reading",
+      "match": true
+    },
+    {
+      "record": "crystal-ball-of-mind-reading",
+      "field": "equipment_category",
+      "expected": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "actual": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "match": true
+    },
+    {
+      "record": "crystal-ball-of-mind-reading",
+      "field": "rarity",
+      "expected": {
+        "name": "Legendary"
+      },
+      "actual": {
+        "name": "Legendary"
+      },
+      "match": true
+    },
+    {
+      "record": "crystal-ball-of-mind-reading",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "crystal-ball-of-mind-reading",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, legendary (requires attunement)",
+        "The crystal ball, is about 6 inches in diameter. While touching it, you can cast the scrying spell (save DC 17) with it.",
+        "Crystal Ball of Mind Reading. You can use an action to cast the detect thoughts spell (save DC 17) while you are scrying with the crystal ball, targeting creatures you can see within 30 feet of the spell's sensor. You don't need to concentrate on this detect thoughts to maintain it during its duration, but it ends if scrying ends."
+      ],
+      "actual": [
+        "Wondrous item, legendary (requires attunement)",
+        "The crystal ball is about 6 inches in diameter. While touching it, you can cast the scrying spell (save DC 17) with it.",
+        "***Crystal Ball of Mind Reading.*** You can use an action to cast the detect thoughts spell (save DC 17) while you are scrying with the crystal ball, targeting creatures you can see within 30 feet of the spell's sensor. You don't need to concentrate on this detect thoughts to maintain it during its duration, but it ends if scrying ends."
+      ],
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-mind-reading",
+      "field": "derived_from",
+      "expected": "magic-items/crystal-ball",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-mind-reading",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-mind-reading",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "crystal-ball",
+        "selected_heading": "Crystal Ball of Mind Reading",
+        "complete_parent_text": "Wondrous item, very rare or legendary (requires\nattunement)\nThe typical crystal ball, a very rare item, is about 6\ninches in diameter. While touching it, you can cast\nthe scrying spell (save DC 17) with it.\nThe following crystal ball variants are legendary\nitems and have additional properties.\nCrystal Ball of Mind Reading. You can use an\naction to cast the detect thoughts spell (save DC 17)\nwhile you are scrying with the crystal ball, targeting\ncreatures you can see within 30 feet of the spell’s\nsensor. You don’t need to concentrate on this detect\nthoughts to maintain it during its duration, but it\nends if scrying ends.\nCrystal Ball of Telepathy. While scrying with the\ncrystal ball, you can communicate telepathically with\ncreatures you can see within 30 feet of the spell’s\nsensor. You can also use an action to cast the\nsuggestion spell (save DC 17) through the sensor on\none of those creatures. You don’t need to\nconcentrate on this suggestion to maintain it during\nits duration, but it ends if scrying ends. Once used,\nthe suggestion power of the crystal ball can’t be used\nagain until the next dawn.\nCrystal Ball of True Seeing. While scrying with\nthe crystal ball, you have truesight with a radius of\n120 feet centered on the spell’s sensor.",
+        "printed_pages": [
+          214,
+          215
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-telepathy",
+      "field": "name",
+      "expected": "Crystal Ball of Telepathy",
+      "actual": "Crystal Ball of Telepathy",
+      "match": true
+    },
+    {
+      "record": "crystal-ball-of-telepathy",
+      "field": "equipment_category",
+      "expected": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "actual": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "match": true
+    },
+    {
+      "record": "crystal-ball-of-telepathy",
+      "field": "rarity",
+      "expected": {
+        "name": "Legendary"
+      },
+      "actual": {
+        "name": "Legendary"
+      },
+      "match": true
+    },
+    {
+      "record": "crystal-ball-of-telepathy",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "crystal-ball-of-telepathy",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, legendary (requires attunement)",
+        "The crystal ball, is about 6 inches in diameter. While touching it, you can cast the scrying spell (save DC 17) with it.",
+        "Crystal Ball of Telepathy. While scrying with the crystal ball, you can communicate telepathically with creatures you can see within 30 feet of the spell's sensor. You can also use an action to cast the suggestion spell (save DC 17) through the sensor on one of those creatures. You don't need to concentrate on this suggestion to maintain it during its duration, but it ends if scrying ends. Once used, the suggestion power of the crystal ball can't be used again until the next dawn."
+      ],
+      "actual": [
+        "Wondrous item, legendary (requires attunement)",
+        "The crystal ball is about 6 inches in diameter. While touching it, you can cast the scrying spell (save DC 17) with it.",
+        "***Crystal Ball of Telepathy.*** While scrying with the crystal ball, you can communicate telepathically with creatures you can see within 30 feet of the spell's sensor. You can also use an action to cast the suggestion spell (save DC 17) through the sensor on one of those creatures. You don't need to concentrate on this suggestion to maintain it during its duration, but it ends if scrying ends. Once used, the suggestion power of the crystal ball can't be used again until the next dawn."
+      ],
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-telepathy",
+      "field": "derived_from",
+      "expected": "magic-items/crystal-ball",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-telepathy",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-telepathy",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "crystal-ball",
+        "selected_heading": "Crystal Ball of Telepathy",
+        "complete_parent_text": "Wondrous item, very rare or legendary (requires\nattunement)\nThe typical crystal ball, a very rare item, is about 6\ninches in diameter. While touching it, you can cast\nthe scrying spell (save DC 17) with it.\nThe following crystal ball variants are legendary\nitems and have additional properties.\nCrystal Ball of Mind Reading. You can use an\naction to cast the detect thoughts spell (save DC 17)\nwhile you are scrying with the crystal ball, targeting\ncreatures you can see within 30 feet of the spell’s\nsensor. You don’t need to concentrate on this detect\nthoughts to maintain it during its duration, but it\nends if scrying ends.\nCrystal Ball of Telepathy. While scrying with the\ncrystal ball, you can communicate telepathically with\ncreatures you can see within 30 feet of the spell’s\nsensor. You can also use an action to cast the\nsuggestion spell (save DC 17) through the sensor on\none of those creatures. You don’t need to\nconcentrate on this suggestion to maintain it during\nits duration, but it ends if scrying ends. Once used,\nthe suggestion power of the crystal ball can’t be used\nagain until the next dawn.\nCrystal Ball of True Seeing. While scrying with\nthe crystal ball, you have truesight with a radius of\n120 feet centered on the spell’s sensor.",
+        "printed_pages": [
+          214,
+          215
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-true-seeing",
+      "field": "name",
+      "expected": "Crystal Ball of True Seeing",
+      "actual": "Crystal Ball of True Seeing",
+      "match": true
+    },
+    {
+      "record": "crystal-ball-of-true-seeing",
+      "field": "equipment_category",
+      "expected": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "actual": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "match": true
+    },
+    {
+      "record": "crystal-ball-of-true-seeing",
+      "field": "rarity",
+      "expected": {
+        "name": "Legendary"
+      },
+      "actual": {
+        "name": "Legendary"
+      },
+      "match": true
+    },
+    {
+      "record": "crystal-ball-of-true-seeing",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "crystal-ball-of-true-seeing",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, legendary (requires attunement)",
+        "The crystal ball, is about 6 inches in diameter. While touching it, you can cast the scrying spell (save DC 17) with it.",
+        "Crystal Ball of True Seeing. While scrying with the crystal ball, you have truesight with a radius of 120 feet centered on the spell's sensor."
+      ],
+      "actual": [
+        "Wondrous item, legendary (requires attunement)",
+        "The crystal ball is about 6 inches in diameter. While touching it, you can cast the scrying spell (save DC 17) with it.",
+        "***Crystal Ball of True Seeing.*** While scrying with the crystal ball, you have truesight with a radius of 120 feet centered on the spell's sensor."
+      ],
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-true-seeing",
+      "field": "derived_from",
+      "expected": "magic-items/crystal-ball",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-true-seeing",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-true-seeing",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "crystal-ball",
+        "selected_heading": "Crystal Ball of True Seeing",
+        "complete_parent_text": "Wondrous item, very rare or legendary (requires\nattunement)\nThe typical crystal ball, a very rare item, is about 6\ninches in diameter. While touching it, you can cast\nthe scrying spell (save DC 17) with it.\nThe following crystal ball variants are legendary\nitems and have additional properties.\nCrystal Ball of Mind Reading. You can use an\naction to cast the detect thoughts spell (save DC 17)\nwhile you are scrying with the crystal ball, targeting\ncreatures you can see within 30 feet of the spell’s\nsensor. You don’t need to concentrate on this detect\nthoughts to maintain it during its duration, but it\nends if scrying ends.\nCrystal Ball of Telepathy. While scrying with the\ncrystal ball, you can communicate telepathically with\ncreatures you can see within 30 feet of the spell’s\nsensor. You can also use an action to cast the\nsuggestion spell (save DC 17) through the sensor on\none of those creatures. You don’t need to\nconcentrate on this suggestion to maintain it during\nits duration, but it ends if scrying ends. Once used,\nthe suggestion power of the crystal ball can’t be used\nagain until the next dawn.\nCrystal Ball of True Seeing. While scrying with\nthe crystal ball, you have truesight with a radius of\n120 feet centered on the spell’s sensor.",
+        "printed_pages": [
+          214,
+          215
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-air",
+      "field": "name",
+      "expected": "Ring of Air Elemental Command",
+      "actual": "Ring of Air Elemental Command",
+      "match": true
+    },
+    {
+      "record": "ring-of-elemental-command-air",
+      "field": "equipment_category",
+      "expected": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "actual": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-elemental-command-air",
+      "field": "rarity",
+      "expected": {
+        "name": "Legendary"
+      },
+      "actual": {
+        "name": "Legendary"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-elemental-command-air",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "ring-of-elemental-command-air",
+      "field": "desc",
+      "expected": [
+        "Ring, legendary (requires attunement)",
+        "This ring is linked to the Elemental Plane of Air. While wearing this ring, you have advantage on attack rolls against elementals from the linked plane, and they have disadvantage on attack rolls against you. In addition, you have access to properties based on the linked plane. The ring has 5 charges. It regains 1d4 + 1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
+        "You can expend 2 of the ring's charges to cast dominate monster on an air elemental. In addition, when you fall, you descend 60 feet per round and take no damage from falling. You can also speak and understand Auran. If you help slay an air elemental while attuned to the ring, you gain access to the following additional properties: • You have resistance to lightning damage. • You have a flying speed equal to your walking speed and can hover. • You can cast the following spells from the ring, expending the necessary number of charges: chain lightning (3 charges), gust of wind (2 charges), or wind wall (1 charge)."
+      ],
+      "actual": [
+        "Ring, legendary (requires attunement)",
+        "This ring is linked to the Elemental Plane of Air.",
+        "While wearing this ring, you have advantage on attack rolls against air elementals, and they have disadvantage on attack rolls against you. In addition, you have access to properties based on the Elemental Plane of Air.",
+        "The ring has 5 charges. It regains 1d4 + 1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
+        "You can expend 2 of the ring's charges to cast dominate monster on an air elemental. In addition, when you fall, you descend 60 feet per round and take no damage from falling. You can also speak and understand Auran.",
+        "If you help slay an air elemental while attuned to the ring, you gain access to the following additional properties:",
+        "You have resistance to lightning damage.",
+        "You have a flying speed equal to your walking speed and can hover.",
+        "You can cast the following spells from the ring, expending the necessary number of charges: chain lightning (3 charges), gust of wind (2 charges), or wind wall (1 charge)."
+      ],
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-air",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-elemental-command",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-air",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-air",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-elemental-command",
+        "selected_heading": "Ring of Air Elemental Command",
+        "complete_parent_text": "Ring, legendary (requires attunement)\nThis ring is linked to one of the four Elemental\nPlanes. The GM chooses or randomly determines the\nlinked plane.\nWhile wearing this ring, you have advantage on\nattack rolls against elementals from the linked plane,\nand they have disadvantage on attack rolls against\nyou. In addition, you have access to properties based\non the linked plane.\nThe ring has 5 charges. It regains 1d4 + 1\nexpended charges daily at dawn. Spells cast from the\nring have a save DC of 17.\nRing of Air Elemental Command. You can expend\n2 of the ring’s charges to cast dominate monster on\nan air elemental. In addition, when you fall, you\ndescend 60 feet per round and take no damage from\nfalling. You can also speak and understand Auran.\nIf you help slay an air elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You have resistance to lightning damage.\n• You have a flying speed equal to your walking\nspeed and can hover.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges: chain\nlightning (3 charges), gust of wind (2 charges), or\nwind wall (1 charge).\nRing of Earth Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on an earth elemental. In addition, you can\nmove in difficult terrain that is composed of rubble,\nrocks, or dirt as if it were normal terrain. You can\nalso speak and understand Terran.\nIf you help slay an earth elemental while attuned\nto the ring, you gain access to the following\nadditional properties:\n• You have resistance to acid damage.\n• You can move through solid earth or rock as if\nthose areas were difficult terrain. If you end your\nturn there, you are shunted out to the nearest\nunoccupied space you last occupied.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges: stone\nshape (2 charges), stoneskin (3 charges), or wall of\nstone (3 charges).\nRing of Fire Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on a fire elemental. In addition, you have\nresistance to fire damage. You can also speak and\nunderstand Ignan.\nIf you help slay a fire elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You are immune to fire damage.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges:\nburning hands (1 charge), fireball (2 charges), and\nwall of fire (3 charges).\nRing of Water Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on a water elemental. In addition, you can\nstand on and walk across liquid surfaces as if they\nwere solid ground. You can also speak and\nunderstand Aquan.\nIf you help slay a water elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You can breathe underwater and have a\nswimming speed equal to your walking speed.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges:\ncreate or destroy water (1 charge), control water (3\ncharges), ice storm (2 charges), or wall of ice (3\ncharges).",
+        "printed_pages": [
+          235,
+          236
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-earth",
+      "field": "name",
+      "expected": "Ring of Earth Elemental Command",
+      "actual": "Ring of Earth Elemental Command",
+      "match": true
+    },
+    {
+      "record": "ring-of-elemental-command-earth",
+      "field": "equipment_category",
+      "expected": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "actual": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-elemental-command-earth",
+      "field": "rarity",
+      "expected": {
+        "name": "Legendary"
+      },
+      "actual": {
+        "name": "Legendary"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-elemental-command-earth",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "ring-of-elemental-command-earth",
+      "field": "desc",
+      "expected": [
+        "Ring, legendary (requires attunement)",
+        "This ring is linked to the Elemental Plane of Earth. While wearing this ring, you have advantage on attack rolls against elementals from the linked plane, and they have disadvantage on attack rolls against you. In addition, you have access to properties based on the linked plane. The ring has 5 charges. It regains 1d4 + 1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
+        "You can expend 2 of the ring's charges to cast dominate monster on an earth elemental. In addition, you can move in difficult terrain that is composed of rubble, rocks, or dirt as if it were normal terrain. You can also speak and understand Terran. If you help slay an earth elemental while attuned to the ring, you gain access to the following additional properties: • You have resistance to acid damage. • You can move through solid earth or rock as if those areas were difficult terrain. If you end your turn there, you are shunted out to the nearest unoccupied space you last occupied. • You can cast the following spells from the ring, expending the necessary number of charges: stone shape (2 charges), stoneskin (3 charges), or wall of stone (3 charges)."
+      ],
+      "actual": [
+        "Ring, legendary (requires attunement)",
+        "This ring is linked to the Elemental Plane of Earth.",
+        "While wearing this ring, you have advantage on attack rolls against earth elementals, and they have disadvantage on attack rolls against you. In addition, you have access to properties based on the Elemental Plane of Earth.",
+        "The ring has 5 charges. It regains 1d4 + 1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
+        "You can expend 2 of the ring's charges to cast dominate monster on an earth elemental. In addition, you can move in difficult terrain that is composed of rubble, rocks, or dirt as if it were normal terrain. You can also speak and understand Terran.",
+        "If you help slay an earth elemental while attuned to the ring, you gain access to the following additional properties:",
+        "You have resistance to acid damage.",
+        "You can move through solid earth or rock as if those areas were difficult terrain. If you end your turn there, you are shunted out to the nearest unoccupied space you last occupied.",
+        "You can cast the following spells from the ring, expending the necessary number of charges: stone shape (2 charges), stoneskin (3 charges), or wall of stone (3 charges)."
+      ],
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-earth",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-elemental-command",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-earth",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-earth",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-elemental-command",
+        "selected_heading": "Ring of Earth Elemental Command",
+        "complete_parent_text": "Ring, legendary (requires attunement)\nThis ring is linked to one of the four Elemental\nPlanes. The GM chooses or randomly determines the\nlinked plane.\nWhile wearing this ring, you have advantage on\nattack rolls against elementals from the linked plane,\nand they have disadvantage on attack rolls against\nyou. In addition, you have access to properties based\non the linked plane.\nThe ring has 5 charges. It regains 1d4 + 1\nexpended charges daily at dawn. Spells cast from the\nring have a save DC of 17.\nRing of Air Elemental Command. You can expend\n2 of the ring’s charges to cast dominate monster on\nan air elemental. In addition, when you fall, you\ndescend 60 feet per round and take no damage from\nfalling. You can also speak and understand Auran.\nIf you help slay an air elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You have resistance to lightning damage.\n• You have a flying speed equal to your walking\nspeed and can hover.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges: chain\nlightning (3 charges), gust of wind (2 charges), or\nwind wall (1 charge).\nRing of Earth Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on an earth elemental. In addition, you can\nmove in difficult terrain that is composed of rubble,\nrocks, or dirt as if it were normal terrain. You can\nalso speak and understand Terran.\nIf you help slay an earth elemental while attuned\nto the ring, you gain access to the following\nadditional properties:\n• You have resistance to acid damage.\n• You can move through solid earth or rock as if\nthose areas were difficult terrain. If you end your\nturn there, you are shunted out to the nearest\nunoccupied space you last occupied.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges: stone\nshape (2 charges), stoneskin (3 charges), or wall of\nstone (3 charges).\nRing of Fire Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on a fire elemental. In addition, you have\nresistance to fire damage. You can also speak and\nunderstand Ignan.\nIf you help slay a fire elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You are immune to fire damage.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges:\nburning hands (1 charge), fireball (2 charges), and\nwall of fire (3 charges).\nRing of Water Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on a water elemental. In addition, you can\nstand on and walk across liquid surfaces as if they\nwere solid ground. You can also speak and\nunderstand Aquan.\nIf you help slay a water elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You can breathe underwater and have a\nswimming speed equal to your walking speed.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges:\ncreate or destroy water (1 charge), control water (3\ncharges), ice storm (2 charges), or wall of ice (3\ncharges).",
+        "printed_pages": [
+          235,
+          236
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-fire",
+      "field": "name",
+      "expected": "Ring of Fire Elemental Command",
+      "actual": "Ring of Fire Elemental Command",
+      "match": true
+    },
+    {
+      "record": "ring-of-elemental-command-fire",
+      "field": "equipment_category",
+      "expected": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "actual": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-elemental-command-fire",
+      "field": "rarity",
+      "expected": {
+        "name": "Legendary"
+      },
+      "actual": {
+        "name": "Legendary"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-elemental-command-fire",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "ring-of-elemental-command-fire",
+      "field": "desc",
+      "expected": [
+        "Ring, legendary (requires attunement)",
+        "This ring is linked to the Elemental Plane of Fire. While wearing this ring, you have advantage on attack rolls against elementals from the linked plane, and they have disadvantage on attack rolls against you. In addition, you have access to properties based on the linked plane. The ring has 5 charges. It regains 1d4 + 1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
+        "You can expend 2 of the ring's charges to cast dominate monster on a fire elemental. In addition, you have resistance to fire damage. You can also speak and understand Ignan. If you help slay a fire elemental while attuned to the ring, you gain access to the following additional properties: • You are immune to fire damage. • You can cast the following spells from the ring, expending the necessary number of charges: burning hands (1 charge), fireball (2 charges), and wall of fire (3 charges)."
+      ],
+      "actual": [
+        "Ring, legendary (requires attunement)",
+        "This ring is linked to the Elemental Plane of Fire.",
+        "While wearing this ring, you have advantage on attack rolls against fire elementals, and they have disadvantage on attack rolls against you. In addition, you have access to properties based on the Elemental Plane of Fire.",
+        "The ring has 5 charges. It regains 1d4 + 1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
+        "You can expend 2 of the ring's charges to cast dominate monster on a fire elemental. In addition, you have resistance to fire damage. You can also speak and understand Ignan.",
+        "If you help slay a fire elemental while attuned to the ring, you gain access to the following additional properties:",
+        "You are immune to fire damage.",
+        "You can cast the following spells from the ring, expending the necessary number of charges: burning hands (1 charge), fireball (2 charges), and wall of fire (3 charges)."
+      ],
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-fire",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-elemental-command",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-fire",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-fire",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-elemental-command",
+        "selected_heading": "Ring of Fire Elemental Command",
+        "complete_parent_text": "Ring, legendary (requires attunement)\nThis ring is linked to one of the four Elemental\nPlanes. The GM chooses or randomly determines the\nlinked plane.\nWhile wearing this ring, you have advantage on\nattack rolls against elementals from the linked plane,\nand they have disadvantage on attack rolls against\nyou. In addition, you have access to properties based\non the linked plane.\nThe ring has 5 charges. It regains 1d4 + 1\nexpended charges daily at dawn. Spells cast from the\nring have a save DC of 17.\nRing of Air Elemental Command. You can expend\n2 of the ring’s charges to cast dominate monster on\nan air elemental. In addition, when you fall, you\ndescend 60 feet per round and take no damage from\nfalling. You can also speak and understand Auran.\nIf you help slay an air elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You have resistance to lightning damage.\n• You have a flying speed equal to your walking\nspeed and can hover.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges: chain\nlightning (3 charges), gust of wind (2 charges), or\nwind wall (1 charge).\nRing of Earth Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on an earth elemental. In addition, you can\nmove in difficult terrain that is composed of rubble,\nrocks, or dirt as if it were normal terrain. You can\nalso speak and understand Terran.\nIf you help slay an earth elemental while attuned\nto the ring, you gain access to the following\nadditional properties:\n• You have resistance to acid damage.\n• You can move through solid earth or rock as if\nthose areas were difficult terrain. If you end your\nturn there, you are shunted out to the nearest\nunoccupied space you last occupied.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges: stone\nshape (2 charges), stoneskin (3 charges), or wall of\nstone (3 charges).\nRing of Fire Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on a fire elemental. In addition, you have\nresistance to fire damage. You can also speak and\nunderstand Ignan.\nIf you help slay a fire elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You are immune to fire damage.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges:\nburning hands (1 charge), fireball (2 charges), and\nwall of fire (3 charges).\nRing of Water Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on a water elemental. In addition, you can\nstand on and walk across liquid surfaces as if they\nwere solid ground. You can also speak and\nunderstand Aquan.\nIf you help slay a water elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You can breathe underwater and have a\nswimming speed equal to your walking speed.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges:\ncreate or destroy water (1 charge), control water (3\ncharges), ice storm (2 charges), or wall of ice (3\ncharges).",
+        "printed_pages": [
+          235,
+          236
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-water",
+      "field": "name",
+      "expected": "Ring of Water Elemental Command",
+      "actual": "Ring of Water Elemental Command",
+      "match": true
+    },
+    {
+      "record": "ring-of-elemental-command-water",
+      "field": "equipment_category",
+      "expected": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "actual": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-elemental-command-water",
+      "field": "rarity",
+      "expected": {
+        "name": "Legendary"
+      },
+      "actual": {
+        "name": "Legendary"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-elemental-command-water",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "ring-of-elemental-command-water",
+      "field": "desc",
+      "expected": [
+        "Ring, legendary (requires attunement)",
+        "This ring is linked to the Elemental Plane of Water. While wearing this ring, you have advantage on attack rolls against elementals from the linked plane, and they have disadvantage on attack rolls against you. In addition, you have access to properties based on the linked plane. The ring has 5 charges. It regains 1d4 + 1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
+        "You can expend 2 of the ring's charges to cast dominate monster on a water elemental. In addition, you can stand on and walk across liquid surfaces as if they were solid ground. You can also speak and understand Aquan. If you help slay a water elemental while attuned to the ring, you gain access to the following additional properties: • You can breathe underwater and have a swimming speed equal to your walking speed. • You can cast the following spells from the ring, expending the necessary number of charges: create or destroy water (1 charge), control water (3 charges), ice storm (2 charges), or wall of ice (3 charges)."
+      ],
+      "actual": [
+        "Ring, legendary (requires attunement)",
+        "This ring is linked to the Elemental Plane of Water.",
+        "While wearing this ring, you have advantage on attack rolls against water elementals, and they have disadvantage on attack rolls against you. In addition, you have access to properties based on the Elemental Plane of Water.",
+        "The ring has 5 charges. It regains 1d4 + 1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
+        "You can expend 2 of the ring's charges to cast dominate monster on a water elemental. In addition, you can stand on and walk across liquid surfaces as if they were solid ground. You can also speak and understand Aquan.",
+        "If you help slay a water elemental while attuned to the ring, you gain access to the following additional properties:",
+        "You can breathe underwater and have a swimming speed equal to your walking speed.",
+        "You can cast the following spells from the ring, expending the necessary number of charges: create or destroy water (1 charge), control water (3 charges), ice storm (2 charges), or wall of ice (3 charges)."
+      ],
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-water",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-elemental-command",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-water",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-water",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-elemental-command",
+        "selected_heading": "Ring of Water Elemental Command",
+        "complete_parent_text": "Ring, legendary (requires attunement)\nThis ring is linked to one of the four Elemental\nPlanes. The GM chooses or randomly determines the\nlinked plane.\nWhile wearing this ring, you have advantage on\nattack rolls against elementals from the linked plane,\nand they have disadvantage on attack rolls against\nyou. In addition, you have access to properties based\non the linked plane.\nThe ring has 5 charges. It regains 1d4 + 1\nexpended charges daily at dawn. Spells cast from the\nring have a save DC of 17.\nRing of Air Elemental Command. You can expend\n2 of the ring’s charges to cast dominate monster on\nan air elemental. In addition, when you fall, you\ndescend 60 feet per round and take no damage from\nfalling. You can also speak and understand Auran.\nIf you help slay an air elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You have resistance to lightning damage.\n• You have a flying speed equal to your walking\nspeed and can hover.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges: chain\nlightning (3 charges), gust of wind (2 charges), or\nwind wall (1 charge).\nRing of Earth Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on an earth elemental. In addition, you can\nmove in difficult terrain that is composed of rubble,\nrocks, or dirt as if it were normal terrain. You can\nalso speak and understand Terran.\nIf you help slay an earth elemental while attuned\nto the ring, you gain access to the following\nadditional properties:\n• You have resistance to acid damage.\n• You can move through solid earth or rock as if\nthose areas were difficult terrain. If you end your\nturn there, you are shunted out to the nearest\nunoccupied space you last occupied.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges: stone\nshape (2 charges), stoneskin (3 charges), or wall of\nstone (3 charges).\nRing of Fire Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on a fire elemental. In addition, you have\nresistance to fire damage. You can also speak and\nunderstand Ignan.\nIf you help slay a fire elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You are immune to fire damage.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges:\nburning hands (1 charge), fireball (2 charges), and\nwall of fire (3 charges).\nRing of Water Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on a water elemental. In addition, you can\nstand on and walk across liquid surfaces as if they\nwere solid ground. You can also speak and\nunderstand Aquan.\nIf you help slay a water elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You can breathe underwater and have a\nswimming speed equal to your walking speed.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges:\ncreate or destroy water (1 charge), control water (3\ncharges), ice storm (2 charges), or wall of ice (3\ncharges).",
+        "printed_pages": [
+          235,
+          236
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    }
+  ],
+  "differences": [
+    {
+      "record": "crystal-ball-of-mind-reading",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, legendary (requires attunement)",
+        "The crystal ball, is about 6 inches in diameter. While touching it, you can cast the scrying spell (save DC 17) with it.",
+        "Crystal Ball of Mind Reading. You can use an action to cast the detect thoughts spell (save DC 17) while you are scrying with the crystal ball, targeting creatures you can see within 30 feet of the spell's sensor. You don't need to concentrate on this detect thoughts to maintain it during its duration, but it ends if scrying ends."
+      ],
+      "actual": [
+        "Wondrous item, legendary (requires attunement)",
+        "The crystal ball is about 6 inches in diameter. While touching it, you can cast the scrying spell (save DC 17) with it.",
+        "***Crystal Ball of Mind Reading.*** You can use an action to cast the detect thoughts spell (save DC 17) while you are scrying with the crystal ball, targeting creatures you can see within 30 feet of the spell's sensor. You don't need to concentrate on this detect thoughts to maintain it during its duration, but it ends if scrying ends."
+      ],
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-mind-reading",
+      "field": "derived_from",
+      "expected": "magic-items/crystal-ball",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-mind-reading",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-mind-reading",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "crystal-ball",
+        "selected_heading": "Crystal Ball of Mind Reading",
+        "complete_parent_text": "Wondrous item, very rare or legendary (requires\nattunement)\nThe typical crystal ball, a very rare item, is about 6\ninches in diameter. While touching it, you can cast\nthe scrying spell (save DC 17) with it.\nThe following crystal ball variants are legendary\nitems and have additional properties.\nCrystal Ball of Mind Reading. You can use an\naction to cast the detect thoughts spell (save DC 17)\nwhile you are scrying with the crystal ball, targeting\ncreatures you can see within 30 feet of the spell’s\nsensor. You don’t need to concentrate on this detect\nthoughts to maintain it during its duration, but it\nends if scrying ends.\nCrystal Ball of Telepathy. While scrying with the\ncrystal ball, you can communicate telepathically with\ncreatures you can see within 30 feet of the spell’s\nsensor. You can also use an action to cast the\nsuggestion spell (save DC 17) through the sensor on\none of those creatures. You don’t need to\nconcentrate on this suggestion to maintain it during\nits duration, but it ends if scrying ends. Once used,\nthe suggestion power of the crystal ball can’t be used\nagain until the next dawn.\nCrystal Ball of True Seeing. While scrying with\nthe crystal ball, you have truesight with a radius of\n120 feet centered on the spell’s sensor.",
+        "printed_pages": [
+          214,
+          215
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-telepathy",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, legendary (requires attunement)",
+        "The crystal ball, is about 6 inches in diameter. While touching it, you can cast the scrying spell (save DC 17) with it.",
+        "Crystal Ball of Telepathy. While scrying with the crystal ball, you can communicate telepathically with creatures you can see within 30 feet of the spell's sensor. You can also use an action to cast the suggestion spell (save DC 17) through the sensor on one of those creatures. You don't need to concentrate on this suggestion to maintain it during its duration, but it ends if scrying ends. Once used, the suggestion power of the crystal ball can't be used again until the next dawn."
+      ],
+      "actual": [
+        "Wondrous item, legendary (requires attunement)",
+        "The crystal ball is about 6 inches in diameter. While touching it, you can cast the scrying spell (save DC 17) with it.",
+        "***Crystal Ball of Telepathy.*** While scrying with the crystal ball, you can communicate telepathically with creatures you can see within 30 feet of the spell's sensor. You can also use an action to cast the suggestion spell (save DC 17) through the sensor on one of those creatures. You don't need to concentrate on this suggestion to maintain it during its duration, but it ends if scrying ends. Once used, the suggestion power of the crystal ball can't be used again until the next dawn."
+      ],
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-telepathy",
+      "field": "derived_from",
+      "expected": "magic-items/crystal-ball",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-telepathy",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-telepathy",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "crystal-ball",
+        "selected_heading": "Crystal Ball of Telepathy",
+        "complete_parent_text": "Wondrous item, very rare or legendary (requires\nattunement)\nThe typical crystal ball, a very rare item, is about 6\ninches in diameter. While touching it, you can cast\nthe scrying spell (save DC 17) with it.\nThe following crystal ball variants are legendary\nitems and have additional properties.\nCrystal Ball of Mind Reading. You can use an\naction to cast the detect thoughts spell (save DC 17)\nwhile you are scrying with the crystal ball, targeting\ncreatures you can see within 30 feet of the spell’s\nsensor. You don’t need to concentrate on this detect\nthoughts to maintain it during its duration, but it\nends if scrying ends.\nCrystal Ball of Telepathy. While scrying with the\ncrystal ball, you can communicate telepathically with\ncreatures you can see within 30 feet of the spell’s\nsensor. You can also use an action to cast the\nsuggestion spell (save DC 17) through the sensor on\none of those creatures. You don’t need to\nconcentrate on this suggestion to maintain it during\nits duration, but it ends if scrying ends. Once used,\nthe suggestion power of the crystal ball can’t be used\nagain until the next dawn.\nCrystal Ball of True Seeing. While scrying with\nthe crystal ball, you have truesight with a radius of\n120 feet centered on the spell’s sensor.",
+        "printed_pages": [
+          214,
+          215
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-true-seeing",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, legendary (requires attunement)",
+        "The crystal ball, is about 6 inches in diameter. While touching it, you can cast the scrying spell (save DC 17) with it.",
+        "Crystal Ball of True Seeing. While scrying with the crystal ball, you have truesight with a radius of 120 feet centered on the spell's sensor."
+      ],
+      "actual": [
+        "Wondrous item, legendary (requires attunement)",
+        "The crystal ball is about 6 inches in diameter. While touching it, you can cast the scrying spell (save DC 17) with it.",
+        "***Crystal Ball of True Seeing.*** While scrying with the crystal ball, you have truesight with a radius of 120 feet centered on the spell's sensor."
+      ],
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-true-seeing",
+      "field": "derived_from",
+      "expected": "magic-items/crystal-ball",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-true-seeing",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "crystal-ball-of-true-seeing",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "crystal-ball",
+        "selected_heading": "Crystal Ball of True Seeing",
+        "complete_parent_text": "Wondrous item, very rare or legendary (requires\nattunement)\nThe typical crystal ball, a very rare item, is about 6\ninches in diameter. While touching it, you can cast\nthe scrying spell (save DC 17) with it.\nThe following crystal ball variants are legendary\nitems and have additional properties.\nCrystal Ball of Mind Reading. You can use an\naction to cast the detect thoughts spell (save DC 17)\nwhile you are scrying with the crystal ball, targeting\ncreatures you can see within 30 feet of the spell’s\nsensor. You don’t need to concentrate on this detect\nthoughts to maintain it during its duration, but it\nends if scrying ends.\nCrystal Ball of Telepathy. While scrying with the\ncrystal ball, you can communicate telepathically with\ncreatures you can see within 30 feet of the spell’s\nsensor. You can also use an action to cast the\nsuggestion spell (save DC 17) through the sensor on\none of those creatures. You don’t need to\nconcentrate on this suggestion to maintain it during\nits duration, but it ends if scrying ends. Once used,\nthe suggestion power of the crystal ball can’t be used\nagain until the next dawn.\nCrystal Ball of True Seeing. While scrying with\nthe crystal ball, you have truesight with a radius of\n120 feet centered on the spell’s sensor.",
+        "printed_pages": [
+          214,
+          215
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-air",
+      "field": "desc",
+      "expected": [
+        "Ring, legendary (requires attunement)",
+        "This ring is linked to the Elemental Plane of Air. While wearing this ring, you have advantage on attack rolls against elementals from the linked plane, and they have disadvantage on attack rolls against you. In addition, you have access to properties based on the linked plane. The ring has 5 charges. It regains 1d4 + 1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
+        "You can expend 2 of the ring's charges to cast dominate monster on an air elemental. In addition, when you fall, you descend 60 feet per round and take no damage from falling. You can also speak and understand Auran. If you help slay an air elemental while attuned to the ring, you gain access to the following additional properties: • You have resistance to lightning damage. • You have a flying speed equal to your walking speed and can hover. • You can cast the following spells from the ring, expending the necessary number of charges: chain lightning (3 charges), gust of wind (2 charges), or wind wall (1 charge)."
+      ],
+      "actual": [
+        "Ring, legendary (requires attunement)",
+        "This ring is linked to the Elemental Plane of Air.",
+        "While wearing this ring, you have advantage on attack rolls against air elementals, and they have disadvantage on attack rolls against you. In addition, you have access to properties based on the Elemental Plane of Air.",
+        "The ring has 5 charges. It regains 1d4 + 1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
+        "You can expend 2 of the ring's charges to cast dominate monster on an air elemental. In addition, when you fall, you descend 60 feet per round and take no damage from falling. You can also speak and understand Auran.",
+        "If you help slay an air elemental while attuned to the ring, you gain access to the following additional properties:",
+        "You have resistance to lightning damage.",
+        "You have a flying speed equal to your walking speed and can hover.",
+        "You can cast the following spells from the ring, expending the necessary number of charges: chain lightning (3 charges), gust of wind (2 charges), or wind wall (1 charge)."
+      ],
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-air",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-elemental-command",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-air",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-air",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-elemental-command",
+        "selected_heading": "Ring of Air Elemental Command",
+        "complete_parent_text": "Ring, legendary (requires attunement)\nThis ring is linked to one of the four Elemental\nPlanes. The GM chooses or randomly determines the\nlinked plane.\nWhile wearing this ring, you have advantage on\nattack rolls against elementals from the linked plane,\nand they have disadvantage on attack rolls against\nyou. In addition, you have access to properties based\non the linked plane.\nThe ring has 5 charges. It regains 1d4 + 1\nexpended charges daily at dawn. Spells cast from the\nring have a save DC of 17.\nRing of Air Elemental Command. You can expend\n2 of the ring’s charges to cast dominate monster on\nan air elemental. In addition, when you fall, you\ndescend 60 feet per round and take no damage from\nfalling. You can also speak and understand Auran.\nIf you help slay an air elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You have resistance to lightning damage.\n• You have a flying speed equal to your walking\nspeed and can hover.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges: chain\nlightning (3 charges), gust of wind (2 charges), or\nwind wall (1 charge).\nRing of Earth Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on an earth elemental. In addition, you can\nmove in difficult terrain that is composed of rubble,\nrocks, or dirt as if it were normal terrain. You can\nalso speak and understand Terran.\nIf you help slay an earth elemental while attuned\nto the ring, you gain access to the following\nadditional properties:\n• You have resistance to acid damage.\n• You can move through solid earth or rock as if\nthose areas were difficult terrain. If you end your\nturn there, you are shunted out to the nearest\nunoccupied space you last occupied.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges: stone\nshape (2 charges), stoneskin (3 charges), or wall of\nstone (3 charges).\nRing of Fire Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on a fire elemental. In addition, you have\nresistance to fire damage. You can also speak and\nunderstand Ignan.\nIf you help slay a fire elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You are immune to fire damage.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges:\nburning hands (1 charge), fireball (2 charges), and\nwall of fire (3 charges).\nRing of Water Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on a water elemental. In addition, you can\nstand on and walk across liquid surfaces as if they\nwere solid ground. You can also speak and\nunderstand Aquan.\nIf you help slay a water elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You can breathe underwater and have a\nswimming speed equal to your walking speed.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges:\ncreate or destroy water (1 charge), control water (3\ncharges), ice storm (2 charges), or wall of ice (3\ncharges).",
+        "printed_pages": [
+          235,
+          236
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-earth",
+      "field": "desc",
+      "expected": [
+        "Ring, legendary (requires attunement)",
+        "This ring is linked to the Elemental Plane of Earth. While wearing this ring, you have advantage on attack rolls against elementals from the linked plane, and they have disadvantage on attack rolls against you. In addition, you have access to properties based on the linked plane. The ring has 5 charges. It regains 1d4 + 1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
+        "You can expend 2 of the ring's charges to cast dominate monster on an earth elemental. In addition, you can move in difficult terrain that is composed of rubble, rocks, or dirt as if it were normal terrain. You can also speak and understand Terran. If you help slay an earth elemental while attuned to the ring, you gain access to the following additional properties: • You have resistance to acid damage. • You can move through solid earth or rock as if those areas were difficult terrain. If you end your turn there, you are shunted out to the nearest unoccupied space you last occupied. • You can cast the following spells from the ring, expending the necessary number of charges: stone shape (2 charges), stoneskin (3 charges), or wall of stone (3 charges)."
+      ],
+      "actual": [
+        "Ring, legendary (requires attunement)",
+        "This ring is linked to the Elemental Plane of Earth.",
+        "While wearing this ring, you have advantage on attack rolls against earth elementals, and they have disadvantage on attack rolls against you. In addition, you have access to properties based on the Elemental Plane of Earth.",
+        "The ring has 5 charges. It regains 1d4 + 1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
+        "You can expend 2 of the ring's charges to cast dominate monster on an earth elemental. In addition, you can move in difficult terrain that is composed of rubble, rocks, or dirt as if it were normal terrain. You can also speak and understand Terran.",
+        "If you help slay an earth elemental while attuned to the ring, you gain access to the following additional properties:",
+        "You have resistance to acid damage.",
+        "You can move through solid earth or rock as if those areas were difficult terrain. If you end your turn there, you are shunted out to the nearest unoccupied space you last occupied.",
+        "You can cast the following spells from the ring, expending the necessary number of charges: stone shape (2 charges), stoneskin (3 charges), or wall of stone (3 charges)."
+      ],
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-earth",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-elemental-command",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-earth",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-earth",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-elemental-command",
+        "selected_heading": "Ring of Earth Elemental Command",
+        "complete_parent_text": "Ring, legendary (requires attunement)\nThis ring is linked to one of the four Elemental\nPlanes. The GM chooses or randomly determines the\nlinked plane.\nWhile wearing this ring, you have advantage on\nattack rolls against elementals from the linked plane,\nand they have disadvantage on attack rolls against\nyou. In addition, you have access to properties based\non the linked plane.\nThe ring has 5 charges. It regains 1d4 + 1\nexpended charges daily at dawn. Spells cast from the\nring have a save DC of 17.\nRing of Air Elemental Command. You can expend\n2 of the ring’s charges to cast dominate monster on\nan air elemental. In addition, when you fall, you\ndescend 60 feet per round and take no damage from\nfalling. You can also speak and understand Auran.\nIf you help slay an air elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You have resistance to lightning damage.\n• You have a flying speed equal to your walking\nspeed and can hover.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges: chain\nlightning (3 charges), gust of wind (2 charges), or\nwind wall (1 charge).\nRing of Earth Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on an earth elemental. In addition, you can\nmove in difficult terrain that is composed of rubble,\nrocks, or dirt as if it were normal terrain. You can\nalso speak and understand Terran.\nIf you help slay an earth elemental while attuned\nto the ring, you gain access to the following\nadditional properties:\n• You have resistance to acid damage.\n• You can move through solid earth or rock as if\nthose areas were difficult terrain. If you end your\nturn there, you are shunted out to the nearest\nunoccupied space you last occupied.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges: stone\nshape (2 charges), stoneskin (3 charges), or wall of\nstone (3 charges).\nRing of Fire Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on a fire elemental. In addition, you have\nresistance to fire damage. You can also speak and\nunderstand Ignan.\nIf you help slay a fire elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You are immune to fire damage.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges:\nburning hands (1 charge), fireball (2 charges), and\nwall of fire (3 charges).\nRing of Water Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on a water elemental. In addition, you can\nstand on and walk across liquid surfaces as if they\nwere solid ground. You can also speak and\nunderstand Aquan.\nIf you help slay a water elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You can breathe underwater and have a\nswimming speed equal to your walking speed.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges:\ncreate or destroy water (1 charge), control water (3\ncharges), ice storm (2 charges), or wall of ice (3\ncharges).",
+        "printed_pages": [
+          235,
+          236
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-fire",
+      "field": "desc",
+      "expected": [
+        "Ring, legendary (requires attunement)",
+        "This ring is linked to the Elemental Plane of Fire. While wearing this ring, you have advantage on attack rolls against elementals from the linked plane, and they have disadvantage on attack rolls against you. In addition, you have access to properties based on the linked plane. The ring has 5 charges. It regains 1d4 + 1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
+        "You can expend 2 of the ring's charges to cast dominate monster on a fire elemental. In addition, you have resistance to fire damage. You can also speak and understand Ignan. If you help slay a fire elemental while attuned to the ring, you gain access to the following additional properties: • You are immune to fire damage. • You can cast the following spells from the ring, expending the necessary number of charges: burning hands (1 charge), fireball (2 charges), and wall of fire (3 charges)."
+      ],
+      "actual": [
+        "Ring, legendary (requires attunement)",
+        "This ring is linked to the Elemental Plane of Fire.",
+        "While wearing this ring, you have advantage on attack rolls against fire elementals, and they have disadvantage on attack rolls against you. In addition, you have access to properties based on the Elemental Plane of Fire.",
+        "The ring has 5 charges. It regains 1d4 + 1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
+        "You can expend 2 of the ring's charges to cast dominate monster on a fire elemental. In addition, you have resistance to fire damage. You can also speak and understand Ignan.",
+        "If you help slay a fire elemental while attuned to the ring, you gain access to the following additional properties:",
+        "You are immune to fire damage.",
+        "You can cast the following spells from the ring, expending the necessary number of charges: burning hands (1 charge), fireball (2 charges), and wall of fire (3 charges)."
+      ],
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-fire",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-elemental-command",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-fire",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-fire",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-elemental-command",
+        "selected_heading": "Ring of Fire Elemental Command",
+        "complete_parent_text": "Ring, legendary (requires attunement)\nThis ring is linked to one of the four Elemental\nPlanes. The GM chooses or randomly determines the\nlinked plane.\nWhile wearing this ring, you have advantage on\nattack rolls against elementals from the linked plane,\nand they have disadvantage on attack rolls against\nyou. In addition, you have access to properties based\non the linked plane.\nThe ring has 5 charges. It regains 1d4 + 1\nexpended charges daily at dawn. Spells cast from the\nring have a save DC of 17.\nRing of Air Elemental Command. You can expend\n2 of the ring’s charges to cast dominate monster on\nan air elemental. In addition, when you fall, you\ndescend 60 feet per round and take no damage from\nfalling. You can also speak and understand Auran.\nIf you help slay an air elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You have resistance to lightning damage.\n• You have a flying speed equal to your walking\nspeed and can hover.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges: chain\nlightning (3 charges), gust of wind (2 charges), or\nwind wall (1 charge).\nRing of Earth Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on an earth elemental. In addition, you can\nmove in difficult terrain that is composed of rubble,\nrocks, or dirt as if it were normal terrain. You can\nalso speak and understand Terran.\nIf you help slay an earth elemental while attuned\nto the ring, you gain access to the following\nadditional properties:\n• You have resistance to acid damage.\n• You can move through solid earth or rock as if\nthose areas were difficult terrain. If you end your\nturn there, you are shunted out to the nearest\nunoccupied space you last occupied.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges: stone\nshape (2 charges), stoneskin (3 charges), or wall of\nstone (3 charges).\nRing of Fire Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on a fire elemental. In addition, you have\nresistance to fire damage. You can also speak and\nunderstand Ignan.\nIf you help slay a fire elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You are immune to fire damage.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges:\nburning hands (1 charge), fireball (2 charges), and\nwall of fire (3 charges).\nRing of Water Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on a water elemental. In addition, you can\nstand on and walk across liquid surfaces as if they\nwere solid ground. You can also speak and\nunderstand Aquan.\nIf you help slay a water elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You can breathe underwater and have a\nswimming speed equal to your walking speed.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges:\ncreate or destroy water (1 charge), control water (3\ncharges), ice storm (2 charges), or wall of ice (3\ncharges).",
+        "printed_pages": [
+          235,
+          236
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-water",
+      "field": "desc",
+      "expected": [
+        "Ring, legendary (requires attunement)",
+        "This ring is linked to the Elemental Plane of Water. While wearing this ring, you have advantage on attack rolls against elementals from the linked plane, and they have disadvantage on attack rolls against you. In addition, you have access to properties based on the linked plane. The ring has 5 charges. It regains 1d4 + 1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
+        "You can expend 2 of the ring's charges to cast dominate monster on a water elemental. In addition, you can stand on and walk across liquid surfaces as if they were solid ground. You can also speak and understand Aquan. If you help slay a water elemental while attuned to the ring, you gain access to the following additional properties: • You can breathe underwater and have a swimming speed equal to your walking speed. • You can cast the following spells from the ring, expending the necessary number of charges: create or destroy water (1 charge), control water (3 charges), ice storm (2 charges), or wall of ice (3 charges)."
+      ],
+      "actual": [
+        "Ring, legendary (requires attunement)",
+        "This ring is linked to the Elemental Plane of Water.",
+        "While wearing this ring, you have advantage on attack rolls against water elementals, and they have disadvantage on attack rolls against you. In addition, you have access to properties based on the Elemental Plane of Water.",
+        "The ring has 5 charges. It regains 1d4 + 1 expended charges daily at dawn. Spells cast from the ring have a save DC of 17.",
+        "You can expend 2 of the ring's charges to cast dominate monster on a water elemental. In addition, you can stand on and walk across liquid surfaces as if they were solid ground. You can also speak and understand Aquan.",
+        "If you help slay a water elemental while attuned to the ring, you gain access to the following additional properties:",
+        "You can breathe underwater and have a swimming speed equal to your walking speed.",
+        "You can cast the following spells from the ring, expending the necessary number of charges: create or destroy water (1 charge), control water (3 charges), ice storm (2 charges), or wall of ice (3 charges)."
+      ],
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-water",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-elemental-command",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-water",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-elemental-command-water",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-elemental-command",
+        "selected_heading": "Ring of Water Elemental Command",
+        "complete_parent_text": "Ring, legendary (requires attunement)\nThis ring is linked to one of the four Elemental\nPlanes. The GM chooses or randomly determines the\nlinked plane.\nWhile wearing this ring, you have advantage on\nattack rolls against elementals from the linked plane,\nand they have disadvantage on attack rolls against\nyou. In addition, you have access to properties based\non the linked plane.\nThe ring has 5 charges. It regains 1d4 + 1\nexpended charges daily at dawn. Spells cast from the\nring have a save DC of 17.\nRing of Air Elemental Command. You can expend\n2 of the ring’s charges to cast dominate monster on\nan air elemental. In addition, when you fall, you\ndescend 60 feet per round and take no damage from\nfalling. You can also speak and understand Auran.\nIf you help slay an air elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You have resistance to lightning damage.\n• You have a flying speed equal to your walking\nspeed and can hover.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges: chain\nlightning (3 charges), gust of wind (2 charges), or\nwind wall (1 charge).\nRing of Earth Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on an earth elemental. In addition, you can\nmove in difficult terrain that is composed of rubble,\nrocks, or dirt as if it were normal terrain. You can\nalso speak and understand Terran.\nIf you help slay an earth elemental while attuned\nto the ring, you gain access to the following\nadditional properties:\n• You have resistance to acid damage.\n• You can move through solid earth or rock as if\nthose areas were difficult terrain. If you end your\nturn there, you are shunted out to the nearest\nunoccupied space you last occupied.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges: stone\nshape (2 charges), stoneskin (3 charges), or wall of\nstone (3 charges).\nRing of Fire Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on a fire elemental. In addition, you have\nresistance to fire damage. You can also speak and\nunderstand Ignan.\nIf you help slay a fire elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You are immune to fire damage.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges:\nburning hands (1 charge), fireball (2 charges), and\nwall of fire (3 charges).\nRing of Water Elemental Command. You can\nexpend 2 of the ring’s charges to cast dominate\nmonster on a water elemental. In addition, you can\nstand on and walk across liquid surfaces as if they\nwere solid ground. You can also speak and\nunderstand Aquan.\nIf you help slay a water elemental while attuned to\nthe ring, you gain access to the following additional\nproperties:\n• You can breathe underwater and have a\nswimming speed equal to your walking speed.\n• You can cast the following spells from the ring,\nexpending the necessary number of charges:\ncreate or destroy water (1 charge), control water (3\ncharges), ice storm (2 charges), or wall of ice (3\ncharges).",
+        "printed_pages": [
+          235,
+          236
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    }
+  ],
+  "limitations": [
+    "Source prose only; scrying, concentration exceptions, charges, prerequisites and elemental powers remain pending execution."
+  ],
+  "snapshot_note": "Before this invocation; rerun for current candidate."
+}

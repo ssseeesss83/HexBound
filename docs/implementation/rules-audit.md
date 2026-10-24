@@ -132,3 +132,5 @@ tools/audit_magic_affinity_variants.py核四表34变体272字段，完整消费�
 tools/audit_magic_crafting_variants.py独立消费三表，核飞毯超载算式、manual工时 / 成本 / 使用条件、horn材质 / 数量 / 要求 / 敌对及冷却，十二变体96字段零差异。全部既有数值 / 正文正确，36处补完整来源和派生注释，不升级运行时能力状态。
 
 tools/audit_magic_bag_variants.py消费三种戏法袋的完整八面表，核24怪物身份链接及3变体24字段；引用错误不由此工具自造怪物修复。源共同行动 / 指挥 / 每日限制完整，9处仅补派生引用，不签召唤执行。
+
+tools/audit_magic_scrying_variants.py核共同规则及七选定小节，水晶球Legendary来自明确变体前文；四元素统御戒指共同适用对象保留原文“elementals from the linked plane”，不收窄为同名卡。充能 / 解锁 / 专注例外及范围完整，仅资料签收。
