@@ -121,6 +121,8 @@ async function main() {
   assert(ready, "test server started");
   const host = await page();
   click(host, "#create");
+  assert.equal(host.document.querySelector('[data-mode]'), null, 'one product mode');
+  assert.equal(host.document.querySelector('[name=interaction_mode]'), null, 'no interaction policy selector');
   fill(host, "player_name", "灯塔旅人");
   fill(host, "starting_level", "1");
   submit(host);
@@ -188,10 +190,6 @@ async function main() {
   );
   assert(host.document.querySelector('[data-action="advance"]'));
   const guest = guests[0];
-  guest.document.querySelector("#compose-mode").value = "chat";
-  guest.document
-    .querySelector("#compose-mode")
-    .dispatchEvent(new guest.Event("change"));
   guest.document.querySelector("#intent").value =
     "<img src=x onerror=alert(1)> 一起前行";
   guest.document
@@ -225,6 +223,13 @@ async function main() {
     host.document.querySelector("#room-menu").disabled,
     "Room mutations remain unavailable until the pause request completes",
   );
+  assert.equal(host.document.querySelector('#compose-mode'), null, 'chat cannot submit an action');
+  assert(!host.document.querySelector('#intent-form button').disabled, 'chat stays open during action HTTP wait');
+  host.document.querySelector('#intent').value = '暂停等待时仍能商量';
+  host.document.querySelector('#intent-form').dispatchEvent(new host.Event('submit', {bubbles:true,cancelable:true}));
+  await waitFor(() => guest.document.querySelector('#journal-log').textContent.includes('暂停等待时仍能商量'), 'chat during pending action and pause');
+  await waitFor(() => !host.document.querySelector('#intent-form button').disabled, 'chat request completes independently');
+  assert(host.document.querySelector('#room-menu').disabled, 'chat completion cannot unlock an outstanding action');
   pauseResponses.get(host)();
   await waitFor(
     () => host.document.querySelector("#room-menu:not(:disabled)"),

@@ -94,7 +94,6 @@ async function main() {
   heldCharacterFor=null;releaseCharacter();await sleep(30);
   assert(!guest.document.querySelector('#character-sheet'),'late character response cannot resurrect old scope');
   click(guest,'#room-menu');assert(!guest.document.querySelector('#party-groups'),'table control remains host only');click(guest,'[data-close]');
-  guest.document.querySelector('#compose-mode').value='chat';guest.document.querySelector('#compose-mode').dispatchEvent(new guest.Event('change'));
   guest.document.querySelector('#intent').value='PRIVATE_SIDE_CHAT';submit(guest,'#intent-form');
   await until(()=>guest.document.querySelector('#journal-log').textContent.includes('PRIVATE_SIDE_CHAT'),'side chat');
   assert(!host.document.querySelector('#journal-log').textContent.includes('PRIVATE_SIDE_CHAT'));

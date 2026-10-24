@@ -20,6 +20,37 @@ async function run(){
   assert.equal(reloads,0,'late mutation cannot reload the old character sheet');
   assert.equal(refreshes,0,'late mutation cannot refresh revoked controls');
   assert.equal(context.sheetState,null);
-  dom.window.close();console.log('PASS: in-flight character growth completes safely after its scope and controls are revoked.');
+  dom.window.close();
+  await chatLifecycle();
+  console.log('PASS: late character growth and chat respect scope revocation; chat preserves newer drafts and action locks.');
+}
+async function chatLifecycle(){
+  const start=source.indexOf('async function chatCommand(text)'),end=source.indexOf('async function command(',start);
+  for(const scenario of ['current','revoked','reentered']){
+    const revoked=scenario!=='current';
+    const dom=new JSDOM('<textarea id="intent">sent message</textarea>');
+    let finish, renders=0;
+    const context={session:{room_id:'r',member_id:'p'},room:{id:'r',version:1,action_revision:4,scene_instance_id:'s',membership_epoch:1},
+      activeTextScope:'old',chatRequest:null,busy:true,connected:true,draft:'',newCommandId:()=> 'chat-request',
+      $:selector=>dom.window.document.querySelector(selector),api:()=>new Promise(resolve=>finish=resolve),
+      renderRoom:()=>{renders++;},toast:()=>{}};
+    vm.createContext(context);vm.runInContext(source.slice(start,end),context);
+    const pending=context.chatCommand('sent message');
+    assert.equal(context.busy,true);
+    dom.window.document.querySelector('#intent').value='new unsent draft';
+    if(revoked){
+      context.chatRequest='new-request';context.room={id:'r',version:10};
+      if(scenario==='revoked')context.activeTextScope='new';
+      else context.session={room_id:'r',member_id:'p'};
+    }
+    finish({room:{id:'r',version:2}});
+    assert.equal(await pending,!revoked);
+    assert.equal(context.busy,true,'chat never changes the action lock');
+    assert.equal(dom.window.document.querySelector('#intent').value,'new unsent draft');
+    assert.equal(context.room.version,revoked?10:2);
+    assert.equal(context.chatRequest,revoked?'new-request':null,'old response cannot release a newer chat request');
+    assert.equal(renders,revoked?1:2,'revoked response cannot redraw the old scope');
+    dom.window.close();
+  }
 }
 run().catch(error=>{console.error(error);process.exitCode=1;});
