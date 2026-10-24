@@ -12,12 +12,13 @@ from . import story_generation
 
 
 class DMScheduler:
-    def __init__(self,service,provider,*,realtime_capacity=2,orphan_limit=2,clock=time.time):
+    def __init__(self,service,provider,*,realtime_capacity=2,orphan_limit=2,clock=time.time,on_result=None):
         if type(realtime_capacity) is not int or not 1<=realtime_capacity<=4:
             raise ValueError('实时容量须为1至4')
         if type(orphan_limit) is not int or not 1<=orphan_limit<=4:
             raise ValueError('迟到调用上限须为1至4')
         self.service,self.provider,self.clock = service,provider,clock
+        self.on_result = on_result
         self._capacity,self._orphan_limit = realtime_capacity,orphan_limit
         self._slots = asyncio.Semaphore(realtime_capacity)
         self._loop = None
@@ -30,7 +31,7 @@ class DMScheduler:
         self._orphans = set()
         self._metrics = dict(dispatched=0,committed=0,failed=0,preemptions=0,
                              realtime_calls=0,realtime_wait_seconds=0.0,revocation_seconds=0.0,
-                             dispatch_errors=0,pump_failures=0)
+                             dispatch_errors=0,pump_failures=0,notification_errors=0)
 
     def _check(self):
         loop = asyncio.get_running_loop()
@@ -54,6 +55,7 @@ class DMScheduler:
             # releasing logical capacity. A provider may swallow cancellation.
             started = time.monotonic()
             self.service.preempt(job_id,self._leases.get(job_id),now=self.clock())
+            self._notify(job_id)
             self._metrics['revocation_seconds'] += time.monotonic()-started
             self._running.pop(job_id)
             self._leases.pop(job_id,None)
@@ -107,7 +109,13 @@ class DMScheduler:
                 self._metrics['committed'] += 1
             else:
                 self._metrics['failed'] += 1
+            self._notify(job_id)
         self._wake.set()
+
+    def _notify(self,job_id):
+        if self.on_result is not None:
+            try:self.on_result(job_id)
+            except Exception:self._metrics['notification_errors'] += 1
 
     async def dispatch(self):
         """At most one shallow worker; foreground admission never awaits it."""

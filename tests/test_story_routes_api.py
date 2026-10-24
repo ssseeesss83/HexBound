@@ -24,9 +24,10 @@ def test_http_wait_restart_ready_review_entry_and_receipt_replay(table,monkeypat
     command = uuid.uuid4().hex
     response = send(client,session,'director_resolve',dict(proposal_id=selected['id']),command)
     assert response.status_code==200,response.text
-    assert response.json()['room']['route_wait']==dict(status='waiting')
+    assert response.json()['room']['route_wait']==dict(status='unavailable')
     before = app.state.store.get(rid)
     assert before['campaign']['node_id']=='dock'
+    assert app.state.generation_jobs.get(before['pending_transition']['generation_job_id'])['status']=='queued'
     replay = send(client,session,'director_resolve',dict(proposal_id=selected['id']),command)
     assert replay.status_code==200 and replay.json()['replayed']
     assert app.state.store.get(rid)==before

@@ -15,7 +15,7 @@ window.routeFixture = (status, combat=false) => {
 };
 window.routeDisabled = id => actionDisabledReason({id});
 `);
-const texts={waiting:'路线正在准备中',ready_for_review:'路线已准备好',review_required:'路线条件已变化'};
+const texts={waiting:'路线正在准备中',ready_for_review:'路线已准备好',review_required:'路线条件已变化',retrying:'等待重试',failed:'准备未能完成',unavailable:'暂时无法准备'};
 for(const [status,text] of Object.entries(texts)){
   w.routeFixture(status);
   assert(w.document.querySelector('.route-wait[role=status]').textContent.includes(text));

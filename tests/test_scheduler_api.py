@@ -132,12 +132,16 @@ def test_app_lifespan_recreates_closed_scheduler_for_a_new_service_loop(tmp_path
     app = create_app(str(tmp_path/'restart.sqlite3'))
     with TestClient(app) as client:
         first = app.state.dm_scheduler
+        first_coordinator = app.state.story_coordinator
         assert first.snapshot()['pump_running']
     assert first.snapshot()['closed']
+    assert first_coordinator.snapshot()['closed']
     with TestClient(app) as client:
         second = app.state.dm_scheduler
         assert first is not second and second.snapshot()['pump_running']
         assert app.state.dm.scheduler is second
+        assert app.state.story_coordinator is not first_coordinator
+        assert app.state.story_coordinator.snapshot()['pump_running']
         assert client.get('/api/health').status_code==200
     assert second.snapshot()['closed']
 

@@ -22,13 +22,13 @@ from . import content, rules, campaign, characters, abilities, compendium, direc
 from .dm import DM,PlayerDM
 from .dm_scheduler import DMScheduler
 from .generation_jobs import GenerationJobs
+from .story_coordinator import StoryCoordinator
 from .store import Store
 from . import rules_packages
 from .rules_context import active_store, using_version
 from . import session_scope
 from . import scene_storage
 from . import play_policy
-from . import story_transitions
 from .heroes import create_hero_router
 from .studio import create_studio_router, compile_scenario
 from .accounts import create_accounts_router, require_user, authenticate_websocket
@@ -168,18 +168,25 @@ def create_app(db_path: str | None = None) -> FastAPI:
     jobs = GenerationJobs(store)
     scheduler = DMScheduler(jobs,DM())
     dm = PlayerDM(scheduler)
+    coordinator = StoryCoordinator(jobs,scheduler,lambda room_id:broadcast(room_id))
     @asynccontextmanager
     async def lifespan(application):
-        nonlocal scheduler
+        nonlocal scheduler,coordinator
         if scheduler.snapshot()['closed']:
             scheduler = DMScheduler(jobs,DM())
             dm.scheduler = scheduler
             application.state.dm_scheduler = scheduler
+            coordinator = StoryCoordinator(jobs,scheduler,lambda room_id:broadcast(room_id))
+            application.state.story_coordinator = coordinator
+        coordinator.start()
         scheduler.start()
         try:
             yield
         finally:
-            await scheduler.close()
+            try:
+                await scheduler.close()
+            finally:
+                await coordinator.close()
     app.router.lifespan_context = lifespan
     locks: dict[str, asyncio.Lock] = defaultdict(asyncio.Lock)
     peers: dict[str, dict[WebSocket, str]] = defaultdict(dict)
@@ -189,6 +196,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
     app.state.dm = dm
     app.state.dm_scheduler = scheduler
     app.state.generation_jobs = jobs
+    app.state.story_coordinator = coordinator
     app.state.rules_package = installed_rules
     app.include_router(create_accounts_router(store))
     app.include_router(create_hero_router(store))
@@ -327,7 +335,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
             "scenario": state.get("scenario_summary"),
             "progression": state.get("progression", {"mode":"xp","world_minutes":0}),
             "combat_capabilities": abilities.capabilities(state,viewer),
-            "route_wait": story_transitions.status(state,viewer),
+            "route_wait": coordinator.status(state,viewer),
             "free_actions": free_actions.context(state,viewer),
             "director_proposals": [director.public_proposal(p,state) for actor,p in state.get("director",{}).get("proposals",{}).items() if actor==viewer],
         }
@@ -930,6 +938,9 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 state["dm_pending"] = request_id
             response = {"room": public(state, member_id, request)}
             store.save(state, previous, (member_id, body.command_id, {"version": state["version"]}))
+        if body.type in {'start','director_resolve','end_turn'}:
+            coordinator.refresh(room_id,member_id)
+            response = {"room": public(get_state(room_id),member_id,request)}
         if pending:
             await add_dm_response(room_id, state["action_revision"], request_id, pending, copy.deepcopy(state["scene"]),
                                   state["mode"], state["theme"], payload.get("text", "请依据刚刚确认的结果描述后果，并建议下一步合法行动。"), play_policy.confirmed_events(session_scope.common_memory(state, [m["id"] for m in state["members"]]))[-8:], actions_for(state, member_id), "assisted", session_scope.audience_key(state), state["_scene_execution_view"])

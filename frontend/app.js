@@ -1939,6 +1939,9 @@ function installActionEntries() {
       waiting: '路线正在准备中。你可以继续在当前场景行动，或由领队取消等待。',
       ready_for_review: '路线已准备好。请由领队重新选择路线、审核并确认后前往。',
       review_required: '路线条件已变化。请由领队重新审核，或取消等待。',
+      retrying: '路线准备已暂缓，正在等待重试。你仍可继续当前行动，或由领队取消等待。',
+      failed: '这次路线准备未能完成。已完成的行动保留，请由领队重新审核或取消等待。',
+      unavailable: 'DM 暂时无法准备这条路线。你仍可继续当前场景，或由领队取消等待。',
     }[room.route_wait.status];
     if (text) skillArea.insertAdjacentHTML('beforebegin', `<p class="notice route-wait" role="status">${esc(text)}</p>`);
   }
