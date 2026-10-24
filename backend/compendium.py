@@ -168,7 +168,7 @@ RULE_SECTIONS = _load("Rule-Sections")
 
 CANONICAL_OVERLAY = json.loads((DATA_DIR / "canonical-overlay.json").read_text(encoding="utf-8"))
 for _addition in CANONICAL_OVERLAY.get("record_additions", []):
-    _table = {"levels": LEVELS}[_addition["kind"]]
+    _table = {"levels": LEVELS, "weapon-properties": WEAPON_PROPERTIES}[_addition["kind"]]
     _row = copy.deepcopy(_addition["record"])
     if _row["index"] in _table:
         raise ValueError("Canonical record addition duplicates an existing ID")
@@ -207,7 +207,8 @@ for _correction in CANONICAL_OVERLAY["corrections"]:
     for _feature_id in _correction["records"]:
         _tables = {"features": FEATURES, "levels": LEVELS, "spells": SPELLS, "monsters": MONSTERS, "classes": CLASSES,
                    "subclasses": SUBCLASSES, "proficiencies": PROFICIENCIES,
-                   "skills": SKILLS, "backgrounds": BACKGROUNDS, "races": RACES}
+                   "skills": SKILLS, "backgrounds": BACKGROUNDS, "races": RACES,
+                   "traits": TRAITS, "weapon-properties": WEAPON_PROPERTIES}
         _feature = _tables[_correction.get("kind", "features")][_feature_id]
         if _correction["operation"] == "replace_description":
             _feature["desc"] = copy.deepcopy(_correction["paragraphs"])

@@ -1,0 +1,3181 @@
+{
+  "reviewed_snapshot": "Before P02k reference geometry/range/mapping corrections; unchanged original numeric audit",
+  "status": "limited_read_only_P02_character_equipment_source_review",
+  "source_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+  "official_pages_sha256": "a3d4be9c2a612c0cba1dcc0bc3ce875f52cef1b4924f743142be600614ade1c6",
+  "confirmed_mechanical_number_or_body_errors": [],
+  "proposals": [
+    {
+      "category": "structured_reference_omission_not_wrong_existing_number",
+      "kind": "traits",
+      "record": "draconic-ancestry-black",
+      "path": [
+        "trait_specific",
+        "breath_weapon",
+        "area_of_effect"
+      ],
+      "expected": {
+        "size": 30,
+        "type": "line"
+      },
+      "proposed": {
+        "size": 30,
+        "type": "line",
+        "width_ft": 5
+      },
+      "official_page": 5,
+      "official_column": 1,
+      "source_heading": "Draconic Ancestry",
+      "source_evidence": "Black Acid 5 by 30 ft. line (Dex. save)",
+      "status": "reference_pending_execution",
+      "runtime_verified": false,
+      "note": "New typed extension width_ft requires schema review. Generic size=30 remains line length; no grid execution is approved."
+    },
+    {
+      "category": "structured_reference_omission_not_wrong_existing_number",
+      "kind": "traits",
+      "record": "draconic-ancestry-blue",
+      "path": [
+        "trait_specific",
+        "breath_weapon",
+        "area_of_effect"
+      ],
+      "expected": {
+        "size": 30,
+        "type": "line"
+      },
+      "proposed": {
+        "size": 30,
+        "type": "line",
+        "width_ft": 5
+      },
+      "official_page": 5,
+      "official_column": 1,
+      "source_heading": "Draconic Ancestry",
+      "source_evidence": "Blue Lightning 5 by 30 ft. line (Dex. save)",
+      "status": "reference_pending_execution",
+      "runtime_verified": false,
+      "note": "New typed extension width_ft requires schema review. Generic size=30 remains line length; no grid execution is approved."
+    },
+    {
+      "category": "structured_reference_omission_not_wrong_existing_number",
+      "kind": "traits",
+      "record": "draconic-ancestry-brass",
+      "path": [
+        "trait_specific",
+        "breath_weapon",
+        "area_of_effect"
+      ],
+      "expected": {
+        "size": 30,
+        "type": "line"
+      },
+      "proposed": {
+        "size": 30,
+        "type": "line",
+        "width_ft": 5
+      },
+      "official_page": 5,
+      "official_column": 1,
+      "source_heading": "Draconic Ancestry",
+      "source_evidence": "Brass Fire 5 by 30 ft. line (Dex. save)",
+      "status": "reference_pending_execution",
+      "runtime_verified": false,
+      "note": "New typed extension width_ft requires schema review. Generic size=30 remains line length; no grid execution is approved."
+    },
+    {
+      "category": "structured_reference_omission_not_wrong_existing_number",
+      "kind": "traits",
+      "record": "draconic-ancestry-bronze",
+      "path": [
+        "trait_specific",
+        "breath_weapon",
+        "area_of_effect"
+      ],
+      "expected": {
+        "size": 30,
+        "type": "line"
+      },
+      "proposed": {
+        "size": 30,
+        "type": "line",
+        "width_ft": 5
+      },
+      "official_page": 5,
+      "official_column": 1,
+      "source_heading": "Draconic Ancestry",
+      "source_evidence": "Bronze Lightning 5 by 30 ft. line (Dex. save)",
+      "status": "reference_pending_execution",
+      "runtime_verified": false,
+      "note": "New typed extension width_ft requires schema review. Generic size=30 remains line length; no grid execution is approved."
+    },
+    {
+      "category": "structured_reference_omission_not_wrong_existing_number",
+      "kind": "traits",
+      "record": "draconic-ancestry-copper",
+      "path": [
+        "trait_specific",
+        "breath_weapon",
+        "area_of_effect"
+      ],
+      "expected": {
+        "size": 30,
+        "type": "line"
+      },
+      "proposed": {
+        "size": 30,
+        "type": "line",
+        "width_ft": 5
+      },
+      "official_page": 5,
+      "official_column": 1,
+      "source_heading": "Draconic Ancestry",
+      "source_evidence": "Copper Acid 5 by 30 ft. line (Dex. save)",
+      "status": "reference_pending_execution",
+      "runtime_verified": false,
+      "note": "New typed extension width_ft requires schema review. Generic size=30 remains line length; no grid execution is approved."
+    },
+    {
+      "category": "normalized_rule_record_missing_full_official_text_preserved",
+      "kind": "weapon-properties",
+      "record": "range",
+      "expected_record_absent": true,
+      "expected": null,
+      "proposed": {
+        "index": "range",
+        "name": "Range",
+        "desc": [
+          "A weapon that can be used to make a ranged attack has a range in parentheses after the ammunition or thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second indicates the weapon's long range. When attacking a target beyond normal range, you have disadvantage on the attack roll. You can't attack a target beyond the weapon's long range."
+        ],
+        "source_pages": [
+          65
+        ],
+        "status": "reference_pending_execution"
+      },
+      "official_page": 65,
+      "official_column": 0,
+      "source_heading": "Weapon Properties / Range",
+      "source_end_boundary": "Reach",
+      "runtime_verified": false,
+      "note": "May instead be a general weapon rule record. This is not a claim that original source collection lacks the paragraph."
+    },
+    {
+      "category": "source_mapping_correction_not_mechanical_rule_change",
+      "kind": "weapon-properties",
+      "record": "monk",
+      "path": [
+        "source_refs"
+      ],
+      "expected": {
+        "candidate_file": "srd2014/5e-SRD-Weapon-Properties.json",
+        "candidate_id": "monk",
+        "official_document": "official/SRD_CC_v5.1.pdf",
+        "printed_pages": [
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74
+        ],
+        "mapping_type": "chapter_reference"
+      },
+      "proposed": {
+        "candidate_file": "srd2014/5e-SRD-Weapon-Properties.json",
+        "candidate_id": "monk",
+        "official_document": "official/SRD_CC_v5.1.pdf",
+        "printed_pages": [
+          26,
+          27
+        ],
+        "mapping_type": "derived_class_weapon_classification",
+        "canonical_heading": "Martial Arts / monk weapons",
+        "canonical_page": 26
+      },
+      "official_pages": [
+        26,
+        27
+      ],
+      "source_evidence": "monk weapons, which are shortswords and any simple melee weapons that do not have the two-handed or heavy property",
+      "note": "Monk is a derived eligibility tag from Martial Arts, not a standard property heading under equipment pp62-74. Keep existing references if needed; do not invent an official Monk weapon-property heading."
+    },
+    {
+      "category": "optional_typographic_correction",
+      "kind": "traits",
+      "record": "high-elf-cantrip",
+      "path": [
+        "desc"
+      ],
+      "expected": [
+        "You know one cantrip of your choice form the wizard spell list. Intelligence is your spellcasting ability for it."
+      ],
+      "proposed": [
+        "You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it."
+      ],
+      "official_page": 4,
+      "official_column": 1,
+      "source_heading": "High Elf / Cantrip",
+      "runtime_verified": false
+    }
+  ],
+  "weapon_numeric_and_property_checks": [
+    {
+      "record": "equipment/club",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 1,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Club 1 sp 1d4 bludgeoning 2 lb. Light"
+    },
+    {
+      "record": "equipment/club",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Club 1 sp 1d4 bludgeoning 2 lb. Light"
+    },
+    {
+      "record": "equipment/club",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d4",
+      "actual": "1d4",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Club 1 sp 1d4 bludgeoning 2 lb. Light"
+    },
+    {
+      "record": "equipment/club",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "bludgeoning",
+      "actual": "bludgeoning",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Club 1 sp 1d4 bludgeoning 2 lb. Light"
+    },
+    {
+      "record": "equipment/club",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "light"
+      ],
+      "actual": [
+        "light"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Club 1 sp 1d4 bludgeoning 2 lb. Light"
+    },
+    {
+      "record": "equipment/dagger",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Dagger 2 gp 1d4 piercing 1 lb. Finesse, light, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/dagger",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Dagger 2 gp 1d4 piercing 1 lb. Finesse, light, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/dagger",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d4",
+      "actual": "1d4",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Dagger 2 gp 1d4 piercing 1 lb. Finesse, light, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/dagger",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "piercing",
+      "actual": "piercing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Dagger 2 gp 1d4 piercing 1 lb. Finesse, light, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/dagger",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "finesse",
+        "light",
+        "thrown"
+      ],
+      "actual": [
+        "finesse",
+        "light",
+        "thrown"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Dagger 2 gp 1d4 piercing 1 lb. Finesse, light, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/dagger",
+      "path": [
+        "throw_range"
+      ],
+      "expected_official_value": {
+        "normal": 20,
+        "long": 60
+      },
+      "actual": {
+        "normal": 20,
+        "long": 60
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Dagger 2 gp 1d4 piercing 1 lb. Finesse, light, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/greatclub",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 2,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Greatclub 2 sp 1d8 bludgeoning 10 lb. Two-­‐handed"
+    },
+    {
+      "record": "equipment/greatclub",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 10,
+      "actual": 10,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Greatclub 2 sp 1d8 bludgeoning 10 lb. Two-­‐handed"
+    },
+    {
+      "record": "equipment/greatclub",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d8",
+      "actual": "1d8",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Greatclub 2 sp 1d8 bludgeoning 10 lb. Two-­‐handed"
+    },
+    {
+      "record": "equipment/greatclub",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "bludgeoning",
+      "actual": "bludgeoning",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Greatclub 2 sp 1d8 bludgeoning 10 lb. Two-­‐handed"
+    },
+    {
+      "record": "equipment/greatclub",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "two-handed"
+      ],
+      "actual": [
+        "two-handed"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Greatclub 2 sp 1d8 bludgeoning 10 lb. Two-­‐handed"
+    },
+    {
+      "record": "equipment/handaxe",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Handaxe 5 gp 1d6 slashing 2 lb. Light, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/handaxe",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Handaxe 5 gp 1d6 slashing 2 lb. Light, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/handaxe",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d6",
+      "actual": "1d6",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Handaxe 5 gp 1d6 slashing 2 lb. Light, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/handaxe",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "slashing",
+      "actual": "slashing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Handaxe 5 gp 1d6 slashing 2 lb. Light, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/handaxe",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "light",
+        "thrown"
+      ],
+      "actual": [
+        "light",
+        "thrown"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Handaxe 5 gp 1d6 slashing 2 lb. Light, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/handaxe",
+      "path": [
+        "throw_range"
+      ],
+      "expected_official_value": {
+        "normal": 20,
+        "long": 60
+      },
+      "actual": {
+        "normal": 20,
+        "long": 60
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Handaxe 5 gp 1d6 slashing 2 lb. Light, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/javelin",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Javelin 5 sp 1d6 piercing 2 lb. Thrown (range 30/120)"
+    },
+    {
+      "record": "equipment/javelin",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Javelin 5 sp 1d6 piercing 2 lb. Thrown (range 30/120)"
+    },
+    {
+      "record": "equipment/javelin",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d6",
+      "actual": "1d6",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Javelin 5 sp 1d6 piercing 2 lb. Thrown (range 30/120)"
+    },
+    {
+      "record": "equipment/javelin",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "piercing",
+      "actual": "piercing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Javelin 5 sp 1d6 piercing 2 lb. Thrown (range 30/120)"
+    },
+    {
+      "record": "equipment/javelin",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "thrown"
+      ],
+      "actual": [
+        "thrown"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Javelin 5 sp 1d6 piercing 2 lb. Thrown (range 30/120)"
+    },
+    {
+      "record": "equipment/javelin",
+      "path": [
+        "throw_range"
+      ],
+      "expected_official_value": {
+        "normal": 30,
+        "long": 120
+      },
+      "actual": {
+        "normal": 30,
+        "long": 120
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Javelin 5 sp 1d6 piercing 2 lb. Thrown (range 30/120)"
+    },
+    {
+      "record": "equipment/light-hammer",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Light hammer 2 gp 1d4 bludgeoning 2 lb. Light, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/light-hammer",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Light hammer 2 gp 1d4 bludgeoning 2 lb. Light, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/light-hammer",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d4",
+      "actual": "1d4",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Light hammer 2 gp 1d4 bludgeoning 2 lb. Light, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/light-hammer",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "bludgeoning",
+      "actual": "bludgeoning",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Light hammer 2 gp 1d4 bludgeoning 2 lb. Light, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/light-hammer",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "light",
+        "thrown"
+      ],
+      "actual": [
+        "light",
+        "thrown"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Light hammer 2 gp 1d4 bludgeoning 2 lb. Light, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/light-hammer",
+      "path": [
+        "throw_range"
+      ],
+      "expected_official_value": {
+        "normal": 20,
+        "long": 60
+      },
+      "actual": {
+        "normal": 20,
+        "long": 60
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Light hammer 2 gp 1d4 bludgeoning 2 lb. Light, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/mace",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Mace 5 gp 1d6 bludgeoning 4 lb. —"
+    },
+    {
+      "record": "equipment/mace",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 4,
+      "actual": 4,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Mace 5 gp 1d6 bludgeoning 4 lb. —"
+    },
+    {
+      "record": "equipment/mace",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d6",
+      "actual": "1d6",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Mace 5 gp 1d6 bludgeoning 4 lb. —"
+    },
+    {
+      "record": "equipment/mace",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "bludgeoning",
+      "actual": "bludgeoning",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Mace 5 gp 1d6 bludgeoning 4 lb. —"
+    },
+    {
+      "record": "equipment/mace",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [],
+      "actual": [],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Mace 5 gp 1d6 bludgeoning 4 lb. —"
+    },
+    {
+      "record": "equipment/quarterstaff",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 2,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Quarterstaff 2 sp 1d6 bludgeoning 4 lb. Versatile (1d8)"
+    },
+    {
+      "record": "equipment/quarterstaff",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 4,
+      "actual": 4,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Quarterstaff 2 sp 1d6 bludgeoning 4 lb. Versatile (1d8)"
+    },
+    {
+      "record": "equipment/quarterstaff",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d6",
+      "actual": "1d6",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Quarterstaff 2 sp 1d6 bludgeoning 4 lb. Versatile (1d8)"
+    },
+    {
+      "record": "equipment/quarterstaff",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "bludgeoning",
+      "actual": "bludgeoning",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Quarterstaff 2 sp 1d6 bludgeoning 4 lb. Versatile (1d8)"
+    },
+    {
+      "record": "equipment/quarterstaff",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "versatile"
+      ],
+      "actual": [
+        "versatile"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Quarterstaff 2 sp 1d6 bludgeoning 4 lb. Versatile (1d8)"
+    },
+    {
+      "record": "equipment/quarterstaff",
+      "path": [
+        "two_handed_damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d8",
+      "actual": "1d8",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Quarterstaff 2 sp 1d6 bludgeoning 4 lb. Versatile (1d8)"
+    },
+    {
+      "record": "equipment/sickle",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Sickle 1 gp 1d4 slashing 2 lb. Light"
+    },
+    {
+      "record": "equipment/sickle",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Sickle 1 gp 1d4 slashing 2 lb. Light"
+    },
+    {
+      "record": "equipment/sickle",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d4",
+      "actual": "1d4",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Sickle 1 gp 1d4 slashing 2 lb. Light"
+    },
+    {
+      "record": "equipment/sickle",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "slashing",
+      "actual": "slashing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Sickle 1 gp 1d4 slashing 2 lb. Light"
+    },
+    {
+      "record": "equipment/sickle",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "light"
+      ],
+      "actual": [
+        "light"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Sickle 1 gp 1d4 slashing 2 lb. Light"
+    },
+    {
+      "record": "equipment/spear",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Spear 1 gp 1d6 piercing 3 lb. Thrown (range 20/60), versatile (1d8)"
+    },
+    {
+      "record": "equipment/spear",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 3,
+      "actual": 3,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Spear 1 gp 1d6 piercing 3 lb. Thrown (range 20/60), versatile (1d8)"
+    },
+    {
+      "record": "equipment/spear",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d6",
+      "actual": "1d6",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Spear 1 gp 1d6 piercing 3 lb. Thrown (range 20/60), versatile (1d8)"
+    },
+    {
+      "record": "equipment/spear",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "piercing",
+      "actual": "piercing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Spear 1 gp 1d6 piercing 3 lb. Thrown (range 20/60), versatile (1d8)"
+    },
+    {
+      "record": "equipment/spear",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "thrown",
+        "versatile"
+      ],
+      "actual": [
+        "thrown",
+        "versatile"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Spear 1 gp 1d6 piercing 3 lb. Thrown (range 20/60), versatile (1d8)"
+    },
+    {
+      "record": "equipment/spear",
+      "path": [
+        "throw_range"
+      ],
+      "expected_official_value": {
+        "normal": 20,
+        "long": 60
+      },
+      "actual": {
+        "normal": 20,
+        "long": 60
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Spear 1 gp 1d6 piercing 3 lb. Thrown (range 20/60), versatile (1d8)"
+    },
+    {
+      "record": "equipment/spear",
+      "path": [
+        "two_handed_damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d8",
+      "actual": "1d8",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Spear 1 gp 1d6 piercing 3 lb. Thrown (range 20/60), versatile (1d8)"
+    },
+    {
+      "record": "equipment/crossbow-light",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Crossbow, light 25 gp 1d8 piercing 5 lb. Ammunition (range 80/320), loading, two-­‐handed"
+    },
+    {
+      "record": "equipment/crossbow-light",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 5,
+      "actual": 5,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Crossbow, light 25 gp 1d8 piercing 5 lb. Ammunition (range 80/320), loading, two-­‐handed"
+    },
+    {
+      "record": "equipment/crossbow-light",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d8",
+      "actual": "1d8",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Crossbow, light 25 gp 1d8 piercing 5 lb. Ammunition (range 80/320), loading, two-­‐handed"
+    },
+    {
+      "record": "equipment/crossbow-light",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "piercing",
+      "actual": "piercing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Crossbow, light 25 gp 1d8 piercing 5 lb. Ammunition (range 80/320), loading, two-­‐handed"
+    },
+    {
+      "record": "equipment/crossbow-light",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "ammunition",
+        "loading",
+        "two-handed"
+      ],
+      "actual": [
+        "ammunition",
+        "loading",
+        "two-handed"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Crossbow, light 25 gp 1d8 piercing 5 lb. Ammunition (range 80/320), loading, two-­‐handed"
+    },
+    {
+      "record": "equipment/crossbow-light",
+      "path": [
+        "range"
+      ],
+      "expected_official_value": {
+        "normal": 80,
+        "long": 320
+      },
+      "actual": {
+        "normal": 80,
+        "long": 320
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Crossbow, light 25 gp 1d8 piercing 5 lb. Ammunition (range 80/320), loading, two-­‐handed"
+    },
+    {
+      "record": "equipment/dart",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 5,
+        "unit": "cp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "cp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Dart 5 cp 1d4 piercing 1/4 lb. Finesse, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/dart",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 0.25,
+      "actual": 0.25,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Dart 5 cp 1d4 piercing 1/4 lb. Finesse, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/dart",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d4",
+      "actual": "1d4",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Dart 5 cp 1d4 piercing 1/4 lb. Finesse, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/dart",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "piercing",
+      "actual": "piercing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Dart 5 cp 1d4 piercing 1/4 lb. Finesse, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/dart",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "finesse",
+        "thrown"
+      ],
+      "actual": [
+        "finesse",
+        "thrown"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Dart 5 cp 1d4 piercing 1/4 lb. Finesse, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/dart",
+      "path": [
+        "throw_range"
+      ],
+      "expected_official_value": {
+        "normal": 20,
+        "long": 60
+      },
+      "actual": {
+        "normal": 20,
+        "long": 60
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Dart 5 cp 1d4 piercing 1/4 lb. Finesse, thrown (range 20/60)"
+    },
+    {
+      "record": "equipment/shortbow",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Shortbow 25 gp 1d6 piercing 2 lb. Ammunition (range 80/320), two-­‐handed"
+    },
+    {
+      "record": "equipment/shortbow",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Shortbow 25 gp 1d6 piercing 2 lb. Ammunition (range 80/320), two-­‐handed"
+    },
+    {
+      "record": "equipment/shortbow",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d6",
+      "actual": "1d6",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Shortbow 25 gp 1d6 piercing 2 lb. Ammunition (range 80/320), two-­‐handed"
+    },
+    {
+      "record": "equipment/shortbow",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "piercing",
+      "actual": "piercing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Shortbow 25 gp 1d6 piercing 2 lb. Ammunition (range 80/320), two-­‐handed"
+    },
+    {
+      "record": "equipment/shortbow",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "ammunition",
+        "two-handed"
+      ],
+      "actual": [
+        "ammunition",
+        "two-handed"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Shortbow 25 gp 1d6 piercing 2 lb. Ammunition (range 80/320), two-­‐handed"
+    },
+    {
+      "record": "equipment/shortbow",
+      "path": [
+        "range"
+      ],
+      "expected_official_value": {
+        "normal": 80,
+        "long": 320
+      },
+      "actual": {
+        "normal": 80,
+        "long": 320
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Shortbow 25 gp 1d6 piercing 2 lb. Ammunition (range 80/320), two-­‐handed"
+    },
+    {
+      "record": "equipment/sling",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 1,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Sling 1 sp 1d4 bludgeoning — Ammunition (range 30/120)"
+    },
+    {
+      "record": "equipment/sling",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d4",
+      "actual": "1d4",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Sling 1 sp 1d4 bludgeoning — Ammunition (range 30/120)"
+    },
+    {
+      "record": "equipment/sling",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "bludgeoning",
+      "actual": "bludgeoning",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Sling 1 sp 1d4 bludgeoning — Ammunition (range 30/120)"
+    },
+    {
+      "record": "equipment/sling",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "ammunition"
+      ],
+      "actual": [
+        "ammunition"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Sling 1 sp 1d4 bludgeoning — Ammunition (range 30/120)"
+    },
+    {
+      "record": "equipment/sling",
+      "path": [
+        "range"
+      ],
+      "expected_official_value": {
+        "normal": 30,
+        "long": 120
+      },
+      "actual": {
+        "normal": 30,
+        "long": 120
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Sling 1 sp 1d4 bludgeoning — Ammunition (range 30/120)"
+    },
+    {
+      "record": "equipment/battleaxe",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Battleaxe 10 gp 1d8 slashing 4 lb. Versatile (1d10)"
+    },
+    {
+      "record": "equipment/battleaxe",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 4,
+      "actual": 4,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Battleaxe 10 gp 1d8 slashing 4 lb. Versatile (1d10)"
+    },
+    {
+      "record": "equipment/battleaxe",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d8",
+      "actual": "1d8",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Battleaxe 10 gp 1d8 slashing 4 lb. Versatile (1d10)"
+    },
+    {
+      "record": "equipment/battleaxe",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "slashing",
+      "actual": "slashing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Battleaxe 10 gp 1d8 slashing 4 lb. Versatile (1d10)"
+    },
+    {
+      "record": "equipment/battleaxe",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "versatile"
+      ],
+      "actual": [
+        "versatile"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Battleaxe 10 gp 1d8 slashing 4 lb. Versatile (1d10)"
+    },
+    {
+      "record": "equipment/battleaxe",
+      "path": [
+        "two_handed_damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d10",
+      "actual": "1d10",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Battleaxe 10 gp 1d8 slashing 4 lb. Versatile (1d10)"
+    },
+    {
+      "record": "equipment/flail",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Flail 10 gp 1d8 bludgeoning 2 lb. —"
+    },
+    {
+      "record": "equipment/flail",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Flail 10 gp 1d8 bludgeoning 2 lb. —"
+    },
+    {
+      "record": "equipment/flail",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d8",
+      "actual": "1d8",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Flail 10 gp 1d8 bludgeoning 2 lb. —"
+    },
+    {
+      "record": "equipment/flail",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "bludgeoning",
+      "actual": "bludgeoning",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Flail 10 gp 1d8 bludgeoning 2 lb. —"
+    },
+    {
+      "record": "equipment/flail",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [],
+      "actual": [],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Flail 10 gp 1d8 bludgeoning 2 lb. —"
+    },
+    {
+      "record": "equipment/glaive",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 20,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 20,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Glaive 20 gp 1d10 slashing 6 lb. Heavy, reach, two-­‐handed"
+    },
+    {
+      "record": "equipment/glaive",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 6,
+      "actual": 6,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Glaive 20 gp 1d10 slashing 6 lb. Heavy, reach, two-­‐handed"
+    },
+    {
+      "record": "equipment/glaive",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d10",
+      "actual": "1d10",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Glaive 20 gp 1d10 slashing 6 lb. Heavy, reach, two-­‐handed"
+    },
+    {
+      "record": "equipment/glaive",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "slashing",
+      "actual": "slashing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Glaive 20 gp 1d10 slashing 6 lb. Heavy, reach, two-­‐handed"
+    },
+    {
+      "record": "equipment/glaive",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "heavy",
+        "reach",
+        "two-handed"
+      ],
+      "actual": [
+        "heavy",
+        "reach",
+        "two-handed"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Glaive 20 gp 1d10 slashing 6 lb. Heavy, reach, two-­‐handed"
+    },
+    {
+      "record": "equipment/greataxe",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 30,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 30,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Greataxe 30 gp 1d12 slashing 7 lb. Heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/greataxe",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 7,
+      "actual": 7,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Greataxe 30 gp 1d12 slashing 7 lb. Heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/greataxe",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d12",
+      "actual": "1d12",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Greataxe 30 gp 1d12 slashing 7 lb. Heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/greataxe",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "slashing",
+      "actual": "slashing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Greataxe 30 gp 1d12 slashing 7 lb. Heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/greataxe",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "heavy",
+        "two-handed"
+      ],
+      "actual": [
+        "heavy",
+        "two-handed"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Greataxe 30 gp 1d12 slashing 7 lb. Heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/greatsword",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Greatsword 50 gp 2d6 slashing 6 lb. Heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/greatsword",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 6,
+      "actual": 6,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Greatsword 50 gp 2d6 slashing 6 lb. Heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/greatsword",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "2d6",
+      "actual": "2d6",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Greatsword 50 gp 2d6 slashing 6 lb. Heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/greatsword",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "slashing",
+      "actual": "slashing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Greatsword 50 gp 2d6 slashing 6 lb. Heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/greatsword",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "heavy",
+        "two-handed"
+      ],
+      "actual": [
+        "heavy",
+        "two-handed"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Greatsword 50 gp 2d6 slashing 6 lb. Heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/halberd",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 20,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 20,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Halberd 20 gp 1d10 slashing 6 lb. Heavy, reach, two-­‐handed"
+    },
+    {
+      "record": "equipment/halberd",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 6,
+      "actual": 6,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Halberd 20 gp 1d10 slashing 6 lb. Heavy, reach, two-­‐handed"
+    },
+    {
+      "record": "equipment/halberd",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d10",
+      "actual": "1d10",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Halberd 20 gp 1d10 slashing 6 lb. Heavy, reach, two-­‐handed"
+    },
+    {
+      "record": "equipment/halberd",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "slashing",
+      "actual": "slashing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Halberd 20 gp 1d10 slashing 6 lb. Heavy, reach, two-­‐handed"
+    },
+    {
+      "record": "equipment/halberd",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "heavy",
+        "reach",
+        "two-handed"
+      ],
+      "actual": [
+        "heavy",
+        "reach",
+        "two-handed"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Halberd 20 gp 1d10 slashing 6 lb. Heavy, reach, two-­‐handed"
+    },
+    {
+      "record": "equipment/lance",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Lance 10 gp 1d12 piercing 6 lb. Reach, special"
+    },
+    {
+      "record": "equipment/lance",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 6,
+      "actual": 6,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Lance 10 gp 1d12 piercing 6 lb. Reach, special"
+    },
+    {
+      "record": "equipment/lance",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d12",
+      "actual": "1d12",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Lance 10 gp 1d12 piercing 6 lb. Reach, special"
+    },
+    {
+      "record": "equipment/lance",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "piercing",
+      "actual": "piercing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Lance 10 gp 1d12 piercing 6 lb. Reach, special"
+    },
+    {
+      "record": "equipment/lance",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "reach",
+        "special"
+      ],
+      "actual": [
+        "reach",
+        "special"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Lance 10 gp 1d12 piercing 6 lb. Reach, special"
+    },
+    {
+      "record": "equipment/longsword",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 15,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 15,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Longsword 15 gp 1d8 slashing 3 lb. Versatile (1d10)"
+    },
+    {
+      "record": "equipment/longsword",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 3,
+      "actual": 3,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Longsword 15 gp 1d8 slashing 3 lb. Versatile (1d10)"
+    },
+    {
+      "record": "equipment/longsword",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d8",
+      "actual": "1d8",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Longsword 15 gp 1d8 slashing 3 lb. Versatile (1d10)"
+    },
+    {
+      "record": "equipment/longsword",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "slashing",
+      "actual": "slashing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Longsword 15 gp 1d8 slashing 3 lb. Versatile (1d10)"
+    },
+    {
+      "record": "equipment/longsword",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "versatile"
+      ],
+      "actual": [
+        "versatile"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Longsword 15 gp 1d8 slashing 3 lb. Versatile (1d10)"
+    },
+    {
+      "record": "equipment/longsword",
+      "path": [
+        "two_handed_damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d10",
+      "actual": "1d10",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Longsword 15 gp 1d8 slashing 3 lb. Versatile (1d10)"
+    },
+    {
+      "record": "equipment/maul",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Maul 10 gp 2d6 bludgeoning 10 lb. Heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/maul",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 10,
+      "actual": 10,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Maul 10 gp 2d6 bludgeoning 10 lb. Heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/maul",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "2d6",
+      "actual": "2d6",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Maul 10 gp 2d6 bludgeoning 10 lb. Heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/maul",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "bludgeoning",
+      "actual": "bludgeoning",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Maul 10 gp 2d6 bludgeoning 10 lb. Heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/maul",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "heavy",
+        "two-handed"
+      ],
+      "actual": [
+        "heavy",
+        "two-handed"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Maul 10 gp 2d6 bludgeoning 10 lb. Heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/morningstar",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 15,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 15,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Morningstar 15 gp 1d8 piercing 4 lb. —"
+    },
+    {
+      "record": "equipment/morningstar",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 4,
+      "actual": 4,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Morningstar 15 gp 1d8 piercing 4 lb. —"
+    },
+    {
+      "record": "equipment/morningstar",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d8",
+      "actual": "1d8",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Morningstar 15 gp 1d8 piercing 4 lb. —"
+    },
+    {
+      "record": "equipment/morningstar",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "piercing",
+      "actual": "piercing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Morningstar 15 gp 1d8 piercing 4 lb. —"
+    },
+    {
+      "record": "equipment/morningstar",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [],
+      "actual": [],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Morningstar 15 gp 1d8 piercing 4 lb. —"
+    },
+    {
+      "record": "equipment/pike",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Pike 5 gp 1d10 piercing 18 lb. Heavy, reach, two-­‐handed"
+    },
+    {
+      "record": "equipment/pike",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 18,
+      "actual": 18,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Pike 5 gp 1d10 piercing 18 lb. Heavy, reach, two-­‐handed"
+    },
+    {
+      "record": "equipment/pike",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d10",
+      "actual": "1d10",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Pike 5 gp 1d10 piercing 18 lb. Heavy, reach, two-­‐handed"
+    },
+    {
+      "record": "equipment/pike",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "piercing",
+      "actual": "piercing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Pike 5 gp 1d10 piercing 18 lb. Heavy, reach, two-­‐handed"
+    },
+    {
+      "record": "equipment/pike",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "heavy",
+        "reach",
+        "two-handed"
+      ],
+      "actual": [
+        "heavy",
+        "reach",
+        "two-handed"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Pike 5 gp 1d10 piercing 18 lb. Heavy, reach, two-­‐handed"
+    },
+    {
+      "record": "equipment/rapier",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Rapier 25 gp 1d8 piercing 2 lb. Finesse"
+    },
+    {
+      "record": "equipment/rapier",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Rapier 25 gp 1d8 piercing 2 lb. Finesse"
+    },
+    {
+      "record": "equipment/rapier",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d8",
+      "actual": "1d8",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Rapier 25 gp 1d8 piercing 2 lb. Finesse"
+    },
+    {
+      "record": "equipment/rapier",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "piercing",
+      "actual": "piercing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Rapier 25 gp 1d8 piercing 2 lb. Finesse"
+    },
+    {
+      "record": "equipment/rapier",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "finesse"
+      ],
+      "actual": [
+        "finesse"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Rapier 25 gp 1d8 piercing 2 lb. Finesse"
+    },
+    {
+      "record": "equipment/scimitar",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Scimitar 25 gp 1d6 slashing 3 lb. Finesse, light"
+    },
+    {
+      "record": "equipment/scimitar",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 3,
+      "actual": 3,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Scimitar 25 gp 1d6 slashing 3 lb. Finesse, light"
+    },
+    {
+      "record": "equipment/scimitar",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d6",
+      "actual": "1d6",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Scimitar 25 gp 1d6 slashing 3 lb. Finesse, light"
+    },
+    {
+      "record": "equipment/scimitar",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "slashing",
+      "actual": "slashing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Scimitar 25 gp 1d6 slashing 3 lb. Finesse, light"
+    },
+    {
+      "record": "equipment/scimitar",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "finesse",
+        "light"
+      ],
+      "actual": [
+        "finesse",
+        "light"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Scimitar 25 gp 1d6 slashing 3 lb. Finesse, light"
+    },
+    {
+      "record": "equipment/shortsword",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Shortsword 10 gp 1d6 piercing 2 lb. Finesse, light"
+    },
+    {
+      "record": "equipment/shortsword",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Shortsword 10 gp 1d6 piercing 2 lb. Finesse, light"
+    },
+    {
+      "record": "equipment/shortsword",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d6",
+      "actual": "1d6",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Shortsword 10 gp 1d6 piercing 2 lb. Finesse, light"
+    },
+    {
+      "record": "equipment/shortsword",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "piercing",
+      "actual": "piercing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Shortsword 10 gp 1d6 piercing 2 lb. Finesse, light"
+    },
+    {
+      "record": "equipment/shortsword",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "finesse",
+        "light"
+      ],
+      "actual": [
+        "finesse",
+        "light"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Shortsword 10 gp 1d6 piercing 2 lb. Finesse, light"
+    },
+    {
+      "record": "equipment/trident",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Trident 5 gp 1d6 piercing 4 lb. Thrown (range 20/60), versatile (1d8)"
+    },
+    {
+      "record": "equipment/trident",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 4,
+      "actual": 4,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Trident 5 gp 1d6 piercing 4 lb. Thrown (range 20/60), versatile (1d8)"
+    },
+    {
+      "record": "equipment/trident",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d6",
+      "actual": "1d6",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Trident 5 gp 1d6 piercing 4 lb. Thrown (range 20/60), versatile (1d8)"
+    },
+    {
+      "record": "equipment/trident",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "piercing",
+      "actual": "piercing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Trident 5 gp 1d6 piercing 4 lb. Thrown (range 20/60), versatile (1d8)"
+    },
+    {
+      "record": "equipment/trident",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "thrown",
+        "versatile"
+      ],
+      "actual": [
+        "thrown",
+        "versatile"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Trident 5 gp 1d6 piercing 4 lb. Thrown (range 20/60), versatile (1d8)"
+    },
+    {
+      "record": "equipment/trident",
+      "path": [
+        "throw_range"
+      ],
+      "expected_official_value": {
+        "normal": 20,
+        "long": 60
+      },
+      "actual": {
+        "normal": 20,
+        "long": 60
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Trident 5 gp 1d6 piercing 4 lb. Thrown (range 20/60), versatile (1d8)"
+    },
+    {
+      "record": "equipment/trident",
+      "path": [
+        "two_handed_damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d8",
+      "actual": "1d8",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Trident 5 gp 1d6 piercing 4 lb. Thrown (range 20/60), versatile (1d8)"
+    },
+    {
+      "record": "equipment/war-pick",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "War pick 5 gp 1d8 piercing 2 lb. —"
+    },
+    {
+      "record": "equipment/war-pick",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 66,
+      "official_line": "War pick 5 gp 1d8 piercing 2 lb. —"
+    },
+    {
+      "record": "equipment/war-pick",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d8",
+      "actual": "1d8",
+      "match": true,
+      "official_page": 66,
+      "official_line": "War pick 5 gp 1d8 piercing 2 lb. —"
+    },
+    {
+      "record": "equipment/war-pick",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "piercing",
+      "actual": "piercing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "War pick 5 gp 1d8 piercing 2 lb. —"
+    },
+    {
+      "record": "equipment/war-pick",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [],
+      "actual": [],
+      "match": true,
+      "official_page": 66,
+      "official_line": "War pick 5 gp 1d8 piercing 2 lb. —"
+    },
+    {
+      "record": "equipment/warhammer",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 15,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 15,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Warhammer 15 gp 1d8 bludgeoning 2 lb. Versatile (1d10)"
+    },
+    {
+      "record": "equipment/warhammer",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Warhammer 15 gp 1d8 bludgeoning 2 lb. Versatile (1d10)"
+    },
+    {
+      "record": "equipment/warhammer",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d8",
+      "actual": "1d8",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Warhammer 15 gp 1d8 bludgeoning 2 lb. Versatile (1d10)"
+    },
+    {
+      "record": "equipment/warhammer",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "bludgeoning",
+      "actual": "bludgeoning",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Warhammer 15 gp 1d8 bludgeoning 2 lb. Versatile (1d10)"
+    },
+    {
+      "record": "equipment/warhammer",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "versatile"
+      ],
+      "actual": [
+        "versatile"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Warhammer 15 gp 1d8 bludgeoning 2 lb. Versatile (1d10)"
+    },
+    {
+      "record": "equipment/warhammer",
+      "path": [
+        "two_handed_damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d10",
+      "actual": "1d10",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Warhammer 15 gp 1d8 bludgeoning 2 lb. Versatile (1d10)"
+    },
+    {
+      "record": "equipment/whip",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Whip 2 gp 1d4 slashing 3 lb. Finesse, reach"
+    },
+    {
+      "record": "equipment/whip",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 3,
+      "actual": 3,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Whip 2 gp 1d4 slashing 3 lb. Finesse, reach"
+    },
+    {
+      "record": "equipment/whip",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d4",
+      "actual": "1d4",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Whip 2 gp 1d4 slashing 3 lb. Finesse, reach"
+    },
+    {
+      "record": "equipment/whip",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "slashing",
+      "actual": "slashing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Whip 2 gp 1d4 slashing 3 lb. Finesse, reach"
+    },
+    {
+      "record": "equipment/whip",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "finesse",
+        "reach"
+      ],
+      "actual": [
+        "finesse",
+        "reach"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Whip 2 gp 1d4 slashing 3 lb. Finesse, reach"
+    },
+    {
+      "record": "equipment/blowgun",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Blowgun 10 gp 1 piercing 1 lb. Ammunition (range 25/100), loading"
+    },
+    {
+      "record": "equipment/blowgun",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Blowgun 10 gp 1 piercing 1 lb. Ammunition (range 25/100), loading"
+    },
+    {
+      "record": "equipment/blowgun",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1",
+      "actual": "1",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Blowgun 10 gp 1 piercing 1 lb. Ammunition (range 25/100), loading"
+    },
+    {
+      "record": "equipment/blowgun",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "piercing",
+      "actual": "piercing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Blowgun 10 gp 1 piercing 1 lb. Ammunition (range 25/100), loading"
+    },
+    {
+      "record": "equipment/blowgun",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "ammunition",
+        "loading"
+      ],
+      "actual": [
+        "ammunition",
+        "loading"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Blowgun 10 gp 1 piercing 1 lb. Ammunition (range 25/100), loading"
+    },
+    {
+      "record": "equipment/blowgun",
+      "path": [
+        "range"
+      ],
+      "expected_official_value": {
+        "normal": 25,
+        "long": 100
+      },
+      "actual": {
+        "normal": 25,
+        "long": 100
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Blowgun 10 gp 1 piercing 1 lb. Ammunition (range 25/100), loading"
+    },
+    {
+      "record": "equipment/crossbow-hand",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 75,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 75,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Crossbow, hand 75 gp 1d6 piercing 3 lb. Ammunition (range 30/120), light, loading"
+    },
+    {
+      "record": "equipment/crossbow-hand",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 3,
+      "actual": 3,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Crossbow, hand 75 gp 1d6 piercing 3 lb. Ammunition (range 30/120), light, loading"
+    },
+    {
+      "record": "equipment/crossbow-hand",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d6",
+      "actual": "1d6",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Crossbow, hand 75 gp 1d6 piercing 3 lb. Ammunition (range 30/120), light, loading"
+    },
+    {
+      "record": "equipment/crossbow-hand",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "piercing",
+      "actual": "piercing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Crossbow, hand 75 gp 1d6 piercing 3 lb. Ammunition (range 30/120), light, loading"
+    },
+    {
+      "record": "equipment/crossbow-hand",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "ammunition",
+        "light",
+        "loading"
+      ],
+      "actual": [
+        "ammunition",
+        "light",
+        "loading"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Crossbow, hand 75 gp 1d6 piercing 3 lb. Ammunition (range 30/120), light, loading"
+    },
+    {
+      "record": "equipment/crossbow-hand",
+      "path": [
+        "range"
+      ],
+      "expected_official_value": {
+        "normal": 30,
+        "long": 120
+      },
+      "actual": {
+        "normal": 30,
+        "long": 120
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Crossbow, hand 75 gp 1d6 piercing 3 lb. Ammunition (range 30/120), light, loading"
+    },
+    {
+      "record": "equipment/crossbow-heavy",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Crossbow, heavy 50 gp 1d10 piercing 18 lb. Ammunition (range 100/400), heavy, loading, two-­‐handed"
+    },
+    {
+      "record": "equipment/crossbow-heavy",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 18,
+      "actual": 18,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Crossbow, heavy 50 gp 1d10 piercing 18 lb. Ammunition (range 100/400), heavy, loading, two-­‐handed"
+    },
+    {
+      "record": "equipment/crossbow-heavy",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d10",
+      "actual": "1d10",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Crossbow, heavy 50 gp 1d10 piercing 18 lb. Ammunition (range 100/400), heavy, loading, two-­‐handed"
+    },
+    {
+      "record": "equipment/crossbow-heavy",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "piercing",
+      "actual": "piercing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Crossbow, heavy 50 gp 1d10 piercing 18 lb. Ammunition (range 100/400), heavy, loading, two-­‐handed"
+    },
+    {
+      "record": "equipment/crossbow-heavy",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "ammunition",
+        "heavy",
+        "loading",
+        "two-handed"
+      ],
+      "actual": [
+        "ammunition",
+        "heavy",
+        "loading",
+        "two-handed"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Crossbow, heavy 50 gp 1d10 piercing 18 lb. Ammunition (range 100/400), heavy, loading, two-­‐handed"
+    },
+    {
+      "record": "equipment/crossbow-heavy",
+      "path": [
+        "range"
+      ],
+      "expected_official_value": {
+        "normal": 100,
+        "long": 400
+      },
+      "actual": {
+        "normal": 100,
+        "long": 400
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Crossbow, heavy 50 gp 1d10 piercing 18 lb. Ammunition (range 100/400), heavy, loading, two-­‐handed"
+    },
+    {
+      "record": "equipment/longbow",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Longbow 50 gp 1d8 piercing 2 lb. Ammunition (range 150/600), heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/longbow",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Longbow 50 gp 1d8 piercing 2 lb. Ammunition (range 150/600), heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/longbow",
+      "path": [
+        "damage",
+        "damage_dice"
+      ],
+      "expected_official_value": "1d8",
+      "actual": "1d8",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Longbow 50 gp 1d8 piercing 2 lb. Ammunition (range 150/600), heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/longbow",
+      "path": [
+        "damage",
+        "damage_type",
+        "index"
+      ],
+      "expected_official_value": "piercing",
+      "actual": "piercing",
+      "match": true,
+      "official_page": 66,
+      "official_line": "Longbow 50 gp 1d8 piercing 2 lb. Ammunition (range 150/600), heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/longbow",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "ammunition",
+        "heavy",
+        "two-handed"
+      ],
+      "actual": [
+        "ammunition",
+        "heavy",
+        "two-handed"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Longbow 50 gp 1d8 piercing 2 lb. Ammunition (range 150/600), heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/longbow",
+      "path": [
+        "range"
+      ],
+      "expected_official_value": {
+        "normal": 150,
+        "long": 600
+      },
+      "actual": {
+        "normal": 150,
+        "long": 600
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Longbow 50 gp 1d8 piercing 2 lb. Ammunition (range 150/600), heavy, two-­‐handed"
+    },
+    {
+      "record": "equipment/net",
+      "path": [
+        "cost"
+      ],
+      "expected_official_value": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Net 1 gp — 3 lb. Special, thrown (range 5/15)"
+    },
+    {
+      "record": "equipment/net",
+      "path": [
+        "weight"
+      ],
+      "expected_official_value": 3,
+      "actual": 3,
+      "match": true,
+      "official_page": 66,
+      "official_line": "Net 1 gp — 3 lb. Special, thrown (range 5/15)"
+    },
+    {
+      "record": "equipment/net",
+      "path": [
+        "properties"
+      ],
+      "expected_official_value": [
+        "special",
+        "thrown"
+      ],
+      "actual": [
+        "special",
+        "thrown"
+      ],
+      "match": true,
+      "official_page": 66,
+      "official_line": "Net 1 gp — 3 lb. Special, thrown (range 5/15)"
+    },
+    {
+      "record": "equipment/net",
+      "path": [
+        "throw_range"
+      ],
+      "expected_official_value": {
+        "normal": 5,
+        "long": 15
+      },
+      "actual": {
+        "normal": 5,
+        "long": 15
+      },
+      "match": true,
+      "official_page": 66,
+      "official_line": "Net 1 gp — 3 lb. Special, thrown (range 5/15)"
+    }
+  ],
+  "summary": {
+    "weapon_rows": 37,
+    "weapon_field_checks": 203,
+    "weapon_mismatches": 0,
+    "structured_reference_proposals": 6,
+    "source_mapping_proposals": 1,
+    "optional_typographic_proposals": 1
+  },
+  "manual_checked_clauses": [
+    {
+      "records": [
+        "traits/breath-weapon",
+        "traits/draconic-ancestry-*"
+      ],
+      "pages": [
+        5,
+        6
+      ],
+      "scope": "ten ancestry damage types, Dex/Con save categories, cone15 or line30; damage2d6/3d6/4d6/5d6 at1/6/11/16, DC8+CON+prof, action, short/long-rest recovery; width missing handled separately"
+    },
+    {
+      "records": [
+        "traits/infernal-legacy"
+      ],
+      "pages": [
+        7
+      ],
+      "scope": "thaumaturgy, hellish rebuke unlocked3 cast2nd once/long-rest, darkness unlocked5 once/long-rest, CHA"
+    },
+    {
+      "records": [
+        "traits/relentless-endurance"
+      ],
+      "pages": [
+        7
+      ],
+      "scope": "0HP but not killed outright; become1HP; long-rest reuse"
+    },
+    {
+      "records": [
+        "traits/tinker"
+      ],
+      "pages": [
+        6
+      ],
+      "scope": "1hour+10gp, AC5/HP1,24hour expiry or1hour repair, action dismantle/reclaim,3 active,three device choices retained in prose"
+    },
+    {
+      "records": [
+        "conditions/*"
+      ],
+      "pages": [
+        358,
+        359
+      ],
+      "scope": "15 descriptions manually checked including condition exceptions, critical-hit5ft clauses and exhaustion food/drink prerequisite; no structured engine effects signed off"
+    },
+    {
+      "records": [
+        "feats/grappler"
+      ],
+      "pages": [
+        75
+      ],
+      "scope": "STR13 prerequisite, advantage against own grapple target, action/repeated grapple check pins both restrained until grapple ends; general feat-loss prerequisite rule stays separate"
+    },
+    {
+      "records": [
+        "equipment/lance",
+        "equipment/net"
+      ],
+      "pages": [
+        65
+      ],
+      "scope": "full special-use paragraphs and restriction tails preserved; execution unverified"
+    },
+    {
+      "records": [
+        "backgrounds/acolyte"
+      ],
+      "pages": [
+        60,
+        61
+      ],
+      "scope": "existing corrected prayer-item/incense narrative grants reviewed for consistency; no re-proposed correction or financial values"
+    }
+  ],
+  "boundaries": [
+    "No whole-catalog signoff from counts, URLs, or substring occurrence.",
+    "Only37 weapon table rows were machine compared; remaining200 equipment rows and armor/gear complete numerical inventory not signed off.",
+    "Race/subrace age, alignment, narrative prose and all choice legality not exhaustively reviewed; selected resource clauses only.",
+    "Rule-body preservation is not typed resource/choice implementation.",
+    "Weapon Monk tags excluded from official property set comparison because they are derived class eligibility, not SRD equipment properties.",
+    "Sling official weight dash is left unapproved: candidate zero is not newly certified as an official numeric weight.",
+    "No changes made to raw files, canonical data, execution support or admission signoff."
+  ]
+}
