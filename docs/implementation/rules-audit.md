@@ -102,3 +102,5 @@ p64完整穿脱段及四类时间保存到现有护甲分类的timing_reference�
 `official/equipment-measurements-review.json`保留修正前6字段差异；重跑当前候选346字段零差异。原始社区文件与冻结legacy均未修改。这是有限数值批次，未签收特殊规则正文、容积说明或装备包66内容关系，也没有启用候选资料包。
 
 治疗药水依据p68普通恢复2d4+2及p234表，跨表目标限定Common变体并检查母项关系；不会为Varies母项及更高品级赋上50gp/½lb。历史报告仅修订此引用并附说明，预修测量差异保留。
+
+`tools/audit_equipment_packs.py`独立消费p70七包清单全部短语，66关系及7库存检查零差异。`official/equipment-pack-contents-review.json`保存完整来源正文、每条短语及包装数量转换。未知短语或非整份直接拒绝，不能默默跳过。此证据只覆盖包内容资料，不签收角色授予及负重处理。
