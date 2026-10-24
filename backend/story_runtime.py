@@ -67,6 +67,7 @@ class StoryState(VersionOne):
     milestones: dict[Identifier, MilestoneState] = Field(max_length=100)
     events: dict[Identifier, Presence] = Field(max_length=200)
     items: dict[Identifier, Presence] = Field(max_length=100)
+    effect_receipts: dict[Identifier, Digest] = Field(default_factory=dict, max_length=10000)
 
 
 def digest(book):
@@ -171,8 +172,8 @@ def node(state, node_id):
     return deepcopy(found)
 
 
-def evaluate(expression, view, story_state):
-    """Evaluate only declared operators, returning an internal dependency snapshot."""
+def validate_state(view, story_state):
+    """Return a typed copy of authoritative state without granting knowledge."""
     book = view['book']
     g._preflight(story_state)
     state = StoryState.model_validate(story_state).model_dump(mode='json')
@@ -190,6 +191,16 @@ def evaluate(expression, view, story_state):
             raise ValueError('不可变世界事实已被改写：' + sid)
         if isinstance(state['facts'][sid]['value'], str) and len(state['facts'][sid]['value']) > 500:
             raise ValueError('事实值过长：' + sid)
+    return state
+
+
+def evaluate(expression, view, story_state):
+    """Evaluate only declared operators, returning an internal dependency snapshot."""
+    state = validate_state(view, story_state)
+    book = view['book']
+    allowed = dict(facts={row['id'] for row in book['fact_definitions']},
+                   milestones={row['id'] for row in book['milestones']},
+                   events=set(book['event_ids']), items=set(book['item_ids']))
     if expression is None:
         return dict(value=True, read_set={})
     g._preflight(expression)
