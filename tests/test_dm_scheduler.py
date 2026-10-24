@@ -31,7 +31,7 @@ def test_blocked_provider_loses_authority_before_realtime_and_rule_admission(job
         await asyncio.wait_for(reached.wait(),1)
         worker = next(iter(scheduler._running.values()))
         with scheduler.player_activity():
-            assert service.get(job['id'])['status']=='cancelled'
+            assert service.get(job['id'])['status']=='retryable_failed'
             assert scheduler.snapshot()['background_active']==0
             assert scheduler.snapshot()['late_calls']==1
             # Rule-only work never waits for foreground or background LLM slots.
@@ -52,7 +52,7 @@ def test_blocked_provider_loses_authority_before_realtime_and_rule_admission(job
         await scheduler.close()
     asyncio.run(scenario())
     assert service.store.get(rid)==before
-    assert service.get(job['id'])['status']=='cancelled'
+    assert service.get(job['id'])['status']=='retryable_failed'
 
 
 def test_rule_commands_do_not_wait_for_busy_realtime_permits(jobs):
@@ -145,7 +145,7 @@ def test_orphan_bound_limits_background_amplification_without_blocking_realtime(
         with scheduler.player_activity():pass
         await cancelled.wait()
         replacement = enqueue(jobs)
-        assert replacement['id']!=job['id']
+        assert replacement['id']==job['id']
         assert await scheduler.dispatch()==[]
         async with scheduler.realtime():
             assert scheduler.snapshot()['late_calls']==1
@@ -179,7 +179,7 @@ def test_background_pump_shutdown_revokes_without_waiting_for_supplier(jobs):
         await asyncio.wait_for(scheduler.close(),1)
         await cancelled.wait()
         assert scheduler.snapshot()['closed'] and scheduler.snapshot()['late_calls']==1
-        assert service.get(job['id'])['status']=='cancelled'
+        assert service.get(job['id'])['status']=='retryable_failed'
         assert not task.done()
         await scheduler.close()
         with pytest.raises(RuntimeError):await scheduler.dispatch()
@@ -196,10 +196,9 @@ def test_revocation_failure_does_not_release_background_authority_silently(jobs,
         scheduler = DMScheduler(service,Provider(),clock=lambda:101)
         await scheduler.dispatch()
         task = next(iter(scheduler._running.values()))
-        original = service.cancel
         def failed(*args,**kwargs):raise OSError('durable store unavailable')
         with monkeypatch.context() as guard:
-            guard.setattr(service,'cancel',failed)
+            guard.setattr(service,'preempt',failed)
             with pytest.raises(OSError):
                 with scheduler.player_activity():pytest.fail('Admitted without revocation')
         assert scheduler.snapshot()['players']==0

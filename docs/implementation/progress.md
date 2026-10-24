@@ -579,3 +579,15 @@ require_lease 只读结果不能直接授权落稿。后续须在同一写事务
 - 初轮全量 **911 passed / 3 failed**：广播故障测试旧闭包接线、跨loop测试及Windows恢复rename。三项均已修复并通过对应组；当前正在复验完整集合，不提前报告全绿。
 
 待补同一任务的有界让出恢复、等待与job原子绑定、失败恢复提示及浅层预取触发。P06 / P07和大版本未完成、未推送，分队语音排除。
+
+## P07c · 同任务有界让出恢复与调用计数
+
+- 抢占改为按本worker旧token条件撤权，保留同job / namespace / grant / 总预算并可恢复；依赖变化转stale，不自动重新授权。关闭服务也保留可恢复任务，显式业务cancel仍为独立契约。
+- claimed且尚未发任何远程请求的阶段让出会退还本次claim；生成 / 语义调用已dispatch则不退还。每lease仅允许generation→semantic各一次，provider await前短事务记录，最多三次尝试；这些是dispatch预留次数，不是供应商计费或token实耗。历史未统计任务明确dispatches=null，不捏造零用量。
+- scheduler记录自己运行实例的lease；旧worker的取消 / 失败 / 结束回调不能撤销新token或移除同job的新任务。真实HTTP已验证前台请求先进入后原job自动恢复落图，旧吞取消结果迟到也不改变新回执。
+- 复审发现普通enqueue可在terminal_failed后新建相同dedup并归零预算，已修复为事务内返回原耗尽记录，普通优先级 / 预算参数不能重置；SQL并发与再入队回归只保留一条任务。显式追加预算须以后由逻辑等待请求另行定义，当前未提供重置旁路。
+- SQL schema18保护新阶段 / 计数 / 状态；17→18完整备份、历史未知统计、旧17拒绝及恢复后同job累计预算均验收。
+- 新专项 **13 passed**，预empt / 调度 / HTTP / worker / jobs / commit六组 **85 passed**；独立最终预empt / jobs **32 passed**，无本批阻断。
+- 前一P07b检查点全量 **921 passed**，包含维护修复，不包含本批13个新专项。
+
+尚无等待与job的原子绑定、失败公开状态、浅层自动预取及持久token实耗。P06 / P07和大版本未完成，未推送，分队语音排除。

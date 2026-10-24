@@ -26,6 +26,7 @@ class DMScheduler:
         self._closed = False
         self._players = self._realtime = self._waiters = 0
         self._running = {}
+        self._leases = {}
         self._orphans = set()
         self._metrics = dict(dispatched=0,committed=0,failed=0,preemptions=0,
                              realtime_calls=0,realtime_wait_seconds=0.0,revocation_seconds=0.0,
@@ -52,9 +53,10 @@ class DMScheduler:
             # Revoke in a short durable transaction BEFORE cancellation or
             # releasing logical capacity. A provider may swallow cancellation.
             started = time.monotonic()
-            self.service.cancel(job_id)
+            self.service.preempt(job_id,self._leases.get(job_id),now=self.clock())
             self._metrics['revocation_seconds'] += time.monotonic()-started
             self._running.pop(job_id)
+            self._leases.pop(job_id,None)
             if not task.done():
                 self._orphans.add(task)
                 task.cancel()
@@ -96,6 +98,7 @@ class DMScheduler:
     def _finished(self,job_id,task):
         if self._running.get(job_id) is task:
             self._running.pop(job_id)
+            self._leases.pop(job_id,None)
         self._orphans.discard(task)
         if not task.cancelled():
             # Consume exceptions without logging provider bodies or prompts.
@@ -118,7 +121,10 @@ class DMScheduler:
         if not ready:
             return []
         job_id = ready[0]['id']
-        task = asyncio.create_task(story_generation.run(self.service,self.provider,job_id,clock=self.clock),
+        def claimed(worker):
+            if self._running.get(job_id) is asyncio.current_task():
+                self._leases[job_id] = worker['lease_token']
+        task = asyncio.create_task(story_generation.run(self.service,self.provider,job_id,clock=self.clock,on_claim=claimed),
                                    name='hexbound-story-worker')
         self._running[job_id] = task
         task.add_done_callback(lambda completed:self._finished(job_id,completed))

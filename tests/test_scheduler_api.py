@@ -91,10 +91,18 @@ def test_real_realtime_dm_call_uses_reserved_capacity_before_late_background_ret
         assert observed and observed[0]['realtime_active']==1
         assert observed[0]['background_active']==0 and observed[0]['late_calls']==1
         assert app.state.dm_scheduler.snapshot()['realtime_active']==0
-        assert app.state.generation_jobs.get(job['id'])['status']=='cancelled'
+        async def resumed():
+            async with asyncio.timeout(2):
+                while app.state.generation_jobs.get(job['id'])['status']!='committed':
+                    await asyncio.sleep(0.01)
+        client.portal.call(resumed)
+        settled = app.state.generation_jobs.get(job['id'])
+        assert settled['attempts']==2
+        assert settled['dispatches']==dict(generation=2,semantic=1)
     finally:
         drain(client,provider,task)
-    assert app.state.store.get(session['room']['id'])['campaign']['runtime_graph']['graph_revision']==0
+    assert app.state.generation_jobs.get(job['id'])==settled
+    assert app.state.store.get(session['room']['id'])['campaign']['runtime_graph']['graph_revision']==1
 
 
 def test_chat_and_unauthorized_command_do_not_interrupt_valid_background(table):

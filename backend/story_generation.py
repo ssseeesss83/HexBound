@@ -8,12 +8,14 @@ from . import scene_storage, story_patches, story_runtime, story_semantics
 
 
 class _Provider:
-    def __init__(self,source):
+    def __init__(self,source,before_call=None):
         self.source = source
         self.configured = source.configured
+        self.before_call = before_call
 
     async def _complete(self,*args,**kwargs):
         try:
+            if self.before_call is not None:self.before_call()
             result = await self.source._complete(*args,**kwargs)
             task = asyncio.current_task()
             if task is not None and task.cancelling():
@@ -66,12 +68,14 @@ def _failed(service,worker,clock):
     return dict(status=current['status'] if current else 'stale',job_id=worker['id'])
 
 
-async def run(service,provider,job_id,*,clock=time.time):
+async def run(service,provider,job_id,*,clock=time.time,on_claim=None):
     """All remote calls happen outside SQL transactions and room locks."""
     worker = service.claim(job_id,now=clock())
     if worker is None:return dict(status='not_claimed',job_id=job_id)
     try:
-        provider = _Provider(provider)
+        if on_claim is not None:on_claim(worker)
+        source = provider
+        provider = _Provider(source,lambda:service.mark_dispatch(worker['id'],worker['lease_token'],'generation',now=clock()))
         if not provider.configured:raise ValueError('续写服务尚不可用')
         remaining = min(worker['budget']['timeout_seconds'],worker['lease_until']-clock())
         if remaining<=0:raise TimeoutError('剧情任务已到期')
@@ -101,7 +105,8 @@ async def run(service,provider,job_id,*,clock=time.time):
             # spending a second call on semantic review, let alone writing.
             state = _current(service,worker,clock)
             candidate = story_patches.review(state,worker['authorization'],json.loads(raw),now=clock())
-            approval = await story_semantics.review(provider,state,worker['authorization'],candidate)
+            reviewer = _Provider(source,lambda:service.mark_dispatch(worker['id'],worker['lease_token'],'semantic',now=clock()))
+            approval = await story_semantics.review(reviewer,state,worker['authorization'],candidate)
             service.validate_output(worker['id'],worker['lease_token'],candidate,approval,now=clock())
             receipt = service.commit(worker['id'],worker['lease_token'],now=clock())
             return dict(status='committed',job_id=worker['id'],replayed=receipt['replayed'])

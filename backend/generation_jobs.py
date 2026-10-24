@@ -24,6 +24,11 @@ class Budget(StrictModel):
     max_tokens: int = Field(default=4000,ge=500,le=6000)
 
 
+class Dispatches(StrictModel):
+    generation: int = Field(default=0,ge=0,le=3)
+    semantic: int = Field(default=0,ge=0,le=3)
+
+
 class Job(StrictModel):
     id: story_patches.JobID
     room_id: str
@@ -33,11 +38,14 @@ class Job(StrictModel):
     authorization: dict
     budget: Budget
     attempts: int = Field(default=0,ge=0,le=3)
+    # None means historical counts were not collected, never zero usage.
+    dispatches: Dispatches | None = None
+    attempt_stage: Literal['claimed','generation','semantic'] | None = None
     created_at: float
     next_run_at: float
     lease_token: story_patches.JobID | None = None
     lease_until: float | None = None
-    error_code: Literal['lease_expired','dependency_changed','provider_failed'] | None = None
+    error_code: Literal['lease_expired','dependency_changed','provider_failed','preempted'] | None = None
     output: dict | None = None
     commit_receipt: dict | None = None
 
@@ -50,6 +58,10 @@ class Job(StrictModel):
             raise ValueError('已撤销任务不能保留租约')
         if self.attempts>self.budget.max_attempts or (leased and self.attempts==0):
             raise ValueError('任务尝试次数无效')
+        if not leased and self.attempt_stage is not None:
+            raise ValueError('已撤销任务不能保留当前调用阶段')
+        if self.dispatches and not self.dispatches.semantic<=self.dispatches.generation<=self.attempts:
+            raise ValueError('任务调用计数无效')
         return self
 
 
@@ -80,7 +92,7 @@ def _check_current(db,job,now):
 
 def _end_attempt(job,now,error):
     job.update(status='terminal_failed' if job['attempts']>=job['budget']['max_attempts'] else 'retryable_failed',
-               error_code=error,lease_token=None,lease_until=None,output=None,
+               error_code=error,lease_token=None,lease_until=None,output=None,attempt_stage=None,
                next_run_at=now+min(30,2**job['attempts']))
 
 
@@ -92,7 +104,7 @@ def _prune_room(db,room_id,now):
         job = _decode(row)
         try:_check_current(db,job,now)
         except (ValueError,KeyError):
-            job.update(status='stale',error_code='dependency_changed',lease_token=None,lease_until=None,output=None)
+            job.update(status='stale',error_code='dependency_changed',lease_token=None,lease_until=None,output=None,attempt_stage=None)
         else:
             if job['status'] not in {'running','validated'} or now<job['lease_until']:
                 continue
@@ -148,12 +160,18 @@ class GenerationJobs:
                     existing['priority']=min(priority,existing['priority'])
                     _save(db,existing)
                     return deepcopy(existing)
-                existing.update(status='stale',error_code='dependency_changed',lease_token=None,lease_until=None,output=None)
+                existing.update(status='stale',error_code='dependency_changed',lease_token=None,lease_until=None,output=None,attempt_stage=None)
                 _save(db,existing)
+            exhausted = db.execute("SELECT * FROM generation_jobs WHERE room_id=? AND dedup_key=? AND status='terminal_failed' ORDER BY rowid DESC LIMIT 1",(room_id,dedup)).fetchone()
+            if exhausted:
+                # Repeated automatic triggers are not fresh generation budget.
+                # An explicit additional-budget/retry contract belongs to the
+                # logical waiting request, not to ordinary enqueue calls.
+                return deepcopy(_decode(exhausted))
             count = db.execute("SELECT COUNT(*) FROM generation_jobs WHERE room_id=? AND status IN ('queued','running','validated','retryable_failed')",(room_id,)).fetchone()[0]
             if count>=16:raise ValueError('当前冒险的续写队列已满')
             job = Job(id=sid,room_id=room_id,dedup_key=dedup,status='queued',priority=priority,
-                      authorization=auth,budget=budget,created_at=now,next_run_at=now).model_dump(mode='json')
+                      authorization=auth,budget=budget,dispatches=Dispatches(),created_at=now,next_run_at=now).model_dump(mode='json')
             db.execute('INSERT INTO generation_jobs VALUES(?,?,?,?,?,?,?)',
                        (sid,room_id,dedup,'queued',priority,None,json.dumps(job,ensure_ascii=False)))
             return deepcopy(job)
@@ -169,7 +187,7 @@ class GenerationJobs:
                 return None
             try:_check_current(db,job,now)
             except (ValueError,KeyError):
-                job.update(status='stale',error_code='dependency_changed',lease_token=None,lease_until=None,output=None)
+                job.update(status='stale',error_code='dependency_changed',lease_token=None,lease_until=None,output=None,attempt_stage=None)
                 _save(db,job)
                 return None
             if job['attempts']>=job['budget']['max_attempts']:
@@ -177,7 +195,8 @@ class GenerationJobs:
                 _save(db,job)
                 return None
             job.update(status='running',attempts=job['attempts']+1,lease_token=uuid.uuid4().hex,
-                       lease_until=min(now+job['budget']['timeout_seconds'],job['authorization']['expires_at']),error_code=None)
+                       lease_until=min(now+job['budget']['timeout_seconds'],job['authorization']['expires_at']),error_code=None,
+                       attempt_stage='claimed')
             _save(db,job)
             return deepcopy(job)
 
@@ -189,6 +208,53 @@ class GenerationJobs:
             if row is None:raise ValueError('剧情任务不存在')
             job = _decode(row)
             self._lease(db,job,lease_token,now)
+            return deepcopy(job)
+
+    def mark_dispatch(self,job_id,lease_token,stage,*,now=None):
+        """Reserve one actual provider dispatch immediately before its await.
+
+        Dispatch does not imply the supplier received/charged the request, and
+        is not a token-usage measurement. Uncertain sent calls are not refunded.
+        """
+        if stage not in {'generation','semantic'}:
+            raise ValueError('续写调用阶段无效')
+        now = float(story_patches._now(now))
+        with self.store.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            row = db.execute('SELECT * FROM generation_jobs WHERE id=?',(job_id,)).fetchone()
+            if row is None:raise ValueError('剧情任务不存在')
+            job = _decode(row)
+            self._lease(db,job,lease_token,now)
+            if job['status']!='running' or job['attempt_stage']!=('claimed' if stage=='generation' else 'generation'):
+                raise ValueError('同一尝试不能重复或跳过调用阶段')
+            if job['dispatches'] is not None:
+                job['dispatches'][stage] += 1
+            job['attempt_stage'] = stage
+            _save(db,job)
+            return deepcopy(job)
+
+    def preempt(self,job_id,lease_token,*,now=None):
+        """Revoke only this worker and resume the SAME bounded logical job."""
+        now = float(story_patches._now(now))
+        with self.store.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            row = db.execute('SELECT * FROM generation_jobs WHERE id=?',(job_id,)).fetchone()
+            if row is None:return None
+            job = _decode(row)
+            if job['status'] not in {'running','validated'} or job['lease_token']!=lease_token:
+                return deepcopy(job)
+            try:_check_current(db,job,now)
+            except (ValueError,KeyError):
+                job.update(status='stale',error_code='dependency_changed',lease_token=None,lease_until=None,output=None,attempt_stage=None)
+            else:
+                # A claimed worker interrupted BEFORE any remote dispatch did
+                # not consume an outbound attempt. Legacy unknown stages are
+                # charged conservatively, and dispatched work is never free.
+                if job['attempt_stage']=='claimed':
+                    job['attempts'] -= 1
+                job.update(status='terminal_failed' if job['attempts']>=job['budget']['max_attempts'] else 'retryable_failed',
+                           error_code='preempted',lease_token=None,lease_until=None,output=None,attempt_stage=None,next_run_at=now)
+            _save(db,job)
             return deepcopy(job)
 
     @staticmethod
@@ -219,7 +285,7 @@ class GenerationJobs:
             if lease_token is not None and job['lease_token']!=lease_token:
                 return deepcopy(job)
             if job['status'] in ACTIVE:
-                job.update(status='cancelled',lease_token=None,lease_until=None,output=None)
+                job.update(status='cancelled',lease_token=None,lease_until=None,output=None,attempt_stage=None)
                 _save(db,job)
             return deepcopy(job)
 
@@ -300,6 +366,6 @@ class GenerationJobs:
             updated = db.execute('UPDATE rooms SET state=?,version=? WHERE id=? AND version=?',
                 (json.dumps(canonical,ensure_ascii=False),canonical['version'],job['room_id'],room['version']))
             if updated.rowcount!=1:raise ValueError('剧情房间已变化')
-            job.update(status='committed',lease_token=None,lease_until=None,commit_receipt=receipt)
+            job.update(status='committed',lease_token=None,lease_until=None,commit_receipt=receipt,attempt_stage=None)
             _save(db,job)
             return dict(receipt=deepcopy(receipt),replayed=False)
