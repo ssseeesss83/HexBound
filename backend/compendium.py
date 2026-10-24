@@ -209,7 +209,7 @@ for _correction in CANONICAL_OVERLAY["corrections"]:
                    "subclasses": SUBCLASSES, "proficiencies": PROFICIENCIES,
                    "skills": SKILLS, "backgrounds": BACKGROUNDS, "races": RACES,
                    "traits": TRAITS, "weapon-properties": WEAPON_PROPERTIES,
-                   "equipment-categories": EQUIPMENT_CATEGORIES}
+                   "equipment-categories": EQUIPMENT_CATEGORIES, "equipment": EQUIPMENT}
         _feature = _tables[_correction.get("kind", "features")][_feature_id]
         if _correction["operation"] == "replace_description":
             _feature["desc"] = copy.deepcopy(_correction["paragraphs"])

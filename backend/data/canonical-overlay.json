@@ -5900,6 +5900,114 @@
           "source_text_sha256": "94763799f8de2cfba7685d1f92c7f388e0d011949ea6aa842c897d27336850f7"
         }
       }
+    },
+    {
+      "id": "official-equipment-caltrops-cost",
+      "kind": "equipment",
+      "records": [
+        "caltrops"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "cp"
+      },
+      "value": {
+        "quantity": 1,
+        "unit": "gp"
+      }
+    },
+    {
+      "id": "official-equipment-caltrops-quantity",
+      "kind": "equipment",
+      "records": [
+        "caltrops"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "quantity"
+      ],
+      "expected": null,
+      "value": 20
+    },
+    {
+      "id": "official-equipment-spike-iron-cost",
+      "kind": "equipment",
+      "records": [
+        "spike-iron"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "sp"
+      },
+      "value": {
+        "quantity": 1,
+        "unit": "gp"
+      }
+    },
+    {
+      "id": "official-equipment-spike-iron-quantity",
+      "kind": "equipment",
+      "records": [
+        "spike-iron"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "quantity"
+      ],
+      "expected": null,
+      "value": 10
+    },
+    {
+      "id": "official-equipment-saddle-exotic-weight",
+      "kind": "equipment",
+      "records": [
+        "saddle-exotic"
+      ],
+      "page": 72,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 50,
+      "value": 40
+    },
+    {
+      "id": "official-equipment-barding-ring-mail-cost",
+      "kind": "equipment",
+      "records": [
+        "barding-ring-mail"
+      ],
+      "page": 71,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 12,
+        "unit": "gp"
+      },
+      "value": {
+        "quantity": 120,
+        "unit": "gp"
+      }
     }
   ],
   "record_additions": [

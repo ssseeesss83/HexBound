@@ -1,0 +1,5721 @@
+{
+  "profile": "remaining-equipment-measurements-v1",
+  "inventory_match": true,
+  "missing_records": [],
+  "unexpected_records": [],
+  "checks": [
+    {
+      "record": "equipment/abacus",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Abacus 2 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/abacus",
+      "path": [
+        "weight"
+      ],
+      "expected": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Abacus 2 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/acid-vial",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Acid (vial) 25 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/acid-vial",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Acid (vial) 25 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/alchemists-fire-flask",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Alchemist's fire (flask) 50 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/alchemists-fire-flask",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Alchemist's fire (flask) 50 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/arrow",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Arrows (20) 1 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/arrow",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Arrows (20) 1 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/arrow",
+      "path": [
+        "quantity"
+      ],
+      "expected": 20,
+      "actual": 20,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Arrows (20) 1 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/blowgun-needle",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Blowgun needles (50) 1 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/blowgun-needle",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Blowgun needles (50) 1 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/blowgun-needle",
+      "path": [
+        "quantity"
+      ],
+      "expected": 50,
+      "actual": 50,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Blowgun needles (50) 1 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/crossbow-bolt",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Crossbow bolts (20) 1 gp 11⁄2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/crossbow-bolt",
+      "path": [
+        "weight"
+      ],
+      "expected": 1.5,
+      "actual": 1.5,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Crossbow bolts (20) 1 gp 11⁄2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/crossbow-bolt",
+      "path": [
+        "quantity"
+      ],
+      "expected": 20,
+      "actual": 20,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Crossbow bolts (20) 1 gp 11⁄2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/sling-bullet",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 4,
+        "unit": "cp"
+      },
+      "actual": {
+        "quantity": 4,
+        "unit": "cp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Sling bullets (20) 4 cp 11⁄2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/sling-bullet",
+      "path": [
+        "weight"
+      ],
+      "expected": 1.5,
+      "actual": 1.5,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Sling bullets (20) 4 cp 11⁄2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/sling-bullet",
+      "path": [
+        "quantity"
+      ],
+      "expected": 20,
+      "actual": 20,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Sling bullets (20) 4 cp 11⁄2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/antitoxin-vial",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Antitoxin (vial) 50 gp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/crystal",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Crystal 10 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/crystal",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Crystal 10 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/orb",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 20,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 20,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Orb 20 gp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/orb",
+      "path": [
+        "weight"
+      ],
+      "expected": 3,
+      "actual": 3,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Orb 20 gp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/rod",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Rod 10 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/rod",
+      "path": [
+        "weight"
+      ],
+      "expected": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Rod 10 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/staff",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Staff 5 gp 4 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/staff",
+      "path": [
+        "weight"
+      ],
+      "expected": 4,
+      "actual": 4,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Staff 5 gp 4 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/wand",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Wand 10 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/wand",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Wand 10 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/backpack",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Backpack 2 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/backpack",
+      "path": [
+        "weight"
+      ],
+      "expected": 5,
+      "actual": 5,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Backpack 2 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/ball-bearings-bag-of-1000",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Ball bearings (bag of 1,000) 1 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/ball-bearings-bag-of-1000",
+      "path": [
+        "weight"
+      ],
+      "expected": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Ball bearings (bag of 1,000) 1 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/barrel",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Barrel 2 gp 70 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/barrel",
+      "path": [
+        "weight"
+      ],
+      "expected": 70,
+      "actual": 70,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Barrel 2 gp 70 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/basket",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 4,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 4,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Basket 4 sp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/basket",
+      "path": [
+        "weight"
+      ],
+      "expected": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Basket 4 sp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/bedroll",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Bedroll 1 gp 7 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/bedroll",
+      "path": [
+        "weight"
+      ],
+      "expected": 7,
+      "actual": 7,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Bedroll 1 gp 7 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/bell",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Bell 1 gp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/blanket",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Blanket 5 sp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/blanket",
+      "path": [
+        "weight"
+      ],
+      "expected": 3,
+      "actual": 3,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Blanket 5 sp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/block-and-tackle",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Block and tackle 1 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/block-and-tackle",
+      "path": [
+        "weight"
+      ],
+      "expected": 5,
+      "actual": 5,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Block and tackle 1 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/book",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Book 25 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/book",
+      "path": [
+        "weight"
+      ],
+      "expected": 5,
+      "actual": 5,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Book 25 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/bottle-glass",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Bottle, glass 2 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/bottle-glass",
+      "path": [
+        "weight"
+      ],
+      "expected": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Bottle, glass 2 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/bucket",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "cp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "cp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Bucket 5 cp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/bucket",
+      "path": [
+        "weight"
+      ],
+      "expected": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Bucket 5 cp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/caltrops",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "cp"
+      },
+      "match": false,
+      "official_page": 69,
+      "official_row": "Caltrops (bag of 20) 1 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/caltrops",
+      "path": [
+        "weight"
+      ],
+      "expected": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Caltrops (bag of 20) 1 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/caltrops",
+      "path": [
+        "quantity"
+      ],
+      "expected": 20,
+      "actual": null,
+      "match": false,
+      "official_page": 69,
+      "official_row": "Caltrops (bag of 20) 1 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/candle",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "cp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "cp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Candle 1 cp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/case-crossbow-bolt",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Case, crossbow bolt 1 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/case-crossbow-bolt",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Case, crossbow bolt 1 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/case-map-or-scroll",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Case, map or scroll 1 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/case-map-or-scroll",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Case, map or scroll 1 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/chain-10-feet",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Chain (10 feet) 5 gp 10 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/chain-10-feet",
+      "path": [
+        "weight"
+      ],
+      "expected": 10,
+      "actual": 10,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Chain (10 feet) 5 gp 10 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/chalk-1-piece",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "cp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "cp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Chalk (1 piece) 1 cp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/chest",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Chest 5 gp 25 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/chest",
+      "path": [
+        "weight"
+      ],
+      "expected": 25,
+      "actual": 25,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Chest 5 gp 25 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/climbers-kit",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Climber's kit 25 gp 12 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/climbers-kit",
+      "path": [
+        "weight"
+      ],
+      "expected": 12,
+      "actual": 12,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Climber's kit 25 gp 12 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/clothes-common",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Clothes, common 5 sp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/clothes-common",
+      "path": [
+        "weight"
+      ],
+      "expected": 3,
+      "actual": 3,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Clothes, common 5 sp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/clothes-costume",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Clothes, costume 5 gp 4 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/clothes-costume",
+      "path": [
+        "weight"
+      ],
+      "expected": 4,
+      "actual": 4,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Clothes, costume 5 gp 4 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/clothes-fine",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 15,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 15,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Clothes, fine 15 gp 6 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/clothes-fine",
+      "path": [
+        "weight"
+      ],
+      "expected": 6,
+      "actual": 6,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Clothes, fine 15 gp 6 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/clothes-travelers",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Clothes, traveler's 2 gp 4 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/clothes-travelers",
+      "path": [
+        "weight"
+      ],
+      "expected": 4,
+      "actual": 4,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Clothes, traveler's 2 gp 4 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/component-pouch",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Component pouch 25 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/component-pouch",
+      "path": [
+        "weight"
+      ],
+      "expected": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Component pouch 25 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/crowbar",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Crowbar 2 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/crowbar",
+      "path": [
+        "weight"
+      ],
+      "expected": 5,
+      "actual": 5,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Crowbar 2 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/sprig-of-mistletoe",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Sprig of mistletoe 1 gp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/totem",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Totem 1 gp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/wooden-staff",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Wooden staff 5 gp 4 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/wooden-staff",
+      "path": [
+        "weight"
+      ],
+      "expected": 4,
+      "actual": 4,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Wooden staff 5 gp 4 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/yew-wand",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Yew wand 10 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/yew-wand",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Yew wand 10 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/fishing-tackle",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Fishing tackle 1 gp 4 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/fishing-tackle",
+      "path": [
+        "weight"
+      ],
+      "expected": 4,
+      "actual": 4,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Fishing tackle 1 gp 4 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/flask-or-tankard",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "cp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "cp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Flask or tankard 2 cp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/flask-or-tankard",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Flask or tankard 2 cp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/grappling-hook",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Grappling hook 2 gp 4 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/grappling-hook",
+      "path": [
+        "weight"
+      ],
+      "expected": 4,
+      "actual": 4,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Grappling hook 2 gp 4 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/hammer",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Hammer 1 gp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/hammer",
+      "path": [
+        "weight"
+      ],
+      "expected": 3,
+      "actual": 3,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Hammer 1 gp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/hammer-sledge",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Hammer, sledge 2 gp 10 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/hammer-sledge",
+      "path": [
+        "weight"
+      ],
+      "expected": 10,
+      "actual": 10,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Hammer, sledge 2 gp 10 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/healers-kit",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Healer's kit 5 gp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/healers-kit",
+      "path": [
+        "weight"
+      ],
+      "expected": 3,
+      "actual": 3,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Healer's kit 5 gp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/amulet",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Amulet 5 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/amulet",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Amulet 5 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/emblem",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Emblem 5 gp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/reliquary",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Reliquary 5 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/reliquary",
+      "path": [
+        "weight"
+      ],
+      "expected": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Reliquary 5 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/holy-water-flask",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Holy water (flask) 25 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/holy-water-flask",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Holy water (flask) 25 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/hourglass",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Hourglass 25 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/hourglass",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Hourglass 25 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/hunting-trap",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Hunting trap 5 gp 25 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/hunting-trap",
+      "path": [
+        "weight"
+      ],
+      "expected": 25,
+      "actual": 25,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Hunting trap 5 gp 25 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/ink-1-ounce-bottle",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Ink (1 ounce bottle) 10 gp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/ink-pen",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "cp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "cp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Ink pen 2 cp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/jug-or-pitcher",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "cp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "cp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Jug or pitcher 2 cp 4 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/jug-or-pitcher",
+      "path": [
+        "weight"
+      ],
+      "expected": 4,
+      "actual": 4,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Jug or pitcher 2 cp 4 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/ladder-10-foot",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Ladder (10-foot) 1 sp 25 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/ladder-10-foot",
+      "path": [
+        "weight"
+      ],
+      "expected": 25,
+      "actual": 25,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Ladder (10-foot) 1 sp 25 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/lamp",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Lamp 5 sp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/lamp",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Lamp 5 sp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/lantern-bullseye",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Lantern, bullseye 10 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/lantern-bullseye",
+      "path": [
+        "weight"
+      ],
+      "expected": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Lantern, bullseye 10 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/lantern-hooded",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Lantern, hooded 5 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/lantern-hooded",
+      "path": [
+        "weight"
+      ],
+      "expected": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Lantern, hooded 5 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/lock",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Lock 10 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/lock",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Lock 10 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/magnifying-glass",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 100,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 100,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Magnifying glass 100 gp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/manacles",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Manacles 2 gp 6 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/manacles",
+      "path": [
+        "weight"
+      ],
+      "expected": 6,
+      "actual": 6,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Manacles 2 gp 6 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/mess-kit",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Mess kit 2 sp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/mess-kit",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Mess kit 2 sp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/mirror-steel",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Mirror, steel 5 gp 1/2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/mirror-steel",
+      "path": [
+        "weight"
+      ],
+      "expected": 0.5,
+      "actual": 0.5,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Mirror, steel 5 gp 1/2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/oil-flask",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Oil (flask) 1 sp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/oil-flask",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Oil (flask) 1 sp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/paper-one-sheet",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Paper (one sheet) 2 sp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/parchment-one-sheet",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Parchment (one sheet) 1 sp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/perfume-vial",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Perfume (vial) 5 gp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/pick-miners",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Pick, miner's 2 gp 10 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/pick-miners",
+      "path": [
+        "weight"
+      ],
+      "expected": 10,
+      "actual": 10,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Pick, miner's 2 gp 10 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/piton",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "cp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "cp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Piton 5 cp 1/4 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/piton",
+      "path": [
+        "weight"
+      ],
+      "expected": 0.25,
+      "actual": 0.25,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Piton 5 cp 1/4 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/poison-basic-vial",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 100,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 100,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Poison, basic (vial) 100 gp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/pole-10-foot",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "cp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "cp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Pole (10-foot) 5 cp 7 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/pole-10-foot",
+      "path": [
+        "weight"
+      ],
+      "expected": 7,
+      "actual": 7,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Pole (10-foot) 5 cp 7 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/pot-iron",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Pot, iron 2 gp 10 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/pot-iron",
+      "path": [
+        "weight"
+      ],
+      "expected": 10,
+      "actual": 10,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Pot, iron 2 gp 10 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/pouch",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Pouch 5 sp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/pouch",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Pouch 5 sp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/quiver",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Quiver 1 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/quiver",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Quiver 1 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/ram-portable",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 4,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 4,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Ram, portable 4 gp 35 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/ram-portable",
+      "path": [
+        "weight"
+      ],
+      "expected": 35,
+      "actual": 35,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Ram, portable 4 gp 35 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/rations-1-day",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Rations (1 day) 5 sp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/rations-1-day",
+      "path": [
+        "weight"
+      ],
+      "expected": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Rations (1 day) 5 sp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/robes",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Robes 1 gp 4 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/robes",
+      "path": [
+        "weight"
+      ],
+      "expected": 4,
+      "actual": 4,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Robes 1 gp 4 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/rope-hempen-50-feet",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Rope, hempen (50 feet) 1 gp 10 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/rope-hempen-50-feet",
+      "path": [
+        "weight"
+      ],
+      "expected": 10,
+      "actual": 10,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Rope, hempen (50 feet) 1 gp 10 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/rope-silk-50-feet",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Rope, silk (50 feet) 10 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/rope-silk-50-feet",
+      "path": [
+        "weight"
+      ],
+      "expected": 5,
+      "actual": 5,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Rope, silk (50 feet) 10 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/sack",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "cp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "cp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Sack 1 cp 1/2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/sack",
+      "path": [
+        "weight"
+      ],
+      "expected": 0.5,
+      "actual": 0.5,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Sack 1 cp 1/2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/scale-merchants",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Scale, merchant's 5 gp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/scale-merchants",
+      "path": [
+        "weight"
+      ],
+      "expected": 3,
+      "actual": 3,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Scale, merchant's 5 gp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/sealing-wax",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Sealing wax 5 sp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/shovel",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Shovel 2 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/shovel",
+      "path": [
+        "weight"
+      ],
+      "expected": 5,
+      "actual": 5,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Shovel 2 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/signal-whistle",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "cp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "cp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Signal whistle 5 cp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/signet-ring",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Signet ring 5 gp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/soap",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "cp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "cp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Soap 2 cp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/spellbook",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Spellbook 50 gp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/spellbook",
+      "path": [
+        "weight"
+      ],
+      "expected": 3,
+      "actual": 3,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Spellbook 50 gp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/spike-iron",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "sp"
+      },
+      "match": false,
+      "official_page": 69,
+      "official_row": "Spikes, iron (10) 1 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/spike-iron",
+      "path": [
+        "weight"
+      ],
+      "expected": 5,
+      "actual": 5,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Spikes, iron (10) 1 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/spike-iron",
+      "path": [
+        "quantity"
+      ],
+      "expected": 10,
+      "actual": null,
+      "match": false,
+      "official_page": 69,
+      "official_row": "Spikes, iron (10) 1 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/spyglass",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1000,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1000,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Spyglass 1,000 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/spyglass",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Spyglass 1,000 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/tent-two-person",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Tent, two-person 2 gp 20 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/tent-two-person",
+      "path": [
+        "weight"
+      ],
+      "expected": 20,
+      "actual": 20,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Tent, two-person 2 gp 20 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/tinderbox",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Tinderbox 5 sp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/tinderbox",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Tinderbox 5 sp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/torch",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "cp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "cp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Torch 1 cp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/torch",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Torch 1 cp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/vial",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Vial 1 gp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/waterskin",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Waterskin 2 sp 5 lb. (full)",
+      "derivation": null
+    },
+    {
+      "record": "equipment/waterskin",
+      "path": [
+        "weight"
+      ],
+      "expected": 5,
+      "actual": 5,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Waterskin 2 sp 5 lb. (full)",
+      "derivation": null
+    },
+    {
+      "record": "equipment/whetstone",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "cp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "cp"
+      },
+      "match": true,
+      "official_page": 69,
+      "official_row": "Whetstone 1 cp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/whetstone",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 69,
+      "official_row": "Whetstone 1 cp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/alchemists-supplies",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Alchemist's supplies 50 gp 8 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/alchemists-supplies",
+      "path": [
+        "weight"
+      ],
+      "expected": 8,
+      "actual": 8,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Alchemist's supplies 50 gp 8 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/brewers-supplies",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 20,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 20,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Brewer's supplies 20 gp 9 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/brewers-supplies",
+      "path": [
+        "weight"
+      ],
+      "expected": 9,
+      "actual": 9,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Brewer's supplies 20 gp 9 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/calligraphers-supplies",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Calligrapher's supplies 10 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/calligraphers-supplies",
+      "path": [
+        "weight"
+      ],
+      "expected": 5,
+      "actual": 5,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Calligrapher's supplies 10 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/carpenters-tools",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 8,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 8,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Carpenter's tools 8 gp 6 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/carpenters-tools",
+      "path": [
+        "weight"
+      ],
+      "expected": 6,
+      "actual": 6,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Carpenter's tools 8 gp 6 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/cartographers-tools",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 15,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 15,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Cartographer's tools 15 gp 6 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/cartographers-tools",
+      "path": [
+        "weight"
+      ],
+      "expected": 6,
+      "actual": 6,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Cartographer's tools 15 gp 6 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/cobblers-tools",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Cobbler's tools 5 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/cobblers-tools",
+      "path": [
+        "weight"
+      ],
+      "expected": 5,
+      "actual": 5,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Cobbler's tools 5 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/cooks-utensils",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Cook's utensils 1 gp 8 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/cooks-utensils",
+      "path": [
+        "weight"
+      ],
+      "expected": 8,
+      "actual": 8,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Cook's utensils 1 gp 8 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/glassblowers-tools",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 30,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 30,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Glassblower's tools 30 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/glassblowers-tools",
+      "path": [
+        "weight"
+      ],
+      "expected": 5,
+      "actual": 5,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Glassblower's tools 30 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/jewelers-tools",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Jeweler's tools 25 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/jewelers-tools",
+      "path": [
+        "weight"
+      ],
+      "expected": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Jeweler's tools 25 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/leatherworkers-tools",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Leatherworker's tools 5 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/leatherworkers-tools",
+      "path": [
+        "weight"
+      ],
+      "expected": 5,
+      "actual": 5,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Leatherworker's tools 5 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/masons-tools",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Mason's tools 10 gp 8 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/masons-tools",
+      "path": [
+        "weight"
+      ],
+      "expected": 8,
+      "actual": 8,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Mason's tools 10 gp 8 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/painters-supplies",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Painter's supplies 10 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/painters-supplies",
+      "path": [
+        "weight"
+      ],
+      "expected": 5,
+      "actual": 5,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Painter's supplies 10 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/potters-tools",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Potter's tools 10 gp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/potters-tools",
+      "path": [
+        "weight"
+      ],
+      "expected": 3,
+      "actual": 3,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Potter's tools 10 gp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/smiths-tools",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 20,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 20,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Smith's tools 20 gp 8 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/smiths-tools",
+      "path": [
+        "weight"
+      ],
+      "expected": 8,
+      "actual": 8,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Smith's tools 20 gp 8 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/tinkers-tools",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Tinker's tools 50 gp 10 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/tinkers-tools",
+      "path": [
+        "weight"
+      ],
+      "expected": 10,
+      "actual": 10,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Tinker's tools 50 gp 10 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/weavers-tools",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Weaver's tools 1 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/weavers-tools",
+      "path": [
+        "weight"
+      ],
+      "expected": 5,
+      "actual": 5,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Weaver's tools 1 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/woodcarvers-tools",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Woodcarver's tools 1 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/woodcarvers-tools",
+      "path": [
+        "weight"
+      ],
+      "expected": 5,
+      "actual": 5,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Woodcarver's tools 1 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/disguise-kit",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Disguise kit 25 gp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/disguise-kit",
+      "path": [
+        "weight"
+      ],
+      "expected": 3,
+      "actual": 3,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Disguise kit 25 gp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/forgery-kit",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 15,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 15,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Forgery kit 15 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/forgery-kit",
+      "path": [
+        "weight"
+      ],
+      "expected": 5,
+      "actual": 5,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Forgery kit 15 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/dice-set",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Dice set 1 sp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/playing-card-set",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Playing card set 5 sp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/herbalism-kit",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Herbalism kit 5 gp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/herbalism-kit",
+      "path": [
+        "weight"
+      ],
+      "expected": 3,
+      "actual": 3,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Herbalism kit 5 gp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/bagpipes",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 30,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 30,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Bagpipes 30 gp 6 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/bagpipes",
+      "path": [
+        "weight"
+      ],
+      "expected": 6,
+      "actual": 6,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Bagpipes 30 gp 6 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/drum",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 6,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 6,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Drum 6 gp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/drum",
+      "path": [
+        "weight"
+      ],
+      "expected": 3,
+      "actual": 3,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Drum 6 gp 3 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/dulcimer",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Dulcimer 25 gp 10 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/dulcimer",
+      "path": [
+        "weight"
+      ],
+      "expected": 10,
+      "actual": 10,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Dulcimer 25 gp 10 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/flute",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Flute 2 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/flute",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Flute 2 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/lute",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 35,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 35,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Lute 35 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/lute",
+      "path": [
+        "weight"
+      ],
+      "expected": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Lute 35 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/lyre",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 30,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 30,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Lyre 30 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/lyre",
+      "path": [
+        "weight"
+      ],
+      "expected": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Lyre 30 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/horn",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 3,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 3,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Horn 3 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/horn",
+      "path": [
+        "weight"
+      ],
+      "expected": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Horn 3 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/pan-flute",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 12,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 12,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Pan flute 12 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/pan-flute",
+      "path": [
+        "weight"
+      ],
+      "expected": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Pan flute 12 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/shawm",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Shawm 2 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/shawm",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Shawm 2 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/viol",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 30,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 30,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Viol 30 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/viol",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Viol 30 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/navigators-tools",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Navigator's tools 25 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/navigators-tools",
+      "path": [
+        "weight"
+      ],
+      "expected": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Navigator's tools 25 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/poisoners-kit",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Poisoner's kit 50 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/poisoners-kit",
+      "path": [
+        "weight"
+      ],
+      "expected": 2,
+      "actual": 2,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Poisoner's kit 50 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/thieves-tools",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Thieves' tools 25 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/thieves-tools",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 70,
+      "official_row": "Thieves' tools 25 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/camel",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 71,
+      "official_row": "Camel 50 gp 50 ft. 480 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/camel",
+      "path": [
+        "speed"
+      ],
+      "expected": {
+        "quantity": 50,
+        "unit": "ft/round"
+      },
+      "actual": {
+        "quantity": 50,
+        "unit": "ft/round"
+      },
+      "match": true,
+      "official_page": 71,
+      "official_row": "Camel 50 gp 50 ft. 480 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/camel",
+      "path": [
+        "capacity"
+      ],
+      "expected": "480 lb.",
+      "actual": "480 lb.",
+      "match": true,
+      "official_page": 71,
+      "official_row": "Camel 50 gp 50 ft. 480 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/donkey",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 8,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 8,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 71,
+      "official_row": "Donkey or mule 8 gp 40 ft. 420 lb.",
+      "derivation": "shared_donkey_or_mule_row"
+    },
+    {
+      "record": "equipment/donkey",
+      "path": [
+        "speed"
+      ],
+      "expected": {
+        "quantity": 40,
+        "unit": "ft/round"
+      },
+      "actual": {
+        "quantity": 40,
+        "unit": "ft/round"
+      },
+      "match": true,
+      "official_page": 71,
+      "official_row": "Donkey or mule 8 gp 40 ft. 420 lb.",
+      "derivation": "shared_donkey_or_mule_row"
+    },
+    {
+      "record": "equipment/donkey",
+      "path": [
+        "capacity"
+      ],
+      "expected": "420 lb.",
+      "actual": "420 lb.",
+      "match": true,
+      "official_page": 71,
+      "official_row": "Donkey or mule 8 gp 40 ft. 420 lb.",
+      "derivation": "shared_donkey_or_mule_row"
+    },
+    {
+      "record": "equipment/mule",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 8,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 8,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 71,
+      "official_row": "Donkey or mule 8 gp 40 ft. 420 lb.",
+      "derivation": "shared_donkey_or_mule_row"
+    },
+    {
+      "record": "equipment/mule",
+      "path": [
+        "speed"
+      ],
+      "expected": {
+        "quantity": 40,
+        "unit": "ft/round"
+      },
+      "actual": {
+        "quantity": 40,
+        "unit": "ft/round"
+      },
+      "match": true,
+      "official_page": 71,
+      "official_row": "Donkey or mule 8 gp 40 ft. 420 lb.",
+      "derivation": "shared_donkey_or_mule_row"
+    },
+    {
+      "record": "equipment/mule",
+      "path": [
+        "capacity"
+      ],
+      "expected": "420 lb.",
+      "actual": "420 lb.",
+      "match": true,
+      "official_page": 71,
+      "official_row": "Donkey or mule 8 gp 40 ft. 420 lb.",
+      "derivation": "shared_donkey_or_mule_row"
+    },
+    {
+      "record": "equipment/elephant",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 200,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 200,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 71,
+      "official_row": "Elephant 200 gp 40 ft. 1,320 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/elephant",
+      "path": [
+        "speed"
+      ],
+      "expected": {
+        "quantity": 40,
+        "unit": "ft/round"
+      },
+      "actual": {
+        "quantity": 40,
+        "unit": "ft/round"
+      },
+      "match": true,
+      "official_page": 71,
+      "official_row": "Elephant 200 gp 40 ft. 1,320 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/elephant",
+      "path": [
+        "capacity"
+      ],
+      "expected": "1,320 lb.",
+      "actual": "1,320 lb.",
+      "match": true,
+      "official_page": 71,
+      "official_row": "Elephant 200 gp 40 ft. 1,320 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/horse-draft",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Horse, draft 50 gp 40 ft. 540 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/horse-draft",
+      "path": [
+        "speed"
+      ],
+      "expected": {
+        "quantity": 40,
+        "unit": "ft/round"
+      },
+      "actual": {
+        "quantity": 40,
+        "unit": "ft/round"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Horse, draft 50 gp 40 ft. 540 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/horse-draft",
+      "path": [
+        "capacity"
+      ],
+      "expected": "540 lb.",
+      "actual": "540 lb.",
+      "match": true,
+      "official_page": 72,
+      "official_row": "Horse, draft 50 gp 40 ft. 540 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/horse-riding",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 75,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 75,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Horse, riding 75 gp 60 ft. 480 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/horse-riding",
+      "path": [
+        "speed"
+      ],
+      "expected": {
+        "quantity": 60,
+        "unit": "ft/round"
+      },
+      "actual": {
+        "quantity": 60,
+        "unit": "ft/round"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Horse, riding 75 gp 60 ft. 480 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/horse-riding",
+      "path": [
+        "capacity"
+      ],
+      "expected": "480 lb.",
+      "actual": "480 lb.",
+      "match": true,
+      "official_page": 72,
+      "official_row": "Horse, riding 75 gp 60 ft. 480 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/mastiff",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 25,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Mastiff 25 gp 40 ft. 195 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/mastiff",
+      "path": [
+        "speed"
+      ],
+      "expected": {
+        "quantity": 40,
+        "unit": "ft/round"
+      },
+      "actual": {
+        "quantity": 40,
+        "unit": "ft/round"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Mastiff 25 gp 40 ft. 195 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/mastiff",
+      "path": [
+        "capacity"
+      ],
+      "expected": "195 lb.",
+      "actual": "195 lb.",
+      "match": true,
+      "official_page": 72,
+      "official_row": "Mastiff 25 gp 40 ft. 195 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/pony",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 30,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 30,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Pony 30 gp 40 ft. 225 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/pony",
+      "path": [
+        "speed"
+      ],
+      "expected": {
+        "quantity": 40,
+        "unit": "ft/round"
+      },
+      "actual": {
+        "quantity": 40,
+        "unit": "ft/round"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Pony 30 gp 40 ft. 225 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/pony",
+      "path": [
+        "capacity"
+      ],
+      "expected": "225 lb.",
+      "actual": "225 lb.",
+      "match": true,
+      "official_page": 72,
+      "official_row": "Pony 30 gp 40 ft. 225 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/warhorse",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 400,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 400,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Warhorse 400 gp 60 ft. 540 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/warhorse",
+      "path": [
+        "speed"
+      ],
+      "expected": {
+        "quantity": 60,
+        "unit": "ft/round"
+      },
+      "actual": {
+        "quantity": 60,
+        "unit": "ft/round"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Warhorse 400 gp 60 ft. 540 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/warhorse",
+      "path": [
+        "capacity"
+      ],
+      "expected": "540 lb.",
+      "actual": "540 lb.",
+      "match": true,
+      "official_page": 72,
+      "official_row": "Warhorse 400 gp 60 ft. 540 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/bit-and-bridle",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Bit and bridle 2 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/bit-and-bridle",
+      "path": [
+        "weight"
+      ],
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "official_page": 72,
+      "official_row": "Bit and bridle 2 gp 1 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/carriage",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 100,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 100,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Carriage 100 gp 600 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/carriage",
+      "path": [
+        "weight"
+      ],
+      "expected": 600,
+      "actual": 600,
+      "match": true,
+      "official_page": 72,
+      "official_row": "Carriage 100 gp 600 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/cart",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 15,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 15,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Cart 15 gp 200 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/cart",
+      "path": [
+        "weight"
+      ],
+      "expected": 200,
+      "actual": 200,
+      "match": true,
+      "official_page": 72,
+      "official_row": "Cart 15 gp 200 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/chariot",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 250,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 250,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Chariot 250 gp 100 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/chariot",
+      "path": [
+        "weight"
+      ],
+      "expected": 100,
+      "actual": 100,
+      "match": true,
+      "official_page": 72,
+      "official_row": "Chariot 250 gp 100 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/animal-feed-1-day",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "cp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "cp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Feed (per day) 5 cp 10 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/animal-feed-1-day",
+      "path": [
+        "weight"
+      ],
+      "expected": 10,
+      "actual": 10,
+      "match": true,
+      "official_page": 72,
+      "official_row": "Feed (per day) 5 cp 10 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/saddle-exotic",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 60,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 60,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Exotic 60 gp 40 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/saddle-exotic",
+      "path": [
+        "weight"
+      ],
+      "expected": 40,
+      "actual": 50,
+      "match": false,
+      "official_page": 72,
+      "official_row": "Exotic 60 gp 40 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/saddle-military",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 20,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 20,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Military 20 gp 30 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/saddle-military",
+      "path": [
+        "weight"
+      ],
+      "expected": 30,
+      "actual": 30,
+      "match": true,
+      "official_page": 72,
+      "official_row": "Military 20 gp 30 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/saddle-pack",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Pack 5 gp 15 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/saddle-pack",
+      "path": [
+        "weight"
+      ],
+      "expected": 15,
+      "actual": 15,
+      "match": true,
+      "official_page": 72,
+      "official_row": "Pack 5 gp 15 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/saddle-riding",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Riding 10 gp 25 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/saddle-riding",
+      "path": [
+        "weight"
+      ],
+      "expected": 25,
+      "actual": 25,
+      "match": true,
+      "official_page": 72,
+      "official_row": "Riding 10 gp 25 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/saddlebags",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 4,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 4,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Saddlebags 4 gp 8 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/saddlebags",
+      "path": [
+        "weight"
+      ],
+      "expected": 8,
+      "actual": 8,
+      "match": true,
+      "official_page": 72,
+      "official_row": "Saddlebags 4 gp 8 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/sled",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 20,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 20,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Sled 20 gp 300 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/sled",
+      "path": [
+        "weight"
+      ],
+      "expected": 300,
+      "actual": 300,
+      "match": true,
+      "official_page": 72,
+      "official_row": "Sled 20 gp 300 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/stabling-1-day",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "sp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Stabling (per day) 5 sp —",
+      "derivation": null
+    },
+    {
+      "record": "equipment/wagon",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 35,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 35,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Wagon 35 gp 400 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/wagon",
+      "path": [
+        "weight"
+      ],
+      "expected": 400,
+      "actual": 400,
+      "match": true,
+      "official_page": 72,
+      "official_row": "Wagon 35 gp 400 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/galley",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 30000,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 30000,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Galley 30,000 gp 4 mph",
+      "derivation": null
+    },
+    {
+      "record": "equipment/galley",
+      "path": [
+        "speed"
+      ],
+      "expected": {
+        "quantity": 4,
+        "unit": "mph"
+      },
+      "actual": {
+        "quantity": 4,
+        "unit": "mph"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Galley 30,000 gp 4 mph",
+      "derivation": null
+    },
+    {
+      "record": "equipment/keelboat",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 3000,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 3000,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Keelboat 3,000 gp 1 mph",
+      "derivation": null
+    },
+    {
+      "record": "equipment/keelboat",
+      "path": [
+        "speed"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "mph"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "mph"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Keelboat 3,000 gp 1 mph",
+      "derivation": null
+    },
+    {
+      "record": "equipment/longship",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 10000,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10000,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Longship 10,000 gp 3 mph",
+      "derivation": null
+    },
+    {
+      "record": "equipment/longship",
+      "path": [
+        "speed"
+      ],
+      "expected": {
+        "quantity": 3,
+        "unit": "mph"
+      },
+      "actual": {
+        "quantity": 3,
+        "unit": "mph"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Longship 10,000 gp 3 mph",
+      "derivation": null
+    },
+    {
+      "record": "equipment/rowboat",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 50,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Rowboat 50 gp 11⁄2 mph",
+      "derivation": null
+    },
+    {
+      "record": "equipment/rowboat",
+      "path": [
+        "speed"
+      ],
+      "expected": {
+        "quantity": 1.5,
+        "unit": "mph"
+      },
+      "actual": {
+        "quantity": 1.5,
+        "unit": "mph"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Rowboat 50 gp 11⁄2 mph",
+      "derivation": null
+    },
+    {
+      "record": "equipment/sailing-ship",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 10000,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10000,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Sailing ship 10,000 gp 2 mph",
+      "derivation": null
+    },
+    {
+      "record": "equipment/sailing-ship",
+      "path": [
+        "speed"
+      ],
+      "expected": {
+        "quantity": 2,
+        "unit": "mph"
+      },
+      "actual": {
+        "quantity": 2,
+        "unit": "mph"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Sailing ship 10,000 gp 2 mph",
+      "derivation": null
+    },
+    {
+      "record": "equipment/warship",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 25000,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 25000,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Warship 25,000 gp 21⁄2 mph",
+      "derivation": null
+    },
+    {
+      "record": "equipment/warship",
+      "path": [
+        "speed"
+      ],
+      "expected": {
+        "quantity": 2.5,
+        "unit": "mph"
+      },
+      "actual": {
+        "quantity": 2.5,
+        "unit": "mph"
+      },
+      "match": true,
+      "official_page": 72,
+      "official_row": "Warship 25,000 gp 21⁄2 mph",
+      "derivation": null
+    },
+    {
+      "record": "equipment/barding-padded",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 20,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 20,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "padded-armor",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 63
+      }
+    },
+    {
+      "record": "equipment/barding-padded",
+      "path": [
+        "weight"
+      ],
+      "expected": 16,
+      "actual": 16,
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "padded-armor",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 63
+      }
+    },
+    {
+      "record": "equipment/barding-leather",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 40,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 40,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "leather-armor",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-leather",
+      "path": [
+        "weight"
+      ],
+      "expected": 20,
+      "actual": 20,
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "leather-armor",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-studded-leather",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 180,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 180,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "studded-leather-armor",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-studded-leather",
+      "path": [
+        "weight"
+      ],
+      "expected": 26,
+      "actual": 26,
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "studded-leather-armor",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-hide",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 40,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 40,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "hide-armor",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-hide",
+      "path": [
+        "weight"
+      ],
+      "expected": 24,
+      "actual": 24,
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "hide-armor",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-chain-shirt",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 200,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 200,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "chain-shirt",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-chain-shirt",
+      "path": [
+        "weight"
+      ],
+      "expected": 40,
+      "actual": 40,
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "chain-shirt",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-scale-mail",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 200,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 200,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "scale-mail",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-scale-mail",
+      "path": [
+        "weight"
+      ],
+      "expected": 90,
+      "actual": 90,
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "scale-mail",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-breastplate",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1600,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1600,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "breastplate",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-breastplate",
+      "path": [
+        "weight"
+      ],
+      "expected": 40,
+      "actual": 40,
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "breastplate",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-half-plate",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 3000,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 3000,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "half-plate-armor",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-half-plate",
+      "path": [
+        "weight"
+      ],
+      "expected": 80,
+      "actual": 80,
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "half-plate-armor",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-ring-mail",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 120,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 12,
+        "unit": "gp"
+      },
+      "match": false,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "ring-mail",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-ring-mail",
+      "path": [
+        "weight"
+      ],
+      "expected": 80,
+      "actual": 80,
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "ring-mail",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-chain-mail",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 300,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 300,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "chain-mail",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-chain-mail",
+      "path": [
+        "weight"
+      ],
+      "expected": 110,
+      "actual": 110,
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "chain-mail",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-splint",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 800,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 800,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "splint-armor",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-splint",
+      "path": [
+        "weight"
+      ],
+      "expected": 120,
+      "actual": 120,
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "splint-armor",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-plate",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 6000,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 6000,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "plate-armor",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/barding-plate",
+      "path": [
+        "weight"
+      ],
+      "expected": 130,
+      "actual": 130,
+      "match": true,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "plate-armor",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    },
+    {
+      "record": "equipment/burglars-pack",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 16,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 16,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Burglar's Pack (16 gp). Includes a backpack, a bag of 1,000 ball bearings, 10 feet of string, a bell, 5 candles, a crowbar, a hammer, 10 pitons, a hooded lantern, 2 flasks of oil, 5 days rations, a tinderbox, and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/diplomats-pack",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 39,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 39,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Diplomat's Pack (39 gp). Includes a chest, 2 cases for maps and scrolls, a set of fine clothes, a bottle of ink, an ink pen, a lamp, 2 flasks of oil, 5 sheets of paper, a vial of perfume, sealing wax, and soap.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/dungeoneers-pack",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 12,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 12,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Dungeoneer's Pack (12 gp). Includes a backpack, a crowbar, a hammer, 10 pitons, 10 torches, a tinderbox, 10 days of rations, and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/entertainers-pack",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 40,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 40,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Entertainer's Pack (40 gp). Includes a backpack, a bedroll, 2 costumes, 5 candles, 5 days of rations, a waterskin, and a disguise kit.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/explorers-pack",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 10,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Explorer's Pack (10 gp). Includes a backpack, a bedroll, a mess kit, a tinderbox, 10 torches, 10 days of rations, and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/priests-pack",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 19,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 19,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Priest's Pack (19 gp). Includes a backpack, a blanket, 10 candles, a tinderbox, an alms box, 2 blocks of incense, a censer, vestments, 2 days of rations, and a waterskin.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/scholars-pack",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 40,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 40,
+        "unit": "gp"
+      },
+      "match": true,
+      "official_page": 70,
+      "official_row": "Scholar's Pack (40 gp). Includes a backpack, a book of lore, a bottle of ink, an ink pen, 10 sheets of parchment, a little bag of sand, and a small knife.",
+      "derivation": null
+    }
+  ],
+  "diffs": [
+    {
+      "record": "equipment/caltrops",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 5,
+        "unit": "cp"
+      },
+      "match": false,
+      "official_page": 69,
+      "official_row": "Caltrops (bag of 20) 1 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/caltrops",
+      "path": [
+        "quantity"
+      ],
+      "expected": 20,
+      "actual": null,
+      "match": false,
+      "official_page": 69,
+      "official_row": "Caltrops (bag of 20) 1 gp 2 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/spike-iron",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 1,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 1,
+        "unit": "sp"
+      },
+      "match": false,
+      "official_page": 69,
+      "official_row": "Spikes, iron (10) 1 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/spike-iron",
+      "path": [
+        "quantity"
+      ],
+      "expected": 10,
+      "actual": null,
+      "match": false,
+      "official_page": 69,
+      "official_row": "Spikes, iron (10) 1 gp 5 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/saddle-exotic",
+      "path": [
+        "weight"
+      ],
+      "expected": 40,
+      "actual": 50,
+      "match": false,
+      "official_page": 72,
+      "official_row": "Exotic 60 gp 40 lb.",
+      "derivation": null
+    },
+    {
+      "record": "equipment/barding-ring-mail",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 120,
+        "unit": "gp"
+      },
+      "actual": {
+        "quantity": 12,
+        "unit": "gp"
+      },
+      "match": false,
+      "official_page": 71,
+      "official_row": "The cost is four times the equivalent armor made for humanoids, and it weighs twice as much.",
+      "derivation": {
+        "armor_record": "ring-mail",
+        "cost_factor": 4,
+        "weight_factor": 2,
+        "armor_page": 64
+      }
+    }
+  ],
+  "unspecified_measurements": {
+    "antitoxin-vial": {
+      "weight_status": "not_stated"
+    },
+    "bell": {
+      "weight_status": "not_stated"
+    },
+    "candle": {
+      "weight_status": "not_stated"
+    },
+    "chalk-1-piece": {
+      "weight_status": "not_stated"
+    },
+    "sprig-of-mistletoe": {
+      "weight_status": "not_stated"
+    },
+    "totem": {
+      "weight_status": "not_stated"
+    },
+    "emblem": {
+      "weight_status": "not_stated"
+    },
+    "ink-1-ounce-bottle": {
+      "weight_status": "not_stated"
+    },
+    "ink-pen": {
+      "weight_status": "not_stated"
+    },
+    "magnifying-glass": {
+      "weight_status": "not_stated"
+    },
+    "paper-one-sheet": {
+      "weight_status": "not_stated"
+    },
+    "parchment-one-sheet": {
+      "weight_status": "not_stated"
+    },
+    "perfume-vial": {
+      "weight_status": "not_stated"
+    },
+    "poison-basic-vial": {
+      "weight_status": "not_stated"
+    },
+    "sealing-wax": {
+      "weight_status": "not_stated"
+    },
+    "signal-whistle": {
+      "weight_status": "not_stated"
+    },
+    "signet-ring": {
+      "weight_status": "not_stated"
+    },
+    "soap": {
+      "weight_status": "not_stated"
+    },
+    "vial": {
+      "weight_status": "not_stated"
+    },
+    "waterskin": {
+      "weight_condition": "full"
+    },
+    "dice-set": {
+      "weight_status": "not_stated"
+    },
+    "playing-card-set": {
+      "weight_status": "not_stated"
+    },
+    "stabling-1-day": {
+      "weight_status": "not_stated"
+    },
+    "burglars-pack": {
+      "weight_status": "not_stated"
+    },
+    "diplomats-pack": {
+      "weight_status": "not_stated"
+    },
+    "dungeoneers-pack": {
+      "weight_status": "not_stated"
+    },
+    "entertainers-pack": {
+      "weight_status": "not_stated"
+    },
+    "explorers-pack": {
+      "weight_status": "not_stated"
+    },
+    "priests-pack": {
+      "weight_status": "not_stated"
+    },
+    "scholars-pack": {
+      "weight_status": "not_stated"
+    },
+    "alms-box": {
+      "cost_status": "not_stated",
+      "weight_status": "not_stated"
+    },
+    "block-of-incense": {
+      "cost_status": "not_stated",
+      "weight_status": "not_stated"
+    },
+    "censer": {
+      "cost_status": "not_stated",
+      "weight_status": "not_stated"
+    },
+    "vestments": {
+      "cost_status": "not_stated",
+      "weight_status": "not_stated"
+    },
+    "little-bag-of-sand": {
+      "cost_status": "not_stated",
+      "weight_status": "not_stated"
+    },
+    "small-knife": {
+      "cost_status": "not_stated",
+      "weight_status": "not_stated"
+    },
+    "string-10-feet": {
+      "cost_status": "not_stated",
+      "weight_status": "not_stated"
+    }
+  },
+  "cross_collection_rows": [
+    {
+      "value": {
+        "cost": {
+          "quantity": 50,
+          "unit": "gp"
+        },
+        "weight": 0.5
+      },
+      "official_page": 69,
+      "official_row": "Potion of healing 50 gp 1/2 lb.",
+      "notes": {},
+      "derivation": null,
+      "mapped_record": "magic-items/potion-of-healing-common",
+      "rarity": "Common",
+      "variant": true,
+      "identity_evidence": {
+        "body_page": 68,
+        "body": "A character who drinks the magical red fluid in this vial regains 2d4 + 2 hit points. Drinking or administering a potion takes an action.",
+        "table_page": 234,
+        "table_row": "Healing Common 2d4 + 2"
+      },
+      "limitation": "Only ordinary/Common healing potion; never the Varies parent or stronger variants."
+    }
+  ],
+  "summary": {
+    "records": 187,
+    "measurement_fields": 346,
+    "differences": 6
+  },
+  "limitations": [
+    "Special-rule prose and pack contents are not signed off by this numeric comparison.",
+    "Printed dashes and components mentioned without prices do not prove exact zero measurements."
+  ],
+  "snapshot_note": "Candidate measurements before this invocation; rerun to compare current candidate.",
+  "cross_collection_checks": [
+    {
+      "record": "magic-items/potion-of-healing-common",
+      "check": "exists",
+      "match": true
+    },
+    {
+      "record": "magic-items/potion-of-healing-common",
+      "check": "common_variant",
+      "match": true
+    },
+    {
+      "record": "magic-items/potion-of-healing-common",
+      "check": "parent_relation",
+      "match": true
+    }
+  ],
+  "cross_collection_diffs": [],
+  "review_revision_note": "Common healing potion cross-reference refined after review; measurement checks retain the pre-correction snapshot."
+}

@@ -49,8 +49,10 @@ def validate_records(records, *, inventory=None):
     if canonical:
         from .class_growth import growth_issues
         from .armor_source import issues as armor_issues
+        from .equipment_source import issues as equipment_issues
         errors.extend(growth_issues(records))
         errors.extend(armor_issues(records))
+        errors.extend(equipment_issues(records))
         errors.extend("Feature is unreachable from class grants or choices: " + fid for fid in unreachable_features(records))
     if set(records) != set(inventory):
         errors.append("Rules collection set is incomplete")
