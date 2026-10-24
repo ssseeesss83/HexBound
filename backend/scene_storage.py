@@ -9,7 +9,7 @@ MAIN_SCENE = "scene-main"
 STORAGE_VERSION = 2
 LOCAL_FIELDS = frozenset({"scene", "scene_id", "scene_index", "flags", "combat", "environment",
                           "director", "dm_pending", "dm_source", "completed", "ending", "rest_used",
-                          "action_revision"})
+                          "action_revision", "pending_transition"})
 CAMPAIGN_CURSOR = frozenset({"node_id", "visited"})
 
 

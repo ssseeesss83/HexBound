@@ -19,8 +19,8 @@ from zipfile import ZipFile, ZIP_DEFLATED
 # must not be opened by older binaries that only understand v1 scenario JSON.
 # Version 11 protects persisted capability plans and their typed decisions.
 # Version 12 protects global challenge attempts from older reroll semantics.
-# Version 13 protects v2 author challenges and their structured story effects.
-SCHEMA_VERSION = 13
+# Version 14 protects scene-local transition waits and durable request receipts.
+SCHEMA_VERSION = 14
 BACKUP_FORMAT = "hexbound-backup-v1"
 DATA_ROOT = Path(__file__).parent / "data"
 
