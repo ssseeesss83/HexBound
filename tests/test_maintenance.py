@@ -13,7 +13,8 @@ from backend.store import Store
 
 
 def without_scope_metadata(state):
-    state = deepcopy(state)
+    from backend.scene_storage import legacy_shape
+    state = legacy_shape(state)
     state.pop("text_scope", None)
     state.pop("action_revision", None)
     for event in state["events"]:

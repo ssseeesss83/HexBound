@@ -15,7 +15,7 @@ import sqlite3
 import tempfile
 from zipfile import ZipFile, ZIP_DEFLATED
 
-SCHEMA_VERSION = 4
+SCHEMA_VERSION = 5
 BACKUP_FORMAT = "hexbound-backup-v1"
 DATA_ROOT = Path(__file__).parent / "data"
 

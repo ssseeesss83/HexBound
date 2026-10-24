@@ -10,6 +10,7 @@ from pathlib import Path
 from contextlib import contextmanager
 
 from .maintenance import SCHEMA_VERSION, check_database_version, backup_database
+from .scene_storage import pack as pack_scene, unpack as unpack_scene
 
 
 def token_hash(token: str) -> str:
@@ -62,10 +63,11 @@ class Store:
             db.execute(f"PRAGMA user_version={SCHEMA_VERSION}")
             from .session_scope import initialize
             for row in db.execute("SELECT id,state FROM rooms").fetchall():
-                state = json.loads(row["state"])
-                if "text_scope" not in state or "action_revision" not in state:
+                payload = json.loads(row["state"])
+                state = unpack_scene(payload)
+                if "text_scope" not in state or "action_revision" not in state or "scene_storage_version" not in payload:
                     initialize(state)
-                    db.execute("UPDATE rooms SET state=? WHERE id=?", (json.dumps(state, ensure_ascii=False), row["id"]))
+                    db.execute("UPDATE rooms SET state=? WHERE id=?", (json.dumps(pack_scene(state), ensure_ascii=False), row["id"]))
 
     @contextmanager
     def connect(self):
@@ -92,13 +94,13 @@ class Store:
             db.execute("BEGIN IMMEDIATE")
             self._bind_hero(db, state, state["members"][0], user_id)
             db.execute("INSERT INTO rooms VALUES (?, ?, ?, ?)",
-                       (state["id"], state["invite_code"], state["version"], json.dumps(state, ensure_ascii=False)))
+                       (state["id"], state["invite_code"], state["version"], json.dumps(pack_scene(state), ensure_ascii=False)))
             db.execute("INSERT INTO members (id,room_id,token_hash,user_id) VALUES (?, ?, ?, ?)", (member_id, state["id"], token_hash(token), user_id))
 
     def get(self, room_id: str) -> dict | None:
         with self.connect() as db:
             row = db.execute("SELECT state FROM rooms WHERE id=?", (room_id,)).fetchone()
-        return json.loads(row["state"]) if row else None
+        return unpack_scene(json.loads(row["state"])) if row else None
 
     def find_invite(self, invite: str) -> str | None:
         with self.connect() as db:
@@ -121,7 +123,7 @@ class Store:
             rows = db.execute("SELECT r.state,m.id AS member_id FROM rooms r JOIN members m ON m.room_id=r.id WHERE m.user_id=? ORDER BY r.rowid DESC LIMIT 100", (user_id,)).fetchall()
         result = []
         for row in rows:
-            state = json.loads(row["state"])
+            state = unpack_scene(json.loads(row["state"]))
             member = next((m for m in state["members"] if m["id"] == row["member_id"]), {})
             result.append({"room_id": state["id"], "room_name": state["name"], "player_name": member.get("name", ""), "status": state["status"], "mode": state["mode"], "member_id": row["member_id"], "host": state["host_id"] == row["member_id"], "party_size": len(state["members"]), "scene_title": state.get("scene", {}).get("title", ""), "invite_code": state["invite_code"]})
         return result
@@ -138,12 +140,12 @@ class Store:
             if updated != 1:
                 raise ValueError("此席位已经认领")
             state_row = db.execute("SELECT state FROM rooms WHERE id=?", (room_id,)).fetchone()
-            state = json.loads(state_row["state"])
+            state = unpack_scene(json.loads(state_row["state"]))
             member = next((m for m in state.get("members",[]) if m["id"] == row["id"]), None)
             if member is not None:
                 self._bind_hero(db,state,member,user_id)
             state["version"] = state.get("version",0) + 1
-            db.execute("UPDATE rooms SET state=?,version=? WHERE id=?", (json.dumps(state,ensure_ascii=False),state["version"],room_id))
+            db.execute("UPDATE rooms SET state=?,version=? WHERE id=?", (json.dumps(pack_scene(state),ensure_ascii=False),state["version"],room_id))
             return row["id"]
 
     def join(self, room_id: str, member: dict, token: str, user_id: str | None = None) -> dict:
@@ -152,7 +154,7 @@ class Store:
             row = db.execute("SELECT state FROM rooms WHERE id=?", (room_id,)).fetchone()
             if not row:
                 raise ValueError("房间不存在")
-            state = json.loads(row["state"])
+            state = unpack_scene(json.loads(row["state"]))
             if user_id and db.execute("SELECT 1 FROM members WHERE room_id=? AND user_id=?", (room_id, user_id)).fetchone():
                 return state
             if state["status"] != "lobby":
@@ -167,7 +169,7 @@ class Store:
             state["version"] += 1
             db.execute("INSERT INTO members (id,room_id,token_hash,user_id) VALUES (?, ?, ?, ?)", (member["id"], room_id, token_hash(token), user_id))
             db.execute("UPDATE rooms SET state=?, version=? WHERE id=?",
-                       (json.dumps(state, ensure_ascii=False), state["version"], room_id))
+                       (json.dumps(pack_scene(state), ensure_ascii=False), state["version"], room_id))
         return state
 
     def prior_command(self, room_id: str, member_id: str, command_id: str) -> dict | None:
@@ -183,7 +185,7 @@ class Store:
             db.execute("BEGIN IMMEDIATE")
             self._sync_heroes(db, state)
             changed = db.execute("UPDATE rooms SET state=?, version=? WHERE id=? AND version=?",
-                                 (json.dumps(state, ensure_ascii=False), state["version"], state["id"], previous_version)).rowcount
+                                 (json.dumps(pack_scene(state), ensure_ascii=False), state["version"], state["id"], previous_version)).rowcount
             if changed != 1:
                 raise ValueError("房间已更新，请刷新后重试")
             if receipt:
@@ -268,7 +270,7 @@ class Store:
         with self.connect() as db:
             db.execute("BEGIN IMMEDIATE")
             for row in db.execute("SELECT id,state FROM rooms").fetchall():
-                state = json.loads(row["state"])
+                state = unpack_scene(json.loads(row["state"]))
                 changed = False
                 from .rules_identity import RULESET_ID, LEGACY_PACKAGE, ENGINE_PROFILE
                 for key, value in (("ruleset_id", RULESET_ID), ("rules_package_version", LEGACY_PACKAGE), ("engine_profile", ENGINE_PROFILE)):
@@ -287,4 +289,4 @@ class Store:
                 if changed:
                     self._sync_heroes(db,state)
                     state["version"] += 1
-                    db.execute("UPDATE rooms SET state=?,version=? WHERE id=?",(json.dumps(state,ensure_ascii=False),state["version"],row["id"]))
+                    db.execute("UPDATE rooms SET state=?,version=? WHERE id=?",(json.dumps(pack_scene(state),ensure_ascii=False),state["version"],row["id"]))

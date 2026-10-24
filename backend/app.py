@@ -831,13 +831,14 @@ def create_app(db_path: str | None = None) -> FastAPI:
     # A crashed process cannot still own an outstanding narrator request.
     with store.connect() as db:
         for row in db.execute("SELECT id,state FROM rooms").fetchall():
-            state = json.loads(row["state"])
+            from .scene_storage import unpack as unpack_scene, pack as pack_scene
+            state = unpack_scene(json.loads(row["state"]))
             if state.get("dm_pending"):
                 state["dm_pending"] = None
                 state["version"] += 1
                 event(state, "system", "服务已恢复；上一次未完成的 DM 请求已取消，可继续行动。")
                 db.execute("UPDATE rooms SET state=?,version=? WHERE id=?",
-                           (json.dumps(state, ensure_ascii=False), state["version"], state["id"]))
+                           (json.dumps(pack_scene(state), ensure_ascii=False), state["version"], state["id"]))
 
     frontend = Path(__file__).resolve().parent.parent / "frontend"
     if frontend.exists():
