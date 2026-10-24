@@ -114,3 +114,5 @@ p64完整穿脱段及四类时间保存到现有护甲分类的timing_reference�
 官方p242的Shield,+1/+2/+3没有社区对应条目；按一个官方母项、三个规范派生变体补入候选。`tools/normalize_magic_shields.py`只写overlay，`tools/audit_magic_shields.py`校验完整字段、固定来源、母子关系及参考状态。稀有度分别Uncommon/Rare/Very Rare，holding时在普通盾牌AC加值之外额外增加，不套用Armor家族稀有度或wearing条件。
 
 `official/magic-shields-review.json`记录当前零差异；candidate为2,326条（magic-items366），raw及legacy原样保留。此补录不签收魔法物品全集或装备AC执行。
+
+`tools/audit_magic_inventory.py`先独立读取官方字体标题与14项明确处分，合并Detection and / Location跨行标题，核定240独立标题，再与候选母项映射；126规范变体须有唯一母项和完整引用。`official/magic-inventory-review.json`保留全部标题位置、处分理由及关系，当前零差异。目录验收不代替正文、稀有度或效果验收，嵌套统计卡仍须在所属条目中完整保存。

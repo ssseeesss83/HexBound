@@ -1,0 +1,4287 @@
+{
+  "profile": "official-magic-inventory-v1",
+  "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+  "headings_sha256": "896c018bd844f0dc5e8f1759c9c8dd27d74856047d938c41ff132c7a110deb02",
+  "official_items": 240,
+  "normalized_variants": 126,
+  "candidate_records": 366,
+  "mappings": [
+    {
+      "official_title": "Adamantine Armor",
+      "official_page": 207,
+      "column": 1,
+      "top": 187.0,
+      "record_ids": [
+        "adamantine-armor"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ammunition, +1, +2, or +3",
+      "official_page": 207,
+      "column": 1,
+      "top": 275.0,
+      "record_ids": [
+        "ammunition"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Amulet of Health",
+      "official_page": 207,
+      "column": 1,
+      "top": 375.0,
+      "record_ids": [
+        "amulet-of-health"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Amulet of Proof against Detection and Location",
+      "official_page": 207,
+      "column": 1,
+      "top": 451.0,
+      "record_ids": [
+        "amulet-of-proof-against-detection-and-location"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Amulet of the Planes",
+      "official_page": 207,
+      "column": 1,
+      "top": 541.0,
+      "record_ids": [
+        "amulet-of-the-planes"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Animated Shield",
+      "official_page": 208,
+      "column": 0,
+      "top": 74.0,
+      "record_ids": [
+        "animated-shield"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Apparatus of the Crab",
+      "official_page": 208,
+      "column": 0,
+      "top": 221.0,
+      "record_ids": [
+        "apparatus-of-the-crab"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Armor, +1, +2, or +3",
+      "official_page": 208,
+      "column": 1,
+      "top": 413.0,
+      "record_ids": [
+        "armor"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Armor of Invulnerability",
+      "official_page": 208,
+      "column": 1,
+      "top": 489.0,
+      "record_ids": [
+        "armor-of-invulnerability"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Armor of Resistance",
+      "official_page": 208,
+      "column": 1,
+      "top": 600.0,
+      "record_ids": [
+        "armor-of-resistance"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Armor of Vulnerability",
+      "official_page": 209,
+      "column": 0,
+      "top": 149.0,
+      "record_ids": [
+        "armor-of-vulnerability"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Arrow-Catching Shield",
+      "official_page": 209,
+      "column": 0,
+      "top": 331.0,
+      "record_ids": [
+        "arrow-catching-shield"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Arrow of Slaying",
+      "official_page": 209,
+      "column": 0,
+      "top": 442.0,
+      "record_ids": [
+        "arrow-of-slaying"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Bag of Beans",
+      "official_page": 209,
+      "column": 1,
+      "top": 74.0,
+      "record_ids": [
+        "bag-of-beans"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Bag of Devouring",
+      "official_page": 210,
+      "column": 0,
+      "top": 248.0,
+      "record_ids": [
+        "bag-of-devouring"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Bag of Holding",
+      "official_page": 210,
+      "column": 0,
+      "top": 594.0,
+      "record_ids": [
+        "bag-of-holding"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Bag of Tricks",
+      "official_page": 210,
+      "column": 1,
+      "top": 318.0,
+      "record_ids": [
+        "bag-of-tricks"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Bead of Force",
+      "official_page": 211,
+      "column": 0,
+      "top": 374.0,
+      "record_ids": [
+        "bead-of-force"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Belt of Dwarvenkind",
+      "official_page": 211,
+      "column": 1,
+      "top": 74.0,
+      "record_ids": [
+        "belt-of-dwarvenkind"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Belt of Giant Strength",
+      "official_page": 211,
+      "column": 1,
+      "top": 332.0,
+      "record_ids": [
+        "belt-of-giant-strength"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Berserker Axe",
+      "official_page": 211,
+      "column": 1,
+      "top": 551.0,
+      "record_ids": [
+        "berserker-axe"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Boots of Elvenkind",
+      "official_page": 212,
+      "column": 0,
+      "top": 247.0,
+      "record_ids": [
+        "boots-of-elvenkind"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Boots of Levitation",
+      "official_page": 212,
+      "column": 0,
+      "top": 335.0,
+      "record_ids": [
+        "boots-of-levitation"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Boots of Speed",
+      "official_page": 212,
+      "column": 0,
+      "top": 400.0,
+      "record_ids": [
+        "boots-of-speed"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Boots of Striding and Springing",
+      "official_page": 212,
+      "column": 0,
+      "top": 546.0,
+      "record_ids": [
+        "boots-of-striding-and-springing"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Boots of the Winterlands",
+      "official_page": 212,
+      "column": 1,
+      "top": 74.0,
+      "record_ids": [
+        "boots-of-the-winterlands"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Bowl of Commanding Water Elementals",
+      "official_page": 212,
+      "column": 1,
+      "top": 240.0,
+      "record_ids": [
+        "bowl-of-commanding-water-elementals"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Bracers of Archery",
+      "official_page": 212,
+      "column": 1,
+      "top": 363.0,
+      "record_ids": [
+        "bracers-of-archery"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Bracers of Defense",
+      "official_page": 212,
+      "column": 1,
+      "top": 451.0,
+      "record_ids": [
+        "bracers-of-defense"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Brazier of Commanding Fire Elementals",
+      "official_page": 212,
+      "column": 1,
+      "top": 516.0,
+      "record_ids": [
+        "brazier-of-commanding-fire-elementals"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Brooch of Shielding",
+      "official_page": 212,
+      "column": 1,
+      "top": 627.0,
+      "record_ids": [
+        "brooch-of-shielding"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Broom of Flying",
+      "official_page": 213,
+      "column": 0,
+      "top": 74.0,
+      "record_ids": [
+        "broom-of-flying"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Candle of Invocation",
+      "official_page": 213,
+      "column": 0,
+      "top": 279.0,
+      "record_ids": [
+        "candle-of-invocation"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Cape of the Mountebank",
+      "official_page": 213,
+      "column": 1,
+      "top": 118.0,
+      "record_ids": [
+        "cape-of-the-mountebank"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Carpet of Flying",
+      "official_page": 213,
+      "column": 1,
+      "top": 277.0,
+      "record_ids": [
+        "carpet-of-flying"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Censer of Controlling Air Elementals",
+      "official_page": 213,
+      "column": 1,
+      "top": 496.0,
+      "record_ids": [
+        "censer-of-controlling-air-elementals"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Chime of Opening",
+      "official_page": 213,
+      "column": 1,
+      "top": 619.0,
+      "record_ids": [
+        "chime-of-opening"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Circlet of Blasting",
+      "official_page": 214,
+      "column": 0,
+      "top": 142.0,
+      "record_ids": [
+        "circlet-of-blasting"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Cloak of Arachnida",
+      "official_page": 214,
+      "column": 0,
+      "top": 241.0,
+      "record_ids": [
+        "cloak-of-arachnida"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Cloak of Displacement",
+      "official_page": 214,
+      "column": 0,
+      "top": 467.0,
+      "record_ids": [
+        "cloak-of-displacement"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Cloak of Elvenkind",
+      "official_page": 214,
+      "column": 0,
+      "top": 602.0,
+      "record_ids": [
+        "cloak-of-elvenkind"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Cloak of Protection",
+      "official_page": 214,
+      "column": 1,
+      "top": 107.0,
+      "record_ids": [
+        "cloak-of-protection"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Cloak of the Bat",
+      "official_page": 214,
+      "column": 1,
+      "top": 171.0,
+      "record_ids": [
+        "cloak-of-the-bat"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Cloak of the Manta Ray",
+      "official_page": 214,
+      "column": 1,
+      "top": 364.0,
+      "record_ids": [
+        "cloak-of-the-manta-ray"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Crystal Ball",
+      "official_page": 214,
+      "column": 1,
+      "top": 453.0,
+      "record_ids": [
+        "crystal-ball"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Cube of Force",
+      "official_page": 215,
+      "column": 0,
+      "top": 177.0,
+      "record_ids": [
+        "cube-of-force"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Cubic Gate",
+      "official_page": 215,
+      "column": 1,
+      "top": 149.0,
+      "record_ids": [
+        "cubic-gate"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Dagger of Venom",
+      "official_page": 215,
+      "column": 1,
+      "top": 354.0,
+      "record_ids": [
+        "dagger-of-venom"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Dancing Sword",
+      "official_page": 215,
+      "column": 1,
+      "top": 501.0,
+      "record_ids": [
+        "dancing-sword"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Decanter of Endless Water",
+      "official_page": 216,
+      "column": 0,
+      "top": 130.0,
+      "record_ids": [
+        "decanter-of-endless-water"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Deck of Illusions",
+      "official_page": 216,
+      "column": 0,
+      "top": 425.0,
+      "record_ids": [
+        "deck-of-illusions"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Deck of Many Things",
+      "official_page": 216,
+      "column": 1,
+      "top": 561.0,
+      "record_ids": [
+        "deck-of-many-things"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Defender",
+      "official_page": 218,
+      "column": 1,
+      "top": 294.0,
+      "record_ids": [
+        "defender"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Demon Armor",
+      "official_page": 218,
+      "column": 1,
+      "top": 476.0,
+      "record_ids": [
+        "demon-armor"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Dimensional Shackles",
+      "official_page": 219,
+      "column": 0,
+      "top": 74.0,
+      "record_ids": [
+        "dimensional-shackles"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Dragon Scale Mail",
+      "official_page": 219,
+      "column": 0,
+      "top": 279.0,
+      "record_ids": [
+        "dragon-scale-mail"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Dragon Slayer",
+      "official_page": 219,
+      "column": 0,
+      "top": 603.0,
+      "record_ids": [
+        "dragon-slayer"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Dust of Disappearance",
+      "official_page": 219,
+      "column": 1,
+      "top": 107.0,
+      "record_ids": [
+        "dust-of-disappearance"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Dust of Dryness",
+      "official_page": 219,
+      "column": 1,
+      "top": 253.0,
+      "record_ids": [
+        "dust-of-dryness"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Dust of Sneezing and Choking",
+      "official_page": 219,
+      "column": 1,
+      "top": 470.0,
+      "record_ids": [
+        "dust-of-sneezing-and-choking"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Dwarven Plate",
+      "official_page": 220,
+      "column": 0,
+      "top": 74.0,
+      "record_ids": [
+        "dwarven-plate"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Dwarven Thrower",
+      "official_page": 220,
+      "column": 0,
+      "top": 162.0,
+      "record_ids": [
+        "dwarven-thrower"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Efficient Quiver",
+      "official_page": 220,
+      "column": 0,
+      "top": 297.0,
+      "record_ids": [
+        "efficient-quiver"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Efreeti Bottle",
+      "official_page": 220,
+      "column": 0,
+      "top": 467.0,
+      "record_ids": [
+        "efreeti-bottle"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Elemental Gem",
+      "official_page": 220,
+      "column": 1,
+      "top": 149.0,
+      "record_ids": [
+        "elemental-gem"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Elven Chain",
+      "official_page": 220,
+      "column": 1,
+      "top": 321.0,
+      "record_ids": [
+        "elven-chain"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Eversmoking Bottle",
+      "official_page": 220,
+      "column": 1,
+      "top": 397.0,
+      "record_ids": [
+        "eversmoking-bottle"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Eyes of Charming",
+      "official_page": 220,
+      "column": 1,
+      "top": 626.0,
+      "record_ids": [
+        "eyes-of-charming"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Eyes of Minute Seeing",
+      "official_page": 221,
+      "column": 0,
+      "top": 118.0,
+      "record_ids": [
+        "eyes-of-minute-seeing"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Eyes of the Eagle",
+      "official_page": 221,
+      "column": 0,
+      "top": 230.0,
+      "record_ids": [
+        "eyes-of-the-eagle"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Feather Token",
+      "official_page": 221,
+      "column": 0,
+      "top": 341.0,
+      "record_ids": [
+        "feather-token"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Figurine of Wondrous Power",
+      "official_page": 221,
+      "column": 1,
+      "top": 517.0,
+      "record_ids": [
+        "figurine-of-wondrous-power"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Flame Tongue",
+      "official_page": 223,
+      "column": 0,
+      "top": 118.0,
+      "record_ids": [
+        "flame-tongue"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Folding Boat",
+      "official_page": 223,
+      "column": 0,
+      "top": 253.0,
+      "record_ids": [
+        "folding-boat"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Frost Brand",
+      "official_page": 223,
+      "column": 0,
+      "top": 599.0,
+      "record_ids": [
+        "frost-brand"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Gauntlets of Ogre Power",
+      "official_page": 223,
+      "column": 1,
+      "top": 153.0,
+      "record_ids": [
+        "gauntlets-of-ogre-power"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Gem of Brightness",
+      "official_page": 223,
+      "column": 1,
+      "top": 230.0,
+      "record_ids": [
+        "gem-of-brightness"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Gem of Seeing",
+      "official_page": 223,
+      "column": 1,
+      "top": 574.0,
+      "record_ids": [
+        "gem-of-seeing"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Giant Slayer",
+      "official_page": 224,
+      "column": 0,
+      "top": 74.0,
+      "record_ids": [
+        "giant-slayer"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Glamoured Studded Leather",
+      "official_page": 224,
+      "column": 0,
+      "top": 209.0,
+      "record_ids": [
+        "glamoured-studded-leather-armor"
+      ],
+      "match": true,
+      "mapping_type": "explicit_title_alias"
+    },
+    {
+      "official_title": "Gloves of Missile Snaring",
+      "official_page": 224,
+      "column": 0,
+      "top": 356.0,
+      "record_ids": [
+        "gloves-of-missile-snaring"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Gloves of Swimming and Climbing",
+      "official_page": 224,
+      "column": 0,
+      "top": 490.0,
+      "record_ids": [
+        "gloves-of-swimming-and-climbing"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Goggles of Night",
+      "official_page": 224,
+      "column": 0,
+      "top": 578.0,
+      "record_ids": [
+        "goggles-of-night"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Hammer of Thunderbolts",
+      "official_page": 224,
+      "column": 1,
+      "top": 74.0,
+      "record_ids": [
+        "hammer-of-thunderbolts"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Handy Haversack",
+      "official_page": 224,
+      "column": 1,
+      "top": 385.0,
+      "record_ids": [
+        "handy-haversack"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Hat of Disguise",
+      "official_page": 225,
+      "column": 0,
+      "top": 189.0,
+      "record_ids": [
+        "hat-of-disguise"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Headband of Intellect",
+      "official_page": 225,
+      "column": 0,
+      "top": 265.0,
+      "record_ids": [
+        "headband-of-intellect"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Helm of Brilliance",
+      "official_page": 225,
+      "column": 0,
+      "top": 341.0,
+      "record_ids": [
+        "helm-of-brilliance"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Helm of Comprehending Languages",
+      "official_page": 225,
+      "column": 1,
+      "top": 239.0,
+      "record_ids": [
+        "helm-of-comprehending-languages"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Helm of Telepathy",
+      "official_page": 225,
+      "column": 1,
+      "top": 303.0,
+      "record_ids": [
+        "helm-of-telepathy"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Helm of Teleportation",
+      "official_page": 225,
+      "column": 1,
+      "top": 485.0,
+      "record_ids": [
+        "helm-of-teleportation"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Holy Avenger",
+      "official_page": 225,
+      "column": 1,
+      "top": 573.0,
+      "record_ids": [
+        "holy-avenger"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Horn of Blasting",
+      "official_page": 226,
+      "column": 0,
+      "top": 118.0,
+      "record_ids": [
+        "horn-of-blasting"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Horn of Valhalla",
+      "official_page": 226,
+      "column": 0,
+      "top": 335.0,
+      "record_ids": [
+        "horn-of-valhalla"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Horseshoes of a Zephyr",
+      "official_page": 226,
+      "column": 1,
+      "top": 74.0,
+      "record_ids": [
+        "horseshoes-of-a-zephyr"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Horseshoes of Speed",
+      "official_page": 226,
+      "column": 1,
+      "top": 232.0,
+      "record_ids": [
+        "horseshoes-of-speed"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Immovable Rod",
+      "official_page": 226,
+      "column": 1,
+      "top": 320.0,
+      "record_ids": [
+        "immovable-rod"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Instant Fortress",
+      "official_page": 226,
+      "column": 1,
+      "top": 479.0,
+      "record_ids": [
+        "instant-fortress"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ioun Stone",
+      "official_page": 227,
+      "column": 0,
+      "top": 282.0,
+      "record_ids": [
+        "ioun-stone"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Iron Bands of Binding",
+      "official_page": 228,
+      "column": 0,
+      "top": 74.0,
+      "record_ids": [
+        "iron-bands-of-binding"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Iron Flask",
+      "official_page": 228,
+      "column": 0,
+      "top": 361.0,
+      "record_ids": [
+        "iron-flask"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Javelin of Lightning",
+      "official_page": 228,
+      "column": 1,
+      "top": 324.0,
+      "record_ids": [
+        "javelin-of-lightning"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Lantern of Revealing",
+      "official_page": 228,
+      "column": 1,
+      "top": 541.0,
+      "record_ids": [
+        "lantern-of-revealing"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Luck Blade",
+      "official_page": 229,
+      "column": 0,
+      "top": 74.0,
+      "record_ids": [
+        "luck-blade"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Mace of Disruption",
+      "official_page": 229,
+      "column": 0,
+      "top": 291.0,
+      "record_ids": [
+        "mace-of-disruption"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Mace of Smiting",
+      "official_page": 229,
+      "column": 0,
+      "top": 449.0,
+      "record_ids": [
+        "mace-of-smiting"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Mace of Terror",
+      "official_page": 229,
+      "column": 0,
+      "top": 584.0,
+      "record_ids": [
+        "mace-of-terror"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Mantle of Spell Resistance",
+      "official_page": 229,
+      "column": 1,
+      "top": 200.0,
+      "record_ids": [
+        "mantle-of-spell-resistance"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Manual of Bodily Health",
+      "official_page": 229,
+      "column": 1,
+      "top": 265.0,
+      "record_ids": [
+        "manual-of-bodily-health"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Manual of Gainful Exercise",
+      "official_page": 229,
+      "column": 1,
+      "top": 388.0,
+      "record_ids": [
+        "manual-of-gainful-exercise"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Manual of Golems",
+      "official_page": 229,
+      "column": 1,
+      "top": 511.0,
+      "record_ids": [
+        "manual-of-golems"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Manual of Quickness of Action",
+      "official_page": 230,
+      "column": 0,
+      "top": 200.0,
+      "record_ids": [
+        "manual-of-quickness-of-action"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Marvelous Pigments",
+      "official_page": 230,
+      "column": 0,
+      "top": 323.0,
+      "record_ids": [
+        "marvelous-pigments"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Medallion of Thoughts",
+      "official_page": 230,
+      "column": 1,
+      "top": 74.0,
+      "record_ids": [
+        "medallion-of-thoughts"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Mirror of Life Trapping",
+      "official_page": 230,
+      "column": 1,
+      "top": 174.0,
+      "record_ids": [
+        "mirror-of-life-trapping"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Mithral Armor",
+      "official_page": 231,
+      "column": 0,
+      "top": 118.0,
+      "record_ids": [
+        "mithral-armor"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Necklace of Adaptation",
+      "official_page": 231,
+      "column": 0,
+      "top": 230.0,
+      "record_ids": [
+        "necklace-of-adaptation"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Necklace of Fireballs",
+      "official_page": 231,
+      "column": 0,
+      "top": 341.0,
+      "record_ids": [
+        "necklace-of-fireballs"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Necklace of Prayer Beads",
+      "official_page": 231,
+      "column": 0,
+      "top": 488.0,
+      "record_ids": [
+        "necklace-of-prayer-beads"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Nine Lives Stealer",
+      "official_page": 231,
+      "column": 1,
+      "top": 212.0,
+      "record_ids": [
+        "nine-lives-stealer"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Oathbow",
+      "official_page": 231,
+      "column": 1,
+      "top": 370.0,
+      "record_ids": [
+        "oathbow"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Oil of Etherealness",
+      "official_page": 231,
+      "column": 1,
+      "top": 622.0,
+      "record_ids": [
+        "oil-of-etherealness"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Oil of Sharpness",
+      "official_page": 232,
+      "column": 0,
+      "top": 130.0,
+      "record_ids": [
+        "oil-of-sharpness"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Oil of Slipperiness",
+      "official_page": 232,
+      "column": 0,
+      "top": 241.0,
+      "record_ids": [
+        "oil-of-slipperiness"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Pearl of Power",
+      "official_page": 232,
+      "column": 0,
+      "top": 423.0,
+      "record_ids": [
+        "pearl-of-power"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Periapt of Health",
+      "official_page": 232,
+      "column": 0,
+      "top": 548.0,
+      "record_ids": [
+        "periapt-of-health"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Periapt of Proof against Poison",
+      "official_page": 232,
+      "column": 0,
+      "top": 635.0,
+      "record_ids": [
+        "periapt-of-proof-against-poison"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Periapt of Wound Closure",
+      "official_page": 232,
+      "column": 1,
+      "top": 107.0,
+      "record_ids": [
+        "periapt-of-wound-closure"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Philter of Love",
+      "official_page": 232,
+      "column": 1,
+      "top": 195.0,
+      "record_ids": [
+        "philter-of-love"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Pipes of Haunting",
+      "official_page": 232,
+      "column": 1,
+      "top": 318.0,
+      "record_ids": [
+        "pipes-of-haunting"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Pipes of the Sewers",
+      "official_page": 232,
+      "column": 1,
+      "top": 523.0,
+      "record_ids": [
+        "pipes-of-the-sewers"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Plate Armor of Etherealness",
+      "official_page": 233,
+      "column": 0,
+      "top": 329.0,
+      "record_ids": [
+        "plate-armor-of-etherealness"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Portable Hole",
+      "official_page": 233,
+      "column": 0,
+      "top": 441.0,
+      "record_ids": [
+        "portable-hole"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Potion of Animal Friendship",
+      "official_page": 233,
+      "column": 1,
+      "top": 247.0,
+      "record_ids": [
+        "potion-of-animal-friendship"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Potion of Clairvoyance",
+      "official_page": 233,
+      "column": 1,
+      "top": 347.0,
+      "record_ids": [
+        "potion-of-clairvoyance"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Potion of Climbing",
+      "official_page": 233,
+      "column": 1,
+      "top": 423.0,
+      "record_ids": [
+        "potion-of-climbing"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Potion of Diminution",
+      "official_page": 233,
+      "column": 1,
+      "top": 546.0,
+      "record_ids": [
+        "potion-of-diminution"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Potion of Flying",
+      "official_page": 234,
+      "column": 0,
+      "top": 74.0,
+      "record_ids": [
+        "potion-of-flying"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Potion of Gaseous Form",
+      "official_page": 234,
+      "column": 0,
+      "top": 197.0,
+      "record_ids": [
+        "potion-of-gaseous-form"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Potion of Giant Strength",
+      "official_page": 234,
+      "column": 0,
+      "top": 297.0,
+      "record_ids": [
+        "potion-of-giant-strength"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Potion of Growth",
+      "official_page": 234,
+      "column": 0,
+      "top": 515.0,
+      "record_ids": [
+        "potion-of-growth"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Potion of Healing",
+      "official_page": 234,
+      "column": 0,
+      "top": 627.0,
+      "record_ids": [
+        "potion-of-healing"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Potion of Heroism",
+      "official_page": 234,
+      "column": 1,
+      "top": 185.0,
+      "record_ids": [
+        "potion-of-heroism"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Potion of Invisibility",
+      "official_page": 234,
+      "column": 1,
+      "top": 285.0,
+      "record_ids": [
+        "potion-of-invisibility"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Potion of Mind Reading",
+      "official_page": 234,
+      "column": 1,
+      "top": 385.0,
+      "record_ids": [
+        "potion-of-mind-reading"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Potion of Poison",
+      "official_page": 234,
+      "column": 1,
+      "top": 472.0,
+      "record_ids": [
+        "potion-of-poison"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Potion of Resistance",
+      "official_page": 235,
+      "column": 0,
+      "top": 74.0,
+      "record_ids": [
+        "potion-of-resistance"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Potion of Speed",
+      "official_page": 235,
+      "column": 0,
+      "top": 234.0,
+      "record_ids": [
+        "potion-of-speed"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Potion of Water Breathing",
+      "official_page": 235,
+      "column": 0,
+      "top": 322.0,
+      "record_ids": [
+        "potion-of-water-breathing"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Restorative Ointment",
+      "official_page": 235,
+      "column": 0,
+      "top": 398.0,
+      "record_ids": [
+        "restorative-ointment"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Animal Influence",
+      "official_page": 235,
+      "column": 0,
+      "top": 521.0,
+      "record_ids": [
+        "ring-of-animal-influence"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Djinni Summoning",
+      "official_page": 235,
+      "column": 1,
+      "top": 74.0,
+      "record_ids": [
+        "ring-of-djinni-summoning"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Elemental Command",
+      "official_page": 235,
+      "column": 1,
+      "top": 303.0,
+      "record_ids": [
+        "ring-of-elemental-command"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Evasion",
+      "official_page": 236,
+      "column": 0,
+      "top": 615.0,
+      "record_ids": [
+        "ring-of-evasion"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Feather Falling",
+      "official_page": 236,
+      "column": 1,
+      "top": 107.0,
+      "record_ids": [
+        "ring-of-feather-falling"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Free Action",
+      "official_page": 236,
+      "column": 1,
+      "top": 171.0,
+      "record_ids": [
+        "ring-of-free-action"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Invisibility",
+      "official_page": 236,
+      "column": 1,
+      "top": 259.0,
+      "record_ids": [
+        "ring-of-invisibility"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Jumping",
+      "official_page": 236,
+      "column": 1,
+      "top": 359.0,
+      "record_ids": [
+        "ring-of-jumping"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Mind Shielding",
+      "official_page": 236,
+      "column": 1,
+      "top": 435.0,
+      "record_ids": [
+        "ring-of-mind-shielding"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Protection",
+      "official_page": 237,
+      "column": 0,
+      "top": 74.0,
+      "record_ids": [
+        "ring-of-protection"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Regeneration",
+      "official_page": 237,
+      "column": 0,
+      "top": 139.0,
+      "record_ids": [
+        "ring-of-regeneration"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Resistance",
+      "official_page": 237,
+      "column": 0,
+      "top": 250.0,
+      "record_ids": [
+        "ring-of-resistance"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Shooting Stars",
+      "official_page": 237,
+      "column": 0,
+      "top": 453.0,
+      "record_ids": [
+        "ring-of-shooting-stars"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Spell Storing",
+      "official_page": 237,
+      "column": 1,
+      "top": 343.0,
+      "record_ids": [
+        "ring-of-spell-storing"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Spell Turning",
+      "official_page": 237,
+      "column": 1,
+      "top": 584.0,
+      "record_ids": [
+        "ring-of-spell-turning"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Swimming",
+      "official_page": 238,
+      "column": 0,
+      "top": 74.0,
+      "record_ids": [
+        "ring-of-swimming"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Telekinesis",
+      "official_page": 238,
+      "column": 0,
+      "top": 139.0,
+      "record_ids": [
+        "ring-of-telekinesis"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of the Ram",
+      "official_page": 238,
+      "column": 0,
+      "top": 215.0,
+      "record_ids": [
+        "ring-of-the-ram"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Three Wishes",
+      "official_page": 238,
+      "column": 0,
+      "top": 408.0,
+      "record_ids": [
+        "ring-of-three-wishes"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Warmth",
+      "official_page": 238,
+      "column": 0,
+      "top": 496.0,
+      "record_ids": [
+        "ring-of-warmth"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of Water Walking",
+      "official_page": 238,
+      "column": 0,
+      "top": 584.0,
+      "record_ids": [
+        "ring-of-water-walking"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Ring of X-ray Vision",
+      "official_page": 238,
+      "column": 0,
+      "top": 649.0,
+      "record_ids": [
+        "ring-of-x-ray-vision"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Robe of Eyes",
+      "official_page": 238,
+      "column": 1,
+      "top": 212.0,
+      "record_ids": [
+        "robe-of-eyes"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Robe of Scintillating Colors",
+      "official_page": 238,
+      "column": 1,
+      "top": 487.0,
+      "record_ids": [
+        "robe-of-scintillating-colors"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Robe of Stars",
+      "official_page": 239,
+      "column": 0,
+      "top": 74.0,
+      "record_ids": [
+        "robe-of-stars"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Robe of the Archmagi",
+      "official_page": 239,
+      "column": 0,
+      "top": 279.0,
+      "record_ids": [
+        "robe-of-the-archmagi"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Robe of Useful Items",
+      "official_page": 239,
+      "column": 0,
+      "top": 504.0,
+      "record_ids": [
+        "robe-of-useful-items"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Rod of Absorption",
+      "official_page": 239,
+      "column": 1,
+      "top": 378.0,
+      "record_ids": [
+        "rod-of-absorption"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Rod of Alertness",
+      "official_page": 240,
+      "column": 0,
+      "top": 130.0,
+      "record_ids": [
+        "rod-of-alertness"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Rod of Lordly Might",
+      "official_page": 240,
+      "column": 0,
+      "top": 417.0,
+      "record_ids": [
+        "rod-of-lordly-might"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Rod of Rulership",
+      "official_page": 240,
+      "column": 1,
+      "top": 599.0,
+      "record_ids": [
+        "rod-of-rulership"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Rod of Security",
+      "official_page": 241,
+      "column": 0,
+      "top": 130.0,
+      "record_ids": [
+        "rod-of-security"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Rope of Climbing",
+      "official_page": 241,
+      "column": 0,
+      "top": 464.0,
+      "record_ids": [
+        "rope-of-climbing"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Rope of Entanglement",
+      "official_page": 241,
+      "column": 1,
+      "top": 130.0,
+      "record_ids": [
+        "rope-of-entanglement"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Scarab of Protection",
+      "official_page": 241,
+      "column": 1,
+      "top": 359.0,
+      "record_ids": [
+        "scarab-of-protection"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Scimitar of Speed",
+      "official_page": 241,
+      "column": 1,
+      "top": 559.0,
+      "record_ids": [
+        "scimitar-of-speed"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Shield, +1, +2, or +3",
+      "official_page": 242,
+      "column": 0,
+      "top": 74.0,
+      "record_ids": [
+        "shield"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Shield of Missile Attraction",
+      "official_page": 242,
+      "column": 0,
+      "top": 162.0,
+      "record_ids": [
+        "shield-of-missile-attraction"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Slippers of Spider Climbing",
+      "official_page": 242,
+      "column": 0,
+      "top": 297.0,
+      "record_ids": [
+        "slippers-of-spider-climbing"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Sovereign Glue",
+      "official_page": 242,
+      "column": 0,
+      "top": 420.0,
+      "record_ids": [
+        "sovereign-glue"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Spell Scroll",
+      "official_page": 242,
+      "column": 0,
+      "top": 578.0,
+      "record_ids": [
+        "spell-scroll"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Spellguard Shield",
+      "official_page": 242,
+      "column": 1,
+      "top": 462.0,
+      "record_ids": [
+        "spellguard-shield"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Sphere of Annihilation",
+      "official_page": 242,
+      "column": 1,
+      "top": 550.0,
+      "record_ids": [
+        "sphere-of-annihilation"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Staff of Charming",
+      "official_page": 243,
+      "column": 0,
+      "top": 412.0,
+      "record_ids": [
+        "staff-of-charming"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Staff of Fire",
+      "official_page": 243,
+      "column": 1,
+      "top": 74.0,
+      "record_ids": [
+        "staff-of-fire"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Staff of Frost",
+      "official_page": 243,
+      "column": 1,
+      "top": 256.0,
+      "record_ids": [
+        "staff-of-frost"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Staff of Healing",
+      "official_page": 243,
+      "column": 1,
+      "top": 438.0,
+      "record_ids": [
+        "staff-of-healing"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Staff of Power",
+      "official_page": 243,
+      "column": 1,
+      "top": 608.0,
+      "record_ids": [
+        "staff-of-power"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Staff of Striking",
+      "official_page": 244,
+      "column": 0,
+      "top": 532.0,
+      "record_ids": [
+        "staff-of-striking"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Staff of Swarming Insects",
+      "official_page": 244,
+      "column": 1,
+      "top": 74.0,
+      "record_ids": [
+        "staff-of-swarming-insects"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Staff of the Magi",
+      "official_page": 244,
+      "column": 1,
+      "top": 326.0,
+      "record_ids": [
+        "staff-of-the-magi"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Staff of the Python",
+      "official_page": 245,
+      "column": 0,
+      "top": 391.0,
+      "record_ids": [
+        "staff-of-the-python"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Staff of the Woodlands",
+      "official_page": 245,
+      "column": 1,
+      "top": 74.0,
+      "record_ids": [
+        "staff-of-the-woodlands"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Staff of Thunder and Lightning",
+      "official_page": 245,
+      "column": 1,
+      "top": 455.0,
+      "record_ids": [
+        "staff-of-thunder-and-lightning"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Staff of Withering",
+      "official_page": 246,
+      "column": 0,
+      "top": 247.0,
+      "record_ids": [
+        "staff-of-withering"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Stone of Controlling Earth Elementals",
+      "official_page": 246,
+      "column": 0,
+      "top": 405.0,
+      "record_ids": [
+        "stone-of-controlling-earth-elementals"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Stone of Good Luck (Luckstone)",
+      "official_page": 246,
+      "column": 0,
+      "top": 517.0,
+      "record_ids": [
+        "stone-of-good-luck-luckstone"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Sun Blade",
+      "official_page": 246,
+      "column": 0,
+      "top": 581.0,
+      "record_ids": [
+        "sun-blade"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Sword of Life Stealing",
+      "official_page": 246,
+      "column": 1,
+      "top": 212.0,
+      "record_ids": [
+        "sword-of-life-stealing"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Sword of Sharpness",
+      "official_page": 246,
+      "column": 1,
+      "top": 312.0,
+      "record_ids": [
+        "sword-of-sharpness"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Sword of Wounding",
+      "official_page": 246,
+      "column": 1,
+      "top": 540.0,
+      "record_ids": [
+        "sword-of-wounding"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Talisman of Pure Good",
+      "official_page": 247,
+      "column": 0,
+      "top": 118.0,
+      "record_ids": [
+        "talisman-of-pure-good"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Talisman of the Sphere",
+      "official_page": 247,
+      "column": 0,
+      "top": 417.0,
+      "record_ids": [
+        "talisman-of-the-sphere"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Talisman of Ultimate Evil",
+      "official_page": 247,
+      "column": 0,
+      "top": 552.0,
+      "record_ids": [
+        "talisman-of-ultimate-evil"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Tome of Clear Thought",
+      "official_page": 247,
+      "column": 1,
+      "top": 247.0,
+      "record_ids": [
+        "tome-of-clear-thought"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Tome of Leadership and Influence",
+      "official_page": 247,
+      "column": 1,
+      "top": 370.0,
+      "record_ids": [
+        "tome-of-leadership-and-influence"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Tome of Understanding",
+      "official_page": 247,
+      "column": 1,
+      "top": 494.0,
+      "record_ids": [
+        "tome-of-understanding"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Trident of Fish Command",
+      "official_page": 247,
+      "column": 1,
+      "top": 617.0,
+      "record_ids": [
+        "trident-of-fish-command"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Universal Solvent",
+      "official_page": 248,
+      "column": 0,
+      "top": 107.0,
+      "record_ids": [
+        "universal-solvent"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Vicious Weapon",
+      "official_page": 248,
+      "column": 0,
+      "top": 206.0,
+      "record_ids": [
+        "vicious-weapon"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Vorpal Sword",
+      "official_page": 248,
+      "column": 0,
+      "top": 282.0,
+      "record_ids": [
+        "vorpal-sword"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Wand of Binding",
+      "official_page": 248,
+      "column": 0,
+      "top": 488.0,
+      "record_ids": [
+        "wand-of-binding"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Wand of Enemy Detection",
+      "official_page": 248,
+      "column": 1,
+      "top": 74.0,
+      "record_ids": [
+        "wand-of-enemy-detection"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Wand of Fear",
+      "official_page": 248,
+      "column": 1,
+      "top": 268.0,
+      "record_ids": [
+        "wand-of-fear"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Wand of Fireballs",
+      "official_page": 248,
+      "column": 1,
+      "top": 578.0,
+      "record_ids": [
+        "wand-of-fireballs"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Wand of Lightning Bolts",
+      "official_page": 249,
+      "column": 0,
+      "top": 107.0,
+      "record_ids": [
+        "wand-of-lightning-bolts"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Wand of Magic Detection",
+      "official_page": 249,
+      "column": 0,
+      "top": 265.0,
+      "record_ids": [
+        "wand-of-magic-detection"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Wand of Magic Missiles",
+      "official_page": 249,
+      "column": 0,
+      "top": 353.0,
+      "record_ids": [
+        "wand-of-magic-missiles"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Wand of Paralysis",
+      "official_page": 249,
+      "column": 0,
+      "top": 511.0,
+      "record_ids": [
+        "wand-of-paralysis"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Wand of Polymorph",
+      "official_page": 249,
+      "column": 1,
+      "top": 74.0,
+      "record_ids": [
+        "wand-of-polymorph"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Wand of Secrets",
+      "official_page": 249,
+      "column": 1,
+      "top": 209.0,
+      "record_ids": [
+        "wand-of-secrets"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Wand of the War Mage, +1, +2, or +3",
+      "official_page": 249,
+      "column": 1,
+      "top": 309.0,
+      "record_ids": [
+        "wand-of-the-war-mage"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Wand of Web",
+      "official_page": 249,
+      "column": 1,
+      "top": 408.0,
+      "record_ids": [
+        "wand-of-web"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Wand of Wonder",
+      "official_page": 249,
+      "column": 1,
+      "top": 543.0,
+      "record_ids": [
+        "wand-of-wonder"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Weapon, +1, +2, or +3",
+      "official_page": 250,
+      "column": 1,
+      "top": 336.0,
+      "record_ids": [
+        "weapon"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Well of Many Worlds",
+      "official_page": 250,
+      "column": 1,
+      "top": 424.0,
+      "record_ids": [
+        "well-of-many-worlds"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Wind Fan",
+      "official_page": 250,
+      "column": 1,
+      "top": 605.0,
+      "record_ids": [
+        "wind-fan"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Winged Boots",
+      "official_page": 251,
+      "column": 0,
+      "top": 107.0,
+      "record_ids": [
+        "winged-boots"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Wings of Flying",
+      "official_page": 251,
+      "column": 0,
+      "top": 253.0,
+      "record_ids": [
+        "wings-of-flying"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    },
+    {
+      "official_title": "Orb of Dragonkind",
+      "official_page": 252,
+      "column": 1,
+      "top": 210.0,
+      "record_ids": [
+        "orb-of-dragonkind"
+      ],
+      "match": true,
+      "mapping_type": "official_title"
+    }
+  ],
+  "heading_dispositions": [
+    {
+      "page": 208,
+      "column": 0,
+      "top": 658.0,
+      "size": 12.0,
+      "title": "Apparatus of the Crab Levers",
+      "disposition": "item_table"
+    },
+    {
+      "page": 210,
+      "column": 1,
+      "top": 602.0,
+      "size": 12.0,
+      "title": "Gray Bag of Tricks",
+      "disposition": "variant_table"
+    },
+    {
+      "page": 211,
+      "column": 0,
+      "top": 114.0,
+      "size": 12.0,
+      "title": "Rust Bag of Tricks",
+      "disposition": "variant_table"
+    },
+    {
+      "page": 211,
+      "column": 0,
+      "top": 249.0,
+      "size": 12.0,
+      "title": "Tan Bag of Tricks",
+      "disposition": "variant_table"
+    },
+    {
+      "page": 215,
+      "column": 0,
+      "top": 462.0,
+      "size": 12.0,
+      "title": "Cube of Force Faces",
+      "disposition": "item_table"
+    },
+    {
+      "page": 218,
+      "column": 0,
+      "top": 163.0,
+      "size": 12.0,
+      "title": "Avatar of Death",
+      "disposition": "embedded_stat_block"
+    },
+    {
+      "page": 222,
+      "column": 0,
+      "top": 315.0,
+      "size": 12.0,
+      "title": "Giant Fly",
+      "disposition": "embedded_stat_block"
+    },
+    {
+      "page": 234,
+      "column": 1,
+      "top": 104.0,
+      "size": 12.0,
+      "title": "Potions of Healing",
+      "disposition": "variant_table"
+    },
+    {
+      "page": 242,
+      "column": 1,
+      "top": 221.0,
+      "size": 12.0,
+      "title": "Spell Scroll",
+      "disposition": "item_table"
+    },
+    {
+      "page": 251,
+      "column": 1,
+      "top": 74.0,
+      "size": 12.0,
+      "title": "Abilities",
+      "disposition": "sentient_item_general_rule"
+    },
+    {
+      "page": 251,
+      "column": 1,
+      "top": 156.0,
+      "size": 12.0,
+      "title": "Communication",
+      "disposition": "sentient_item_general_rule"
+    },
+    {
+      "page": 251,
+      "column": 1,
+      "top": 343.0,
+      "size": 12.0,
+      "title": "Senses",
+      "disposition": "sentient_item_general_rule"
+    },
+    {
+      "page": 251,
+      "column": 1,
+      "top": 474.0,
+      "size": 12.0,
+      "title": "Alignment",
+      "disposition": "sentient_item_general_rule"
+    },
+    {
+      "page": 251,
+      "column": 1,
+      "top": 605.0,
+      "size": 12.0,
+      "title": "Special Purpose",
+      "disposition": "sentient_item_general_rule"
+    }
+  ],
+  "unmapped_base_records": [],
+  "malformed_records": [],
+  "links": [
+    {
+      "parent_id": "ammunition",
+      "variant_id": "ammunition-1",
+      "match": true
+    },
+    {
+      "parent_id": "ammunition",
+      "variant_id": "ammunition-2",
+      "match": true
+    },
+    {
+      "parent_id": "ammunition",
+      "variant_id": "ammunition-3",
+      "match": true
+    },
+    {
+      "parent_id": "armor",
+      "variant_id": "armor-1",
+      "match": true
+    },
+    {
+      "parent_id": "armor",
+      "variant_id": "armor-2",
+      "match": true
+    },
+    {
+      "parent_id": "armor",
+      "variant_id": "armor-3",
+      "match": true
+    },
+    {
+      "parent_id": "bag-of-tricks",
+      "variant_id": "bag-of-tricks-gray",
+      "match": true
+    },
+    {
+      "parent_id": "bag-of-tricks",
+      "variant_id": "bag-of-tricks-rust",
+      "match": true
+    },
+    {
+      "parent_id": "bag-of-tricks",
+      "variant_id": "bag-of-tricks-tan",
+      "match": true
+    },
+    {
+      "parent_id": "belt-of-giant-strength",
+      "variant_id": "belt-of-giant-strength-hill",
+      "match": true
+    },
+    {
+      "parent_id": "belt-of-giant-strength",
+      "variant_id": "belt-of-giant-strength-stone",
+      "match": true
+    },
+    {
+      "parent_id": "belt-of-giant-strength",
+      "variant_id": "belt-of-giant-strength-frost",
+      "match": true
+    },
+    {
+      "parent_id": "belt-of-giant-strength",
+      "variant_id": "belt-of-giant-strength-fire",
+      "match": true
+    },
+    {
+      "parent_id": "belt-of-giant-strength",
+      "variant_id": "belt-of-giant-strength-cloud",
+      "match": true
+    },
+    {
+      "parent_id": "belt-of-giant-strength",
+      "variant_id": "belt-of-giant-strength-storm",
+      "match": true
+    },
+    {
+      "parent_id": "carpet-of-flying",
+      "variant_id": "carpet-of-flying-3x5",
+      "match": true
+    },
+    {
+      "parent_id": "carpet-of-flying",
+      "variant_id": "carpet-of-flying-4x6",
+      "match": true
+    },
+    {
+      "parent_id": "carpet-of-flying",
+      "variant_id": "carpet-of-flying-5x7",
+      "match": true
+    },
+    {
+      "parent_id": "carpet-of-flying",
+      "variant_id": "carpet-of-flying-6x9",
+      "match": true
+    },
+    {
+      "parent_id": "crystal-ball",
+      "variant_id": "crystal-ball-of-mind-reading",
+      "match": true
+    },
+    {
+      "parent_id": "crystal-ball",
+      "variant_id": "crystal-ball-of-telepathy",
+      "match": true
+    },
+    {
+      "parent_id": "crystal-ball",
+      "variant_id": "crystal-ball-of-true-seeing",
+      "match": true
+    },
+    {
+      "parent_id": "dragon-scale-mail",
+      "variant_id": "dragon-scale-mail-black",
+      "match": true
+    },
+    {
+      "parent_id": "dragon-scale-mail",
+      "variant_id": "dragon-scale-mail-blue",
+      "match": true
+    },
+    {
+      "parent_id": "dragon-scale-mail",
+      "variant_id": "dragon-scale-mail-brass",
+      "match": true
+    },
+    {
+      "parent_id": "dragon-scale-mail",
+      "variant_id": "dragon-scale-mail-bronze",
+      "match": true
+    },
+    {
+      "parent_id": "dragon-scale-mail",
+      "variant_id": "dragon-scale-mail-copper",
+      "match": true
+    },
+    {
+      "parent_id": "dragon-scale-mail",
+      "variant_id": "dragon-scale-mail-gold",
+      "match": true
+    },
+    {
+      "parent_id": "dragon-scale-mail",
+      "variant_id": "dragon-scale-mail-green",
+      "match": true
+    },
+    {
+      "parent_id": "dragon-scale-mail",
+      "variant_id": "dragon-scale-mail-red",
+      "match": true
+    },
+    {
+      "parent_id": "dragon-scale-mail",
+      "variant_id": "dragon-scale-mail-silver",
+      "match": true
+    },
+    {
+      "parent_id": "dragon-scale-mail",
+      "variant_id": "dragon-scale-mail-white",
+      "match": true
+    },
+    {
+      "parent_id": "elemental-gem",
+      "variant_id": "elemental-gem-air",
+      "match": true
+    },
+    {
+      "parent_id": "elemental-gem",
+      "variant_id": "elemental-gem-earth",
+      "match": true
+    },
+    {
+      "parent_id": "elemental-gem",
+      "variant_id": "elemental-gem-fire",
+      "match": true
+    },
+    {
+      "parent_id": "elemental-gem",
+      "variant_id": "elemental-gem-water",
+      "match": true
+    },
+    {
+      "parent_id": "feather-token",
+      "variant_id": "feather-token-anchor",
+      "match": true
+    },
+    {
+      "parent_id": "feather-token",
+      "variant_id": "feather-token-bird",
+      "match": true
+    },
+    {
+      "parent_id": "feather-token",
+      "variant_id": "feather-token-fan",
+      "match": true
+    },
+    {
+      "parent_id": "feather-token",
+      "variant_id": "feather-token-swan-boat",
+      "match": true
+    },
+    {
+      "parent_id": "feather-token",
+      "variant_id": "feather-token-tree",
+      "match": true
+    },
+    {
+      "parent_id": "feather-token",
+      "variant_id": "feather-token-whip",
+      "match": true
+    },
+    {
+      "parent_id": "figurine-of-wondrous-power",
+      "variant_id": "figurine-of-wondrous-power-bronze-griffon",
+      "match": true
+    },
+    {
+      "parent_id": "figurine-of-wondrous-power",
+      "variant_id": "figurine-of-wondrous-power-ebony-fly",
+      "match": true
+    },
+    {
+      "parent_id": "figurine-of-wondrous-power",
+      "variant_id": "figurine-of-wondrous-power-golden-lions",
+      "match": true
+    },
+    {
+      "parent_id": "figurine-of-wondrous-power",
+      "variant_id": "figurine-of-wondrous-power-ivory-goats",
+      "match": true
+    },
+    {
+      "parent_id": "figurine-of-wondrous-power",
+      "variant_id": "figurine-of-wondrous-power-marble-elephant",
+      "match": true
+    },
+    {
+      "parent_id": "figurine-of-wondrous-power",
+      "variant_id": "figurine-of-wondrous-power-obsidian-steed",
+      "match": true
+    },
+    {
+      "parent_id": "figurine-of-wondrous-power",
+      "variant_id": "figurine-of-wondrous-power-onyx-dog",
+      "match": true
+    },
+    {
+      "parent_id": "figurine-of-wondrous-power",
+      "variant_id": "figurine-of-wondrous-power-serpentine-owl",
+      "match": true
+    },
+    {
+      "parent_id": "figurine-of-wondrous-power",
+      "variant_id": "figurine-of-wondrous-power-silver-raven",
+      "match": true
+    },
+    {
+      "parent_id": "horn-of-valhalla",
+      "variant_id": "horn-of-valhalla-silver",
+      "match": true
+    },
+    {
+      "parent_id": "horn-of-valhalla",
+      "variant_id": "horn-of-valhalla-brass",
+      "match": true
+    },
+    {
+      "parent_id": "horn-of-valhalla",
+      "variant_id": "horn-of-valhalla-bronze",
+      "match": true
+    },
+    {
+      "parent_id": "horn-of-valhalla",
+      "variant_id": "horn-of-valhalla-iron",
+      "match": true
+    },
+    {
+      "parent_id": "ioun-stone",
+      "variant_id": "ioun-stone-of-absorption",
+      "match": true
+    },
+    {
+      "parent_id": "ioun-stone",
+      "variant_id": "ioun-stone-of-agility",
+      "match": true
+    },
+    {
+      "parent_id": "ioun-stone",
+      "variant_id": "ioun-stone-of-awareness",
+      "match": true
+    },
+    {
+      "parent_id": "ioun-stone",
+      "variant_id": "ioun-stone-of-fortitude",
+      "match": true
+    },
+    {
+      "parent_id": "ioun-stone",
+      "variant_id": "ioun-stone-of-greater-absorption",
+      "match": true
+    },
+    {
+      "parent_id": "ioun-stone",
+      "variant_id": "ioun-stone-of-insight",
+      "match": true
+    },
+    {
+      "parent_id": "ioun-stone",
+      "variant_id": "ioun-stone-of-intellect",
+      "match": true
+    },
+    {
+      "parent_id": "ioun-stone",
+      "variant_id": "ioun-stone-of-leadership",
+      "match": true
+    },
+    {
+      "parent_id": "ioun-stone",
+      "variant_id": "ioun-stone-of-mastery",
+      "match": true
+    },
+    {
+      "parent_id": "ioun-stone",
+      "variant_id": "ioun-stone-of-protection",
+      "match": true
+    },
+    {
+      "parent_id": "ioun-stone",
+      "variant_id": "ioun-stone-of-regeneration",
+      "match": true
+    },
+    {
+      "parent_id": "ioun-stone",
+      "variant_id": "ioun-stone-of-reserve",
+      "match": true
+    },
+    {
+      "parent_id": "ioun-stone",
+      "variant_id": "ioun-stone-of-strength",
+      "match": true
+    },
+    {
+      "parent_id": "ioun-stone",
+      "variant_id": "ioun-stone-of-sustenance",
+      "match": true
+    },
+    {
+      "parent_id": "manual-of-golems",
+      "variant_id": "manual-of-golems-clay",
+      "match": true
+    },
+    {
+      "parent_id": "manual-of-golems",
+      "variant_id": "manual-of-golems-flesh",
+      "match": true
+    },
+    {
+      "parent_id": "manual-of-golems",
+      "variant_id": "manual-of-golems-iron",
+      "match": true
+    },
+    {
+      "parent_id": "manual-of-golems",
+      "variant_id": "manual-of-golems-stone",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-giant-strength",
+      "variant_id": "potion-of-giant-strength-hill",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-giant-strength",
+      "variant_id": "potion-of-giant-strength-frost",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-giant-strength",
+      "variant_id": "potion-of-giant-strength-stone",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-giant-strength",
+      "variant_id": "potion-of-giant-strength-fire",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-giant-strength",
+      "variant_id": "potion-of-giant-strength-cloud",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-giant-strength",
+      "variant_id": "potion-of-giant-strength-storm",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-healing",
+      "variant_id": "potion-of-healing-common",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-healing",
+      "variant_id": "potion-of-healing-greater",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-healing",
+      "variant_id": "potion-of-healing-superior",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-healing",
+      "variant_id": "potion-of-healing-supreme",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-resistance",
+      "variant_id": "potion-of-resistance-acid",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-resistance",
+      "variant_id": "potion-of-resistance-cold",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-resistance",
+      "variant_id": "potion-of-resistance-fire",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-resistance",
+      "variant_id": "potion-of-resistance-force",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-resistance",
+      "variant_id": "potion-of-resistance-lightning",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-resistance",
+      "variant_id": "potion-of-resistance-necrotic",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-resistance",
+      "variant_id": "potion-of-resistance-poison",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-resistance",
+      "variant_id": "potion-of-resistance-psychic",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-resistance",
+      "variant_id": "potion-of-resistance-radiant",
+      "match": true
+    },
+    {
+      "parent_id": "potion-of-resistance",
+      "variant_id": "potion-of-resistance-thunder",
+      "match": true
+    },
+    {
+      "parent_id": "ring-of-elemental-command",
+      "variant_id": "ring-of-elemental-command-air",
+      "match": true
+    },
+    {
+      "parent_id": "ring-of-elemental-command",
+      "variant_id": "ring-of-elemental-command-earth",
+      "match": true
+    },
+    {
+      "parent_id": "ring-of-elemental-command",
+      "variant_id": "ring-of-elemental-command-fire",
+      "match": true
+    },
+    {
+      "parent_id": "ring-of-elemental-command",
+      "variant_id": "ring-of-elemental-command-water",
+      "match": true
+    },
+    {
+      "parent_id": "ring-of-resistance",
+      "variant_id": "ring-of-resistance-acid",
+      "match": true
+    },
+    {
+      "parent_id": "ring-of-resistance",
+      "variant_id": "ring-of-resistance-cold",
+      "match": true
+    },
+    {
+      "parent_id": "ring-of-resistance",
+      "variant_id": "ring-of-resistance-fire",
+      "match": true
+    },
+    {
+      "parent_id": "ring-of-resistance",
+      "variant_id": "ring-of-resistance-force",
+      "match": true
+    },
+    {
+      "parent_id": "ring-of-resistance",
+      "variant_id": "ring-of-resistance-lightning",
+      "match": true
+    },
+    {
+      "parent_id": "ring-of-resistance",
+      "variant_id": "ring-of-resistance-necrotic",
+      "match": true
+    },
+    {
+      "parent_id": "ring-of-resistance",
+      "variant_id": "ring-of-resistance-poison",
+      "match": true
+    },
+    {
+      "parent_id": "ring-of-resistance",
+      "variant_id": "ring-of-resistance-psychic",
+      "match": true
+    },
+    {
+      "parent_id": "ring-of-resistance",
+      "variant_id": "ring-of-resistance-radiant",
+      "match": true
+    },
+    {
+      "parent_id": "ring-of-resistance",
+      "variant_id": "ring-of-resistance-thunder",
+      "match": true
+    },
+    {
+      "parent_id": "spell-scroll",
+      "variant_id": "spell-scroll-cantrip",
+      "match": true
+    },
+    {
+      "parent_id": "spell-scroll",
+      "variant_id": "spell-scroll-1st",
+      "match": true
+    },
+    {
+      "parent_id": "spell-scroll",
+      "variant_id": "spell-scroll-2nd",
+      "match": true
+    },
+    {
+      "parent_id": "spell-scroll",
+      "variant_id": "spell-scroll-3rd",
+      "match": true
+    },
+    {
+      "parent_id": "spell-scroll",
+      "variant_id": "spell-scroll-4th",
+      "match": true
+    },
+    {
+      "parent_id": "spell-scroll",
+      "variant_id": "spell-scroll-5th",
+      "match": true
+    },
+    {
+      "parent_id": "spell-scroll",
+      "variant_id": "spell-scroll-6th",
+      "match": true
+    },
+    {
+      "parent_id": "spell-scroll",
+      "variant_id": "spell-scroll-7th",
+      "match": true
+    },
+    {
+      "parent_id": "spell-scroll",
+      "variant_id": "spell-scroll-8th",
+      "match": true
+    },
+    {
+      "parent_id": "spell-scroll",
+      "variant_id": "spell-scroll-9th",
+      "match": true
+    },
+    {
+      "parent_id": "wand-of-the-war-mage",
+      "variant_id": "wand-of-the-war-mage-1",
+      "match": true
+    },
+    {
+      "parent_id": "wand-of-the-war-mage",
+      "variant_id": "wand-of-the-war-mage-2",
+      "match": true
+    },
+    {
+      "parent_id": "wand-of-the-war-mage",
+      "variant_id": "wand-of-the-war-mage-3",
+      "match": true
+    },
+    {
+      "parent_id": "weapon",
+      "variant_id": "weapon-1",
+      "match": true
+    },
+    {
+      "parent_id": "weapon",
+      "variant_id": "weapon-2",
+      "match": true
+    },
+    {
+      "parent_id": "weapon",
+      "variant_id": "weapon-3",
+      "match": true
+    },
+    {
+      "parent_id": "shield",
+      "variant_id": "shield-1",
+      "match": true
+    },
+    {
+      "parent_id": "shield",
+      "variant_id": "shield-2",
+      "match": true
+    },
+    {
+      "parent_id": "shield",
+      "variant_id": "shield-3",
+      "match": true
+    }
+  ],
+  "variant_ownership": [
+    {
+      "variant_id": "ammunition-1",
+      "parent_ids": [
+        "ammunition"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ammunition-2",
+      "parent_ids": [
+        "ammunition"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ammunition-3",
+      "parent_ids": [
+        "ammunition"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "armor-1",
+      "parent_ids": [
+        "armor"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "armor-2",
+      "parent_ids": [
+        "armor"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "armor-3",
+      "parent_ids": [
+        "armor"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "bag-of-tricks-gray",
+      "parent_ids": [
+        "bag-of-tricks"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "bag-of-tricks-rust",
+      "parent_ids": [
+        "bag-of-tricks"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "bag-of-tricks-tan",
+      "parent_ids": [
+        "bag-of-tricks"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "belt-of-giant-strength-hill",
+      "parent_ids": [
+        "belt-of-giant-strength"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "belt-of-giant-strength-stone",
+      "parent_ids": [
+        "belt-of-giant-strength"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "belt-of-giant-strength-frost",
+      "parent_ids": [
+        "belt-of-giant-strength"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "belt-of-giant-strength-fire",
+      "parent_ids": [
+        "belt-of-giant-strength"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "belt-of-giant-strength-cloud",
+      "parent_ids": [
+        "belt-of-giant-strength"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "belt-of-giant-strength-storm",
+      "parent_ids": [
+        "belt-of-giant-strength"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "carpet-of-flying-3x5",
+      "parent_ids": [
+        "carpet-of-flying"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "carpet-of-flying-4x6",
+      "parent_ids": [
+        "carpet-of-flying"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "carpet-of-flying-5x7",
+      "parent_ids": [
+        "carpet-of-flying"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "carpet-of-flying-6x9",
+      "parent_ids": [
+        "carpet-of-flying"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "crystal-ball-of-mind-reading",
+      "parent_ids": [
+        "crystal-ball"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "crystal-ball-of-telepathy",
+      "parent_ids": [
+        "crystal-ball"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "crystal-ball-of-true-seeing",
+      "parent_ids": [
+        "crystal-ball"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "dragon-scale-mail-black",
+      "parent_ids": [
+        "dragon-scale-mail"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "dragon-scale-mail-blue",
+      "parent_ids": [
+        "dragon-scale-mail"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "dragon-scale-mail-brass",
+      "parent_ids": [
+        "dragon-scale-mail"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "dragon-scale-mail-bronze",
+      "parent_ids": [
+        "dragon-scale-mail"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "dragon-scale-mail-copper",
+      "parent_ids": [
+        "dragon-scale-mail"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "dragon-scale-mail-gold",
+      "parent_ids": [
+        "dragon-scale-mail"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "dragon-scale-mail-green",
+      "parent_ids": [
+        "dragon-scale-mail"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "dragon-scale-mail-red",
+      "parent_ids": [
+        "dragon-scale-mail"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "dragon-scale-mail-silver",
+      "parent_ids": [
+        "dragon-scale-mail"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "dragon-scale-mail-white",
+      "parent_ids": [
+        "dragon-scale-mail"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "elemental-gem-air",
+      "parent_ids": [
+        "elemental-gem"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "elemental-gem-earth",
+      "parent_ids": [
+        "elemental-gem"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "elemental-gem-fire",
+      "parent_ids": [
+        "elemental-gem"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "elemental-gem-water",
+      "parent_ids": [
+        "elemental-gem"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "feather-token-anchor",
+      "parent_ids": [
+        "feather-token"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "feather-token-bird",
+      "parent_ids": [
+        "feather-token"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "feather-token-fan",
+      "parent_ids": [
+        "feather-token"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "feather-token-swan-boat",
+      "parent_ids": [
+        "feather-token"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "feather-token-tree",
+      "parent_ids": [
+        "feather-token"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "feather-token-whip",
+      "parent_ids": [
+        "feather-token"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "figurine-of-wondrous-power-bronze-griffon",
+      "parent_ids": [
+        "figurine-of-wondrous-power"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "figurine-of-wondrous-power-ebony-fly",
+      "parent_ids": [
+        "figurine-of-wondrous-power"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "figurine-of-wondrous-power-golden-lions",
+      "parent_ids": [
+        "figurine-of-wondrous-power"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "figurine-of-wondrous-power-ivory-goats",
+      "parent_ids": [
+        "figurine-of-wondrous-power"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "figurine-of-wondrous-power-marble-elephant",
+      "parent_ids": [
+        "figurine-of-wondrous-power"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "figurine-of-wondrous-power-obsidian-steed",
+      "parent_ids": [
+        "figurine-of-wondrous-power"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "figurine-of-wondrous-power-onyx-dog",
+      "parent_ids": [
+        "figurine-of-wondrous-power"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "figurine-of-wondrous-power-serpentine-owl",
+      "parent_ids": [
+        "figurine-of-wondrous-power"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "figurine-of-wondrous-power-silver-raven",
+      "parent_ids": [
+        "figurine-of-wondrous-power"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "horn-of-valhalla-silver",
+      "parent_ids": [
+        "horn-of-valhalla"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "horn-of-valhalla-brass",
+      "parent_ids": [
+        "horn-of-valhalla"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "horn-of-valhalla-bronze",
+      "parent_ids": [
+        "horn-of-valhalla"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "horn-of-valhalla-iron",
+      "parent_ids": [
+        "horn-of-valhalla"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ioun-stone-of-absorption",
+      "parent_ids": [
+        "ioun-stone"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ioun-stone-of-agility",
+      "parent_ids": [
+        "ioun-stone"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ioun-stone-of-awareness",
+      "parent_ids": [
+        "ioun-stone"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ioun-stone-of-fortitude",
+      "parent_ids": [
+        "ioun-stone"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ioun-stone-of-greater-absorption",
+      "parent_ids": [
+        "ioun-stone"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ioun-stone-of-insight",
+      "parent_ids": [
+        "ioun-stone"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ioun-stone-of-intellect",
+      "parent_ids": [
+        "ioun-stone"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ioun-stone-of-leadership",
+      "parent_ids": [
+        "ioun-stone"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ioun-stone-of-mastery",
+      "parent_ids": [
+        "ioun-stone"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ioun-stone-of-protection",
+      "parent_ids": [
+        "ioun-stone"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ioun-stone-of-regeneration",
+      "parent_ids": [
+        "ioun-stone"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ioun-stone-of-reserve",
+      "parent_ids": [
+        "ioun-stone"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ioun-stone-of-strength",
+      "parent_ids": [
+        "ioun-stone"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ioun-stone-of-sustenance",
+      "parent_ids": [
+        "ioun-stone"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "manual-of-golems-clay",
+      "parent_ids": [
+        "manual-of-golems"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "manual-of-golems-flesh",
+      "parent_ids": [
+        "manual-of-golems"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "manual-of-golems-iron",
+      "parent_ids": [
+        "manual-of-golems"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "manual-of-golems-stone",
+      "parent_ids": [
+        "manual-of-golems"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-giant-strength-hill",
+      "parent_ids": [
+        "potion-of-giant-strength"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-giant-strength-frost",
+      "parent_ids": [
+        "potion-of-giant-strength"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-giant-strength-stone",
+      "parent_ids": [
+        "potion-of-giant-strength"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-giant-strength-fire",
+      "parent_ids": [
+        "potion-of-giant-strength"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-giant-strength-cloud",
+      "parent_ids": [
+        "potion-of-giant-strength"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-giant-strength-storm",
+      "parent_ids": [
+        "potion-of-giant-strength"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-healing-common",
+      "parent_ids": [
+        "potion-of-healing"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-healing-greater",
+      "parent_ids": [
+        "potion-of-healing"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-healing-superior",
+      "parent_ids": [
+        "potion-of-healing"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-healing-supreme",
+      "parent_ids": [
+        "potion-of-healing"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-resistance-acid",
+      "parent_ids": [
+        "potion-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-resistance-cold",
+      "parent_ids": [
+        "potion-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-resistance-fire",
+      "parent_ids": [
+        "potion-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-resistance-force",
+      "parent_ids": [
+        "potion-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-resistance-lightning",
+      "parent_ids": [
+        "potion-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-resistance-necrotic",
+      "parent_ids": [
+        "potion-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-resistance-poison",
+      "parent_ids": [
+        "potion-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-resistance-psychic",
+      "parent_ids": [
+        "potion-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-resistance-radiant",
+      "parent_ids": [
+        "potion-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "potion-of-resistance-thunder",
+      "parent_ids": [
+        "potion-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ring-of-elemental-command-air",
+      "parent_ids": [
+        "ring-of-elemental-command"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ring-of-elemental-command-earth",
+      "parent_ids": [
+        "ring-of-elemental-command"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ring-of-elemental-command-fire",
+      "parent_ids": [
+        "ring-of-elemental-command"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ring-of-elemental-command-water",
+      "parent_ids": [
+        "ring-of-elemental-command"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ring-of-resistance-acid",
+      "parent_ids": [
+        "ring-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ring-of-resistance-cold",
+      "parent_ids": [
+        "ring-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ring-of-resistance-fire",
+      "parent_ids": [
+        "ring-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ring-of-resistance-force",
+      "parent_ids": [
+        "ring-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ring-of-resistance-lightning",
+      "parent_ids": [
+        "ring-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ring-of-resistance-necrotic",
+      "parent_ids": [
+        "ring-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ring-of-resistance-poison",
+      "parent_ids": [
+        "ring-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ring-of-resistance-psychic",
+      "parent_ids": [
+        "ring-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ring-of-resistance-radiant",
+      "parent_ids": [
+        "ring-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "ring-of-resistance-thunder",
+      "parent_ids": [
+        "ring-of-resistance"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "spell-scroll-cantrip",
+      "parent_ids": [
+        "spell-scroll"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "spell-scroll-1st",
+      "parent_ids": [
+        "spell-scroll"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "spell-scroll-2nd",
+      "parent_ids": [
+        "spell-scroll"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "spell-scroll-3rd",
+      "parent_ids": [
+        "spell-scroll"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "spell-scroll-4th",
+      "parent_ids": [
+        "spell-scroll"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "spell-scroll-5th",
+      "parent_ids": [
+        "spell-scroll"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "spell-scroll-6th",
+      "parent_ids": [
+        "spell-scroll"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "spell-scroll-7th",
+      "parent_ids": [
+        "spell-scroll"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "spell-scroll-8th",
+      "parent_ids": [
+        "spell-scroll"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "spell-scroll-9th",
+      "parent_ids": [
+        "spell-scroll"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "wand-of-the-war-mage-1",
+      "parent_ids": [
+        "wand-of-the-war-mage"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "wand-of-the-war-mage-2",
+      "parent_ids": [
+        "wand-of-the-war-mage"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "wand-of-the-war-mage-3",
+      "parent_ids": [
+        "wand-of-the-war-mage"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "weapon-1",
+      "parent_ids": [
+        "weapon"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "weapon-2",
+      "parent_ids": [
+        "weapon"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "weapon-3",
+      "parent_ids": [
+        "weapon"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "shield-1",
+      "parent_ids": [
+        "shield"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "shield-2",
+      "parent_ids": [
+        "shield"
+      ],
+      "match": true
+    },
+    {
+      "variant_id": "shield-3",
+      "parent_ids": [
+        "shield"
+      ],
+      "match": true
+    }
+  ],
+  "differences": [],
+  "limitations": [
+    "Title and family-reference coverage only; does not certify item prose, rarity/category fields, derived variant effects or execution.",
+    "Embedded stat blocks and tables remain required source within enclosing entries; their exclusion is only from independent item titles."
+  ]
+}
