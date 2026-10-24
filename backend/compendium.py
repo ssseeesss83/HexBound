@@ -206,7 +206,8 @@ for _fix in ERRATA["corrections"]:
 for _correction in CANONICAL_OVERLAY["corrections"]:
     for _feature_id in _correction["records"]:
         _tables = {"features": FEATURES, "levels": LEVELS, "spells": SPELLS, "monsters": MONSTERS, "classes": CLASSES,
-                   "subclasses": SUBCLASSES, "proficiencies": PROFICIENCIES}
+                   "subclasses": SUBCLASSES, "proficiencies": PROFICIENCIES,
+                   "skills": SKILLS, "backgrounds": BACKGROUNDS, "races": RACES}
         _feature = _tables[_correction.get("kind", "features")][_feature_id]
         if _correction["operation"] == "replace_description":
             _feature["desc"] = copy.deepcopy(_correction["paragraphs"])

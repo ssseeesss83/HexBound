@@ -1,0 +1,129 @@
+{
+  "artifact_type": "canonical_source_reconciliation_draft",
+  "review_date": "2026-10-24",
+  "ruleset_id": "dnd5e-2014-srd5.1",
+  "source_document": "official/SRD_CC_v5.1.pdf",
+  "source_text_carrier": "official/pages.json columns",
+  "status": "reference_pending_execution",
+  "application": "Reviewed reference transcription; no inventory execution until P09.",
+  "records": [
+    {
+      "kind": "skills",
+      "id": "athletics",
+      "printed_pages": [
+        79
+      ],
+      "source_heading": "Using Each Ability / Strength / Athletics",
+      "fields": {
+        "desc": [
+          "Your Strength (Athletics) check covers difficult situations you encounter while climbing, jumping, or swimming. Examples include the following activities:",
+          "You attempt to climb a sheer or slippery cliff, avoid hazards while scaling a wall, or cling to a surface while something is trying to knock you off.",
+          "You try to jump an unusually long distance or pull off a stunt midjump.",
+          "You struggle to swim or stay afloat in treacherous currents, storm-tossed waves, or areas of thick seaweed. Or another creature tries to push or pull you underwater or otherwise interfere with your swimming."
+        ]
+      },
+      "note": "Full Athletics subsection; excludes the subsequent Other Strength Checks subsection."
+    },
+    {
+      "kind": "backgrounds",
+      "id": "acolyte",
+      "printed_pages": [
+        60,
+        61
+      ],
+      "source_heading": "Backgrounds / Acolyte",
+      "fields": {
+        "desc": [
+          "You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine. You are not necessarily a cleric—performing sacred rites is not the same thing as channeling divine power.",
+          "Choose a god, a pantheon of gods, or some other quasi-divine being from among those listed in \"Fantasy-Historical Pantheons\" or those specified by your GM, and work with your GM to detail the nature of your religious service. Were you a lesser functionary in a temple, raised from childhood to assist the priests in the sacred rites? Or were you a high priest who suddenly experienced a call to serve your god in a different way? Perhaps you were the leader of a small cult outside of any established temple structure, or even an occult group that served a fiendish master that you now deny."
+        ],
+        "gear_source_text": "A holy symbol (a gift to you when you entered the priesthood), a prayer book or prayer wheel, 5 sticks of incense, vestments, a set of common clothes, and a pouch containing 15 gp"
+      },
+      "preserve_existing_fields": [
+        "starting_proficiencies",
+        "language_options",
+        "starting_equipment",
+        "starting_gold",
+        "starting_equipment_options",
+        "feature",
+        "personality_traits",
+        "ideals",
+        "bonds",
+        "flaws"
+      ],
+      "starting_equipment_reference_additions": [
+        {
+          "equipment": {
+            "index": "vestments",
+            "name": "Vestments",
+            "url": "/api/2014/equipment/vestments"
+          },
+          "quantity": 1,
+          "status": "reference_pending_execution"
+        }
+      ],
+      "narrative_grants": [
+        {
+          "id": "acolyte-prayer-item",
+          "kind": "choice",
+          "choose": 1,
+          "options": [
+            {
+              "id": "prayer-book",
+              "name": "Prayer book",
+              "quantity": 1
+            },
+            {
+              "id": "prayer-wheel",
+              "name": "Prayer wheel",
+              "quantity": 1
+            }
+          ],
+          "status": "reference_pending_execution",
+          "source_pages": [
+            61
+          ]
+        },
+        {
+          "id": "acolyte-incense-sticks",
+          "kind": "item",
+          "name": "Sticks of incense",
+          "quantity": 5,
+          "unit": "stick",
+          "status": "reference_pending_execution",
+          "source_pages": [
+            61
+          ]
+        }
+      ],
+      "source_constraints": [
+        "Official background passage supplies no cost or weight for prayer book, prayer wheel, incense sticks or vestments. Missing values stay unknown; do not infer zero.",
+        "Do not map incense sticks to equipment/block-of-incense; the official units differ.",
+        "The existing vestments reference is valid as an identity link; its community cost=0 and weight=0 are not certified official prices or weights.",
+        "P09 must unify source equipment and narrative grants before inventory execution, preventing omissions or duplicate grants."
+      ]
+    },
+    {
+      "kind": "races",
+      "id": "dwarf",
+      "printed_pages": [
+        3
+      ],
+      "source_heading": "Dwarf Traits / Speed",
+      "fields": {
+        "speed_description": "Your base walking speed is 25 feet. Your speed is not reduced by wearing heavy armor.",
+        "heavy_armor_speed_reduction_exception": true
+      },
+      "status": "reference_pending_execution",
+      "note": "The exception concerns speed reduction from wearing heavy armor; it grants no armor proficiency and does not waive other armor penalties."
+    }
+  ],
+  "source_validation": {
+    "athletics_all_paragraphs": true,
+    "acolyte_all_paragraphs": true,
+    "gear_source_text": true,
+    "dwarf_speed": true,
+    "vestments_reference_exists": true
+  },
+  "mechanical_signoff": false
+}

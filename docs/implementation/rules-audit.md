@@ -70,3 +70,9 @@ Flame Blade / Scorching Ray 的近战 / 远程攻击类别补齐；Call Lightnin
 修复包括：Heroism 升环整段、Conjure Animals 九环四倍、Dominate Beast 目标及升环时长、Create or Destroy Water 灭火、Polymorph / True Polymorph 零 HP 限制、True Polymorph 直到驱散、Phantasmal Killer / Weird 自身回合结束触发、Find Familiar 的 attack modifier、Moonbeam 的 1d10 及 Spike Growth 的强制检定措辞。四个表格法术不从扁平提取结果重排。
 
 Animal Friendship 第 115 页原始 PDF 自身存在 `additional beast t level` 缺字，保留审计阻塞，不从记忆修正文。正文相同不代表结构参数齐全；Weird 条件伤害、Phantasmal Killer 分阶段、Dominate Beast 目标过滤和时长表、Heroism 临时 HP / 升环目标仍待结构化与执行验证。
+
+## 背景 / 种族 / 怪物来源补丁
+
+`official/character-source-review.json` 保存运动技能 p79 完整段落、侍僧 p60–61 介绍与装备及矮人 p3 重甲速度例外。祈祷物和香支是无官方价重的叙事授予，不复用香块或普通书价重；法衣只复用身份引用，其社区零价重未获官方签收。
+
+`official/monster-source-review.json` 保存七条带 expected 断言的修正和原段隔离凭据：鼠人鼠形 / 虎人虎形大小的命名兽形跨页来源、三种成年龙变形、巫妖 Disrupt Life 目标与成功减半及 Night Hag Items 非 SRD 段落。官方心石 / 灵魂袋动作前提保留。传奇动作预算与时机通则 p260 已收集，完整结构和实际执行仍待后续批次。

@@ -3825,6 +3825,1444 @@
       "value": [
         "You create a magical zone that guards against deception in a 15-foot-radius sphere centered on a point of your choice within range. Until the spell ends, a creature that enters the spell's area for the first time on a turn or starts its turn there must make a Charisma saving throw. On a failed save, a creature can't speak a deliberate lie while in the radius. You know whether each creature succeeds or fails on its saving throw. An affected creature is aware of the spell and can thus avoid answering questions to which it would normally respond with a lie. Such a creature can be evasive in its answers as long as it remains within the boundaries of the truth."
       ]
+    },
+    {
+      "id": "official-character-athletics-desc",
+      "kind": "skills",
+      "records": [
+        "athletics"
+      ],
+      "page": 79,
+      "heading": "Using Each Ability / Strength / Athletics",
+      "operation": "set_field",
+      "path": [
+        "desc"
+      ],
+      "expected": [
+        "Your Strength (Athletics) check covers difficult situations you encounter while climbing, jumping, or swimming."
+      ],
+      "value": [
+        "Your Strength (Athletics) check covers difficult situations you encounter while climbing, jumping, or swimming. Examples include the following activities:",
+        "You attempt to climb a sheer or slippery cliff, avoid hazards while scaling a wall, or cling to a surface while something is trying to knock you off.",
+        "You try to jump an unusually long distance or pull off a stunt midjump.",
+        "You struggle to swim or stay afloat in treacherous currents, storm-tossed waves, or areas of thick seaweed. Or another creature tries to push or pull you underwater or otherwise interfere with your swimming."
+      ]
+    },
+    {
+      "id": "official-character-acolyte-desc",
+      "kind": "backgrounds",
+      "records": [
+        "acolyte"
+      ],
+      "page": 60,
+      "heading": "Backgrounds / Acolyte",
+      "operation": "set_field",
+      "path": [
+        "desc"
+      ],
+      "expected": null,
+      "value": [
+        "You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine. You are not necessarily a cleric—performing sacred rites is not the same thing as channeling divine power.",
+        "Choose a god, a pantheon of gods, or some other quasi-divine being from among those listed in \"Fantasy-Historical Pantheons\" or those specified by your GM, and work with your GM to detail the nature of your religious service. Were you a lesser functionary in a temple, raised from childhood to assist the priests in the sacred rites? Or were you a high priest who suddenly experienced a call to serve your god in a different way? Perhaps you were the leader of a small cult outside of any established temple structure, or even an occult group that served a fiendish master that you now deny."
+      ]
+    },
+    {
+      "id": "official-character-acolyte-gear_source_text",
+      "kind": "backgrounds",
+      "records": [
+        "acolyte"
+      ],
+      "page": 60,
+      "heading": "Backgrounds / Acolyte",
+      "operation": "set_field",
+      "path": [
+        "gear_source_text"
+      ],
+      "expected": null,
+      "value": "A holy symbol (a gift to you when you entered the priesthood), a prayer book or prayer wheel, 5 sticks of incense, vestments, a set of common clothes, and a pouch containing 15 gp"
+    },
+    {
+      "id": "official-character-acolyte-starting_equipment",
+      "kind": "backgrounds",
+      "records": [
+        "acolyte"
+      ],
+      "page": 60,
+      "heading": "Backgrounds / Acolyte",
+      "operation": "set_field",
+      "path": [
+        "starting_equipment"
+      ],
+      "expected": [
+        {
+          "equipment": {
+            "index": "clothes-common",
+            "name": "Clothes, common",
+            "url": "/api/2014/equipment/clothes-common"
+          },
+          "quantity": 1
+        },
+        {
+          "equipment": {
+            "index": "pouch",
+            "name": "Pouch",
+            "url": "/api/2014/equipment/pouch"
+          },
+          "quantity": 1
+        }
+      ],
+      "value": [
+        {
+          "equipment": {
+            "index": "clothes-common",
+            "name": "Clothes, common",
+            "url": "/api/2014/equipment/clothes-common"
+          },
+          "quantity": 1
+        },
+        {
+          "equipment": {
+            "index": "pouch",
+            "name": "Pouch",
+            "url": "/api/2014/equipment/pouch"
+          },
+          "quantity": 1
+        },
+        {
+          "equipment": {
+            "index": "vestments",
+            "name": "Vestments",
+            "url": "/api/2014/equipment/vestments"
+          },
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "official-character-acolyte-narrative_grants",
+      "kind": "backgrounds",
+      "records": [
+        "acolyte"
+      ],
+      "page": 60,
+      "heading": "Backgrounds / Acolyte",
+      "operation": "set_field",
+      "path": [
+        "narrative_grants"
+      ],
+      "expected": null,
+      "value": [
+        {
+          "id": "acolyte-prayer-item",
+          "kind": "choice",
+          "choose": 1,
+          "options": [
+            {
+              "id": "prayer-book",
+              "name": "Prayer book",
+              "quantity": 1
+            },
+            {
+              "id": "prayer-wheel",
+              "name": "Prayer wheel",
+              "quantity": 1
+            }
+          ],
+          "status": "reference_pending_execution",
+          "source_pages": [
+            61
+          ]
+        },
+        {
+          "id": "acolyte-incense-sticks",
+          "kind": "item",
+          "name": "Sticks of incense",
+          "quantity": 5,
+          "unit": "stick",
+          "status": "reference_pending_execution",
+          "source_pages": [
+            61
+          ]
+        }
+      ]
+    },
+    {
+      "id": "official-character-acolyte-equipment_source_constraints",
+      "kind": "backgrounds",
+      "records": [
+        "acolyte"
+      ],
+      "page": 60,
+      "heading": "Backgrounds / Acolyte",
+      "operation": "set_field",
+      "path": [
+        "equipment_source_constraints"
+      ],
+      "expected": null,
+      "value": [
+        "Official background passage supplies no cost or weight for prayer book, prayer wheel, incense sticks or vestments. Missing values stay unknown; do not infer zero.",
+        "Do not map incense sticks to equipment/block-of-incense; the official units differ.",
+        "The existing vestments reference is valid as an identity link; its community cost=0 and weight=0 are not certified official prices or weights.",
+        "P09 must unify source equipment and narrative grants before inventory execution, preventing omissions or duplicate grants."
+      ]
+    },
+    {
+      "id": "official-character-dwarf-speed_description",
+      "kind": "races",
+      "records": [
+        "dwarf"
+      ],
+      "page": 3,
+      "heading": "Dwarf Traits / Speed",
+      "operation": "set_field",
+      "path": [
+        "speed_description"
+      ],
+      "expected": null,
+      "value": "Your base walking speed is 25 feet. Your speed is not reduced by wearing heavy armor."
+    },
+    {
+      "id": "official-character-dwarf-heavy_armor_speed_reduction_exception",
+      "kind": "races",
+      "records": [
+        "dwarf"
+      ],
+      "page": 3,
+      "heading": "Dwarf Traits / Speed",
+      "operation": "set_field",
+      "path": [
+        "heavy_armor_speed_reduction_exception"
+      ],
+      "expected": null,
+      "value": true
+    },
+    {
+      "id": "official-character-dwarf-speed_rule_status",
+      "kind": "races",
+      "records": [
+        "dwarf"
+      ],
+      "page": 3,
+      "heading": "Dwarf Traits / Speed",
+      "operation": "set_field",
+      "path": [
+        "speed_rule_status"
+      ],
+      "expected": null,
+      "value": "reference_pending_execution"
+    },
+    {
+      "id": "official-next-monster-wererat-rat-size",
+      "kind": "monsters",
+      "records": [
+        "wererat-rat"
+      ],
+      "operation": "set_field",
+      "path": [
+        "size"
+      ],
+      "expected": "Medium",
+      "value": "Small",
+      "page": 328,
+      "heading": "Wererat / Shapechanger",
+      "source_chain": [
+        {
+          "page": 328,
+          "column": 0,
+          "heading": "Wererat / Shapechanger",
+          "evidence": "polymorph into a rat-humanoid hybrid or into a giant rat; statistics, other than its size, are the same in each form"
+        },
+        {
+          "page": 378,
+          "column": 0,
+          "heading": "Giant Rat",
+          "evidence": "Small beast, unaligned"
+        }
+      ],
+      "derivation": "animal form takes the named animal size; no substitution of its other statistics"
+    },
+    {
+      "id": "official-next-monster-weretiger-tiger-size",
+      "kind": "monsters",
+      "records": [
+        "weretiger-tiger"
+      ],
+      "operation": "set_field",
+      "path": [
+        "size"
+      ],
+      "expected": "Medium",
+      "value": "Large",
+      "page": 328,
+      "heading": "Weretiger / Shapechanger",
+      "source_chain": [
+        {
+          "page": 328,
+          "column": 1,
+          "heading": "Weretiger / Shapechanger",
+          "evidence": "polymorph into a tiger-humanoid hybrid or into a tiger; statistics, other than its size, are the same in each form"
+        },
+        {
+          "page": 391,
+          "column": 1,
+          "heading": "Tiger",
+          "evidence": "Large beast, unaligned"
+        }
+      ],
+      "derivation": "animal form takes the named animal size; hybrid size not signed off by this patch"
+    },
+    {
+      "id": "official-next-monster-adult-bronze-dragon-actions",
+      "kind": "monsters",
+      "records": [
+        "adult-bronze-dragon"
+      ],
+      "operation": "set_field",
+      "path": [
+        "actions"
+      ],
+      "expected": [
+        {
+          "name": "Multiattack",
+          "multiattack_type": "actions",
+          "desc": "The dragon can use its Frightful Presence. It then makes three attacks: one with its bite and two with its claws.",
+          "actions": [
+            {
+              "action_name": "Frightful Presence",
+              "count": 1,
+              "type": "ability"
+            },
+            {
+              "action_name": "Bite",
+              "count": 1,
+              "type": "melee"
+            },
+            {
+              "action_name": "Claw",
+              "count": 2,
+              "type": "melee"
+            }
+          ]
+        },
+        {
+          "name": "Bite",
+          "desc": "Melee Weapon Attack: +12 to hit, reach 10 ft., one target. Hit: 18 (2d10 + 7) piercing damage.",
+          "attack_bonus": 12,
+          "damage": [
+            {
+              "damage_type": {
+                "index": "piercing",
+                "name": "Piercing",
+                "url": "/api/2014/damage-types/piercing"
+              },
+              "damage_dice": "2d10+7"
+            }
+          ]
+        },
+        {
+          "name": "Claw",
+          "desc": "Melee Weapon Attack: +12 to hit, reach 5 ft., one target. Hit: 14 (2d6 + 7) slashing damage.",
+          "attack_bonus": 12,
+          "damage": [
+            {
+              "damage_type": {
+                "index": "slashing",
+                "name": "Slashing",
+                "url": "/api/2014/damage-types/slashing"
+              },
+              "damage_dice": "2d6+7"
+            }
+          ]
+        },
+        {
+          "name": "Tail",
+          "desc": "Melee Weapon Attack: +12 to hit, reach 15 ft., one target. Hit: 16 (2d8 + 7) bludgeoning damage.",
+          "attack_bonus": 12,
+          "damage": [
+            {
+              "damage_type": {
+                "index": "bludgeoning",
+                "name": "Bludgeoning",
+                "url": "/api/2014/damage-types/bludgeoning"
+              },
+              "damage_dice": "2d8+7"
+            }
+          ]
+        },
+        {
+          "name": "Frightful Presence",
+          "desc": "Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 17 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the dragon's Frightful Presence for the next 24 hours.",
+          "dc": {
+            "dc_type": {
+              "index": "wis",
+              "name": "WIS",
+              "url": "/api/2014/ability-scores/wis"
+            },
+            "dc_value": 17,
+            "success_type": "none"
+          }
+        },
+        {
+          "name": "Breath Weapons",
+          "desc": "The dragon uses one of the following breath weapons.\nLightning Breath. The dragon exhales lightning in a 90-foot line that is 5 feet wide. Each creature in that line must make a DC 19 Dexterity saving throw, taking 66 (12d10) lightning damage on a failed save, or half as much damage on a successful one.\nRepulsion Breath. The dragon exhales repulsion energy in a 30-foot cone. Each creature in that area must succeed on a DC 19 Strength saving throw. On a failed save, the creature is pushed 60 feet away from the dragon.",
+          "usage": {
+            "type": "recharge on roll",
+            "dice": "1d6",
+            "min_value": 5
+          },
+          "options": {
+            "choose": 1,
+            "type": "attack",
+            "from": {
+              "option_set_type": "options_array",
+              "options": [
+                {
+                  "option_type": "breath",
+                  "name": "Lightning Breath",
+                  "dc": {
+                    "dc_type": {
+                      "index": "dex",
+                      "name": "DEX",
+                      "url": "/api/2014/ability-scores/dex"
+                    },
+                    "dc_value": 19,
+                    "success_type": "half"
+                  },
+                  "damage": [
+                    {
+                      "damage_type": {
+                        "index": "lightning",
+                        "name": "Lightning",
+                        "url": "/api/2014/damage-types/lightning"
+                      },
+                      "damage_dice": "12d10"
+                    }
+                  ]
+                },
+                {
+                  "option_type": "breath",
+                  "name": "Repulsion Breath",
+                  "dc": {
+                    "dc_type": {
+                      "index": "str",
+                      "name": "STR",
+                      "url": "/api/2014/ability-scores/str"
+                    },
+                    "dc_value": 19,
+                    "success_type": "none"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "value": [
+        {
+          "name": "Multiattack",
+          "multiattack_type": "actions",
+          "desc": "The dragon can use its Frightful Presence. It then makes three attacks: one with its bite and two with its claws.",
+          "actions": [
+            {
+              "action_name": "Frightful Presence",
+              "count": 1,
+              "type": "ability"
+            },
+            {
+              "action_name": "Bite",
+              "count": 1,
+              "type": "melee"
+            },
+            {
+              "action_name": "Claw",
+              "count": 2,
+              "type": "melee"
+            }
+          ]
+        },
+        {
+          "name": "Bite",
+          "desc": "Melee Weapon Attack: +12 to hit, reach 10 ft., one target. Hit: 18 (2d10 + 7) piercing damage.",
+          "attack_bonus": 12,
+          "damage": [
+            {
+              "damage_type": {
+                "index": "piercing",
+                "name": "Piercing",
+                "url": "/api/2014/damage-types/piercing"
+              },
+              "damage_dice": "2d10+7"
+            }
+          ]
+        },
+        {
+          "name": "Claw",
+          "desc": "Melee Weapon Attack: +12 to hit, reach 5 ft., one target. Hit: 14 (2d6 + 7) slashing damage.",
+          "attack_bonus": 12,
+          "damage": [
+            {
+              "damage_type": {
+                "index": "slashing",
+                "name": "Slashing",
+                "url": "/api/2014/damage-types/slashing"
+              },
+              "damage_dice": "2d6+7"
+            }
+          ]
+        },
+        {
+          "name": "Tail",
+          "desc": "Melee Weapon Attack: +12 to hit, reach 15 ft., one target. Hit: 16 (2d8 + 7) bludgeoning damage.",
+          "attack_bonus": 12,
+          "damage": [
+            {
+              "damage_type": {
+                "index": "bludgeoning",
+                "name": "Bludgeoning",
+                "url": "/api/2014/damage-types/bludgeoning"
+              },
+              "damage_dice": "2d8+7"
+            }
+          ]
+        },
+        {
+          "name": "Frightful Presence",
+          "desc": "Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 17 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the dragon's Frightful Presence for the next 24 hours.",
+          "dc": {
+            "dc_type": {
+              "index": "wis",
+              "name": "WIS",
+              "url": "/api/2014/ability-scores/wis"
+            },
+            "dc_value": 17,
+            "success_type": "none"
+          }
+        },
+        {
+          "name": "Breath Weapons",
+          "desc": "The dragon uses one of the following breath weapons.\nLightning Breath. The dragon exhales lightning in a 90-foot line that is 5 feet wide. Each creature in that line must make a DC 19 Dexterity saving throw, taking 66 (12d10) lightning damage on a failed save, or half as much damage on a successful one.\nRepulsion Breath. The dragon exhales repulsion energy in a 30-foot cone. Each creature in that area must succeed on a DC 19 Strength saving throw. On a failed save, the creature is pushed 60 feet away from the dragon.",
+          "usage": {
+            "type": "recharge on roll",
+            "dice": "1d6",
+            "min_value": 5
+          },
+          "options": {
+            "choose": 1,
+            "type": "attack",
+            "from": {
+              "option_set_type": "options_array",
+              "options": [
+                {
+                  "option_type": "breath",
+                  "name": "Lightning Breath",
+                  "dc": {
+                    "dc_type": {
+                      "index": "dex",
+                      "name": "DEX",
+                      "url": "/api/2014/ability-scores/dex"
+                    },
+                    "dc_value": 19,
+                    "success_type": "half"
+                  },
+                  "damage": [
+                    {
+                      "damage_type": {
+                        "index": "lightning",
+                        "name": "Lightning",
+                        "url": "/api/2014/damage-types/lightning"
+                      },
+                      "damage_dice": "12d10"
+                    }
+                  ]
+                },
+                {
+                  "option_type": "breath",
+                  "name": "Repulsion Breath",
+                  "dc": {
+                    "dc_type": {
+                      "index": "str",
+                      "name": "STR",
+                      "url": "/api/2014/ability-scores/str"
+                    },
+                    "dc_value": 19,
+                    "success_type": "none"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Change Shape",
+          "desc": "The dragon magically polymorphs into a humanoid or beast that has a challenge rating no higher than its own, or back into its true form. It reverts to its true form if it dies. Any equipment it is wearing or carrying is absorbed or borne by the new form (the dragon's choice). In a new form, the dragon retains its alignment, hit points, Hit Dice, ability to speak, proficiencies, Legendary Resistance, lair actions, and Intelligence, Wisdom, and Charisma scores, as well as this action. Its statistics and capabilities are otherwise replaced by those of the new form, except any class features or legendary actions of that form."
+        }
+      ],
+      "page": 294,
+      "heading": "Adult Bronze Dragon / Change Shape",
+      "source_column": 1,
+      "scope": "only appended action reviewed; unchanged array entries are preserved, not newly approved"
+    },
+    {
+      "id": "official-next-monster-adult-gold-dragon-actions",
+      "kind": "monsters",
+      "records": [
+        "adult-gold-dragon"
+      ],
+      "operation": "set_field",
+      "path": [
+        "actions"
+      ],
+      "expected": [
+        {
+          "name": "Multiattack",
+          "multiattack_type": "actions",
+          "desc": "The dragon can use its Frightful Presence. It then makes three attacks: one with its bite and two with its claws.",
+          "actions": [
+            {
+              "action_name": "Frightful Presence",
+              "count": 1,
+              "type": "ability"
+            },
+            {
+              "action_name": "Bite",
+              "count": 1,
+              "type": "melee"
+            },
+            {
+              "action_name": "Claw",
+              "count": 2,
+              "type": "melee"
+            }
+          ]
+        },
+        {
+          "name": "Bite",
+          "desc": "Melee Weapon Attack: +14 to hit, reach 10 ft., one target. Hit: 19 (2d10 + 8) piercing damage.",
+          "attack_bonus": 14,
+          "damage": [
+            {
+              "damage_type": {
+                "index": "piercing",
+                "name": "Piercing",
+                "url": "/api/2014/damage-types/piercing"
+              },
+              "damage_dice": "2d10+8"
+            }
+          ]
+        },
+        {
+          "name": "Claw",
+          "desc": "Melee Weapon Attack: +14 to hit, reach 5 ft., one target. Hit: 15 (2d6 + 8) slashing damage.",
+          "attack_bonus": 14,
+          "damage": [
+            {
+              "damage_type": {
+                "index": "slashing",
+                "name": "Slashing",
+                "url": "/api/2014/damage-types/slashing"
+              },
+              "damage_dice": "2d6+8"
+            }
+          ]
+        },
+        {
+          "name": "Tail",
+          "desc": "Melee Weapon Attack: +14 to hit, reach 15 ft., one target. Hit: 17 (2d8 + 8) bludgeoning damage.",
+          "attack_bonus": 14,
+          "damage": [
+            {
+              "damage_type": {
+                "index": "bludgeoning",
+                "name": "Bludgeoning",
+                "url": "/api/2014/damage-types/bludgeoning"
+              },
+              "damage_dice": "2d8+8"
+            }
+          ]
+        },
+        {
+          "name": "Frightful Presence",
+          "desc": "Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 21 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the dragon's Frightful Presence for the next 24 hours.",
+          "dc": {
+            "dc_type": {
+              "index": "wis",
+              "name": "WIS",
+              "url": "/api/2014/ability-scores/wis"
+            },
+            "dc_value": 21,
+            "success_type": "none"
+          }
+        },
+        {
+          "name": "Breath Weapons",
+          "desc": "The dragon uses one of the following breath weapons.\nFire Breath. The dragon exhales fire in a 60-foot cone. Each creature in that area must make a DC 21 Dexterity saving throw, taking 66 (12d10) fire damage on a failed save, or half as much damage on a successful one.\nWeakening Breath. The dragon exhales gas in a 60-foot cone. Each creature in that area must succeed on a DC 21 Strength saving throw or have disadvantage on Strength-based attack rolls, Strength checks, and Strength saving throws for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+          "usage": {
+            "type": "recharge on roll",
+            "dice": "1d6",
+            "min_value": 5
+          },
+          "options": {
+            "choose": 1,
+            "type": "attack",
+            "from": {
+              "option_set_type": "options_array",
+              "options": [
+                {
+                  "option_type": "breath",
+                  "name": "Fire Breath",
+                  "dc": {
+                    "dc_type": {
+                      "index": "dex",
+                      "name": "DEX",
+                      "url": "/api/2014/ability-scores/dex"
+                    },
+                    "dc_value": 21,
+                    "success_type": "half"
+                  },
+                  "damage": [
+                    {
+                      "damage_type": {
+                        "index": "fire",
+                        "name": "Fire",
+                        "url": "/api/2014/damage-types/fire"
+                      },
+                      "damage_dice": "12d10"
+                    }
+                  ]
+                },
+                {
+                  "option_type": "breath",
+                  "name": "Weakening Breath",
+                  "dc": {
+                    "dc_type": {
+                      "index": "str",
+                      "name": "STR",
+                      "url": "/api/2014/ability-scores/str"
+                    },
+                    "dc_value": 21,
+                    "success_type": "none"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "value": [
+        {
+          "name": "Multiattack",
+          "multiattack_type": "actions",
+          "desc": "The dragon can use its Frightful Presence. It then makes three attacks: one with its bite and two with its claws.",
+          "actions": [
+            {
+              "action_name": "Frightful Presence",
+              "count": 1,
+              "type": "ability"
+            },
+            {
+              "action_name": "Bite",
+              "count": 1,
+              "type": "melee"
+            },
+            {
+              "action_name": "Claw",
+              "count": 2,
+              "type": "melee"
+            }
+          ]
+        },
+        {
+          "name": "Bite",
+          "desc": "Melee Weapon Attack: +14 to hit, reach 10 ft., one target. Hit: 19 (2d10 + 8) piercing damage.",
+          "attack_bonus": 14,
+          "damage": [
+            {
+              "damage_type": {
+                "index": "piercing",
+                "name": "Piercing",
+                "url": "/api/2014/damage-types/piercing"
+              },
+              "damage_dice": "2d10+8"
+            }
+          ]
+        },
+        {
+          "name": "Claw",
+          "desc": "Melee Weapon Attack: +14 to hit, reach 5 ft., one target. Hit: 15 (2d6 + 8) slashing damage.",
+          "attack_bonus": 14,
+          "damage": [
+            {
+              "damage_type": {
+                "index": "slashing",
+                "name": "Slashing",
+                "url": "/api/2014/damage-types/slashing"
+              },
+              "damage_dice": "2d6+8"
+            }
+          ]
+        },
+        {
+          "name": "Tail",
+          "desc": "Melee Weapon Attack: +14 to hit, reach 15 ft., one target. Hit: 17 (2d8 + 8) bludgeoning damage.",
+          "attack_bonus": 14,
+          "damage": [
+            {
+              "damage_type": {
+                "index": "bludgeoning",
+                "name": "Bludgeoning",
+                "url": "/api/2014/damage-types/bludgeoning"
+              },
+              "damage_dice": "2d8+8"
+            }
+          ]
+        },
+        {
+          "name": "Frightful Presence",
+          "desc": "Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 21 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the dragon's Frightful Presence for the next 24 hours.",
+          "dc": {
+            "dc_type": {
+              "index": "wis",
+              "name": "WIS",
+              "url": "/api/2014/ability-scores/wis"
+            },
+            "dc_value": 21,
+            "success_type": "none"
+          }
+        },
+        {
+          "name": "Breath Weapons",
+          "desc": "The dragon uses one of the following breath weapons.\nFire Breath. The dragon exhales fire in a 60-foot cone. Each creature in that area must make a DC 21 Dexterity saving throw, taking 66 (12d10) fire damage on a failed save, or half as much damage on a successful one.\nWeakening Breath. The dragon exhales gas in a 60-foot cone. Each creature in that area must succeed on a DC 21 Strength saving throw or have disadvantage on Strength-based attack rolls, Strength checks, and Strength saving throws for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+          "usage": {
+            "type": "recharge on roll",
+            "dice": "1d6",
+            "min_value": 5
+          },
+          "options": {
+            "choose": 1,
+            "type": "attack",
+            "from": {
+              "option_set_type": "options_array",
+              "options": [
+                {
+                  "option_type": "breath",
+                  "name": "Fire Breath",
+                  "dc": {
+                    "dc_type": {
+                      "index": "dex",
+                      "name": "DEX",
+                      "url": "/api/2014/ability-scores/dex"
+                    },
+                    "dc_value": 21,
+                    "success_type": "half"
+                  },
+                  "damage": [
+                    {
+                      "damage_type": {
+                        "index": "fire",
+                        "name": "Fire",
+                        "url": "/api/2014/damage-types/fire"
+                      },
+                      "damage_dice": "12d10"
+                    }
+                  ]
+                },
+                {
+                  "option_type": "breath",
+                  "name": "Weakening Breath",
+                  "dc": {
+                    "dc_type": {
+                      "index": "str",
+                      "name": "STR",
+                      "url": "/api/2014/ability-scores/str"
+                    },
+                    "dc_value": 21,
+                    "success_type": "none"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Change Shape",
+          "desc": "The dragon magically polymorphs into a humanoid or beast that has a challenge rating no higher than its own, or back into its true form. It reverts to its true form if it dies. Any equipment it is wearing or carrying is absorbed or borne by the new form (the dragon's choice). In a new form, the dragon retains its alignment, hit points, Hit Dice, ability to speak, proficiencies, Legendary Resistance, lair actions, and Intelligence, Wisdom, and Charisma scores, as well as this action. Its statistics and capabilities are otherwise replaced by those of the new form, except any class features or legendary actions of that form."
+        }
+      ],
+      "page": 300,
+      "heading": "Adult Gold Dragon / Change Shape",
+      "source_column": 0,
+      "scope": "only appended action reviewed; unchanged array entries are preserved, not newly approved"
+    },
+    {
+      "id": "official-next-monster-adult-silver-dragon-actions",
+      "kind": "monsters",
+      "records": [
+        "adult-silver-dragon"
+      ],
+      "operation": "set_field",
+      "path": [
+        "actions"
+      ],
+      "expected": [
+        {
+          "name": "Multiattack",
+          "multiattack_type": "actions",
+          "desc": "The dragon can use its Frightful Presence. It then makes three attacks: one with its bite and two with its claws.",
+          "actions": [
+            {
+              "action_name": "Frightful Presence",
+              "count": 1,
+              "type": "ability"
+            },
+            {
+              "action_name": "Bite",
+              "count": 1,
+              "type": "melee"
+            },
+            {
+              "action_name": "Claw",
+              "count": 2,
+              "type": "melee"
+            }
+          ]
+        },
+        {
+          "name": "Bite",
+          "desc": "Melee Weapon Attack: +13 to hit, reach 10 ft., one target. Hit: 19 (2d10 + 8) piercing damage.",
+          "attack_bonus": 13,
+          "damage": [
+            {
+              "damage_type": {
+                "index": "piercing",
+                "name": "Piercing",
+                "url": "/api/2014/damage-types/piercing"
+              },
+              "damage_dice": "2d10+8"
+            }
+          ]
+        },
+        {
+          "name": "Claw",
+          "desc": "Melee Weapon Attack: +13 to hit, reach 5 ft., one target. Hit: 15 (2d6 + 8) slashing damage.",
+          "attack_bonus": 13,
+          "damage": [
+            {
+              "damage_type": {
+                "index": "slashing",
+                "name": "Slashing",
+                "url": "/api/2014/damage-types/slashing"
+              },
+              "damage_dice": "2d6+8"
+            }
+          ]
+        },
+        {
+          "name": "Tail",
+          "desc": "Melee Weapon Attack: +13 to hit, reach 15 ft., one target. Hit: 17 (2d8 + 8) bludgeoning damage.",
+          "attack_bonus": 13,
+          "damage": [
+            {
+              "damage_type": {
+                "index": "bludgeoning",
+                "name": "Bludgeoning",
+                "url": "/api/2014/damage-types/bludgeoning"
+              },
+              "damage_dice": "2d8+8"
+            }
+          ]
+        },
+        {
+          "name": "Frightful Presence",
+          "desc": "Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 18 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the dragon's Frightful Presence for the next 24 hours.",
+          "dc": {
+            "dc_type": {
+              "index": "wis",
+              "name": "WIS",
+              "url": "/api/2014/ability-scores/wis"
+            },
+            "dc_value": 18,
+            "success_type": "none"
+          }
+        },
+        {
+          "name": "Breath Weapons",
+          "desc": "The dragon uses one of the following breath weapons.\nCold Breath. The dragon exhales an icy blast in a 60-foot cone. Each creature in that area must make a DC 20 Constitution saving throw, taking 58 (13d8) cold damage on a failed save, or half as much damage on a successful one.\nParalyzing Breath. The dragon exhales paralyzing gas in a 60-foot cone. Each creature in that area must succeed on a DC 20 Constitution saving throw or be paralyzed for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+          "usage": {
+            "type": "recharge on roll",
+            "dice": "1d6",
+            "min_value": 5
+          },
+          "options": {
+            "choose": 1,
+            "type": "attack",
+            "from": {
+              "option_set_type": "options_array",
+              "options": [
+                {
+                  "option_type": "breath",
+                  "name": "Cold Breath",
+                  "dc": {
+                    "dc_type": {
+                      "index": "con",
+                      "name": "CON",
+                      "url": "/api/2014/ability-scores/con"
+                    },
+                    "dc_value": 20,
+                    "success_type": "half"
+                  },
+                  "damage": [
+                    {
+                      "damage_type": {
+                        "index": "cold",
+                        "name": "Cold",
+                        "url": "/api/2014/damage-types/cold"
+                      },
+                      "damage_dice": "13d8"
+                    }
+                  ]
+                },
+                {
+                  "option_type": "breath",
+                  "name": "Paralyzing Breath",
+                  "dc": {
+                    "dc_type": {
+                      "index": "con",
+                      "name": "CON",
+                      "url": "/api/2014/ability-scores/con"
+                    },
+                    "dc_value": 20,
+                    "success_type": "none"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "value": [
+        {
+          "name": "Multiattack",
+          "multiattack_type": "actions",
+          "desc": "The dragon can use its Frightful Presence. It then makes three attacks: one with its bite and two with its claws.",
+          "actions": [
+            {
+              "action_name": "Frightful Presence",
+              "count": 1,
+              "type": "ability"
+            },
+            {
+              "action_name": "Bite",
+              "count": 1,
+              "type": "melee"
+            },
+            {
+              "action_name": "Claw",
+              "count": 2,
+              "type": "melee"
+            }
+          ]
+        },
+        {
+          "name": "Bite",
+          "desc": "Melee Weapon Attack: +13 to hit, reach 10 ft., one target. Hit: 19 (2d10 + 8) piercing damage.",
+          "attack_bonus": 13,
+          "damage": [
+            {
+              "damage_type": {
+                "index": "piercing",
+                "name": "Piercing",
+                "url": "/api/2014/damage-types/piercing"
+              },
+              "damage_dice": "2d10+8"
+            }
+          ]
+        },
+        {
+          "name": "Claw",
+          "desc": "Melee Weapon Attack: +13 to hit, reach 5 ft., one target. Hit: 15 (2d6 + 8) slashing damage.",
+          "attack_bonus": 13,
+          "damage": [
+            {
+              "damage_type": {
+                "index": "slashing",
+                "name": "Slashing",
+                "url": "/api/2014/damage-types/slashing"
+              },
+              "damage_dice": "2d6+8"
+            }
+          ]
+        },
+        {
+          "name": "Tail",
+          "desc": "Melee Weapon Attack: +13 to hit, reach 15 ft., one target. Hit: 17 (2d8 + 8) bludgeoning damage.",
+          "attack_bonus": 13,
+          "damage": [
+            {
+              "damage_type": {
+                "index": "bludgeoning",
+                "name": "Bludgeoning",
+                "url": "/api/2014/damage-types/bludgeoning"
+              },
+              "damage_dice": "2d8+8"
+            }
+          ]
+        },
+        {
+          "name": "Frightful Presence",
+          "desc": "Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 18 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the dragon's Frightful Presence for the next 24 hours.",
+          "dc": {
+            "dc_type": {
+              "index": "wis",
+              "name": "WIS",
+              "url": "/api/2014/ability-scores/wis"
+            },
+            "dc_value": 18,
+            "success_type": "none"
+          }
+        },
+        {
+          "name": "Breath Weapons",
+          "desc": "The dragon uses one of the following breath weapons.\nCold Breath. The dragon exhales an icy blast in a 60-foot cone. Each creature in that area must make a DC 20 Constitution saving throw, taking 58 (13d8) cold damage on a failed save, or half as much damage on a successful one.\nParalyzing Breath. The dragon exhales paralyzing gas in a 60-foot cone. Each creature in that area must succeed on a DC 20 Constitution saving throw or be paralyzed for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+          "usage": {
+            "type": "recharge on roll",
+            "dice": "1d6",
+            "min_value": 5
+          },
+          "options": {
+            "choose": 1,
+            "type": "attack",
+            "from": {
+              "option_set_type": "options_array",
+              "options": [
+                {
+                  "option_type": "breath",
+                  "name": "Cold Breath",
+                  "dc": {
+                    "dc_type": {
+                      "index": "con",
+                      "name": "CON",
+                      "url": "/api/2014/ability-scores/con"
+                    },
+                    "dc_value": 20,
+                    "success_type": "half"
+                  },
+                  "damage": [
+                    {
+                      "damage_type": {
+                        "index": "cold",
+                        "name": "Cold",
+                        "url": "/api/2014/damage-types/cold"
+                      },
+                      "damage_dice": "13d8"
+                    }
+                  ]
+                },
+                {
+                  "option_type": "breath",
+                  "name": "Paralyzing Breath",
+                  "dc": {
+                    "dc_type": {
+                      "index": "con",
+                      "name": "CON",
+                      "url": "/api/2014/ability-scores/con"
+                    },
+                    "dc_value": 20,
+                    "success_type": "none"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Change Shape",
+          "desc": "The dragon magically polymorphs into a humanoid or beast that has a challenge rating no higher than its own, or back into its true form. It reverts to its true form if it dies. Any equipment it is wearing or carrying is absorbed or borne by the new form (the dragon's choice). In a new form, the dragon retains its alignment, hit points, Hit Dice, ability to speak, proficiencies, Legendary Resistance, lair actions, and Intelligence, Wisdom, and Charisma scores, as well as this action. Its statistics and capabilities are otherwise replaced by those of the new form, except any class features or legendary actions of that form."
+        }
+      ],
+      "page": 302,
+      "heading": "Adult Silver Dragon / Change Shape",
+      "source_column": 1,
+      "scope": "only appended action reviewed; unchanged array entries are preserved, not newly approved"
+    },
+    {
+      "id": "official-next-monster-lich-legendary_actions",
+      "kind": "monsters",
+      "records": [
+        "lich"
+      ],
+      "operation": "set_field",
+      "path": [
+        "legendary_actions"
+      ],
+      "expected": [
+        {
+          "name": "Cantrip",
+          "desc": "The lich casts a cantrip."
+        },
+        {
+          "name": "Paralyzing Touch (Costs 2 Actions)",
+          "desc": "The lich uses its Paralyzing Touch."
+        },
+        {
+          "name": "Frightening Gaze (Costs 2 Actions)",
+          "desc": "The lich fixes its gaze on one creature it can see within 10 feet of it. The target must succeed on a DC 18 Wisdom saving throw against this magic or become frightened for 1 minute. The frightened target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to the lich's gaze for the next 24 hours.",
+          "dc": {
+            "dc_type": {
+              "index": "wis",
+              "name": "WIS",
+              "url": "/api/2014/ability-scores/wis"
+            },
+            "dc_value": 18,
+            "success_type": "none"
+          }
+        },
+        {
+          "name": "Disrupt Life (Costs 3 Actions)",
+          "desc": "Each living creature within 20 feet of the lich must make a DC 18 Constitution saving throw against this magic, taking 21 (6d6) necrotic damage on a failed save, or half as much damage on a successful one.",
+          "dc": {
+            "dc_type": {
+              "index": "con",
+              "name": "CON",
+              "url": "/api/2014/ability-scores/con"
+            },
+            "dc_value": 18,
+            "success_type": "none"
+          },
+          "damage": [
+            {
+              "damage_type": {
+                "index": "necrotic",
+                "name": "Necrotic",
+                "url": "/api/2014/damage-types/necrotic"
+              },
+              "damage_dice": "6d6"
+            }
+          ]
+        }
+      ],
+      "value": [
+        {
+          "name": "Cantrip",
+          "desc": "The lich casts a cantrip."
+        },
+        {
+          "name": "Paralyzing Touch (Costs 2 Actions)",
+          "desc": "The lich uses its Paralyzing Touch."
+        },
+        {
+          "name": "Frightening Gaze (Costs 2 Actions)",
+          "desc": "The lich fixes its gaze on one creature it can see within 10 feet of it. The target must succeed on a DC 18 Wisdom saving throw against this magic or become frightened for 1 minute. The frightened target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a target's saving throw is successful or the effect ends for it, the target is immune to the lich's gaze for the next 24 hours.",
+          "dc": {
+            "dc_type": {
+              "index": "wis",
+              "name": "WIS",
+              "url": "/api/2014/ability-scores/wis"
+            },
+            "dc_value": 18,
+            "success_type": "none"
+          }
+        },
+        {
+          "name": "Disrupt Life (Costs 3 Actions)",
+          "desc": "Each non-undead creature within 20 feet of the lich must make a DC 18 Constitution saving throw against this magic, taking 21 (6d6) necrotic damage on a failed save, or half as much damage on a successful one.",
+          "dc": {
+            "dc_type": {
+              "index": "con",
+              "name": "CON",
+              "url": "/api/2014/ability-scores/con"
+            },
+            "dc_value": 18,
+            "success_type": "half"
+          },
+          "damage": [
+            {
+              "damage_type": {
+                "index": "necrotic",
+                "name": "Necrotic",
+                "url": "/api/2014/damage-types/necrotic"
+              },
+              "damage_dice": "6d6"
+            }
+          ]
+        }
+      ],
+      "page": 326,
+      "heading": "Lich / Legendary Actions / Disrupt Life",
+      "source_column": 1,
+      "reviewed_paths": [
+        [
+          "legendary_actions",
+          3,
+          "desc"
+        ],
+        [
+          "legendary_actions",
+          3,
+          "dc",
+          "success_type"
+        ]
+      ],
+      "scope": "full expected/value array for guarded replacement; other three options retained and not re-signed off"
+    },
+    {
+      "id": "official-next-monster-night-hag-special_abilities",
+      "kind": "monsters",
+      "records": [
+        "night-hag"
+      ],
+      "operation": "set_field",
+      "path": [
+        "special_abilities"
+      ],
+      "expected": [
+        {
+          "name": "Innate Spellcasting",
+          "desc": "The hag's innate spellcasting ability is Charisma (spell save DC 14, +6 to hit with spell attacks). She can innately cast the following spells, requiring no material components:\n\nAt will: detect magic, magic missile\n2/day each: plane shift (self only), ray of enfeeblement, sleep",
+          "spellcasting": {
+            "ability": {
+              "index": "cha",
+              "name": "CHA",
+              "url": "/api/2014/ability-scores/cha"
+            },
+            "dc": 14,
+            "modifier": 6,
+            "components_required": [
+              "V",
+              "S"
+            ],
+            "spells": [
+              {
+                "name": "Detect Magic",
+                "level": 1,
+                "url": "/api/2014/spells/detect-magic",
+                "usage": {
+                  "type": "at will"
+                }
+              },
+              {
+                "name": "Magic Missile",
+                "level": 1,
+                "url": "/api/2014/spells/magic-missile",
+                "usage": {
+                  "type": "at will"
+                }
+              },
+              {
+                "name": "Plane Shift",
+                "level": 7,
+                "notes": "Self Only",
+                "url": "/api/2014/spells/plane-shift",
+                "usage": {
+                  "type": "per day",
+                  "times": 2
+                }
+              },
+              {
+                "name": "Ray of Enfeeblement",
+                "level": 2,
+                "url": "/api/2014/spells/ray-of-enfeeblement",
+                "usage": {
+                  "type": "per day",
+                  "times": 2
+                }
+              },
+              {
+                "name": "Sleep",
+                "level": 1,
+                "url": "/api/2014/spells/sleep",
+                "usage": {
+                  "type": "per day",
+                  "times": 2
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "Magic Resistance",
+          "desc": "The hag has advantage on saving throws against spells and other magical effects."
+        },
+        {
+          "name": "Night Hag Items",
+          "desc": "A night hag carries two very rare magic items that she must craft for herself If either object is lost, the night hag will go to great lengths to retrieve it, as creating a new tool takes time and effort.\nHeartstone: This lustrous black gem allows a night hag to become ethereal while it is in her possession. The touch of a heartstone also cures any disease. Crafting a heartstone takes 30 days.\nSoul Bag: When an evil humanoid dies as a result of a night hag's Nightmare Haunting, the hag catches the soul in this black sack made of stitched flesh. A soul bag can hold only one evil soul at a time, and only the night hag who crafted the bag can catch a soul with it. Crafting a soul bag takes 7 days and a humanoid sacrifice (whose flesh is used to make the bag)."
+        }
+      ],
+      "value": [
+        {
+          "name": "Innate Spellcasting",
+          "desc": "The hag's innate spellcasting ability is Charisma (spell save DC 14, +6 to hit with spell attacks). She can innately cast the following spells, requiring no material components:\n\nAt will: detect magic, magic missile\n2/day each: plane shift (self only), ray of enfeeblement, sleep",
+          "spellcasting": {
+            "ability": {
+              "index": "cha",
+              "name": "CHA",
+              "url": "/api/2014/ability-scores/cha"
+            },
+            "dc": 14,
+            "modifier": 6,
+            "components_required": [
+              "V",
+              "S"
+            ],
+            "spells": [
+              {
+                "name": "Detect Magic",
+                "level": 1,
+                "url": "/api/2014/spells/detect-magic",
+                "usage": {
+                  "type": "at will"
+                }
+              },
+              {
+                "name": "Magic Missile",
+                "level": 1,
+                "url": "/api/2014/spells/magic-missile",
+                "usage": {
+                  "type": "at will"
+                }
+              },
+              {
+                "name": "Plane Shift",
+                "level": 7,
+                "notes": "Self Only",
+                "url": "/api/2014/spells/plane-shift",
+                "usage": {
+                  "type": "per day",
+                  "times": 2
+                }
+              },
+              {
+                "name": "Ray of Enfeeblement",
+                "level": 2,
+                "url": "/api/2014/spells/ray-of-enfeeblement",
+                "usage": {
+                  "type": "per day",
+                  "times": 2
+                }
+              },
+              {
+                "name": "Sleep",
+                "level": 1,
+                "url": "/api/2014/spells/sleep",
+                "usage": {
+                  "type": "per day",
+                  "times": 2
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "Magic Resistance",
+          "desc": "The hag has advantage on saving throws against spells and other magical effects."
+        }
+      ],
+      "page": 320,
+      "heading": "Night Hag / continued",
+      "source_pages": [
+        319,
+        320
+      ],
+      "scope": "remove only the unverified extra item paragraph; preserve official action text and all other abilities"
     }
   ],
   "record_additions": [
