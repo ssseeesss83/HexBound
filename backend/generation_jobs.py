@@ -197,13 +197,15 @@ class GenerationJobs:
             _save(db,job)
             return deepcopy(job)
 
-    def cancel(self,job_id):
+    def cancel(self,job_id,*,lease_token=None):
         """Server scheduler revocation, separate from cancelling a scene wait."""
         with self.store.connect() as db:
             db.execute('BEGIN IMMEDIATE')
             row = db.execute('SELECT * FROM generation_jobs WHERE id=?',(job_id,)).fetchone()
             if row is None:return None
             job = _decode(row)
+            if lease_token is not None and job['lease_token']!=lease_token:
+                return deepcopy(job)
             if job['status'] in ACTIVE:
                 job.update(status='cancelled',lease_token=None,lease_until=None,output=None)
                 _save(db,job)
