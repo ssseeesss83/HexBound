@@ -144,6 +144,25 @@ def test_official_starting_equipment_and_tool_corrections_leave_history_unchange
     assert not p.validate_records(p.build_package()["records"])
 
 
+def test_reviewed_class_source_corrections_are_reproducible_and_explicit():
+    from tools.normalize_class_sources import corrections
+    expected = corrections()
+    by_id = {row["id"]: row for row in c.CANONICAL_OVERLAY["corrections"]}
+    assert all(by_id[row["id"]] == row for row in expected)
+    info = {row["name"]: row for row in c.CLASSES["wizard"]["spellcasting"]["info"]}
+    assert "two wizard spells" in info["Learning Spells of 1st Level and Higher"]["desc"][0]
+    book = info["Your Spellbook"]
+    assert book["source_pages"] == [54, 55]
+    assert "2 hours" in book["desc"][0] and "50 gp" in book["desc"][0]
+    assert "1 hour and 10 gp" in book["desc"][0] and "If you lose your spellbook" in book["desc"][0]
+    assert "Boldrei" in c.SUBCLASSES["life"]["desc"][0]
+    assert c.SUBCLASSES["fiend"]["spell_grant_mode"] == "expanded_spell_list"
+    assert "when you learn a warlock spell" in c.SUBCLASSES["fiend"]["spell_grant_description"]
+    assert c.SUBCLASSES["life"]["spell_grant_mode"] == "always_prepared"
+    assert c.SUBCLASSES["land"]["spell_grant_mode"] == "always_prepared_selected_terrain"
+    assert c.PROFICIENCIES["disguise-kit"]["type"] == c.PROFICIENCIES["forgery-kit"]["type"] == "Other"
+
+
 @pytest.mark.parametrize("failure", ["url", "owner", "material", "edition", "level"])
 def test_structural_validator_independently_checks_source_relations(package, failure):
     records = deepcopy(package["records"])
