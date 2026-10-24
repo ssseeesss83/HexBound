@@ -111,6 +111,18 @@ class GenerationJobs:
             row = db.execute('SELECT * FROM generation_jobs WHERE id=?',(job_id,)).fetchone()
             return _decode(row) if row else None
 
+    def ready(self,*,limit=16,now=None):
+        """Bounded internal dispatch candidates, not a public task projection."""
+        now = float(story_patches._now(now))
+        if type(limit) is not int or not 1<=limit<=100:
+            raise ValueError('任务读取上限无效')
+        with self.store.connect() as db:
+            rows = db.execute("""SELECT * FROM generation_jobs
+                WHERE status IN ('queued','retryable_failed')
+                  AND json_extract(payload,'$.next_run_at')<=?
+                ORDER BY priority,json_extract(payload,'$.created_at'),id LIMIT ?""",(now,limit)).fetchall()
+            return [_decode(row) for row in rows]
+
     def enqueue(self,room_id,actor,frontier_id,*,priority=2,budget=None,now=None):
         now = float(story_patches._now(now))
         if type(priority) is not int or not 0<=priority<=3:
