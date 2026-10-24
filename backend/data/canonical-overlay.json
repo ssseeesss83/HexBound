@@ -26946,6 +26946,327 @@
         "status": "reference_pending_execution",
         "runtime_verified": false
       }
+    },
+    {
+      "id": "official-magic-bag-bag-of-tricks-gray-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "bag-of-tricks-gray"
+      ],
+      "page": 210,
+      "heading": "Bag of Tricks",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/bag-of-tricks"
+    },
+    {
+      "id": "official-magic-bag-bag-of-tricks-gray-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "bag-of-tricks-gray"
+      ],
+      "page": 210,
+      "heading": "Bag of Tricks",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-bag-bag-of-tricks-gray-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "bag-of-tricks-gray"
+      ],
+      "page": 210,
+      "heading": "Bag of Tricks",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "bag-of-tricks",
+        "color": "gray",
+        "roll_table": [
+          {
+            "d8_face": 1,
+            "creature_name": "Weasel",
+            "monster_id": "weasel",
+            "source_row": "1 Weasel"
+          },
+          {
+            "d8_face": 2,
+            "creature_name": "Giant rat",
+            "monster_id": "giant-rat",
+            "source_row": "2 Giant rat"
+          },
+          {
+            "d8_face": 3,
+            "creature_name": "Badger",
+            "monster_id": "badger",
+            "source_row": "3 Badger"
+          },
+          {
+            "d8_face": 4,
+            "creature_name": "Boar",
+            "monster_id": "boar",
+            "source_row": "4 Boar"
+          },
+          {
+            "d8_face": 5,
+            "creature_name": "Panther",
+            "monster_id": "panther",
+            "source_row": "5 Panther"
+          },
+          {
+            "d8_face": 6,
+            "creature_name": "Giant badger",
+            "monster_id": "giant-badger",
+            "source_row": "6 Giant badger"
+          },
+          {
+            "d8_face": 7,
+            "creature_name": "Dire wolf",
+            "monster_id": "dire-wolf",
+            "source_row": "7 Dire wolf"
+          },
+          {
+            "d8_face": 8,
+            "creature_name": "Giant elk",
+            "monster_id": "giant-elk",
+            "source_row": "8 Giant elk"
+          }
+        ],
+        "complete_parent_text": "Wondrous item, uncommon\nThis ordinary bag, made from gray, rust, or tan cloth,\nappears empty. Reaching inside the bag, however,\nreveals the presence of a small, fuzzy object. The bag\nweighs 1/2 pound.\nYou can use an action to pull the fuzzy object from\nthe bag and throw it up to 20 feet. When the object\nlands, it transforms into a creature you determine by\nrolling a d8 and consulting the table that\ncorresponds to the bag’s color. The creature\nvanishes at the next dawn or when it is reduced to 0\nhit points.\nThe creature is friendly to you and your\ncompanions, and it acts on your turn. You can use a\nbonus action to command how the creature moves\nand what action it takes on its next turn, or to give it\ngeneral orders, such as to attack your enemies. In\nthe absence of such orders, the creature acts in a\nfashion appropriate to its nature.\nOnce three fuzzy objects have been pulled from\nthe bag, the bag can’t be used again until the next\ndawn.\nGray Bag of Tricks\nd8 Creature\n1 Weasel\n2 Giant rat\n3 Badger\n4 Boar\n5 Panther\n6 Giant badger\n7 Dire wolf\n8 Giant elk\nRust Bag of Tricks\nd8 Creature\n1 Rat\n2 Owl\n3 Mastiff\n4 Goat\n5 Giant goat\n6 Giant boar\n7 Lion\n8 Brown bear\nTan Bag of Tricks\nd8 Creature\n1 Jackal\n2 Ape\n3 Baboon\n4 Axe beak\n5 Black bear\n6 Giant weasel\n7 Giant hyena\n8 Tiger",
+        "printed_pages": [
+          210,
+          211
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-bag-bag-of-tricks-rust-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "bag-of-tricks-rust"
+      ],
+      "page": 210,
+      "heading": "Bag of Tricks",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/bag-of-tricks"
+    },
+    {
+      "id": "official-magic-bag-bag-of-tricks-rust-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "bag-of-tricks-rust"
+      ],
+      "page": 210,
+      "heading": "Bag of Tricks",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-bag-bag-of-tricks-rust-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "bag-of-tricks-rust"
+      ],
+      "page": 210,
+      "heading": "Bag of Tricks",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "bag-of-tricks",
+        "color": "rust",
+        "roll_table": [
+          {
+            "d8_face": 1,
+            "creature_name": "Rat",
+            "monster_id": "rat",
+            "source_row": "1 Rat"
+          },
+          {
+            "d8_face": 2,
+            "creature_name": "Owl",
+            "monster_id": "owl",
+            "source_row": "2 Owl"
+          },
+          {
+            "d8_face": 3,
+            "creature_name": "Mastiff",
+            "monster_id": "mastiff",
+            "source_row": "3 Mastiff"
+          },
+          {
+            "d8_face": 4,
+            "creature_name": "Goat",
+            "monster_id": "goat",
+            "source_row": "4 Goat"
+          },
+          {
+            "d8_face": 5,
+            "creature_name": "Giant goat",
+            "monster_id": "giant-goat",
+            "source_row": "5 Giant goat"
+          },
+          {
+            "d8_face": 6,
+            "creature_name": "Giant boar",
+            "monster_id": "giant-boar",
+            "source_row": "6 Giant boar"
+          },
+          {
+            "d8_face": 7,
+            "creature_name": "Lion",
+            "monster_id": "lion",
+            "source_row": "7 Lion"
+          },
+          {
+            "d8_face": 8,
+            "creature_name": "Brown bear",
+            "monster_id": "brown-bear",
+            "source_row": "8 Brown bear"
+          }
+        ],
+        "complete_parent_text": "Wondrous item, uncommon\nThis ordinary bag, made from gray, rust, or tan cloth,\nappears empty. Reaching inside the bag, however,\nreveals the presence of a small, fuzzy object. The bag\nweighs 1/2 pound.\nYou can use an action to pull the fuzzy object from\nthe bag and throw it up to 20 feet. When the object\nlands, it transforms into a creature you determine by\nrolling a d8 and consulting the table that\ncorresponds to the bag’s color. The creature\nvanishes at the next dawn or when it is reduced to 0\nhit points.\nThe creature is friendly to you and your\ncompanions, and it acts on your turn. You can use a\nbonus action to command how the creature moves\nand what action it takes on its next turn, or to give it\ngeneral orders, such as to attack your enemies. In\nthe absence of such orders, the creature acts in a\nfashion appropriate to its nature.\nOnce three fuzzy objects have been pulled from\nthe bag, the bag can’t be used again until the next\ndawn.\nGray Bag of Tricks\nd8 Creature\n1 Weasel\n2 Giant rat\n3 Badger\n4 Boar\n5 Panther\n6 Giant badger\n7 Dire wolf\n8 Giant elk\nRust Bag of Tricks\nd8 Creature\n1 Rat\n2 Owl\n3 Mastiff\n4 Goat\n5 Giant goat\n6 Giant boar\n7 Lion\n8 Brown bear\nTan Bag of Tricks\nd8 Creature\n1 Jackal\n2 Ape\n3 Baboon\n4 Axe beak\n5 Black bear\n6 Giant weasel\n7 Giant hyena\n8 Tiger",
+        "printed_pages": [
+          210,
+          211
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-bag-bag-of-tricks-tan-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "bag-of-tricks-tan"
+      ],
+      "page": 210,
+      "heading": "Bag of Tricks",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/bag-of-tricks"
+    },
+    {
+      "id": "official-magic-bag-bag-of-tricks-tan-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "bag-of-tricks-tan"
+      ],
+      "page": 210,
+      "heading": "Bag of Tricks",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-bag-bag-of-tricks-tan-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "bag-of-tricks-tan"
+      ],
+      "page": 210,
+      "heading": "Bag of Tricks",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "bag-of-tricks",
+        "color": "tan",
+        "roll_table": [
+          {
+            "d8_face": 1,
+            "creature_name": "Jackal",
+            "monster_id": "jackal",
+            "source_row": "1 Jackal"
+          },
+          {
+            "d8_face": 2,
+            "creature_name": "Ape",
+            "monster_id": "ape",
+            "source_row": "2 Ape"
+          },
+          {
+            "d8_face": 3,
+            "creature_name": "Baboon",
+            "monster_id": "baboon",
+            "source_row": "3 Baboon"
+          },
+          {
+            "d8_face": 4,
+            "creature_name": "Axe beak",
+            "monster_id": "axe-beak",
+            "source_row": "4 Axe beak"
+          },
+          {
+            "d8_face": 5,
+            "creature_name": "Black bear",
+            "monster_id": "black-bear",
+            "source_row": "5 Black bear"
+          },
+          {
+            "d8_face": 6,
+            "creature_name": "Giant weasel",
+            "monster_id": "giant-weasel",
+            "source_row": "6 Giant weasel"
+          },
+          {
+            "d8_face": 7,
+            "creature_name": "Giant hyena",
+            "monster_id": "giant-hyena",
+            "source_row": "7 Giant hyena"
+          },
+          {
+            "d8_face": 8,
+            "creature_name": "Tiger",
+            "monster_id": "tiger",
+            "source_row": "8 Tiger"
+          }
+        ],
+        "complete_parent_text": "Wondrous item, uncommon\nThis ordinary bag, made from gray, rust, or tan cloth,\nappears empty. Reaching inside the bag, however,\nreveals the presence of a small, fuzzy object. The bag\nweighs 1/2 pound.\nYou can use an action to pull the fuzzy object from\nthe bag and throw it up to 20 feet. When the object\nlands, it transforms into a creature you determine by\nrolling a d8 and consulting the table that\ncorresponds to the bag’s color. The creature\nvanishes at the next dawn or when it is reduced to 0\nhit points.\nThe creature is friendly to you and your\ncompanions, and it acts on your turn. You can use a\nbonus action to command how the creature moves\nand what action it takes on its next turn, or to give it\ngeneral orders, such as to attack your enemies. In\nthe absence of such orders, the creature acts in a\nfashion appropriate to its nature.\nOnce three fuzzy objects have been pulled from\nthe bag, the bag can’t be used again until the next\ndawn.\nGray Bag of Tricks\nd8 Creature\n1 Weasel\n2 Giant rat\n3 Badger\n4 Boar\n5 Panther\n6 Giant badger\n7 Dire wolf\n8 Giant elk\nRust Bag of Tricks\nd8 Creature\n1 Rat\n2 Owl\n3 Mastiff\n4 Goat\n5 Giant goat\n6 Giant boar\n7 Lion\n8 Brown bear\nTan Bag of Tricks\nd8 Creature\n1 Jackal\n2 Ape\n3 Baboon\n4 Axe beak\n5 Black bear\n6 Giant weasel\n7 Giant hyena\n8 Tiger",
+        "printed_pages": [
+          210,
+          211
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
     }
   ],
   "record_additions": [
