@@ -231,6 +231,12 @@ def validate_proposal(raw, state, member_id, policy="balanced"):
 def public_proposal(proposal, state=None):
     decision = proposal["decision"]
     qualified = state is None or attempts.proposal_available(state, proposal['actor_id'], decision)
+    native_stale = False
+    if state is not None and decision['kind']=='capability' and proposal['plan'].get('executor')=='story':
+        try:
+            action_plans.revalidate(state,proposal['actor_id'],proposal['plan'])
+        except (ValueError,KeyError):
+            native_stale = True
     return {"id": proposal["id"], "actor_id": proposal["actor_id"], "scene_id": proposal["scene_id"],
             **copy.deepcopy(decision), "dc": proposal["dc"], "cost": proposal["cost"],
             "requires_host": proposal["requires_host"],
@@ -240,7 +246,7 @@ def public_proposal(proposal, state=None):
             "intent": proposal.get("intent", ""), "action_intent": copy.deepcopy(proposal.get("action_intent")),
             "stale_reason": None if qualified else 'challenge_unavailable',
             "stale": bool(state is not None and proposal.get("_fingerprint") != _fingerprint(state))
-                      or not qualified
+                      or not qualified or native_stale
                       or bool(decision['kind'] == 'capability' and (
                           proposal['plan']['expires_at'] <= time.time()
                           or proposal['plan'].get('schema_version') != action_plans.PLAN_SCHEMA_VERSION))}
@@ -283,7 +289,7 @@ def _free_fallback(state, member_id, intent):
         return None
 
 
-def _capability_fallback(state, member_id, intent):
+def _capability_fallback(state, member_id, intent, skill_id=None):
     candidates = action_plans.menu(state, member_id)
     folded = intent.casefold()
     selected = next((cap for cap in candidates if cap['id'] != 'attack'
@@ -292,6 +298,12 @@ def _capability_fallback(state, member_id, intent):
         selected = next((cap for cap in candidates if cap['id'] == 'attack'), None)
     if selected is None:
         return None
+    if selected.get('kind') == 'story':
+        if skill_id is not None and skill_id not in selected['skill_ids']:
+            return dict(kind='dialogue',label='请明确方法',text='这项行动尚未登记所选技能的解法，请说明方法与目标，由 DM 进一步裁定。')
+        return dict(kind='capability',action_id=selected['id'],label=selected['label'],
+                    action_options=dict(skill_id=skill_id),
+                    text='准备尝试这项剧情行动，请审核检定与代价后确认。')
     targets = selected.get('targets', [])
     named = [row for row in targets if row['name'] in intent]
     target = named[0] if len(named) == 1 else targets[0] if not named and len(targets) == 1 else None
@@ -303,8 +315,8 @@ def _capability_fallback(state, member_id, intent):
                 label=selected['label'], text='准备使用这项能力，目标与代价需审核后确认。')
 
 
-def _fallback(state, member_id, intent, policy):
-    capability = _capability_fallback(state, member_id, intent)
+def _fallback(state, member_id, intent, policy, skill_id=None):
+    capability = _capability_fallback(state, member_id, intent, skill_id)
     if capability:
         return capability
     free = _free_fallback(state,member_id,intent)
@@ -333,6 +345,7 @@ async def propose(dm, state, member_id, intent, policy="balanced", *, skill_id=N
                 "encounter只能引用encounters中的monster_id，不能生成属性，且需要房主确认。没有可用怪物时不能提出遭遇。"
                 "战斗或环境交互使用free_action，从free_actions.recipes选择一个可用action_id及其合法target_id/object_id。不可凭叙事创造未登记物体、法术、道具或能力。"
                 "武器、法术或职业能力用capability，只引用capabilities的id与合法目标；action_options仅含允许的法术位、目标列表、资源点数，服务端计算真实代价。不能指定伤害、数值效果或保证成功。"
+                "capabilities中kind=story是原生剧情挑战，target为none、不填target_id；可用action_options.skill_id选择其skill_ids中的方法，不得附加效果或后果。"
                 "自由行动的动作/移动/时间消耗、检定、伤害和状态由注册规则决定；不得添加cost/dc/effects等数值字段。text说明尝试，不能预先说成功。"
                 "一个提案仅包含一个行动，复杂计划分步进行；无法映射时用dialogue解释当前不能执行的部分，不得假称已执行。"
                 "战斗中不能使用check或encounter绕过动作预算；strict模式非战斗check须有已有锚点。"
@@ -342,10 +355,10 @@ async def propose(dm, state, member_id, intent, policy="balanced", *, skill_id=N
             source = "llm"
         except Exception:
             # Failure preserves state and leaves authored actions usable.
-            proposal = validate_proposal(_fallback(state, member_id, intent, policy), state, member_id, policy)
+            proposal = validate_proposal(_fallback(state, member_id, intent, policy, skill_id), state, member_id, policy)
             source = "fallback"
     else:
-        proposal = validate_proposal(_fallback(state, member_id, intent, policy), state, member_id, policy)
+        proposal = validate_proposal(_fallback(state, member_id, intent, policy, skill_id), state, member_id, policy)
     proposal["source"] = source
     proposal["intent"] = intent.strip()
     proposal["action_intent"] = context["action_intent"]
@@ -436,7 +449,10 @@ def resolve(state, member_id, proposal):
     elif decision['kind'] == 'capability':
         from . import abilities
         plan = action_plans.revalidate(state, member_id, proposal['plan'])
-        if plan['executor'] in {'campaign', 'rules'}:
+        if plan['executor'] == 'story':
+            from .story_challenges import resolve as resolve_story
+            events.extend(resolve_story(state,member_id,plan['story_plan'],receipt_id=proposal['id']))
+        elif plan['executor'] in {'campaign', 'rules'}:
             executor = campaign if plan['executor'] == 'campaign' else rules
             events.extend(executor.apply_action(state, member_id, plan['action_id'], plan['target_id']))
         elif plan['action_id'] == 'attack':

@@ -24,7 +24,7 @@ class ActionIntent(BaseModel):
                 raise ValueError('所选能力声明必须有能力身份与合法选项')
         elif self.capability_id or self.target_id or (self.options and any([
                 self.options.slot_level is not None, self.options.slot_source is not None,
-                self.options.resource_amount is not None, self.options.target_ids])):
+                self.options.resource_amount is not None, self.options.target_ids,self.options.skill_id is not None])):
             raise ValueError('文字或技能意向不能混入能力参数')
         if (self.source == 'skill') != bool(self.preferred_skill_id):
             raise ValueError('技能来源与方法声明不一致')

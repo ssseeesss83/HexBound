@@ -103,6 +103,7 @@ class ActionPayload(Input):
     slot_source: Literal["spell", "pact"] | None = None
     target_ids: list[str] = Field(default_factory=list, max_length=12)
     resource_amount: int | None = Field(default=None, ge=1, le=100, strict=True)
+    skill_id: str | None = Field(default=None, max_length=40)
 
 
 class InteractionPayload(Input):

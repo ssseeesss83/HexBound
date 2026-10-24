@@ -26,6 +26,7 @@ class Options(BaseModel):
     slot_source: Literal['spell', 'pact'] | None = None
     target_ids: list[Annotated[str, Field(min_length=1, max_length=80)]] = Field(default_factory=list, max_length=12)
     resource_amount: int | None = Field(default=None, ge=1, le=100)
+    skill_id: str | None = Field(default=None, max_length=40)
 
 
 def _clock(now):
@@ -88,7 +89,21 @@ def prepare(state, actor, action_id, target_id=None, options=None, *, now=None):
     c = a.member(state, actor)['character']
     resources, restores = [], []
     executor = 'abilities'
-    if not action_id.startswith(('cast:', 'feature:')) and action_id != 'end-concentration' and not (action_id == 'attack' and a.modern(c)):
+    native_plan = None
+    if opts['skill_id'] is not None and not action_id.startswith('story-check:'):
+        raise ValueError('只有原生剧情挑战可选择检定方法')
+    if action_id.startswith('story-check:'):
+        from . import story_challenges
+        from .director import SKILL_NAMES
+        if target_id is not None or any(value not in (None, []) for key,value in opts.items() if key!='skill_id'):
+            raise ValueError('剧情挑战只接受已登记的技能方法')
+        native_plan = story_challenges.prepare(state,actor,action_id[12:],opts['skill_id'])
+        cap = dict(label=native_plan['label'],action_cost='none',
+                   description=f"确认后进行一次{SKILL_NAMES[native_plan['skill_id']]}检定，按已登记的剧情结果结算；同一证据下不能换方法重掷。")
+        ids,resources = [],deepcopy(native_plan['resources'])
+        normalized = dict(skill_id=native_plan['skill_id'])
+        executor = 'story'
+    elif not action_id.startswith(('cast:', 'feature:')) and action_id != 'end-concentration' and not (action_id == 'attack' and a.modern(c)):
         from .scenario_plans import prepare as prepare_scenario
         cap, ids, resources = prepare_scenario(state, actor, action_id, target_id, opts)
         target_id = ids[0] if len(ids) == 1 else None
@@ -191,13 +206,16 @@ def prepare(state, actor, action_id, target_id=None, options=None, *, now=None):
     if c.get('concentration') and (action_id in {'end-concentration', 'feature:rage'}
             or (action_id.startswith('cast:') and a._effects()[action_id[5:]].get('concentration'))):
         ends_concentration = {key: c['concentration'][key] for key in ['spell_id', 'name'] if key in c['concentration']}
-    return dict(id=uuid.uuid4().hex, **scope, action_id=action_id, target_id=target_id,
+    result = dict(id=uuid.uuid4().hex, **scope, action_id=action_id, target_id=target_id,
                 executor=executor, party_action=bool(cap.get('party_action')),
                 options=deepcopy(normalized), targets=[dict(id=sid, name=visible[sid]) for sid in ids],
                 label=cap['label'], action_cost=cost, budget=budget, ends_concentration=ends_concentration,
                 resources=resources, restores=restores, summary=[cap.get('description', '')],
                 expires_at=now + PLAN_TTL_SECONDS, fingerprint=_fingerprint(state),
                 schema_version=PLAN_SCHEMA_VERSION)
+    if native_plan is not None:
+        result['story_plan'] = native_plan
+    return result
 
 
 @bound_rules
@@ -213,6 +231,8 @@ def revalidate(state, actor, plan, *, now=None):
     for key in ['executor', 'party_action', 'action_id', 'target_id', 'options', 'targets', 'action_cost', 'budget', 'resources', 'restores', 'ends_concentration']:
         if current[key] != plan[key]:
             raise ValueError('行动的目标或代价已变化，请重新选择')
+    if current.get('story_plan') != plan.get('story_plan'):
+        raise ValueError('剧情检定的相关事实已变化，请重新裁定')
     return deepcopy(plan)
 
 
@@ -222,6 +242,8 @@ def describe_cost(plan):
     for resource in plan['resources']:
         if resource['type'] == 'spell_slot':
             text = f"{resource['level']}环{'契约法术位' if resource['source'] == 'pact' else '法术位'} × {resource['amount']}"
+        elif resource['type'] == 'inspiration_die':
+            text = f"激励骰 {resource['dice']} × {resource['amount']}"
         else:
             text = f"{resource['id']} × {resource['amount']}" if not resource.get('unlimited') else f"{resource['id']} 不限次数"
         if resource.get('when') == 'on_hit':
@@ -253,4 +275,5 @@ def menu(state, actor):
     if targets:
         result.append(dict(id='attack', label='武器攻击', kind='basic', target='enemy',
                            targets=targets, action_cost='attack'))
-    return result
+    from .story_challenges import menu as story_menu
+    return result + story_menu(state,actor)

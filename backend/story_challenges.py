@@ -53,6 +53,23 @@ def definition(state, challenge_id):
         definition_ref=_hash(story_graph.challenge_mechanics(row)))
 
 
+def menu(state, actor):
+    """Only currently legal labels/methods; no outcomes, facts or future nodes."""
+    campaign = state.get('campaign') or {}
+    if campaign.get('package',{}).get('scenario',{}).get('schema_version') != 2:
+        return []
+    node = story_runtime.node(state,campaign['node_id'])
+    result = []
+    for row in node.get('challenges',[]):
+        try:
+            prepare(state,actor,row['id'])
+        except ValueError:
+            continue
+        result.append(dict(id='story-check:'+row['id'],label=row['label'],target='none',
+                           kind='story',effect='check',action_cost='none',skill_ids=deepcopy(row['skill_ids'])))
+    return result
+
+
 @bound_rules
 def prepare(state, actor, challenge_id, skill_id=None):
     """Pure plan: preflight both results before any dice or effects."""
