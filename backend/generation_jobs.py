@@ -229,3 +229,62 @@ class GenerationJobs:
         with self.store.connect() as db:
             db.execute('BEGIN IMMEDIATE')
             return _prune_room(db,room_id,now)
+
+    def validate_output(self,job_id,lease_token,candidate,approval,*,now=None):
+        """Store reviewed output after fresh checks; no graph write yet."""
+        from .story_semantics import NarrativeApproval
+        now = float(story_patches._now(now))
+        if not isinstance(candidate,story_patches.ReviewedPatch) or not isinstance(approval,NarrativeApproval):
+            raise ValueError('剧情结果须先完成结构和独立语义复审')
+        with self.store.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            row = db.execute('SELECT * FROM generation_jobs WHERE id=?',(job_id,)).fetchone()
+            if row is None:raise ValueError('剧情任务不存在')
+            job = _decode(row)
+            self._lease(db,job,lease_token,now)
+            fresh = story_patches.review(_view(db,job),job['authorization'],json.loads(candidate.payload_json),now=now)
+            if candidate.job_id!=job_id or candidate.patch_digest!=fresh.patch_digest:
+                raise ValueError('剧情候选与任务不一致')
+            approval.verify(job['authorization'],fresh)
+            output = dict(patch=json.loads(fresh.payload_json),approval=approval.model_dump(mode='json'))
+            if job['status']=='validated' and job['output']!=output:
+                raise ValueError('同一租约不能替换已经验证的补丁')
+            job.update(status='validated',output=output)
+            _save(db,job)
+            return deepcopy(job)
+
+    def commit(self,job_id,lease_token,*,now=None):
+        """Atomically attach a reviewed graph and complete its job, never entry."""
+        from .story_semantics import NarrativeApproval
+        now = float(story_patches._now(now))
+        with self.store.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            row = db.execute('SELECT * FROM generation_jobs WHERE id=?',(job_id,)).fetchone()
+            if row is None:raise ValueError('剧情任务不存在')
+            job = _decode(row)
+            if job['status']=='committed':
+                receipt = job['commit_receipt']
+                if not receipt or receipt['worker_digest']!=_hash(lease_token):
+                    raise ValueError('剧情完成回执不属于该worker')
+                return dict(receipt=deepcopy(receipt),replayed=True)
+            self._lease(db,job,lease_token,now)
+            if job['status']!='validated' or not job['output']:
+                raise ValueError('剧情结果尚未完成验证')
+            # Recompute on the latest room, so unrelated facts changed during
+            # remote review survive. Never copy an earlier full-state snapshot.
+            fresh = story_patches.review(_view(db,job),job['authorization'],job['output']['patch'],now=now)
+            NarrativeApproval.model_validate(job['output']['approval']).verify(job['authorization'],fresh)
+            room = db.execute('SELECT state,version FROM rooms WHERE id=?',(job['room_id'],)).fetchone()
+            canonical = json.loads(room['state'])
+            canonical['campaign']['runtime_graph'] = json.loads(fresh.graph_json)
+            canonical['campaign']['story_state'] = json.loads(fresh.state_json)
+            canonical['version'] = room['version']+1
+            receipt = dict(job_id=job_id,patch_digest=fresh.patch_digest,
+                graph_revision=canonical['campaign']['runtime_graph']['graph_revision'],
+                room_version=canonical['version'],worker_digest=_hash(lease_token))
+            updated = db.execute('UPDATE rooms SET state=?,version=? WHERE id=? AND version=?',
+                (json.dumps(canonical,ensure_ascii=False),canonical['version'],job['room_id'],room['version']))
+            if updated.rowcount!=1:raise ValueError('剧情房间已变化')
+            job.update(status='committed',lease_token=None,lease_until=None,commit_receipt=receipt)
+            _save(db,job)
+            return dict(receipt=deepcopy(receipt),replayed=False)

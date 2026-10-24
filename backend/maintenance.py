@@ -21,7 +21,8 @@ from zipfile import ZipFile, ZIP_DEFLATED
 # Version 12 protects global challenge attempts from older reroll semantics.
 # Version 14 protects scene-local transition waits and durable request receipts.
 # Version 15 protects durable generation jobs and revocable worker leases.
-SCHEMA_VERSION = 15
+# Version 16 protects validated narrative approvals and atomic graph receipts.
+SCHEMA_VERSION = 16
 BACKUP_FORMAT = "hexbound-backup-v1"
 DATA_ROOT = Path(__file__).parent / "data"
 

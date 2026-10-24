@@ -111,6 +111,7 @@ def grant(state, actor, frontier_id, *, job_id, now=None, ttl=120):
     return dict(job_id=job_id,scope=scope,source_node_id=source['id'],frontier_id=frontier_id,
                 namespace=prefix,author_digest=view['author_digest'],base_graph_revision=view['graph_revision'],
                 package_digest=_hash(state['campaign']['package']),
+                runtime_graph_digest=_hash(state['campaign']['runtime_graph']),
                 audience=session_scope.audience_key(staged),read_set=reads,
                 member_epochs={m['id']:state.get('member_contexts',{}).get(m['id'],{}).get('epoch',1) for m in state['members']},
                 rejoin_node_ids=[contract['fallback_scene_id']] if contract['fallback_scene_id'] else [],
