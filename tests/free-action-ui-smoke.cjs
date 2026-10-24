@@ -240,6 +240,8 @@ async function main() {
   assert(!q(".composer .actions").classList.contains("action-entry-hidden"));
   await until(() => q('[data-action="node:enter"]:not(:disabled)'), "cancel HTTP completion");
   click('[data-action="node:enter"]');
+  await until(() => q('[data-director-resolve]:not(:disabled)'), 'node selection plan');
+  click('[data-director-resolve]');
   await until(
     () => q(".encounter-shell") && q("#free-action-form button:not(:disabled)"),
     "encounter",

@@ -672,6 +672,8 @@ def create_app(db_path: str | None = None) -> FastAPI:
         # exactly the same planning/confirmation boundary as the action form.
         if body.type == "narrate":
             body = body.model_copy(update={"type": "director_propose"})
+        if body.type == "action":
+            body = body.model_copy(update={"type": "capability_propose"})
         try:
             play_policy.validate_command(candidate, body.type)
         except ValueError as exc:
@@ -688,6 +690,11 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 raise HTTPException(409,"请先开始或恢复冒险")
             try:
                 if body.type == 'capability_propose':
+                    from .world_combat import validate_read_set
+                    try:
+                        validate_read_set(candidate)
+                    except ValueError as exc:
+                        raise HTTPException(409, str(exc)) from exc
                     proposed = director.propose_selected(candidate, member_id, payload['action_id'], payload.get('target_id'),
                                                          {key:value for key,value in payload.items() if key not in {'action_id','target_id'}})
                 else:
@@ -764,12 +771,15 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 proposal=state.get("director",{}).get("proposals",{}).get(member_id)
                 if not proposal or proposal["id"] != payload["proposal_id"]:
                     raise HTTPException(409,"提案不存在或已被处理，请重新表达行动")
+                old_scene = state.get('scene_id')
                 try:
                     append_rule_events(state,director.resolve(state,member_id,proposal),member_id)
                 except (ValueError,KeyError) as exc:
                     raise HTTPException(422,str(exc)) from exc
                 state["director"]["proposals"].pop(member_id,None)
-                if proposal["decision"]["kind"] == "free_action" and dm.configured and not state.get("dm_pending"):
+                if proposal["decision"]["kind"] == 'capability' and state.get('scene_id') != old_scene:
+                    pending = 'scene'
+                elif proposal["decision"]["kind"] in {"free_action", "capability"} and dm.configured and not state.get("dm_pending"):
                     pending = "narrate"
                 if state.get("completed"):
                     state["status"]="finished"
@@ -848,16 +858,15 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 except (ValueError,KeyError) as exc:
                     raise HTTPException(422,str(exc)) from exc
             else:
+                if body.type != 'end_turn':
+                    raise HTTPException(422, '未知游戏行动入口')
                 if state["status"] != "playing":
                     raise HTTPException(409, "当前不能执行游戏行动")
                 old_scene = state.get("scene_id")
-                action_id = "end_turn" if body.type == "end_turn" else payload["action_id"]
+                action_id = "end_turn"
                 try:
                     executor = campaign if state.get("campaign") else rules
-                    if abilities.handles(action_id):
-                        action_events = abilities.apply_action(state,member_id,action_id,payload.get("target_id"),{k:v for k,v in payload.items() if k not in ("action_id","target_id")})
-                    else:
-                        action_events = executor.apply_action(state, member_id, action_id, payload.get("target_id"))
+                    action_events = executor.apply_action(state, member_id, action_id)
                 except (ValueError, KeyError) as exc:
                     raise HTTPException(422, str(exc)) from exc
                 append_rule_events(state, action_events, member_id)

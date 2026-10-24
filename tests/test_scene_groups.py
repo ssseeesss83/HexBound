@@ -140,9 +140,13 @@ def test_receipt_failure_rolls_back_membership_and_preserves_plan(env):
 def test_non_host_scene_leader_can_advance_own_group(env):
     a,b,store,rid,host,guest=setup(env)
     split(a,rid,guest)
-    assert send(b,rid,'action',{'action_id':'investigate'}).status_code==200
+    def settle_action(action):
+        selected = send(b,rid,'action',{'action_id':action})
+        assert selected.status_code == 200, selected.text
+        return send(b,rid,'director_resolve',{'proposal_id':selected.json()['room']['director_proposals'][0]['id']})
+    assert settle_action('investigate').status_code==200
     before=a.get(f'/api/rooms/{rid}').json()
-    next_step=send(b,rid,'action',{'action_id':'advance'})
+    next_step=settle_action('advance')
     assert next_step.status_code==200,next_step.text
     assert next_step.json()['room']['scene']['id'] != before['scene']['id']
     assert a.get(f'/api/rooms/{rid}').json()['scene']==before['scene']

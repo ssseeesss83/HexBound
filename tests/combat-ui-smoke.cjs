@@ -95,19 +95,26 @@ async function main() {
       xp: 300,
     },
     {
+      id: "ui-monster-second",
+      kind: "monster",
+      name: "第二幻影",
+      hp: 1, ac: 10, attack_bonus: 0, damage_dice: "1d4",
+      damage_bonus: -5, initiative_bonus: -5, xp: 300,
+    },
+    {
       id: "ui-scenario",
       kind: "scenario",
       name: "战斗界面试炼",
       entry_node_id: "entry",
       skill_ids: [],
-      monster_ids: ["ui-monster"],
+      monster_ids: ["ui-monster", "ui-monster-second"],
       nodes: [
         {
           id: "entry",
           title: "试炼场",
           text: "一道幻影挡住去路。",
           objective: "击败幻影",
-          monster_ids: ["ui-monster"],
+          monster_ids: ["ui-monster", "ui-monster-second"],
           ending: false,
           actions: [{ id: "finish", label: "离开试炼", next_node_id: "end" }],
         },
@@ -142,7 +149,7 @@ async function main() {
         "burning-hands",
         "charm-person",
       ],
-      prepared_spells: ["magic-missile", "shield", "mage-armor"],
+      prepared_spells: ["magic-missile", "shield", "burning-hands"],
     },
   });
   dom = new JSDOM('<div id="app"></div><div id="toast" hidden></div>', {
@@ -187,7 +194,7 @@ async function main() {
   await until(() => q(".encounter-shell"), "battle screen");
   assert(q(".initiative-track"));
   assert(q(".turn-resources"));
-  assert.equal(d.querySelectorAll(".combatant-card").length, 1);
+  assert.equal(d.querySelectorAll(".combatant-card").length, 2);
   await until(
     () => q('[data-action="cast:magic-missile"]:not(:disabled)'),
     "spell legal",
@@ -196,10 +203,22 @@ async function main() {
     q('[data-action="cast:shield"]').disabled,
     "unsupported spell disabled",
   );
-  click('[data-action="cast:magic-missile"]');
+  click('[data-action="cast:burning-hands"]');
   assert(q("[name=slot]"), "slot selection");
   assert(q("[name=target]"), "legal targets");
+  const selectedNames = [...d.querySelectorAll('[name=target]')].map(input => {
+    input.checked = true;
+    return input.closest('label').textContent;
+  });
+  assert.equal(selectedNames.length, 2, 'two real encounter targets');
   submit("#cast-form");
+  await until(() => q('[data-director-resolve]:not(:disabled)'), 'spell plan before execution');
+  assert(!q('[data-director-resolve]').closest('.action-entry-hidden'), 'spell plan is visible');
+  assert(!q('#return-exploration'), 'plan does not finish combat');
+  const targetFact = [...d.querySelectorAll('.proposal-fact')].find(node => node.textContent.includes('执行目标')).textContent;
+  for (const name of selectedNames) assert(targetFact.includes(name.trim()), 'all selected targets shown');
+  assert(targetFact.includes(' · '), 'multiple targets remain distinct in review');
+  click('[data-director-resolve]');
   await until(() => q("#return-exploration"), "settlement");
   click("#return-exploration");
   await until(() => q("[data-sheet]"), "exploration");

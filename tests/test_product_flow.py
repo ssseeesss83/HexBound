@@ -37,8 +37,12 @@ def command(client, session, kind, payload=None):
     headers = {"Authorization": "Bearer " + session["token"]}
     url = "/api/rooms/" + session["room"]["id"]
     current = client.get(url, headers=headers).json()
-    return client.post(url + "/commands", headers=headers, json={"command_id": uuid.uuid4().hex,
+    response = client.post(url + "/commands", headers=headers, json={"command_id": uuid.uuid4().hex,
                         "expected_version": current["version"], "type": kind, "payload": payload or {}})
+    if kind == 'action' and response.status_code == 200:
+        proposal = response.json()['room']['director_proposals'][0]
+        return command(client, session, 'director_resolve', {'proposal_id': proposal['id']})
+    return response
 
 
 def test_authored_cards_publish_and_play_with_frozen_versions(setup, monkeypatch):

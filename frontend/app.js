@@ -622,7 +622,7 @@ function healDialog() {
         (b) =>
           (b.onclick = () => {
             close();
-            command("action", { action_id: "heal", target_id: b.dataset.heal });
+            command("capability_propose", { action_id: "heal", target_id: b.dataset.heal });
           }),
       );
     },
@@ -654,7 +654,7 @@ function skillTargetDialog(action) {
         (b) =>
           (b.onclick = () => {
             close();
-            command("action", {
+            command("capability_propose", {
               action_id: action.id,
               target_id: b.dataset.skillTarget,
             });
@@ -798,9 +798,13 @@ async function chatCommand(text) {
   }
 }
 async function command(type, payload = {}) {
+  if (type === "capability_propose" && payload.action_id === "end_turn") {
+    type = "end_turn";
+    payload = {};
+  }
   if (type === "chat") return chatCommand(payload.text);
   if (busy || !connected) return false;
-  if (type === "director_propose") actionEntry = "free";
+  if (type === "director_propose" || type === "capability_propose") actionEntry = "free";
   busy = true;
   renderRoom();
   const body = {
@@ -1237,7 +1241,7 @@ function bindActionTriggers() {
           selectedTarget = action.targets[0].id;
           target = selectedTarget;
         }
-        command("action", {
+        command("capability_propose", {
           action_id: action.id,
           ...(target
             ? { target_id: action.target === "enemy" ? selectedTarget : target }
@@ -1257,7 +1261,7 @@ function castActionDialog(action) {
   const multiple = Number(action.max_targets || 1) > 1;
   const levels = action.cast_levels || [];
   openDialog(
-    `<div class="row between"><div><div class="eyebrow">CONFIRM YOUR ACTION</div><h2 id="dialog-title" style="margin-top:8px">${esc(action.label)}</h2></div><button class="ghost" data-close aria-label="关闭">×</button></div><form class="form" id="cast-form"><p class="helper">${esc(action.description || "效果与资源消耗由服务端规则执行。")}${action.area_mode === "encounter-selection" ? "<br>当前为无网格遭遇范围：从合法目标中选择。" : ""}</p>${levels.length ? `<label>消耗法术位<select name="slot">${levels.map((slot, index) => `<option value="${index}" ${slot.current <= 0 ? "disabled" : ""}>${slot.source === "pact" ? "契约法术位" : "法术位"} · ${slot.level} 环 · 剩余 ${slot.current}</option>`).join("")}</select></label>` : ""}<div><p class="helper" style="margin-bottom:10px">${multiple ? `选择 ${action.min_targets || 1}–${action.max_targets} 个目标` : "选择目标"}</p><div class="target-checklist">${targetList.map((target, index) => `<label><input type="${multiple ? "checkbox" : "radio"}" name="target" value="${esc(target.id)}" ${!multiple && (target.id === selectedTarget || action.target === "self" || (index === 0 && !targetList.some((t) => t.id === selectedTarget))) ? "checked" : ""}>${esc(target.name)}</label>`).join("")}</div></div>${action.resource_amount || action.id === "feature:lay-on-hands" ? `<label>投入治疗点数<input name="resource_amount" type="number" min="1" max="${esc(action.max_amount || action.resource_amount?.max || me()?.resources?.["lay-on-hands"]?.current || 500)}" value="1" required></label>` : ""}<p id="cast-error" class="error" role="alert"></p><button type="submit" class="primary">确认目标并执行 ↗</button></form>`,
+    `<div class="row between"><div><div class="eyebrow">CONFIRM YOUR ACTION</div><h2 id="dialog-title" style="margin-top:8px">${esc(action.label)}</h2></div><button class="ghost" data-close aria-label="关闭">×</button></div><form class="form" id="cast-form"><p class="helper">${esc(action.description || "效果与资源消耗由服务端规则执行。")}${action.area_mode === "encounter-selection" ? "<br>当前为无网格遭遇范围：从合法目标中选择。" : ""}</p>${levels.length ? `<label>消耗法术位<select name="slot">${levels.map((slot, index) => `<option value="${index}" ${slot.current <= 0 ? "disabled" : ""}>${slot.source === "pact" ? "契约法术位" : "法术位"} · ${slot.level} 环 · 剩余 ${slot.current}</option>`).join("")}</select></label>` : ""}<div><p class="helper" style="margin-bottom:10px">${multiple ? `选择 ${action.min_targets || 1}–${action.max_targets} 个目标` : "选择目标"}</p><div class="target-checklist">${targetList.map((target, index) => `<label><input type="${multiple ? "checkbox" : "radio"}" name="target" value="${esc(target.id)}" ${!multiple && (target.id === selectedTarget || action.target === "self" || (index === 0 && !targetList.some((t) => t.id === selectedTarget))) ? "checked" : ""}>${esc(target.name)}</label>`).join("")}</div></div>${action.resource_amount || action.id === "feature:lay-on-hands" ? `<label>投入治疗点数<input name="resource_amount" type="number" min="1" max="${esc(action.max_amount || action.resource_amount?.max || me()?.resources?.["lay-on-hands"]?.current || 500)}" value="1" required></label>` : ""}<p id="cast-error" class="error" role="alert"></p><button type="submit" class="primary">审核目标与行动计划 ↗</button></form>`,
     (overlay, close) => {
       $("#cast-form", overlay).onsubmit = async (event) => {
         event.preventDefault();
@@ -1285,7 +1289,7 @@ function castActionDialog(action) {
         const amount = $("[name=resource_amount]", form);
         if (amount) payload.resource_amount = Number(amount.value);
         close();
-        await command("action", payload);
+        await command("capability_propose", payload);
       };
     },
   );
@@ -2031,7 +2035,8 @@ function proposalDetails(proposal) {
     (room.free_actions?.objects || []).find(
       (item) => item.id === plan.object_id,
     );
-  return `${declaration}<dl class="proposal-facts"><div class="proposal-fact"><dt>资源代价</dt><dd>${esc(plan.cost_label || humanPlanValue(plan.cost || proposal.cost))}</dd></div><div class="proposal-fact"><dt>执行目标</dt><dd>${esc([target?.name, object?.name].filter(Boolean).join(" · ") || "自己 / 当前环境")}</dd></div></dl><p><strong>检定与规则效果</strong></p><ul class="proposal-effects">${(plan.summary || []).map((text) => `<li>${esc(text)}</li>`).join("") || `<li>${esc(humanPlanValue(plan.check || plan.effects || "按规则计划执行"))}</li>`}</ul><p class="proposal-warning">${esc(proposal.risk || plan.risk || proposal.failure_text || "需要检定的行动可能失败。失败不会退还已使用的动作或移动；不会保证造成效果。")}</p>`;
+  const targetNames = (plan.targets?.length ? plan.targets.map(item => item.name) : [target?.name]).filter(Boolean);
+  return `${declaration}<dl class="proposal-facts"><div class="proposal-fact"><dt>资源代价</dt><dd>${esc(plan.cost_label || humanPlanValue(plan.cost || proposal.cost))}</dd></div><div class="proposal-fact"><dt>执行目标</dt><dd>${esc([...targetNames, object?.name].filter(Boolean).join(" · ") || "自己 / 当前环境")}</dd></div></dl><p><strong>检定与规则效果</strong></p><ul class="proposal-effects">${(plan.summary || []).map((text) => `<li>${esc(text)}</li>`).join("") || `<li>${esc(humanPlanValue(plan.check || plan.effects || "按规则计划执行"))}</li>`}</ul><p class="proposal-warning">${esc(proposal.risk || plan.risk || proposal.failure_text || "需要检定的行动可能失败。失败不会退还已使用的动作或移动；不会保证造成效果。")}</p>`;
 }
 function installDmProposals() {
   installActionEntries();

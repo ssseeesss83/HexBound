@@ -43,10 +43,16 @@ def setup_scenes(env):
 
 
 def send(client, rid, frame, kind="action", payload=None, command_id=None):
-    return client.post(f"/api/rooms/{rid}/commands", json={
+    """Select and explicitly confirm scene actions; raw failures remain visible."""
+    response = client.post(f"/api/rooms/{rid}/commands", json={
         "command_id": command_id or uuid.uuid4().hex, "type": kind, "payload": payload or {"action_id": "attack", "target_id": "enemy"},
         "expected_version": frame["version"], "expected_action_revision": frame["action_revision"],
         "expected_scene_instance_id": frame["scene_instance_id"], "expected_membership_epoch": frame["membership_epoch"]})
+    if kind == 'action' and response.status_code == 200 and not response.json().get('replayed'):
+        result = response.json()['room']
+        proposal = result['director_proposals'][0]
+        return send(client, rid, result, 'director_resolve', {'proposal_id':proposal['id']})
+    return response
 
 
 def test_independent_combat_actions_views_and_history(env, monkeypatch):

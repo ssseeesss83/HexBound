@@ -86,7 +86,9 @@ def test_command_dedup_and_stale_version(client):
     second = command(client, session, "action", {"action_id": "investigate"}, command_id=command_id, expected_version=0)
     assert second.status_code == 200 and second.json()["replayed"]
     assert first.json()["room"]["version"] == second.json()["room"]["version"]
-    assert len([event for event in second.json()["room"]["events"] if event["kind"] == "roll"]) == 1
+    assert len([event for event in second.json()["room"]["events"] if event["kind"] == "roll"]) == 0
+    proposal = second.json()['room']['director_proposals'][0]
+    assert command(client, session, 'director_resolve', {'proposal_id': proposal['id']}).status_code == 200
     assert command(client, session, "chat", {"text": "迟到的消息"}, expected_version=0).status_code == 200
     assert command(client, session, "pause", expected_version=0).status_code == 409
 
@@ -338,7 +340,8 @@ def test_cancelled_intent_planning_has_no_partial_write(app):
     asyncio.run(run())
 
 
-def test_legacy_narrate_success_receipt_replays_without_new_planning(app, client):
+@pytest.mark.parametrize('legacy_kind,payload', [('narrate', {'text':'old request'}), ('action', {'action_id':'investigate'})])
+def test_legacy_success_receipt_replays_without_new_planning(app, client, legacy_kind, payload):
     session = create(client)
     command(client, session, 'start')
     state = app.state.store.get(session['room']['id'])
@@ -352,7 +355,7 @@ def test_legacy_narrate_success_receipt_replays_without_new_planning(app, client
     app.state.dm.configured = True
     before = copy.deepcopy(app.state.store.get(state['id']))
     response = client.post('/api/rooms/' + state['id'] + '/commands', headers=headers(session), json={
-        'command_id':command_id, 'expected_version':0, 'type':'narrate', 'payload':{'text':'old request'},
+        'command_id':command_id, 'expected_version':0, 'type':legacy_kind, 'payload':payload,
     })
     assert response.status_code == 200 and response.json()['replayed']
     assert app.state.store.get(state['id']) == before
@@ -371,6 +374,8 @@ def test_cancelled_result_narration_preserves_committed_roll_and_receipt(app, mo
             async def send(body):
                 return await client.post(url + '/commands', headers=headers(session), json=body)
             started = (await send({'command_id':uuid.uuid4().hex,'expected_version':0,'type':'start'})).json()['room']
+            planned = (await send({'command_id':uuid.uuid4().hex,'expected_version':started['version'],
+                                   'type':'action','payload':{'action_id':'investigate'}})).json()['room']
             app.state.dm.configured = True
             app.state.dm.narrate = slow
             if cancel_at == 'broadcast':
@@ -386,7 +391,8 @@ def test_cancelled_result_narration_preserves_committed_roll_and_receipt(app, mo
                         await asyncio.Event().wait()
                     await original(room_id)
                 monkeypatch.setattr(cell, 'cell_contents', gated)
-            body = {'command_id':uuid.uuid4().hex,'expected_version':started['version'],'type':'action','payload':{'action_id':'investigate'}}
+            body = {'command_id':uuid.uuid4().hex,'expected_version':planned['version'],'type':'director_resolve',
+                    'payload':{'proposal_id':planned['director_proposals'][0]['id']}}
             task = asyncio.create_task(send(body))
             await asyncio.wait_for(reached.wait(), 2)
             settled = app.state.store.get(session['room']['id'])

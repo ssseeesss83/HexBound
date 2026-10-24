@@ -71,6 +71,8 @@ async function main() {
   await groupDialog(host);click(host,`[name="member"][value="${guestId}"]`);submit(host,'#group-form');
   await until(()=>host.document.querySelector('#group-confirm'),'second preview');
   click(guest,'[data-action="investigate"]');
+  await until(()=>guest.document.querySelector('[data-director-resolve]:not(:disabled)'),'guest action plan');
+  click(guest,'[data-director-resolve]');
   await until(()=>host.document.querySelector('[data-action="advance"]:not(:disabled)'),'gameplay changes prepared plan');
   click(host,'#group-confirm');
   await until(()=>host.document.querySelector('#group-form') && host.document.querySelector('#group-error')?.textContent.includes('过期'),'stale plan recovery');

@@ -180,6 +180,10 @@ async function main() {
     "start broadcast",
   );
   click(host, '[data-action="investigate"]');
+  await waitFor(() => host.document.querySelector('[data-director-resolve]:not(:disabled)'), 'selection creates plan');
+  assert(!host.document.querySelector('[data-director-resolve]').closest('.action-entry-hidden'), 'plan visible after menu selection');
+  assert(!host.document.querySelector('.roll-ticket'), 'selection has no roll');
+  click(host, '[data-director-resolve]');
   await waitFor(
     () => host.document.querySelector(".roll-ticket"),
     "rule receipt rendered",

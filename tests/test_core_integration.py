@@ -39,6 +39,14 @@ def cmd(c, rid, kind, payload=None, body=None):
     return c.post(f'/api/rooms/{rid}/commands', json=body), body
 
 
+def settle(c, rid, payload):
+    """Exercise selection followed by explicit confirmation; return settlement receipt."""
+    selected, _ = cmd(c, rid, 'action', payload)
+    assert selected.status_code == 200, selected.text
+    proposal = selected.json()['room']['director_proposals'][0]
+    return cmd(c, rid, 'director_resolve', {'proposal_id': proposal['id']})
+
+
 def seed(store, rid, change):
     state = store.get(rid)
     version = state['version']
@@ -159,7 +167,7 @@ def test_objective_reward_receipt_and_restart(env):
     state = store.get(rid)
     # Trusted fixture makes the existing deterministic scene ready to advance.
     seed(store, rid, lambda s: s['flags'].update(scene_resolved=True))
-    response, body = cmd(a, rid, 'action', {'action_id': 'advance'})
+    response, body = settle(a, rid, {'action_id': 'advance'})
     assert response.status_code == 200, response.text
     after = store.get(rid)
     assert after['members'][0]['character']['xp'] == 100
@@ -232,7 +240,7 @@ def test_battle_reward_and_repeated_victory_are_idempotent(env, monkeypatch):
         combat['enemies'] = [combat['enemy']]
     seed(store, rid, prepare)
     monkeypatch.setattr(rules.secrets, 'randbelow', lambda n: n - 1)
-    result, body = cmd(a, rid, 'action', {'action_id': 'attack', 'target_id': 'enemy'})
+    result, body = settle(a, rid, {'action_id': 'attack', 'target_id': 'enemy'})
     assert result.status_code == 200, result.text
     after = store.get(rid)
     assert not after['combat']['active']

@@ -36,6 +36,10 @@ def enter_battle(client, session):
                           ('action', {'action_id':'advance'}), ('action', {'action_id':'fight'})]:
         response = send(client, session, kind, payload)
         assert response.status_code == 200, response.text
+        if kind == 'action':
+            proposal = response.json()['room']['director_proposals'][0]
+            response = send(client, session, 'director_resolve', dict(proposal_id=proposal['id']))
+            assert response.status_code == 200, response.text
     frame = response.json()['room']
     assert frame['combat']['active'] and frame['combat']['turn_actor_id'] == session['member_id']
     return frame
@@ -74,6 +78,21 @@ def test_both_entries_share_attack_plan_and_confirm_once(table, monkeypatch):
     replay = send(client, session, 'director_resolve', dict(proposal_id=second['id']), command_id)
     assert replay.status_code == 200 and replay.json()['replayed']
     assert sum(bool(event.get('roll')) for event in replay.json()['room']['events']) == count
+
+
+def test_old_action_is_only_a_plan_and_cannot_smuggle_turn_control(table, monkeypatch):
+    app, client, session = table
+    before = enter_battle(client, session)
+    def forbidden(*args, **kwargs):
+        raise AssertionError('Old action alias must not execute')
+    monkeypatch.setattr(rules, 'roll_dice', forbidden)
+    selected = send(client, session, 'action', dict(action_id='attack', target_id=before['combat']['enemies'][0]['id']))
+    assert selected.status_code == 200, selected.text
+    frame = selected.json()['room']
+    assert frame['combat'] == before['combat'] and frame['party'] == before['party']
+    assert frame['director_proposals'][0]['kind'] == 'capability'
+    assert send(client, session, 'action', dict(action_id='end_turn')).status_code == 422
+    assert client.get('/api/rooms/' + session['room']['id'], headers=dict(Authorization='Bearer ' + session['token'])).json()['combat'] == before['combat']
 
 
 def test_spell_plan_survives_chat_and_replayed_request_without_spending(table):

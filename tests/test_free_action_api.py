@@ -5,7 +5,7 @@ import pytest
 from fastapi.testclient import TestClient
 from backend.dm import DM
 from backend import rules
-from test_core_integration import env, cmd, room, seed
+from test_core_integration import env, cmd, room, seed, settle
 
 
 @pytest.fixture
@@ -90,7 +90,9 @@ def test_stale_proposal_after_skill_budget_spent_is_rejected(play, monkeypatch):
     combat(store, rid)
     model(monkeypatch, object_id='crate')
     proposal = propose(a, rid)
-    assert cmd(a, rid, 'action', {'action_id': 'dodge'})[0].status_code == 200
+    # A trusted concurrent state change must invalidate this stored proposal.
+    # Selecting another own action now replaces it instead of executing directly.
+    seed(store, rid, lambda state: state['combat'].update(action_used=True))
     before = store.get(rid)
     response, _ = cmd(a, rid, 'director_resolve', {'proposal_id': proposal['id']})
     assert response.status_code == 422
@@ -137,7 +139,7 @@ def test_client_cannot_edit_confirmed_effect_or_request_after_budget_exhaustion(
     before = store.get(rid)
     response, _ = cmd(a, rid, 'director_resolve', {'proposal_id': proposal['id'], 'damage': 999})
     assert response.status_code == 422 and store.get(rid) == before
-    assert cmd(a, rid, 'action', {'action_id': 'dodge'})[0].status_code == 200
+    assert settle(a, rid, {'action_id': 'dodge'})[0].status_code == 200
     fallback = propose(a, rid)
     assert fallback['source'] == 'fallback' and fallback['kind'] != 'free_action'
     assert store.get(rid)['combat']['action_used']
