@@ -150,3 +150,5 @@ tools/audit_monster_headers.py独立核317官方头部→334候选的速度、�
 tools/audit_monster_action_bodies.py独立核1,505项正文（550特性 / 844动作 / 12反应 / 99传奇）及名称库存，共4,346检查零差异。43嵌套标题并入父动作完整范围，use / recharge / form限制不因目录短名省略而丢失；五显式别名和侧栏派生可追溯。1,661修正为1,505完整ref+156正文，包含单位 / 排版差异与Solar100HP、疫病巨鼠平均4等实质更正。仅改desc及official_action_reference，未改任何嵌套数值；全部原守卫保留、来源锚稳定。普通Spider与SwarmSpider来源独立，条件形态与参数执行继续待核。
 
 攻击伤害数值tools/audit_monster_attack_damage.py核533直接攻击加值及709既有damage_dice / type摘要，5,933检查零差异。raw只作固定路径 / 类型身份绑定，数值由官方独立解析；12伪+0清null，其余709不改。799字面量与91未投影类型分量全部留存source短语 / 位置 / 摘录及完整正文链接，Djinni显式or，天使included语义保留。此证据不签条件模型或触发时序，尤其Aboleth酸伤仍不得当即时命中伤害，Bugbear / Duergar摘要不代表所有分支；条件状态始终false。原守卫与预修快照完整，未激活。
+
+tools/audit_monster_usage.py双向核122外层标签 / 117来源资源模板及通则恢复，3,010检查零差异。补五缺、修铁魔像Recharge6，共6usage加122完整引用。p259长休 / 短休 / 自身回合d6恢复规范独立保存；same-entity跨形态同池、不同实体独立、四Mephit内外同次限制均明确，不把出现数当独立资源数。只签资料，不签恢复执行或内层施法；按用户v0.9首剧本优先要求，进一步技能细节暂缓。
