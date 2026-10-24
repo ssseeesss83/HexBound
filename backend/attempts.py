@@ -153,6 +153,20 @@ def require(state, actor, action_id, *, object_id=None):
     return spec
 
 
+def proposal_available(state, actor, decision):
+    """Public stale status may expose qualification, never an old private result."""
+    kind = decision.get('kind')
+    action = decision.get('anchor_action_id') if kind == 'check' else decision.get('action_id')
+    if kind == 'check' and not action:
+        return False
+    if kind not in {'check', 'capability'} and not (kind == 'free_action' and action == 'search'):
+        return True
+    try:
+        return available(state, actor, action, object_id=decision.get('object_id') if action == 'search' else None)
+    except (ValueError, KeyError):
+        return False
+
+
 def record_roll(state, spec, actor, roll, event):
     """Bind a settled mechanical result to an effect event, with no narration."""
     if spec is None:

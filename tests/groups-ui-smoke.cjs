@@ -60,6 +60,8 @@ async function main() {
   const guest=await page();click(guest,'#join');fill(guest,'invite_code',identity.invite_code);fill(guest,'player_name','Guest');submit(guest,'#entry-form');
   await until(()=>host.document.querySelectorAll('.party-member').length===2 && guest.document.querySelector('.table-shell'),'joined');
   click(host,'#start');await until(()=>host.document.querySelector('[data-action="investigate"]:not(:disabled)'),'started');
+  click(host,'[data-action="investigate"]');
+  await until(()=>host.document.querySelector('[data-director-resolve]:not(:disabled)'),'host pending challenge');
   const guestId=JSON.parse(guest.sessionStorage.getItem('hexbound-session')).member_id;
   await groupDialog(host);
   click(host,`[name="member"][value="${guestId}"]`);submit(host,'#group-form');
@@ -74,6 +76,8 @@ async function main() {
   await until(()=>guest.document.querySelector('[data-director-resolve]:not(:disabled)'),'guest action plan');
   click(guest,'[data-director-resolve]');
   await until(()=>host.document.querySelector('[data-action="advance"]:not(:disabled)'),'gameplay changes prepared plan');
+  assert(host.document.querySelector('[data-director-resolve]').disabled,'other member settlement disables duplicate challenge');
+  assert(host.document.querySelector('.dm-proposal').textContent.includes('换一种说法不会重掷'),'challenge-specific recovery guidance');
   click(host,'#group-confirm');
   await until(()=>host.document.querySelector('#group-form') && host.document.querySelector('#group-error')?.textContent.includes('过期'),'stale plan recovery');
   assert.equal(host.document.querySelectorAll('.party-member').length,2,'stale plan cannot move members');

@@ -230,6 +230,7 @@ def validate_proposal(raw, state, member_id, policy="balanced"):
 
 def public_proposal(proposal, state=None):
     decision = proposal["decision"]
+    qualified = state is None or attempts.proposal_available(state, proposal['actor_id'], decision)
     return {"id": proposal["id"], "actor_id": proposal["actor_id"], "scene_id": proposal["scene_id"],
             **copy.deepcopy(decision), "dc": proposal["dc"], "cost": proposal["cost"],
             "requires_host": proposal["requires_host"],
@@ -237,7 +238,9 @@ def public_proposal(proposal, state=None):
             "source": proposal.get("source", "local"),
             "plan": action_plans.public_plan(proposal['plan']) if decision['kind'] == 'capability' else copy.deepcopy(proposal.get("plan")),
             "intent": proposal.get("intent", ""), "action_intent": copy.deepcopy(proposal.get("action_intent")),
+            "stale_reason": None if qualified else 'challenge_unavailable',
             "stale": bool(state is not None and proposal.get("_fingerprint") != _fingerprint(state))
+                      or not qualified
                       or bool(decision['kind'] == 'capability' and (
                           proposal['plan']['expires_at'] <= time.time()
                           or proposal['plan'].get('schema_version') != action_plans.PLAN_SCHEMA_VERSION))}
