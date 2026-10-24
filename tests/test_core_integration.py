@@ -13,12 +13,22 @@ def env(tmp_path, monkeypatch):
     monkeypatch.delenv('LLM_MODEL', raising=False)
     path = str(tmp_path / 'core.sqlite3')
     app = create_app(path)
-    with TestClient(app) as a, TestClient(app) as b:
-        for client, name in ((a, 'core_owner'), (b, 'core_other')):
-            r = client.post('/api/auth/register', json={'username': name, 'password': 'Independent-Review-123!', 'display_name': name})
-            assert r.status_code == 201, r.text
-            client.headers['X-CSRF-Token'] = client.get('/api/auth/me').json()['csrf_token']
-        yield a, b, Store(path), path
+    # One ASGI application has one event loop/lifespan, just like the server.
+    # Separate client cookies still represent independent authenticated users.
+    # Starting two TestClient lifespans created two loops sharing asyncio room
+    # locks; concurrent requests could wait forever on a foreign-loop Future.
+    with TestClient(app) as a:
+        b = TestClient(app)
+        b.portal = a.portal
+        try:
+            for client, name in ((a, 'core_owner'), (b, 'core_other')):
+                r = client.post('/api/auth/register', json={'username': name, 'password': 'Independent-Review-123!', 'display_name': name})
+                assert r.status_code == 201, r.text
+                client.headers['X-CSRF-Token'] = client.get('/api/auth/me').json()['csrf_token']
+            yield a, b, Store(path), path
+        finally:
+            b.close()
+            b.portal = None
 
 
 def hero(c):
