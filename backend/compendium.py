@@ -11,11 +11,36 @@ import hashlib
 import importlib
 import json
 from pathlib import Path
+import re
 
 DATA_DIR = Path(__file__).resolve().parent / "data"
 EDITION = "2014"
 SRD_VERSION = "5.1"
+RULESET_ID = "dnd5e-2014-srd5.1"
 SOURCE = json.loads((DATA_DIR / "source-manifest.json").read_text(encoding="utf-8"))
+_COVERAGE = json.loads((DATA_DIR / "official/source-coverage.json").read_text(encoding="utf-8"))
+_SPELL_PAGES = {row["local_record_id"]: [row["printed_page"]] for row in _COVERAGE["official_spell_inventory"]}
+_CHAPTERS = {row["id"]: row["printed_pages"] for row in _COVERAGE["chapters"]}
+_SOURCE_CHAPTERS = {
+    "Races": "races", "Subraces": "races", "Traits": "races", "Backgrounds": "backgrounds", "Feats": "feats",
+    "Skills": "abilities-skills-saves", "Ability-Scores": "abilities-skills-saves", "Conditions": "conditions",
+    "Equipment": "equipment", "Equipment-Categories": "equipment", "Weapon-Properties": "equipment",
+    "Magic-Items": "magic-items", "Languages": "alignment-languages-inspiration", "Alignments": "alignment-languages-inspiration",
+    "Magic-Schools": "spellcasting", "Damage-Types": "combat", "Proficiencies": "equipment",
+}
+_RULE_PAGES = {
+    "the-order-of-combat": (90, 91), "movement-and-position": (91, 93), "actions-in-combat": (93, 94),
+    "making-an-attack": (94, 96), "cover": (96, 96), "damage-and-healing": (96, 99),
+    "mounted-combat": (99, 99), "underwater-combat": (99, 99),
+    "ability-scores-and-modifiers": (76, 76), "advantage-and-disadvantage": (76, 77),
+    "proficiency-bonus": (77, 77), "ability-checks": (77, 79), "using-each-ability": (79, 83), "saving-throws": (83, 83),
+    "time": (84, 84), "movement": (84, 86), "the-environment": (86, 87), "resting": (87, 88), "between-adventures": (88, 89),
+    "what-is-a-spell": (100, 101), "casting-a-spell": (101, 104), "standard-exchange-rates": (62, 62),
+    "objects": (203, 203), "poisons": (204, 205), "attunement": (206, 206),
+    "wearing-and-wielding-items": (206, 206), "activating-an-item": (206, 207), "sentient-magic-items": (251, 252),
+    "fantasy-historical-pantheons": (360, 362), "the-planes-of-existence": (363, 365),
+    "traps": (195, 198), "diseases": (199, 200), "madness": (201, 202),
+}
 
 CLASS_NAMES_ZH = {
     "barbarian": "野蛮人", "bard": "吟游诗人", "cleric": "牧师", "druid": "德鲁伊",
@@ -97,6 +122,19 @@ def _load(name, translations=None):
         row["display_name"] = row.get("name_zh", row.get("name", row["id"]))
         row["edition"] = EDITION
         row["srd_version"] = SRD_VERSION
+        row["ruleset_id"] = RULESET_ID
+        chapter = row.get("class", {}).get("index", row["index"] if name == "Classes" else _SOURCE_CHAPTERS.get(name))
+        pages = _SPELL_PAGES.get(row["index"], []) if name == "Spells" else _CHAPTERS.get(chapter, [])
+        if name == "Monsters":
+            pages = _CHAPTERS["monster-statblocks"] + _CHAPTERS["miscellaneous-creatures"] + _CHAPTERS["npc-statblocks"]
+        if name == "Rule-Sections":
+            lo, hi = _RULE_PAGES[row["index"]]
+            pages = list(range(lo, hi + 1))
+        if name == "Rules":
+            pages = _CHAPTERS.get({"using-ability-scores": "abilities-skills-saves", "appendix": "conditions"}.get(row["index"], row["index"]), [])
+        row["source_refs"] = {"candidate_file": f"srd2014/5e-SRD-{name}.json", "candidate_id": row["index"],
+                              "official_document": "official/SRD_CC_v5.1.pdf", "printed_pages": pages,
+                              "mapping_type": "chapter_reference" if name != "Spells" else "official_heading"}
         result[row["id"]] = row
     return result
 
@@ -157,6 +195,42 @@ for _fix in ERRATA["corrections"]:
             })
             _subclass.setdefault("source_corrections", []).append(_fix["id"])
 
+CANONICAL_OVERLAY = json.loads((DATA_DIR / "canonical-overlay.json").read_text(encoding="utf-8"))
+for _correction in CANONICAL_OVERLAY["corrections"]:
+    for _feature_id in _correction["records"]:
+        _tables = {"features": FEATURES, "levels": LEVELS, "spells": SPELLS, "monsters": MONSTERS}
+        _feature = _tables[_correction.get("kind", "features")][_feature_id]
+        if _correction["operation"] == "replace_description":
+            _feature["desc"] = copy.deepcopy(_correction["paragraphs"])
+        elif _correction["operation"] == "replace_fragments":
+            for _old, _new in _correction["replacements"]:
+                _matches = sum(len(re.findall(re.escape(_old), paragraph, re.I)) for paragraph in _feature["desc"])
+                if _matches != 1:
+                    raise ValueError(f"Canonical correction no longer matches source: {_correction['id']}")
+                _feature["desc"] = [re.sub(re.escape(_old), lambda match: _new, paragraph, flags=re.I) for paragraph in _feature["desc"]]
+        elif _correction["operation"] == "annotate_derived":
+            _feature["source_text_kind"] = "derived_advancement_alias"
+            _feature["source_note"] = _correction["note"]
+        elif _correction["operation"] == "set_field":
+            _target = _feature
+            for _part in _correction["path"][:-1]:
+                _target = _target[_part]
+            _last = _correction["path"][-1]
+            if "expected" in _correction and _target.get(_last) != _correction["expected"]:
+                raise ValueError(f"Canonical correction no longer matches source: {_correction['id']}")
+            _target[_last] = copy.deepcopy(_correction["value"])
+        elif _correction["operation"] == "named_action":
+            _action = next(row for row in _feature["actions"] if row["name"] == _correction["action_name"])
+            if _action["attack_bonus"] != _correction["expected"]:
+                raise ValueError(f"Canonical action no longer matches source: {_correction['id']}")
+            _action["attack_bonus"] = _correction["value"]
+            _action["desc"] = _action["desc"].replace(f"+{_correction['expected']} to hit", f"+{_correction['value']} to hit")
+        else:
+            raise ValueError("Unknown canonical correction operation")
+        _feature.setdefault("source_corrections", []).append(_correction["id"])
+        _feature["source_refs"]["canonical_page"] = _correction["page"]
+        _feature["source_refs"]["canonical_heading"] = _correction["heading"]
+
 COLLECTIONS = {
     "classes": CLASSES, "skills": SKILLS, "spells": SPELLS, "features": FEATURES, "subclasses": SUBCLASSES,
     "levels": LEVELS, "monsters": MONSTERS, "equipment": EQUIPMENT, "proficiencies": PROFICIENCIES,
@@ -193,12 +267,14 @@ def _automation(kind, record_id):
     return fallback
 
 
-def lookup(kind, record_id):
+def lookup(kind, record_id, *, _collections=None):
     """Return every source field plus localized metadata and actual handler status."""
+    from .rules_context import current_view
+    collections = _collections or (current_view().COLLECTIONS if current_view() is not None else COLLECTIONS)
     collection = _kind(kind)
-    if record_id not in COLLECTIONS[collection]:
+    if record_id not in collections[collection]:
         raise ValueError("规则条目不存在")
-    result = copy.deepcopy(COLLECTIONS[collection][record_id])
+    result = copy.deepcopy(collections[collection][record_id])
     automation = _automation(collection, record_id)
     if automation is not None:
         result["automation_status"] = automation["status"]
@@ -207,37 +283,42 @@ def lookup(kind, record_id):
 
 
 def class_level(class_id, level):
+    from .rules_context import current_view
+    if current_view() is not None:
+        return current_view().class_level(class_id, level)
     if class_id not in CLASS_LEVELS or not isinstance(level, int) or isinstance(level, bool) or level not in CLASS_LEVELS[class_id]:
         raise ValueError("职业等级必须是存在职业的1至20级")
     return copy.deepcopy(CLASS_LEVELS[class_id][level])
 
 
-def get_catalog(kind=None, q="", class_id=None, level=None, school=None, limit=100, offset=0):
+def get_catalog(kind=None, q="", class_id=None, level=None, school=None, limit=100, offset=0, *, _collections=None):
     """Search local source records. `level` is exact; spell levels include 0.
 
     No kind returns an overview for selection UIs. A kind returns a paginated
     {items,total,...} object containing complete (not truncated) source records.
     """
+    from .rules_context import current_view
+    collections = _collections or (current_view().COLLECTIONS if current_view() is not None else COLLECTIONS)
     if kind is None:
-        return {"edition": EDITION, "srd_version": SRD_VERSION, "counts": {key: len(value) for key, value in COLLECTIONS.items()},
-                "classes": [{"id": row["id"], "name": row["name"], "name_zh": row.get("name_zh"), "display_name": row["display_name"], "hit_die": row["hit_die"], "subclasses": copy.deepcopy(row["subclasses"])} for row in CLASSES.values()],
-                "skills": [copy.deepcopy(row) for row in SKILLS.values()],
-                "subclasses": [copy.deepcopy(row) for row in SUBCLASSES.values()],
+        return {"edition": EDITION, "srd_version": SRD_VERSION, "counts": {key: len(value) for key, value in collections.items()},
+                "classes": [{"id": row["id"], "name": row["name"], "name_zh": row.get("name_zh"), "display_name": row["display_name"], "hit_die": row["hit_die"], "subclasses": copy.deepcopy(row["subclasses"])} for row in collections["classes"].values()],
+                "skills": [copy.deepcopy(row) for row in collections["skills"].values()],
+                "subclasses": [copy.deepcopy(row) for row in collections["subclasses"].values()],
                 "source": {"repository": SOURCE["source_repository"], "commit": SOURCE["source_commit"], "rules_license": SOURCE["rules_license"], "structure_license": SOURCE["structure_license"]}}
     collection = _kind(kind)
     if not isinstance(limit, int) or isinstance(limit, bool) or not 1 <= limit <= 500:
         raise ValueError("每页条数须为1至500")
     if not isinstance(offset, int) or isinstance(offset, bool) or offset < 0:
         raise ValueError("偏移量不能为负数")
-    if class_id is not None and class_id not in CLASSES:
+    if class_id is not None and class_id not in collections["classes"]:
         raise ValueError("职业不存在")
     if level is not None and (not isinstance(level, int) or isinstance(level, bool) or not 0 <= level <= 20):
         raise ValueError("等级筛选值无效")
-    if school is not None and school not in MAGIC_SCHOOLS:
+    if school is not None and school not in collections["magic-schools"]:
         raise ValueError("魔法学派不存在")
     query = str(q).strip().casefold()
     records = []
-    for record in COLLECTIONS[collection].values():
+    for record in collections[collection].values():
         if class_id:
             classes = {reference["index"] for reference in record.get("classes", [])}
             if "class" in record:
@@ -255,7 +336,7 @@ def get_catalog(kind=None, q="", class_id=None, level=None, school=None, limit=1
             continue
         records.append(record)
     records.sort(key=lambda row: (row.get("level", -1), row.get("name", row["id"]), row["id"]))
-    return {"items": [lookup(collection, row["id"]) for row in records[offset:offset + limit]], "total": len(records),
+    return {"items": [lookup(collection, row["id"], _collections=collections) for row in records[offset:offset + limit]], "total": len(records),
             "offset": offset, "limit": limit, "kind": collection, "edition": EDITION, "srd_version": SRD_VERSION}
 
 

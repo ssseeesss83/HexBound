@@ -1,0 +1,4 @@
+RULESET_ID = "dnd5e-2014-srd5.1"
+PACKAGE_VERSION = "2014-srd5.1-2026-10-24.1"
+LEGACY_PACKAGE = "legacy-v0.6-a6212beb"
+ENGINE_PROFILE = "prototype-2014-v0.6"

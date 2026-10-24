@@ -281,8 +281,8 @@ main()
     windows.forEach((w) => w.close());
     if (server) {
       server.once("exit", () =>
-        rmSync(temporary, { recursive: true, force: true }),
+        rmSync(temporary, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 }),
       );
       server.kill();
-    } else rmSync(temporary, { recursive: true, force: true });
+    } else rmSync(temporary, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 });
   });

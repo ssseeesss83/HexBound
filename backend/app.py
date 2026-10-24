@@ -20,6 +20,8 @@ from pydantic import BaseModel, ConfigDict, Field
 from . import content, rules, campaign, characters, abilities, compendium, director, progression, free_actions, character_builds, character_ai
 from .dm import DM
 from .store import Store
+from . import rules_packages
+from .rules_context import active_store, using_version
 from .heroes import create_hero_router
 from .studio import create_studio_router, compile_scenario
 from .accounts import create_accounts_router, require_user, authenticate_websocket
@@ -127,6 +129,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
         ]}, headers={"Cache-Control": "no-store"})
 
     store = Store(db_path or os.getenv("HEXBOUND_DB", "data/hexbound.sqlite3"))
+    installed_rules = rules_packages.install_package(store, rules_packages.build_legacy_package())
     dm = DM()
     locks: dict[str, asyncio.Lock] = defaultdict(asyncio.Lock)
     peers: dict[str, dict[WebSocket, str]] = defaultdict(dict)
@@ -134,9 +137,11 @@ def create_app(db_path: str | None = None) -> FastAPI:
     limits: dict[str, deque] = defaultdict(deque)
     app.state.store = store
     app.state.dm = dm
+    app.state.rules_package = installed_rules
     app.include_router(create_accounts_router(store))
     app.include_router(create_hero_router(store))
-    store.migrate_heroes()
+    with active_store(store):
+        store.migrate_heroes()
     app.include_router(create_studio_router(store, dm))
 
     def actions_for(state, member_id):
@@ -209,6 +214,10 @@ def create_app(db_path: str | None = None) -> FastAPI:
                                 "actor_name": actor_name, "text": text, **extra})
 
     def public(state: dict, viewer: str) -> dict:
+        with active_store(store), using_version(state.get("rules_package_version", rules_packages.LEGACY_PACKAGE)):
+            return _public(state, viewer)
+
+    def _public(state: dict, viewer: str) -> dict:
         online = set(peers.get(state["id"], {}).values())
         party = []
         for member in state["members"]:
@@ -231,6 +240,9 @@ def create_app(db_path: str | None = None) -> FastAPI:
         actions = actions_for(state, viewer) if state["status"] == "playing" else []
         return {
             "id": state["id"], "name": state["name"], "mode": state["mode"],
+            "ruleset_id": state.get("ruleset_id", rules_packages.RULESET_ID),
+            "rules_package_version": state.get("rules_package_version", rules_packages.LEGACY_PACKAGE),
+            "engine_profile": state.get("engine_profile", rules_packages.ENGINE_PROFILE),
             "status": state["status"], "version": state["version"], "host_id": state["host_id"],
             "invite_code": state["invite_code"], "party": party, "scene": scene,
             "starting_level": state.get("starting_level", 1),
@@ -312,7 +324,17 @@ def create_app(db_path: str | None = None) -> FastAPI:
 
     @app.middleware("http")
     async def headers(request: Request, call_next):
-        response = await call_next(request)
+        parts = request.url.path.split("/")
+        pinned = store.get(parts[3]) if len(parts) > 3 and parts[1:3] == ["api", "rooms"] and parts[3] not in {"join", "mine"} else None
+        version = pinned.get("rules_package_version", rules_packages.LEGACY_PACKAGE) if pinned else None
+        with active_store(store):
+            try:
+                with using_version(version):
+                    response = await call_next(request)
+            except ValueError as exc:
+                if str(exc).startswith("Pinned rules package is unavailable:"):
+                    return JSONResponse(status_code=409, content={"detail": "房间锁定的规则包不可用，请先恢复对应规则版本。"})
+                raise
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["Referrer-Policy"] = "same-origin"
         if request.url.path.startswith("/api/"):
@@ -401,7 +423,9 @@ def create_app(db_path: str | None = None) -> FastAPI:
             raise HTTPException(404, "邀请码无效")
         member_id, token = uuid.uuid4().hex, secrets.token_urlsafe(32)
         try:
-            character = characters.create_character(body.character_id, body.player_name)
+            target_room = get_state(room_id)
+            with using_version(target_room.get("rules_package_version", rules_packages.LEGACY_PACKAGE)):
+                character = characters.create_character(body.character_id, body.player_name)
             async with locks[room_id]:
                 user = room_user(request)
                 state = store.join(room_id, {"id": member_id, "name": body.player_name,

@@ -1,0 +1,1328 @@
+{
+  "ruleset_id": "dnd5e-2014-srd5.1",
+  "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+  "corrections": [
+    {
+      "id": "official-divine-domain-wording",
+      "records": [
+        "divine-domain",
+        "divine-domain-improvement-1",
+        "divine-domain-improvement-2",
+        "divine-domain-improvement-3",
+        "divine-domain-improvement-4"
+      ],
+      "page": 16,
+      "heading": "Divine Domain",
+      "operation": "replace_description",
+      "paragraphs": [
+        "Choose one domain related to your deity, such as Life. Each domain is detailed at the end of the class description, and each one provides examples of gods associated with it.",
+        "Your choice grants you domain spells and other features when you choose it at 1st level. It also grants you additional ways to use Channel Divinity when you gain that feature at 2nd level, and additional benefits at 6th, 8th, and 17th levels."
+      ]
+    },
+    {
+      "id": "official-roguish-archetype-wording",
+      "records": [
+        "roguish-archetype",
+        "roguish-archetype-improvement-1",
+        "roguish-archetype-improvement-2",
+        "roguish-archetype-improvement-3"
+      ],
+      "page": 40,
+      "heading": "Roguish Archetype",
+      "operation": "replace_description",
+      "paragraphs": [
+        "At 3rd level, you choose an archetype that you emulate in the exercise of your rogue abilities, such as Thief. Your archetype choice grants you features at 3rd level and then again at 9th, 13th, and 17th level."
+      ]
+    },
+    {
+      "id": "official-otherworldly-patron-wording",
+      "records": [
+        "otherworldly-patron",
+        "otherworldly-patron-improvement-1",
+        "otherworldly-patron-improvement-2",
+        "otherworldly-patron-improvement-3"
+      ],
+      "page": 46,
+      "heading": "Otherworldly Patron",
+      "operation": "replace_description",
+      "paragraphs": [
+        "At 1st level, you have struck a bargain with an otherworldly being of your choice: the Archfey, the Fiend, or the Great Old One, each of which is detailed at the end of the class description. Your choice grants you features at 1st level and again at 6th, 10th, and 14th level."
+      ]
+    },
+    {
+      "id": "official-rage-table-references",
+      "records": [
+        "rage"
+      ],
+      "page": 8,
+      "heading": "Rage",
+      "operation": "replace_fragments",
+      "replacements": [
+        [
+          "When you make a melee weapon attack using Strength, you gain a +2 bonus to the damage roll. This bonus increases as you level.",
+          "When you make a melee weapon attack using Strength, you gain a bonus to the damage roll that increases as you gain levels as a barbarian, as shown in the Rage Damage column of the Barbarian table."
+        ],
+        [
+          "Once you have raged the maximum number of times for your barbarian level, you must finish a long rest before you can rage again. You may rage 2 times at 1st level, 3 at 3rd, 4 at 6th, 5 at 12th, and 6 at 17th.",
+          "Once you have raged the number of times shown for your barbarian level in the Rages column of the Barbarian table, you must finish a long rest before you can rage again."
+        ]
+      ],
+      "related_records": [
+        "levels/barbarian-1",
+        "levels/barbarian-20"
+      ]
+    },
+    {
+      "id": "official-divine-sense-example",
+      "records": [
+        "divine-sense"
+      ],
+      "page": 30,
+      "heading": "Divine Sense",
+      "operation": "replace_fragments",
+      "replacements": [
+        [
+          "but not its identity.",
+          "but not its identity (the vampire Count Strahd von Zarovich, for instance)."
+        ]
+      ]
+    },
+    {
+      "id": "derived-aura-advancement",
+      "records": [
+        "aura-improvements"
+      ],
+      "page": 32,
+      "heading": "Aura of Protection / Aura of Courage",
+      "operation": "annotate_derived",
+      "note": "Community advancement alias for the two named aura range increases at paladin level 18; not a new official feature and not a grant to every aura."
+    },
+    {
+      "id": "official-druid-7-class_specific-wild_shape_max_cr",
+      "kind": "levels",
+      "records": [
+        "druid-7"
+      ],
+      "page": 20,
+      "heading": "Beast Shapes",
+      "operation": "set_field",
+      "path": [
+        "class_specific",
+        "wild_shape_max_cr"
+      ],
+      "value": 0.5,
+      "expected": 1
+    },
+    {
+      "id": "official-sorcerer-16-class_specific-metamagic_known",
+      "kind": "levels",
+      "records": [
+        "sorcerer-16"
+      ],
+      "page": 42,
+      "heading": "The Sorcerer",
+      "operation": "set_field",
+      "path": [
+        "class_specific",
+        "metamagic_known"
+      ],
+      "value": 3,
+      "expected": 4
+    },
+    {
+      "id": "official-warlock-4-class_specific-invocations_known",
+      "kind": "levels",
+      "records": [
+        "warlock-4"
+      ],
+      "page": 46,
+      "heading": "The Warlock",
+      "operation": "set_field",
+      "path": [
+        "class_specific",
+        "invocations_known"
+      ],
+      "value": 2,
+      "expected": 3
+    },
+    {
+      "id": "official-warlock-6-class_specific-invocations_known",
+      "kind": "levels",
+      "records": [
+        "warlock-6"
+      ],
+      "page": 46,
+      "heading": "The Warlock",
+      "operation": "set_field",
+      "path": [
+        "class_specific",
+        "invocations_known"
+      ],
+      "value": 3,
+      "expected": 4
+    },
+    {
+      "id": "official-rogue-11-ability_score_bonuses",
+      "kind": "levels",
+      "records": [
+        "rogue-11"
+      ],
+      "page": 39,
+      "heading": "The Rogue",
+      "operation": "set_field",
+      "path": [
+        "ability_score_bonuses"
+      ],
+      "value": 3,
+      "expected": 2
+    },
+    {
+      "id": "official-rogue-13-ability_score_bonuses",
+      "kind": "levels",
+      "records": [
+        "rogue-13"
+      ],
+      "page": 39,
+      "heading": "The Rogue",
+      "operation": "set_field",
+      "path": [
+        "ability_score_bonuses"
+      ],
+      "value": 4,
+      "expected": 3
+    },
+    {
+      "id": "official-rogue-14-ability_score_bonuses",
+      "kind": "levels",
+      "records": [
+        "rogue-14"
+      ],
+      "page": 39,
+      "heading": "The Rogue",
+      "operation": "set_field",
+      "path": [
+        "ability_score_bonuses"
+      ],
+      "value": 4,
+      "expected": 3
+    },
+    {
+      "id": "official-rogue-15-ability_score_bonuses",
+      "kind": "levels",
+      "records": [
+        "rogue-15"
+      ],
+      "page": 39,
+      "heading": "The Rogue",
+      "operation": "set_field",
+      "path": [
+        "ability_score_bonuses"
+      ],
+      "value": 4,
+      "expected": 3
+    },
+    {
+      "id": "official-rogue-17-ability_score_bonuses",
+      "kind": "levels",
+      "records": [
+        "rogue-17"
+      ],
+      "page": 39,
+      "heading": "The Rogue",
+      "operation": "set_field",
+      "path": [
+        "ability_score_bonuses"
+      ],
+      "value": 5,
+      "expected": 4
+    },
+    {
+      "id": "official-rogue-18-ability_score_bonuses",
+      "kind": "levels",
+      "records": [
+        "rogue-18"
+      ],
+      "page": 39,
+      "heading": "The Rogue",
+      "operation": "set_field",
+      "path": [
+        "ability_score_bonuses"
+      ],
+      "value": 5,
+      "expected": 4
+    },
+    {
+      "id": "official-rogue-20-ability_score_bonuses",
+      "kind": "levels",
+      "records": [
+        "rogue-20"
+      ],
+      "page": 39,
+      "heading": "The Rogue",
+      "operation": "set_field",
+      "path": [
+        "ability_score_bonuses"
+      ],
+      "value": 6,
+      "expected": 5
+    },
+    {
+      "id": "official-barbarian-20-class_specific-rage_count",
+      "kind": "levels",
+      "records": [
+        "barbarian-20"
+      ],
+      "page": 8,
+      "heading": "The Barbarian: Unlimited",
+      "operation": "set_field",
+      "path": [
+        "class_specific",
+        "rage_count"
+      ],
+      "value": null,
+      "expected": 9999
+    },
+    {
+      "id": "official-barbarian-20-class_specific-rage_unlimited",
+      "kind": "levels",
+      "records": [
+        "barbarian-20"
+      ],
+      "page": 8,
+      "heading": "The Barbarian: Unlimited",
+      "operation": "set_field",
+      "path": [
+        "class_specific",
+        "rage_unlimited"
+      ],
+      "value": true
+    },
+    {
+      "id": "official-supreme-healing-subclass",
+      "kind": "features",
+      "records": [
+        "supreme-healing"
+      ],
+      "page": 18,
+      "heading": "Supreme Healing",
+      "operation": "set_field",
+      "path": [
+        "subclass"
+      ],
+      "value": {
+        "index": "life",
+        "name": "Life",
+        "url": "/api/2014/subclasses/life"
+      }
+    },
+    {
+      "id": "official-basilisk-armor_class",
+      "kind": "monsters",
+      "records": [
+        "basilisk"
+      ],
+      "page": 265,
+      "heading": "Basilisk",
+      "operation": "set_field",
+      "path": [
+        "armor_class"
+      ],
+      "value": [
+        {
+          "type": "natural",
+          "value": 15
+        }
+      ],
+      "expected": [
+        {
+          "type": "natural",
+          "value": 12
+        }
+      ]
+    },
+    {
+      "id": "official-dretch-xp",
+      "kind": "monsters",
+      "records": [
+        "dretch"
+      ],
+      "page": 270,
+      "heading": "dretch",
+      "operation": "set_field",
+      "path": [
+        "xp"
+      ],
+      "value": 50,
+      "expected": 25
+    },
+    {
+      "id": "official-brass-dragon-wyrmling-xp",
+      "kind": "monsters",
+      "records": [
+        "brass-dragon-wyrmling"
+      ],
+      "page": 292,
+      "heading": "brass-dragon-wyrmling",
+      "operation": "set_field",
+      "path": [
+        "xp"
+      ],
+      "value": 200,
+      "expected": 100
+    },
+    {
+      "id": "official-deep-gnome-svirfneblin-xp",
+      "kind": "monsters",
+      "records": [
+        "deep-gnome-svirfneblin"
+      ],
+      "page": 315,
+      "heading": "deep-gnome-svirfneblin",
+      "operation": "set_field",
+      "path": [
+        "xp"
+      ],
+      "value": 100,
+      "expected": 50
+    },
+    {
+      "id": "official-riding-horse-xp",
+      "kind": "monsters",
+      "records": [
+        "riding-horse"
+      ],
+      "page": 388,
+      "heading": "riding-horse",
+      "operation": "set_field",
+      "path": [
+        "xp"
+      ],
+      "value": 50,
+      "expected": 25
+    },
+    {
+      "id": "official-cult-fanatic-hit_points",
+      "kind": "monsters",
+      "records": [
+        "cult-fanatic"
+      ],
+      "page": 398,
+      "heading": "Cult Fanatic",
+      "operation": "set_field",
+      "path": [
+        "hit_points"
+      ],
+      "value": 33,
+      "expected": 22
+    },
+    {
+      "id": "official-cult-fanatic-hit_points_roll",
+      "kind": "monsters",
+      "records": [
+        "cult-fanatic"
+      ],
+      "page": 398,
+      "heading": "Cult Fanatic",
+      "operation": "set_field",
+      "path": [
+        "hit_points_roll"
+      ],
+      "value": "6d8+6",
+      "expected": "6d8-5"
+    },
+    {
+      "id": "official-vampire-bat-size",
+      "kind": "monsters",
+      "records": [
+        "vampire-bat"
+      ],
+      "page": 352,
+      "heading": "Shapechanger",
+      "operation": "set_field",
+      "path": [
+        "size"
+      ],
+      "value": "Tiny",
+      "expected": "Medium"
+    },
+    {
+      "id": "official-werebear-bear-size",
+      "kind": "monsters",
+      "records": [
+        "werebear-bear"
+      ],
+      "page": 327,
+      "heading": "Shapechanger",
+      "operation": "set_field",
+      "path": [
+        "size"
+      ],
+      "value": "Large",
+      "expected": "Medium"
+    },
+    {
+      "id": "official-werebear-hybrid-size",
+      "kind": "monsters",
+      "records": [
+        "werebear-hybrid"
+      ],
+      "page": 327,
+      "heading": "Shapechanger",
+      "operation": "set_field",
+      "path": [
+        "size"
+      ],
+      "value": "Large",
+      "expected": "Medium"
+    },
+    {
+      "id": "official-kraken-bite-attack",
+      "kind": "monsters",
+      "records": [
+        "kraken"
+      ],
+      "page": 324,
+      "heading": "Bite",
+      "operation": "named_action",
+      "action_name": "Bite",
+      "expected": 7,
+      "value": 17
+    },
+    {
+      "id": "official-kraken-tentacle-attack",
+      "kind": "monsters",
+      "records": [
+        "kraken"
+      ],
+      "page": 324,
+      "heading": "Tentacle",
+      "operation": "named_action",
+      "action_name": "Tentacle",
+      "expected": 7,
+      "value": 17
+    },
+    {
+      "id": "official-gynosphinx-claw-attack",
+      "kind": "monsters",
+      "records": [
+        "gynosphinx"
+      ],
+      "page": 348,
+      "heading": "Claw",
+      "operation": "named_action",
+      "action_name": "Claw",
+      "expected": 9,
+      "value": 8
+    },
+    {
+      "id": "official-arcane-eye-classes",
+      "kind": "spells",
+      "records": [
+        "arcane-eye"
+      ],
+      "page": 112,
+      "heading": "Spell Lists",
+      "operation": "set_field",
+      "path": [
+        "classes"
+      ],
+      "value": [
+        {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      ],
+      "expected": [
+        {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        },
+        {
+          "index": "wizard",
+          "name": "Wizard",
+          "url": "/api/2014/classes/wizard"
+        }
+      ]
+    },
+    {
+      "id": "official-create-food-and-water-classes",
+      "kind": "spells",
+      "records": [
+        "create-food-and-water"
+      ],
+      "page": 106,
+      "heading": "Spell Lists",
+      "operation": "set_field",
+      "path": [
+        "classes"
+      ],
+      "value": [
+        {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        },
+        {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      ],
+      "expected": [
+        {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        },
+        {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        },
+        {
+          "index": "paladin",
+          "name": "Paladin",
+          "url": "/api/2014/classes/paladin"
+        }
+      ]
+    },
+    {
+      "id": "official-divination-classes",
+      "kind": "spells",
+      "records": [
+        "divination"
+      ],
+      "page": 106,
+      "heading": "Spell Lists",
+      "operation": "set_field",
+      "path": [
+        "classes"
+      ],
+      "value": [
+        {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      ],
+      "expected": [
+        {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      ]
+    },
+    {
+      "id": "official-faerie-fire-classes",
+      "kind": "spells",
+      "records": [
+        "faerie-fire"
+      ],
+      "page": 105,
+      "heading": "Spell Lists",
+      "operation": "set_field",
+      "path": [
+        "classes"
+      ],
+      "value": [
+        {
+          "index": "bard",
+          "name": "Bard",
+          "url": "/api/2014/classes/bard"
+        },
+        {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      ],
+      "expected": [
+        {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      ]
+    },
+    {
+      "id": "official-meld-into-stone-classes",
+      "kind": "spells",
+      "records": [
+        "meld-into-stone"
+      ],
+      "page": 108,
+      "heading": "Spell Lists",
+      "operation": "set_field",
+      "path": [
+        "classes"
+      ],
+      "value": [
+        {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        },
+        {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        }
+      ],
+      "expected": [
+        {
+          "index": "cleric",
+          "name": "Cleric",
+          "url": "/api/2014/classes/cleric"
+        }
+      ]
+    },
+    {
+      "id": "official-header-antilife-shell-range",
+      "records": [
+        "antilife-shell"
+      ],
+      "page": 116,
+      "heading": "Antilife Shell",
+      "operation": "set_field",
+      "path": [
+        "range"
+      ],
+      "expected": "Self",
+      "value": "Self (10-foot radius)",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-antimagic-field-range",
+      "records": [
+        "antimagic-field"
+      ],
+      "page": 117,
+      "heading": "Antimagic Field",
+      "operation": "set_field",
+      "path": [
+        "range"
+      ],
+      "expected": "Self",
+      "value": "Self (10-foot-radius sphere)",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-burning-hands-range",
+      "records": [
+        "burning-hands"
+      ],
+      "page": 123,
+      "heading": "Burning Hands",
+      "operation": "set_field",
+      "path": [
+        "range"
+      ],
+      "expected": "Self",
+      "value": "Self (15-foot cone)",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-color-spray-range",
+      "records": [
+        "color-spray"
+      ],
+      "page": 125,
+      "heading": "Color Spray",
+      "operation": "set_field",
+      "path": [
+        "range"
+      ],
+      "expected": "Self",
+      "value": "Self (15-foot cone)",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-cone-of-cold-range",
+      "records": [
+        "cone-of-cold"
+      ],
+      "page": 127,
+      "heading": "Cone of Cold",
+      "operation": "set_field",
+      "path": [
+        "range"
+      ],
+      "expected": "Self",
+      "value": "Self (60-foot cone)",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-confusion-material",
+      "records": [
+        "confusion"
+      ],
+      "page": 127,
+      "heading": "Confusion",
+      "operation": "set_field",
+      "path": [
+        "material"
+      ],
+      "expected": "Three walnut shells.",
+      "value": "three nut shells",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-control-weather-range",
+      "records": [
+        "control-weather"
+      ],
+      "page": 131,
+      "heading": "Control Weather",
+      "operation": "set_field",
+      "path": [
+        "range"
+      ],
+      "expected": "Self",
+      "value": "Self (5-mile radius)",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-counterspell-casting_time",
+      "records": [
+        "counterspell"
+      ],
+      "page": 131,
+      "heading": "Counterspell",
+      "operation": "set_field",
+      "path": [
+        "casting_time"
+      ],
+      "expected": "1 reaction",
+      "value": "1 reaction, which you take when you see a creature within 60 feet of you casting a spell",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-detect-thoughts-material",
+      "records": [
+        "detect-thoughts"
+      ],
+      "page": 135,
+      "heading": "Detect Thoughts",
+      "operation": "set_field",
+      "path": [
+        "material"
+      ],
+      "expected": "A copper coin.",
+      "value": "a copper piece",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-enlarge-reduce-material",
+      "records": [
+        "enlarge-reduce"
+      ],
+      "page": 140,
+      "heading": "Enlarge/Reduce",
+      "operation": "set_field",
+      "path": [
+        "material"
+      ],
+      "expected": "A pinch iron powder.",
+      "value": "a pinch of powdered iron",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-etherealness-duration",
+      "records": [
+        "etherealness"
+      ],
+      "page": 140,
+      "heading": "Etherealness",
+      "operation": "set_field",
+      "path": [
+        "duration"
+      ],
+      "expected": "8 hours",
+      "value": "Up to 8 hours",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-fear-range",
+      "records": [
+        "fear"
+      ],
+      "page": 142,
+      "heading": "Fear",
+      "operation": "set_field",
+      "path": [
+        "range"
+      ],
+      "expected": "Self",
+      "value": "Self (30-foot cone)",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-feather-fall-casting_time",
+      "records": [
+        "feather-fall"
+      ],
+      "page": 142,
+      "heading": "Feather Fall",
+      "operation": "set_field",
+      "path": [
+        "casting_time"
+      ],
+      "expected": "1 reaction",
+      "value": "1 reaction, which you take when you or a creature within 60 feet of you falls",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-feather-fall-material",
+      "records": [
+        "feather-fall"
+      ],
+      "page": 142,
+      "heading": "Feather Fall",
+      "operation": "set_field",
+      "path": [
+        "material"
+      ],
+      "expected": "A small feather or a piece of down.",
+      "value": "a small feather or piece of down",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-find-the-path-duration",
+      "records": [
+        "find-the-path"
+      ],
+      "page": 143,
+      "heading": "Find the Path",
+      "operation": "set_field",
+      "path": [
+        "duration"
+      ],
+      "expected": "Up to 24 hours",
+      "value": "up to 1 day",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-fire-shield-material",
+      "records": [
+        "fire-shield"
+      ],
+      "page": 144,
+      "heading": "Fire Shield",
+      "operation": "set_field",
+      "path": [
+        "material"
+      ],
+      "expected": "A little phosphorus or a firefly.",
+      "value": "a bit of phosphorus or a firefly",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-forbiddance-duration",
+      "records": [
+        "forbiddance"
+      ],
+      "page": 146,
+      "heading": "Forbiddance",
+      "operation": "set_field",
+      "path": [
+        "duration"
+      ],
+      "expected": "24 hours",
+      "value": "1 day",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-globe-of-invulnerability-range",
+      "records": [
+        "globe-of-invulnerability"
+      ],
+      "page": 149,
+      "heading": "Globe of Invulnerability",
+      "operation": "set_field",
+      "path": [
+        "range"
+      ],
+      "expected": "Self",
+      "value": "Self (10-foot radius)",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-glyph-of-warding-duration",
+      "records": [
+        "glyph-of-warding"
+      ],
+      "page": 149,
+      "heading": "Glyph of Warding",
+      "operation": "set_field",
+      "path": [
+        "duration"
+      ],
+      "expected": "Until dispelled",
+      "value": "Until dispelled or triggered",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-gust-of-wind-range",
+      "records": [
+        "gust-of-wind"
+      ],
+      "page": 152,
+      "heading": "Gust of Wind",
+      "operation": "set_field",
+      "path": [
+        "range"
+      ],
+      "expected": "Self",
+      "value": "Self (60-foot line)",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-hellish-rebuke-casting_time",
+      "records": [
+        "hellish-rebuke"
+      ],
+      "page": 154,
+      "heading": "Hellish Rebuke",
+      "operation": "set_field",
+      "path": [
+        "casting_time"
+      ],
+      "expected": "1 reaction",
+      "value": "1 reaction, which you take in response to being damaged by a creature within 60 feet of you that you can see",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-hold-monster-material",
+      "records": [
+        "hold-monster"
+      ],
+      "page": 154,
+      "heading": "Hold Monster",
+      "operation": "set_field",
+      "path": [
+        "material"
+      ],
+      "expected": "A small piece of iron.",
+      "value": "a small, straight piece of iron",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-illusory-script-material",
+      "records": [
+        "illusory-script"
+      ],
+      "page": 156,
+      "heading": "Illusory Script",
+      "operation": "set_field",
+      "path": [
+        "material"
+      ],
+      "expected": "A lead-based ink worth at least 10gp, which this spell consumes.",
+      "value": "a lead-based ink worth at least 10 gp, which the spell consumes",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-lightning-bolt-range",
+      "records": [
+        "lightning-bolt"
+      ],
+      "page": 159,
+      "heading": "Lightning Bolt",
+      "operation": "set_field",
+      "path": [
+        "range"
+      ],
+      "expected": "Self",
+      "value": "Self (100-foot line)",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-magic-mouth-material",
+      "records": [
+        "magic-mouth"
+      ],
+      "page": 161,
+      "heading": "Magic Mouth",
+      "operation": "set_field",
+      "path": [
+        "material"
+      ],
+      "expected": "A honeycomb and jade dust of at least 10 inches, the spell consumes.",
+      "value": "a small bit of honeycomb and jade dust worth at least 10 gp, which the spell consumes",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-plant-growth-casting_time",
+      "records": [
+        "plant-growth"
+      ],
+      "page": 169,
+      "heading": "Plant Growth",
+      "operation": "set_field",
+      "path": [
+        "casting_time"
+      ],
+      "expected": "1 action",
+      "value": "1 action or 8 hours",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-prestidigitation-duration",
+      "records": [
+        "prestidigitation"
+      ],
+      "page": 170,
+      "heading": "Prestidigitation",
+      "operation": "set_field",
+      "path": [
+        "duration"
+      ],
+      "expected": "1 hour",
+      "value": "Up to 1 hour",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-prismatic-spray-range",
+      "records": [
+        "prismatic-spray"
+      ],
+      "page": 170,
+      "heading": "Prismatic Spray",
+      "operation": "set_field",
+      "path": [
+        "range"
+      ],
+      "expected": "Self",
+      "value": "Self (60-foot cone)",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-project-image-duration",
+      "records": [
+        "project-image"
+      ],
+      "page": 172,
+      "heading": "Project Image",
+      "operation": "set_field",
+      "path": [
+        "duration"
+      ],
+      "expected": "Up to 24 hours",
+      "value": "up to 1 day",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-protection-from-evil-and-good-duration",
+      "records": [
+        "protection-from-evil-and-good"
+      ],
+      "page": 173,
+      "heading": "Protection from Evil and Good",
+      "operation": "set_field",
+      "path": [
+        "duration"
+      ],
+      "expected": "Up to 10 minutes",
+      "value": "Concentration up to 10 minutes",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-see-invisibility-material",
+      "records": [
+        "see-invisibility"
+      ],
+      "page": 177,
+      "heading": "See Invisibility",
+      "operation": "set_field",
+      "path": [
+        "material"
+      ],
+      "expected": "A dash of talc and a small amount of silver powder.",
+      "value": "a pinch of talc and a small sprinkling of powdered silver",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-shatter-material",
+      "records": [
+        "shatter"
+      ],
+      "page": 178,
+      "heading": "Shatter",
+      "operation": "set_field",
+      "path": [
+        "material"
+      ],
+      "expected": "A burst of mica.",
+      "value": "a chip of mica",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-shield-casting_time",
+      "records": [
+        "shield"
+      ],
+      "page": 179,
+      "heading": "Shield",
+      "operation": "set_field",
+      "path": [
+        "casting_time"
+      ],
+      "expected": "1 reaction",
+      "value": "1 reaction, which you take when you are hit by an attack or targeted by the magic missile spell",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-speak-with-plants-range",
+      "records": [
+        "speak-with-plants"
+      ],
+      "page": 181,
+      "heading": "Speak with Plants",
+      "operation": "set_field",
+      "path": [
+        "range"
+      ],
+      "expected": "Self",
+      "value": "Self (30-foot radius)",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-spirit-guardians-range",
+      "records": [
+        "spirit-guardians"
+      ],
+      "page": 182,
+      "heading": "Spirit Guardians",
+      "operation": "set_field",
+      "path": [
+        "range"
+      ],
+      "expected": "Self",
+      "value": "Self (15-foot radius)",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-stone-shape-material",
+      "records": [
+        "stone-shape"
+      ],
+      "page": 183,
+      "heading": "Stone Shape",
+      "operation": "set_field",
+      "path": [
+        "material"
+      ],
+      "expected": "Soft clay, to be crudely worked into the desired shape for the stone object.",
+      "value": "soft clay, which must be worked into roughly the desired shape of the stone object",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-sunbeam-range",
+      "records": [
+        "sunbeam"
+      ],
+      "page": 184,
+      "heading": "Sunbeam",
+      "operation": "set_field",
+      "path": [
+        "range"
+      ],
+      "expected": "Self",
+      "value": "Self (60-foot line)",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-symbol-duration",
+      "records": [
+        "symbol"
+      ],
+      "page": 184,
+      "heading": "Symbol",
+      "operation": "set_field",
+      "path": [
+        "duration"
+      ],
+      "expected": "Until dispelled",
+      "value": "Until dispelled or triggered",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-thaumaturgy-duration",
+      "records": [
+        "thaumaturgy"
+      ],
+      "page": 187,
+      "heading": "Thaumaturgy",
+      "operation": "set_field",
+      "path": [
+        "duration"
+      ],
+      "expected": "1 minute",
+      "value": "Up to 1 minute",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-thunderwave-range",
+      "records": [
+        "thunderwave"
+      ],
+      "page": 187,
+      "heading": "Thunderwave",
+      "operation": "set_field",
+      "path": [
+        "range"
+      ],
+      "expected": "Self",
+      "value": "Self (15-foot cube)",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-tiny-hut-range",
+      "records": [
+        "tiny-hut"
+      ],
+      "page": 187,
+      "heading": "Tiny Hut",
+      "operation": "set_field",
+      "path": [
+        "range"
+      ],
+      "expected": "Self",
+      "value": "Self (10-foot-radius hemisphere)",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-water-breathing-material",
+      "records": [
+        "water-breathing"
+      ],
+      "page": 191,
+      "heading": "Water Breathing",
+      "operation": "set_field",
+      "path": [
+        "material"
+      ],
+      "expected": "A short piece of reed or straw.",
+      "value": "a short reed or piece of straw",
+      "kind": "spells"
+    },
+    {
+      "id": "official-header-weird-duration",
+      "records": [
+        "weird"
+      ],
+      "page": 192,
+      "heading": "Weird",
+      "operation": "set_field",
+      "path": [
+        "duration"
+      ],
+      "expected": "Up to 1 minute",
+      "value": "up to one minute",
+      "kind": "spells"
+    }
+  ]
+}

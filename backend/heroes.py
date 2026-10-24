@@ -156,6 +156,8 @@ def create_hero_router(store):
                               level: int | None = Query(default=None,ge=0,le=20), page: int = Query(default=1,ge=1),
                               page_size: int = Query(default=50,ge=1,le=100)):
         from . import compendium
+        from .rules_context import current_view
+        compendium = current_view() or compendium
         tables = {"classes":compendium.CLASSES,"skills":compendium.SKILLS,"spells":compendium.SPELLS,
                   "features":compendium.FEATURES,"subclasses":compendium.SUBCLASSES}
         values=[]
@@ -178,6 +180,8 @@ def create_hero_router(store):
     @router.get("/api/compendium/{kind}/{item_id}")
     async def compendium_detail(kind: str, item_id: str):
         from . import compendium
+        from .rules_context import current_view
+        compendium = current_view() or compendium
         tables={"classes":compendium.CLASSES,"skills":compendium.SKILLS,"spells":compendium.SPELLS,
                 "features":compendium.FEATURES,"subclasses":compendium.SUBCLASSES}
         if kind not in tables or item_id not in tables[kind]:

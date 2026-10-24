@@ -24,8 +24,8 @@ class Store:
             with self.connect() as db:
                 version = check_database_version(db)
                 populated = db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='rooms'").fetchone()
-            if version == 0 and populated:
-                backup_database(path, Path(path).parent / "backups" / f"pre-schema-1-{uuid.uuid4().hex}.zip")
+            if version < SCHEMA_VERSION and populated:
+                backup_database(path, Path(path).parent / "backups" / f"pre-schema-{SCHEMA_VERSION}-{uuid.uuid4().hex}.zip")
         with self.connect() as db:
             check_database_version(db)
             db.executescript("""
@@ -55,6 +55,10 @@ class Store:
             if "user_id" not in columns:
                 db.execute("ALTER TABLE members ADD COLUMN user_id TEXT")
             db.execute("CREATE UNIQUE INDEX IF NOT EXISTS members_room_user ON members(room_id,user_id) WHERE user_id IS NOT NULL")
+            db.execute("CREATE TABLE IF NOT EXISTS rules_packages (version TEXT PRIMARY KEY, ruleset_id TEXT NOT NULL, digest TEXT NOT NULL, metadata TEXT NOT NULL)")
+            db.execute("CREATE TABLE IF NOT EXISTS rules_records (package_version TEXT NOT NULL REFERENCES rules_packages(version), kind TEXT NOT NULL, id TEXT NOT NULL, payload TEXT NOT NULL, PRIMARY KEY(package_version,kind,id))")
+            db.execute("CREATE TABLE IF NOT EXISTS rules_activation (ruleset_id TEXT PRIMARY KEY, package_version TEXT NOT NULL REFERENCES rules_packages(version))")
+            db.execute("CREATE TABLE IF NOT EXISTS rules_documents (package_version TEXT NOT NULL REFERENCES rules_packages(version), page INTEGER NOT NULL, payload TEXT NOT NULL, PRIMARY KEY(package_version,page))")
             db.execute(f"PRAGMA user_version={SCHEMA_VERSION}")
 
     @contextmanager
@@ -69,6 +73,13 @@ class Store:
             db.close()
 
     def create(self, state: dict, member_id: str, token: str, user_id: str | None = None):
+        from .rules_identity import RULESET_ID, PACKAGE_VERSION, ENGINE_PROFILE
+        from .rules_context import active_version
+        state.setdefault("ruleset_id", RULESET_ID)
+        state.setdefault("rules_package_version", active_version())
+        state.setdefault("engine_profile", ENGINE_PROFILE)
+        if state.get("campaign_package"):
+            state["campaign_package"].setdefault("rules_package_version", state["rules_package_version"])
         with self.connect() as db:
             db.execute("BEGIN IMMEDIATE")
             self._bind_hero(db, state, state["members"][0], user_id)
@@ -168,6 +179,12 @@ class Store:
                            (state["id"], member_id, command_id, json.dumps(response, ensure_ascii=False)))
 
     def _bind_hero(self, db, state, member, user_id, *, mark_build=True):
+        from .rules_identity import LEGACY_PACKAGE
+        def require_same_package(character):
+            if character.get("rules_package_version", LEGACY_PACKAGE) != state.get("rules_package_version", LEGACY_PACKAGE):
+                raise ValueError("角色与房间规则版本不同，请先完成显式迁移后再加入。")
+
+        require_same_package(member["character"])
         target_level = state.get("starting_level", 1)
 
         def mark_template():
@@ -190,6 +207,7 @@ class Store:
                 if old and json.loads(old["state"])["status"] != "finished":
                     raise ValueError("该角色仍在另一场冒险中，请完成后再加入新冒险")
             canonical = deepcopy(json.loads(hero["payload"]))
+            require_same_package(canonical)
             level = canonical.get("level", 1)
             if level > target_level:
                 raise ValueError(f"角色等级 {level} 高于冒险起始等级 {target_level}，无法加入")
@@ -239,6 +257,11 @@ class Store:
             for row in db.execute("SELECT id,state FROM rooms").fetchall():
                 state = json.loads(row["state"])
                 changed = False
+                from .rules_identity import RULESET_ID, LEGACY_PACKAGE, ENGINE_PROFILE
+                for key, value in (("ruleset_id", RULESET_ID), ("rules_package_version", LEGACY_PACKAGE), ("engine_profile", ENGINE_PROFILE)):
+                    if key not in state:
+                        state[key] = value
+                        changed = True
                 for member in state["members"]:
                     owner = db.execute("SELECT user_id FROM members WHERE id=?",(member["id"],)).fetchone()
                     migrated = migrate_character(member["character"])

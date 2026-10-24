@@ -2,6 +2,14 @@
 New account authorization suites run with secure defaults.
 """
 import pytest
+import os
+import tempfile
+from pathlib import Path
+
+# backend.app exports a module-level ASGI application. Its import must never
+# install rules or migrate a developer's real/default database during tests.
+_import_database = tempfile.TemporaryDirectory(prefix="hexbound-test-import-")
+os.environ["HEXBOUND_DB"] = str(Path(_import_database.name) / "import.sqlite3")
 
 
 @pytest.fixture(autouse=True)

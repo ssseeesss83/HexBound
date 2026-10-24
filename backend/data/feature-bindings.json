@@ -1,0 +1,2040 @@
+{
+  "ruleset_id": "dnd5e-2014-srd5.1",
+  "features": {
+    "rage": {
+      "handler": "rage",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "barbarian-unarmored-defense": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "reckless-attack": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "danger-sense": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "primal-path": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "frenzy": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "barbarian-ability-score-improvement-1": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "barbarian-extra-attack": {
+      "handler": "extra-attack",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "fast-movement": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "mindless-rage": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "primal-path-improvement-1": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "feral-instinct": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "barbarian-ability-score-improvement-2": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "brutal-critical-1-die": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "intimidating-presence": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "primal-path-improvement-2": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "relentless-rage": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "barbarian-ability-score-improvement-3": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "brutal-critical-2-dice": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "retaliation": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "primal-path-improvement-3": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "persistent-rage": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "barbarian-ability-score-improvement-4": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "brutal-critical-3-dice": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "indomitable-might": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "barbarian-ability-score-improvement-5": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "primal-champion": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "spellcasting-bard": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "bardic-inspiration-d6": {
+      "handler": "bardic-inspiration",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "jack-of-all-trades": {
+      "handler": "skill-bonus",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "song-of-rest-d6": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "bard-college": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "bonus-proficiencies": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "cutting-words": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "bard-expertise-1": {
+      "handler": "expertise",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "bard-ability-score-improvement-1": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "bardic-inspiration-d8": {
+      "handler": "bardic-inspiration",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "font-of-inspiration": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "countercharm": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "bard-college-improvement-1": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "additional-magical-secrets": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "bard-ability-score-improvement-2": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "song-of-rest-d8": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "bardic-inspiration-d10": {
+      "handler": "bardic-inspiration",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "bard-expertise-2": {
+      "handler": "expertise",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "magical-secrets-1": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "bard-ability-score-improvement-3": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "song-of-rest-d10": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "magical-secrets-2": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "bard-college-improvement-2": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "peerless-skill": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "bardic-inspiration-d12": {
+      "handler": "bardic-inspiration",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "bard-ability-score-improvement-4": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "song-of-rest-d12": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "magical-secrets-3": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "bard-ability-score-improvement-5": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "superior-inspiration": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "spellcasting-cleric": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "divine-domain": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "domain-spells-1": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "bonus-proficiency": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "disciple-of-life": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "channel-divinity-1-rest": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "channel-divinity-turn-undead": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "divine-domain-improvement-1": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "channel-divinity-preserve-life": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "domain-spells-2": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "cleric-ability-score-improvement-1": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "domain-spells-3": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "destroy-undead-cr-1-2-or-below": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "channel-divinity-2-rest": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "divine-domain-improvement-2": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "blessed-healer": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "domain-spells-4": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "cleric-ability-score-improvement-2": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "destroy-undead-cr-1-or-below": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "divine-domain-improvement-3": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "divine-strike": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "domain-spells-5": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "divine-intervention": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "destroy-undead-cr-2-or-below": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "cleric-ability-score-improvement-3": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "destroy-undead-cr-3-or-below": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "cleric-ability-score-improvement-4": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "destroy-undead-cr-4-or-below": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "divine-domain-improvement-4": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "supreme-healing": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "channel-divinity-3-rest": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "cleric-ability-score-improvement-5": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "divine-intervention-improvement": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "spellcasting-druid": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "druidic": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "wild-shape-cr-1-4-or-below-no-flying-or-swim-speed": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "druid-circle": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "circle-of-the-land": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "circle-of-the-land-arctic": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "circle-of-the-land-coast": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "circle-of-the-land-desert": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "circle-of-the-land-forest": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "circle-of-the-land-grassland": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "circle-of-the-land-mountain": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "circle-of-the-land-swamp": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "bonus-cantrip": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "natural-recovery": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "circle-spells-1": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "wild-shape-cr-1-2-or-below-no-flying-speed": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "druid-ability-score-improvement-1": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "circle-spells-2": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "druid-circle-improvement-1": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "druid-lands-stride": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "circle-spells-3": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "wild-shape-cr-1-or-below": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "druid-ability-score-improvement-2": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "circle-spells-4": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "druid-circle-improvement-2": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "natures-ward": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "druid-ability-score-improvement-3": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "druid-circle-improvement-3": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "natures-sanctuary": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "druid-ability-score-improvement-4": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "druid-timeless-body": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "beast-spells": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "druid-ability-score-improvement-5": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "archdruid": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "fighter-fighting-style": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "fighter-fighting-style-archery": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "fighter-fighting-style-defense": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "fighter-fighting-style-dueling": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "fighter-fighting-style-great-weapon-fighting": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "fighter-fighting-style-protection": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "fighter-fighting-style-two-weapon-fighting": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "second-wind": {
+      "handler": "second-wind",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "action-surge-1-use": {
+      "handler": "action-surge",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "martial-archetype": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "improved-critical": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "fighter-ability-score-improvement-1": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "extra-attack-1": {
+      "handler": "extra-attack",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "fighter-ability-score-improvement-2": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "remarkable-athlete": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "martial-archetype-improvement-1": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "fighter-ability-score-improvement-3": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "indomitable-1-use": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "additional-fighting-style": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "martial-archetype-improvement-2": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "extra-attack-2": {
+      "handler": "extra-attack",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "fighter-ability-score-improvement-4": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "indomitable-2-uses": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "fighter-ability-score-improvement-5": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "superior-critical": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "martial-archetype-improvement-3": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "fighter-ability-score-improvement-6": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "action-surge-2-uses": {
+      "handler": "action-surge",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "indomitable-3-uses": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "martial-archetype-improvement-4": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "survivor": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "fighter-ability-score-improvement-7": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "extra-attack-3": {
+      "handler": "extra-attack",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "monk-unarmored-defense": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "martial-arts": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "ki": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "flurry-of-blows": {
+      "handler": "flurry-of-blows",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "patient-defense": {
+      "handler": "patient-defense",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "step-of-the-wind": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "unarmored-movement-1": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "monastic-tradition": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "deflect-missiles": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "open-hand-technique": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "monk-ability-score-improvement-1": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "slow-fall": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "monk-extra-attack": {
+      "handler": "extra-attack",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "stunning-strike": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "ki-empowered-strikes": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "monastic-tradition-improvement-1": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "wholeness-of-body": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "monk-evasion": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "stillness-of-mind": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "monk-ability-score-improvement-2": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "unarmored-movement-2": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "purity-of-body": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "monastic-tradition-improvement-2": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "tranquility": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "monk-ability-score-improvement-3": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "tongue-of-the-sun-and-moon": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "diamond-soul": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "monk-timeless-body": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "monk-ability-score-improvement-4": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "monastic-tradition-improvement-3": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "quivering-palm": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "empty-body": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "monk-ability-score-improvement-5": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "perfect-self": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "divine-sense": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "lay-on-hands": {
+      "handler": "lay-on-hands",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "paladin-fighting-style": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "fighting-style-defense": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "fighting-style-dueling": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "fighting-style-great-weapon-fighting": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "fighting-style-protection": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "spellcasting-paladin": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "divine-smite": {
+      "handler": "divine-smite",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "divine-health": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "sacred-oath": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "oath-spells": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "channel-divinity": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "channel-divinity-sacred-weapon": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "channel-divinity-turn-the-unholy": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "paladin-ability-score-improvement-1": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "paladin-extra-attack": {
+      "handler": "extra-attack",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "aura-of-protection": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "sacred-oath-improvement-1": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "aura-of-devotion": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "paladin-ability-score-improvement-2": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "aura-of-courage": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "improved-divine-smite": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "paladin-ability-score-improvement-3": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "cleansing-touch": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "sacred-oath-improvement-2": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "purity-of-spirit": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "paladin-ability-score-improvement-4": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "aura-improvements": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "paladin-ability-score-improvement-5": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "sacred-oath-improvement-3": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "holy-nimbus": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "favored-enemy-1-type": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "natural-explorer-1-terrain-type": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "ranger-fighting-style": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "ranger-fighting-style-archery": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "ranger-fighting-style-defense": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "ranger-fighting-style-dueling": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "ranger-fighting-style-two-weapon-fighting": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "spellcasting-ranger": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "ranger-archetype": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "hunters-prey": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "hunters-prey-colossus-slayer": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "hunters-prey-giant-killer": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "hunters-prey-horde-breaker": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "primeval-awareness": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "ranger-ability-score-improvement-1": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "ranger-extra-attack": {
+      "handler": "extra-attack",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "favored-enemy-2-types": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "natural-explorer-2-terrain-types": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "ranger-archetype-improvement-1": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "defensive-tactics": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "defensive-tactics-escape-the-horde": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "defensive-tactics-multiattack-defense": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "defensive-tactics-steel-will": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "ranger-ability-score-improvement-2": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "ranger-lands-stride": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "natural-explorer-3-terrain-types": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "hide-in-plain-sight": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "ranger-archetype-improvement-2": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "multiattack": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "multiattack-volley": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "multiattack-whirlwind-attack": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "ranger-ability-score-improvement-3": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "favored-enemy-3-enemies": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "vanish": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "ranger-archetype-improvement-3": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "superior-hunters-defense": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "superior-hunters-defense-evasion": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "superior-hunters-defense-stand-against-the-tide": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "superior-hunters-defense-uncanny-dodge": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "ranger-ability-score-improvement-4": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "feral-senses": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "ranger-ability-score-improvement-5": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "foe-slayer": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "rogue-expertise-1": {
+      "handler": "expertise",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "sneak-attack": {
+      "handler": "sneak-attack",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "thieves-cant": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "cunning-action": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "roguish-archetype": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "fast-hands": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "second-story-work": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "rogue-ability-score-improvement-1": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "uncanny-dodge": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "rogue-expertise-2": {
+      "handler": "expertise",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "rogue-evasion": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "rogue-ability-score-improvement-2": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "roguish-archetype-improvement-1": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "supreme-sneak": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "rogue-ability-score-improvement-3": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "reliable-talent": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "rogue-ability-score-improvement-4": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "roguish-archetype-improvement-2": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "use-magic-device": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "blindsense": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "slippery-mind": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "rogue-ability-score-improvement-5": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "roguish-archetype-improvement-3": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "thiefs-reflexes": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "elusive": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "rogue-ability-score-improvement-6": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "stroke-of-luck": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "spellcasting-sorcerer": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "sorcerous-origin": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "dragon-ancestor": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "dragon-ancestor-black---acid-damage": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "dragon-ancestor-blue---lightning-damage": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "dragon-ancestor-brass---fire-damage": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "dragon-ancestor-bronze---lightning-damage": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "dragon-ancestor-copper---acid-damage": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "dragon-ancestor-gold---fire-damage": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "dragon-ancestor-green---poison-damage": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "dragon-ancestor-red---fire-damage": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "dragon-ancestor-silver---cold-damage": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "dragon-ancestor-white---cold-damage": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "draconic-resilience": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "font-of-magic": {
+      "handler": "font-of-magic",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "flexible-casting-creating-spell-slots": {
+      "handler": "font-of-magic",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "flexible-casting-converting-spell-slot": {
+      "handler": "font-of-magic",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "metamagic-1": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "metamagic-careful-spell": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "metamagic-distant-spell": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "metamagic-empowered-spell": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "metamagic-extended-spell": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "metamagic-heightened-spell": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "metamagic-quickened-spell": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "metamagic-subtle-spell": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "metamagic-twinned-spell": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "sorcerer-ability-score-improvement-1": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "sorcerous-origin-improvement-1": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "elemental-affinity": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "sorcerer-ability-score-improvement-2": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "metamagic-2": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "sorcerer-ability-score-improvement-3": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "sorcerous-origin-improvement-2": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "dragon-wings": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "sorcerer-ability-score-improvement-4": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "metamagic-3": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "sorcerous-origin-improvement-3": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "draconic-presence": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "sorcerer-ability-score-improvement-5": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "sorcerous-restoration": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "otherworldly-patron": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "dark-ones-blessing": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "pact-magic": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocations": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-agonizing-blast": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-armor-of-shadows": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-beast-speech": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-beguiling-influence": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-book-of-ancient-secrets": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-devils-sight": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-eldritch-sight": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-eldritch-spear": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-eyes-of-the-rune-keeper": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-fiendish-vigor": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-gaze-of-two-minds": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-mask-of-many-faces": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-misty-visions": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-repelling-blast": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-thief-of-five-fates": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-voice-of-the-chain-master": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-mire-the-mind": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-one-with-shadows": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-sign-of-ill-omen": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-thirsting-blade": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "otherworldly-patron-improvement-1": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-bewitching-whispers": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-dreadful-word": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-sculptor-of-flesh": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-ascendant-step": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-minions-of-chaos": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-otherworldly-leap": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-whispers-of-the-grave": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "otherworldly-patron-improvement-2": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-lifedrinker": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "otherworldly-patron-improvement-3": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-chains-of-carceri": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-master-of-myriad-forms": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-visions-of-distant-realms": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "eldritch-invocation-witch-sight": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "pact-boon": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "pact-of-the-chain": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "pact-of-the-blade": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "pact-of-the-tome": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "warlock-ability-score-improvement-1": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "dark-ones-own-luck": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "warlock-ability-score-improvement-2": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "fiendish-resilience": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "mystic-arcanum-6th-level": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "warlock-ability-score-improvement-3": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "mystic-arcanum-7th-level": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "hurl-through-hell": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "mystic-arcanum-8th-level": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "warlock-ability-score-improvement-4": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "mystic-arcanum-9th-level": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "warlock-ability-score-improvement-5": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "eldritch-master": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "spellcasting-wizard": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "arcane-recovery": {
+      "handler": "arcane-recovery",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "arcane-tradition": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "evocation-savant": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "sculpt-spells": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "wizard-ability-score-improvement-1": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "arcane-tradition-improvement-1": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "potent-cantrip": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "wizard-ability-score-improvement-2": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "arcane-tradition-improvement-2": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "empowered-evocation": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "wizard-ability-score-improvement-3": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "arcane-tradition-improvement-3": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "overchannel": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "wizard-ability-score-improvement-4": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "spell-mastery": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    },
+    "wizard-ability-score-improvement-5": {
+      "handler": "ability-score-improvement",
+      "status": "assisted",
+      "reason": "现有原型处理器可执行已声明子集；严格规则的完整时序与交互仍待P08-P10验收。"
+    },
+    "signature-spell": {
+      "handler": null,
+      "status": "reference",
+      "reason": "完整来源资料可查，尚未注册机械执行。"
+    }
+  }
+}

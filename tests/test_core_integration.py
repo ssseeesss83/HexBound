@@ -48,6 +48,36 @@ def seed(store, rid, change):
     return state
 
 
+def test_rules_activation_keeps_old_room_and_joiners_on_original_snapshot(env, tmp_path, monkeypatch):
+    import hashlib
+    import json
+    from backend import rules_packages as packages
+    a, b, store, _ = env
+    original = room(a).json()
+    rid = original['room']['id']
+    candidate = packages.build_package()
+    candidate['records']['classes']['fighter']['hit_die'] = 12
+    candidate.pop('digest')
+    candidate['digest'] = hashlib.sha256(packages.encode(candidate).encode()).hexdigest()
+    approval = tmp_path / 'test-only-signoff.json'
+    approval.write_text(json.dumps({'status': 'approved', 'package_digest': candidate['digest'],
+                                   'source_document_sha256': candidate['source_manifest']['original']['sha256']}), encoding='utf-8')
+    monkeypatch.setattr(packages, 'SIGNOFF_PATH', approval)
+    packages.install_package(store, candidate)
+    joined = b.post('/api/rooms/join', json={'invite_code': original['invite_code'], 'player_name': 'Other', 'character_id': 'fighter'})
+    assert joined.status_code == 200, joined.text
+    old_state = store.get(rid)
+    assert old_state['rules_package_version'] == packages.LEGACY_PACKAGE
+    assert all(m['character']['rules_package_version'] == packages.LEGACY_PACKAGE for m in old_state['members'])
+    assert all(m['character']['hit_dice']['die'] == 10 for m in old_state['members'])
+    assert a.get('/api/rooms/' + rid).json()['rules_package_version'] == packages.LEGACY_PACKAGE
+    fresh = room(a)
+    assert fresh.status_code == 201, fresh.text
+    new_state = store.get(fresh.json()['room']['id'])
+    assert new_state['rules_package_version'] == packages.PACKAGE_VERSION
+    assert new_state['members'][0]['character']['hit_dice']['die'] == 12
+
+
 def test_vault_owner_and_server_derived_fields(env):
     a, b, store, _ = env
     h = hero(a)

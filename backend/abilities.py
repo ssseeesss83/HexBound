@@ -10,6 +10,7 @@ from copy import deepcopy
 import re
 import uuid
 from . import rules
+from .rules_context import bound_rules, current_view
 
 # Explicit effect recipes: never execute descriptions or client-provided dice.
 SPELL_EFFECTS = {
@@ -42,7 +43,6 @@ SPELL_EFFECTS = {
     'bless': {'kind': 'buff', 'buff': 'bless', 'max_targets': 3, 'upcast_targets': 1, 'concentration': True, 'rounds': 10},
     'shield-of-faith': {'kind': 'buff', 'buff': 'shield-of-faith', 'cost': 'bonus', 'concentration': True, 'rounds': 100},
     'hunters-mark': {'kind': 'mark', 'concentration': True, 'cost': 'bonus', 'rounds': 600},
-    'hex': {'kind': 'mark', 'concentration': True, 'cost': 'bonus', 'rounds': 600},
     'false-life': {'kind': 'temp_hp', 'dice': '1d4', 'flat': 4, 'upcast_flat': 5},
     'greater-restoration': {'kind': 'restore'},
     'lesser-restoration': {'kind': 'restore'},
@@ -76,22 +76,28 @@ FEATURES = {
 
 def _spells():
     from .compendium import SPELLS
-    return SPELLS
+    view = current_view()
+    return view.SPELLS if view is not None else SPELLS
+
+
+def _effects():
+    view = current_view()
+    return view.SPELL_EFFECTS if view is not None else SPELL_EFFECTS
+
+
+def _feature_actions():
+    view = current_view()
+    return view.ACTION_FEATURES if view is not None else FEATURES
 
 
 def spell_automation(spell_id):
-    effect = SPELL_EFFECTS.get(spell_id)
-    if not effect:
-        return {'status': 'reference', 'reason': '规则资料已收录；复杂目标、持续效果或材料结算尚无自动处理器，不能直接施放。'}
-    note = SPELL_NOTES.get(spell_id, '由服务端校验归属、动作、目标和法术位并执行效果。')
-    if effect.get('max_targets', 1) > 1:
-        note += ' 范围使用明确选择目标的抽象遭遇房规，不计算战术网格或友伤。'
-    return {'status': 'assisted' if spell_id in SPELL_NOTES or effect.get('max_targets', 1) > 1 else 'automated', 'reason': note}
+    from .capabilities import spell_automation as status
+    return status(spell_id)
 
 
 def feature_automation(feature_id):
-    base = re.sub(r'-\d+$', '', feature_id)
-    return {'status': 'automated' if base in FEATURE_AUTOMATED else 'reference', 'reason': '职业规则处理器已注册。' if base in FEATURE_AUTOMATED else '特性已记录，尚需DM裁定；不会伪造自动效果。'}
+    from .capabilities import feature_automation as status
+    return status(feature_id)
 
 
 def handles(action_id):
@@ -292,6 +298,7 @@ def _targets(state, actor, side):
 
 
 def capabilities(state, actor):
+    from .capabilities import action_feature_support
     m = member(state, actor)
     c = m['character']
     if not modern(c):
@@ -302,11 +309,11 @@ def capabilities(state, actor):
         spell = _spells().get(sid)
         if not spell:
             continue
-        recipe = SPELL_EFFECTS.get(sid)
+        recipe = _effects().get(sid)
         meta = spell_automation(sid)
         side = 'ally' if recipe and recipe['kind'] in {'heal', 'stabilize', 'buff', 'restore'} else 'self' if recipe and recipe['kind'] == 'temp_hp' else 'enemy'
         cost = (recipe or {}).get('cost', 'action')
-        reason = common_reason or (None if recipe else meta['reason'])
+        reason = common_reason or (None if recipe and meta['status'] != 'reference' else meta['reason'])
         if not reason and c.get('rage'):
             reason = '狂暴期间不能施法'
         if not reason and not _known(c, spell):
@@ -330,11 +337,12 @@ def capabilities(state, actor):
             targets = [x for x in targets if member(state, x['id'])['character']['hp'] == 0 and not member(state, x['id'])['character'].get('stable')]
         if not reason and not targets:
             reason = '当前没有合法目标'
-        result.append({'id': 'cast:' + sid, 'label': spell.get('name_zh') or spell['name'], 'description': meta['reason'], 'kind': 'spell', 'spell_id': sid, 'spell_level': spell['level'], 'effect': (recipe or {}).get('kind'), 'target': side, 'targets': targets, 'action_cost': cost, 'cast_levels': levels, 'max_targets': (recipe or {}).get('max_targets', 1) + ((recipe or {}).get('upcast_targets', 0) * (max([x['level'] for x in levels], default=spell['level']) - spell['level'])), 'area_mode': 'encounter-selection' if (recipe or {}).get('max_targets', 1) > 1 else None, 'supported': bool(recipe), 'disabled_reason': reason})
-    for fid, (cls, level, label, cost, side, resource) in FEATURES.items():
+        result.append({'id': 'cast:' + sid, 'label': spell.get('name_zh') or spell['name'], 'description': meta['reason'], 'automation_status': meta['status'], 'kind': 'spell', 'spell_id': sid, 'spell_level': spell['level'], 'effect': (recipe or {}).get('kind'), 'target': side, 'targets': targets, 'action_cost': cost, 'cast_levels': levels, 'max_targets': (recipe or {}).get('max_targets', 1) + ((recipe or {}).get('upcast_targets', 0) * (max([x['level'] for x in levels], default=spell['level']) - spell['level'])), 'area_mode': 'encounter-selection' if (recipe or {}).get('max_targets', 1) > 1 else None, 'supported': bool(recipe) and meta['status'] != 'reference', 'disabled_reason': reason})
+    for fid, (cls, level, label, cost, side, resource) in _feature_actions().items():
         if _class(c) != cls or c.get('level', 1) < level:
             continue
-        reason = common_reason or _budget_reason(state, actor, cost)
+        support = action_feature_support(fid)
+        reason = common_reason or (None if support['supported'] else support['reason']) or _budget_reason(state, actor, cost)
         if not reason and resource and _resource(c, resource) <= 0:
             reason = '职业资源已耗尽'
         combat = _combat(state)
@@ -363,7 +371,7 @@ def capabilities(state, actor):
             targets = [x for x in targets if member(state, x['id'])['character']['hp'] < member(state, x['id'])['character']['max_hp'] and not has_condition(state, member(state, x['id'])['character'], 'healing-blocked')]
         if not reason and not targets:
             reason = '当前没有合法目标'
-        result.append({'id': 'feature:' + fid, 'label': label, 'kind': 'feature', 'description': {'bardic-inspiration': '激励骰自动用于目标下一次攻击或豁免（自动消费房规）。', 'arcane-recovery': '短休后恢复一个符合等级上限的法术位；多位分配尚未实现。', 'font-of-magic': '当前使用恢复已有空法术位的房规，不能超出角色位上限。'}.get(fid, ''), 'target': side, 'targets': targets, 'action_cost': cost, 'resource': resource, 'uses_remaining': _resource(c, resource) if resource else None, 'supported': True, 'disabled_reason': reason, 'cast_levels': _spell_levels(c, 1) if fid == 'divine-smite' else [], 'max_amount': _resource(c, resource) if fid == 'lay-on-hands' else None})
+        result.append({'id': 'feature:' + fid, 'label': label, 'kind': 'feature', 'description': support['reason'] + ' ' + {'bardic-inspiration': '激励骰自动用于目标下一次攻击或豁免（自动消费房规）。', 'arcane-recovery': '短休后恢复一个符合等级上限的法术位；多位分配尚未实现。', 'font-of-magic': '当前使用恢复已有空法术位的房规，不能超出角色位上限。'}.get(fid, ''), 'automation_status': support['status'], 'target': side, 'targets': targets, 'action_cost': cost, 'resource': resource, 'uses_remaining': _resource(c, resource) if resource else None, 'supported': support['supported'], 'disabled_reason': reason, 'cast_levels': _spell_levels(c, 1) if fid == 'divine-smite' else [], 'max_amount': _resource(c, resource) if fid == 'lay-on-hands' else None})
     if c.get('concentration'):
         result.append({'id': 'end-concentration', 'label': '结束专注', 'kind': 'feature', 'target': 'self', 'action_cost': 'none', 'supported': True, 'disabled_reason': common_reason})
     return result
@@ -509,7 +517,7 @@ def finish_combat(state, events):
 
 def _spell(state, actor, sid, target_id, options, cap):
     c = member(state, actor)['character']
-    spell, recipe = _spells()[sid], SPELL_EFFECTS[sid]
+    spell, recipe = _spells()[sid], _effects()[sid]
     level, source = _select_slot(c, spell['level'], options)
     extra = max(0, level - spell['level'])
     targets, ids = _selected_targets(state, actor, cap, target_id, options, recipe.get('max_targets', 1) + recipe.get('upcast_targets', 0) * extra)
@@ -760,3 +768,7 @@ def start_turn(state, actor):
             c['concentration'] = None
         if c.get('rage') and c['rage'].get('expires_round', float('inf')) <= _round(state):
             c.pop('rage', None)
+
+
+for _name in ('capabilities', 'available_actions', 'apply_action', 'weapon_attack'):
+    globals()[_name] = bound_rules(globals()[_name])

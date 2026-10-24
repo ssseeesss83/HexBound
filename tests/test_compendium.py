@@ -55,8 +55,11 @@ def test_complete_spell_text_and_mechanics_are_not_truncated_or_reshaped():
     raw = json.loads((c.DATA_DIR / "srd2014/5e-SRD-Spells.json").read_text(encoding="utf-8"))
     for original in raw:
         spell = c.SPELLS[original["index"]]
+        corrected_fields = {fix["path"][0] for fix in c.CANONICAL_OVERLAY["corrections"]
+                            if fix.get("kind") == "spells" and original["index"] in fix["records"] and fix["operation"] == "set_field"}
         for field, value in original.items():
-            assert spell[field] == value
+            if field not in corrected_fields:
+                assert spell[field] == value
         assert all(field in spell for field in ("level", "classes", "casting_time", "concentration", "duration", "components", "desc", "higher_level"))
         assert spell["desc"] and all(isinstance(paragraph, str) for paragraph in spell["desc"])
         assert all(reference["index"] in c.CLASSES for reference in spell["classes"])

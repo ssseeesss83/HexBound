@@ -6,6 +6,8 @@ material unless an executable feature is explicitly marked automated.
 """
 from copy import deepcopy
 import secrets
+from .rules_identity import RULESET_ID, PACKAGE_VERSION, LEGACY_PACKAGE, ENGINE_PROFILE
+from .rules_context import bound_rules, current_view, active_version
 
 ABILITIES = ("str", "dex", "con", "int", "wis", "cha")
 XP_THRESHOLDS = (0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000)
@@ -29,7 +31,6 @@ SKILL_NAMES = dict(zip(SKILL_ABILITIES, ("杂技", "驯兽", "奥秘", "运动",
 SUBCLASS_LEVEL = {"barbarian": 3, "bard": 3, "cleric": 1, "druid": 2, "fighter": 3, "monk": 3, "paladin": 3, "ranger": 3, "rogue": 3, "sorcerer": 1, "warlock": 1, "wizard": 2}
 CASTING_ABILITIES = {"bard": "cha", "cleric": "wis", "druid": "wis", "paladin": "cha", "ranger": "wis", "sorcerer": "cha", "warlock": "cha", "wizard": "int"}
 PREPARING = {"cleric", "druid", "paladin", "wizard"}
-AUTOMATED_FEATURE_PREFIXES = ("second-wind", "action-surge", "rage", "bardic-inspiration", "lay-on-hands", "divine-smite", "ki-flurry", "ki-patient", "arcane-recovery", "font-of-magic", "sneak-attack", "extra-attack", "jack-of-all-trades", "bard-expertise", "expertise", "ability-score-improvement")
 RESOURCE_NAMES = {"rage": "狂暴", "bardic-inspiration": "诗人激励", "channel-divinity": "引导神力", "wild-shape": "荒野形态", "second-wind": "回气", "action-surge": "动作如潮", "indomitable": "不屈", "ki": "气", "lay-on-hands": "圣疗", "divine-sense": "神圣感知", "sorcery-points": "术法点", "arcane-recovery": "奥术回想", "eldritch-master": "魔能掌控"}
 CHOICE_FIELDS = {"skills", "bonus_skills", "subclass_id", "asi", "known_spells", "prepared_spells", "cantrips", "expertise", "spellbook", "magical_secrets", "arcanum"}
 SPELL_PRIORITY = ["eldritch-blast", "fire-bolt", "sacred-flame", "vicious-mockery", "poison-spray", "ray-of-frost", "chill-touch", "spare-the-dying", "shocking-grasp", "light", "mage-hand", "cure-wounds", "healing-word", "magic-missile", "burning-hands", "bless", "shield-of-faith", "false-life", "thunderwave", "acid-arrow", "scorching-ray", "fireball", "lightning-bolt"]
@@ -37,7 +38,7 @@ SPELL_PRIORITY = ["eldritch-blast", "fire-bolt", "sacred-flame", "vicious-mocker
 
 def _data():
     from . import compendium
-    return compendium
+    return current_view() or compendium
 
 
 def modifier(score):
@@ -84,6 +85,7 @@ def _subclasses(class_id):
 
 
 def _features(c):
+    from .capabilities import feature_automation
     result = {}
     for level in range(1, c["level"] + 1):
         for ref in _level_record(c["class_id"], level).get("features", []):
@@ -91,7 +93,8 @@ def _features(c):
             f = _data().FEATURES.get(fid, ref)
             if f.get("subclass") and f["subclass"].get("index") != c.get("subclass_id"):
                 continue
-            result[fid] = {"id": fid, "name": f.get("name_zh", f.get("name", fid)), "level": f.get("level", level), "description": "\n".join(f.get("desc", [])), "automated": fid.startswith(AUTOMATED_FEATURE_PREFIXES), "note": "已接入规则处理器" if fid.startswith(AUTOMATED_FEATURE_PREFIXES) else "规则参考：复杂效果尚需主持人裁定，不会自动生成数值"}
+            support = feature_automation(fid)
+            result[fid] = {"id": fid, "name": f.get("name_zh", f.get("name", fid)), "level": f.get("level", level), "description": "\n".join(f.get("desc", [])), "automated": support["status"] == "automated", "automation_status": support["status"], "note": support["reason"]}
     for level, row in _data().SUBCLASS_LEVELS.get(c.get("subclass_id"), {}).items():
         if int(level) > c["level"]:
             continue
@@ -100,7 +103,8 @@ def _features(c):
             f = _data().FEATURES.get(fid, ref)
             # Use granted level references, not every child choice in the catalog.
             # For example, ten dragon ancestry alternatives are not ten owned traits.
-            result.setdefault(fid, {"id": fid, "name": f.get("name_zh", f.get("name", fid)), "level": int(level), "description": "\n".join(f.get("desc", [])), "automated": False, "note": "子职业规则参考；未声明自动化的效果需主持人裁定"})
+            support = feature_automation(fid)
+            result.setdefault(fid, {"id": fid, "name": f.get("name_zh", f.get("name", fid)), "level": int(level), "description": "\n".join(f.get("desc", [])), "automated": support["status"] == "automated", "automation_status": support["status"], "note": support["reason"]})
     return sorted(result.values(), key=lambda f: (f["level"], f["id"]))
 
 
@@ -379,6 +383,7 @@ def create_character(class_id, name="冒险者", choices=None, *, abilities=None
     hp = die + modifier(abilities["con"])
     c = {"id": class_id, "template_id": class_id, "class_id": class_id, "name": name.strip(), "level": 1, "xp": 0, "milestone_credits": 0, "abilities": abilities, "skills": skills, "expertise": [], "subclass_id": subclass, "hp": hp, "max_hp": hp, "ac": ac, "weapon": weapon, "hit_dice": {"die": die, "max": 1, "current": 1}, "resources": {}, "spell_slots": {}, "pact_slots": {}, "death_successes": 0, "death_failures": 0, "stable": False, "dead": False, "potions": 2, "growth_history": [], "notes": ["标准数组按职业固定分配；尚未叠加种族、背景或专长收益。", "此人物提供完整单职业成长数据；仅标记自动化的能力会由脚本执行。"]}
     c["profile"] = profile
+    c.update(ruleset_id=RULESET_ID, rules_package_version=active_version(), engine_profile=ENGINE_PROFILE)
     c["ability_generation"] = "custom-house-rule" if custom_abilities else "standard-array"
     if custom_abilities:
         c["notes"][0] = "自定义属性8–20房规；叙事背景与天赋不授予数值收益。"
@@ -402,12 +407,17 @@ def migrate_character(character):
     """Idempotent legacy upgrade; never heal, re-roll HP or restore spent pools."""
     c = deepcopy(character)
     if c.get("character_schema_version") == 1:
+        c.setdefault("ruleset_id", RULESET_ID)
+        c.setdefault("rules_package_version", LEGACY_PACKAGE)
+        c.setdefault("engine_profile", ENGINE_PROFILE)
+        c["features"] = _features(c)
         return c
     cls = _class(c)
     base = create_character(cls, c.get("name", "冒险者"))
     for key, value in base.items():
         c.setdefault(key, deepcopy(value))
     c["class_id"] = cls
+    c["rules_package_version"] = character.get("rules_package_version", LEGACY_PACKAGE)
     c["legacy_ac_lock"] = True
     c.setdefault("legacy_template_id", character.get("template_id", character.get("class")))
     c["notes"] = list(c.get("notes", [])) + ["旧存档迁移：保留原HP、装备与属性；不追补历史属性或生命收益。"]
@@ -591,10 +601,23 @@ def long_rest(character):
 
 
 def character_sheet(character):
+    from .capabilities import spell_automation
     c = migrate_character(character)
     c["skill_details"] = [{"id": sid, "name": SKILL_NAMES[sid], "ability": ability, "modifier": skill_bonus(c, sid), "proficient": sid in c["skills"], "expertise": sid in c["expertise"]} for sid, ability in SKILL_ABILITIES.items()]
     c["save_details"] = [{"id": a, "modifier": saving_throw_bonus(c, a), "proficient": a in c["saving_throws"]} for a in ABILITIES]
     owned = set(c.get("cantrips", []) + c.get("known_spells", []) + c.get("prepared_spells", []) + c.get("always_prepared_spells", []) + c.get("spellbook", []) + list(c.get("arcanum", {}).values()))
     c["spell_details"] = [{"id": sid, "name": spell.get("name_zh", spell["name"]), "level": spell["level"], "ritual": spell.get("ritual", False), "concentration": spell.get("concentration", False), "casting_time": spell.get("casting_time"), "range": spell.get("range"), "description": "\n".join(spell.get("desc", [])), "prepared": sid in c.get("prepared_spells", []) + c.get("always_prepared_spells", []), "known": sid in c.get("known_spells", []), "in_spellbook": sid in c.get("spellbook", []), "automation": "以行动列表中是否可执行为准；法术目录本身不代表已自动化"} for sid, spell in _data().SPELLS.items() if sid in owned]
     c["level_up"] = level_up_preview(c)
+    for detail in c["spell_details"]:
+        support = spell_automation(detail["id"])
+        detail["automation_status"] = support["status"]
+        detail["automation"] = support["reason"]
     return c
+
+
+# Public operations resolve the actual frozen corpus for the subject. Internal
+# calls inherit the same task-local view, including previews and upgrades.
+for _name in ("create_character", "migrate_character", "eligible_spells", "skill_bonus", "saving_throw_bonus",
+              "level_up_preview", "level_up", "add_xp", "manage_spells", "consume_resource",
+              "consume_spell_slot", "short_rest", "long_rest", "character_sheet"):
+    globals()[_name] = bound_rules(globals()[_name])
