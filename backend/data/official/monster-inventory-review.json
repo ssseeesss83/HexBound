@@ -1,0 +1,6459 @@
+{
+  "profile": "official-monster-inventory-v1",
+  "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+  "headings_sha256": "896c018bd844f0dc5e8f1759c9c8dd27d74856047d938c41ff132c7a110deb02",
+  "official_stat_headers": 317,
+  "normalized_records": 334,
+  "candidate_records": 334,
+  "mappings": [
+    {
+      "record": "aboleth",
+      "official_title": "Aboleth",
+      "official_page": 261,
+      "column": 0,
+      "top": 117.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "aboleth",
+        "name": "Aboleth",
+        "url": "/api/2014/monsters/aboleth"
+      },
+      "actual": {
+        "index": "aboleth",
+        "name": "Aboleth",
+        "url": "/api/2014/monsters/aboleth"
+      },
+      "match": true
+    },
+    {
+      "record": "deva",
+      "official_title": "Deva",
+      "official_page": 261,
+      "column": 1,
+      "top": 494.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "deva",
+        "name": "Deva",
+        "url": "/api/2014/monsters/deva"
+      },
+      "actual": {
+        "index": "deva",
+        "name": "Deva",
+        "url": "/api/2014/monsters/deva"
+      },
+      "match": true
+    },
+    {
+      "record": "planetar",
+      "official_title": "Planetar",
+      "official_page": 262,
+      "column": 0,
+      "top": 563.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "planetar",
+        "name": "Planetar",
+        "url": "/api/2014/monsters/planetar"
+      },
+      "actual": {
+        "index": "planetar",
+        "name": "Planetar",
+        "url": "/api/2014/monsters/planetar"
+      },
+      "match": true
+    },
+    {
+      "record": "solar",
+      "official_title": "Solar",
+      "official_page": 262,
+      "column": 1,
+      "top": 559.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "solar",
+        "name": "Solar",
+        "url": "/api/2014/monsters/solar"
+      },
+      "actual": {
+        "index": "solar",
+        "name": "Solar",
+        "url": "/api/2014/monsters/solar"
+      },
+      "match": true
+    },
+    {
+      "record": "animated-armor",
+      "official_title": "Animated Armor",
+      "official_page": 263,
+      "column": 1,
+      "top": 418.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "animated-armor",
+        "name": "Animated Armor",
+        "url": "/api/2014/monsters/animated-armor"
+      },
+      "actual": {
+        "index": "animated-armor",
+        "name": "Animated Armor",
+        "url": "/api/2014/monsters/animated-armor"
+      },
+      "match": true
+    },
+    {
+      "record": "flying-sword",
+      "official_title": "Flying Sword",
+      "official_page": 264,
+      "column": 0,
+      "top": 222.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "flying-sword",
+        "name": "Flying Sword",
+        "url": "/api/2014/monsters/flying-sword"
+      },
+      "actual": {
+        "index": "flying-sword",
+        "name": "Flying Sword",
+        "url": "/api/2014/monsters/flying-sword"
+      },
+      "match": true
+    },
+    {
+      "record": "rug-of-smothering",
+      "official_title": "Rug of Smothering",
+      "official_page": 264,
+      "column": 0,
+      "top": 643.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "rug-of-smothering",
+        "name": "Rug of Smothering",
+        "url": "/api/2014/monsters/rug-of-smothering"
+      },
+      "actual": {
+        "index": "rug-of-smothering",
+        "name": "Rug of Smothering",
+        "url": "/api/2014/monsters/rug-of-smothering"
+      },
+      "match": true
+    },
+    {
+      "record": "ankheg",
+      "official_title": "Ankheg",
+      "official_page": 264,
+      "column": 1,
+      "top": 518.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ankheg",
+        "name": "Ankheg",
+        "url": "/api/2014/monsters/ankheg"
+      },
+      "actual": {
+        "index": "ankheg",
+        "name": "Ankheg",
+        "url": "/api/2014/monsters/ankheg"
+      },
+      "match": true
+    },
+    {
+      "record": "azer",
+      "official_title": "Azer",
+      "official_page": 265,
+      "column": 0,
+      "top": 257.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "azer",
+        "name": "Azer",
+        "url": "/api/2014/monsters/azer"
+      },
+      "actual": {
+        "index": "azer",
+        "name": "Azer",
+        "url": "/api/2014/monsters/azer"
+      },
+      "match": true
+    },
+    {
+      "record": "basilisk",
+      "official_title": "Basilisk",
+      "official_page": 265,
+      "column": 1,
+      "top": 111.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "basilisk",
+        "name": "Basilisk",
+        "url": "/api/2014/monsters/basilisk"
+      },
+      "actual": {
+        "index": "basilisk",
+        "name": "Basilisk",
+        "url": "/api/2014/monsters/basilisk"
+      },
+      "match": true
+    },
+    {
+      "record": "behir",
+      "official_title": "Behir",
+      "official_page": 265,
+      "column": 1,
+      "top": 609.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "behir",
+        "name": "Behir",
+        "url": "/api/2014/monsters/behir"
+      },
+      "actual": {
+        "index": "behir",
+        "name": "Behir",
+        "url": "/api/2014/monsters/behir"
+      },
+      "match": true
+    },
+    {
+      "record": "bugbear",
+      "official_title": "Bugbear",
+      "official_page": 266,
+      "column": 0,
+      "top": 619.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "bugbear",
+        "name": "Bugbear",
+        "url": "/api/2014/monsters/bugbear"
+      },
+      "actual": {
+        "index": "bugbear",
+        "name": "Bugbear",
+        "url": "/api/2014/monsters/bugbear"
+      },
+      "match": true
+    },
+    {
+      "record": "bulette",
+      "official_title": "Bulette",
+      "official_page": 266,
+      "column": 1,
+      "top": 384.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "bulette",
+        "name": "Bulette",
+        "url": "/api/2014/monsters/bulette"
+      },
+      "actual": {
+        "index": "bulette",
+        "name": "Bulette",
+        "url": "/api/2014/monsters/bulette"
+      },
+      "match": true
+    },
+    {
+      "record": "centaur",
+      "official_title": "Centaur",
+      "official_page": 267,
+      "column": 0,
+      "top": 297.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "centaur",
+        "name": "Centaur",
+        "url": "/api/2014/monsters/centaur"
+      },
+      "actual": {
+        "index": "centaur",
+        "name": "Centaur",
+        "url": "/api/2014/monsters/centaur"
+      },
+      "match": true
+    },
+    {
+      "record": "chimera",
+      "official_title": "Chimera",
+      "official_page": 267,
+      "column": 1,
+      "top": 87.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "chimera",
+        "name": "Chimera",
+        "url": "/api/2014/monsters/chimera"
+      },
+      "actual": {
+        "index": "chimera",
+        "name": "Chimera",
+        "url": "/api/2014/monsters/chimera"
+      },
+      "match": true
+    },
+    {
+      "record": "chuul",
+      "official_title": "Chuul",
+      "official_page": 267,
+      "column": 1,
+      "top": 505.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "chuul",
+        "name": "Chuul",
+        "url": "/api/2014/monsters/chuul"
+      },
+      "actual": {
+        "index": "chuul",
+        "name": "Chuul",
+        "url": "/api/2014/monsters/chuul"
+      },
+      "match": true
+    },
+    {
+      "record": "cloaker",
+      "official_title": "Cloaker",
+      "official_page": 268,
+      "column": 0,
+      "top": 377.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "cloaker",
+        "name": "Cloaker",
+        "url": "/api/2014/monsters/cloaker"
+      },
+      "actual": {
+        "index": "cloaker",
+        "name": "Cloaker",
+        "url": "/api/2014/monsters/cloaker"
+      },
+      "match": true
+    },
+    {
+      "record": "cockatrice",
+      "official_title": "Cockatrice",
+      "official_page": 268,
+      "column": 1,
+      "top": 596.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "cockatrice",
+        "name": "Cockatrice",
+        "url": "/api/2014/monsters/cockatrice"
+      },
+      "actual": {
+        "index": "cockatrice",
+        "name": "Cockatrice",
+        "url": "/api/2014/monsters/cockatrice"
+      },
+      "match": true
+    },
+    {
+      "record": "couatl",
+      "official_title": "Couatl",
+      "official_page": 269,
+      "column": 0,
+      "top": 296.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "couatl",
+        "name": "Couatl",
+        "url": "/api/2014/monsters/couatl"
+      },
+      "actual": {
+        "index": "couatl",
+        "name": "Couatl",
+        "url": "/api/2014/monsters/couatl"
+      },
+      "match": true
+    },
+    {
+      "record": "darkmantle",
+      "official_title": "Darkmantle",
+      "official_page": 269,
+      "column": 1,
+      "top": 527.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "darkmantle",
+        "name": "Darkmantle",
+        "url": "/api/2014/monsters/darkmantle"
+      },
+      "actual": {
+        "index": "darkmantle",
+        "name": "Darkmantle",
+        "url": "/api/2014/monsters/darkmantle"
+      },
+      "match": true
+    },
+    {
+      "record": "balor",
+      "official_title": "Balor",
+      "official_page": 270,
+      "column": 0,
+      "top": 543.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "balor",
+        "name": "Balor",
+        "url": "/api/2014/monsters/balor"
+      },
+      "actual": {
+        "index": "balor",
+        "name": "Balor",
+        "url": "/api/2014/monsters/balor"
+      },
+      "match": true
+    },
+    {
+      "record": "dretch",
+      "official_title": "Dretch",
+      "official_page": 270,
+      "column": 1,
+      "top": 606.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "dretch",
+        "name": "Dretch",
+        "url": "/api/2014/monsters/dretch"
+      },
+      "actual": {
+        "index": "dretch",
+        "name": "Dretch",
+        "url": "/api/2014/monsters/dretch"
+      },
+      "match": true
+    },
+    {
+      "record": "glabrezu",
+      "official_title": "Glabrezu",
+      "official_page": 271,
+      "column": 0,
+      "top": 448.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "glabrezu",
+        "name": "Glabrezu",
+        "url": "/api/2014/monsters/glabrezu"
+      },
+      "actual": {
+        "index": "glabrezu",
+        "name": "Glabrezu",
+        "url": "/api/2014/monsters/glabrezu"
+      },
+      "match": true
+    },
+    {
+      "record": "hezrou",
+      "official_title": "Hezrou",
+      "official_page": 271,
+      "column": 1,
+      "top": 353.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "hezrou",
+        "name": "Hezrou",
+        "url": "/api/2014/monsters/hezrou"
+      },
+      "actual": {
+        "index": "hezrou",
+        "name": "Hezrou",
+        "url": "/api/2014/monsters/hezrou"
+      },
+      "match": true
+    },
+    {
+      "record": "marilith",
+      "official_title": "Marilith",
+      "official_page": 272,
+      "column": 0,
+      "top": 187.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "marilith",
+        "name": "Marilith",
+        "url": "/api/2014/monsters/marilith"
+      },
+      "actual": {
+        "index": "marilith",
+        "name": "Marilith",
+        "url": "/api/2014/monsters/marilith"
+      },
+      "match": true
+    },
+    {
+      "record": "nalfeshnee",
+      "official_title": "Nalfeshnee",
+      "official_page": 272,
+      "column": 1,
+      "top": 191.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "nalfeshnee",
+        "name": "Nalfeshnee",
+        "url": "/api/2014/monsters/nalfeshnee"
+      },
+      "actual": {
+        "index": "nalfeshnee",
+        "name": "Nalfeshnee",
+        "url": "/api/2014/monsters/nalfeshnee"
+      },
+      "match": true
+    },
+    {
+      "record": "quasit",
+      "official_title": "Quasit",
+      "official_page": 273,
+      "column": 0,
+      "top": 154.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "quasit",
+        "name": "Quasit",
+        "url": "/api/2014/monsters/quasit"
+      },
+      "actual": {
+        "index": "quasit",
+        "name": "Quasit",
+        "url": "/api/2014/monsters/quasit"
+      },
+      "match": true
+    },
+    {
+      "record": "vrock",
+      "official_title": "Vrock",
+      "official_page": 273,
+      "column": 1,
+      "top": 166.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "vrock",
+        "name": "Vrock",
+        "url": "/api/2014/monsters/vrock"
+      },
+      "actual": {
+        "index": "vrock",
+        "name": "Vrock",
+        "url": "/api/2014/monsters/vrock"
+      },
+      "match": true
+    },
+    {
+      "record": "barbed-devil",
+      "official_title": "Barbed Devil",
+      "official_page": 274,
+      "column": 0,
+      "top": 173.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "barbed-devil",
+        "name": "Barbed Devil",
+        "url": "/api/2014/monsters/barbed-devil"
+      },
+      "actual": {
+        "index": "barbed-devil",
+        "name": "Barbed Devil",
+        "url": "/api/2014/monsters/barbed-devil"
+      },
+      "match": true
+    },
+    {
+      "record": "bearded-devil",
+      "official_title": "Bearded Devil",
+      "official_page": 274,
+      "column": 1,
+      "top": 114.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "bearded-devil",
+        "name": "Bearded Devil",
+        "url": "/api/2014/monsters/bearded-devil"
+      },
+      "actual": {
+        "index": "bearded-devil",
+        "name": "Bearded Devil",
+        "url": "/api/2014/monsters/bearded-devil"
+      },
+      "match": true
+    },
+    {
+      "record": "bone-devil",
+      "official_title": "Bone Devil",
+      "official_page": 275,
+      "column": 0,
+      "top": 114.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "bone-devil",
+        "name": "Bone Devil",
+        "url": "/api/2014/monsters/bone-devil"
+      },
+      "actual": {
+        "index": "bone-devil",
+        "name": "Bone Devil",
+        "url": "/api/2014/monsters/bone-devil"
+      },
+      "match": true
+    },
+    {
+      "record": "chain-devil",
+      "official_title": "Chain Devil",
+      "official_page": 275,
+      "column": 0,
+      "top": 621.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "chain-devil",
+        "name": "Chain Devil",
+        "url": "/api/2014/monsters/chain-devil"
+      },
+      "actual": {
+        "index": "chain-devil",
+        "name": "Chain Devil",
+        "url": "/api/2014/monsters/chain-devil"
+      },
+      "match": true
+    },
+    {
+      "record": "erinyes",
+      "official_title": "Erinyes",
+      "official_page": 276,
+      "column": 0,
+      "top": 114.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "erinyes",
+        "name": "Erinyes",
+        "url": "/api/2014/monsters/erinyes"
+      },
+      "actual": {
+        "index": "erinyes",
+        "name": "Erinyes",
+        "url": "/api/2014/monsters/erinyes"
+      },
+      "match": true
+    },
+    {
+      "record": "horned-devil",
+      "official_title": "Horned Devil",
+      "official_page": 276,
+      "column": 1,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "horned-devil",
+        "name": "Horned Devil",
+        "url": "/api/2014/monsters/horned-devil"
+      },
+      "actual": {
+        "index": "horned-devil",
+        "name": "Horned Devil",
+        "url": "/api/2014/monsters/horned-devil"
+      },
+      "match": true
+    },
+    {
+      "record": "ice-devil",
+      "official_title": "Ice Devil",
+      "official_page": 277,
+      "column": 0,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ice-devil",
+        "name": "Ice Devil",
+        "url": "/api/2014/monsters/ice-devil"
+      },
+      "actual": {
+        "index": "ice-devil",
+        "name": "Ice Devil",
+        "url": "/api/2014/monsters/ice-devil"
+      },
+      "match": true
+    },
+    {
+      "record": "imp",
+      "official_title": "Imp",
+      "official_page": 277,
+      "column": 1,
+      "top": 261.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "imp",
+        "name": "Imp",
+        "url": "/api/2014/monsters/imp"
+      },
+      "actual": {
+        "index": "imp",
+        "name": "Imp",
+        "url": "/api/2014/monsters/imp"
+      },
+      "match": true
+    },
+    {
+      "record": "lemure",
+      "official_title": "Lemure",
+      "official_page": 278,
+      "column": 0,
+      "top": 233.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "lemure",
+        "name": "Lemure",
+        "url": "/api/2014/monsters/lemure"
+      },
+      "actual": {
+        "index": "lemure",
+        "name": "Lemure",
+        "url": "/api/2014/monsters/lemure"
+      },
+      "match": true
+    },
+    {
+      "record": "pit-fiend",
+      "official_title": "Pit Fiend",
+      "official_page": 278,
+      "column": 0,
+      "top": 617.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "pit-fiend",
+        "name": "Pit Fiend",
+        "url": "/api/2014/monsters/pit-fiend"
+      },
+      "actual": {
+        "index": "pit-fiend",
+        "name": "Pit Fiend",
+        "url": "/api/2014/monsters/pit-fiend"
+      },
+      "match": true
+    },
+    {
+      "record": "plesiosaurus",
+      "official_title": "Plesiosaurus",
+      "official_page": 279,
+      "column": 0,
+      "top": 176.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "plesiosaurus",
+        "name": "Plesiosaurus",
+        "url": "/api/2014/monsters/plesiosaurus"
+      },
+      "actual": {
+        "index": "plesiosaurus",
+        "name": "Plesiosaurus",
+        "url": "/api/2014/monsters/plesiosaurus"
+      },
+      "match": true
+    },
+    {
+      "record": "triceratops",
+      "official_title": "Triceratops",
+      "official_page": 279,
+      "column": 0,
+      "top": 466.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "triceratops",
+        "name": "Triceratops",
+        "url": "/api/2014/monsters/triceratops"
+      },
+      "actual": {
+        "index": "triceratops",
+        "name": "Triceratops",
+        "url": "/api/2014/monsters/triceratops"
+      },
+      "match": true
+    },
+    {
+      "record": "tyrannosaurus-rex",
+      "official_title": "Tyrannosaurus Rex",
+      "official_page": 279,
+      "column": 1,
+      "top": 206.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "tyrannosaurus-rex",
+        "name": "Tyrannosaurus Rex",
+        "url": "/api/2014/monsters/tyrannosaurus-rex"
+      },
+      "actual": {
+        "index": "tyrannosaurus-rex",
+        "name": "Tyrannosaurus Rex",
+        "url": "/api/2014/monsters/tyrannosaurus-rex"
+      },
+      "match": true
+    },
+    {
+      "record": "doppelganger",
+      "official_title": "Doppelganger",
+      "official_page": 279,
+      "column": 1,
+      "top": 569.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "doppelganger",
+        "name": "Doppelganger",
+        "url": "/api/2014/monsters/doppelganger"
+      },
+      "actual": {
+        "index": "doppelganger",
+        "name": "Doppelganger",
+        "url": "/api/2014/monsters/doppelganger"
+      },
+      "match": true
+    },
+    {
+      "record": "ancient-black-dragon",
+      "official_title": "Ancient Black Dragon",
+      "official_page": 280,
+      "column": 0,
+      "top": 623.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ancient-black-dragon",
+        "name": "Ancient Black Dragon",
+        "url": "/api/2014/monsters/ancient-black-dragon"
+      },
+      "actual": {
+        "index": "ancient-black-dragon",
+        "name": "Ancient Black Dragon",
+        "url": "/api/2014/monsters/ancient-black-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "adult-black-dragon",
+      "official_title": "Adult Black Dragon",
+      "official_page": 281,
+      "column": 0,
+      "top": 206.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "adult-black-dragon",
+        "name": "Adult Black Dragon",
+        "url": "/api/2014/monsters/adult-black-dragon"
+      },
+      "actual": {
+        "index": "adult-black-dragon",
+        "name": "Adult Black Dragon",
+        "url": "/api/2014/monsters/adult-black-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "young-black-dragon",
+      "official_title": "Young Black Dragon",
+      "official_page": 281,
+      "column": 1,
+      "top": 423.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "young-black-dragon",
+        "name": "Young Black Dragon",
+        "url": "/api/2014/monsters/young-black-dragon"
+      },
+      "actual": {
+        "index": "young-black-dragon",
+        "name": "Young Black Dragon",
+        "url": "/api/2014/monsters/young-black-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "black-dragon-wyrmling",
+      "official_title": "Black Dragon Wyrmling",
+      "official_page": 282,
+      "column": 0,
+      "top": 263.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "black-dragon-wyrmling",
+        "name": "Black Dragon Wyrmling",
+        "url": "/api/2014/monsters/black-dragon-wyrmling"
+      },
+      "actual": {
+        "index": "black-dragon-wyrmling",
+        "name": "Black Dragon Wyrmling",
+        "url": "/api/2014/monsters/black-dragon-wyrmling"
+      },
+      "match": true
+    },
+    {
+      "record": "ancient-blue-dragon",
+      "official_title": "Ancient Blue Dragon",
+      "official_page": 282,
+      "column": 1,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ancient-blue-dragon",
+        "name": "Ancient Blue Dragon",
+        "url": "/api/2014/monsters/ancient-blue-dragon"
+      },
+      "actual": {
+        "index": "ancient-blue-dragon",
+        "name": "Ancient Blue Dragon",
+        "url": "/api/2014/monsters/ancient-blue-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "adult-blue-dragon",
+      "official_title": "Adult Blue Dragon",
+      "official_page": 283,
+      "column": 0,
+      "top": 288.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "adult-blue-dragon",
+        "name": "Adult Blue Dragon",
+        "url": "/api/2014/monsters/adult-blue-dragon"
+      },
+      "actual": {
+        "index": "adult-blue-dragon",
+        "name": "Adult Blue Dragon",
+        "url": "/api/2014/monsters/adult-blue-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "young-blue-dragon",
+      "official_title": "Young Blue Dragon",
+      "official_page": 283,
+      "column": 1,
+      "top": 499.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "young-blue-dragon",
+        "name": "Young Blue Dragon",
+        "url": "/api/2014/monsters/young-blue-dragon"
+      },
+      "actual": {
+        "index": "young-blue-dragon",
+        "name": "Young Blue Dragon",
+        "url": "/api/2014/monsters/young-blue-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "blue-dragon-wyrmling",
+      "official_title": "Blue Dragon Wyrmling",
+      "official_page": 284,
+      "column": 0,
+      "top": 301.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "blue-dragon-wyrmling",
+        "name": "Blue Dragon Wyrmling",
+        "url": "/api/2014/monsters/blue-dragon-wyrmling"
+      },
+      "actual": {
+        "index": "blue-dragon-wyrmling",
+        "name": "Blue Dragon Wyrmling",
+        "url": "/api/2014/monsters/blue-dragon-wyrmling"
+      },
+      "match": true
+    },
+    {
+      "record": "ancient-green-dragon",
+      "official_title": "Ancient Green Dragon",
+      "official_page": 284,
+      "column": 1,
+      "top": 104.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ancient-green-dragon",
+        "name": "Ancient Green Dragon",
+        "url": "/api/2014/monsters/ancient-green-dragon"
+      },
+      "actual": {
+        "index": "ancient-green-dragon",
+        "name": "Ancient Green Dragon",
+        "url": "/api/2014/monsters/ancient-green-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "adult-green-dragon",
+      "official_title": "Adult Green Dragon",
+      "official_page": 285,
+      "column": 0,
+      "top": 359.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "adult-green-dragon",
+        "name": "Adult Green Dragon",
+        "url": "/api/2014/monsters/adult-green-dragon"
+      },
+      "actual": {
+        "index": "adult-green-dragon",
+        "name": "Adult Green Dragon",
+        "url": "/api/2014/monsters/adult-green-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "young-green-dragon",
+      "official_title": "Young Green Dragon",
+      "official_page": 285,
+      "column": 1,
+      "top": 624.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "young-green-dragon",
+        "name": "Young Green Dragon",
+        "url": "/api/2014/monsters/young-green-dragon"
+      },
+      "actual": {
+        "index": "young-green-dragon",
+        "name": "Young Green Dragon",
+        "url": "/api/2014/monsters/young-green-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "green-dragon-wyrmling",
+      "official_title": "Green Dragon Wyrmling",
+      "official_page": 286,
+      "column": 0,
+      "top": 457.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "green-dragon-wyrmling",
+        "name": "Green Dragon Wyrmling",
+        "url": "/api/2014/monsters/green-dragon-wyrmling"
+      },
+      "actual": {
+        "index": "green-dragon-wyrmling",
+        "name": "Green Dragon Wyrmling",
+        "url": "/api/2014/monsters/green-dragon-wyrmling"
+      },
+      "match": true
+    },
+    {
+      "record": "ancient-red-dragon",
+      "official_title": "Ancient Red Dragon",
+      "official_page": 286,
+      "column": 1,
+      "top": 285.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ancient-red-dragon",
+        "name": "Ancient Red Dragon",
+        "url": "/api/2014/monsters/ancient-red-dragon"
+      },
+      "actual": {
+        "index": "ancient-red-dragon",
+        "name": "Ancient Red Dragon",
+        "url": "/api/2014/monsters/ancient-red-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "adult-red-dragon",
+      "official_title": "Adult Red Dragon",
+      "official_page": 287,
+      "column": 0,
+      "top": 499.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "adult-red-dragon",
+        "name": "Adult Red Dragon",
+        "url": "/api/2014/monsters/adult-red-dragon"
+      },
+      "actual": {
+        "index": "adult-red-dragon",
+        "name": "Adult Red Dragon",
+        "url": "/api/2014/monsters/adult-red-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "young-red-dragon",
+      "official_title": "Young Red Dragon",
+      "official_page": 288,
+      "column": 0,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "young-red-dragon",
+        "name": "Young Red Dragon",
+        "url": "/api/2014/monsters/young-red-dragon"
+      },
+      "actual": {
+        "index": "young-red-dragon",
+        "name": "Young Red Dragon",
+        "url": "/api/2014/monsters/young-red-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "red-dragon-wyrmling",
+      "official_title": "Red Dragon Wyrmling",
+      "official_page": 288,
+      "column": 0,
+      "top": 496.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "red-dragon-wyrmling",
+        "name": "Red Dragon Wyrmling",
+        "url": "/api/2014/monsters/red-dragon-wyrmling"
+      },
+      "actual": {
+        "index": "red-dragon-wyrmling",
+        "name": "Red Dragon Wyrmling",
+        "url": "/api/2014/monsters/red-dragon-wyrmling"
+      },
+      "match": true
+    },
+    {
+      "record": "ancient-white-dragon",
+      "official_title": "Ancient White Dragon",
+      "official_page": 288,
+      "column": 1,
+      "top": 269.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ancient-white-dragon",
+        "name": "Ancient White Dragon",
+        "url": "/api/2014/monsters/ancient-white-dragon"
+      },
+      "actual": {
+        "index": "ancient-white-dragon",
+        "name": "Ancient White Dragon",
+        "url": "/api/2014/monsters/ancient-white-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "adult-white-dragon",
+      "official_title": "Adult White Dragon",
+      "official_page": 289,
+      "column": 0,
+      "top": 526.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "adult-white-dragon",
+        "name": "Adult White Dragon",
+        "url": "/api/2014/monsters/adult-white-dragon"
+      },
+      "actual": {
+        "index": "adult-white-dragon",
+        "name": "Adult White Dragon",
+        "url": "/api/2014/monsters/adult-white-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "young-white-dragon",
+      "official_title": "Young White Dragon",
+      "official_page": 290,
+      "column": 0,
+      "top": 163.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "young-white-dragon",
+        "name": "Young White Dragon",
+        "url": "/api/2014/monsters/young-white-dragon"
+      },
+      "actual": {
+        "index": "young-white-dragon",
+        "name": "Young White Dragon",
+        "url": "/api/2014/monsters/young-white-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "white-dragon-wyrmling",
+      "official_title": "White Dragon Wyrmling",
+      "official_page": 290,
+      "column": 0,
+      "top": 651.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "white-dragon-wyrmling",
+        "name": "White Dragon Wyrmling",
+        "url": "/api/2014/monsters/white-dragon-wyrmling"
+      },
+      "actual": {
+        "index": "white-dragon-wyrmling",
+        "name": "White Dragon Wyrmling",
+        "url": "/api/2014/monsters/white-dragon-wyrmling"
+      },
+      "match": true
+    },
+    {
+      "record": "ancient-brass-dragon",
+      "official_title": "Ancient Brass Dragon",
+      "official_page": 290,
+      "column": 1,
+      "top": 447.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ancient-brass-dragon",
+        "name": "Ancient Brass Dragon",
+        "url": "/api/2014/monsters/ancient-brass-dragon"
+      },
+      "actual": {
+        "index": "ancient-brass-dragon",
+        "name": "Ancient Brass Dragon",
+        "url": "/api/2014/monsters/ancient-brass-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "adult-brass-dragon",
+      "official_title": "Adult Brass Dragon",
+      "official_page": 291,
+      "column": 1,
+      "top": 288.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "adult-brass-dragon",
+        "name": "Adult Brass Dragon",
+        "url": "/api/2014/monsters/adult-brass-dragon"
+      },
+      "actual": {
+        "index": "adult-brass-dragon",
+        "name": "Adult Brass Dragon",
+        "url": "/api/2014/monsters/adult-brass-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "young-brass-dragon",
+      "official_title": "Young Brass Dragon",
+      "official_page": 292,
+      "column": 0,
+      "top": 603.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "young-brass-dragon",
+        "name": "Young Brass Dragon",
+        "url": "/api/2014/monsters/young-brass-dragon"
+      },
+      "actual": {
+        "index": "young-brass-dragon",
+        "name": "Young Brass Dragon",
+        "url": "/api/2014/monsters/young-brass-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "brass-dragon-wyrmling",
+      "official_title": "Brass Dragon Wyrmling",
+      "official_page": 292,
+      "column": 1,
+      "top": 503.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "brass-dragon-wyrmling",
+        "name": "Brass Dragon Wyrmling",
+        "url": "/api/2014/monsters/brass-dragon-wyrmling"
+      },
+      "actual": {
+        "index": "brass-dragon-wyrmling",
+        "name": "Brass Dragon Wyrmling",
+        "url": "/api/2014/monsters/brass-dragon-wyrmling"
+      },
+      "match": true
+    },
+    {
+      "record": "ancient-bronze-dragon",
+      "official_title": "Ancient Bronze Dragon",
+      "official_page": 293,
+      "column": 0,
+      "top": 376.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ancient-bronze-dragon",
+        "name": "Ancient Bronze Dragon",
+        "url": "/api/2014/monsters/ancient-bronze-dragon"
+      },
+      "actual": {
+        "index": "ancient-bronze-dragon",
+        "name": "Ancient Bronze Dragon",
+        "url": "/api/2014/monsters/ancient-bronze-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "adult-bronze-dragon",
+      "official_title": "Adult Bronze Dragon",
+      "official_page": 294,
+      "column": 0,
+      "top": 245.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "adult-bronze-dragon",
+        "name": "Adult Bronze Dragon",
+        "url": "/api/2014/monsters/adult-bronze-dragon"
+      },
+      "actual": {
+        "index": "adult-bronze-dragon",
+        "name": "Adult Bronze Dragon",
+        "url": "/api/2014/monsters/adult-bronze-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "young-bronze-dragon",
+      "official_title": "Young Bronze Dragon",
+      "official_page": 295,
+      "column": 0,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "young-bronze-dragon",
+        "name": "Young Bronze Dragon",
+        "url": "/api/2014/monsters/young-bronze-dragon"
+      },
+      "actual": {
+        "index": "young-bronze-dragon",
+        "name": "Young Bronze Dragon",
+        "url": "/api/2014/monsters/young-bronze-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "bronze-dragon-wyrmling",
+      "official_title": "Bronze Dragon Wyrmling",
+      "official_page": 295,
+      "column": 0,
+      "top": 605.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "bronze-dragon-wyrmling",
+        "name": "Bronze Dragon Wyrmling",
+        "url": "/api/2014/monsters/bronze-dragon-wyrmling"
+      },
+      "actual": {
+        "index": "bronze-dragon-wyrmling",
+        "name": "Bronze Dragon Wyrmling",
+        "url": "/api/2014/monsters/bronze-dragon-wyrmling"
+      },
+      "match": true
+    },
+    {
+      "record": "ancient-copper-dragon",
+      "official_title": "Ancient Copper Dragon",
+      "official_page": 295,
+      "column": 1,
+      "top": 505.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ancient-copper-dragon",
+        "name": "Ancient Copper Dragon",
+        "url": "/api/2014/monsters/ancient-copper-dragon"
+      },
+      "actual": {
+        "index": "ancient-copper-dragon",
+        "name": "Ancient Copper Dragon",
+        "url": "/api/2014/monsters/ancient-copper-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "adult-copper-dragon",
+      "official_title": "Adult Copper Dragon",
+      "official_page": 296,
+      "column": 1,
+      "top": 383.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "adult-copper-dragon",
+        "name": "Adult Copper Dragon",
+        "url": "/api/2014/monsters/adult-copper-dragon"
+      },
+      "actual": {
+        "index": "adult-copper-dragon",
+        "name": "Adult Copper Dragon",
+        "url": "/api/2014/monsters/adult-copper-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "young-copper-dragon",
+      "official_title": "Young Copper Dragon",
+      "official_page": 297,
+      "column": 1,
+      "top": 163.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "young-copper-dragon",
+        "name": "Young Copper Dragon",
+        "url": "/api/2014/monsters/young-copper-dragon"
+      },
+      "actual": {
+        "index": "young-copper-dragon",
+        "name": "Young Copper Dragon",
+        "url": "/api/2014/monsters/young-copper-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "copper-dragon-wyrmling",
+      "official_title": "Copper Dragon Wyrmling",
+      "official_page": 298,
+      "column": 0,
+      "top": 212.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "copper-dragon-wyrmling",
+        "name": "Copper Dragon Wyrmling",
+        "url": "/api/2014/monsters/copper-dragon-wyrmling"
+      },
+      "actual": {
+        "index": "copper-dragon-wyrmling",
+        "name": "Copper Dragon Wyrmling",
+        "url": "/api/2014/monsters/copper-dragon-wyrmling"
+      },
+      "match": true
+    },
+    {
+      "record": "ancient-gold-dragon",
+      "official_title": "Ancient Gold Dragon",
+      "official_page": 298,
+      "column": 1,
+      "top": 125.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ancient-gold-dragon",
+        "name": "Ancient Gold Dragon",
+        "url": "/api/2014/monsters/ancient-gold-dragon"
+      },
+      "actual": {
+        "index": "ancient-gold-dragon",
+        "name": "Ancient Gold Dragon",
+        "url": "/api/2014/monsters/ancient-gold-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "adult-gold-dragon",
+      "official_title": "Adult Gold Dragon",
+      "official_page": 299,
+      "column": 0,
+      "top": 636.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "adult-gold-dragon",
+        "name": "Adult Gold Dragon",
+        "url": "/api/2014/monsters/adult-gold-dragon"
+      },
+      "actual": {
+        "index": "adult-gold-dragon",
+        "name": "Adult Gold Dragon",
+        "url": "/api/2014/monsters/adult-gold-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "young-gold-dragon",
+      "official_title": "Young Gold Dragon",
+      "official_page": 300,
+      "column": 0,
+      "top": 545.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "young-gold-dragon",
+        "name": "Young Gold Dragon",
+        "url": "/api/2014/monsters/young-gold-dragon"
+      },
+      "actual": {
+        "index": "young-gold-dragon",
+        "name": "Young Gold Dragon",
+        "url": "/api/2014/monsters/young-gold-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "gold-dragon-wyrmling",
+      "official_title": "Gold Dragon Wyrmling",
+      "official_page": 300,
+      "column": 1,
+      "top": 522.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "gold-dragon-wyrmling",
+        "name": "Gold Dragon Wyrmling",
+        "url": "/api/2014/monsters/gold-dragon-wyrmling"
+      },
+      "actual": {
+        "index": "gold-dragon-wyrmling",
+        "name": "Gold Dragon Wyrmling",
+        "url": "/api/2014/monsters/gold-dragon-wyrmling"
+      },
+      "match": true
+    },
+    {
+      "record": "ancient-silver-dragon",
+      "official_title": "Ancient Silver Dragon",
+      "official_page": 301,
+      "column": 0,
+      "top": 446.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ancient-silver-dragon",
+        "name": "Ancient Silver Dragon",
+        "url": "/api/2014/monsters/ancient-silver-dragon"
+      },
+      "actual": {
+        "index": "ancient-silver-dragon",
+        "name": "Ancient Silver Dragon",
+        "url": "/api/2014/monsters/ancient-silver-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "adult-silver-dragon",
+      "official_title": "Adult Silver Dragon",
+      "official_page": 302,
+      "column": 0,
+      "top": 288.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "adult-silver-dragon",
+        "name": "Adult Silver Dragon",
+        "url": "/api/2014/monsters/adult-silver-dragon"
+      },
+      "actual": {
+        "index": "adult-silver-dragon",
+        "name": "Adult Silver Dragon",
+        "url": "/api/2014/monsters/adult-silver-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "young-silver-dragon",
+      "official_title": "Young Silver Dragon",
+      "official_page": 303,
+      "column": 0,
+      "top": 163.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "young-silver-dragon",
+        "name": "Young Silver Dragon",
+        "url": "/api/2014/monsters/young-silver-dragon"
+      },
+      "actual": {
+        "index": "young-silver-dragon",
+        "name": "Young Silver Dragon",
+        "url": "/api/2014/monsters/young-silver-dragon"
+      },
+      "match": true
+    },
+    {
+      "record": "silver-dragon-wyrmling",
+      "official_title": "Silver Dragon Wyrmling",
+      "official_page": 303,
+      "column": 1,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "silver-dragon-wyrmling",
+        "name": "Silver Dragon Wyrmling",
+        "url": "/api/2014/monsters/silver-dragon-wyrmling"
+      },
+      "actual": {
+        "index": "silver-dragon-wyrmling",
+        "name": "Silver Dragon Wyrmling",
+        "url": "/api/2014/monsters/silver-dragon-wyrmling"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-turtle",
+      "official_title": "Dragon Turtle",
+      "official_page": 303,
+      "column": 1,
+      "top": 532.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "dragon-turtle",
+        "name": "Dragon Turtle",
+        "url": "/api/2014/monsters/dragon-turtle"
+      },
+      "actual": {
+        "index": "dragon-turtle",
+        "name": "Dragon Turtle",
+        "url": "/api/2014/monsters/dragon-turtle"
+      },
+      "match": true
+    },
+    {
+      "record": "drider",
+      "official_title": "Drider",
+      "official_page": 304,
+      "column": 0,
+      "top": 432.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "drider",
+        "name": "Drider",
+        "url": "/api/2014/monsters/drider"
+      },
+      "actual": {
+        "index": "drider",
+        "name": "Drider",
+        "url": "/api/2014/monsters/drider"
+      },
+      "match": true
+    },
+    {
+      "record": "dryad",
+      "official_title": "Dryad",
+      "official_page": 304,
+      "column": 1,
+      "top": 435.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "dryad",
+        "name": "Dryad",
+        "url": "/api/2014/monsters/dryad"
+      },
+      "actual": {
+        "index": "dryad",
+        "name": "Dryad",
+        "url": "/api/2014/monsters/dryad"
+      },
+      "match": true
+    },
+    {
+      "record": "duergar",
+      "official_title": "Duergar",
+      "official_page": 305,
+      "column": 0,
+      "top": 560.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "duergar",
+        "name": "Duergar",
+        "url": "/api/2014/monsters/duergar"
+      },
+      "actual": {
+        "index": "duergar",
+        "name": "Duergar",
+        "url": "/api/2014/monsters/duergar"
+      },
+      "match": true
+    },
+    {
+      "record": "air-elemental",
+      "official_title": "Air Elemental",
+      "official_page": 305,
+      "column": 1,
+      "top": 621.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "air-elemental",
+        "name": "Air Elemental",
+        "url": "/api/2014/monsters/air-elemental"
+      },
+      "actual": {
+        "index": "air-elemental",
+        "name": "Air Elemental",
+        "url": "/api/2014/monsters/air-elemental"
+      },
+      "match": true
+    },
+    {
+      "record": "earth-elemental",
+      "official_title": "Earth Elemental",
+      "official_page": 306,
+      "column": 0,
+      "top": 536.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "earth-elemental",
+        "name": "Earth Elemental",
+        "url": "/api/2014/monsters/earth-elemental"
+      },
+      "actual": {
+        "index": "earth-elemental",
+        "name": "Earth Elemental",
+        "url": "/api/2014/monsters/earth-elemental"
+      },
+      "match": true
+    },
+    {
+      "record": "fire-elemental",
+      "official_title": "Fire Elemental",
+      "official_page": 306,
+      "column": 1,
+      "top": 349.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "fire-elemental",
+        "name": "Fire Elemental",
+        "url": "/api/2014/monsters/fire-elemental"
+      },
+      "actual": {
+        "index": "fire-elemental",
+        "name": "Fire Elemental",
+        "url": "/api/2014/monsters/fire-elemental"
+      },
+      "match": true
+    },
+    {
+      "record": "water-elemental",
+      "official_title": "Water Elemental",
+      "official_page": 307,
+      "column": 0,
+      "top": 298.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "water-elemental",
+        "name": "Water Elemental",
+        "url": "/api/2014/monsters/water-elemental"
+      },
+      "actual": {
+        "index": "water-elemental",
+        "name": "Water Elemental",
+        "url": "/api/2014/monsters/water-elemental"
+      },
+      "match": true
+    },
+    {
+      "record": "drow",
+      "official_title": "Elf, Drow",
+      "official_page": 307,
+      "column": 1,
+      "top": 273.0,
+      "mapping_type": "explicit_title_alias",
+      "expected": {
+        "index": "drow",
+        "name": "Drow",
+        "url": "/api/2014/monsters/drow"
+      },
+      "actual": {
+        "index": "drow",
+        "name": "Drow",
+        "url": "/api/2014/monsters/drow"
+      },
+      "match": true
+    },
+    {
+      "record": "ettercap",
+      "official_title": "Ettercap",
+      "official_page": 308,
+      "column": 0,
+      "top": 163.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ettercap",
+        "name": "Ettercap",
+        "url": "/api/2014/monsters/ettercap"
+      },
+      "actual": {
+        "index": "ettercap",
+        "name": "Ettercap",
+        "url": "/api/2014/monsters/ettercap"
+      },
+      "match": true
+    },
+    {
+      "record": "ettin",
+      "official_title": "Ettin",
+      "official_page": 308,
+      "column": 1,
+      "top": 127.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ettin",
+        "name": "Ettin",
+        "url": "/api/2014/monsters/ettin"
+      },
+      "actual": {
+        "index": "ettin",
+        "name": "Ettin",
+        "url": "/api/2014/monsters/ettin"
+      },
+      "match": true
+    },
+    {
+      "record": "shrieker",
+      "official_title": "Shrieker",
+      "official_page": 309,
+      "column": 0,
+      "top": 146.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "shrieker",
+        "name": "Shrieker",
+        "url": "/api/2014/monsters/shrieker"
+      },
+      "actual": {
+        "index": "shrieker",
+        "name": "Shrieker",
+        "url": "/api/2014/monsters/shrieker"
+      },
+      "match": true
+    },
+    {
+      "record": "violet-fungus",
+      "official_title": "Violet Fungus",
+      "official_page": 309,
+      "column": 0,
+      "top": 497.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "violet-fungus",
+        "name": "Violet Fungus",
+        "url": "/api/2014/monsters/violet-fungus"
+      },
+      "actual": {
+        "index": "violet-fungus",
+        "name": "Violet Fungus",
+        "url": "/api/2014/monsters/violet-fungus"
+      },
+      "match": true
+    },
+    {
+      "record": "gargoyle",
+      "official_title": "Gargoyle",
+      "official_page": 309,
+      "column": 1,
+      "top": 255.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "gargoyle",
+        "name": "Gargoyle",
+        "url": "/api/2014/monsters/gargoyle"
+      },
+      "actual": {
+        "index": "gargoyle",
+        "name": "Gargoyle",
+        "url": "/api/2014/monsters/gargoyle"
+      },
+      "match": true
+    },
+    {
+      "record": "djinni",
+      "official_title": "Djinni",
+      "official_page": 310,
+      "column": 0,
+      "top": 97.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "djinni",
+        "name": "Djinni",
+        "url": "/api/2014/monsters/djinni"
+      },
+      "actual": {
+        "index": "djinni",
+        "name": "Djinni",
+        "url": "/api/2014/monsters/djinni"
+      },
+      "match": true
+    },
+    {
+      "record": "efreeti",
+      "official_title": "Efreeti",
+      "official_page": 310,
+      "column": 1,
+      "top": 151.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "efreeti",
+        "name": "Efreeti",
+        "url": "/api/2014/monsters/efreeti"
+      },
+      "actual": {
+        "index": "efreeti",
+        "name": "Efreeti",
+        "url": "/api/2014/monsters/efreeti"
+      },
+      "match": true
+    },
+    {
+      "record": "ghost",
+      "official_title": "Ghost",
+      "official_page": 311,
+      "column": 0,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ghost",
+        "name": "Ghost",
+        "url": "/api/2014/monsters/ghost"
+      },
+      "actual": {
+        "index": "ghost",
+        "name": "Ghost",
+        "url": "/api/2014/monsters/ghost"
+      },
+      "match": true
+    },
+    {
+      "record": "ghast",
+      "official_title": "Ghast",
+      "official_page": 311,
+      "column": 1,
+      "top": 396.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ghast",
+        "name": "Ghast",
+        "url": "/api/2014/monsters/ghast"
+      },
+      "actual": {
+        "index": "ghast",
+        "name": "Ghast",
+        "url": "/api/2014/monsters/ghast"
+      },
+      "match": true
+    },
+    {
+      "record": "ghoul",
+      "official_title": "Ghoul",
+      "official_page": 312,
+      "column": 0,
+      "top": 267.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ghoul",
+        "name": "Ghoul",
+        "url": "/api/2014/monsters/ghoul"
+      },
+      "actual": {
+        "index": "ghoul",
+        "name": "Ghoul",
+        "url": "/api/2014/monsters/ghoul"
+      },
+      "match": true
+    },
+    {
+      "record": "cloud-giant",
+      "official_title": "Cloud Giant",
+      "official_page": 312,
+      "column": 0,
+      "top": 640.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "cloud-giant",
+        "name": "Cloud Giant",
+        "url": "/api/2014/monsters/cloud-giant"
+      },
+      "actual": {
+        "index": "cloud-giant",
+        "name": "Cloud Giant",
+        "url": "/api/2014/monsters/cloud-giant"
+      },
+      "match": true
+    },
+    {
+      "record": "fire-giant",
+      "official_title": "Fire Giant",
+      "official_page": 312,
+      "column": 1,
+      "top": 441.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "fire-giant",
+        "name": "Fire Giant",
+        "url": "/api/2014/monsters/fire-giant"
+      },
+      "actual": {
+        "index": "fire-giant",
+        "name": "Fire Giant",
+        "url": "/api/2014/monsters/fire-giant"
+      },
+      "match": true
+    },
+    {
+      "record": "frost-giant",
+      "official_title": "Frost Giant",
+      "official_page": 313,
+      "column": 0,
+      "top": 142.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "frost-giant",
+        "name": "Frost Giant",
+        "url": "/api/2014/monsters/frost-giant"
+      },
+      "actual": {
+        "index": "frost-giant",
+        "name": "Frost Giant",
+        "url": "/api/2014/monsters/frost-giant"
+      },
+      "match": true
+    },
+    {
+      "record": "hill-giant",
+      "official_title": "Hill Giant",
+      "official_page": 313,
+      "column": 0,
+      "top": 462.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "hill-giant",
+        "name": "Hill Giant",
+        "url": "/api/2014/monsters/hill-giant"
+      },
+      "actual": {
+        "index": "hill-giant",
+        "name": "Hill Giant",
+        "url": "/api/2014/monsters/hill-giant"
+      },
+      "match": true
+    },
+    {
+      "record": "stone-giant",
+      "official_title": "Stone Giant",
+      "official_page": 313,
+      "column": 1,
+      "top": 142.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "stone-giant",
+        "name": "Stone Giant",
+        "url": "/api/2014/monsters/stone-giant"
+      },
+      "actual": {
+        "index": "stone-giant",
+        "name": "Stone Giant",
+        "url": "/api/2014/monsters/stone-giant"
+      },
+      "match": true
+    },
+    {
+      "record": "storm-giant",
+      "official_title": "Storm Giant",
+      "official_page": 313,
+      "column": 1,
+      "top": 591.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "storm-giant",
+        "name": "Storm Giant",
+        "url": "/api/2014/monsters/storm-giant"
+      },
+      "actual": {
+        "index": "storm-giant",
+        "name": "Storm Giant",
+        "url": "/api/2014/monsters/storm-giant"
+      },
+      "match": true
+    },
+    {
+      "record": "gibbering-mouther",
+      "official_title": "Gibbering Mouther",
+      "official_page": 314,
+      "column": 0,
+      "top": 491.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "gibbering-mouther",
+        "name": "Gibbering Mouther",
+        "url": "/api/2014/monsters/gibbering-mouther"
+      },
+      "actual": {
+        "index": "gibbering-mouther",
+        "name": "Gibbering Mouther",
+        "url": "/api/2014/monsters/gibbering-mouther"
+      },
+      "match": true
+    },
+    {
+      "record": "gnoll",
+      "official_title": "Gnoll",
+      "official_page": 314,
+      "column": 1,
+      "top": 518.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "gnoll",
+        "name": "Gnoll",
+        "url": "/api/2014/monsters/gnoll"
+      },
+      "actual": {
+        "index": "gnoll",
+        "name": "Gnoll",
+        "url": "/api/2014/monsters/gnoll"
+      },
+      "match": true
+    },
+    {
+      "record": "deep-gnome-svirfneblin",
+      "official_title": "Gnome, Deep (Svirfneblin)",
+      "official_page": 315,
+      "column": 0,
+      "top": 283.0,
+      "mapping_type": "explicit_title_alias",
+      "expected": {
+        "index": "deep-gnome-svirfneblin",
+        "name": "Deep Gnome (Svirfneblin)",
+        "url": "/api/2014/monsters/deep-gnome-svirfneblin"
+      },
+      "actual": {
+        "index": "deep-gnome-svirfneblin",
+        "name": "Deep Gnome (Svirfneblin)",
+        "url": "/api/2014/monsters/deep-gnome-svirfneblin"
+      },
+      "match": true
+    },
+    {
+      "record": "goblin",
+      "official_title": "Goblin",
+      "official_page": 315,
+      "column": 1,
+      "top": 175.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "goblin",
+        "name": "Goblin",
+        "url": "/api/2014/monsters/goblin"
+      },
+      "actual": {
+        "index": "goblin",
+        "name": "Goblin",
+        "url": "/api/2014/monsters/goblin"
+      },
+      "match": true
+    },
+    {
+      "record": "clay-golem",
+      "official_title": "Clay Golem",
+      "official_page": 315,
+      "column": 1,
+      "top": 515.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "clay-golem",
+        "name": "Clay Golem",
+        "url": "/api/2014/monsters/clay-golem"
+      },
+      "actual": {
+        "index": "clay-golem",
+        "name": "Clay Golem",
+        "url": "/api/2014/monsters/clay-golem"
+      },
+      "match": true
+    },
+    {
+      "record": "flesh-golem",
+      "official_title": "Flesh Golem",
+      "official_page": 316,
+      "column": 0,
+      "top": 575.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "flesh-golem",
+        "name": "Flesh Golem",
+        "url": "/api/2014/monsters/flesh-golem"
+      },
+      "actual": {
+        "index": "flesh-golem",
+        "name": "Flesh Golem",
+        "url": "/api/2014/monsters/flesh-golem"
+      },
+      "match": true
+    },
+    {
+      "record": "iron-golem",
+      "official_title": "Iron Golem",
+      "official_page": 317,
+      "column": 0,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "iron-golem",
+        "name": "Iron Golem",
+        "url": "/api/2014/monsters/iron-golem"
+      },
+      "actual": {
+        "index": "iron-golem",
+        "name": "Iron Golem",
+        "url": "/api/2014/monsters/iron-golem"
+      },
+      "match": true
+    },
+    {
+      "record": "stone-golem",
+      "official_title": "Stone Golem",
+      "official_page": 317,
+      "column": 0,
+      "top": 625.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "stone-golem",
+        "name": "Stone Golem",
+        "url": "/api/2014/monsters/stone-golem"
+      },
+      "actual": {
+        "index": "stone-golem",
+        "name": "Stone Golem",
+        "url": "/api/2014/monsters/stone-golem"
+      },
+      "match": true
+    },
+    {
+      "record": "gorgon",
+      "official_title": "Gorgon",
+      "official_page": 317,
+      "column": 1,
+      "top": 539.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "gorgon",
+        "name": "Gorgon",
+        "url": "/api/2014/monsters/gorgon"
+      },
+      "actual": {
+        "index": "gorgon",
+        "name": "Gorgon",
+        "url": "/api/2014/monsters/gorgon"
+      },
+      "match": true
+    },
+    {
+      "record": "grick",
+      "official_title": "Grick",
+      "official_page": 318,
+      "column": 0,
+      "top": 401.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "grick",
+        "name": "Grick",
+        "url": "/api/2014/monsters/grick"
+      },
+      "actual": {
+        "index": "grick",
+        "name": "Grick",
+        "url": "/api/2014/monsters/grick"
+      },
+      "match": true
+    },
+    {
+      "record": "griffon",
+      "official_title": "Griffon",
+      "official_page": 318,
+      "column": 1,
+      "top": 142.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "griffon",
+        "name": "Griffon",
+        "url": "/api/2014/monsters/griffon"
+      },
+      "actual": {
+        "index": "griffon",
+        "name": "Griffon",
+        "url": "/api/2014/monsters/griffon"
+      },
+      "match": true
+    },
+    {
+      "record": "grimlock",
+      "official_title": "Grimlock",
+      "official_page": 318,
+      "column": 1,
+      "top": 487.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "grimlock",
+        "name": "Grimlock",
+        "url": "/api/2014/monsters/grimlock"
+      },
+      "actual": {
+        "index": "grimlock",
+        "name": "Grimlock",
+        "url": "/api/2014/monsters/grimlock"
+      },
+      "match": true
+    },
+    {
+      "record": "green-hag",
+      "official_title": "Green Hag",
+      "official_page": 319,
+      "column": 0,
+      "top": 317.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "green-hag",
+        "name": "Green Hag",
+        "url": "/api/2014/monsters/green-hag"
+      },
+      "actual": {
+        "index": "green-hag",
+        "name": "Green Hag",
+        "url": "/api/2014/monsters/green-hag"
+      },
+      "match": true
+    },
+    {
+      "record": "night-hag",
+      "official_title": "Night Hag",
+      "official_page": 319,
+      "column": 1,
+      "top": 358.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "night-hag",
+        "name": "Night Hag",
+        "url": "/api/2014/monsters/night-hag"
+      },
+      "actual": {
+        "index": "night-hag",
+        "name": "Night Hag",
+        "url": "/api/2014/monsters/night-hag"
+      },
+      "match": true
+    },
+    {
+      "record": "sea-hag",
+      "official_title": "Sea Hag",
+      "official_page": 320,
+      "column": 0,
+      "top": 471.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "sea-hag",
+        "name": "Sea Hag",
+        "url": "/api/2014/monsters/sea-hag"
+      },
+      "actual": {
+        "index": "sea-hag",
+        "name": "Sea Hag",
+        "url": "/api/2014/monsters/sea-hag"
+      },
+      "match": true
+    },
+    {
+      "record": "half-red-dragon-veteran",
+      "official_title": "Half-‐Red Dragon Veteran",
+      "official_page": 321,
+      "column": 0,
+      "top": 261.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "half-red-dragon-veteran",
+        "name": "Half-Red Dragon Veteran",
+        "url": "/api/2014/monsters/half-red-dragon-veteran"
+      },
+      "actual": {
+        "index": "half-red-dragon-veteran",
+        "name": "Half-Red Dragon Veteran",
+        "url": "/api/2014/monsters/half-red-dragon-veteran"
+      },
+      "match": true
+    },
+    {
+      "record": "harpy",
+      "official_title": "Harpy",
+      "official_page": 321,
+      "column": 1,
+      "top": 87.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "harpy",
+        "name": "Harpy",
+        "url": "/api/2014/monsters/harpy"
+      },
+      "actual": {
+        "index": "harpy",
+        "name": "Harpy",
+        "url": "/api/2014/monsters/harpy"
+      },
+      "match": true
+    },
+    {
+      "record": "hell-hound",
+      "official_title": "Hell Hound",
+      "official_page": 321,
+      "column": 1,
+      "top": 628.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "hell-hound",
+        "name": "Hell Hound",
+        "url": "/api/2014/monsters/hell-hound"
+      },
+      "actual": {
+        "index": "hell-hound",
+        "name": "Hell Hound",
+        "url": "/api/2014/monsters/hell-hound"
+      },
+      "match": true
+    },
+    {
+      "record": "hippogriff",
+      "official_title": "Hippogriff",
+      "official_page": 322,
+      "column": 0,
+      "top": 454.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "hippogriff",
+        "name": "Hippogriff",
+        "url": "/api/2014/monsters/hippogriff"
+      },
+      "actual": {
+        "index": "hippogriff",
+        "name": "Hippogriff",
+        "url": "/api/2014/monsters/hippogriff"
+      },
+      "match": true
+    },
+    {
+      "record": "hobgoblin",
+      "official_title": "Hobgoblin",
+      "official_page": 322,
+      "column": 1,
+      "top": 187.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "hobgoblin",
+        "name": "Hobgoblin",
+        "url": "/api/2014/monsters/hobgoblin"
+      },
+      "actual": {
+        "index": "hobgoblin",
+        "name": "Hobgoblin",
+        "url": "/api/2014/monsters/hobgoblin"
+      },
+      "match": true
+    },
+    {
+      "record": "homunculus",
+      "official_title": "Homunculus",
+      "official_page": 322,
+      "column": 1,
+      "top": 538.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "homunculus",
+        "name": "Homunculus",
+        "url": "/api/2014/monsters/homunculus"
+      },
+      "actual": {
+        "index": "homunculus",
+        "name": "Homunculus",
+        "url": "/api/2014/monsters/homunculus"
+      },
+      "match": true
+    },
+    {
+      "record": "hydra",
+      "official_title": "Hydra",
+      "official_page": 323,
+      "column": 0,
+      "top": 298.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "hydra",
+        "name": "Hydra",
+        "url": "/api/2014/monsters/hydra"
+      },
+      "actual": {
+        "index": "hydra",
+        "name": "Hydra",
+        "url": "/api/2014/monsters/hydra"
+      },
+      "match": true
+    },
+    {
+      "record": "invisible-stalker",
+      "official_title": "Invisible Stalker",
+      "official_page": 323,
+      "column": 1,
+      "top": 243.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "invisible-stalker",
+        "name": "Invisible Stalker",
+        "url": "/api/2014/monsters/invisible-stalker"
+      },
+      "actual": {
+        "index": "invisible-stalker",
+        "name": "Invisible Stalker",
+        "url": "/api/2014/monsters/invisible-stalker"
+      },
+      "match": true
+    },
+    {
+      "record": "kobold",
+      "official_title": "Kobold",
+      "official_page": 324,
+      "column": 0,
+      "top": 111.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "kobold",
+        "name": "Kobold",
+        "url": "/api/2014/monsters/kobold"
+      },
+      "actual": {
+        "index": "kobold",
+        "name": "Kobold",
+        "url": "/api/2014/monsters/kobold"
+      },
+      "match": true
+    },
+    {
+      "record": "kraken",
+      "official_title": "Kraken",
+      "official_page": 324,
+      "column": 0,
+      "top": 477.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "kraken",
+        "name": "Kraken",
+        "url": "/api/2014/monsters/kraken"
+      },
+      "actual": {
+        "index": "kraken",
+        "name": "Kraken",
+        "url": "/api/2014/monsters/kraken"
+      },
+      "match": true
+    },
+    {
+      "record": "lamia",
+      "official_title": "Lamia",
+      "official_page": 325,
+      "column": 0,
+      "top": 444.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "lamia",
+        "name": "Lamia",
+        "url": "/api/2014/monsters/lamia"
+      },
+      "actual": {
+        "index": "lamia",
+        "name": "Lamia",
+        "url": "/api/2014/monsters/lamia"
+      },
+      "match": true
+    },
+    {
+      "record": "lich",
+      "official_title": "Lich",
+      "official_page": 325,
+      "column": 1,
+      "top": 316.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "lich",
+        "name": "Lich",
+        "url": "/api/2014/monsters/lich"
+      },
+      "actual": {
+        "index": "lich",
+        "name": "Lich",
+        "url": "/api/2014/monsters/lich"
+      },
+      "match": true
+    },
+    {
+      "record": "lizardfolk",
+      "official_title": "Lizardfolk",
+      "official_page": 326,
+      "column": 1,
+      "top": 151.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "lizardfolk",
+        "name": "Lizardfolk",
+        "url": "/api/2014/monsters/lizardfolk"
+      },
+      "actual": {
+        "index": "lizardfolk",
+        "name": "Lizardfolk",
+        "url": "/api/2014/monsters/lizardfolk"
+      },
+      "match": true
+    },
+    {
+      "record": "werebear-bear",
+      "official_title": "Werebear",
+      "official_page": 326,
+      "column": 1,
+      "top": 585.0,
+      "mapping_type": "derived_monster_form",
+      "expected": {
+        "index": "werebear-bear",
+        "name": "Werebear, Bear Form",
+        "url": "/api/2014/monsters/werebear-bear"
+      },
+      "actual": {
+        "index": "werebear-bear",
+        "name": "Werebear, Bear Form",
+        "url": "/api/2014/monsters/werebear-bear"
+      },
+      "match": true
+    },
+    {
+      "record": "werebear-human",
+      "official_title": "Werebear",
+      "official_page": 326,
+      "column": 1,
+      "top": 585.0,
+      "mapping_type": "derived_monster_form",
+      "expected": {
+        "index": "werebear-human",
+        "name": "Werebear, Human Form",
+        "url": "/api/2014/monsters/werebear-human"
+      },
+      "actual": {
+        "index": "werebear-human",
+        "name": "Werebear, Human Form",
+        "url": "/api/2014/monsters/werebear-human"
+      },
+      "match": true
+    },
+    {
+      "record": "werebear-hybrid",
+      "official_title": "Werebear",
+      "official_page": 326,
+      "column": 1,
+      "top": 585.0,
+      "mapping_type": "derived_monster_form",
+      "expected": {
+        "index": "werebear-hybrid",
+        "name": "Werebear, Hybrid Form",
+        "url": "/api/2014/monsters/werebear-hybrid"
+      },
+      "actual": {
+        "index": "werebear-hybrid",
+        "name": "Werebear, Hybrid Form",
+        "url": "/api/2014/monsters/werebear-hybrid"
+      },
+      "match": true
+    },
+    {
+      "record": "wereboar-boar",
+      "official_title": "Wereboar",
+      "official_page": 327,
+      "column": 0,
+      "top": 575.0,
+      "mapping_type": "derived_monster_form",
+      "expected": {
+        "index": "wereboar-boar",
+        "name": "Wereboar, Boar Form",
+        "url": "/api/2014/monsters/wereboar-boar"
+      },
+      "actual": {
+        "index": "wereboar-boar",
+        "name": "Wereboar, Boar Form",
+        "url": "/api/2014/monsters/wereboar-boar"
+      },
+      "match": true
+    },
+    {
+      "record": "wereboar-human",
+      "official_title": "Wereboar",
+      "official_page": 327,
+      "column": 0,
+      "top": 575.0,
+      "mapping_type": "derived_monster_form",
+      "expected": {
+        "index": "wereboar-human",
+        "name": "Wereboar, Human Form",
+        "url": "/api/2014/monsters/wereboar-human"
+      },
+      "actual": {
+        "index": "wereboar-human",
+        "name": "Wereboar, Human Form",
+        "url": "/api/2014/monsters/wereboar-human"
+      },
+      "match": true
+    },
+    {
+      "record": "wereboar-hybrid",
+      "official_title": "Wereboar",
+      "official_page": 327,
+      "column": 0,
+      "top": 575.0,
+      "mapping_type": "derived_monster_form",
+      "expected": {
+        "index": "wereboar-hybrid",
+        "name": "Wereboar, Hybrid Form",
+        "url": "/api/2014/monsters/wereboar-hybrid"
+      },
+      "actual": {
+        "index": "wereboar-hybrid",
+        "name": "Wereboar, Hybrid Form",
+        "url": "/api/2014/monsters/wereboar-hybrid"
+      },
+      "match": true
+    },
+    {
+      "record": "wererat-human",
+      "official_title": "Wererat",
+      "official_page": 327,
+      "column": 1,
+      "top": 562.0,
+      "mapping_type": "derived_monster_form",
+      "expected": {
+        "index": "wererat-human",
+        "name": "Wererat, Human Form",
+        "url": "/api/2014/monsters/wererat-human"
+      },
+      "actual": {
+        "index": "wererat-human",
+        "name": "Wererat, Human Form",
+        "url": "/api/2014/monsters/wererat-human"
+      },
+      "match": true
+    },
+    {
+      "record": "wererat-hybrid",
+      "official_title": "Wererat",
+      "official_page": 327,
+      "column": 1,
+      "top": 562.0,
+      "mapping_type": "derived_monster_form",
+      "expected": {
+        "index": "wererat-hybrid",
+        "name": "Wererat, Hybrid Form",
+        "url": "/api/2014/monsters/wererat-hybrid"
+      },
+      "actual": {
+        "index": "wererat-hybrid",
+        "name": "Wererat, Hybrid Form",
+        "url": "/api/2014/monsters/wererat-hybrid"
+      },
+      "match": true
+    },
+    {
+      "record": "wererat-rat",
+      "official_title": "Wererat",
+      "official_page": 327,
+      "column": 1,
+      "top": 562.0,
+      "mapping_type": "derived_monster_form",
+      "expected": {
+        "index": "wererat-rat",
+        "name": "Wererat, Rat Form",
+        "url": "/api/2014/monsters/wererat-rat"
+      },
+      "actual": {
+        "index": "wererat-rat",
+        "name": "Wererat, Rat Form",
+        "url": "/api/2014/monsters/wererat-rat"
+      },
+      "match": true
+    },
+    {
+      "record": "weretiger-human",
+      "official_title": "Weretiger",
+      "official_page": 328,
+      "column": 0,
+      "top": 511.0,
+      "mapping_type": "derived_monster_form",
+      "expected": {
+        "index": "weretiger-human",
+        "name": "Weretiger, Human Form",
+        "url": "/api/2014/monsters/weretiger-human"
+      },
+      "actual": {
+        "index": "weretiger-human",
+        "name": "Weretiger, Human Form",
+        "url": "/api/2014/monsters/weretiger-human"
+      },
+      "match": true
+    },
+    {
+      "record": "weretiger-hybrid",
+      "official_title": "Weretiger",
+      "official_page": 328,
+      "column": 0,
+      "top": 511.0,
+      "mapping_type": "derived_monster_form",
+      "expected": {
+        "index": "weretiger-hybrid",
+        "name": "Weretiger, Hybrid Form",
+        "url": "/api/2014/monsters/weretiger-hybrid"
+      },
+      "actual": {
+        "index": "weretiger-hybrid",
+        "name": "Weretiger, Hybrid Form",
+        "url": "/api/2014/monsters/weretiger-hybrid"
+      },
+      "match": true
+    },
+    {
+      "record": "weretiger-tiger",
+      "official_title": "Weretiger",
+      "official_page": 328,
+      "column": 0,
+      "top": 511.0,
+      "mapping_type": "derived_monster_form",
+      "expected": {
+        "index": "weretiger-tiger",
+        "name": "Weretiger, Tiger Form",
+        "url": "/api/2014/monsters/weretiger-tiger"
+      },
+      "actual": {
+        "index": "weretiger-tiger",
+        "name": "Weretiger, Tiger Form",
+        "url": "/api/2014/monsters/weretiger-tiger"
+      },
+      "match": true
+    },
+    {
+      "record": "werewolf-human",
+      "official_title": "Werewolf",
+      "official_page": 328,
+      "column": 1,
+      "top": 597.0,
+      "mapping_type": "derived_monster_form",
+      "expected": {
+        "index": "werewolf-human",
+        "name": "Werewolf, Human Form",
+        "url": "/api/2014/monsters/werewolf-human"
+      },
+      "actual": {
+        "index": "werewolf-human",
+        "name": "Werewolf, Human Form",
+        "url": "/api/2014/monsters/werewolf-human"
+      },
+      "match": true
+    },
+    {
+      "record": "werewolf-hybrid",
+      "official_title": "Werewolf",
+      "official_page": 328,
+      "column": 1,
+      "top": 597.0,
+      "mapping_type": "derived_monster_form",
+      "expected": {
+        "index": "werewolf-hybrid",
+        "name": "Werewolf, Hybrid Form",
+        "url": "/api/2014/monsters/werewolf-hybrid"
+      },
+      "actual": {
+        "index": "werewolf-hybrid",
+        "name": "Werewolf, Hybrid Form",
+        "url": "/api/2014/monsters/werewolf-hybrid"
+      },
+      "match": true
+    },
+    {
+      "record": "werewolf-wolf",
+      "official_title": "Werewolf",
+      "official_page": 328,
+      "column": 1,
+      "top": 597.0,
+      "mapping_type": "derived_monster_form",
+      "expected": {
+        "index": "werewolf-wolf",
+        "name": "Werewolf, Wolf Form",
+        "url": "/api/2014/monsters/werewolf-wolf"
+      },
+      "actual": {
+        "index": "werewolf-wolf",
+        "name": "Werewolf, Wolf Form",
+        "url": "/api/2014/monsters/werewolf-wolf"
+      },
+      "match": true
+    },
+    {
+      "record": "magmin",
+      "official_title": "Magmin",
+      "official_page": 329,
+      "column": 0,
+      "top": 637.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "magmin",
+        "name": "Magmin",
+        "url": "/api/2014/monsters/magmin"
+      },
+      "actual": {
+        "index": "magmin",
+        "name": "Magmin",
+        "url": "/api/2014/monsters/magmin"
+      },
+      "match": true
+    },
+    {
+      "record": "manticore",
+      "official_title": "Manticore",
+      "official_page": 329,
+      "column": 1,
+      "top": 463.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "manticore",
+        "name": "Manticore",
+        "url": "/api/2014/monsters/manticore"
+      },
+      "actual": {
+        "index": "manticore",
+        "name": "Manticore",
+        "url": "/api/2014/monsters/manticore"
+      },
+      "match": true
+    },
+    {
+      "record": "medusa",
+      "official_title": "Medusa",
+      "official_page": 330,
+      "column": 0,
+      "top": 239.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "medusa",
+        "name": "Medusa",
+        "url": "/api/2014/monsters/medusa"
+      },
+      "actual": {
+        "index": "medusa",
+        "name": "Medusa",
+        "url": "/api/2014/monsters/medusa"
+      },
+      "match": true
+    },
+    {
+      "record": "dust-mephit",
+      "official_title": "Dust Mephit",
+      "official_page": 330,
+      "column": 1,
+      "top": 320.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "dust-mephit",
+        "name": "Dust Mephit",
+        "url": "/api/2014/monsters/dust-mephit"
+      },
+      "actual": {
+        "index": "dust-mephit",
+        "name": "Dust Mephit",
+        "url": "/api/2014/monsters/dust-mephit"
+      },
+      "match": true
+    },
+    {
+      "record": "ice-mephit",
+      "official_title": "Ice Mephit",
+      "official_page": 331,
+      "column": 0,
+      "top": 208.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ice-mephit",
+        "name": "Ice Mephit",
+        "url": "/api/2014/monsters/ice-mephit"
+      },
+      "actual": {
+        "index": "ice-mephit",
+        "name": "Ice Mephit",
+        "url": "/api/2014/monsters/ice-mephit"
+      },
+      "match": true
+    },
+    {
+      "record": "magma-mephit",
+      "official_title": "Magma Mephit",
+      "official_page": 331,
+      "column": 1,
+      "top": 114.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "magma-mephit",
+        "name": "Magma Mephit",
+        "url": "/api/2014/monsters/magma-mephit"
+      },
+      "actual": {
+        "index": "magma-mephit",
+        "name": "Magma Mephit",
+        "url": "/api/2014/monsters/magma-mephit"
+      },
+      "match": true
+    },
+    {
+      "record": "steam-mephit",
+      "official_title": "Steam Mephit",
+      "official_page": 331,
+      "column": 1,
+      "top": 654.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "steam-mephit",
+        "name": "Steam Mephit",
+        "url": "/api/2014/monsters/steam-mephit"
+      },
+      "actual": {
+        "index": "steam-mephit",
+        "name": "Steam Mephit",
+        "url": "/api/2014/monsters/steam-mephit"
+      },
+      "match": true
+    },
+    {
+      "record": "merfolk",
+      "official_title": "Merfolk",
+      "official_page": 332,
+      "column": 0,
+      "top": 469.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "merfolk",
+        "name": "Merfolk",
+        "url": "/api/2014/monsters/merfolk"
+      },
+      "actual": {
+        "index": "merfolk",
+        "name": "Merfolk",
+        "url": "/api/2014/monsters/merfolk"
+      },
+      "match": true
+    },
+    {
+      "record": "merrow",
+      "official_title": "Merrow",
+      "official_page": 332,
+      "column": 1,
+      "top": 157.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "merrow",
+        "name": "Merrow",
+        "url": "/api/2014/monsters/merrow"
+      },
+      "actual": {
+        "index": "merrow",
+        "name": "Merrow",
+        "url": "/api/2014/monsters/merrow"
+      },
+      "match": true
+    },
+    {
+      "record": "mimic",
+      "official_title": "Mimic",
+      "official_page": 332,
+      "column": 1,
+      "top": 550.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "mimic",
+        "name": "Mimic",
+        "url": "/api/2014/monsters/mimic"
+      },
+      "actual": {
+        "index": "mimic",
+        "name": "Mimic",
+        "url": "/api/2014/monsters/mimic"
+      },
+      "match": true
+    },
+    {
+      "record": "minotaur",
+      "official_title": "Minotaur",
+      "official_page": 333,
+      "column": 0,
+      "top": 475.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "minotaur",
+        "name": "Minotaur",
+        "url": "/api/2014/monsters/minotaur"
+      },
+      "actual": {
+        "index": "minotaur",
+        "name": "Minotaur",
+        "url": "/api/2014/monsters/minotaur"
+      },
+      "match": true
+    },
+    {
+      "record": "mummy",
+      "official_title": "Mummy",
+      "official_page": 333,
+      "column": 1,
+      "top": 320.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "mummy",
+        "name": "Mummy",
+        "url": "/api/2014/monsters/mummy"
+      },
+      "actual": {
+        "index": "mummy",
+        "name": "Mummy",
+        "url": "/api/2014/monsters/mummy"
+      },
+      "match": true
+    },
+    {
+      "record": "mummy-lord",
+      "official_title": "Mummy Lord",
+      "official_page": 334,
+      "column": 0,
+      "top": 276.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "mummy-lord",
+        "name": "Mummy Lord",
+        "url": "/api/2014/monsters/mummy-lord"
+      },
+      "actual": {
+        "index": "mummy-lord",
+        "name": "Mummy Lord",
+        "url": "/api/2014/monsters/mummy-lord"
+      },
+      "match": true
+    },
+    {
+      "record": "guardian-naga",
+      "official_title": "Guardian Naga",
+      "official_page": 335,
+      "column": 0,
+      "top": 399.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "guardian-naga",
+        "name": "Guardian Naga",
+        "url": "/api/2014/monsters/guardian-naga"
+      },
+      "actual": {
+        "index": "guardian-naga",
+        "name": "Guardian Naga",
+        "url": "/api/2014/monsters/guardian-naga"
+      },
+      "match": true
+    },
+    {
+      "record": "spirit-naga",
+      "official_title": "Spirit Naga",
+      "official_page": 335,
+      "column": 1,
+      "top": 386.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "spirit-naga",
+        "name": "Spirit Naga",
+        "url": "/api/2014/monsters/spirit-naga"
+      },
+      "actual": {
+        "index": "spirit-naga",
+        "name": "Spirit Naga",
+        "url": "/api/2014/monsters/spirit-naga"
+      },
+      "match": true
+    },
+    {
+      "record": "nightmare",
+      "official_title": "Nightmare",
+      "official_page": 336,
+      "column": 0,
+      "top": 307.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "nightmare",
+        "name": "Nightmare",
+        "url": "/api/2014/monsters/nightmare"
+      },
+      "actual": {
+        "index": "nightmare",
+        "name": "Nightmare",
+        "url": "/api/2014/monsters/nightmare"
+      },
+      "match": true
+    },
+    {
+      "record": "ogre",
+      "official_title": "Ogre",
+      "official_page": 336,
+      "column": 1,
+      "top": 111.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ogre",
+        "name": "Ogre",
+        "url": "/api/2014/monsters/ogre"
+      },
+      "actual": {
+        "index": "ogre",
+        "name": "Ogre",
+        "url": "/api/2014/monsters/ogre"
+      },
+      "match": true
+    },
+    {
+      "record": "oni",
+      "official_title": "Oni",
+      "official_page": 336,
+      "column": 1,
+      "top": 383.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "oni",
+        "name": "Oni",
+        "url": "/api/2014/monsters/oni"
+      },
+      "actual": {
+        "index": "oni",
+        "name": "Oni",
+        "url": "/api/2014/monsters/oni"
+      },
+      "match": true
+    },
+    {
+      "record": "black-pudding",
+      "official_title": "Black Pudding",
+      "official_page": 337,
+      "column": 0,
+      "top": 345.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "black-pudding",
+        "name": "Black Pudding",
+        "url": "/api/2014/monsters/black-pudding"
+      },
+      "actual": {
+        "index": "black-pudding",
+        "name": "Black Pudding",
+        "url": "/api/2014/monsters/black-pudding"
+      },
+      "match": true
+    },
+    {
+      "record": "gelatinous-cube",
+      "official_title": "Gelatinous Cube",
+      "official_page": 337,
+      "column": 1,
+      "top": 393.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "gelatinous-cube",
+        "name": "Gelatinous Cube",
+        "url": "/api/2014/monsters/gelatinous-cube"
+      },
+      "actual": {
+        "index": "gelatinous-cube",
+        "name": "Gelatinous Cube",
+        "url": "/api/2014/monsters/gelatinous-cube"
+      },
+      "match": true
+    },
+    {
+      "record": "gray-ooze",
+      "official_title": "Gray Ooze",
+      "official_page": 338,
+      "column": 0,
+      "top": 502.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "gray-ooze",
+        "name": "Gray Ooze",
+        "url": "/api/2014/monsters/gray-ooze"
+      },
+      "actual": {
+        "index": "gray-ooze",
+        "name": "Gray Ooze",
+        "url": "/api/2014/monsters/gray-ooze"
+      },
+      "match": true
+    },
+    {
+      "record": "ochre-jelly",
+      "official_title": "Ochre Jelly",
+      "official_page": 338,
+      "column": 1,
+      "top": 441.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ochre-jelly",
+        "name": "Ochre Jelly",
+        "url": "/api/2014/monsters/ochre-jelly"
+      },
+      "actual": {
+        "index": "ochre-jelly",
+        "name": "Ochre Jelly",
+        "url": "/api/2014/monsters/ochre-jelly"
+      },
+      "match": true
+    },
+    {
+      "record": "orc",
+      "official_title": "Orc",
+      "official_page": 339,
+      "column": 0,
+      "top": 320.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "orc",
+        "name": "Orc",
+        "url": "/api/2014/monsters/orc"
+      },
+      "actual": {
+        "index": "orc",
+        "name": "Orc",
+        "url": "/api/2014/monsters/orc"
+      },
+      "match": true
+    },
+    {
+      "record": "otyugh",
+      "official_title": "Otyugh",
+      "official_page": 339,
+      "column": 0,
+      "top": 649.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "otyugh",
+        "name": "Otyugh",
+        "url": "/api/2014/monsters/otyugh"
+      },
+      "actual": {
+        "index": "otyugh",
+        "name": "Otyugh",
+        "url": "/api/2014/monsters/otyugh"
+      },
+      "match": true
+    },
+    {
+      "record": "owlbear",
+      "official_title": "Owlbear",
+      "official_page": 339,
+      "column": 1,
+      "top": 652.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "owlbear",
+        "name": "Owlbear",
+        "url": "/api/2014/monsters/owlbear"
+      },
+      "actual": {
+        "index": "owlbear",
+        "name": "Owlbear",
+        "url": "/api/2014/monsters/owlbear"
+      },
+      "match": true
+    },
+    {
+      "record": "pegasus",
+      "official_title": "Pegasus",
+      "official_page": 340,
+      "column": 0,
+      "top": 417.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "pegasus",
+        "name": "Pegasus",
+        "url": "/api/2014/monsters/pegasus"
+      },
+      "actual": {
+        "index": "pegasus",
+        "name": "Pegasus",
+        "url": "/api/2014/monsters/pegasus"
+      },
+      "match": true
+    },
+    {
+      "record": "pseudodragon",
+      "official_title": "Pseudodragon",
+      "official_page": 340,
+      "column": 1,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "pseudodragon",
+        "name": "Pseudodragon",
+        "url": "/api/2014/monsters/pseudodragon"
+      },
+      "actual": {
+        "index": "pseudodragon",
+        "name": "Pseudodragon",
+        "url": "/api/2014/monsters/pseudodragon"
+      },
+      "match": true
+    },
+    {
+      "record": "purple-worm",
+      "official_title": "Purple Worm",
+      "official_page": 340,
+      "column": 1,
+      "top": 581.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "purple-worm",
+        "name": "Purple Worm",
+        "url": "/api/2014/monsters/purple-worm"
+      },
+      "actual": {
+        "index": "purple-worm",
+        "name": "Purple Worm",
+        "url": "/api/2014/monsters/purple-worm"
+      },
+      "match": true
+    },
+    {
+      "record": "rakshasa",
+      "official_title": "Rakshasa",
+      "official_page": 341,
+      "column": 0,
+      "top": 580.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "rakshasa",
+        "name": "Rakshasa",
+        "url": "/api/2014/monsters/rakshasa"
+      },
+      "actual": {
+        "index": "rakshasa",
+        "name": "Rakshasa",
+        "url": "/api/2014/monsters/rakshasa"
+      },
+      "match": true
+    },
+    {
+      "record": "remorhaz",
+      "official_title": "Remorhaz",
+      "official_page": 341,
+      "column": 1,
+      "top": 547.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "remorhaz",
+        "name": "Remorhaz",
+        "url": "/api/2014/monsters/remorhaz"
+      },
+      "actual": {
+        "index": "remorhaz",
+        "name": "Remorhaz",
+        "url": "/api/2014/monsters/remorhaz"
+      },
+      "match": true
+    },
+    {
+      "record": "roc",
+      "official_title": "Roc",
+      "official_page": 342,
+      "column": 0,
+      "top": 516.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "roc",
+        "name": "Roc",
+        "url": "/api/2014/monsters/roc"
+      },
+      "actual": {
+        "index": "roc",
+        "name": "Roc",
+        "url": "/api/2014/monsters/roc"
+      },
+      "match": true
+    },
+    {
+      "record": "roper",
+      "official_title": "Roper",
+      "official_page": 342,
+      "column": 1,
+      "top": 289.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "roper",
+        "name": "Roper",
+        "url": "/api/2014/monsters/roper"
+      },
+      "actual": {
+        "index": "roper",
+        "name": "Roper",
+        "url": "/api/2014/monsters/roper"
+      },
+      "match": true
+    },
+    {
+      "record": "rust-monster",
+      "official_title": "Rust Monster",
+      "official_page": 343,
+      "column": 0,
+      "top": 263.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "rust-monster",
+        "name": "Rust Monster",
+        "url": "/api/2014/monsters/rust-monster"
+      },
+      "actual": {
+        "index": "rust-monster",
+        "name": "Rust Monster",
+        "url": "/api/2014/monsters/rust-monster"
+      },
+      "match": true
+    },
+    {
+      "record": "sahuagin",
+      "official_title": "Sahuagin",
+      "official_page": 343,
+      "column": 1,
+      "top": 212.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "sahuagin",
+        "name": "Sahuagin",
+        "url": "/api/2014/monsters/sahuagin"
+      },
+      "actual": {
+        "index": "sahuagin",
+        "name": "Sahuagin",
+        "url": "/api/2014/monsters/sahuagin"
+      },
+      "match": true
+    },
+    {
+      "record": "salamander",
+      "official_title": "Salamander",
+      "official_page": 344,
+      "column": 0,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "salamander",
+        "name": "Salamander",
+        "url": "/api/2014/monsters/salamander"
+      },
+      "actual": {
+        "index": "salamander",
+        "name": "Salamander",
+        "url": "/api/2014/monsters/salamander"
+      },
+      "match": true
+    },
+    {
+      "record": "satyr",
+      "official_title": "Satyr",
+      "official_page": 344,
+      "column": 0,
+      "top": 612.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "satyr",
+        "name": "Satyr",
+        "url": "/api/2014/monsters/satyr"
+      },
+      "actual": {
+        "index": "satyr",
+        "name": "Satyr",
+        "url": "/api/2014/monsters/satyr"
+      },
+      "match": true
+    },
+    {
+      "record": "shadow",
+      "official_title": "Shadow",
+      "official_page": 344,
+      "column": 1,
+      "top": 335.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "shadow",
+        "name": "Shadow",
+        "url": "/api/2014/monsters/shadow"
+      },
+      "actual": {
+        "index": "shadow",
+        "name": "Shadow",
+        "url": "/api/2014/monsters/shadow"
+      },
+      "match": true
+    },
+    {
+      "record": "shambling-mound",
+      "official_title": "Shambling Mound",
+      "official_page": 345,
+      "column": 0,
+      "top": 252.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "shambling-mound",
+        "name": "Shambling Mound",
+        "url": "/api/2014/monsters/shambling-mound"
+      },
+      "actual": {
+        "index": "shambling-mound",
+        "name": "Shambling Mound",
+        "url": "/api/2014/monsters/shambling-mound"
+      },
+      "match": true
+    },
+    {
+      "record": "shield-guardian",
+      "official_title": "Shield Guardian",
+      "official_page": 345,
+      "column": 1,
+      "top": 151.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "shield-guardian",
+        "name": "Shield Guardian",
+        "url": "/api/2014/monsters/shield-guardian"
+      },
+      "actual": {
+        "index": "shield-guardian",
+        "name": "Shield Guardian",
+        "url": "/api/2014/monsters/shield-guardian"
+      },
+      "match": true
+    },
+    {
+      "record": "skeleton",
+      "official_title": "Skeleton",
+      "official_page": 346,
+      "column": 0,
+      "top": 213.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "skeleton",
+        "name": "Skeleton",
+        "url": "/api/2014/monsters/skeleton"
+      },
+      "actual": {
+        "index": "skeleton",
+        "name": "Skeleton",
+        "url": "/api/2014/monsters/skeleton"
+      },
+      "match": true
+    },
+    {
+      "record": "minotaur-skeleton",
+      "official_title": "Minotaur Skeleton",
+      "official_page": 346,
+      "column": 0,
+      "top": 531.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "minotaur-skeleton",
+        "name": "Minotaur Skeleton",
+        "url": "/api/2014/monsters/minotaur-skeleton"
+      },
+      "actual": {
+        "index": "minotaur-skeleton",
+        "name": "Minotaur Skeleton",
+        "url": "/api/2014/monsters/minotaur-skeleton"
+      },
+      "match": true
+    },
+    {
+      "record": "warhorse-skeleton",
+      "official_title": "Warhorse Skeleton",
+      "official_page": 346,
+      "column": 1,
+      "top": 304.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "warhorse-skeleton",
+        "name": "Warhorse Skeleton",
+        "url": "/api/2014/monsters/warhorse-skeleton"
+      },
+      "actual": {
+        "index": "warhorse-skeleton",
+        "name": "Warhorse Skeleton",
+        "url": "/api/2014/monsters/warhorse-skeleton"
+      },
+      "match": true
+    },
+    {
+      "record": "specter",
+      "official_title": "Specter",
+      "official_page": 346,
+      "column": 1,
+      "top": 581.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "specter",
+        "name": "Specter",
+        "url": "/api/2014/monsters/specter"
+      },
+      "actual": {
+        "index": "specter",
+        "name": "Specter",
+        "url": "/api/2014/monsters/specter"
+      },
+      "match": true
+    },
+    {
+      "record": "androsphinx",
+      "official_title": "Androsphinx",
+      "official_page": 347,
+      "column": 0,
+      "top": 483.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "androsphinx",
+        "name": "Androsphinx",
+        "url": "/api/2014/monsters/androsphinx"
+      },
+      "actual": {
+        "index": "androsphinx",
+        "name": "Androsphinx",
+        "url": "/api/2014/monsters/androsphinx"
+      },
+      "match": true
+    },
+    {
+      "record": "gynosphinx",
+      "official_title": "Gynosphinx",
+      "official_page": 348,
+      "column": 0,
+      "top": 347.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "gynosphinx",
+        "name": "Gynosphinx",
+        "url": "/api/2014/monsters/gynosphinx"
+      },
+      "actual": {
+        "index": "gynosphinx",
+        "name": "Gynosphinx",
+        "url": "/api/2014/monsters/gynosphinx"
+      },
+      "match": true
+    },
+    {
+      "record": "sprite",
+      "official_title": "Sprite",
+      "official_page": 348,
+      "column": 1,
+      "top": 518.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "sprite",
+        "name": "Sprite",
+        "url": "/api/2014/monsters/sprite"
+      },
+      "actual": {
+        "index": "sprite",
+        "name": "Sprite",
+        "url": "/api/2014/monsters/sprite"
+      },
+      "match": true
+    },
+    {
+      "record": "stirge",
+      "official_title": "Stirge",
+      "official_page": 349,
+      "column": 0,
+      "top": 349.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "stirge",
+        "name": "Stirge",
+        "url": "/api/2014/monsters/stirge"
+      },
+      "actual": {
+        "index": "stirge",
+        "name": "Stirge",
+        "url": "/api/2014/monsters/stirge"
+      },
+      "match": true
+    },
+    {
+      "record": "succubus-incubus",
+      "official_title": "Succubus/Incubus",
+      "official_page": 349,
+      "column": 1,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "succubus-incubus",
+        "name": "Succubus/Incubus",
+        "url": "/api/2014/monsters/succubus-incubus"
+      },
+      "actual": {
+        "index": "succubus-incubus",
+        "name": "Succubus/Incubus",
+        "url": "/api/2014/monsters/succubus-incubus"
+      },
+      "match": true
+    },
+    {
+      "record": "tarrasque",
+      "official_title": "Tarrasque",
+      "official_page": 350,
+      "column": 0,
+      "top": 251.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "tarrasque",
+        "name": "Tarrasque",
+        "url": "/api/2014/monsters/tarrasque"
+      },
+      "actual": {
+        "index": "tarrasque",
+        "name": "Tarrasque",
+        "url": "/api/2014/monsters/tarrasque"
+      },
+      "match": true
+    },
+    {
+      "record": "treant",
+      "official_title": "Treant",
+      "official_page": 351,
+      "column": 0,
+      "top": 184.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "treant",
+        "name": "Treant",
+        "url": "/api/2014/monsters/treant"
+      },
+      "actual": {
+        "index": "treant",
+        "name": "Treant",
+        "url": "/api/2014/monsters/treant"
+      },
+      "match": true
+    },
+    {
+      "record": "troll",
+      "official_title": "Troll",
+      "official_page": 351,
+      "column": 1,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "troll",
+        "name": "Troll",
+        "url": "/api/2014/monsters/troll"
+      },
+      "actual": {
+        "index": "troll",
+        "name": "Troll",
+        "url": "/api/2014/monsters/troll"
+      },
+      "match": true
+    },
+    {
+      "record": "unicorn",
+      "official_title": "Unicorn",
+      "official_page": 351,
+      "column": 1,
+      "top": 532.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "unicorn",
+        "name": "Unicorn",
+        "url": "/api/2014/monsters/unicorn"
+      },
+      "actual": {
+        "index": "unicorn",
+        "name": "Unicorn",
+        "url": "/api/2014/monsters/unicorn"
+      },
+      "match": true
+    },
+    {
+      "record": "vampire-vampire",
+      "official_title": "Vampire",
+      "official_page": 352,
+      "column": 1,
+      "top": 249.0,
+      "mapping_type": "derived_monster_form",
+      "expected": {
+        "index": "vampire-vampire",
+        "name": "Vampire, Vampire Form",
+        "url": "/api/2014/monsters/vampire-vampire"
+      },
+      "actual": {
+        "index": "vampire-vampire",
+        "name": "Vampire, Vampire Form",
+        "url": "/api/2014/monsters/vampire-vampire"
+      },
+      "match": true
+    },
+    {
+      "record": "vampire-bat",
+      "official_title": "Vampire",
+      "official_page": 352,
+      "column": 1,
+      "top": 249.0,
+      "mapping_type": "derived_monster_form",
+      "expected": {
+        "index": "vampire-bat",
+        "name": "Vampire, Bat Form",
+        "url": "/api/2014/monsters/vampire-bat"
+      },
+      "actual": {
+        "index": "vampire-bat",
+        "name": "Vampire, Bat Form",
+        "url": "/api/2014/monsters/vampire-bat"
+      },
+      "match": true
+    },
+    {
+      "record": "vampire-mist",
+      "official_title": "Vampire",
+      "official_page": 352,
+      "column": 1,
+      "top": 249.0,
+      "mapping_type": "derived_monster_form",
+      "expected": {
+        "index": "vampire-mist",
+        "name": "Vampire, Mist Form",
+        "url": "/api/2014/monsters/vampire-mist"
+      },
+      "actual": {
+        "index": "vampire-mist",
+        "name": "Vampire, Mist Form",
+        "url": "/api/2014/monsters/vampire-mist"
+      },
+      "match": true
+    },
+    {
+      "record": "vampire-spawn",
+      "official_title": "Vampire Spawn",
+      "official_page": 354,
+      "column": 0,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "vampire-spawn",
+        "name": "Vampire Spawn",
+        "url": "/api/2014/monsters/vampire-spawn"
+      },
+      "actual": {
+        "index": "vampire-spawn",
+        "name": "Vampire Spawn",
+        "url": "/api/2014/monsters/vampire-spawn"
+      },
+      "match": true
+    },
+    {
+      "record": "wight",
+      "official_title": "Wight",
+      "official_page": 354,
+      "column": 1,
+      "top": 249.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "wight",
+        "name": "Wight",
+        "url": "/api/2014/monsters/wight"
+      },
+      "actual": {
+        "index": "wight",
+        "name": "Wight",
+        "url": "/api/2014/monsters/wight"
+      },
+      "match": true
+    },
+    {
+      "record": "will-o-wisp",
+      "official_title": "Will-‐o'-‐Wisp",
+      "official_page": 355,
+      "column": 0,
+      "top": 243.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "will-o-wisp",
+        "name": "Will-o'-Wisp",
+        "url": "/api/2014/monsters/will-o-wisp"
+      },
+      "actual": {
+        "index": "will-o-wisp",
+        "name": "Will-o'-Wisp",
+        "url": "/api/2014/monsters/will-o-wisp"
+      },
+      "match": true
+    },
+    {
+      "record": "wraith",
+      "official_title": "Wraith",
+      "official_page": 355,
+      "column": 1,
+      "top": 219.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "wraith",
+        "name": "Wraith",
+        "url": "/api/2014/monsters/wraith"
+      },
+      "actual": {
+        "index": "wraith",
+        "name": "Wraith",
+        "url": "/api/2014/monsters/wraith"
+      },
+      "match": true
+    },
+    {
+      "record": "wyvern",
+      "official_title": "Wyvern",
+      "official_page": 356,
+      "column": 0,
+      "top": 175.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "wyvern",
+        "name": "Wyvern",
+        "url": "/api/2014/monsters/wyvern"
+      },
+      "actual": {
+        "index": "wyvern",
+        "name": "Wyvern",
+        "url": "/api/2014/monsters/wyvern"
+      },
+      "match": true
+    },
+    {
+      "record": "xorn",
+      "official_title": "Xorn",
+      "official_page": 356,
+      "column": 0,
+      "top": 603.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "xorn",
+        "name": "Xorn",
+        "url": "/api/2014/monsters/xorn"
+      },
+      "actual": {
+        "index": "xorn",
+        "name": "Xorn",
+        "url": "/api/2014/monsters/xorn"
+      },
+      "match": true
+    },
+    {
+      "record": "zombie",
+      "official_title": "Zombie",
+      "official_page": 356,
+      "column": 1,
+      "top": 525.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "zombie",
+        "name": "Zombie",
+        "url": "/api/2014/monsters/zombie"
+      },
+      "actual": {
+        "index": "zombie",
+        "name": "Zombie",
+        "url": "/api/2014/monsters/zombie"
+      },
+      "match": true
+    },
+    {
+      "record": "ogre-zombie",
+      "official_title": "Ogre Zombie",
+      "official_page": 357,
+      "column": 0,
+      "top": 261.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ogre-zombie",
+        "name": "Ogre Zombie",
+        "url": "/api/2014/monsters/ogre-zombie"
+      },
+      "actual": {
+        "index": "ogre-zombie",
+        "name": "Ogre Zombie",
+        "url": "/api/2014/monsters/ogre-zombie"
+      },
+      "match": true
+    },
+    {
+      "record": "ape",
+      "official_title": "Ape",
+      "official_page": 366,
+      "column": 0,
+      "top": 209.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "ape",
+        "name": "Ape",
+        "url": "/api/2014/monsters/ape"
+      },
+      "actual": {
+        "index": "ape",
+        "name": "Ape",
+        "url": "/api/2014/monsters/ape"
+      },
+      "match": true
+    },
+    {
+      "record": "awakened-shrub",
+      "official_title": "Awakened Shrub",
+      "official_page": 366,
+      "column": 0,
+      "top": 499.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "awakened-shrub",
+        "name": "Awakened Shrub",
+        "url": "/api/2014/monsters/awakened-shrub"
+      },
+      "actual": {
+        "index": "awakened-shrub",
+        "name": "Awakened Shrub",
+        "url": "/api/2014/monsters/awakened-shrub"
+      },
+      "match": true
+    },
+    {
+      "record": "awakened-tree",
+      "official_title": "Awakened Tree",
+      "official_page": 366,
+      "column": 1,
+      "top": 235.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "awakened-tree",
+        "name": "Awakened Tree",
+        "url": "/api/2014/monsters/awakened-tree"
+      },
+      "actual": {
+        "index": "awakened-tree",
+        "name": "Awakened Tree",
+        "url": "/api/2014/monsters/awakened-tree"
+      },
+      "match": true
+    },
+    {
+      "record": "axe-beak",
+      "official_title": "Axe Beak",
+      "official_page": 366,
+      "column": 1,
+      "top": 593.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "axe-beak",
+        "name": "Axe Beak",
+        "url": "/api/2014/monsters/axe-beak"
+      },
+      "actual": {
+        "index": "axe-beak",
+        "name": "Axe Beak",
+        "url": "/api/2014/monsters/axe-beak"
+      },
+      "match": true
+    },
+    {
+      "record": "baboon",
+      "official_title": "Baboon",
+      "official_page": 367,
+      "column": 0,
+      "top": 287.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "baboon",
+        "name": "Baboon",
+        "url": "/api/2014/monsters/baboon"
+      },
+      "actual": {
+        "index": "baboon",
+        "name": "Baboon",
+        "url": "/api/2014/monsters/baboon"
+      },
+      "match": true
+    },
+    {
+      "record": "badger",
+      "official_title": "Badger",
+      "official_page": 367,
+      "column": 0,
+      "top": 586.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "badger",
+        "name": "Badger",
+        "url": "/api/2014/monsters/badger"
+      },
+      "actual": {
+        "index": "badger",
+        "name": "Badger",
+        "url": "/api/2014/monsters/badger"
+      },
+      "match": true
+    },
+    {
+      "record": "bat",
+      "official_title": "Bat",
+      "official_page": 367,
+      "column": 1,
+      "top": 230.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "bat",
+        "name": "Bat",
+        "url": "/api/2014/monsters/bat"
+      },
+      "actual": {
+        "index": "bat",
+        "name": "Bat",
+        "url": "/api/2014/monsters/bat"
+      },
+      "match": true
+    },
+    {
+      "record": "black-bear",
+      "official_title": "Black Bear",
+      "official_page": 367,
+      "column": 1,
+      "top": 532.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "black-bear",
+        "name": "Black Bear",
+        "url": "/api/2014/monsters/black-bear"
+      },
+      "actual": {
+        "index": "black-bear",
+        "name": "Black Bear",
+        "url": "/api/2014/monsters/black-bear"
+      },
+      "match": true
+    },
+    {
+      "record": "blink-dog",
+      "official_title": "Blink Dog",
+      "official_page": 368,
+      "column": 0,
+      "top": 252.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "blink-dog",
+        "name": "Blink Dog",
+        "url": "/api/2014/monsters/blink-dog"
+      },
+      "actual": {
+        "index": "blink-dog",
+        "name": "Blink Dog",
+        "url": "/api/2014/monsters/blink-dog"
+      },
+      "match": true
+    },
+    {
+      "record": "blood-hawk",
+      "official_title": "Blood Hawk",
+      "official_page": 368,
+      "column": 1,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "blood-hawk",
+        "name": "Blood Hawk",
+        "url": "/api/2014/monsters/blood-hawk"
+      },
+      "actual": {
+        "index": "blood-hawk",
+        "name": "Blood Hawk",
+        "url": "/api/2014/monsters/blood-hawk"
+      },
+      "match": true
+    },
+    {
+      "record": "boar",
+      "official_title": "Boar",
+      "official_page": 368,
+      "column": 1,
+      "top": 493.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "boar",
+        "name": "Boar",
+        "url": "/api/2014/monsters/boar"
+      },
+      "actual": {
+        "index": "boar",
+        "name": "Boar",
+        "url": "/api/2014/monsters/boar"
+      },
+      "match": true
+    },
+    {
+      "record": "brown-bear",
+      "official_title": "Brown Bear",
+      "official_page": 369,
+      "column": 0,
+      "top": 231.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "brown-bear",
+        "name": "Brown Bear",
+        "url": "/api/2014/monsters/brown-bear"
+      },
+      "actual": {
+        "index": "brown-bear",
+        "name": "Brown Bear",
+        "url": "/api/2014/monsters/brown-bear"
+      },
+      "match": true
+    },
+    {
+      "record": "camel",
+      "official_title": "Camel",
+      "official_page": 369,
+      "column": 0,
+      "top": 575.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "camel",
+        "name": "Camel",
+        "url": "/api/2014/monsters/camel"
+      },
+      "actual": {
+        "index": "camel",
+        "name": "Camel",
+        "url": "/api/2014/monsters/camel"
+      },
+      "match": true
+    },
+    {
+      "record": "cat",
+      "official_title": "Cat",
+      "official_page": 369,
+      "column": 1,
+      "top": 187.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "cat",
+        "name": "Cat",
+        "url": "/api/2014/monsters/cat"
+      },
+      "actual": {
+        "index": "cat",
+        "name": "Cat",
+        "url": "/api/2014/monsters/cat"
+      },
+      "match": true
+    },
+    {
+      "record": "constrictor-snake",
+      "official_title": "Constrictor Snake",
+      "official_page": 369,
+      "column": 1,
+      "top": 477.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "constrictor-snake",
+        "name": "Constrictor Snake",
+        "url": "/api/2014/monsters/constrictor-snake"
+      },
+      "actual": {
+        "index": "constrictor-snake",
+        "name": "Constrictor Snake",
+        "url": "/api/2014/monsters/constrictor-snake"
+      },
+      "match": true
+    },
+    {
+      "record": "crab",
+      "official_title": "Crab",
+      "official_page": 370,
+      "column": 0,
+      "top": 151.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "crab",
+        "name": "Crab",
+        "url": "/api/2014/monsters/crab"
+      },
+      "actual": {
+        "index": "crab",
+        "name": "Crab",
+        "url": "/api/2014/monsters/crab"
+      },
+      "match": true
+    },
+    {
+      "record": "crocodile",
+      "official_title": "Crocodile",
+      "official_page": 370,
+      "column": 0,
+      "top": 429.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "crocodile",
+        "name": "Crocodile",
+        "url": "/api/2014/monsters/crocodile"
+      },
+      "actual": {
+        "index": "crocodile",
+        "name": "Crocodile",
+        "url": "/api/2014/monsters/crocodile"
+      },
+      "match": true
+    },
+    {
+      "record": "death-dog",
+      "official_title": "Death Dog",
+      "official_page": 370,
+      "column": 1,
+      "top": 127.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "death-dog",
+        "name": "Death Dog",
+        "url": "/api/2014/monsters/death-dog"
+      },
+      "actual": {
+        "index": "death-dog",
+        "name": "Death Dog",
+        "url": "/api/2014/monsters/death-dog"
+      },
+      "match": true
+    },
+    {
+      "record": "deer",
+      "official_title": "Deer",
+      "official_page": 370,
+      "column": 1,
+      "top": 630.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "deer",
+        "name": "Deer",
+        "url": "/api/2014/monsters/deer"
+      },
+      "actual": {
+        "index": "deer",
+        "name": "Deer",
+        "url": "/api/2014/monsters/deer"
+      },
+      "match": true
+    },
+    {
+      "record": "dire-wolf",
+      "official_title": "Dire Wolf",
+      "official_page": 371,
+      "column": 0,
+      "top": 241.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "dire-wolf",
+        "name": "Dire Wolf",
+        "url": "/api/2014/monsters/dire-wolf"
+      },
+      "actual": {
+        "index": "dire-wolf",
+        "name": "Dire Wolf",
+        "url": "/api/2014/monsters/dire-wolf"
+      },
+      "match": true
+    },
+    {
+      "record": "draft-horse",
+      "official_title": "Draft Horse",
+      "official_page": 371,
+      "column": 0,
+      "top": 619.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "draft-horse",
+        "name": "Draft Horse",
+        "url": "/api/2014/monsters/draft-horse"
+      },
+      "actual": {
+        "index": "draft-horse",
+        "name": "Draft Horse",
+        "url": "/api/2014/monsters/draft-horse"
+      },
+      "match": true
+    },
+    {
+      "record": "eagle",
+      "official_title": "Eagle",
+      "official_page": 371,
+      "column": 1,
+      "top": 222.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "eagle",
+        "name": "Eagle",
+        "url": "/api/2014/monsters/eagle"
+      },
+      "actual": {
+        "index": "eagle",
+        "name": "Eagle",
+        "url": "/api/2014/monsters/eagle"
+      },
+      "match": true
+    },
+    {
+      "record": "elephant",
+      "official_title": "Elephant",
+      "official_page": 371,
+      "column": 1,
+      "top": 512.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "elephant",
+        "name": "Elephant",
+        "url": "/api/2014/monsters/elephant"
+      },
+      "actual": {
+        "index": "elephant",
+        "name": "Elephant",
+        "url": "/api/2014/monsters/elephant"
+      },
+      "match": true
+    },
+    {
+      "record": "elk",
+      "official_title": "Elk",
+      "official_page": 372,
+      "column": 0,
+      "top": 255.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "elk",
+        "name": "Elk",
+        "url": "/api/2014/monsters/elk"
+      },
+      "actual": {
+        "index": "elk",
+        "name": "Elk",
+        "url": "/api/2014/monsters/elk"
+      },
+      "match": true
+    },
+    {
+      "record": "flying-snake",
+      "official_title": "Flying Snake",
+      "official_page": 372,
+      "column": 0,
+      "top": 606.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "flying-snake",
+        "name": "Flying Snake",
+        "url": "/api/2014/monsters/flying-snake"
+      },
+      "actual": {
+        "index": "flying-snake",
+        "name": "Flying Snake",
+        "url": "/api/2014/monsters/flying-snake"
+      },
+      "match": true
+    },
+    {
+      "record": "frog",
+      "official_title": "Frog",
+      "official_page": 372,
+      "column": 1,
+      "top": 353.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "frog",
+        "name": "Frog",
+        "url": "/api/2014/monsters/frog"
+      },
+      "actual": {
+        "index": "frog",
+        "name": "Frog",
+        "url": "/api/2014/monsters/frog"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-ape",
+      "official_title": "Giant Ape",
+      "official_page": 373,
+      "column": 0,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-ape",
+        "name": "Giant Ape",
+        "url": "/api/2014/monsters/giant-ape"
+      },
+      "actual": {
+        "index": "giant-ape",
+        "name": "Giant Ape",
+        "url": "/api/2014/monsters/giant-ape"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-badger",
+      "official_title": "Giant Badger",
+      "official_page": 373,
+      "column": 0,
+      "top": 365.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-badger",
+        "name": "Giant Badger",
+        "url": "/api/2014/monsters/giant-badger"
+      },
+      "actual": {
+        "index": "giant-badger",
+        "name": "Giant Badger",
+        "url": "/api/2014/monsters/giant-badger"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-bat",
+      "official_title": "Giant Bat",
+      "official_page": 373,
+      "column": 1,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-bat",
+        "name": "Giant Bat",
+        "url": "/api/2014/monsters/giant-bat"
+      },
+      "actual": {
+        "index": "giant-bat",
+        "name": "Giant Bat",
+        "url": "/api/2014/monsters/giant-bat"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-boar",
+      "official_title": "Giant Boar",
+      "official_page": 373,
+      "column": 1,
+      "top": 377.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-boar",
+        "name": "Giant Boar",
+        "url": "/api/2014/monsters/giant-boar"
+      },
+      "actual": {
+        "index": "giant-boar",
+        "name": "Giant Boar",
+        "url": "/api/2014/monsters/giant-boar"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-centipede",
+      "official_title": "Giant Centipede",
+      "official_page": 374,
+      "column": 0,
+      "top": 132.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-centipede",
+        "name": "Giant Centipede",
+        "url": "/api/2014/monsters/giant-centipede"
+      },
+      "actual": {
+        "index": "giant-centipede",
+        "name": "Giant Centipede",
+        "url": "/api/2014/monsters/giant-centipede"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-constrictor-snake",
+      "official_title": "Giant Constrictor Snake",
+      "official_page": 374,
+      "column": 0,
+      "top": 425.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-constrictor-snake",
+        "name": "Giant Constrictor Snake",
+        "url": "/api/2014/monsters/giant-constrictor-snake"
+      },
+      "actual": {
+        "index": "giant-constrictor-snake",
+        "name": "Giant Constrictor Snake",
+        "url": "/api/2014/monsters/giant-constrictor-snake"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-crab",
+      "official_title": "Giant Crab",
+      "official_page": 374,
+      "column": 1,
+      "top": 114.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-crab",
+        "name": "Giant Crab",
+        "url": "/api/2014/monsters/giant-crab"
+      },
+      "actual": {
+        "index": "giant-crab",
+        "name": "Giant Crab",
+        "url": "/api/2014/monsters/giant-crab"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-crocodile",
+      "official_title": "Giant Crocodile",
+      "official_page": 374,
+      "column": 1,
+      "top": 417.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-crocodile",
+        "name": "Giant Crocodile",
+        "url": "/api/2014/monsters/giant-crocodile"
+      },
+      "actual": {
+        "index": "giant-crocodile",
+        "name": "Giant Crocodile",
+        "url": "/api/2014/monsters/giant-crocodile"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-eagle",
+      "official_title": "Giant Eagle",
+      "official_page": 375,
+      "column": 0,
+      "top": 215.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-eagle",
+        "name": "Giant Eagle",
+        "url": "/api/2014/monsters/giant-eagle"
+      },
+      "actual": {
+        "index": "giant-eagle",
+        "name": "Giant Eagle",
+        "url": "/api/2014/monsters/giant-eagle"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-elk",
+      "official_title": "Giant Elk",
+      "official_page": 375,
+      "column": 0,
+      "top": 637.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-elk",
+        "name": "Giant Elk",
+        "url": "/api/2014/monsters/giant-elk"
+      },
+      "actual": {
+        "index": "giant-elk",
+        "name": "Giant Elk",
+        "url": "/api/2014/monsters/giant-elk"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-fire-beetle",
+      "official_title": "Giant Fire Beetle",
+      "official_page": 375,
+      "column": 1,
+      "top": 487.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-fire-beetle",
+        "name": "Giant Fire Beetle",
+        "url": "/api/2014/monsters/giant-fire-beetle"
+      },
+      "actual": {
+        "index": "giant-fire-beetle",
+        "name": "Giant Fire Beetle",
+        "url": "/api/2014/monsters/giant-fire-beetle"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-frog",
+      "official_title": "Giant Frog",
+      "official_page": 376,
+      "column": 0,
+      "top": 232.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-frog",
+        "name": "Giant Frog",
+        "url": "/api/2014/monsters/giant-frog"
+      },
+      "actual": {
+        "index": "giant-frog",
+        "name": "Giant Frog",
+        "url": "/api/2014/monsters/giant-frog"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-goat",
+      "official_title": "Giant Goat",
+      "official_page": 376,
+      "column": 1,
+      "top": 99.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-goat",
+        "name": "Giant Goat",
+        "url": "/api/2014/monsters/giant-goat"
+      },
+      "actual": {
+        "index": "giant-goat",
+        "name": "Giant Goat",
+        "url": "/api/2014/monsters/giant-goat"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-hyena",
+      "official_title": "Giant Hyena",
+      "official_page": 376,
+      "column": 1,
+      "top": 462.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-hyena",
+        "name": "Giant Hyena",
+        "url": "/api/2014/monsters/giant-hyena"
+      },
+      "actual": {
+        "index": "giant-hyena",
+        "name": "Giant Hyena",
+        "url": "/api/2014/monsters/giant-hyena"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-lizard",
+      "official_title": "Giant Lizard",
+      "official_page": 377,
+      "column": 0,
+      "top": 167.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-lizard",
+        "name": "Giant Lizard",
+        "url": "/api/2014/monsters/giant-lizard"
+      },
+      "actual": {
+        "index": "giant-lizard",
+        "name": "Giant Lizard",
+        "url": "/api/2014/monsters/giant-lizard"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-octopus",
+      "official_title": "Giant Octopus",
+      "official_page": 377,
+      "column": 0,
+      "top": 463.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-octopus",
+        "name": "Giant Octopus",
+        "url": "/api/2014/monsters/giant-octopus"
+      },
+      "actual": {
+        "index": "giant-octopus",
+        "name": "Giant Octopus",
+        "url": "/api/2014/monsters/giant-octopus"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-owl",
+      "official_title": "Giant Owl",
+      "official_page": 377,
+      "column": 1,
+      "top": 307.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-owl",
+        "name": "Giant Owl",
+        "url": "/api/2014/monsters/giant-owl"
+      },
+      "actual": {
+        "index": "giant-owl",
+        "name": "Giant Owl",
+        "url": "/api/2014/monsters/giant-owl"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-poisonous-snake",
+      "official_title": "Giant Poisonous Snake",
+      "official_page": 378,
+      "column": 0,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-poisonous-snake",
+        "name": "Giant Poisonous Snake",
+        "url": "/api/2014/monsters/giant-poisonous-snake"
+      },
+      "actual": {
+        "index": "giant-poisonous-snake",
+        "name": "Giant Poisonous Snake",
+        "url": "/api/2014/monsters/giant-poisonous-snake"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-rat",
+      "official_title": "Giant Rat",
+      "official_page": 378,
+      "column": 0,
+      "top": 359.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-rat",
+        "name": "Giant Rat",
+        "url": "/api/2014/monsters/giant-rat"
+      },
+      "actual": {
+        "index": "giant-rat",
+        "name": "Giant Rat",
+        "url": "/api/2014/monsters/giant-rat"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-rat-diseased",
+      "official_title": "Giant Rat",
+      "official_page": 378,
+      "column": 0,
+      "top": 359.0,
+      "mapping_type": "explicit_source_variant",
+      "expected": {
+        "index": "giant-rat-diseased",
+        "name": "Giant Rat (Diseased)",
+        "url": "/api/2014/monsters/giant-rat-diseased"
+      },
+      "actual": {
+        "index": "giant-rat-diseased",
+        "name": "Giant Rat (Diseased)",
+        "url": "/api/2014/monsters/giant-rat-diseased"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-scorpion",
+      "official_title": "Giant Scorpion",
+      "official_page": 378,
+      "column": 1,
+      "top": 232.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-scorpion",
+        "name": "Giant Scorpion",
+        "url": "/api/2014/monsters/giant-scorpion"
+      },
+      "actual": {
+        "index": "giant-scorpion",
+        "name": "Giant Scorpion",
+        "url": "/api/2014/monsters/giant-scorpion"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-sea-horse",
+      "official_title": "Giant Sea Horse",
+      "official_page": 378,
+      "column": 1,
+      "top": 580.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-sea-horse",
+        "name": "Giant Sea Horse",
+        "url": "/api/2014/monsters/giant-sea-horse"
+      },
+      "actual": {
+        "index": "giant-sea-horse",
+        "name": "Giant Sea Horse",
+        "url": "/api/2014/monsters/giant-sea-horse"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-shark",
+      "official_title": "Giant Shark",
+      "official_page": 379,
+      "column": 0,
+      "top": 359.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-shark",
+        "name": "Giant Shark",
+        "url": "/api/2014/monsters/giant-shark"
+      },
+      "actual": {
+        "index": "giant-shark",
+        "name": "Giant Shark",
+        "url": "/api/2014/monsters/giant-shark"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-spider",
+      "official_title": "Giant Spider",
+      "official_page": 379,
+      "column": 1,
+      "top": 128.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-spider",
+        "name": "Giant Spider",
+        "url": "/api/2014/monsters/giant-spider"
+      },
+      "actual": {
+        "index": "giant-spider",
+        "name": "Giant Spider",
+        "url": "/api/2014/monsters/giant-spider"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-toad",
+      "official_title": "Giant Toad",
+      "official_page": 380,
+      "column": 0,
+      "top": 163.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-toad",
+        "name": "Giant Toad",
+        "url": "/api/2014/monsters/giant-toad"
+      },
+      "actual": {
+        "index": "giant-toad",
+        "name": "Giant Toad",
+        "url": "/api/2014/monsters/giant-toad"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-vulture",
+      "official_title": "Giant Vulture",
+      "official_page": 380,
+      "column": 0,
+      "top": 639.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-vulture",
+        "name": "Giant Vulture",
+        "url": "/api/2014/monsters/giant-vulture"
+      },
+      "actual": {
+        "index": "giant-vulture",
+        "name": "Giant Vulture",
+        "url": "/api/2014/monsters/giant-vulture"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-wasp",
+      "official_title": "Giant Wasp",
+      "official_page": 380,
+      "column": 1,
+      "top": 481.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-wasp",
+        "name": "Giant Wasp",
+        "url": "/api/2014/monsters/giant-wasp"
+      },
+      "actual": {
+        "index": "giant-wasp",
+        "name": "Giant Wasp",
+        "url": "/api/2014/monsters/giant-wasp"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-weasel",
+      "official_title": "Giant Weasel",
+      "official_page": 381,
+      "column": 0,
+      "top": 163.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-weasel",
+        "name": "Giant Weasel",
+        "url": "/api/2014/monsters/giant-weasel"
+      },
+      "actual": {
+        "index": "giant-weasel",
+        "name": "Giant Weasel",
+        "url": "/api/2014/monsters/giant-weasel"
+      },
+      "match": true
+    },
+    {
+      "record": "giant-wolf-spider",
+      "official_title": "Giant Wolf Spider",
+      "official_page": 381,
+      "column": 0,
+      "top": 465.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "giant-wolf-spider",
+        "name": "Giant Wolf Spider",
+        "url": "/api/2014/monsters/giant-wolf-spider"
+      },
+      "actual": {
+        "index": "giant-wolf-spider",
+        "name": "Giant Wolf Spider",
+        "url": "/api/2014/monsters/giant-wolf-spider"
+      },
+      "match": true
+    },
+    {
+      "record": "goat",
+      "official_title": "Goat",
+      "official_page": 381,
+      "column": 1,
+      "top": 372.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "goat",
+        "name": "Goat",
+        "url": "/api/2014/monsters/goat"
+      },
+      "actual": {
+        "index": "goat",
+        "name": "Goat",
+        "url": "/api/2014/monsters/goat"
+      },
+      "match": true
+    },
+    {
+      "record": "hawk",
+      "official_title": "Hawk",
+      "official_page": 382,
+      "column": 0,
+      "top": 132.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "hawk",
+        "name": "Hawk",
+        "url": "/api/2014/monsters/hawk"
+      },
+      "actual": {
+        "index": "hawk",
+        "name": "Hawk",
+        "url": "/api/2014/monsters/hawk"
+      },
+      "match": true
+    },
+    {
+      "record": "hunter-shark",
+      "official_title": "Hunter Shark",
+      "official_page": 382,
+      "column": 0,
+      "top": 422.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "hunter-shark",
+        "name": "Hunter Shark",
+        "url": "/api/2014/monsters/hunter-shark"
+      },
+      "actual": {
+        "index": "hunter-shark",
+        "name": "Hunter Shark",
+        "url": "/api/2014/monsters/hunter-shark"
+      },
+      "match": true
+    },
+    {
+      "record": "hyena",
+      "official_title": "Hyena",
+      "official_page": 382,
+      "column": 1,
+      "top": 209.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "hyena",
+        "name": "Hyena",
+        "url": "/api/2014/monsters/hyena"
+      },
+      "actual": {
+        "index": "hyena",
+        "name": "Hyena",
+        "url": "/api/2014/monsters/hyena"
+      },
+      "match": true
+    },
+    {
+      "record": "jackal",
+      "official_title": "Jackal",
+      "official_page": 382,
+      "column": 1,
+      "top": 523.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "jackal",
+        "name": "Jackal",
+        "url": "/api/2014/monsters/jackal"
+      },
+      "actual": {
+        "index": "jackal",
+        "name": "Jackal",
+        "url": "/api/2014/monsters/jackal"
+      },
+      "match": true
+    },
+    {
+      "record": "killer-whale",
+      "official_title": "Killer Whale",
+      "official_page": 383,
+      "column": 0,
+      "top": 246.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "killer-whale",
+        "name": "Killer Whale",
+        "url": "/api/2014/monsters/killer-whale"
+      },
+      "actual": {
+        "index": "killer-whale",
+        "name": "Killer Whale",
+        "url": "/api/2014/monsters/killer-whale"
+      },
+      "match": true
+    },
+    {
+      "record": "lion",
+      "official_title": "Lion",
+      "official_page": 383,
+      "column": 0,
+      "top": 591.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "lion",
+        "name": "Lion",
+        "url": "/api/2014/monsters/lion"
+      },
+      "actual": {
+        "index": "lion",
+        "name": "Lion",
+        "url": "/api/2014/monsters/lion"
+      },
+      "match": true
+    },
+    {
+      "record": "lizard",
+      "official_title": "Lizard",
+      "official_page": 383,
+      "column": 1,
+      "top": 428.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "lizard",
+        "name": "Lizard",
+        "url": "/api/2014/monsters/lizard"
+      },
+      "actual": {
+        "index": "lizard",
+        "name": "Lizard",
+        "url": "/api/2014/monsters/lizard"
+      },
+      "match": true
+    },
+    {
+      "record": "mammoth",
+      "official_title": "Mammoth",
+      "official_page": 384,
+      "column": 0,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "mammoth",
+        "name": "Mammoth",
+        "url": "/api/2014/monsters/mammoth"
+      },
+      "actual": {
+        "index": "mammoth",
+        "name": "Mammoth",
+        "url": "/api/2014/monsters/mammoth"
+      },
+      "match": true
+    },
+    {
+      "record": "mastiff",
+      "official_title": "Mastiff",
+      "official_page": 384,
+      "column": 0,
+      "top": 502.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "mastiff",
+        "name": "Mastiff",
+        "url": "/api/2014/monsters/mastiff"
+      },
+      "actual": {
+        "index": "mastiff",
+        "name": "Mastiff",
+        "url": "/api/2014/monsters/mastiff"
+      },
+      "match": true
+    },
+    {
+      "record": "mule",
+      "official_title": "Mule",
+      "official_page": 384,
+      "column": 1,
+      "top": 280.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "mule",
+        "name": "Mule",
+        "url": "/api/2014/monsters/mule"
+      },
+      "actual": {
+        "index": "mule",
+        "name": "Mule",
+        "url": "/api/2014/monsters/mule"
+      },
+      "match": true
+    },
+    {
+      "record": "octopus",
+      "official_title": "Octopus",
+      "official_page": 384,
+      "column": 1,
+      "top": 603.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "octopus",
+        "name": "Octopus",
+        "url": "/api/2014/monsters/octopus"
+      },
+      "actual": {
+        "index": "octopus",
+        "name": "Octopus",
+        "url": "/api/2014/monsters/octopus"
+      },
+      "match": true
+    },
+    {
+      "record": "owl",
+      "official_title": "Owl",
+      "official_page": 385,
+      "column": 0,
+      "top": 436.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "owl",
+        "name": "Owl",
+        "url": "/api/2014/monsters/owl"
+      },
+      "actual": {
+        "index": "owl",
+        "name": "Owl",
+        "url": "/api/2014/monsters/owl"
+      },
+      "match": true
+    },
+    {
+      "record": "panther",
+      "official_title": "Panther",
+      "official_page": 385,
+      "column": 1,
+      "top": 132.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "panther",
+        "name": "Panther",
+        "url": "/api/2014/monsters/panther"
+      },
+      "actual": {
+        "index": "panther",
+        "name": "Panther",
+        "url": "/api/2014/monsters/panther"
+      },
+      "match": true
+    },
+    {
+      "record": "phase-spider",
+      "official_title": "Phase Spider",
+      "official_page": 385,
+      "column": 1,
+      "top": 526.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "phase-spider",
+        "name": "Phase Spider",
+        "url": "/api/2014/monsters/phase-spider"
+      },
+      "actual": {
+        "index": "phase-spider",
+        "name": "Phase Spider",
+        "url": "/api/2014/monsters/phase-spider"
+      },
+      "match": true
+    },
+    {
+      "record": "poisonous-snake",
+      "official_title": "Poisonous Snake",
+      "official_page": 386,
+      "column": 0,
+      "top": 438.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "poisonous-snake",
+        "name": "Poisonous Snake",
+        "url": "/api/2014/monsters/poisonous-snake"
+      },
+      "actual": {
+        "index": "poisonous-snake",
+        "name": "Poisonous Snake",
+        "url": "/api/2014/monsters/poisonous-snake"
+      },
+      "match": true
+    },
+    {
+      "record": "polar-bear",
+      "official_title": "Polar Bear",
+      "official_page": 386,
+      "column": 1,
+      "top": 87.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "polar-bear",
+        "name": "Polar Bear",
+        "url": "/api/2014/monsters/polar-bear"
+      },
+      "actual": {
+        "index": "polar-bear",
+        "name": "Polar Bear",
+        "url": "/api/2014/monsters/polar-bear"
+      },
+      "match": true
+    },
+    {
+      "record": "pony",
+      "official_title": "Pony",
+      "official_page": 386,
+      "column": 1,
+      "top": 432.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "pony",
+        "name": "Pony",
+        "url": "/api/2014/monsters/pony"
+      },
+      "actual": {
+        "index": "pony",
+        "name": "Pony",
+        "url": "/api/2014/monsters/pony"
+      },
+      "match": true
+    },
+    {
+      "record": "quipper",
+      "official_title": "Quipper",
+      "official_page": 387,
+      "column": 0,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "quipper",
+        "name": "Quipper",
+        "url": "/api/2014/monsters/quipper"
+      },
+      "actual": {
+        "index": "quipper",
+        "name": "Quipper",
+        "url": "/api/2014/monsters/quipper"
+      },
+      "match": true
+    },
+    {
+      "record": "rat",
+      "official_title": "Rat",
+      "official_page": 387,
+      "column": 0,
+      "top": 465.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "rat",
+        "name": "Rat",
+        "url": "/api/2014/monsters/rat"
+      },
+      "actual": {
+        "index": "rat",
+        "name": "Rat",
+        "url": "/api/2014/monsters/rat"
+      },
+      "match": true
+    },
+    {
+      "record": "raven",
+      "official_title": "Raven",
+      "official_page": 387,
+      "column": 1,
+      "top": 132.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "raven",
+        "name": "Raven",
+        "url": "/api/2014/monsters/raven"
+      },
+      "actual": {
+        "index": "raven",
+        "name": "Raven",
+        "url": "/api/2014/monsters/raven"
+      },
+      "match": true
+    },
+    {
+      "record": "reef-shark",
+      "official_title": "Reef Shark",
+      "official_page": 387,
+      "column": 1,
+      "top": 459.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "reef-shark",
+        "name": "Reef Shark",
+        "url": "/api/2014/monsters/reef-shark"
+      },
+      "actual": {
+        "index": "reef-shark",
+        "name": "Reef Shark",
+        "url": "/api/2014/monsters/reef-shark"
+      },
+      "match": true
+    },
+    {
+      "record": "rhinoceros",
+      "official_title": "Rhinoceros",
+      "official_page": 388,
+      "column": 0,
+      "top": 259.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "rhinoceros",
+        "name": "Rhinoceros",
+        "url": "/api/2014/monsters/rhinoceros"
+      },
+      "actual": {
+        "index": "rhinoceros",
+        "name": "Rhinoceros",
+        "url": "/api/2014/monsters/rhinoceros"
+      },
+      "match": true
+    },
+    {
+      "record": "riding-horse",
+      "official_title": "Riding Horse",
+      "official_page": 388,
+      "column": 0,
+      "top": 582.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "riding-horse",
+        "name": "Riding Horse",
+        "url": "/api/2014/monsters/riding-horse"
+      },
+      "actual": {
+        "index": "riding-horse",
+        "name": "Riding Horse",
+        "url": "/api/2014/monsters/riding-horse"
+      },
+      "match": true
+    },
+    {
+      "record": "saber-toothed-tiger",
+      "official_title": "Saber-‐Toothed Tiger",
+      "official_page": 388,
+      "column": 1,
+      "top": 187.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "saber-toothed-tiger",
+        "name": "Saber-Toothed Tiger",
+        "url": "/api/2014/monsters/saber-toothed-tiger"
+      },
+      "actual": {
+        "index": "saber-toothed-tiger",
+        "name": "Saber-Toothed Tiger",
+        "url": "/api/2014/monsters/saber-toothed-tiger"
+      },
+      "match": true
+    },
+    {
+      "record": "scorpion",
+      "official_title": "Scorpion",
+      "official_page": 388,
+      "column": 1,
+      "top": 580.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "scorpion",
+        "name": "Scorpion",
+        "url": "/api/2014/monsters/scorpion"
+      },
+      "actual": {
+        "index": "scorpion",
+        "name": "Scorpion",
+        "url": "/api/2014/monsters/scorpion"
+      },
+      "match": true
+    },
+    {
+      "record": "sea-horse",
+      "official_title": "Sea Horse",
+      "official_page": 389,
+      "column": 0,
+      "top": 224.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "sea-horse",
+        "name": "Sea Horse",
+        "url": "/api/2014/monsters/sea-horse"
+      },
+      "actual": {
+        "index": "sea-horse",
+        "name": "Sea Horse",
+        "url": "/api/2014/monsters/sea-horse"
+      },
+      "match": true
+    },
+    {
+      "record": "spider",
+      "official_title": "Spider",
+      "official_page": 389,
+      "column": 0,
+      "top": 446.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "spider",
+        "name": "Spider",
+        "url": "/api/2014/monsters/spider"
+      },
+      "actual": {
+        "index": "spider",
+        "name": "Spider",
+        "url": "/api/2014/monsters/spider"
+      },
+      "match": true
+    },
+    {
+      "record": "swarm-of-bats",
+      "official_title": "Swarm of Bats",
+      "official_page": 389,
+      "column": 1,
+      "top": 231.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "swarm-of-bats",
+        "name": "Swarm of Bats",
+        "url": "/api/2014/monsters/swarm-of-bats"
+      },
+      "actual": {
+        "index": "swarm-of-bats",
+        "name": "Swarm of Bats",
+        "url": "/api/2014/monsters/swarm-of-bats"
+      },
+      "match": true
+    },
+    {
+      "record": "swarm-of-insects",
+      "official_title": "Swarm of Insects",
+      "official_page": 389,
+      "column": 1,
+      "top": 652.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "swarm-of-insects",
+        "name": "Swarm of Insects",
+        "url": "/api/2014/monsters/swarm-of-insects"
+      },
+      "actual": {
+        "index": "swarm-of-insects",
+        "name": "Swarm of Insects",
+        "url": "/api/2014/monsters/swarm-of-insects"
+      },
+      "match": true
+    },
+    {
+      "record": "swarm-of-beetles",
+      "official_title": "Swarm of Insects",
+      "official_page": 389,
+      "column": 1,
+      "top": 652.0,
+      "mapping_type": "explicit_source_variant",
+      "expected": {
+        "index": "swarm-of-beetles",
+        "name": "Swarm of Beetles",
+        "url": "/api/2014/monsters/swarm-of-beetles"
+      },
+      "actual": {
+        "index": "swarm-of-beetles",
+        "name": "Swarm of Beetles",
+        "url": "/api/2014/monsters/swarm-of-beetles"
+      },
+      "match": true
+    },
+    {
+      "record": "swarm-of-centipedes",
+      "official_title": "Swarm of Insects",
+      "official_page": 389,
+      "column": 1,
+      "top": 652.0,
+      "mapping_type": "explicit_source_variant",
+      "expected": {
+        "index": "swarm-of-centipedes",
+        "name": "Swarm of Centipedes",
+        "url": "/api/2014/monsters/swarm-of-centipedes"
+      },
+      "actual": {
+        "index": "swarm-of-centipedes",
+        "name": "Swarm of Centipedes",
+        "url": "/api/2014/monsters/swarm-of-centipedes"
+      },
+      "match": true
+    },
+    {
+      "record": "swarm-of-spiders",
+      "official_title": "Swarm of Insects",
+      "official_page": 389,
+      "column": 1,
+      "top": 652.0,
+      "mapping_type": "explicit_source_variant",
+      "expected": {
+        "index": "swarm-of-spiders",
+        "name": "Swarm of Spiders",
+        "url": "/api/2014/monsters/swarm-of-spiders"
+      },
+      "actual": {
+        "index": "swarm-of-spiders",
+        "name": "Swarm of Spiders",
+        "url": "/api/2014/monsters/swarm-of-spiders"
+      },
+      "match": true
+    },
+    {
+      "record": "swarm-of-wasps",
+      "official_title": "Swarm of Insects",
+      "official_page": 389,
+      "column": 1,
+      "top": 652.0,
+      "mapping_type": "explicit_source_variant",
+      "expected": {
+        "index": "swarm-of-wasps",
+        "name": "Swarm of Wasps",
+        "url": "/api/2014/monsters/swarm-of-wasps"
+      },
+      "actual": {
+        "index": "swarm-of-wasps",
+        "name": "Swarm of Wasps",
+        "url": "/api/2014/monsters/swarm-of-wasps"
+      },
+      "match": true
+    },
+    {
+      "record": "swarm-of-poisonous-snakes",
+      "official_title": "Swarm of Poisonous Snakes",
+      "official_page": 390,
+      "column": 0,
+      "top": 390.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "swarm-of-poisonous-snakes",
+        "name": "Swarm of Poisonous Snakes",
+        "url": "/api/2014/monsters/swarm-of-poisonous-snakes"
+      },
+      "actual": {
+        "index": "swarm-of-poisonous-snakes",
+        "name": "Swarm of Poisonous Snakes",
+        "url": "/api/2014/monsters/swarm-of-poisonous-snakes"
+      },
+      "match": true
+    },
+    {
+      "record": "swarm-of-quippers",
+      "official_title": "Swarm of Quippers",
+      "official_page": 390,
+      "column": 1,
+      "top": 193.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "swarm-of-quippers",
+        "name": "Swarm of Quippers",
+        "url": "/api/2014/monsters/swarm-of-quippers"
+      },
+      "actual": {
+        "index": "swarm-of-quippers",
+        "name": "Swarm of Quippers",
+        "url": "/api/2014/monsters/swarm-of-quippers"
+      },
+      "match": true
+    },
+    {
+      "record": "swarm-of-rats",
+      "official_title": "Swarm of Rats",
+      "official_page": 390,
+      "column": 1,
+      "top": 639.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "swarm-of-rats",
+        "name": "Swarm of Rats",
+        "url": "/api/2014/monsters/swarm-of-rats"
+      },
+      "actual": {
+        "index": "swarm-of-rats",
+        "name": "Swarm of Rats",
+        "url": "/api/2014/monsters/swarm-of-rats"
+      },
+      "match": true
+    },
+    {
+      "record": "swarm-of-ravens",
+      "official_title": "Swarm of Ravens",
+      "official_page": 391,
+      "column": 0,
+      "top": 402.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "swarm-of-ravens",
+        "name": "Swarm of Ravens",
+        "url": "/api/2014/monsters/swarm-of-ravens"
+      },
+      "actual": {
+        "index": "swarm-of-ravens",
+        "name": "Swarm of Ravens",
+        "url": "/api/2014/monsters/swarm-of-ravens"
+      },
+      "match": true
+    },
+    {
+      "record": "tiger",
+      "official_title": "Tiger",
+      "official_page": 391,
+      "column": 1,
+      "top": 416.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "tiger",
+        "name": "Tiger",
+        "url": "/api/2014/monsters/tiger"
+      },
+      "actual": {
+        "index": "tiger",
+        "name": "Tiger",
+        "url": "/api/2014/monsters/tiger"
+      },
+      "match": true
+    },
+    {
+      "record": "vulture",
+      "official_title": "Vulture",
+      "official_page": 392,
+      "column": 0,
+      "top": 194.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "vulture",
+        "name": "Vulture",
+        "url": "/api/2014/monsters/vulture"
+      },
+      "actual": {
+        "index": "vulture",
+        "name": "Vulture",
+        "url": "/api/2014/monsters/vulture"
+      },
+      "match": true
+    },
+    {
+      "record": "warhorse",
+      "official_title": "Warhorse",
+      "official_page": 392,
+      "column": 0,
+      "top": 536.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "warhorse",
+        "name": "Warhorse",
+        "url": "/api/2014/monsters/warhorse"
+      },
+      "actual": {
+        "index": "warhorse",
+        "name": "Warhorse",
+        "url": "/api/2014/monsters/warhorse"
+      },
+      "match": true
+    },
+    {
+      "record": "weasel",
+      "official_title": "Weasel",
+      "official_page": 392,
+      "column": 1,
+      "top": 243.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "weasel",
+        "name": "Weasel",
+        "url": "/api/2014/monsters/weasel"
+      },
+      "actual": {
+        "index": "weasel",
+        "name": "Weasel",
+        "url": "/api/2014/monsters/weasel"
+      },
+      "match": true
+    },
+    {
+      "record": "winter-wolf",
+      "official_title": "Winter Wolf",
+      "official_page": 392,
+      "column": 1,
+      "top": 545.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "winter-wolf",
+        "name": "Winter Wolf",
+        "url": "/api/2014/monsters/winter-wolf"
+      },
+      "actual": {
+        "index": "winter-wolf",
+        "name": "Winter Wolf",
+        "url": "/api/2014/monsters/winter-wolf"
+      },
+      "match": true
+    },
+    {
+      "record": "wolf",
+      "official_title": "Wolf",
+      "official_page": 393,
+      "column": 0,
+      "top": 531.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "wolf",
+        "name": "Wolf",
+        "url": "/api/2014/monsters/wolf"
+      },
+      "actual": {
+        "index": "wolf",
+        "name": "Wolf",
+        "url": "/api/2014/monsters/wolf"
+      },
+      "match": true
+    },
+    {
+      "record": "worg",
+      "official_title": "Worg",
+      "official_page": 393,
+      "column": 1,
+      "top": 285.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "worg",
+        "name": "Worg",
+        "url": "/api/2014/monsters/worg"
+      },
+      "actual": {
+        "index": "worg",
+        "name": "Worg",
+        "url": "/api/2014/monsters/worg"
+      },
+      "match": true
+    },
+    {
+      "record": "acolyte",
+      "official_title": "Acolyte",
+      "official_page": 395,
+      "column": 0,
+      "top": 554.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "acolyte",
+        "name": "Acolyte",
+        "url": "/api/2014/monsters/acolyte"
+      },
+      "actual": {
+        "index": "acolyte",
+        "name": "Acolyte",
+        "url": "/api/2014/monsters/acolyte"
+      },
+      "match": true
+    },
+    {
+      "record": "archmage",
+      "official_title": "Archmage",
+      "official_page": 395,
+      "column": 1,
+      "top": 332.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "archmage",
+        "name": "Archmage",
+        "url": "/api/2014/monsters/archmage"
+      },
+      "actual": {
+        "index": "archmage",
+        "name": "Archmage",
+        "url": "/api/2014/monsters/archmage"
+      },
+      "match": true
+    },
+    {
+      "record": "assassin",
+      "official_title": "Assassin",
+      "official_page": 396,
+      "column": 0,
+      "top": 487.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "assassin",
+        "name": "Assassin",
+        "url": "/api/2014/monsters/assassin"
+      },
+      "actual": {
+        "index": "assassin",
+        "name": "Assassin",
+        "url": "/api/2014/monsters/assassin"
+      },
+      "match": true
+    },
+    {
+      "record": "bandit",
+      "official_title": "Bandit",
+      "official_page": 396,
+      "column": 1,
+      "top": 567.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "bandit",
+        "name": "Bandit",
+        "url": "/api/2014/monsters/bandit"
+      },
+      "actual": {
+        "index": "bandit",
+        "name": "Bandit",
+        "url": "/api/2014/monsters/bandit"
+      },
+      "match": true
+    },
+    {
+      "record": "bandit-captain",
+      "official_title": "Bandit Captain",
+      "official_page": 397,
+      "column": 0,
+      "top": 338.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "bandit-captain",
+        "name": "Bandit Captain",
+        "url": "/api/2014/monsters/bandit-captain"
+      },
+      "actual": {
+        "index": "bandit-captain",
+        "name": "Bandit Captain",
+        "url": "/api/2014/monsters/bandit-captain"
+      },
+      "match": true
+    },
+    {
+      "record": "berserker",
+      "official_title": "Berserker",
+      "official_page": 397,
+      "column": 1,
+      "top": 315.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "berserker",
+        "name": "Berserker",
+        "url": "/api/2014/monsters/berserker"
+      },
+      "actual": {
+        "index": "berserker",
+        "name": "Berserker",
+        "url": "/api/2014/monsters/berserker"
+      },
+      "match": true
+    },
+    {
+      "record": "commoner",
+      "official_title": "Commoner",
+      "official_page": 398,
+      "column": 0,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "commoner",
+        "name": "Commoner",
+        "url": "/api/2014/monsters/commoner"
+      },
+      "actual": {
+        "index": "commoner",
+        "name": "Commoner",
+        "url": "/api/2014/monsters/commoner"
+      },
+      "match": true
+    },
+    {
+      "record": "cultist",
+      "official_title": "Cultist",
+      "official_page": 398,
+      "column": 0,
+      "top": 348.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "cultist",
+        "name": "Cultist",
+        "url": "/api/2014/monsters/cultist"
+      },
+      "actual": {
+        "index": "cultist",
+        "name": "Cultist",
+        "url": "/api/2014/monsters/cultist"
+      },
+      "match": true
+    },
+    {
+      "record": "cult-fanatic",
+      "official_title": "Cult Fanatic",
+      "official_page": 398,
+      "column": 1,
+      "top": 116.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "cult-fanatic",
+        "name": "Cult Fanatic",
+        "url": "/api/2014/monsters/cult-fanatic"
+      },
+      "actual": {
+        "index": "cult-fanatic",
+        "name": "Cult Fanatic",
+        "url": "/api/2014/monsters/cult-fanatic"
+      },
+      "match": true
+    },
+    {
+      "record": "druid",
+      "official_title": "Druid",
+      "official_page": 398,
+      "column": 1,
+      "top": 608.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "druid",
+        "name": "Druid",
+        "url": "/api/2014/monsters/druid"
+      },
+      "actual": {
+        "index": "druid",
+        "name": "Druid",
+        "url": "/api/2014/monsters/druid"
+      },
+      "match": true
+    },
+    {
+      "record": "gladiator",
+      "official_title": "Gladiator",
+      "official_page": 399,
+      "column": 0,
+      "top": 487.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "gladiator",
+        "name": "Gladiator",
+        "url": "/api/2014/monsters/gladiator"
+      },
+      "actual": {
+        "index": "gladiator",
+        "name": "Gladiator",
+        "url": "/api/2014/monsters/gladiator"
+      },
+      "match": true
+    },
+    {
+      "record": "guard",
+      "official_title": "Guard",
+      "official_page": 399,
+      "column": 1,
+      "top": 463.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "guard",
+        "name": "Guard",
+        "url": "/api/2014/monsters/guard"
+      },
+      "actual": {
+        "index": "guard",
+        "name": "Guard",
+        "url": "/api/2014/monsters/guard"
+      },
+      "match": true
+    },
+    {
+      "record": "knight",
+      "official_title": "Knight",
+      "official_page": 400,
+      "column": 0,
+      "top": 167.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "knight",
+        "name": "Knight",
+        "url": "/api/2014/monsters/knight"
+      },
+      "actual": {
+        "index": "knight",
+        "name": "Knight",
+        "url": "/api/2014/monsters/knight"
+      },
+      "match": true
+    },
+    {
+      "record": "mage",
+      "official_title": "Mage",
+      "official_page": 400,
+      "column": 1,
+      "top": 151.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "mage",
+        "name": "Mage",
+        "url": "/api/2014/monsters/mage"
+      },
+      "actual": {
+        "index": "mage",
+        "name": "Mage",
+        "url": "/api/2014/monsters/mage"
+      },
+      "match": true
+    },
+    {
+      "record": "noble",
+      "official_title": "Noble",
+      "official_page": 401,
+      "column": 0,
+      "top": 75.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "noble",
+        "name": "Noble",
+        "url": "/api/2014/monsters/noble"
+      },
+      "actual": {
+        "index": "noble",
+        "name": "Noble",
+        "url": "/api/2014/monsters/noble"
+      },
+      "match": true
+    },
+    {
+      "record": "priest",
+      "official_title": "Priest",
+      "official_page": 401,
+      "column": 0,
+      "top": 498.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "priest",
+        "name": "Priest",
+        "url": "/api/2014/monsters/priest"
+      },
+      "actual": {
+        "index": "priest",
+        "name": "Priest",
+        "url": "/api/2014/monsters/priest"
+      },
+      "match": true
+    },
+    {
+      "record": "scout",
+      "official_title": "Scout",
+      "official_page": 401,
+      "column": 1,
+      "top": 464.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "scout",
+        "name": "Scout",
+        "url": "/api/2014/monsters/scout"
+      },
+      "actual": {
+        "index": "scout",
+        "name": "Scout",
+        "url": "/api/2014/monsters/scout"
+      },
+      "match": true
+    },
+    {
+      "record": "spy",
+      "official_title": "Spy",
+      "official_page": 402,
+      "column": 0,
+      "top": 264.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "spy",
+        "name": "Spy",
+        "url": "/api/2014/monsters/spy"
+      },
+      "actual": {
+        "index": "spy",
+        "name": "Spy",
+        "url": "/api/2014/monsters/spy"
+      },
+      "match": true
+    },
+    {
+      "record": "thug",
+      "official_title": "Thug",
+      "official_page": 402,
+      "column": 1,
+      "top": 215.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "thug",
+        "name": "Thug",
+        "url": "/api/2014/monsters/thug"
+      },
+      "actual": {
+        "index": "thug",
+        "name": "Thug",
+        "url": "/api/2014/monsters/thug"
+      },
+      "match": true
+    },
+    {
+      "record": "tribal-warrior",
+      "official_title": "Tribal Warrior",
+      "official_page": 402,
+      "column": 1,
+      "top": 637.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "tribal-warrior",
+        "name": "Tribal Warrior",
+        "url": "/api/2014/monsters/tribal-warrior"
+      },
+      "actual": {
+        "index": "tribal-warrior",
+        "name": "Tribal Warrior",
+        "url": "/api/2014/monsters/tribal-warrior"
+      },
+      "match": true
+    },
+    {
+      "record": "veteran",
+      "official_title": "Veteran",
+      "official_page": 403,
+      "column": 0,
+      "top": 408.0,
+      "mapping_type": "official_stat_header",
+      "expected": {
+        "index": "veteran",
+        "name": "Veteran",
+        "url": "/api/2014/monsters/veteran"
+      },
+      "actual": {
+        "index": "veteran",
+        "name": "Veteran",
+        "url": "/api/2014/monsters/veteran"
+      },
+      "match": true
+    }
+  ],
+  "heading_dispositions": [
+    {
+      "page": 280,
+      "column": 0,
+      "top": 592.0,
+      "size": 12.0,
+      "title": "Black Dragon",
+      "disposition": "dragon_family_title_not_statblock"
+    },
+    {
+      "page": 282,
+      "column": 0,
+      "top": 668.0,
+      "size": 12.0,
+      "title": "Blue Dragon",
+      "disposition": "dragon_family_title_not_statblock"
+    },
+    {
+      "page": 284,
+      "column": 1,
+      "top": 74.0,
+      "size": 12.0,
+      "title": "Green Dragon",
+      "disposition": "dragon_family_title_not_statblock"
+    },
+    {
+      "page": 286,
+      "column": 1,
+      "top": 254.0,
+      "size": 12.0,
+      "title": "Red Dragon",
+      "disposition": "dragon_family_title_not_statblock"
+    },
+    {
+      "page": 288,
+      "column": 1,
+      "top": 239.0,
+      "size": 12.0,
+      "title": "White Dragon",
+      "disposition": "dragon_family_title_not_statblock"
+    },
+    {
+      "page": 290,
+      "column": 1,
+      "top": 417.0,
+      "size": 12.0,
+      "title": "Brass Dragon",
+      "disposition": "dragon_family_title_not_statblock"
+    },
+    {
+      "page": 293,
+      "column": 0,
+      "top": 346.0,
+      "size": 12.0,
+      "title": "Bronze Dragon",
+      "disposition": "dragon_family_title_not_statblock"
+    },
+    {
+      "page": 295,
+      "column": 1,
+      "top": 474.0,
+      "size": 12.0,
+      "title": "Copper Dragon",
+      "disposition": "dragon_family_title_not_statblock"
+    },
+    {
+      "page": 298,
+      "column": 1,
+      "top": 95.0,
+      "size": 12.0,
+      "title": "Gold Dragon",
+      "disposition": "dragon_family_title_not_statblock"
+    },
+    {
+      "page": 301,
+      "column": 0,
+      "top": 416.0,
+      "size": 12.0,
+      "title": "Silver Dragon",
+      "disposition": "dragon_family_title_not_statblock"
+    }
+  ],
+  "explicit_variant_source": [
+    {
+      "heading": "Variant: Diseased Giant Rats",
+      "page": 378,
+      "column": 1,
+      "text": "Some giant rats carry vile diseases that they spread with their\nbites. A diseased giant rat has a challenge rating of 1/8 (25\nXP) and the following action instead of its normal bite attack.\nBite. Melee Weapon Attack: +4 to hit, reach 5 ft., one\ntarget. Hit: 4 (1d4 + 2) piercing damage. If the target is a\ncreature, it must succeed on a DC 10 Constitution saving\nthrow or contract a disease. Until the disease is cured, the\ntarget can't regain hit points except by magical means, and\nthe target's hit point maximum decreases by 3 (1d6) every 24\nhours. If the target's hit point maximum drops to 0 as a result\nof this disease, the target dies."
+    },
+    {
+      "heading": "Variant: Insect Swarms",
+      "page": 391,
+      "column": 1,
+      "text": "Different kinds of insects can gather in swarms, and each\nswarm has the special characteristics described below.\nSwarm of Beetles. A swarm of beetles gains a burrowing\nspeed of 5 feet.\nSwarm of Centipedes. A creature reduced to 0 hit points\nby a swarm of centipedes is stable but poisoned for 1 hour,\neven after regaining hit points, and paralyzed while poisoned\nin this way.\nSwarm of Spiders. A swarm of spiders has the following\nadditional traits.\nSpider Climb. The swarm can climb difficult surfaces,\nincluding upside down on ceilings, without needing to make\nan ability check.\nWeb Sense. While in contact with a web, the swarm knows\nthe exact location of any other creature in contact with the\nsame web.\nWeb Walker. The swarm ignores movement restrictions\ncaused by webbing.\nSwarm of Wasps. A swarm of wasps has a walking speed\nof 5 feet, a flying speed of 30 feet, and no climbing speed."
+    }
+  ],
+  "duplicate_mappings": [],
+  "unmapped_records": [],
+  "differences": [],
+  "limitations": [
+    "Identity inventory only: 317 base stat headers map to 334 normalized cards; no stat, action, variant trait or form-eligibility execution is certified.",
+    "Ten dragon family headings are classified only as non-stat titles; their content is not dropped from the complete official document."
+  ]
+}

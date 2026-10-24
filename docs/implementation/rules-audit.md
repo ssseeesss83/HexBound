@@ -138,3 +138,5 @@ tools/audit_magic_scrying_variants.py核共同规则及七选定小节，水晶�
 tools/audit_magic_feather_variants.py消费六符记区间与完整小节，修复子项共同single-use漏句；选择已定的GM随机句不用于显示，完整父来源与选定d100行保留。Whip第二段、各限制及结束条件完整，未接效果执行。
 
 tools/audit_magic_figurine_ioun_variants.py核23个完整白名单小节及稀有度，保留嵌套stats / 多子能力 / 尾段和规则例外，184检查零差异。69派生引用及23格式修正；9个profiles恰覆盖126规范变体，无重叠或漏项。尚非逐字段总签收，也不签机械执行。
+
+官方怪物目录tools/audit_monster_inventory.py独立确认317属性块和10个非属性族标题，明确绑定334候选卡：309直接、2别名、18形态、5可选变体。monster-inventory-review.json保存坐标、体型行、绑定及p378 / 391变体正文，身份与覆盖零差异；不签数值、完整正文、变形动作资格或执行。
