@@ -153,7 +153,7 @@ async function api(path, options = {}) {
   return data;
 }
 function home() {
-  app.innerHTML = `<main class="home"><header class="home-header">${brand}<span class="chip"><span class="dot"></span>1–6 位冒险者 · 一个共同的世界</span></header><section class="hero"><div><div class="eyebrow">A table. Six souls. Infinite stories.</div><h1>故事没有边界。<br>命运，<em>交给骰子。</em></h1><p class="hero-copy">与同伴走进未被书写的世界。让 AI 编织故事，让真实的规则决定结果。下一页，由你们共同落笔。</p><div class="hero-actions"><button class="primary" id="create">创建冒险 <span aria-hidden="true">↗</span></button><button id="join">凭邀请码入席</button></div><div class="hero-note">${catalog.llm?.configured ? `AI 主持已就绪 · ${esc(catalog.llm.model || "自定义模型")}` : "无需密钥即可体验本地主持 · 配置 LLM 后开启 AI 叙事"}</div></div><div class="artifact">${dieArt}<div class="artifact-caption">EVERY ROLL LEAVES A MARK</div></div></section>${
+  app.innerHTML = `<main class="home"><header class="home-header">${brand}<span class="chip"><span class="dot"></span>1–6 位冒险者 · 一个共同的世界</span></header><section class="hero"><div><div class="eyebrow">A table. Six souls. Infinite stories.</div><h1>故事没有边界。<br>命运，<em>交给骰子。</em></h1><p class="hero-copy">与同伴走进未被书写的世界。让 AI 编织故事，让真实的规则决定结果。下一页，由你们共同落笔。</p><p class="helper">首个完整剧本《雾港：归航之夜》· 预计 2–4 小时 · 推荐 2–4 人，支持单人。</p><div class="hero-actions"><button class="primary" id="create">创建冒险 <span aria-hidden="true">↗</span></button><button id="join">凭邀请码入席</button></div><div class="hero-note">${catalog.llm?.configured ? `AI 主持已就绪 · ${esc(catalog.llm.model || "自定义模型")}` : "无需密钥即可体验本地主持 · 配置 LLM 后开启 AI 叙事"}</div></div><div class="artifact">${dieArt}<div class="artifact-caption">EVERY ROLL LEAVES A MARK</div></div></section>${
     savedSeats().length
       ? `<section class="saved-seats"><div class="eyebrow">Your unfinished chapters / 继续冒险</div><div class="saved-grid">${savedSeats()
           .map(
@@ -162,7 +162,7 @@ function home() {
           )
           .join("")}</div></section>`
       : ""
-  }<section class="feature-grid"><div class="feature"><div class="eyebrow">01 / Your story</div><h3>沿着剧本，或走出地图</h3><p>剧本组织主线，AI DM 根据你的行动主持冒险。</p></div><div class="feature"><div class="eyebrow">02 / True consequence</div><h3>每次掷骰，都有据可查</h3><p>脚本执行检定与战斗。模型讲述结果，不替你决定命运。</p></div><div class="feature"><div class="eyebrow">03 / Together</div><h3>六个席位，一段共同记忆</h3><p>实时同行、自动保存。暂时离席，也不会失去故事。</p></div></section><footer class="footer"><span>HEXBOUND / 六席之间 · 原创文字冒险</span><button class="ghost small" id="rules">查看本版规则范围 ↗</button></footer></main>`;
+  }<section class="feature-grid"><div class="feature"><div class="eyebrow">01 / Your story</div><h3>沿着剧本，或走出地图</h3><p>剧本组织主线，AI DM 根据你的行动主持冒险。</p></div><div class="feature"><div class="eyebrow">02 / True consequence</div><h3>每次掷骰，都有据可查</h3><p>脚本执行检定与战斗。模型讲述结果，不替你决定命运。</p></div><div class="feature"><div class="eyebrow">03 / Together</div><h3>六个席位，一段共同记忆</h3><p>实时同行、自动保存。暂时离席，也不会失去故事。</p></div></section><footer class="footer"><span>HEXBOUND / 六席之间 · v0.9 · 原型规则</span><button class="ghost small" id="rules">查看本版规则范围 ↗</button></footer></main>`;
   $(".home-header").insertAdjacentHTML(
     "beforeend",
     `<a class="small" href="/account.html">${account ? esc(account.display_name) + " · 账号中心" : "登录 / 注册"}</a>`,

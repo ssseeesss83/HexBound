@@ -54,7 +54,7 @@ async function main() {
   server=spawn(process.env.PYTHON||'python',['-m','uvicorn','backend.app:app','--port',String(port)],{cwd:root,env:{...process.env,HEXBOUND_DB:path.join(temporary,'groups.sqlite3'),HEXBOUND_ALLOW_GUESTS:'0',HEXBOUND_ALLOW_REGISTRATION:'1',LLM_API_KEY:'',LLM_MODEL:''},stdio:['ignore','ignore','pipe']});
   server.stderr.on('data',chunk=>logs+=chunk);
   await until(async()=>{try{return(await fetch(base+'/api/health')).ok;}catch{return false;}},'server');
-  const host=await page();click(host,'#create');fill(host,'player_name','Host');fill(host,'starting_level','1');submit(host,'#entry-form');
+  const host=await page();click(host,'#create');fill(host,'scenario_id','');fill(host,'player_name','Host');fill(host,'starting_level','1');submit(host,'#entry-form');
   await until(()=>host.document.querySelector('#start:not(:disabled)'),'created');
   const identity=JSON.parse(host.sessionStorage.getItem('hexbound-session'));
   const guest=await page();click(guest,'#join');fill(guest,'invite_code',identity.invite_code);fill(guest,'player_name','Guest');submit(guest,'#entry-form');

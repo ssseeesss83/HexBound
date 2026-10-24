@@ -163,7 +163,7 @@ class ProposalPayload(Input):
 
 
 def create_app(db_path: str | None = None) -> FastAPI:
-    app = FastAPI(title="HEXBOUND", version="0.6.0")
+    app = FastAPI(title="HEXBOUND", version="0.9.0")
     @app.exception_handler(RequestValidationError)
     async def invalid_request(request: Request, exc: RequestValidationError):
         # Validation responses must never echo passwords or other submitted secrets.
@@ -500,7 +500,8 @@ def create_app(db_path: str | None = None) -> FastAPI:
         throttle("create:" + (request.client.host if request.client else "local"), 15)
         package = compile_scenario(store, body.scenario_id) if body.scenario_id else None
         try:
-            character = characters.create_character(body.character_id, body.player_name)
+            with using_version(package.get('rules_package_version') if package else None):
+                character = characters.create_character(body.character_id, body.player_name)
         except (ValueError, KeyError) as exc:
             raise HTTPException(422, "未知角色模板") from exc
         member_id, token, room_id = uuid.uuid4().hex, secrets.token_urlsafe(32), uuid.uuid4().hex

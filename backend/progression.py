@@ -16,6 +16,13 @@ def award(state, before):
     moved=before.get("scene_id") != state.get("scene_id")
     resolved=not before.get("flags",{}).get("scene_resolved") and state.get("flags",{}).get("scene_resolved")
     native = state.get('campaign',{}).get('package',{}).get('scenario',{}).get('schema_version')==2
+    if native and state.get('completed') and not before.get('completed') and before.get('status') == 'playing' and any(
+        n['id']==state.get('scene_id') and n['kind']=='ending'
+        for n in state['campaign']['package']['scenario']['nodes']):
+        # v0.9 original adventure policy, not an SRD XP rule. Per-room ledger
+        # makes every authored ending equivalent and prevents replay farming.
+        scenario = state['campaign']['package']['scenario']
+        rewards.append(('objective:ending:'+scenario['id'],300*len([m for m in state['members'] if not m['character'].get('dead')]),'完成冒险'))
     if not native and before.get("status") == "playing" and (moved or resolved):
         # An original campaign reward, explicitly distinct from SRD monster XP.
         rewards.append(("objective:"+str(before.get("scene_id")),100*len(state["members"]),"完成场景目标"))
