@@ -123,7 +123,9 @@ def commit_view(view):
                 raise world.WorldConflict("物件变更缺少读取版本")
             expected[eid] = view["_object_read_set"][eid]
     if changes:
-        actor = next((member["id"] for member in view.get("members", [])), None)
+        sid = view.get("_scene_execution_view", "scene-main")
+        actor = next((member["id"] for member in view.get("members", [])
+                      if view["member_contexts"].get(member["id"], {}).get("scene_instance_id") == sid), None)
         if actor is None:
             raise world.WorldConflict("没有合法参与者，不能提交物件变更")
         world.write_entities(view, actor, changes, expected, encounter_id=(view.get("combat") or {}).get("encounter_id"))
@@ -132,8 +134,20 @@ def commit_view(view):
     return view
 
 
+def validate_read_set(view):
+    if view.get("world_environment_version") != 1:
+        return
+    node_id = view.get("scene_id") or view.get("scene", {}).get("id")
+    for eid in view.get("environment", {}).get(node_id, {}).get("entity_refs", {}).values():
+        entity = view["world_entities"].get(eid)
+        if not entity or entity["kind"] != "object" or entity["revision"] != view.get("_object_read_set", {}).get(eid):
+            raise world.WorldConflict("物件读取版本已变化；未执行随机检定或消耗")
+
+
 def prepare_save(view):
     commit_view(view)
+    from .world_combat import commit_view as commit_combat
+    commit_combat(view)
     return attach_current(view)
 
 
@@ -145,6 +159,8 @@ def attach_current(view):
     node_id = view.get("scene_id") or view.get("scene", {}).get("id", "lobby")
     pid = place_id(view, node_id)
     _ensure_place(view, pid)
+    if view.get("world_combat_version") == 1 and view["scene_instances"][sid].get("place_id") != pid:
+        raise world.WorldConflict("地点变更必须先提交进入计划")
     view["scene_instances"][sid]["place_id"] = pid
     definitions = _definitions(view, node_id, view.get("scene"))
     if definitions:

@@ -62,12 +62,13 @@ class Store:
             db.execute("CREATE TABLE IF NOT EXISTS rules_documents (package_version TEXT NOT NULL REFERENCES rules_packages(version), page INTEGER NOT NULL, payload TEXT NOT NULL, PRIMARY KEY(package_version,page))")
             from .session_scope import initialize
             from .world_environment import migrate
+            from .world_combat import migrate as migrate_combat
             for row in db.execute("SELECT id,state FROM rooms").fetchall():
                 payload = json.loads(row["state"])
                 state = unpack_scene(payload)
-                if "text_scope" not in state or "action_revision" not in state or payload.get("scene_storage_version") != SCENE_STORAGE_VERSION or payload.get("world_environment_version") != 1:
+                if "text_scope" not in state or "action_revision" not in state or payload.get("scene_storage_version") != SCENE_STORAGE_VERSION or payload.get("world_environment_version") != 1 or payload.get("world_combat_version") != 1:
                     initialize(state)
-                    canonical = migrate(pack_scene(state))
+                    canonical = migrate_combat(migrate(pack_scene(state)))
                     db.execute("UPDATE rooms SET state=? WHERE id=?", (json.dumps(canonical, ensure_ascii=False), row["id"]))
             db.execute(f"PRAGMA user_version={SCHEMA_VERSION}")
 
@@ -96,7 +97,8 @@ class Store:
             db.execute("BEGIN IMMEDIATE")
             self._bind_hero(db, state, state["members"][0], user_id)
             from .world_environment import migrate
-            migrated = unpack_scene(migrate(pack_scene(state)))
+            from .world_combat import migrate as migrate_combat
+            migrated = unpack_scene(migrate_combat(migrate(pack_scene(state))))
             state.clear()
             state.update(migrated)
             db.execute("INSERT INTO rooms VALUES (?, ?, ?, ?)",

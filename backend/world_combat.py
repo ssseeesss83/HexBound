@@ -43,6 +43,8 @@ def migrate(canonical):
         if not pid:
             raise world.WorldConflict('战斗迁移缺少物理地点')
         cards = _cards(combat)
+        if not cards and not combat.get('active'):
+            continue
         refs = {}
         node_id = local.get('scene_id', combat.get('scene_id', 'legacy'))
         for card in cards:
@@ -100,6 +102,10 @@ def validate_read_set(view):
     combat = view.get('combat') or {}
     sid = view.get('_scene_execution_view', 'scene-main')
     instance = view['scene_instances'][sid]
+    place = view['world_places'][instance['place_id']]
+    if place['active_encounter_id'] and place['encounter_owner_scene_id'] != sid:
+        raise world.WorldConflict('当前地点已有另一队的活动遭遇；未执行随机检定或消耗')
+    environment.validate_read_set(view)
     for eid in combat.get('enemy_refs', {}).values():
         entity = view['world_entities'].get(eid)
         if not entity or entity['revision'] != view.get('_creature_read_set', {}).get(eid):
@@ -118,21 +124,27 @@ def commit_view(view):
     combat = view.get('combat') or {}
     if 'enemy_refs' not in combat:
         return view
-    validate_read_set(view)
     cards = _cards(combat)
     if {row['id'] for row in cards} != set(combat['enemy_refs']):
         raise world.WorldConflict('战斗参与者与实体清单不一致')
-    actor = next((m['id'] for m in view.get('members', [])), None)
+    sid = view.get('_scene_execution_view', 'scene-main')
+    changes = {combat['enemy_refs'][row['id']]: _state(row) for row in cards
+               if _state(row) != view['world_entities'][combat['enemy_refs'][row['id']]]['state']}
+    place = view['world_places'][view['scene_instances'][sid]['place_id']]
+    needs_release = not combat.get('active') and place['active_encounter_id'] == combat.get('encounter_id')
+    if not changes and not needs_release:
+        return view
+    validate_read_set(view)
+    actor = next((m['id'] for m in view.get('members', [])
+                  if view['member_contexts'].get(m['id'], {}).get('scene_instance_id') == sid), None)
     if actor is None:
         raise world.WorldConflict('没有合法战斗成员')
-    changes = {combat['enemy_refs'][row['id']]: _state(row) for row in cards}
     expected = {eid: view['_creature_read_set'][eid] for eid in changes}
-    world.write_entities(view, actor, changes, expected, encounter_id=combat.get('encounter_id'))
-    sid = view.get('_scene_execution_view', 'scene-main')
-    place = view['world_places'][view['scene_instances'][sid]['place_id']]
-    if not combat.get('active') and place['active_encounter_id'] == combat.get('encounter_id'):
+    if changes:
+        world.write_entities(view, actor, changes, expected, encounter_id=combat.get('encounter_id'))
+    if needs_release:
         world.release_encounter(view, actor, combat['encounter_id'])
-    for eid in changes:
+    for eid in combat['enemy_refs'].values():
         view['_creature_read_set'][eid] = view['world_entities'][eid]['revision']
     return view
 

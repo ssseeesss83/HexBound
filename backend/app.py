@@ -595,6 +595,12 @@ def create_app(db_path: str | None = None) -> FastAPI:
             state = scene_storage.for_actor(get_state(room_id), member_id)
             if not matches_revision(state):
                 raise HTTPException(409, "房间已更新，请同步后重试")
+            from .world_combat import validate_read_set, enter_place
+            try:
+                if body.type not in {"chat", "narrate", "director_propose", "director_cancel", "pause", "resume"}:
+                    validate_read_set(state)
+            except ValueError as exc:
+                raise HTTPException(409, str(exc)) from exc
             member = next(m for m in state["members"] if m["id"] == member_id)
             previous = state["version"]
             before_action = copy.deepcopy(state)
@@ -616,6 +622,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
                         state["status"] = "finished"
                 if generated_scenes:
                     state["scenes"] = generated_scenes
+                    enter_place(state, generated_scenes[0]["id"])
                     state["scene"] = copy.deepcopy(generated_scenes[0])
                     state["scene_id"] = generated_scenes[0]["id"]
                     state["dm_source"] = "llm"

@@ -614,6 +614,8 @@ def attacks_per_action(c):
 
 
 def weapon_attack(state, actor, target_id=None, *, smite=None, unarmed=False, spend_action=True):
+    from .world_combat import validate_read_set
+    validate_read_set(state)
     c = member(state, actor)['character']
     combat = _combat(state)
     if not combat or c['hp'] <= 0 or c.get('dead') or (spend_action and _budget_reason(state, actor, 'attack')) or combat['turn_actor_id'] != actor:
@@ -737,6 +739,8 @@ def _feature(state, actor, fid, target_id, options, cap):
 
 
 def apply_action(state, actor, action_id, target_id=None, options=None):
+    from .world_combat import validate_read_set
+    validate_read_set(state)
     options = options or {}
     allowed = {'slot_level', 'slot_source', 'target_ids', 'resource_amount'}
     if set(options) - allowed:

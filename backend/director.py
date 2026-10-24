@@ -378,9 +378,12 @@ def resolve(state, member_id, proposal):
         raise ValueError("该提案已经结算，不可重复掷骰")
     verified = validate_proposal(proposal["decision"], state, member_id, proposal.get("policy", "balanced"))
     decision = verified["decision"]
+    if decision["kind"] != "dialogue":
+        from .world_combat import validate_read_set
+        validate_read_set(state)
     if verified["requires_host"] and member_id != state.get("host_id", state.get("host_member_id")):
         raise ValueError("额外遭遇需要由房主发起并确认")
-    director = state.setdefault("director", {})
+    director = state.get("director", {})
     member = _member(state, member_id)
     events = []
     if decision["kind"] == "dialogue":
@@ -392,6 +395,12 @@ def resolve(state, member_id, proposal):
         memory_text = "\n".join(e.get("text", "") for e in events)[-1000:]
     elif decision["kind"] == "check":
         anchor = _anchors(state, member_id).get(decision["anchor_action_id"])
+        from .world_combat import preflight_place
+        if anchor and state.get("campaign"):
+            for destination in {anchor["_action"].get(key) for key in ("next_node_id", "success_node_id", "failure_node_id")} - {None, ""}:
+                preflight_place(state, destination)
+        elif anchor and state.get("scene_index") == 1:
+            preflight_place(state, state.get("scene_id") or state["scene"]["id"])
         oath_advantage = bool(anchor and not state.get("campaign") and state.get("mode") != "free"
                               and state.get("scene_index") == 3 and anchor["id"] == "parley"
                               and state.get("flags", {}).get("oath"))
@@ -411,11 +420,14 @@ def resolve(state, member_id, proposal):
             counts[member_id] = counts.get(member_id, 0) + 1
     else:
         scene_id = state.get("scene_id", "")
+        from .world_combat import preflight_place
+        preflight_place(state, scene_id)
         director.setdefault("encounters_started", []).append(scene_id)
-        campaign._start_combat(state, {"monster_ids": [decision["monster_id"]]}, events)
+        campaign._start_combat(state, {"monster_ids": [decision["monster_id"]], "spawn_key": "director:" + proposal["id"]}, events)
         state["combat"].update(director_encounter=True, origin_scene_id=scene_id)
         memory_text = f"额外遭遇已触发：{state['campaign']['package']['monsters'][decision['monster_id']]['name']}。"
         events.insert(0, rules.event("dm", decision["text"], actor_id=member_id, director=True))
+    state["director"] = director
     director.setdefault("resolved_ids", []).append(proposal["id"])
     director["resolved_ids"] = director["resolved_ids"][-200:]
     from . import session_scope

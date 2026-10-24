@@ -180,6 +180,8 @@ def _condition(state, c, name, **extra):
 
 
 def resolve(state, actor, decision):
+    from .world_combat import validate_read_set
+    validate_read_set(state)
     plan = validate(state,actor,decision)
     work = deepcopy(state)
     c = a.member(work,actor)['character']

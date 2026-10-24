@@ -93,6 +93,14 @@ def _defeat(state, events):
     return False
 
 def start_combat(state):
+    from .world_combat import begin, bind
+    hp = 7 + 3 * len(state["members"])
+    card = {"id": "enemy", "name": state.get("enemy_name", "守卫" if state.get("mode") == "free" else "盐壳守卫"),
+            "hp": hp, "max_hp": hp, "ac": 11, "xp": 50, "attack_bonus": 2, "damage_dice": "1d4", "damage_type": "bludgeoning"}
+    enemies, encounter_id = begin(state, [card])
+    if not enemies:
+        state["combat"] = None
+        return []
     participants = []
     events = []
     for m in state["members"]:
@@ -103,11 +111,11 @@ def start_combat(state):
     r = check(0)
     participants.append((r["total"], "enemy"))
     order = [p[1] for p in sorted(participants, key=lambda p: (-p[0], p[1]))]
-    hp = 7 + 3 * len(state["members"])
-    state["combat"] = {"active": True, "round": 1, "order": order, "index": 0, "turn_actor_id": order[0], "action_used": False, "dodging": [], "enemy": {"id": "enemy", "name": state.get("enemy_name", "守卫" if state.get("mode") == "free" else "盐壳守卫"), "hp": hp, "max_hp": hp, "ac": 11}}
+    state["combat"] = {"active": True, "round": 1, "order": order, "index": 0, "turn_actor_id": order[0], "action_used": False, "dodging": [], "enemy": enemies[0]}
     state["combat"].update(encounter_id=uuid.uuid4().hex, scene_id=state.get("scene_id"), bonus_action_used=False, reactions_used=[])
     state["combat"]["enemy"].update(xp=50, attack_bonus=2, damage_dice="1d4", damage_type="bludgeoning")
     state["combat"]["enemies"] = [state["combat"]["enemy"]]
+    bind(state, encounter_id)
     events.append(event("combat", f"{state['combat']['enemy']['name']}阻断了前路。战斗开始。"))
     _auto_turns(state, events)
     return events
@@ -156,6 +164,8 @@ def _auto_turns(state, events):
         _step(state)
 
 def apply_action(state, member_id, action_id, target_id=None):
+    from .world_combat import validate_read_set
+    validate_read_set(state)
     from . import abilities
     if action_id == "rest" and any(abilities.modern(m["character"]) for m in state["members"]):
         raise ValueError("请使用角色面板的短休或长休；现代角色不能使用简化全队满血休整")
@@ -230,7 +240,12 @@ def apply_action(state, member_id, action_id, target_id=None):
                 tc.update(hp=tc["max_hp"], death_successes=0, death_failures=0, stable=False)
         events.append(event("rest", "你们在避风处休整，恢复全部生命。这次冒险唯一的休整机会已用尽（简化房规）。"))
     elif action_id == "advance":
-        state["scene_index"] = min(state.get("scene_index", 0) + 1, len(state.get("scenes") or content.SCENES) - 1)
+        from .world_combat import enter_place
+        next_index = min(state.get("scene_index", 0) + 1, len(state.get("scenes") or content.SCENES) - 1)
+        next_scene = content.scene_for({**state, "scene_index": next_index})
+        enter_place(state, next_scene["id"])
+        state["combat"] = None
+        state["scene_index"] = next_index
         state["scene"] = content.scene_for(state)
         state["scene_id"] = state["scene"]["id"]
         state["flags"]["scene_resolved"] = False
@@ -241,11 +256,16 @@ def apply_action(state, member_id, action_id, target_id=None):
             state["ending"] = state["scene"]["text"]
         events.append(event("ending" if state["completed"] else "scene", state["scene"]["text"]))
     elif action_id == "fight":
+        from .world_combat import preflight_place
+        preflight_place(state, state.get("scene_id") or state["scene"]["id"])
         state.setdefault("flags", {}).setdefault("attempted", {})[f"{state.get('scene_index', 0)}:fight"] = True
         events.extend(start_combat(state))
     else:
         action = next(a for a in content.scene_for(state)["actions"] if a["id"] == action_id)
         index = state.get("scene_index", 0)
+        if index == 1:
+            from .world_combat import preflight_place
+            preflight_place(state, state.get("scene_id") or state["scene"]["id"])
         flags = state.setdefault("flags", {})
         # The complete oath is a scenario-specific source of advantage, locked before rolling.
         oath_advantage = state.get("mode") != "free" and index == 3 and action_id == "parley" and bool(flags.get("oath"))

@@ -55,7 +55,7 @@ def test_store_migrates_in_progress_scene_once_without_entering_or_rolling(tmp_p
         db.execute("INSERT INTO rooms VALUES(?,?,?,?)", (original["id"], original["invite_code"], original["version"], json.dumps(original)))
     migrated = Store(path)
     view = migrated.get(original["id"])
-    assert view["combat"] == original["combat"]
+    assert scenes.legacy_shape(view)["combat"] == original["combat"]
     assert view["director"] == original["director"]
     assert view["reward_ledger"] == original["reward_ledger"]
     assert view["members"] == original["members"]
@@ -64,4 +64,6 @@ def test_store_migrates_in_progress_scene_once_without_entering_or_rolling(tmp_p
     with migrated.connect() as db:
         canonical = json.loads(db.execute("SELECT state FROM rooms").fetchone()[0])
         assert "combat" not in canonical and "director" not in canonical
-        assert canonical["scene_instances"][scenes.MAIN_SCENE]["local"]["combat"] == original["combat"]
+        saved_combat = canonical["scene_instances"][scenes.MAIN_SCENE]["local"]["combat"]
+        assert "enemies" not in saved_combat and saved_combat["enemy_refs"]
+        assert scenes.legacy_shape(scenes.unpack(canonical))["combat"] == original["combat"]

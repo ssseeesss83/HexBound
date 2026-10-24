@@ -18,6 +18,8 @@ def pack(view):
     room = deepcopy(view)
     from .world_environment import freeze
     freeze(room)
+    from .world_combat import freeze as freeze_combat
+    freeze_combat(room)
     if room.get("scene_storage_version", STORAGE_VERSION) not in {1, STORAGE_VERSION}:
         raise ValueError("Unsupported scene storage version")
     active_scene = room.pop("_scene_execution_view", None)
@@ -80,6 +82,8 @@ def unpack(payload, scene_id=MAIN_SCENE):
     room["_scene_execution_view"] = scene_id
     from .world_environment import materialize
     materialize(room)
+    from .world_combat import materialize as materialize_combat
+    materialize_combat(room)
     return room
 
 
@@ -110,11 +114,18 @@ def legacy_shape(view):
     """For migration verification: original fields, without new storage metadata."""
     value = deepcopy(view)
     for key in ("scene_instances", "member_contexts", "scene_storage_version", "_scene_execution_view", "_room_members", "_room_status", "_text_channel",
-                "world_schema", "world_places", "world_entities", "world_environment_version", "_object_origin_place", "_object_read_set"):
+                "world_schema", "world_places", "world_entities", "world_environment_version", "_object_origin_place", "_object_read_set",
+                "world_combat_version", "world_encounter_receipts", "_creature_read_set"):
         value.pop(key, None)
     for env in value.get("environment", {}).values():
         env.pop("entity_refs", None)
         for obj in env.get("objects", {}).values():
             obj.pop("entity_id", None)
             obj.pop("entity_revision", None)
+    combat = value.get("combat") or {}
+    combat.pop("enemy_refs", None)
+    combat.pop("legacy_enemy_alias_id", None)
+    for row in combat.get("enemies", []) + ([combat["enemy"]] if combat.get("enemy") else []):
+        row.pop("entity_id", None)
+        row.pop("entity_revision", None)
     return value

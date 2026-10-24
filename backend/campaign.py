@@ -108,11 +108,15 @@ def start_campaign(state, package):
 
 
 def _enter(state, node_id, events):
+    from .world_combat import enter_place
+    enter_place(state, node_id)
     state["campaign"]["node_id"] = node_id
     node = _node(state)
     state["scene_id"] = node_id
     # Never put the full graph or routes in scene; API serializes only this view.
     state["scene"] = {"id": node_id, "title": node["title"], "text": node["text"], "objective": node.get("objective", ""), "eyebrow": state["campaign"]["package"]["scenario"]["name"], "objects": deepcopy(node.get("objects", []))}
+    from .world_environment import attach_current
+    attach_current(state)
     state["combat"] = None
     state["campaign"]["visited"].append(node_id)
     state["completed"] = bool(node.get("ending"))
@@ -130,6 +134,12 @@ def _start_combat(state, node, events):
         card = deepcopy(state["campaign"]["package"]["monsters"][mid])
         card.update(id=f"enemy:{index}:{mid}", card_id=mid, max_hp=card["hp"])
         enemies.append(card)
+    from .world_combat import begin, bind
+    enemies, encounter_id = begin(state, enemies, spawn_key=node.get("spawn_key"))
+    if not enemies:
+        state["combat"] = None
+        return
+    for card in enemies:
         r = rules.check(card.get("initiative_bonus", 0))
         rolls.append((r["total"], card["id"]))
         events.append(rules.event("roll", f"{card['name']} 的先攻为 {r['total']}。", actor_id=card["id"], roll={**r, "kind": "initiative"}))
@@ -142,6 +152,7 @@ def _start_combat(state, node, events):
     order = [actor for _, actor in sorted(rolls, key=lambda x: (-x[0], x[1]))]
     state["combat"] = {"active": True, "round": 1, "index": 0, "order": order, "turn_actor_id": order[0], "action_used": False, "dodging": [], "enemies": enemies}
     state["combat"].update(encounter_id=uuid.uuid4().hex, scene_id=state.get("scene_id"), bonus_action_used=False, reactions_used=[])
+    bind(state, encounter_id)
     events.append(rules.event("combat", "遭遇开始。行动顺序已经由服务器确定。"))
     _auto(state, events)
 
@@ -316,6 +327,8 @@ EFFECT_HANDLERS = {"attack": _effect_attack, "heal": _effect_heal, "check": _eff
 EFFECT_TARGETS = {"attack": {"enemy"}, "heal": {"self", "ally"}, "check": {"scene"}, "defend": {"self"}}
 
 def apply_action(state, member_id, action_id, target_id=None):
+    from .world_combat import validate_read_set
+    validate_read_set(state)
     from . import abilities
     if action_id != "end_turn" and state.get("combat", {}) and state["combat"].get("active"):
         reason = abilities._budget_reason(state, member_id, "attack" if action_id == "attack" else "action")
@@ -333,6 +346,9 @@ def apply_action(state, member_id, action_id, target_id=None):
             raise ValueError("节点行动不接受客户端目标")
         sid = action.get("skill_id")
         next_node = action.get("next_node_id")
+        from .world_combat import preflight_place
+        for destination in {action.get(key) for key in ("next_node_id", "success_node_id", "failure_node_id")} - {None, ""}:
+            preflight_place(state, destination)
         if sid:
             skill = _skill(state, sid)
             outcome = EFFECT_HANDLERS[skill["effect"]](state, member_id, skill, None)
