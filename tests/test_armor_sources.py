@@ -72,7 +72,8 @@ def test_source_hash_drift_rejects_before_comparing_candidate(tmp_path,name):
 def test_legacy_archive_and_candidate_inventory_are_unchanged():
     legacy = rules_packages.build_legacy_package()
     assert 'timing_reference' not in legacy['records']['equipment-categories']['armor']
-    assert sum(map(len,c.COLLECTIONS.values()))==2322
+    # Four source-backed magic shield records were added in P02p1.
+    assert sum(map(len,c.COLLECTIONS.values()))==2326
     assert rules_packages.LEGACY_PACKAGE==legacy['package_version']
     assert not rules_packages.validate_records(c.COLLECTIONS)
 

@@ -116,3 +116,5 @@ p64完整穿脱段及四类时间保存到现有护甲分类的timing_reference�
 `official/magic-shields-review.json`记录当前零差异；candidate为2,326条（magic-items366），raw及legacy原样保留。此补录不签收魔法物品全集或装备AC执行。
 
 `tools/audit_magic_inventory.py`先独立读取官方字体标题与14项明确处分，合并Detection and / Location跨行标题，核定240独立标题，再与候选母项映射；126规范变体须有唯一母项和完整引用。`official/magic-inventory-review.json`保留全部标题位置、处分理由及关系，当前零差异。目录验收不代替正文、稀有度或效果验收，嵌套统计卡仍须在所属条目中完整保存。
+
+240魔法物品母项完整正文现由tools/extract_magic_bodies.py从固定PDF按官方标题坐标提取，magic-item-blocks.json保留原始分段、坐标与跨页正文。tools/audit_magic_bodies.py独立映射稳定ID，校验240正文及240完整source reference。46条候选正文改用官方完整文本，包含资料与Markdown格式差异，预修快照保留；符号比较保留倍乘、脚注标记及分数，不能以排版清洗丢失规则。Deck的Avatar of Death、Figurine的Giant Fly保留在条目中；Wings与Orb之间的sentient通则不混入正文。此批不签126变体、独立结构稀有度 / 类别字段、通则或机械执行。candidate 2,326、raw及legacy仍冻结。
