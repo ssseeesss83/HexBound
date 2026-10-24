@@ -70,6 +70,7 @@ def validate_records(records, *, inventory=None):
         from .monster_headers import issues as monster_header_issues
         from .monster_bodies import issues as monster_body_issues
         from .monster_action_bodies import issues as monster_action_body_issues
+        from .monster_attack_damage import issues as monster_attack_damage_issues
         errors.extend(growth_issues(records))
         errors.extend(armor_issues(records))
         errors.extend(equipment_issues(records))
@@ -93,6 +94,7 @@ def validate_records(records, *, inventory=None):
         errors.extend(monster_header_issues(records))
         errors.extend(monster_body_issues(records))
         errors.extend(monster_action_body_issues(records))
+        errors.extend(monster_attack_damage_issues(records))
         errors.extend("Feature is unreachable from class grants or choices: " + fid for fid in unreachable_features(records))
     if set(records) != set(inventory):
         errors.append("Rules collection set is incomplete")

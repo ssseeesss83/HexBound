@@ -69,7 +69,9 @@ def test_form_refs_are_not_permission_and_existing_prose_parameters_are_untouche
     assert all(r['path'] in [['legendary_actions_budget'],['legendary_rules_reference']]
         or r['path'][0]=='legendary_actions' and r['path'][-1]=='legendary_cost' for r in corrections)
     assert all(r['expected'] is None for r in corrections)
-    assert compendium.MONSTERS['vampire-mist']['legendary_actions'][0]['attack_bonus']==0
+    # A later numeric-source pass removes fabricated +0 attack placeholders;
+    # the legendary-cost batch itself still changes no attack parameter.
+    assert all('attack_bonus' not in r['path'] for r in corrections)
 
 
 @pytest.mark.parametrize('change',['budget_missing','budget_bool','budget_string','cost_missing','cost_bool','cost_float',

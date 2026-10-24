@@ -148,3 +148,5 @@ tools/audit_monster_headers.py独立核317官方头部→334候选的速度、�
 怪物完整来源tools/extract_monster_blocks.py按固定字体 / 坐标保存317整块及全部事件span；Challenge之后逐字词 / 数值 / 符号拼接校验无缺段，包含47段可能有规则含义的Cambria说明。两侧栏按明确owner单列；43嵌套标题尚不扁平化成动作。tools/audit_monster_bodies.py核334完整source引用零差异，只新增引用，不宣称现有动作desc已核。说明起点用整段字体边界，避免ReefShark / BanditCaptain句中加粗导致末项动作混入说明；Frog与FireBeetle规则事实完整保留。原值守卫不变，正文 / 参数 / 执行继续待核。
 
 tools/audit_monster_action_bodies.py独立核1,505项正文（550特性 / 844动作 / 12反应 / 99传奇）及名称库存，共4,346检查零差异。43嵌套标题并入父动作完整范围，use / recharge / form限制不因目录短名省略而丢失；五显式别名和侧栏派生可追溯。1,661修正为1,505完整ref+156正文，包含单位 / 排版差异与Solar100HP、疫病巨鼠平均4等实质更正。仅改desc及official_action_reference，未改任何嵌套数值；全部原守卫保留、来源锚稳定。普通Spider与SwarmSpider来源独立，条件形态与参数执行继续待核。
+
+攻击伤害数值tools/audit_monster_attack_damage.py核533直接攻击加值及709既有damage_dice / type摘要，5,933检查零差异。raw只作固定路径 / 类型身份绑定，数值由官方独立解析；12伪+0清null，其余709不改。799字面量与91未投影类型分量全部留存source短语 / 位置 / 摘录及完整正文链接，Djinni显式or，天使included语义保留。此证据不签条件模型或触发时序，尤其Aboleth酸伤仍不得当即时命中伤害，Bugbear / Duergar摘要不代表所有分支；条件状态始终false。原守卫与预修快照完整，未激活。

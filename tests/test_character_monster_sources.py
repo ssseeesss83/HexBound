@@ -74,7 +74,7 @@ def test_quarantine_removes_only_unverified_night_hag_items():
     # Later source reconciliation adds provenance to every retained trait.
     # The quarantine must still preserve their original rules/parameters.
     assert correction['value'] == [
-        {key:value for key,value in trait.items() if key!='official_action_reference'}
+        {key:value for key,value in trait.items() if not key.startswith('official_')}
         for trait in hag['special_abilities']]
 
 
