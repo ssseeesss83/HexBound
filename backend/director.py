@@ -77,6 +77,11 @@ def _fingerprint(state):
     keys = ("id", "status", "host_id", "scene", "scene_id", "scene_index", "members",
             "combat", "flags", "campaign", "completed", "rest_used", "mode", "environment", "progression")
     snapshot = {key: state.get(key) for key in keys}
+    snapshot["environment"] = state.get("environment", {}).get(state.get("scene_id"), {})
+    instance = state.get("scene_instances", {}).get(state.get("_scene_execution_view", "scene-main"), {})
+    place = state.get("world_places", {}).get(instance.get("place_id"))
+    if place is not None:
+        snapshot["place_revision"] = place["revision"]
     if state.get("campaign"):
         current = state["campaign"]
         actors = {member["id"] for member in state["members"]}

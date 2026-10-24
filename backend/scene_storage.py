@@ -16,6 +16,8 @@ CAMPAIGN_CURSOR = frozenset({"node_id", "visited"})
 def pack(view):
     """Serialize an execution view; never run rules or call scene entry hooks."""
     room = deepcopy(view)
+    from .world_environment import freeze
+    freeze(room)
     if room.get("scene_storage_version", STORAGE_VERSION) not in {1, STORAGE_VERSION}:
         raise ValueError("Unsupported scene storage version")
     active_scene = room.pop("_scene_execution_view", None)
@@ -76,10 +78,16 @@ def unpack(payload, scene_id=MAIN_SCENE):
     if isinstance(room.get("progression"), dict):
         room["progression"] = {**room["progression"], **local.get("progression_clock", {})}
     room["_scene_execution_view"] = scene_id
+    from .world_environment import materialize
+    materialize(room)
     return room
 
 
 def for_scene(room, scene_id):
+    from .world_environment import prepare_save
+    room = deepcopy(room)
+    if "_scene_execution_view" in room:
+        prepare_save(room)
     view = unpack(pack(room), scene_id)
     view["_room_members"] = view.get("members", [])
     view["members"] = [member for member in view["_room_members"]
@@ -101,6 +109,12 @@ def for_actor(room, actor):
 def legacy_shape(view):
     """For migration verification: original fields, without new storage metadata."""
     value = deepcopy(view)
-    for key in ("scene_instances", "member_contexts", "scene_storage_version", "_scene_execution_view", "_room_members", "_room_status", "_text_channel"):
+    for key in ("scene_instances", "member_contexts", "scene_storage_version", "_scene_execution_view", "_room_members", "_room_status", "_text_channel",
+                "world_schema", "world_places", "world_entities", "world_environment_version", "_object_origin_place", "_object_read_set"):
         value.pop(key, None)
+    for env in value.get("environment", {}).values():
+        env.pop("entity_refs", None)
+        for obj in env.get("objects", {}).values():
+            obj.pop("entity_id", None)
+            obj.pop("entity_revision", None)
     return value

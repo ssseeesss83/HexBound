@@ -281,6 +281,9 @@ def advance_environment(state):
     env['objects'] = _objects(state)
     env['tick'] = env.get('tick',0) + 1
     env['elapsed_seconds'] = env.get('elapsed_seconds',0)+6
+    from .world_environment import environment_tick
+    if not environment_tick(state, env['elapsed_seconds']):
+        return
     for item in env['objects'].values():
         if item.get('burning') and item['hp']>0:
             item['hp']=max(0,item['hp']-2)
