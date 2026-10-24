@@ -1,0 +1,658 @@
+{
+  "schema_version": 1,
+  "ruleset_id": "dnd5e-2014-srd5.1",
+  "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+  "scope": "reviewed_numeric_stages_not_executable_handlers",
+  "records": {
+    "acid-arrow": {
+      "spell_id": "acid-arrow",
+      "status": "reference_pending_execution",
+      "source": {
+        "document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "printed_pages": [
+          114
+        ],
+        "heading": "Acid Arrow",
+        "spell_block_sha256": "8ddac5aada7d69c19eb205fbb3f25a4eaf93aba66c29d3ac6815e1fe6b89ea5f"
+      },
+      "stages": [
+        {
+          "id": "initial",
+          "trigger": {
+            "event": "spell_cast"
+          },
+          "targets": {
+            "selector": "one_target_in_spell_range"
+          },
+          "resolution": {
+            "attack_type": "ranged_spell_attack",
+            "on_hit": {
+              "damage_type": "acid",
+              "damage_at_slot_level": {
+                "2": "4d4",
+                "3": "5d4",
+                "4": "6d4",
+                "5": "7d4",
+                "6": "8d4",
+                "7": "9d4",
+                "8": "10d4",
+                "9": "11d4"
+              }
+            },
+            "on_miss": {
+              "damage_fraction": [
+                1,
+                2
+              ],
+              "damage_reference": "initial.on_hit",
+              "schedule_delayed": false
+            }
+          }
+        },
+        {
+          "id": "delayed",
+          "trigger": {
+            "event": "target_next_turn_end"
+          },
+          "targets": {
+            "selector": "initial_target"
+          },
+          "resolution": {
+            "damage_type": "acid",
+            "damage_at_slot_level": {
+              "2": "2d4",
+              "3": "3d4",
+              "4": "4d4",
+              "5": "5d4",
+              "6": "6d4",
+              "7": "7d4",
+              "8": "8d4",
+              "9": "9d4"
+            },
+            "new_attack_or_save": false
+          },
+          "requires": {
+            "initial_attack": "hit"
+          },
+          "persists_after_instantaneous_cast": true
+        }
+      ],
+      "runtime_verified": false,
+      "interpretation_pending": [
+        "critical_hit_delayed_dice_binding",
+        "general_damage_rounding_and_resistance_order"
+      ]
+    },
+    "fire-shield": {
+      "spell_id": "fire-shield",
+      "status": "reference_pending_execution",
+      "source": {
+        "document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "printed_pages": [
+          144
+        ],
+        "heading": "Fire Shield",
+        "spell_block_sha256": "880c6fa6fb2d3b4b02647ed253ec4ab753292f8ff7fa752e5363e50a179b68d9"
+      },
+      "stages": [
+        {
+          "id": "warm-retaliation",
+          "trigger": {
+            "event": "melee_attack_hits_caster"
+          },
+          "targets": {
+            "selector": "attacker",
+            "distance_to_caster_lte_ft": 5,
+            "attacker_kind": "creature"
+          },
+          "resolution": {
+            "damage_type": "fire",
+            "damage_at_slot_level": {
+              "4": "2d8",
+              "5": "2d8",
+              "6": "2d8",
+              "7": "2d8",
+              "8": "2d8",
+              "9": "2d8"
+            }
+          },
+          "requires": {
+            "shield_choice": "warm"
+          },
+          "action_cost": "none",
+          "frequency": "every_qualifying_hit"
+        },
+        {
+          "id": "chill-retaliation",
+          "trigger": {
+            "event": "melee_attack_hits_caster"
+          },
+          "targets": {
+            "selector": "attacker",
+            "distance_to_caster_lte_ft": 5,
+            "attacker_kind": "creature"
+          },
+          "resolution": {
+            "damage_type": "cold",
+            "damage_at_slot_level": {
+              "4": "2d8",
+              "5": "2d8",
+              "6": "2d8",
+              "7": "2d8",
+              "8": "2d8",
+              "9": "2d8"
+            }
+          },
+          "requires": {
+            "shield_choice": "chill"
+          },
+          "action_cost": "none",
+          "frequency": "every_qualifying_hit"
+        }
+      ],
+      "runtime_verified": false,
+      "choices": [
+        {
+          "id": "shield_choice",
+          "choose": 1,
+          "at": "spell_cast",
+          "options": {
+            "warm": {
+              "resistance": "cold"
+            },
+            "chill": {
+              "resistance": "fire"
+            }
+          },
+          "change_rule": "not_provided_by_spell_text"
+        }
+      ],
+      "additional_effects": {
+        "bright_radius_ft": 10,
+        "dim_additional_ft": 10,
+        "early_dismissal_cost": "action"
+      },
+      "interpretation_pending": [
+        "general_resistance_and_retaliation_order",
+        "shield_switching_has_no_spell_text_rule"
+      ]
+    },
+    "wall-of-ice": {
+      "spell_id": "wall-of-ice",
+      "status": "reference_pending_execution",
+      "source": {
+        "document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "printed_pages": [
+          190
+        ],
+        "heading": "Wall of Ice",
+        "spell_block_sha256": "8a0605bd17e4fa1131cad4c695b2c141b0e360f4427fd5bd962d796f46f33dd3"
+      },
+      "stages": [
+        {
+          "id": "appearance",
+          "trigger": {
+            "event": "wall_appears_over_occupied_space"
+          },
+          "targets": {
+            "selector": "each_creature_in_intersected_space"
+          },
+          "resolution": {
+            "damage_type": "cold",
+            "damage_at_slot_level": {
+              "6": "10d6",
+              "7": "12d6",
+              "8": "14d6",
+              "9": "16d6"
+            },
+            "saving_throw": {
+              "ability": "dex",
+              "dc_source": "caster_spell_save_dc",
+              "on_success": "half"
+            }
+          },
+          "additional_effect": "push_to_one_side_of_wall"
+        },
+        {
+          "id": "broken-section",
+          "trigger": {
+            "event": "wall_section_reaches_zero_hp"
+          },
+          "targets": {
+            "selector": "destroyed_section"
+          },
+          "resolution": {
+            "destroy_section": true,
+            "replace_with_frigid_air": true,
+            "air_keeps_wall_remaining_duration": true
+          }
+        },
+        {
+          "id": "frigid-air",
+          "trigger": {
+            "event": "creature_moves_through_frigid_air"
+          },
+          "targets": {
+            "selector": "moving_creature"
+          },
+          "resolution": {
+            "damage_type": "cold",
+            "damage_at_slot_level": {
+              "6": "5d6",
+              "7": "6d6",
+              "8": "7d6",
+              "9": "8d6"
+            },
+            "saving_throw": {
+              "ability": "con",
+              "dc_source": "caster_spell_save_dc",
+              "on_success": "half"
+            }
+          },
+          "frequency": "first_passage_per_any_turn"
+        }
+      ],
+      "runtime_verified": false,
+      "barrier": {
+        "ac": 12,
+        "hp_per_10ft_section": 30,
+        "vulnerability": "fire",
+        "thickness_ft": 1,
+        "surface": "solid",
+        "shapes": {
+          "dome_or_sphere": {
+            "max_radius_ft": 10
+          },
+          "panels": {
+            "width_ft": 10,
+            "height_ft": 10,
+            "must_be_contiguous": true,
+            "declared_panel_count": 10
+          }
+        },
+        "choose_shape": 1
+      },
+      "interpretation_pending": [
+        "push_side_controller_and_displacement",
+        "dome_section_partition",
+        "spatial_crossing_event_identity",
+        "fewer_than_ten_panels_not_explicitly_specified"
+      ]
+    },
+    "wall-of-thorns": {
+      "spell_id": "wall-of-thorns",
+      "status": "reference_pending_execution",
+      "source": {
+        "document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "printed_pages": [
+          191
+        ],
+        "heading": "Wall of Thorns",
+        "spell_block_sha256": "e2aa194156dbefcce9bb70dc5ea3059faf59ba4d44f6db10c6ff8067583958a2"
+      },
+      "stages": [
+        {
+          "id": "appearance",
+          "trigger": {
+            "event": "wall_appears"
+          },
+          "targets": {
+            "selector": "each_creature_in_wall_area"
+          },
+          "resolution": {
+            "damage_type": "piercing",
+            "damage_at_slot_level": {
+              "6": "7d8",
+              "7": "8d8",
+              "8": "9d8",
+              "9": "10d8"
+            },
+            "saving_throw": {
+              "ability": "dex",
+              "dc_source": "caster_spell_save_dc",
+              "on_success": "half"
+            }
+          }
+        },
+        {
+          "id": "entry",
+          "trigger": {
+            "event": "creature_enters_wall"
+          },
+          "targets": {
+            "selector": "entering_creature"
+          },
+          "resolution": {
+            "damage_type": "slashing",
+            "damage_at_slot_level": {
+              "6": "7d8",
+              "7": "8d8",
+              "8": "9d8",
+              "9": "10d8"
+            },
+            "saving_throw": {
+              "ability": "dex",
+              "dc_source": "caster_spell_save_dc",
+              "on_success": "half"
+            }
+          },
+          "frequency": "first_entry_per_any_turn"
+        },
+        {
+          "id": "turn-end",
+          "trigger": {
+            "event": "creature_ends_own_turn_in_wall"
+          },
+          "targets": {
+            "selector": "ending_creature"
+          },
+          "resolution": {
+            "damage_type": "slashing",
+            "damage_at_slot_level": {
+              "6": "7d8",
+              "7": "8d8",
+              "8": "9d8",
+              "9": "10d8"
+            },
+            "saving_throw": {
+              "ability": "dex",
+              "dc_source": "caster_spell_save_dc",
+              "on_success": "half"
+            }
+          }
+        }
+      ],
+      "runtime_verified": false,
+      "barrier": {
+        "surface": "solid",
+        "blocks_line_of_sight": true,
+        "movement_cost_ft_per_foot": 4,
+        "choose_shape": 1,
+        "shapes": {
+          "wall": {
+            "max_length_ft": 60,
+            "thickness_ft": 5,
+            "height_ft": 10
+          },
+          "ring": {
+            "diameter_ft": 20,
+            "max_height_ft": 20,
+            "thickness_ft": 5
+          }
+        }
+      },
+      "interpretation_pending": [
+        "entry_vs_area_movement_event_identity",
+        "space_path_intersections"
+      ]
+    },
+    "storm-of-vengeance": {
+      "spell_id": "storm-of-vengeance",
+      "status": "reference_pending_execution",
+      "source": {
+        "document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "printed_pages": [
+          183
+        ],
+        "heading": "Storm of Vengeance",
+        "spell_block_sha256": "d11df56e89f8eeb38121faf33a4d7ed9c8626ca883c97255af85b4d7eb533f82"
+      },
+      "stages": [
+        {
+          "id": "appearance",
+          "trigger": {
+            "event": "cloud_appears"
+          },
+          "targets": {
+            "selector": "each_creature_under_cloud",
+            "distance_to_cloud_lte_ft": 5000
+          },
+          "resolution": {
+            "damage_type": "thunder",
+            "damage_at_slot_level": {
+              "9": "2d6"
+            },
+            "saving_throw": {
+              "ability": "con",
+              "dc_source": "caster_spell_save_dc",
+              "on_success": "none"
+            },
+            "on_failed_save_condition": {
+              "id": "deafened",
+              "duration_seconds": 300,
+              "independent_of_spell_duration": true
+            }
+          }
+        },
+        {
+          "id": "round-2",
+          "trigger": {
+            "event": "caster_turn_in_spell_round"
+          },
+          "targets": {
+            "selector": "each_creature_and_object_under_cloud"
+          },
+          "resolution": {
+            "damage_type": "acid",
+            "damage_at_slot_level": {
+              "9": "1d6"
+            }
+          },
+          "spell_rounds": [
+            2
+          ]
+        },
+        {
+          "id": "round-3",
+          "trigger": {
+            "event": "caster_turn_in_spell_round"
+          },
+          "targets": {
+            "selector": "caster_selected_creatures_or_objects_under_cloud",
+            "bolt_count": 6,
+            "distinct_targets": true,
+            "max_bolts_per_target": 1
+          },
+          "resolution": {
+            "creature": {
+              "damage_type": "lightning",
+              "damage_at_slot_level": {
+                "9": "10d6"
+              },
+              "saving_throw": {
+                "ability": "dex",
+                "dc_source": "caster_spell_save_dc",
+                "on_success": "half"
+              }
+            },
+            "object_resolution": "pending_general_object_rules"
+          },
+          "spell_rounds": [
+            3
+          ]
+        },
+        {
+          "id": "round-4",
+          "trigger": {
+            "event": "caster_turn_in_spell_round"
+          },
+          "targets": {
+            "selector": "each_creature_under_cloud"
+          },
+          "resolution": {
+            "damage_type": "bludgeoning",
+            "damage_at_slot_level": {
+              "9": "2d6"
+            }
+          },
+          "spell_rounds": [
+            4
+          ]
+        },
+        {
+          "id": "round-5-to-10",
+          "trigger": {
+            "event": "caster_turn_in_spell_round"
+          },
+          "targets": {
+            "selector": "each_creature_in_storm_area"
+          },
+          "resolution": {
+            "damage_type": "cold",
+            "damage_at_slot_level": {
+              "9": "1d6"
+            }
+          },
+          "spell_rounds": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        }
+      ],
+      "runtime_verified": false,
+      "area": {
+        "cloud_radius_ft": 360
+      },
+      "weather_effects": {
+        "spell_rounds": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "difficult_terrain": true,
+        "heavily_obscured": true,
+        "ranged_weapon_attacks_in_area": "impossible",
+        "concentration_distraction": "severe",
+        "concentration_dc": "not_specified_here",
+        "wind_speed_mph": [
+          20,
+          50
+        ],
+        "disperse_fog_mist_similar": "ordinary_or_magical"
+      },
+      "interpretation_pending": [
+        "on_your_turn_does_not_select_start_or_end",
+        "round_3_fewer_than_six_targets",
+        "round_3_object_resolution",
+        "severe_distraction_concentration_check_binding"
+      ]
+    },
+    "spirit-guardians": {
+      "spell_id": "spirit-guardians",
+      "status": "reference_pending_execution",
+      "source": {
+        "document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "printed_pages": [
+          182
+        ],
+        "heading": "Spirit Guardians",
+        "spell_block_sha256": "e7bb5f3e507bc5b3f1e2a6c3c69dfae1681e8568c92c3c36661c335ff4938926"
+      },
+      "stages": [
+        {
+          "id": "exclusions",
+          "trigger": {
+            "event": "spell_cast"
+          },
+          "targets": {
+            "selector": "any_number_of_creatures_visible_to_caster_at_cast"
+          },
+          "resolution": {
+            "exclude_from_all_spell_effects": true
+          }
+        },
+        {
+          "id": "speed",
+          "trigger": {
+            "event": "creature_in_aura"
+          },
+          "targets": {
+            "selector": "nonexcluded_creature_in_aura"
+          },
+          "resolution": {
+            "speed_multiplier": [
+              1,
+              2
+            ],
+            "creates_difficult_terrain": false
+          }
+        },
+        {
+          "id": "entry",
+          "trigger": {
+            "event": "creature_enters_aura"
+          },
+          "targets": {
+            "selector": "nonexcluded_entering_creature"
+          },
+          "resolution": {
+            "damage_type": "alignment_selected",
+            "damage_at_slot_level": {
+              "3": "3d8",
+              "4": "4d8",
+              "5": "5d8",
+              "6": "6d8",
+              "7": "7d8",
+              "8": "8d8",
+              "9": "9d8"
+            },
+            "saving_throw": {
+              "ability": "wis",
+              "dc_source": "caster_spell_save_dc",
+              "on_success": "half"
+            }
+          },
+          "frequency": "first_entry_per_any_turn"
+        },
+        {
+          "id": "turn-start",
+          "trigger": {
+            "event": "creature_starts_own_turn_in_aura"
+          },
+          "targets": {
+            "selector": "nonexcluded_starting_creature"
+          },
+          "resolution": {
+            "damage_type": "alignment_selected",
+            "damage_at_slot_level": {
+              "3": "3d8",
+              "4": "4d8",
+              "5": "5d8",
+              "6": "6d8",
+              "7": "7d8",
+              "8": "8d8",
+              "9": "9d8"
+            },
+            "saving_throw": {
+              "ability": "wis",
+              "dc_source": "caster_spell_save_dc",
+              "on_success": "half"
+            }
+          }
+        }
+      ],
+      "runtime_verified": false,
+      "area": {
+        "radius_ft": 15,
+        "center": "caster",
+        "moves_with_caster": true
+      },
+      "damage_type_by_alignment": {
+        "good": "radiant",
+        "neutral": "radiant",
+        "evil": "necrotic"
+      },
+      "interpretation_pending": [
+        "caster_moving_aura_over_stationary_creature_entry_binding",
+        "speed_modification_order"
+      ]
+    }
+  }
+}

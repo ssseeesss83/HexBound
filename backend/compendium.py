@@ -248,6 +248,8 @@ COLLECTIONS = {
     "alignments": ALIGNMENTS, "equipment-categories": EQUIPMENT_CATEGORIES,
     "weapon-properties": WEAPON_PROPERTIES, "rules": RULES, "rule-sections": RULE_SECTIONS,
 }
+from .spell_structures import attach_structures
+SPELL_EFFECT_STRUCTURES = attach_structures(COLLECTIONS)
 ALIASES = {"class": "classes", "skill": "skills", "spell": "spells", "feature": "features", "subclass": "subclasses",
            "monster": "monsters", "condition": "conditions", "race": "races", "level": "levels"}
 

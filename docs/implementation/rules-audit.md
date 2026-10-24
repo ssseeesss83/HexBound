@@ -56,3 +56,9 @@ Flame Blade / Scorching Ray 的近战 / 远程攻击类别补齐；Call Lightnin
 另核对一致的范围：19 个简单逐环伤害表、9 个伤害戏法的 1/5/11/17 级骰表、6 个直接治疗升环表；53 项材料头中的金额及显式消耗词未丢失。只签这些字段，不据此签收完整法术。材料消耗不得统一为单个布尔值，Clone / Legend Lore 为部分消耗，Forbiddance 有正文条件。
 
 明确待补效果分支：Acid Arrow 延迟伤害，Fire Shield 冷伤选项，Wall of Ice 寒气 CON / 5d6，Wall of Thorns 后续挥砍，Storm of Vengeance 后续轮次，Spirit Guardians 伤害类型与排除，Magic Missile 逐弹分配。Aid / False Life 不能按普通治疗解释。上述缺口继续阻止总签收。
+
+## 六个复杂法术阶段资料
+
+候选资料新增六项阶段引用，绑定官方法术块 SHA-256，原始 PDF / 抽取资料均不变。已核验数值及显式触发，未签运行时：Acid Arrow 命中与未命中及延迟；Fire Shield 暖 / 冷互斥与生物近战命中反伤；Wall of Ice 初始 DEX、破墙段、寒气 CON；Wall of Thorns 初始穿刺与后续挥砍；Storm 各轮不同对象 / 类型 / 豁免；Spirit Guardians 排除、速度、首次进入与自身回合开始。
+
+明确不臆造：盾型切换原文规则未提供；冰墙原文十块面板能否减少未明确；风暴后续 on your turn 不固定为起止、第三轮物件未擅配 DEX、目标不足六个不擅裁；守护灵没有施法出现伤害，也没有全体友军自动免疫。Acid Arrow 延迟暴击、区域移动的进入事件等仍列 interpretation_pending。
