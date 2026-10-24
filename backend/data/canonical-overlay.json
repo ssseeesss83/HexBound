@@ -26138,6 +26138,814 @@
         "status": "reference_pending_execution",
         "runtime_verified": false
       }
+    },
+    {
+      "id": "official-magic-crafting-carpet-of-flying-3x5-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "carpet-of-flying-3x5"
+      ],
+      "page": 213,
+      "heading": "Carpet of Flying",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/carpet-of-flying"
+    },
+    {
+      "id": "official-magic-crafting-carpet-of-flying-3x5-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "carpet-of-flying-3x5"
+      ],
+      "page": 213,
+      "heading": "Carpet of Flying",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-crafting-carpet-of-flying-3x5-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "carpet-of-flying-3x5"
+      ],
+      "page": 213,
+      "heading": "Carpet of Flying",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "carpet-of-flying",
+        "selection_row": "01–20 3 ft. × 5 ft. 200 lb. 80 feet",
+        "selection": {
+          "d100_range": [
+            1,
+            20
+          ],
+          "size_feet": [
+            3,
+            5
+          ],
+          "normal_capacity_lb": 200,
+          "max_capacity_lb": 400,
+          "flying_speed_ft": 80,
+          "overloaded_flying_speed_ft": 40
+        },
+        "complete_parent_text": "Wondrous item, very rare\nYou can speak the carpet’s command word as an\naction to make the carpet hover and fly. It moves\naccording to your spoken directions, provided that\nyou are within 30 feet of it.\nFour sizes of carpet of flying exist. The GM chooses\nthe size of a given carpet or determines it randomly.\nd100 Size Capacity Flying Speed\n01–20 3 ft. × 5 ft. 200 lb. 80 feet\n21–55 4 ft. × 6 ft. 400 lb. 60 feet\n56–80 5 ft. × 7 ft. 600 lb. 40 feet\n81–100 6 ft. × 9 ft. 800 lb. 30 feet\nA carpet can carry up to twice the weight shown\non the table, but it flies at half speed if it carries\nmore than its normal capacity.",
+        "printed_pages": [
+          213
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-crafting-carpet-of-flying-4x6-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "carpet-of-flying-4x6"
+      ],
+      "page": 213,
+      "heading": "Carpet of Flying",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/carpet-of-flying"
+    },
+    {
+      "id": "official-magic-crafting-carpet-of-flying-4x6-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "carpet-of-flying-4x6"
+      ],
+      "page": 213,
+      "heading": "Carpet of Flying",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-crafting-carpet-of-flying-4x6-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "carpet-of-flying-4x6"
+      ],
+      "page": 213,
+      "heading": "Carpet of Flying",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "carpet-of-flying",
+        "selection_row": "21–55 4 ft. × 6 ft. 400 lb. 60 feet",
+        "selection": {
+          "d100_range": [
+            21,
+            55
+          ],
+          "size_feet": [
+            4,
+            6
+          ],
+          "normal_capacity_lb": 400,
+          "max_capacity_lb": 800,
+          "flying_speed_ft": 60,
+          "overloaded_flying_speed_ft": 30
+        },
+        "complete_parent_text": "Wondrous item, very rare\nYou can speak the carpet’s command word as an\naction to make the carpet hover and fly. It moves\naccording to your spoken directions, provided that\nyou are within 30 feet of it.\nFour sizes of carpet of flying exist. The GM chooses\nthe size of a given carpet or determines it randomly.\nd100 Size Capacity Flying Speed\n01–20 3 ft. × 5 ft. 200 lb. 80 feet\n21–55 4 ft. × 6 ft. 400 lb. 60 feet\n56–80 5 ft. × 7 ft. 600 lb. 40 feet\n81–100 6 ft. × 9 ft. 800 lb. 30 feet\nA carpet can carry up to twice the weight shown\non the table, but it flies at half speed if it carries\nmore than its normal capacity.",
+        "printed_pages": [
+          213
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-crafting-carpet-of-flying-5x7-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "carpet-of-flying-5x7"
+      ],
+      "page": 213,
+      "heading": "Carpet of Flying",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/carpet-of-flying"
+    },
+    {
+      "id": "official-magic-crafting-carpet-of-flying-5x7-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "carpet-of-flying-5x7"
+      ],
+      "page": 213,
+      "heading": "Carpet of Flying",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-crafting-carpet-of-flying-5x7-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "carpet-of-flying-5x7"
+      ],
+      "page": 213,
+      "heading": "Carpet of Flying",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "carpet-of-flying",
+        "selection_row": "56–80 5 ft. × 7 ft. 600 lb. 40 feet",
+        "selection": {
+          "d100_range": [
+            56,
+            80
+          ],
+          "size_feet": [
+            5,
+            7
+          ],
+          "normal_capacity_lb": 600,
+          "max_capacity_lb": 1200,
+          "flying_speed_ft": 40,
+          "overloaded_flying_speed_ft": 20
+        },
+        "complete_parent_text": "Wondrous item, very rare\nYou can speak the carpet’s command word as an\naction to make the carpet hover and fly. It moves\naccording to your spoken directions, provided that\nyou are within 30 feet of it.\nFour sizes of carpet of flying exist. The GM chooses\nthe size of a given carpet or determines it randomly.\nd100 Size Capacity Flying Speed\n01–20 3 ft. × 5 ft. 200 lb. 80 feet\n21–55 4 ft. × 6 ft. 400 lb. 60 feet\n56–80 5 ft. × 7 ft. 600 lb. 40 feet\n81–100 6 ft. × 9 ft. 800 lb. 30 feet\nA carpet can carry up to twice the weight shown\non the table, but it flies at half speed if it carries\nmore than its normal capacity.",
+        "printed_pages": [
+          213
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-crafting-carpet-of-flying-6x9-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "carpet-of-flying-6x9"
+      ],
+      "page": 213,
+      "heading": "Carpet of Flying",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/carpet-of-flying"
+    },
+    {
+      "id": "official-magic-crafting-carpet-of-flying-6x9-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "carpet-of-flying-6x9"
+      ],
+      "page": 213,
+      "heading": "Carpet of Flying",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-crafting-carpet-of-flying-6x9-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "carpet-of-flying-6x9"
+      ],
+      "page": 213,
+      "heading": "Carpet of Flying",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "carpet-of-flying",
+        "selection_row": "81–100 6 ft. × 9 ft. 800 lb. 30 feet",
+        "selection": {
+          "d100_range": [
+            81,
+            100
+          ],
+          "size_feet": [
+            6,
+            9
+          ],
+          "normal_capacity_lb": 800,
+          "max_capacity_lb": 1600,
+          "flying_speed_ft": 30,
+          "overloaded_flying_speed_ft": 15
+        },
+        "complete_parent_text": "Wondrous item, very rare\nYou can speak the carpet’s command word as an\naction to make the carpet hover and fly. It moves\naccording to your spoken directions, provided that\nyou are within 30 feet of it.\nFour sizes of carpet of flying exist. The GM chooses\nthe size of a given carpet or determines it randomly.\nd100 Size Capacity Flying Speed\n01–20 3 ft. × 5 ft. 200 lb. 80 feet\n21–55 4 ft. × 6 ft. 400 lb. 60 feet\n56–80 5 ft. × 7 ft. 600 lb. 40 feet\n81–100 6 ft. × 9 ft. 800 lb. 30 feet\nA carpet can carry up to twice the weight shown\non the table, but it flies at half speed if it carries\nmore than its normal capacity.",
+        "printed_pages": [
+          213
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-crafting-manual-of-golems-clay-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "manual-of-golems-clay"
+      ],
+      "page": 229,
+      "heading": "Manual of Golems",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/manual-of-golems"
+    },
+    {
+      "id": "official-magic-crafting-manual-of-golems-clay-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "manual-of-golems-clay"
+      ],
+      "page": 229,
+      "heading": "Manual of Golems",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-crafting-manual-of-golems-clay-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "manual-of-golems-clay"
+      ],
+      "page": 229,
+      "heading": "Manual of Golems",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "manual-of-golems",
+        "selection_row": "1–5 Clay 30 days 65,000 gp",
+        "selection": {
+          "d20_range": [
+            1,
+            5
+          ],
+          "golem_type": "clay",
+          "time_days": 30,
+          "cost_gp": 65000
+        },
+        "complete_parent_text": "Wondrous item, very rare\nThis tome contains information and incantations\nnecessary to make a particular type of golem. The\nGM chooses the type or determines it randomly. To\ndecipher and use the manual, you must be a\nspellcaster with at least two 5th-­‐‑level spell slots. A\ncreature that can’t use a manual of golems and\nattempts to read it takes 6d6 psychic damage.\nd20 Golem Time Cost\n1–5 Clay 30 days 65,000 gp\n6–17 Flesh 60 days 50,000 gp\n18 Iron 120 days 100,000 gp\n19–20 Stone 90 days 80,000 gp\nTo create a golem, you must spend the time shown\non the table, working without interruption with the\nmanual at hand and resting no more than 8 hours\nper day. You must also pay the specified cost to\npurchase supplies.\nOnce you finish creating the golem, the book is\nconsumed in eldritch flames. The golem becomes\nanimate when the ashes of the manual are sprinkled\non it. It is under your control, and it understands and\nobeys your spoken commands.",
+        "printed_pages": [
+          229,
+          230
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-crafting-manual-of-golems-flesh-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "manual-of-golems-flesh"
+      ],
+      "page": 229,
+      "heading": "Manual of Golems",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/manual-of-golems"
+    },
+    {
+      "id": "official-magic-crafting-manual-of-golems-flesh-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "manual-of-golems-flesh"
+      ],
+      "page": 229,
+      "heading": "Manual of Golems",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-crafting-manual-of-golems-flesh-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "manual-of-golems-flesh"
+      ],
+      "page": 229,
+      "heading": "Manual of Golems",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "manual-of-golems",
+        "selection_row": "6–17 Flesh 60 days 50,000 gp",
+        "selection": {
+          "d20_range": [
+            6,
+            17
+          ],
+          "golem_type": "flesh",
+          "time_days": 60,
+          "cost_gp": 50000
+        },
+        "complete_parent_text": "Wondrous item, very rare\nThis tome contains information and incantations\nnecessary to make a particular type of golem. The\nGM chooses the type or determines it randomly. To\ndecipher and use the manual, you must be a\nspellcaster with at least two 5th-­‐‑level spell slots. A\ncreature that can’t use a manual of golems and\nattempts to read it takes 6d6 psychic damage.\nd20 Golem Time Cost\n1–5 Clay 30 days 65,000 gp\n6–17 Flesh 60 days 50,000 gp\n18 Iron 120 days 100,000 gp\n19–20 Stone 90 days 80,000 gp\nTo create a golem, you must spend the time shown\non the table, working without interruption with the\nmanual at hand and resting no more than 8 hours\nper day. You must also pay the specified cost to\npurchase supplies.\nOnce you finish creating the golem, the book is\nconsumed in eldritch flames. The golem becomes\nanimate when the ashes of the manual are sprinkled\non it. It is under your control, and it understands and\nobeys your spoken commands.",
+        "printed_pages": [
+          229,
+          230
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-crafting-manual-of-golems-iron-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "manual-of-golems-iron"
+      ],
+      "page": 229,
+      "heading": "Manual of Golems",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/manual-of-golems"
+    },
+    {
+      "id": "official-magic-crafting-manual-of-golems-iron-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "manual-of-golems-iron"
+      ],
+      "page": 229,
+      "heading": "Manual of Golems",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-crafting-manual-of-golems-iron-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "manual-of-golems-iron"
+      ],
+      "page": 229,
+      "heading": "Manual of Golems",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "manual-of-golems",
+        "selection_row": "18 Iron 120 days 100,000 gp",
+        "selection": {
+          "d20_range": [
+            18,
+            18
+          ],
+          "golem_type": "iron",
+          "time_days": 120,
+          "cost_gp": 100000
+        },
+        "complete_parent_text": "Wondrous item, very rare\nThis tome contains information and incantations\nnecessary to make a particular type of golem. The\nGM chooses the type or determines it randomly. To\ndecipher and use the manual, you must be a\nspellcaster with at least two 5th-­‐‑level spell slots. A\ncreature that can’t use a manual of golems and\nattempts to read it takes 6d6 psychic damage.\nd20 Golem Time Cost\n1–5 Clay 30 days 65,000 gp\n6–17 Flesh 60 days 50,000 gp\n18 Iron 120 days 100,000 gp\n19–20 Stone 90 days 80,000 gp\nTo create a golem, you must spend the time shown\non the table, working without interruption with the\nmanual at hand and resting no more than 8 hours\nper day. You must also pay the specified cost to\npurchase supplies.\nOnce you finish creating the golem, the book is\nconsumed in eldritch flames. The golem becomes\nanimate when the ashes of the manual are sprinkled\non it. It is under your control, and it understands and\nobeys your spoken commands.",
+        "printed_pages": [
+          229,
+          230
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-crafting-manual-of-golems-stone-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "manual-of-golems-stone"
+      ],
+      "page": 229,
+      "heading": "Manual of Golems",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/manual-of-golems"
+    },
+    {
+      "id": "official-magic-crafting-manual-of-golems-stone-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "manual-of-golems-stone"
+      ],
+      "page": 229,
+      "heading": "Manual of Golems",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-crafting-manual-of-golems-stone-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "manual-of-golems-stone"
+      ],
+      "page": 229,
+      "heading": "Manual of Golems",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "manual-of-golems",
+        "selection_row": "19–20 Stone 90 days 80,000 gp",
+        "selection": {
+          "d20_range": [
+            19,
+            20
+          ],
+          "golem_type": "stone",
+          "time_days": 90,
+          "cost_gp": 80000
+        },
+        "complete_parent_text": "Wondrous item, very rare\nThis tome contains information and incantations\nnecessary to make a particular type of golem. The\nGM chooses the type or determines it randomly. To\ndecipher and use the manual, you must be a\nspellcaster with at least two 5th-­‐‑level spell slots. A\ncreature that can’t use a manual of golems and\nattempts to read it takes 6d6 psychic damage.\nd20 Golem Time Cost\n1–5 Clay 30 days 65,000 gp\n6–17 Flesh 60 days 50,000 gp\n18 Iron 120 days 100,000 gp\n19–20 Stone 90 days 80,000 gp\nTo create a golem, you must spend the time shown\non the table, working without interruption with the\nmanual at hand and resting no more than 8 hours\nper day. You must also pay the specified cost to\npurchase supplies.\nOnce you finish creating the golem, the book is\nconsumed in eldritch flames. The golem becomes\nanimate when the ashes of the manual are sprinkled\non it. It is under your control, and it understands and\nobeys your spoken commands.",
+        "printed_pages": [
+          229,
+          230
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-crafting-horn-of-valhalla-silver-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "horn-of-valhalla-silver"
+      ],
+      "page": 226,
+      "heading": "Horn of Valhalla",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/horn-of-valhalla"
+    },
+    {
+      "id": "official-magic-crafting-horn-of-valhalla-silver-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "horn-of-valhalla-silver"
+      ],
+      "page": 226,
+      "heading": "Horn of Valhalla",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-crafting-horn-of-valhalla-silver-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "horn-of-valhalla-silver"
+      ],
+      "page": 226,
+      "heading": "Horn of Valhalla",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "horn-of-valhalla",
+        "selection_row": "01–40 Silver 2d4 + 2 None",
+        "selection": {
+          "d100_range": [
+            1,
+            40
+          ],
+          "metal": "silver",
+          "berserker_dice": "2d4",
+          "berserker_bonus": 2,
+          "requirement": null
+        },
+        "complete_parent_text": "Wondrous item, rare (silver or brass), very rare\n(bronze), or legendary (iron)\nYou can use an action to blow this horn. In response,\nwarrior spirits from the Valhalla appear within 60\nfeet of you. They use the statistics of a berserker.\nThey return to Valhalla after 1 hour or when they\ndrop to 0 hit points. Once you use the horn, it can’t\nbe used again until 7 days have passed.\nFour types of horn of Valhalla are known to exist,\neach made of a different metal. The horn’s type\ndetermines how many berserkers answer its\nsummons, as well as the requirement for its use. The\nGM chooses the horn’s type or determines it\nrandomly.\nd100 Horn Berserkers Requirement\nType Summoned\n01–40 Silver 2d4 + 2 None\n41–75 Brass 3d4 + 3 Proficiency with all\nsimple weapons\n76–90 Bronze 4d4 + 4 Proficiency with all\nmedium armor\n91–00 Iron 5d4 + 5 Proficiency with all\nmartial weapons\nIf you blow the horn without meeting its\nrequirement, the summoned berserkers attack you.\nIf you meet the requirement, they are friendly to you\nand your companions and follow your commands.",
+        "printed_pages": [
+          226
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-crafting-horn-of-valhalla-brass-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "horn-of-valhalla-brass"
+      ],
+      "page": 226,
+      "heading": "Horn of Valhalla",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/horn-of-valhalla"
+    },
+    {
+      "id": "official-magic-crafting-horn-of-valhalla-brass-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "horn-of-valhalla-brass"
+      ],
+      "page": 226,
+      "heading": "Horn of Valhalla",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-crafting-horn-of-valhalla-brass-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "horn-of-valhalla-brass"
+      ],
+      "page": 226,
+      "heading": "Horn of Valhalla",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "horn-of-valhalla",
+        "selection_row": "41–75 Brass 3d4 + 3 Proficiency with all simple weapons",
+        "selection": {
+          "d100_range": [
+            41,
+            75
+          ],
+          "metal": "brass",
+          "berserker_dice": "3d4",
+          "berserker_bonus": 3,
+          "requirement": "Proficiency with all simple weapons"
+        },
+        "complete_parent_text": "Wondrous item, rare (silver or brass), very rare\n(bronze), or legendary (iron)\nYou can use an action to blow this horn. In response,\nwarrior spirits from the Valhalla appear within 60\nfeet of you. They use the statistics of a berserker.\nThey return to Valhalla after 1 hour or when they\ndrop to 0 hit points. Once you use the horn, it can’t\nbe used again until 7 days have passed.\nFour types of horn of Valhalla are known to exist,\neach made of a different metal. The horn’s type\ndetermines how many berserkers answer its\nsummons, as well as the requirement for its use. The\nGM chooses the horn’s type or determines it\nrandomly.\nd100 Horn Berserkers Requirement\nType Summoned\n01–40 Silver 2d4 + 2 None\n41–75 Brass 3d4 + 3 Proficiency with all\nsimple weapons\n76–90 Bronze 4d4 + 4 Proficiency with all\nmedium armor\n91–00 Iron 5d4 + 5 Proficiency with all\nmartial weapons\nIf you blow the horn without meeting its\nrequirement, the summoned berserkers attack you.\nIf you meet the requirement, they are friendly to you\nand your companions and follow your commands.",
+        "printed_pages": [
+          226
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-crafting-horn-of-valhalla-bronze-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "horn-of-valhalla-bronze"
+      ],
+      "page": 226,
+      "heading": "Horn of Valhalla",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/horn-of-valhalla"
+    },
+    {
+      "id": "official-magic-crafting-horn-of-valhalla-bronze-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "horn-of-valhalla-bronze"
+      ],
+      "page": 226,
+      "heading": "Horn of Valhalla",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-crafting-horn-of-valhalla-bronze-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "horn-of-valhalla-bronze"
+      ],
+      "page": 226,
+      "heading": "Horn of Valhalla",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "horn-of-valhalla",
+        "selection_row": "76–90 Bronze 4d4 + 4 Proficiency with all medium armor",
+        "selection": {
+          "d100_range": [
+            76,
+            90
+          ],
+          "metal": "bronze",
+          "berserker_dice": "4d4",
+          "berserker_bonus": 4,
+          "requirement": "Proficiency with all medium armor"
+        },
+        "complete_parent_text": "Wondrous item, rare (silver or brass), very rare\n(bronze), or legendary (iron)\nYou can use an action to blow this horn. In response,\nwarrior spirits from the Valhalla appear within 60\nfeet of you. They use the statistics of a berserker.\nThey return to Valhalla after 1 hour or when they\ndrop to 0 hit points. Once you use the horn, it can’t\nbe used again until 7 days have passed.\nFour types of horn of Valhalla are known to exist,\neach made of a different metal. The horn’s type\ndetermines how many berserkers answer its\nsummons, as well as the requirement for its use. The\nGM chooses the horn’s type or determines it\nrandomly.\nd100 Horn Berserkers Requirement\nType Summoned\n01–40 Silver 2d4 + 2 None\n41–75 Brass 3d4 + 3 Proficiency with all\nsimple weapons\n76–90 Bronze 4d4 + 4 Proficiency with all\nmedium armor\n91–00 Iron 5d4 + 5 Proficiency with all\nmartial weapons\nIf you blow the horn without meeting its\nrequirement, the summoned berserkers attack you.\nIf you meet the requirement, they are friendly to you\nand your companions and follow your commands.",
+        "printed_pages": [
+          226
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-crafting-horn-of-valhalla-iron-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "horn-of-valhalla-iron"
+      ],
+      "page": 226,
+      "heading": "Horn of Valhalla",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/horn-of-valhalla"
+    },
+    {
+      "id": "official-magic-crafting-horn-of-valhalla-iron-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "horn-of-valhalla-iron"
+      ],
+      "page": 226,
+      "heading": "Horn of Valhalla",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-crafting-horn-of-valhalla-iron-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "horn-of-valhalla-iron"
+      ],
+      "page": 226,
+      "heading": "Horn of Valhalla",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "horn-of-valhalla",
+        "selection_row": "91–00 Iron 5d4 + 5 Proficiency with all martial weapons",
+        "selection": {
+          "d100_range": [
+            91,
+            100
+          ],
+          "metal": "iron",
+          "berserker_dice": "5d4",
+          "berserker_bonus": 5,
+          "requirement": "Proficiency with all martial weapons"
+        },
+        "complete_parent_text": "Wondrous item, rare (silver or brass), very rare\n(bronze), or legendary (iron)\nYou can use an action to blow this horn. In response,\nwarrior spirits from the Valhalla appear within 60\nfeet of you. They use the statistics of a berserker.\nThey return to Valhalla after 1 hour or when they\ndrop to 0 hit points. Once you use the horn, it can’t\nbe used again until 7 days have passed.\nFour types of horn of Valhalla are known to exist,\neach made of a different metal. The horn’s type\ndetermines how many berserkers answer its\nsummons, as well as the requirement for its use. The\nGM chooses the horn’s type or determines it\nrandomly.\nd100 Horn Berserkers Requirement\nType Summoned\n01–40 Silver 2d4 + 2 None\n41–75 Brass 3d4 + 3 Proficiency with all\nsimple weapons\n76–90 Bronze 4d4 + 4 Proficiency with all\nmedium armor\n91–00 Iron 5d4 + 5 Proficiency with all\nmartial weapons\nIf you blow the horn without meeting its\nrequirement, the summoned berserkers attack you.\nIf you meet the requirement, they are friendly to you\nand your companions and follow your commands.",
+        "printed_pages": [
+          226
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
     }
   ],
   "record_additions": [

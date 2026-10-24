@@ -128,3 +128,5 @@ tools/audit_magic_consumable_variants.py独立消费四药水、十卷轴官方�
 tools/audit_magic_giant_variants.py按两张原表核十二腰带 / 药水变体，Stone/Frost共享行双映射、不同稀有度、完整力量不降低条件与药水1小时均保留。36缺派生说明 / 引用补齐、两处多余冠词清理；数值无需改动。未接Strength或计时执行。
 
 tools/audit_magic_affinity_variants.py核四表34变体272字段，完整消费双列、d10面、宝石与元素类型；源绑定保留动作、佩戴 / 同调、持续 / 恢复、感应范围及消耗条件，既有数值 / 正文无差异。102缺派生注释及完整来源引用补齐，不升级效果执行状态。
+
+tools/audit_magic_crafting_variants.py独立消费三表，核飞毯超载算式、manual工时 / 成本 / 使用条件、horn材质 / 数量 / 要求 / 敌对及冷却，十二变体96字段零差异。全部既有数值 / 正文正确，36处补完整来源和派生注释，不升级运行时能力状态。
