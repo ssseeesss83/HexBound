@@ -97,7 +97,7 @@ def prepare(state, actor, action_id, target_id=None, options=None, *, now=None):
     else:
         cap = next((row for row in a.capabilities(state, actor) if row['id'] == action_id), None)
         if not cap or not cap.get('supported') or cap.get('disabled_reason'):
-            raise ValueError(cap.get('disabled_reason') if cap else '角色未获得这个可执行能力')
+            raise ValueError((cap.get('disabled_reason') if cap else None) or '角色未获得这个可执行能力')
         normalized = {}
         if action_id == 'end-concentration':
             if target_id not in (None, actor) or opts['target_ids'] not in ([], [actor]) or opts['slot_level'] or opts['resource_amount'] or opts['slot_source'] not in (None, 'spell'):
@@ -203,3 +203,43 @@ def revalidate(state, actor, plan, *, now=None):
         if current[key] != plan[key]:
             raise ValueError('行动的目标或代价已变化，请重新选择')
     return deepcopy(plan)
+
+
+def describe_cost(plan):
+    labels = {'action':'动作', 'bonus':'附赠动作', 'attacks':'攻击额度'}
+    parts = [f"{labels[key]} {value}" for key, value in plan['budget'].items() if key in labels and value]
+    for resource in plan['resources']:
+        if resource['type'] == 'spell_slot':
+            text = f"{resource['level']}环{'契约法术位' if resource['source'] == 'pact' else '法术位'} × {resource['amount']}"
+        else:
+            text = f"{resource['id']} × {resource['amount']}" if not resource.get('unlimited') else f"{resource['id']} 不限次数"
+        if resource.get('when') == 'on_hit':
+            text += '（仅命中时消耗）'
+        parts.append(text)
+    if plan['ends_concentration'] is not None:
+        parts.append('结束当前专注')
+    return '；'.join(parts) or '不消耗当前已登记的规则资源'
+
+
+def public_plan(plan):
+    keys = ['action_id','target_id','options','targets','label','action_cost','budget',
+            'resources','restores','summary','ends_concentration','expires_at']
+    return {**{key:deepcopy(plan[key]) for key in keys}, 'cost_label':describe_cost(plan)}
+
+
+@bound_rules
+def menu(state, actor):
+    """Same supported subset as prepare(), scoped to this actor's visible view."""
+    result = [deepcopy(row) for row in a.capabilities(state, actor)
+              if row.get('supported') and not row.get('disabled_reason')]
+    targets = []
+    for enemy in (state.get('combat') or {}).get('enemies', []):
+        try:
+            _weapon_target(state, actor, enemy['id'])
+            targets.append(dict(id=enemy['id'], name=enemy['name']))
+        except ValueError:
+            continue
+    if targets:
+        result.append(dict(id='attack', label='武器攻击', kind='basic', target='enemy',
+                           targets=targets, action_cost='attack'))
+    return result

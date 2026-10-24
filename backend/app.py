@@ -65,7 +65,7 @@ class Command(Input):
     expected_action_revision: int | None = Field(default=None, ge=0, strict=True)
     expected_scene_instance_id: str | None = Field(default=None, max_length=100)
     expected_membership_epoch: int | None = Field(default=None, ge=1, strict=True)
-    type: Literal["start", "pause", "resume", "action", "chat", "narrate", "end_turn", "set_interaction", "scene_edit", "level_up", "manage_spells", "rest", "equip_skills", "director_propose", "director_resolve", "director_cancel", "configure_character", "prepare_level_up"]
+    type: Literal["start", "pause", "resume", "action", "chat", "narrate", "end_turn", "set_interaction", "scene_edit", "level_up", "manage_spells", "rest", "equip_skills", "director_propose", "capability_propose", "director_resolve", "director_cancel", "configure_character", "prepare_level_up"]
     payload: dict = Field(default_factory=dict)
 
 
@@ -99,10 +99,10 @@ class GroupCommit(Input):
 class ActionPayload(Input):
     action_id: str = Field(min_length=1, max_length=80)
     target_id: str | None = Field(default=None, max_length=80)
-    slot_level: int | None = Field(default=None, ge=1, le=9)
-    slot_source: Literal["spell", "pact"] = "spell"
+    slot_level: int | None = Field(default=None, ge=1, le=9, strict=True)
+    slot_source: Literal["spell", "pact"] | None = None
     target_ids: list[str] = Field(default_factory=list, max_length=12)
-    resource_amount: int | None = Field(default=None, ge=1, le=100)
+    resource_amount: int | None = Field(default=None, ge=1, le=100, strict=True)
 
 
 class InteractionPayload(Input):
@@ -649,7 +649,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 payload = IntentPayload.model_validate(body.payload).model_dump()
             elif body.type in ("chat", "narrate"):
                 payload = TextPayload.model_validate(body.payload).model_dump()
-            elif body.type == "action":
+            elif body.type in ("action", "capability_propose"):
                 payload = ActionPayload.model_validate(body.payload).model_dump()
             elif body.type == "set_interaction":
                 payload = InteractionPayload.model_validate(body.payload).model_dump()
@@ -685,12 +685,16 @@ def create_app(db_path: str | None = None) -> FastAPI:
         if body.type == "start" and any(not m.get("build_ready",True) for m in candidate["members"]):
             raise HTTPException(409,"所有玩家须先完成起始等级构筑")
         proposed = None
-        if body.type == "director_propose":
+        if body.type in ("director_propose", "capability_propose"):
             if candidate["status"] != "playing":
                 raise HTTPException(409,"请先开始或恢复冒险")
-            throttle("director:"+member_id,12)
             try:
-                proposed = await director.propose(dm,copy.deepcopy(candidate),member_id,payload["text"], skill_id=payload.get("skill_id"))
+                if body.type == 'capability_propose':
+                    proposed = director.propose_selected(candidate, member_id, payload['action_id'], payload.get('target_id'),
+                                                         {key:value for key,value in payload.items() if key not in {'action_id','target_id'}})
+                else:
+                    throttle("director:"+member_id,12)
+                    proposed = await director.propose(dm,copy.deepcopy(candidate),member_id,payload["text"], skill_id=payload.get("skill_id"))
             except ValueError as exc:
                 raise HTTPException(422,str(exc)) from exc
         pending = None
@@ -744,11 +748,11 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 event(state, "system", "冒险继续。")
             elif body.type == "chat":
                 event(state, "chat", payload["text"], member["name"])
-            elif body.type == "director_propose":
+            elif body.type in ("director_propose", "capability_propose"):
                 if director.public_proposal(proposed["proposal"], state)["stale"]:
                     raise HTTPException(409, "场景或交流范围已变化，请重新提出行动。")
                 state.setdefault("director",{}).setdefault("proposals",{})[member_id]=proposed["proposal"]
-                event(state,"intent",payload["text"],member["name"])
+                event(state,"intent",proposed['proposal']['intent'],member["name"])
                 event(state,"dm",proposed["text"],source=proposed["source"],
                       adjudication_pending=True, proposal_id=proposed["proposal"]["id"])
             elif body.type == "director_cancel":

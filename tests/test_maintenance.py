@@ -23,10 +23,10 @@ def test_author_content_format_upgrade_backs_up_without_rewriting_versions(tmp_p
         db.execute('PRAGMA user_version=9')
     upgraded = Store(str(path))
     with upgraded.connect() as db:
-        assert db.execute('PRAGMA user_version').fetchone()[0] == 10
+        assert db.execute('PRAGMA user_version').fetchone()[0] == SCHEMA_VERSION
         assert [tuple(row) for row in db.execute('SELECT * FROM content_items ORDER BY id')] == before
         assert [tuple(row) for row in db.execute('SELECT * FROM content_history ORDER BY item_id,revision')] == history
-    backups = list((tmp_path / 'backups').glob('pre-schema-10-*.zip'))
+    backups = list((tmp_path / 'backups').glob(f'pre-schema-{SCHEMA_VERSION}-*.zip'))
     assert len(backups) == 1
     restore_backup(backups[0], tmp_path / 'old-author-recovery')
     with sqlite3.connect(tmp_path / 'old-author-recovery/database.sqlite3') as db:
@@ -51,7 +51,7 @@ def test_old_binary_refuses_graph_format_database_before_any_write(tmp_path, mon
         Store(str(path))
     assert path.read_bytes() == before
     with sqlite3.connect(path) as db:
-        assert db.execute('PRAGMA user_version').fetchone()[0] == 10
+        assert db.execute('PRAGMA user_version').fetchone()[0] == SCHEMA_VERSION
         assert json.loads(db.execute('SELECT draft_json FROM content_items WHERE id=?',(graph['id'],)).fetchone()[0]) == graph
 
 
