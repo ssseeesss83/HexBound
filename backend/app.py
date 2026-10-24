@@ -23,6 +23,7 @@ from .dm import DM,PlayerDM
 from .dm_scheduler import DMScheduler
 from .generation_jobs import GenerationJobs
 from .story_coordinator import StoryCoordinator
+from . import story_requests
 from .store import Store
 from . import rules_packages
 from .rules_context import active_store, using_version
@@ -98,6 +99,14 @@ class GroupPrepare(Input):
 class GroupCommit(Input):
     plan_id: str = Field(pattern=r"^[a-f0-9]{32}$")
     command_id: str = Field(min_length=8, max_length=100)
+
+
+class RetryPrepare(Input):
+    expected_scope: GroupScope
+
+
+class RetryCommit(Input):
+    plan_id: str = Field(pattern=r"^[a-f0-9]{32}$")
 
 
 class ActionPayload(Input):
@@ -336,6 +345,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
             "progression": state.get("progression", {"mode":"xp","world_minutes":0}),
             "combat_capabilities": abilities.capabilities(state,viewer),
             "route_wait": coordinator.status(state,viewer),
+            "route_retry_available": coordinator.can_retry(state,viewer),
             "free_actions": free_actions.context(state,viewer),
             "director_proposals": [director.public_proposal(p,state) for actor,p in state.get("director",{}).get("proposals",{}).items() if actor==viewer],
         }
@@ -627,6 +637,35 @@ def create_app(db_path: str | None = None) -> FastAPI:
             result = {"room":public(get_state(room_id),actor,request), "group_change":receipt}
         await broadcast(room_id)
         return result
+
+    @app.post("/api/rooms/{room_id}/route-retry/prepare")
+    async def prepare_route_retry(room_id: str, body: RetryPrepare, request: Request, authorization: str | None = Header(default=None)):
+        actor=auth(room_id,authorization,request)
+        throttle('route-retry:'+actor,20)
+        async with locks[room_id]:
+            if auth(room_id,authorization,request)!=actor:raise HTTPException(403,'房间身份已变化')
+            try:
+                result=story_requests.create_retry_review(jobs,room_id,actor,body.expected_scope.model_dump(),now=scheduler.clock())
+            except ValueError as exc:raise HTTPException(409,str(exc)) from exc
+            bind_response_scope(request,get_state(room_id),actor)
+            return result
+
+    @app.post("/api/rooms/{room_id}/route-retry/confirm")
+    async def confirm_route_retry(room_id: str, body: RetryCommit, request: Request, authorization: str | None = Header(default=None)):
+        actor=auth(room_id,authorization,request)
+        throttle('route-retry-confirm:'+actor,60)
+        with scheduler.player_activity(preempt=False):
+            async with locks[room_id]:
+                if auth(room_id,authorization,request)!=actor:raise HTTPException(403,'房间身份已变化')
+                try:
+                    result=story_requests.confirm_retry_review(jobs,room_id,actor,body.plan_id,now=scheduler.clock())
+                except ValueError as exc:raise HTTPException(409,str(exc)) from exc
+                response=dict(room=public(get_state(room_id),actor,request),
+                    route_retry=dict(plan_id=body.plan_id,replayed=result['replayed'],additional_attempts=1))
+        scheduler.wake()
+        coordinator.completed(result['job']['id'])
+        await broadcast(room_id)
+        return response
 
     @app.get("/api/rooms/{room_id}/characters/{target_member_id}")
     async def character_detail(room_id: str, target_member_id: str, request: Request, authorization: str | None = Header(default=None)):

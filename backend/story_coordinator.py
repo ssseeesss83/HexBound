@@ -96,6 +96,15 @@ class StoryCoordinator:
             return dict(status='unavailable')
         return result
 
+    def can_retry(self,state,actor):
+        pending=state.get('pending_transition')
+        if not pending or not pending.get('generation_job_id'):return False
+        job=self.jobs.get(pending['generation_job_id'])
+        if not job or job['status']!='terminal_failed':return False
+        try:story_requests.prepare_retry(self.jobs,state['id'],actor,now=self.scheduler.clock())
+        except (ValueError,KeyError):return False
+        return True
+
     def completed(self,job_id):
         """Coalesce safe current snapshots; no private task text becomes an event."""
         if self._closed:return

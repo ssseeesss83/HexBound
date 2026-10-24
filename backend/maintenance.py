@@ -27,7 +27,8 @@ from zipfile import ZipFile, ZIP_DEFLATED
 # Version 18 protects recoverable preemption stages and dispatch accounting.
 # Version 19 protects atomic scene-wait to generation-job bindings.
 # Version 20 protects explicit retry lineage and scene-local budget receipts.
-SCHEMA_VERSION = 20
+# Version 21 protects server-owned retry review plans and their confirmations.
+SCHEMA_VERSION = 21
 BACKUP_FORMAT = "hexbound-backup-v1"
 DATA_ROOT = Path(__file__).parent / "data"
 

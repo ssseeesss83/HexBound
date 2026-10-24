@@ -1930,10 +1930,80 @@ let actionEntry = "skills",
   skillIntentId = "",
   freeActionPending = false;
 const failedProposals = new Set();
+let routeRetryReview = null, routeRetryFlight = null;
+function routeRetryKey() { return `hexbound-route-retry:${session?.room_id}:${session?.member_id}`; }
+function readRouteRetry() {
+  try {
+    const saved=JSON.parse(sessionStorage.getItem(routeRetryKey()) || 'null');
+    if (saved?.identity===groupIdentity() && /^[a-f0-9]{32}$/.test(saved.plan?.plan_id || '')) return saved;
+    if (saved) sessionStorage.removeItem(routeRetryKey());
+  } catch {}
+  return null;
+}
+function clearRouteRetry(key,review) {
+  if(!review)return;
+  try{
+    const saved=JSON.parse(sessionStorage.getItem(key) || 'null');
+    if(saved?.identity===review.identity && saved.plan?.plan_id===review.plan.plan_id)sessionStorage.removeItem(key);
+  }catch{}
+}
+function installRouteRetry(area) {
+  const identity=groupIdentity(), saved=readRouteRetry();
+  if(routeRetryFlight && (routeRetryFlight.identity!==identity || routeRetryFlight.seat!==session))routeRetryFlight=null;
+  if (routeRetryReview?.identity!==identity) routeRetryReview=null;
+  if (saved) routeRetryReview=saved;
+  if (!room.route_retry_available && !routeRetryReview) return;
+  const review=routeRetryReview;
+  area.insertAdjacentHTML('beforebegin', `<section class="route-retry notice" aria-label="重新准备路线"><p>${review ? '确认后追加一次路线准备尝试。已完成的行动保留，准备完成后仍须审核并确认前往。' : '本次准备机会已用尽。领队可以审核并明确追加一次尝试。'}</p>${saved ? '<p role="status">上次确认尚未收到完整回执，可能已经成功。核对原请求不会重复追加预算。</p>' : ''}<button type="button" id="route-retry" ${routeRetryFlight || busy || !connected || room.status!=='playing' ? 'disabled' : ''}>${review ? (saved ? '核对并重试原确认' : '确认追加一次尝试') : '审核重新准备路线'}</button>${review && !saved ? '<button type="button" id="route-retry-cancel">取消</button>' : ''}<p class="route-retry-error" role="alert"></p></section>`);
+  $('#route-retry-cancel')?.addEventListener('click',()=>{if(!routeRetryFlight){routeRetryReview=null;renderRoom();}});
+  $('#route-retry').onclick=async()=>{
+    if(routeRetryFlight || busy || !connected || identity!==groupIdentity()) return;
+    const seat=session, roomId=session.room_id, key=routeRetryKey();
+    const valid=()=>identity===groupIdentity() && session===seat;
+    const flight={identity,seat};
+    let failure='';
+    routeRetryFlight=flight;
+    $('#route-retry').disabled=true;
+    try {
+      if(!review){
+        const plan=await api(`/api/rooms/${roomId}/route-retry/prepare`,{method:'POST',body:JSON.stringify({expected_scope:groupScope()})});
+        if(!/^[a-f0-9]{32}$/.test(plan.plan_id || '') || plan.additional_attempts!==1) throw Error('尚未收到完整审核方案。');
+        if(valid()) routeRetryReview={identity,plan};
+      }else{
+        // Persist the original ID before sending; an uncertain result must
+        // never start a second budget request, including after reload.
+        sessionStorage.setItem(key,JSON.stringify(review));
+        const result=await api(`/api/rooms/${roomId}/route-retry/confirm`,{method:'POST',body:JSON.stringify({plan_id:review.plan.plan_id})});
+        if(result.route_retry?.plan_id!==review.plan.plan_id || result.route_retry?.additional_attempts!==1 || result.room?.id!==roomId || !Number.isInteger(result.room?.version)) throw Error('尚未收到完整确认回执，请核对原请求。');
+        clearRouteRetry(key,review);
+        if(valid()) {
+          routeRetryReview=null;
+          if(result.room.version>=room.version)room=result.room;
+          toast('已确认一次路线准备尝试。');
+        }
+      }
+    }catch(error){
+      if([409,422].includes(error.status) && !error.retrySameCommand && !error.responseIncomplete){
+        clearRouteRetry(key,review);
+        if(valid())routeRetryReview=null;
+      }
+      if(valid()) {
+        failure=error.message;
+      }
+    }finally{
+      if(routeRetryFlight===flight)routeRetryFlight=null;
+      if(valid()){
+        renderRoom();
+        const notice=$('.route-retry-error');if(notice)notice.textContent=failure;
+      }
+    }
+  };
+}
 function installActionEntries() {
   if (room.status === "lobby" || room.status === "finished") return;
   const skillArea = $(".combat-actions") || $(".composer .actions");
   if (!skillArea) return;
+  installRouteRetry(skillArea);
   if (room.route_wait) {
     const text = {
       waiting: '路线正在准备中。你可以继续在当前场景行动，或由领队取消等待。',

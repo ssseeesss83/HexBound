@@ -1,5 +1,6 @@
 """Atomic scene-wait consumers of bounded jobs; no automatic trigger or entry."""
 from copy import deepcopy
+from contextlib import nullcontext
 import json
 import uuid
 from typing import Literal
@@ -61,7 +62,7 @@ def prepare_retry(service,room_id,actor,*,now=None):
                      budget=generation_jobs.Budget(max_attempts=1)).model_dump(mode='json')
 
 
-def confirm_retry(service,room_id,actor,plan,*,now=None):
+def confirm_retry(service,room_id,actor,plan,*,now=None,_db=None):
     """Internal confirmed-plan executor; budget, binding and receipt are atomic.
 
     This never repeats prerequisites, charges character resources or moves the
@@ -72,8 +73,9 @@ def confirm_retry(service,room_id,actor,plan,*,now=None):
     if plan['budget']!=generation_jobs.Budget(max_attempts=1).model_dump():
         raise ValueError('本次只允许追加一次默认续写预算')
     digest = _hash(plan)
-    with service.store.connect() as db:
-        db.execute('BEGIN IMMEDIATE')
+    with (nullcontext(_db) if _db is not None else service.store.connect()) as db:
+        if _db is None:db.execute('BEGIN IMMEDIATE')
+        elif not db.in_transaction:raise RuntimeError('确认须在写事务中完成')
         row = db.execute('SELECT state,version FROM rooms WHERE id=?',(room_id,)).fetchone()
         if row is None:raise ValueError('房间不存在')
         canonical = json.loads(row['state'])
@@ -107,6 +109,43 @@ def confirm_retry(service,room_id,actor,plan,*,now=None):
             (json.dumps(canonical,ensure_ascii=False),canonical['version'],room_id,row['version']))
         if updated.rowcount!=1:raise ValueError('房间已变化，请重新审核')
         return dict(job=deepcopy(job),replayed=False)
+
+
+def create_retry_review(service,room_id,actor,expected_scope,*,now=None):
+    """Persist the server plan; the client only receives its opaque ID/summary."""
+    now = float(story_patches._now(now))
+    with service.store.connect() as db:
+        db.execute('BEGIN IMMEDIATE')
+        _,_,state,review = _retry_review(db,room_id,actor)
+        scope=review['scope']
+        current=dict(scene_instance_id=scope['scene_instance_id'],membership_epoch=scope['membership_epoch'],
+                     action_revision=state['action_revision'])
+        if current!=expected_scope:raise ValueError('场景已变化，请同步后重新审核')
+        db.execute('DELETE FROM generation_retry_plans WHERE room_id=? AND committed=0 AND expires_at<=?',(room_id,now))
+        count=db.execute('SELECT COUNT(*) FROM generation_retry_plans WHERE room_id=? AND committed=0',(room_id,)).fetchone()[0]
+        if count>=16:raise ValueError('当前冒险待确认的续写审核已满，请稍后重试')
+        count=db.execute('SELECT COUNT(*) FROM generation_retry_plans WHERE room_id=? AND actor_id=? AND committed=0',(room_id,actor)).fetchone()[0]
+        if count>=4:raise ValueError('已有待确认的续写审核，请先处理或等待其过期')
+        plan=RetryPlan(id=uuid.uuid4().hex,**review,expires_at=now+120,
+                       budget=generation_jobs.Budget(max_attempts=1)).model_dump(mode='json')
+        db.execute('INSERT INTO generation_retry_plans VALUES(?,?,?,?,?,0)',
+                   (plan['id'],room_id,actor,plan['expires_at'],json.dumps(plan,ensure_ascii=False)))
+        return dict(plan_id=plan['id'],expires_at=plan['expires_at'],additional_attempts=1,
+                    summary='确认后追加一次路线准备尝试。已完成的行动保留，准备完成后仍须审核路线并确认前往。')
+
+
+def confirm_retry_review(service,room_id,actor,plan_id,*,now=None):
+    """Lookup by authenticated owner; no client plan or budget is accepted."""
+    plan_id=TypeAdapter(story_patches.JobID).validate_python(plan_id,strict=True)
+    now=float(story_patches._now(now))
+    with service.store.connect() as db:
+        db.execute('BEGIN IMMEDIATE')
+        row=db.execute('SELECT payload FROM generation_retry_plans WHERE id=? AND room_id=? AND actor_id=?',
+                       (plan_id,room_id,actor)).fetchone()
+        if row is None:raise ValueError('续写审核不存在或已过期，请重新审核')
+        result=confirm_retry(service,room_id,actor,json.loads(row['payload']),now=now,_db=db)
+        db.execute('UPDATE generation_retry_plans SET committed=1 WHERE id=?',(plan_id,))
+        return result
 
 
 def _matches(job,state,pending):

@@ -182,7 +182,7 @@ def test_schema20_restore_keeps_retry_receipt_and_rejects_schema19_server(jobs,t
     exhausted(jobs)
     with service.store.connect() as db:db.execute('PRAGMA user_version=19')
     service=GenerationJobs(Store(service.store.path))
-    assert list((tmp_path/'backups').glob('pre-schema-20-*.zip'))
+    assert list((tmp_path/'backups').glob(f'pre-schema-{maintenance.SCHEMA_VERSION}-*.zip'))
     plan=requests.prepare_retry(service,rid,'p',now=121)
     result=requests.confirm_retry(service,rid,'p',plan,now=122)
     archive=tmp_path/'retry.zip'
