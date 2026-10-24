@@ -62,3 +62,11 @@ Flame Blade / Scorching Ray 的近战 / 远程攻击类别补齐；Call Lightnin
 候选资料新增六项阶段引用，绑定官方法术块 SHA-256，原始 PDF / 抽取资料均不变。已核验数值及显式触发，未签运行时：Acid Arrow 命中与未命中及延迟；Fire Shield 暖 / 冷互斥与生物近战命中反伤；Wall of Ice 初始 DEX、破墙段、寒气 CON；Wall of Thorns 初始穿刺与后续挥砍；Storm 各轮不同对象 / 类型 / 豁免；Spirit Guardians 排除、速度、首次进入与自身回合开始。
 
 明确不臆造：盾型切换原文规则未提供；冰墙原文十块面板能否减少未明确；风暴后续 on your turn 不固定为起止、第三轮物件未擅配 DEX、目标不足六个不擅裁；守护灵没有施法出现伤害，也没有全体友军自动免疫。Acid Arrow 延迟暴击、区域移动的进入事件等仍列 interpretation_pending。
+
+## 319 法术正文比对
+
+`official/spell-body-review.json` 固定本轮比对证据：280 项去排版后的字母数字流相同；39 项有差异，34 项已按完整官方法术块修复，共 41 个正文 / 升环字段。`tools/normalize_spell_bodies.py` 可重建覆盖层，原始归档和冻结历史包不变。
+
+修复包括：Heroism 升环整段、Conjure Animals 九环四倍、Dominate Beast 目标及升环时长、Create or Destroy Water 灭火、Polymorph / True Polymorph 零 HP 限制、True Polymorph 直到驱散、Phantasmal Killer / Weird 自身回合结束触发、Find Familiar 的 attack modifier、Moonbeam 的 1d10 及 Spike Growth 的强制检定措辞。四个表格法术不从扁平提取结果重排。
+
+Animal Friendship 第 115 页原始 PDF 自身存在 `additional beast t level` 缺字，保留审计阻塞，不从记忆修正文。正文相同不代表结构参数齐全；Weird 条件伤害、Phantasmal Killer 分阶段、Dominate Beast 目标过滤和时长表、Heroism 临时 HP / 升环目标仍待结构化与执行验证。
