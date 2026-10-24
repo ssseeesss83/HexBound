@@ -66,14 +66,50 @@ def test_corrupt_archive_never_publishes_restore(tmp_path):
     assert not (tmp_path / "should-not-exist").exists()
 
 
-def test_future_schema_refused_before_writes(tmp_path):
+@pytest.mark.parametrize("unsupported", [-1, SCHEMA_VERSION + 1])
+def test_future_schema_refused_before_writes(tmp_path, unsupported):
     path = tmp_path / "future.sqlite3"
     with sqlite3.connect(path) as db:
-        db.execute(f"PRAGMA user_version={SCHEMA_VERSION + 1}")
+        db.execute(f"PRAGMA user_version={unsupported}")
     before = path.read_bytes()
     with pytest.raises(ValueError, match="newer server"):
         Store(str(path))
     assert path.read_bytes() == before
+
+
+def test_missing_source_cannot_create_incomplete_backup(tmp_path):
+    database = tmp_path / "db.sqlite3"
+    Store(str(database))
+    archive = tmp_path / "must-not-exist.zip"
+    with pytest.raises(ValueError, match="source content"):
+        backup_database(database, archive, data_root=tmp_path / "missing")
+    assert not archive.exists()
+
+
+def test_actual_pre_account_table_gets_column_without_changing_state(tmp_path):
+    path = tmp_path / "pre-account.sqlite3"
+    fixture = json.loads((Path(__file__).parent / "fixtures/legacy_room_v06.json").read_text(encoding="utf-8"))
+    db = sqlite3.connect(path)
+    try:
+        db.executescript("""
+            CREATE TABLE rooms (id TEXT PRIMARY KEY, invite_code TEXT NOT NULL UNIQUE, version INTEGER NOT NULL, state TEXT NOT NULL);
+            CREATE TABLE members (id TEXT PRIMARY KEY, room_id TEXT NOT NULL REFERENCES rooms(id), token_hash TEXT NOT NULL UNIQUE);
+            CREATE TABLE commands (room_id TEXT, member_id TEXT, command_id TEXT, response TEXT, PRIMARY KEY(room_id,member_id,command_id));
+        """)
+        db.execute("INSERT INTO rooms VALUES(?,?,?,?)", (fixture["id"], fixture["invite_code"], fixture["version"], json.dumps(fixture)))
+        db.execute("INSERT INTO members VALUES('p0',?,'synthetic-token-hash')", (fixture["id"],))
+        db.execute("INSERT INTO commands VALUES(?,'p0','old-command','{\"replayed\":true}')", (fixture["id"],))
+        db.commit()
+        assert "user_id" not in {row[1] for row in db.execute("PRAGMA table_info(members)")}
+    finally:
+        db.close()
+    store = Store(str(path))
+    assert store.get(fixture["id"]) == fixture
+    assert store.prior_command(fixture["id"], "p0", "old-command") == {"replayed": True}
+    with store.connect() as db:
+        assert "user_id" in {row["name"] for row in db.execute("PRAGMA table_info(members)")}
+        assert db.execute("SELECT token_hash FROM members WHERE id='p0'").fetchone()[0] == "synthetic-token-hash"
+    assert len(list((tmp_path / "backups").glob("*.zip"))) == 1
 
 
 @pytest.mark.parametrize("change", ["byte", "missing", "count", "invalid", "license"])

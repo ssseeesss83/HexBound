@@ -31,7 +31,7 @@ def database_version(path):
 
 def check_database_version(db):
     version = db.execute("PRAGMA user_version").fetchone()[0]
-    if version > SCHEMA_VERSION:
+    if version < 0 or version > SCHEMA_VERSION:
         raise ValueError(f"Database schema {version} requires a newer server (supports {SCHEMA_VERSION})")
     return version
 
@@ -47,6 +47,16 @@ def backup_database(database, destination, data_root=DATA_ROOT):
         raise ValueError("Source database does not exist")
     if target.exists():
         raise FileExistsError(target)
+    data_root = Path(data_root).resolve()
+    source_manifest = data_root / "source-manifest.json"
+    if not data_root.is_dir() or not source_manifest.is_file():
+        raise ValueError("Complete source content and manifest are required for backup")
+    sources = json.loads(source_manifest.read_text(encoding="utf-8"))
+    required = [row["file"] for row in sources["files"]] + ["5e-database-LICENSE.md"]
+    for name in required:
+        content_path = (data_root / name).resolve()
+        if not content_path.is_relative_to(data_root) or not content_path.is_file():
+            raise ValueError(f"Missing required source content: {name}")
     target.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="hexbound-backup-") as temporary:
         snapshot = Path(temporary) / "database.sqlite3"
@@ -56,7 +66,6 @@ def backup_database(database, destination, data_root=DATA_ROOT):
                 if dst.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
                     raise ValueError("Database integrity check failed")
         files = {"database.sqlite3": snapshot.read_bytes()}
-        data_root = Path(data_root).resolve()
         for path in sorted(data_root.rglob("*")):
             if path.is_file():
                 if path.is_symlink() or not path.resolve().is_relative_to(data_root):

@@ -20,5 +20,6 @@
 - 验收命令：`.venv/Scripts/python.exe -m pytest -q` → **332 passed**。32 项资料与维护专项包含在其中。
 - `PYTHON=.venv/Scripts/python.exe` 下 8 组 npm 测试全部通过：ui、studio、accounts、rooms、combat、free-action、logs、builder。
 - 已知非失败警告：当前 Starlette 对 httpx TestClient 的弃用提示。能力状态映射、包外处理器和严格规则缺口留在 P02/P08–P10，不把基线通过解释为全集规则支持。
+- P00 复审修复：资料目录 / 必需清单缺失时拒绝生成不完整备份；负数 schema 标记也拒绝；增加真正缺少 `user_id` 的旧 SQL 结构迁移用例。维护专项扩展为 **12 passed**。
 
 备份与恢复操作见 [维护说明](maintenance.md)。
