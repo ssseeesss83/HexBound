@@ -61,12 +61,13 @@ class DMScheduler:
                 self._metrics['preemptions'] += 1
 
     @contextmanager
-    def player_activity(self):
-        """Rule commands preempt background work without waiting for LLM slots."""
+    def player_activity(self,*,preempt=True):
+        """Block new background admission; optionally revoke its current call."""
         self._check()
         self._players += 1
         try:
-            self._preempt()
+            if preempt:
+                self._preempt()
             yield
         finally:
             self._players -= 1

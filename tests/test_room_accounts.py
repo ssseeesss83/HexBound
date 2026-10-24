@@ -5,7 +5,7 @@ import uuid
 from concurrent.futures import ThreadPoolExecutor
 
 import pytest
-from fastapi.testclient import TestClient
+from client_sessions import TestClient
 from starlette.websockets import WebSocketDisconnect
 
 from backend.app import create_app

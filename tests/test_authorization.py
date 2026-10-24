@@ -1,6 +1,6 @@
 """Exercise account/studio authorization in the assembled production app."""
 import pytest
-from fastapi.testclient import TestClient
+from client_sessions import TestClient
 from backend.app import create_app
 
 

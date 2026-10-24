@@ -8,6 +8,7 @@ import secrets
 import time
 import uuid
 from collections import defaultdict, deque
+from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Literal
 
@@ -18,7 +19,9 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 
 from . import content, rules, campaign, characters, abilities, compendium, director, progression, free_actions, character_builds, character_ai
-from .dm import DM
+from .dm import DM,PlayerDM
+from .dm_scheduler import DMScheduler
+from .generation_jobs import GenerationJobs
 from .store import Store
 from . import rules_packages
 from .rules_context import active_store, using_version
@@ -162,13 +165,30 @@ def create_app(db_path: str | None = None) -> FastAPI:
 
     store = Store(db_path or os.getenv("HEXBOUND_DB", "data/hexbound.sqlite3"))
     installed_rules = rules_packages.install_package(store, rules_packages.build_legacy_package())
-    dm = DM()
+    jobs = GenerationJobs(store)
+    scheduler = DMScheduler(jobs,DM())
+    dm = PlayerDM(scheduler)
+    @asynccontextmanager
+    async def lifespan(application):
+        nonlocal scheduler
+        if scheduler.snapshot()['closed']:
+            scheduler = DMScheduler(jobs,DM())
+            dm.scheduler = scheduler
+            application.state.dm_scheduler = scheduler
+        scheduler.start()
+        try:
+            yield
+        finally:
+            await scheduler.close()
+    app.router.lifespan_context = lifespan
     locks: dict[str, asyncio.Lock] = defaultdict(asyncio.Lock)
     peers: dict[str, dict[WebSocket, str]] = defaultdict(dict)
     peer_tokens: dict[WebSocket, str] = {}
     limits: dict[str, deque] = defaultdict(deque)
     app.state.store = store
     app.state.dm = dm
+    app.state.dm_scheduler = scheduler
+    app.state.generation_jobs = jobs
     app.state.rules_package = installed_rules
     app.include_router(create_accounts_router(store))
     app.include_router(create_hero_router(store))
@@ -312,7 +332,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
             "director_proposals": [director.public_proposal(p,state) for actor,p in state.get("director",{}).get("proposals",{}).items() if actor==viewer],
         }
 
-    async def broadcast(room_id: str):
+    async def broadcast_room(room_id: str):
         state = get_state(room_id)
         async def send(ws, member_id):
             try:
@@ -330,6 +350,10 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 except Exception:
                     pass
         await asyncio.gather(*(send(ws, member_id) for ws, member_id in list(peers[room_id].items())))
+
+    app.state.broadcast_room = broadcast_room
+    async def broadcast(room_id):
+        await app.state.broadcast_room(room_id)
 
     async def add_dm_response(room_id: str, base_action_revision: int, request_id: str, kind: str,
                               scene: dict, mode: str, theme: str, intent: str, recent: list, actions: list,
@@ -687,6 +711,17 @@ def create_app(db_path: str | None = None) -> FastAPI:
             raise HTTPException(403,"只有房主可以开始冒险")
         if body.type == "start" and any(not m.get("build_ready",True) for m in candidate["members"]):
             raise HTTPException(409,"所有玩家须先完成起始等级构筑")
+        # Completed retries, malformed payloads and stale scopes return above
+        # without cancelling work that began after the original command.
+        if body.type=='chat':
+            return await execute_prepared(room_id,body,request,authorization,member_id,payload,candidate,matches_revision)
+        # Pure rules use no model permit and may finish while a remote
+        # background call is pending. PlayerDM preempts only when a real model
+        # call needs realtime capacity; invalid actions cannot burn plot jobs.
+        with scheduler.player_activity(preempt=False):
+            return await execute_prepared(room_id,body,request,authorization,member_id,payload,candidate,matches_revision)
+
+    async def execute_prepared(room_id,body,request,authorization,member_id,payload,candidate,matches_revision):
         proposed = None
         if body.type in ("director_propose", "capability_propose"):
             if candidate["status"] != "playing":

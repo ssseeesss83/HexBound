@@ -120,6 +120,8 @@ def test_stale_scene_binding_and_foreign_chat_channel_are_rejected(env):
 
 def test_other_scene_action_does_not_discard_pending_intent_or_receive_its_text(env, monkeypatch):
     a, b, _, rid, _, _ = setup_scenes(env)
+    main = a.get(f"/api/rooms/{rid}").json()
+    side = b.get(f"/api/rooms/{rid}").json()
     async def run():
         reached, release = asyncio.Event(), asyncio.Event()
         from backend import director
@@ -134,8 +136,6 @@ def test_other_scene_action_does_not_discard_pending_intent_or_receive_its_text(
             await release.wait()
             return await original(Model(), state, actor, intent, *args, **kwargs)
         monkeypatch.setattr(director, 'propose', slow)
-        main = a.get(f"/api/rooms/{rid}").json()
-        side = b.get(f"/api/rooms/{rid}").json()
         async with httpx.AsyncClient(transport=httpx.ASGITransport(app=a.app), base_url="http://testserver",
                                      cookies=a.cookies, headers={"X-CSRF-Token": a.headers["X-CSRF-Token"]}) as client:
             body = {"command_id": uuid.uuid4().hex, "type": "narrate", "payload": {"text": "观察眼前场景"},
@@ -143,14 +143,14 @@ def test_other_scene_action_does_not_discard_pending_intent_or_receive_its_text(
                     "expected_scene_instance_id": main["scene_instance_id"], "expected_membership_epoch": main["membership_epoch"]}
             task = asyncio.create_task(client.post(f"/api/rooms/{rid}/commands", json=body))
             await asyncio.wait_for(reached.wait(), 2)
-            reply = send(b, rid, side)
+            reply = await asyncio.to_thread(send,b,rid,side)
             assert reply.status_code == 200, reply.text
             release.set()
             response = await asyncio.wait_for(task, 3)
             assert response.status_code == 200, response.text
             assert "MAIN_ONLY_DM_RESULT" in response.text
-        assert "MAIN_ONLY_DM_RESULT" not in b.get(f"/api/rooms/{rid}").text
-    asyncio.run(run())
+    a.portal.call(run)
+    assert "MAIN_ONLY_DM_RESULT" not in b.get(f"/api/rooms/{rid}").text
 
 
 def test_proposal_fingerprint_ignores_unrelated_scene_usage(env):

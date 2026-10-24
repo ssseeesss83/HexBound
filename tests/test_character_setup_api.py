@@ -1,8 +1,9 @@
 """Starting-level choices are authoritative, atomic and account-bound."""
 import uuid
+from contextlib import ExitStack
 
 import pytest
-from fastapi.testclient import TestClient
+from client_sessions import TestClient
 
 from backend.app import create_app
 from backend import characters
@@ -13,11 +14,14 @@ def app(tmp_path, monkeypatch):
     monkeypatch.delenv('HEXBOUND_ALLOW_GUESTS', raising=False)
     monkeypatch.delenv('LLM_API_KEY', raising=False)
     monkeypatch.delenv('LLM_MODEL', raising=False)
-    return create_app(str(tmp_path / 'setup.sqlite3'))
+    app = create_app(str(tmp_path / 'setup.sqlite3'))
+    with ExitStack() as clients:
+        app.state.test_clients = clients
+        yield app
 
 
 def account(app, name='setup_player'):
-    client = TestClient(app)
+    client = app.state.test_clients.enter_context(TestClient(app))
     response = client.post('/api/auth/register', json={'username': name, 'password': 'Reviewed-Choices-123!', 'display_name': name})
     assert response.status_code == 201, response.text
     client.headers['X-CSRF-Token'] = client.get('/api/auth/me').json()['csrf_token']

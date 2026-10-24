@@ -140,3 +140,14 @@ class DM:
             return result.text, "llm", suggestion
         except (httpx.HTTPError, ValueError, KeyError, IndexError, TypeError, RuntimeError, TimeoutError):
             return "DM 的声音暂时隐入雾中。你的发言已保存；你仍可使用场景行动继续冒险，所有规则判定保持正常。", "fallback", None
+
+
+class PlayerDM(DM):
+    """Foreground DM calls reserve capacity independently of background calls."""
+    def __init__(self,scheduler):
+        super().__init__()
+        self.scheduler = scheduler
+
+    async def _complete(self,*args,**kwargs):
+        async with self.scheduler.realtime():
+            return await super()._complete(*args,**kwargs)

@@ -379,9 +379,7 @@ def test_cancelled_result_narration_preserves_committed_roll_and_receipt(app, mo
             app.state.dm.configured = True
             app.state.dm.narrate = slow
             if cancel_at == 'broadcast':
-                endpoint = next(route.endpoint for route in app.routes if getattr(route, 'path', '').endswith('/commands'))
-                cell = endpoint.__closure__[endpoint.__code__.co_freevars.index('broadcast')]
-                original = cell.cell_contents
+                original = app.state.broadcast_room
                 calls = 0
                 async def gated(room_id):
                     nonlocal calls
@@ -390,7 +388,7 @@ def test_cancelled_result_narration_preserves_committed_roll_and_receipt(app, mo
                         reached.set()
                         await asyncio.Event().wait()
                     await original(room_id)
-                monkeypatch.setattr(cell, 'cell_contents', gated)
+                monkeypatch.setattr(app.state, 'broadcast_room', gated)
             body = {'command_id':uuid.uuid4().hex,'expected_version':planned['version'],'type':'director_resolve',
                     'payload':{'proposal_id':planned['director_proposals'][0]['id']}}
             task = asyncio.create_task(send(body))

@@ -8,7 +8,7 @@ from concurrent.futures import ThreadPoolExecutor
 import httpx
 import pytest
 from fastapi import FastAPI, Request, WebSocket
-from fastapi.testclient import TestClient
+from client_sessions import TestClient
 
 from backend import accounts
 from backend.accounts import COOKIE_NAME, authenticate_websocket, create_accounts_router, get_account_service, require_user
