@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-24",
+  "scope": "P11 preparation: provider protocol only, not full campaign acceptance",
+  "provider": "DeepSeek",
+  "base_url": "https://api.deepseek.com",
+  "requested_model": "deepseek-flash",
+  "credential_storage": "Process memory only; no key in repository or report",
+  "models_requests": 1,
+  "completion_requests": 2,
+  "prompt_tokens_reported": 91,
+  "completion_tokens_reported": 10,
+  "total_tokens_reported": 101,
+  "cases": [
+    {
+      "path": "Direct compatibility probe",
+      "thinking": "disabled",
+      "max_tokens": 32,
+      "http_status": 200,
+      "valid_expected_json": true,
+      "reported_total_tokens": 51
+    },
+    {
+      "path": "backend.dm.DM._complete",
+      "reasoning_effort": "none",
+      "max_tokens": 32,
+      "http_status": 200,
+      "valid_expected_json": true,
+      "reported_total_tokens": 50
+    }
+  ],
+  "remaining_session_completion_request_limit": 10,
+  "limitations": [
+    "No gameplay quality, hidden-information safety, dynamic branch or multiplayer acceptance follows from these two protocol calls.",
+    "Routine automated tests use fake credentials and mocked transport, never the live key.",
+    "The key is authorized only for this limited test session."
+  ]
+}

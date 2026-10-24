@@ -59,6 +59,9 @@ class DM:
         self.api_key = os.getenv("LLM_API_KEY", "")
         self.model = os.getenv("LLM_MODEL", "")
         self.timeout = min(90, max(1, float(os.getenv("LLM_TIMEOUT_SECONDS", "25"))))
+        self.reasoning_effort = os.getenv('LLM_REASONING_EFFORT','').strip() or None
+        if self.reasoning_effort not in {None,'none','minimal','low','medium','high','xhigh','max'}:
+            raise ValueError('LLM_REASONING_EFFORT 无效')
         self.configured = bool(self.api_key and self.model)
 
     async def _complete(self, system: str, data: dict, json_mode: bool = False, max_tokens: int = 900) -> str:
@@ -73,6 +76,8 @@ class DM:
         }
         if json_mode:
             body["response_format"] = {"type": "json_object"}
+        if self.reasoning_effort is not None:
+            body['reasoning_effort'] = self.reasoning_effort
         async with asyncio.timeout(self.timeout):
             async with httpx.AsyncClient(timeout=self.timeout, follow_redirects=False) as client:
                 response = await client.post(self.base_url + "/chat/completions", json=body,
