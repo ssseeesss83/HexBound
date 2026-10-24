@@ -1,0 +1,2504 @@
+{
+  "reviewed_snapshot": "Before P02m reference-only choice normalization; original evidence retained",
+  "status": "limited_read_only_subclass_spells_choices_and_class_spellcasting_review",
+  "source_pdf_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+  "source_pages_sha256": "a3d4be9c2a612c0cba1dcc0bc3ce875f52cef1b4924f743142be600614ade1c6",
+  "confirmed_source_value_corrections": [],
+  "spell_table_relation_checks": [
+    {
+      "record": "subclasses/life",
+      "terrain": null,
+      "path": [
+        "spells"
+      ],
+      "expected_official_relations": [
+        [
+          1,
+          "bless"
+        ],
+        [
+          1,
+          "cure-wounds"
+        ],
+        [
+          3,
+          "lesser-restoration"
+        ],
+        [
+          3,
+          "spiritual-weapon"
+        ],
+        [
+          5,
+          "beacon-of-hope"
+        ],
+        [
+          5,
+          "revivify"
+        ],
+        [
+          7,
+          "death-ward"
+        ],
+        [
+          7,
+          "guardian-of-faith"
+        ],
+        [
+          9,
+          "mass-cure-wounds"
+        ],
+        [
+          9,
+          "raise-dead"
+        ]
+      ],
+      "actual_relations": [
+        [
+          1,
+          "bless"
+        ],
+        [
+          1,
+          "cure-wounds"
+        ],
+        [
+          3,
+          "lesser-restoration"
+        ],
+        [
+          3,
+          "spiritual-weapon"
+        ],
+        [
+          5,
+          "beacon-of-hope"
+        ],
+        [
+          5,
+          "revivify"
+        ],
+        [
+          7,
+          "death-ward"
+        ],
+        [
+          9,
+          "mass-cure-wounds"
+        ],
+        [
+          9,
+          "raise-dead"
+        ],
+        [
+          7,
+          "guardian-of-faith"
+        ]
+      ],
+      "candidate_array_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "match": true,
+      "official_page": 17,
+      "official_column": 1,
+      "source_interval": [
+        "Life Domain Spells",
+        "Bonus Proficiency"
+      ],
+      "source_block": "\nCleric Level Spells\n1st bless, cure wounds\n3rd lesser restoration, spiritual weapon\n5th beacon of hope, revivify\n7th death ward, guardian of faith\n9th mass cure wounds, raise dead\n",
+      "derivation": "Official table directly states class levels."
+    },
+    {
+      "record": "subclasses/land",
+      "terrain": "arctic",
+      "path": [
+        "spells"
+      ],
+      "expected_official_relations": [
+        [
+          3,
+          "hold-person"
+        ],
+        [
+          3,
+          "spike-growth"
+        ],
+        [
+          5,
+          "sleet-storm"
+        ],
+        [
+          5,
+          "slow"
+        ],
+        [
+          7,
+          "freedom-of-movement"
+        ],
+        [
+          7,
+          "ice-storm"
+        ],
+        [
+          9,
+          "commune-with-nature"
+        ],
+        [
+          9,
+          "cone-of-cold"
+        ]
+      ],
+      "actual_relations": [
+        [
+          3,
+          "hold-person"
+        ],
+        [
+          3,
+          "spike-growth"
+        ],
+        [
+          5,
+          "sleet-storm"
+        ],
+        [
+          5,
+          "slow"
+        ],
+        [
+          7,
+          "freedom-of-movement"
+        ],
+        [
+          7,
+          "ice-storm"
+        ],
+        [
+          9,
+          "commune-with-nature"
+        ],
+        [
+          9,
+          "cone-of-cold"
+        ]
+      ],
+      "candidate_array_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "match": true,
+      "official_page": 22,
+      "official_column": null,
+      "source_interval": [
+        "Arctic\n",
+        "Coast"
+      ],
+      "source_block": "Druid Level Circle Spells\n3rd hold person, spike growth\n5th sleet storm, slow\n7th freedom of movement, ice storm\n9th commune with nature, cone of cold\n",
+      "derivation": "Official table directly states class levels."
+    },
+    {
+      "record": "subclasses/land",
+      "terrain": "coast",
+      "path": [
+        "spells"
+      ],
+      "expected_official_relations": [
+        [
+          3,
+          "mirror-image"
+        ],
+        [
+          3,
+          "misty-step"
+        ],
+        [
+          5,
+          "water-breathing"
+        ],
+        [
+          5,
+          "water-walk"
+        ],
+        [
+          7,
+          "control-water"
+        ],
+        [
+          7,
+          "freedom-of-movement"
+        ],
+        [
+          9,
+          "conjure-elemental"
+        ],
+        [
+          9,
+          "scrying"
+        ]
+      ],
+      "actual_relations": [
+        [
+          3,
+          "mirror-image"
+        ],
+        [
+          3,
+          "misty-step"
+        ],
+        [
+          5,
+          "water-breathing"
+        ],
+        [
+          5,
+          "water-walk"
+        ],
+        [
+          7,
+          "control-water"
+        ],
+        [
+          7,
+          "freedom-of-movement"
+        ],
+        [
+          9,
+          "conjure-elemental"
+        ],
+        [
+          9,
+          "scrying"
+        ]
+      ],
+      "candidate_array_indices": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "match": true,
+      "official_page": 22,
+      "official_column": null,
+      "source_interval": [
+        "Coast\n",
+        "Desert"
+      ],
+      "source_block": "Druid Level Circle Spells\n3rd mirror image, misty step\n5th water breathing, water walk\n7th control water, freedom of movement\n9th conjure elemental, scrying\n",
+      "derivation": "Official table directly states class levels."
+    },
+    {
+      "record": "subclasses/land",
+      "terrain": "desert",
+      "path": [
+        "spells"
+      ],
+      "expected_official_relations": [
+        [
+          3,
+          "blur"
+        ],
+        [
+          3,
+          "silence"
+        ],
+        [
+          5,
+          "create-food-and-water"
+        ],
+        [
+          5,
+          "protection-from-energy"
+        ],
+        [
+          7,
+          "blight"
+        ],
+        [
+          7,
+          "hallucinatory-terrain"
+        ],
+        [
+          9,
+          "insect-plague"
+        ],
+        [
+          9,
+          "wall-of-stone"
+        ]
+      ],
+      "actual_relations": [
+        [
+          3,
+          "blur"
+        ],
+        [
+          3,
+          "silence"
+        ],
+        [
+          5,
+          "create-food-and-water"
+        ],
+        [
+          5,
+          "protection-from-energy"
+        ],
+        [
+          7,
+          "blight"
+        ],
+        [
+          7,
+          "hallucinatory-terrain"
+        ],
+        [
+          9,
+          "insect-plague"
+        ],
+        [
+          9,
+          "wall-of-stone"
+        ]
+      ],
+      "candidate_array_indices": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "match": true,
+      "official_page": 22,
+      "official_column": null,
+      "source_interval": [
+        "Desert\n",
+        "Forest"
+      ],
+      "source_block": "Druid Level Circle Spells\n3rd blur, silence\n5th create food and water, protection from\nenergy\n7th blight, hallucinatory terrain\n9th insect plague, wall of stone\n",
+      "derivation": "Official table directly states class levels."
+    },
+    {
+      "record": "subclasses/land",
+      "terrain": "forest",
+      "path": [
+        "spells"
+      ],
+      "expected_official_relations": [
+        [
+          3,
+          "barkskin"
+        ],
+        [
+          3,
+          "spider-climb"
+        ],
+        [
+          5,
+          "call-lightning"
+        ],
+        [
+          5,
+          "plant-growth"
+        ],
+        [
+          7,
+          "divination"
+        ],
+        [
+          7,
+          "freedom-of-movement"
+        ],
+        [
+          9,
+          "commune-with-nature"
+        ],
+        [
+          9,
+          "tree-stride"
+        ]
+      ],
+      "actual_relations": [
+        [
+          3,
+          "barkskin"
+        ],
+        [
+          3,
+          "spider-climb"
+        ],
+        [
+          5,
+          "call-lightning"
+        ],
+        [
+          5,
+          "plant-growth"
+        ],
+        [
+          7,
+          "divination"
+        ],
+        [
+          7,
+          "freedom-of-movement"
+        ],
+        [
+          9,
+          "commune-with-nature"
+        ],
+        [
+          9,
+          "tree-stride"
+        ]
+      ],
+      "candidate_array_indices": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "match": true,
+      "official_page": 22,
+      "official_column": null,
+      "source_interval": [
+        "Forest\n",
+        "Grassland"
+      ],
+      "source_block": "Druid Level Circle Spells\n3rd barkskin, spider climb\n5th call lightning, plant growth\n7th divination, freedom of movement\n9th commune with nature, tree stride\n",
+      "derivation": "Official table directly states class levels."
+    },
+    {
+      "record": "subclasses/land",
+      "terrain": "grassland",
+      "path": [
+        "spells"
+      ],
+      "expected_official_relations": [
+        [
+          3,
+          "invisibility"
+        ],
+        [
+          3,
+          "pass-without-trace"
+        ],
+        [
+          5,
+          "daylight"
+        ],
+        [
+          5,
+          "haste"
+        ],
+        [
+          7,
+          "divination"
+        ],
+        [
+          7,
+          "freedom-of-movement"
+        ],
+        [
+          9,
+          "dream"
+        ],
+        [
+          9,
+          "insect-plague"
+        ]
+      ],
+      "actual_relations": [
+        [
+          3,
+          "invisibility"
+        ],
+        [
+          3,
+          "pass-without-trace"
+        ],
+        [
+          5,
+          "daylight"
+        ],
+        [
+          5,
+          "haste"
+        ],
+        [
+          7,
+          "divination"
+        ],
+        [
+          7,
+          "freedom-of-movement"
+        ],
+        [
+          9,
+          "dream"
+        ],
+        [
+          9,
+          "insect-plague"
+        ]
+      ],
+      "candidate_array_indices": [
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "match": true,
+      "official_page": 22,
+      "official_column": null,
+      "source_interval": [
+        "Grassland\n",
+        "Mountain"
+      ],
+      "source_block": "Druid Level Circle Spells\n3rd invisibility, pass without trace\n5th daylight, haste\n7th divination, freedom of movement\n9th dream, insect plague\n",
+      "derivation": "Official table directly states class levels."
+    },
+    {
+      "record": "subclasses/land",
+      "terrain": "mountain",
+      "path": [
+        "spells"
+      ],
+      "expected_official_relations": [
+        [
+          3,
+          "spider-climb"
+        ],
+        [
+          3,
+          "spike-growth"
+        ],
+        [
+          5,
+          "lightning-bolt"
+        ],
+        [
+          5,
+          "meld-into-stone"
+        ],
+        [
+          7,
+          "stone-shape"
+        ],
+        [
+          7,
+          "stoneskin"
+        ],
+        [
+          9,
+          "passwall"
+        ],
+        [
+          9,
+          "wall-of-stone"
+        ]
+      ],
+      "actual_relations": [
+        [
+          3,
+          "spider-climb"
+        ],
+        [
+          3,
+          "spike-growth"
+        ],
+        [
+          5,
+          "lightning-bolt"
+        ],
+        [
+          5,
+          "meld-into-stone"
+        ],
+        [
+          7,
+          "stone-shape"
+        ],
+        [
+          7,
+          "stoneskin"
+        ],
+        [
+          9,
+          "passwall"
+        ],
+        [
+          9,
+          "wall-of-stone"
+        ]
+      ],
+      "candidate_array_indices": [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ],
+      "match": true,
+      "official_page": 22,
+      "official_column": null,
+      "source_interval": [
+        "Mountain\n",
+        "Swamp"
+      ],
+      "source_block": "Druid Level Circle Spells\n3rd spider climb, spike growth\n5th lightning bolt, meld into stone\n7th stone shape, stoneskin\n9th passwall, wall of stone\n",
+      "derivation": "Official table directly states class levels."
+    },
+    {
+      "record": "subclasses/land",
+      "terrain": "swamp",
+      "path": [
+        "spells"
+      ],
+      "expected_official_relations": [
+        [
+          3,
+          "acid-arrow"
+        ],
+        [
+          3,
+          "darkness"
+        ],
+        [
+          5,
+          "water-walk"
+        ],
+        [
+          5,
+          "stinking-cloud"
+        ],
+        [
+          7,
+          "freedom-of-movement"
+        ],
+        [
+          7,
+          "locate-creature"
+        ],
+        [
+          9,
+          "insect-plague"
+        ],
+        [
+          9,
+          "scrying"
+        ]
+      ],
+      "actual_relations": [
+        [
+          3,
+          "acid-arrow"
+        ],
+        [
+          3,
+          "darkness"
+        ],
+        [
+          5,
+          "water-walk"
+        ],
+        [
+          5,
+          "stinking-cloud"
+        ],
+        [
+          7,
+          "freedom-of-movement"
+        ],
+        [
+          7,
+          "locate-creature"
+        ],
+        [
+          9,
+          "insect-plague"
+        ],
+        [
+          9,
+          "scrying"
+        ]
+      ],
+      "candidate_array_indices": [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55
+      ],
+      "match": true,
+      "official_page": 22,
+      "official_column": null,
+      "source_interval": [
+        "Swamp\n",
+        "Land's Stride"
+      ],
+      "source_block": "Druid Level Circle Spells\n3rd acid arrow, darkness\n5th water walk, stinking cloud\n7th freedom of movement, locate creature\n9th insect plague, scrying\n",
+      "derivation": "Official table directly states class levels."
+    },
+    {
+      "record": "subclasses/devotion",
+      "terrain": null,
+      "path": [
+        "spells"
+      ],
+      "expected_official_relations": [
+        [
+          3,
+          "protection-from-evil-and-good"
+        ],
+        [
+          3,
+          "sanctuary"
+        ],
+        [
+          5,
+          "lesser-restoration"
+        ],
+        [
+          5,
+          "zone-of-truth"
+        ],
+        [
+          9,
+          "beacon-of-hope"
+        ],
+        [
+          9,
+          "dispel-magic"
+        ],
+        [
+          13,
+          "freedom-of-movement"
+        ],
+        [
+          13,
+          "guardian-of-faith"
+        ],
+        [
+          17,
+          "commune"
+        ],
+        [
+          17,
+          "flame-strike"
+        ]
+      ],
+      "actual_relations": [
+        [
+          3,
+          "protection-from-evil-and-good"
+        ],
+        [
+          3,
+          "sanctuary"
+        ],
+        [
+          5,
+          "lesser-restoration"
+        ],
+        [
+          5,
+          "zone-of-truth"
+        ],
+        [
+          9,
+          "beacon-of-hope"
+        ],
+        [
+          9,
+          "dispel-magic"
+        ],
+        [
+          13,
+          "freedom-of-movement"
+        ],
+        [
+          13,
+          "guardian-of-faith"
+        ],
+        [
+          17,
+          "commune"
+        ],
+        [
+          17,
+          "flame-strike"
+        ]
+      ],
+      "candidate_array_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "match": true,
+      "official_page": 33,
+      "official_column": 0,
+      "source_interval": [
+        "Oath of Devotion Spells",
+        "Channel Divinity"
+      ],
+      "source_block": "\nPaladin\nLevel Spells\n3rd protection from evil and good, sanctuary\n5th lesser restoration, zone of truth\n9th beacon of hope, dispel magic\n13th freedom of movement, guardian of faith\n17th commune, flame strike\n",
+      "derivation": "Official table directly states class levels."
+    },
+    {
+      "record": "subclasses/fiend",
+      "terrain": null,
+      "path": [
+        "spells"
+      ],
+      "expected_official_relations": [
+        [
+          1,
+          "burning-hands"
+        ],
+        [
+          1,
+          "command"
+        ],
+        [
+          3,
+          "blindness-deafness"
+        ],
+        [
+          3,
+          "scorching-ray"
+        ],
+        [
+          5,
+          "fireball"
+        ],
+        [
+          5,
+          "stinking-cloud"
+        ],
+        [
+          7,
+          "fire-shield"
+        ],
+        [
+          7,
+          "wall-of-fire"
+        ],
+        [
+          9,
+          "flame-strike"
+        ],
+        [
+          9,
+          "hallow"
+        ]
+      ],
+      "actual_relations": [
+        [
+          1,
+          "burning-hands"
+        ],
+        [
+          1,
+          "command"
+        ],
+        [
+          3,
+          "blindness-deafness"
+        ],
+        [
+          3,
+          "scorching-ray"
+        ],
+        [
+          5,
+          "fireball"
+        ],
+        [
+          5,
+          "stinking-cloud"
+        ],
+        [
+          7,
+          "fire-shield"
+        ],
+        [
+          7,
+          "wall-of-fire"
+        ],
+        [
+          9,
+          "flame-strike"
+        ],
+        [
+          9,
+          "hallow"
+        ]
+      ],
+      "candidate_array_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "match": true,
+      "official_page": 50,
+      "official_column": 1,
+      "source_interval": [
+        "Fiend Expanded Spells",
+        "Dark One's Blessing"
+      ],
+      "source_block": "\nSpell Level Spells\n1st burning hands, command\n2nd blindness/deafness, scorching ray\n3rd fireball, stinking cloud\n4th fire shield, wall of fire\n5th flame strike, hallow\n",
+      "derivation": "Fiend table labels are spell levels; convert to earliest Pact Magic class-level availability from official Warlock table p46 (1/3/5/7/9)."
+    }
+  ],
+  "spellcasting_subsection_checks": [
+    {
+      "record": "classes/bard",
+      "path": [
+        "spellcasting",
+        "info",
+        0,
+        "desc"
+      ],
+      "heading": "Cantrips",
+      "source_end_boundary": "Spell Slots",
+      "official_chapter_pages": [
+        11,
+        14
+      ],
+      "source_body": "You know two cantrips of your choice from the bard spell list. You learn additional bard cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Bard table.",
+      "candidate_paragraphs": [
+        "You know two cantrips of your choice from the bard spell list. You learn additional bard cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Bard table."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/bard",
+      "path": [
+        "spellcasting",
+        "info",
+        1,
+        "desc"
+      ],
+      "heading": "Spell Slots",
+      "source_end_boundary": "Spells Known of 1st Level and Higher",
+      "official_chapter_pages": [
+        11,
+        14
+      ],
+      "source_body": "The Bard table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest. For example, if you know the 1st-‐‐level spell cure wounds and have a 1st-‐‐level and a 2nd-‐‐level spell slot available, you can cast cure wounds using either slot.",
+      "candidate_paragraphs": [
+        "The Bard table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
+        "For example, if you know the 1st-level spell cure wounds and have a 1st-level and a 2nd-level spell slot available, you can cast cure wounds using either slot."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/bard",
+      "path": [
+        "spellcasting",
+        "info",
+        2,
+        "desc"
+      ],
+      "heading": "Spells Known of 1st Level and Higher",
+      "source_end_boundary": "Spellcasting Ability",
+      "official_chapter_pages": [
+        11,
+        14
+      ],
+      "source_body": "You know four 1st-‐‐level spells of your choice from the bard spell list. The Spells Known column of the Bard table shows when you learn more bard spells of your choice. Each of these spells must be of a level for which you have spell slots, as shown on the table. For instance, when you reach 3rd level in this class, you can learn one new spell of 1st or 2nd level. Additionally, when you gain a level in this class, you can choose one of the bard spells you know and replace it with another spell from the bard spell list, which also must be of a level for which you have spell slots.",
+      "candidate_paragraphs": [
+        "You know four 1st-level spells of your choice from the bard spell list.",
+        "The Spells Known column of the Bard table shows when you learn more bard spells of your choice.",
+        "Each of these spells must be of a level for which you have spell slots, as shown on the table. For instance, when you reach 3rd level in this class, you can learn one new spell of 1st or 2nd level.",
+        "Additionally, when you gain a level in this class, you can choose one of the bard spells you know and replace it with another spell from the bard spell list, which also must be of a level for which you have spell slots."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/bard",
+      "path": [
+        "spellcasting",
+        "info",
+        3,
+        "desc"
+      ],
+      "heading": "Spellcasting Ability",
+      "source_end_boundary": "Ritual Casting",
+      "official_chapter_pages": [
+        11,
+        14
+      ],
+      "source_body": "Charisma is your spellcasting ability for your bard spells. Your magic comes from the heart and soul you pour into the performance of your music or oration. You use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your Charisma modifier when setting the saving throw DC for a bard spell you cast and when making an attack roll with one. Spell save DC = 8 + your proficiency bonus + your Charisma modifier Spell attack modifier = your proficiency bonus + your Charisma modifier",
+      "candidate_paragraphs": [
+        "Charisma is your spellcasting ability for your bard spells. Your magic comes from the heart and soul you pour into the performance of your music or oration. You use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your Charisma modifier when setting the saving throw DC for a bard spell you cast and when making an attack roll with one.",
+        "Spell save DC = 8 + your proficiency bonus + your Charisma modifier.",
+        "Spell attack modifier = your proficiency bonus + your Charisma modifier."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/bard",
+      "path": [
+        "spellcasting",
+        "info",
+        4,
+        "desc"
+      ],
+      "heading": "Ritual Casting",
+      "source_end_boundary": "Spellcasting Focus",
+      "official_chapter_pages": [
+        11,
+        14
+      ],
+      "source_body": "You can cast any bard spell you know as a ritual if that spell has the ritual tag.",
+      "candidate_paragraphs": [
+        "You can cast any bard spell you know as a ritual if that spell has the ritual tag."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/bard",
+      "path": [
+        "spellcasting",
+        "info",
+        5,
+        "desc"
+      ],
+      "heading": "Spellcasting Focus",
+      "source_end_boundary": "Bardic Inspiration",
+      "official_chapter_pages": [
+        11,
+        14
+      ],
+      "source_body": "You can use a musical instrument (see “Equipment”) as a spellcasting focus for your bard spells.",
+      "candidate_paragraphs": [
+        "You can use a musical instrument (see Equipment) as a spellcasting focus for your bard spells."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/cleric",
+      "path": [
+        "spellcasting",
+        "info",
+        0,
+        "desc"
+      ],
+      "heading": "Cantrips",
+      "source_end_boundary": "Preparing and Casting Spells",
+      "official_chapter_pages": [
+        15,
+        18
+      ],
+      "source_body": "At 1st level, you know three cantrips of your choice from the cleric spell list. You learn additional cleric cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Cleric table.",
+      "candidate_paragraphs": [
+        "At 1st level, you know three cantrips of your choice from the cleric spell list. You learn additional cleric cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Cleric table."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/cleric",
+      "path": [
+        "spellcasting",
+        "info",
+        1,
+        "desc"
+      ],
+      "heading": "Preparing and Casting Spells",
+      "source_end_boundary": "Spellcasting Ability",
+      "official_chapter_pages": [
+        15,
+        18
+      ],
+      "source_body": "The Cleric table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest. You prepare the list of cleric spells that are available for you to cast, choosing from the cleric spell list. When you do so, choose a number of cleric spells equal to your Wisdom modifier + your cleric level (minimum of one spell). The spells must be of a level for which you have spell slots. For example, if you are a 3rd-‐‐level cleric, you have four 1st-‐‐level and two 2nd-‐‐level spell slots. With a Wisdom of 16, your list of prepared spells can include six spells of 1st or 2nd level, in any combination. If you prepare the 1st-‐‐level spell cure wounds, you can cast it using a 1st-‐‐level or 2nd-‐‐level slot. Casting the spell doesn't remove it from your list of prepared spells. You can change your list of prepared spells when you finish a long rest. Preparing a new list of cleric spells requires time spent in prayer and meditation: at least 1 minute per spell level for each spell on your list.",
+      "candidate_paragraphs": [
+        "The Cleric table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
+        "You prepare the list of cleric spells that are available for you to cast, choosing from the cleric spell list. When you do so, choose a number of cleric spells equal to your Wisdom modifier + your cleric level (minimum of one spell). The spells must be of a level for which you have spell slots.",
+        "For example, if you are a 3rd-level cleric, you have four 1st-level and two 2nd-level spell slots. With a Wisdom of 16, your list of prepared spells can include six spells of 1st or 2nd level, in any combination. If you prepare the 1st-level spell cure wounds, you can cast it using a 1st-level or 2nd-level slot. Casting the spell doesn't remove it from your list of prepared spells.",
+        "You can change your list of prepared spells when you finish a long rest. Preparing a new list of cleric spells requires time spent in prayer and meditation: at least 1 minute per spell level for each spell on your list."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/cleric",
+      "path": [
+        "spellcasting",
+        "info",
+        2,
+        "desc"
+      ],
+      "heading": "Spellcasting Ability",
+      "source_end_boundary": "Ritual Casting",
+      "official_chapter_pages": [
+        15,
+        18
+      ],
+      "source_body": "Wisdom is your spellcasting ability for your cleric spells. The power of your spells comes from your devotion to your deity. You use your Wisdom whenever a cleric spell refers to your spellcasting ability. In addition, you use your Wisdom modifier when setting the saving throw DC for a cleric spell you cast and when making an attack roll with one. Spell save DC = 8 + your proficiency bonus + your Wisdom modifier Spell attack modifier = your proficiency bonus + your Wisdom modifier",
+      "candidate_paragraphs": [
+        "Wisdom is your spellcasting ability for your cleric spells. The power of your spells comes from your devotion to your deity. You use your Wisdom whenever a cleric spell refers to your spellcasting ability. In addition, you use your Wisdom modifier when setting the saving throw DC for a cleric spell you cast and when making an attack roll with one.",
+        "Spell save DC = 8 + your proficiency bonus + your Wisdom modifier",
+        "Spell attack modifier = your proficiency bonus + your Wisdom modifier"
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/cleric",
+      "path": [
+        "spellcasting",
+        "info",
+        3,
+        "desc"
+      ],
+      "heading": "Ritual Casting",
+      "source_end_boundary": "Spellcasting Focus",
+      "official_chapter_pages": [
+        15,
+        18
+      ],
+      "source_body": "You can cast a cleric spell as a ritual if that spell has the ritual tag and you have the spell prepared.",
+      "candidate_paragraphs": [
+        "You can cast a cleric spell as a ritual if that spell has the ritual tag and you have the spell prepared."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/cleric",
+      "path": [
+        "spellcasting",
+        "info",
+        4,
+        "desc"
+      ],
+      "heading": "Spellcasting Focus",
+      "source_end_boundary": "Divine Domain",
+      "official_chapter_pages": [
+        15,
+        18
+      ],
+      "source_body": "You can use a holy symbol (see “Equipment”) as a spellcasting focus for your cleric spells.",
+      "candidate_paragraphs": [
+        "You can use a holy symbol (see Equipment) as a spellcasting focus for your cleric spells."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/druid",
+      "path": [
+        "spellcasting",
+        "info",
+        0,
+        "desc"
+      ],
+      "heading": "Cantrips",
+      "source_end_boundary": "Preparing and Casting Spells",
+      "official_chapter_pages": [
+        19,
+        23
+      ],
+      "source_body": "At 1st level, you know two cantrips of your choice from the druid spell list. You learn additional druid cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Druid table.",
+      "candidate_paragraphs": [
+        "At 1st level, you know two cantrips of your choice from the druid spell list. You learn additional druid cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Druid table."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/druid",
+      "path": [
+        "spellcasting",
+        "info",
+        1,
+        "desc"
+      ],
+      "heading": "Preparing and Casting Spells",
+      "source_end_boundary": "Spellcasting Ability",
+      "official_chapter_pages": [
+        19,
+        23
+      ],
+      "source_body": "The Druid table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these druid spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest. You prepare the list of druid spells that are available for you to cast, choosing from the druid spell list. When you do so, choose a number of druid spells equal to your Wisdom modifier + your druid level (minimum of one spell). The spells must be of a level for which you have spell slots. For example, if you are a 3rd-‐‐level druid, you have four 1st-‐‐level and two 2nd-‐‐level spell slots. With a Wisdom of 16, your list of prepared spells can include six spells of 1st or 2nd level, in any combination. If you prepare the 1st-‐‐level spell cure wounds, you can cast it using a 1st-‐‐level or 2nd-‐‐level slot. Casting the spell doesn't remove it from your list of prepared spells. You can also change your list of prepared spells when you finish a long rest. Preparing a new list of druid spells requires time spent in prayer and meditation: at least 1 minute per spell level for each spell on your list.",
+      "candidate_paragraphs": [
+        "The Druid table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these druid spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
+        "You prepare the list of druid spells that are available for you to cast, choosing from the druid spell list. When you do so, choose a number of druid spells equal to your Wisdom modifier + your druid level (minimum of one spell). The spells must be of a level for which you have spell slots.",
+        "For example, if you are a 3rd-level druid, you have four 1st-level and two 2nd-level spell slots. With a Wisdom of 16, your list of prepared spells can include six spells of 1st or 2nd level, in any combination. If you prepare the 1st-level spell cure wounds, you can cast it using a 1st-level or 2nd-level slot. Casting the spell doesn't remove it from your list of prepared spells.",
+        "You can also change your list of prepared spells when you finish a long rest. Preparing a new list of druid spells requires time spent in prayer and meditation: at least 1 minute per spell level for each spell on your list."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/druid",
+      "path": [
+        "spellcasting",
+        "info",
+        2,
+        "desc"
+      ],
+      "heading": "Spellcasting Ability",
+      "source_end_boundary": "Ritual Casting",
+      "official_chapter_pages": [
+        19,
+        23
+      ],
+      "source_body": "Wisdom is your spellcasting ability for your druid spells, since your magic draws upon your devotion and attunement to nature. You use your Wisdom whenever a spell refers to your spellcasting ability. In addition, you use your Wisdom modifier when setting the saving throw DC for a druid spell you cast and when making an attack roll with one. Spell save DC = 8 + your proficiency bonus + your Wisdom modifier Spell attack modifier = your proficiency bonus + your Wisdom modifier",
+      "candidate_paragraphs": [
+        "Wisdom is your spellcasting ability for your druid spells, since your magic draws upon your devotion and attunement to nature. You use your Wisdom whenever a spell refers to your spellcasting ability. In addition, you use your Wisdom modifier when setting the saving throw DC for a druid spell you cast and when making an attack roll with one.",
+        "Spell save DC = 8 + your proficiency bonus + your Wisdom modifier.",
+        "Spell attack modifier = your proficiency bonus + your Wisdom modifier."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/druid",
+      "path": [
+        "spellcasting",
+        "info",
+        3,
+        "desc"
+      ],
+      "heading": "Ritual Casting",
+      "source_end_boundary": "Spellcasting Focus",
+      "official_chapter_pages": [
+        19,
+        23
+      ],
+      "source_body": "You can cast a druid spell as a ritual if that spell has the ritual tag and you have the spell prepared.",
+      "candidate_paragraphs": [
+        "You can cast a druid spell as a ritual if that spell has the ritual tag and you have the spell prepared."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/druid",
+      "path": [
+        "spellcasting",
+        "info",
+        4,
+        "desc"
+      ],
+      "heading": "Spellcasting Focus",
+      "source_end_boundary": "Wild Shape",
+      "official_chapter_pages": [
+        19,
+        23
+      ],
+      "source_body": "You can use a druidic focus (see “Equipment”) as a spellcasting focus for your druid spells.",
+      "candidate_paragraphs": [
+        "You can use a druidic focus (see “Equipment”) as a spellcasting focus for your druid spells."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/paladin",
+      "path": [
+        "spellcasting",
+        "info",
+        0,
+        "desc"
+      ],
+      "heading": "Preparing and Casting Spells",
+      "source_end_boundary": "Spellcasting Ability",
+      "official_chapter_pages": [
+        30,
+        34
+      ],
+      "source_body": "The Paladin table shows how many spell slots you have to cast your spells. To cast one of your paladin spells of 1st level or higher, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest. You prepare the list of paladin spells that are available for you to cast, choosing from the paladin spell list. When you do so, choose a number of paladin spells equal to your Charisma modifier + half your paladin level, rounded down (minimum of one spell). The spells must be of a level for which you have spell slots. For example, if you are a 5th-‐‐level paladin, you have four 1st-‐‐level and two 2nd-‐‐level spell slots. With a Charisma of 14, your list of prepared spells can include four spells of 1st or 2nd level, in any combination. If you prepare the 1st-‐‐level spell cure wounds, you can cast it using a 1st-‐‐level or a 2nd-‐‐ level slot. Casting the spell doesn't remove it from your list of prepared spells. You can change your list of prepared spells when you finish a long rest. Preparing a new list of paladin spells requires time spent in prayer and meditation: at least 1 minute per spell level for each spell on your list.",
+      "candidate_paragraphs": [
+        "The Paladin table shows how many spell slots you have to cast your spells. To cast one of your paladin spells of 1st level or higher, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
+        "You prepare the list of paladin spells that are available for you to cast, choosing from the paladin spell list. When you do so, choose a number of paladin spells equal to your Charisma modifier + half your paladin level, rounded down (minimum of one spell). The spells must be of a level for which you have spell slots.",
+        "For example, if you are a 5th-level paladin, you have four 1st-level and two 2nd-level spell slots. With a Charisma of 14, your list of prepared spells can include four spells of 1st or 2nd level, in any combination. If you prepare the 1st-level spell cure wounds, you can cast it using a 1st-level or a 2nd- level slot. Casting the spell doesn't remove it from your list of prepared spells.",
+        "You can change your list of prepared spells when you finish a long rest. Preparing a new list of paladin spells requires time spent in prayer and meditation: at least 1 minute per spell level for each spell on your list."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/paladin",
+      "path": [
+        "spellcasting",
+        "info",
+        1,
+        "desc"
+      ],
+      "heading": "Spellcasting Ability",
+      "source_end_boundary": "Spellcasting Focus",
+      "official_chapter_pages": [
+        30,
+        34
+      ],
+      "source_body": "Charisma is your spellcasting ability for your paladin spells, since their power derives from the strength of your convictions. You use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your Charisma modifier when setting the saving throw DC for a paladin spell you cast and when making an attack roll with one. Spell save DC = 8 + your proficiency bonus + your Charisma modifier Spell attack modifier = your proficiency bonus + your Charisma modifier",
+      "candidate_paragraphs": [
+        "Charisma is your spellcasting ability for your paladin spells, since their power derives from the strength of your convictions. You use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your Charisma modifier when setting the saving throw DC for a paladin spell you cast and when making an attack roll with one.",
+        "Spell save DC = 8 + your proficiency bonus + your Charisma modifier.",
+        "Spell attack modifier = your proficiency bonus + your Charisma modifier."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/paladin",
+      "path": [
+        "spellcasting",
+        "info",
+        2,
+        "desc"
+      ],
+      "heading": "Spellcasting Focus",
+      "source_end_boundary": "Divine Smite",
+      "official_chapter_pages": [
+        30,
+        34
+      ],
+      "source_body": "You can use a holy symbol as a spellcasting focus for your paladin spells.",
+      "candidate_paragraphs": [
+        "You can use a holy symbol as a spellcasting focus for your paladin spells."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/ranger",
+      "path": [
+        "spellcasting",
+        "info",
+        0,
+        "desc"
+      ],
+      "heading": "Spell Slots",
+      "source_end_boundary": "Spells Known of 1st Level and Higher",
+      "official_chapter_pages": [
+        35,
+        38
+      ],
+      "source_body": "The Ranger table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest. For example, if you know the 1st-‐‐level spell animal friendship and have a 1st-‐‐level and a 2nd-‐‐level spell slot available, you can cast animal friendship using either slot.",
+      "candidate_paragraphs": [
+        "The Ranger table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
+        "For example, if you know the 1st-level spell animal friendship and have a 1st-level and a 2nd-level spell slot available, you can cast animal friendship using either slot."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/ranger",
+      "path": [
+        "spellcasting",
+        "info",
+        1,
+        "desc"
+      ],
+      "heading": "Spells Known of 1st Level and Higher",
+      "source_end_boundary": "Spellcasting Ability",
+      "official_chapter_pages": [
+        35,
+        38
+      ],
+      "source_body": "You know two 1st-‐‐level spells of your choice from the ranger spell list. The Spells Known column of the Ranger table shows when you learn more ranger spells of your choice. Each of these spells must be of a level for which you have spell slots. For instance, when you reach 5th level in this class, you can learn one new spell of 1st or 2nd level. Additionally, when you gain a level in this class, you can choose one of the ranger spells you know and replace it with another spell from the ranger spell list, which also must be of a level for which you have spell slots.",
+      "candidate_paragraphs": [
+        "You know two 1st-level spells of your choice from the ranger spell list.",
+        "The Spells Known column of the Ranger table shows when you learn more ranger spells of your choice. Each of these spells must be of a level for which you have spell slots. For instance, when you reach 5th level in this class, you can learn one new spell of 1st or 2nd level.",
+        "Additionally, when you gain a level in this class, you can choose one of the ranger spells you know and replace it with another spell from the ranger spell list, which also must be of a level for which you have spell slots."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/ranger",
+      "path": [
+        "spellcasting",
+        "info",
+        2,
+        "desc"
+      ],
+      "heading": "Spellcasting Ability",
+      "source_end_boundary": "Ranger Archetype",
+      "official_chapter_pages": [
+        35,
+        38
+      ],
+      "source_body": "Wisdom is your spellcasting ability for your ranger spells, since your magic draws on your attunement to nature. You use your Wisdom whenever a spell refers to your spellcasting ability. In addition, you use your Wisdom modifier when setting the saving throw DC for a ranger spell you cast and when making an attack roll with one. Spell save DC = 8 + your proficiency bonus + your Wisdom modifier Spell attack modifier = your proficiency bonus + your Wisdom modifier",
+      "candidate_paragraphs": [
+        "Wisdom is your spellcasting ability for your ranger spells, since your magic draws on your attunement to nature. You use your Wisdom whenever a spell refers to your spellcasting ability. In addition, you use your Wisdom modifier when setting the saving throw DC for a ranger spell you cast and when making an attack roll with one.",
+        "Spell save DC = 8 + your proficiency bonus + your Wisdom modifier.",
+        "Spell attack modifier = your proficiency bonus + your Wisdom modifier."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/sorcerer",
+      "path": [
+        "spellcasting",
+        "info",
+        0,
+        "desc"
+      ],
+      "heading": "Cantrips",
+      "source_end_boundary": "Spell Slots",
+      "official_chapter_pages": [
+        42,
+        45
+      ],
+      "source_body": "At 1st level, you know four cantrips of your choice from the sorcerer spell list. You learn additional sorcerer cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Sorcerer table.",
+      "candidate_paragraphs": [
+        "At 1st level, you know four cantrips of your choice from the sorcerer spell list. You learn additional sorcerer cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Sorcerer table."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/sorcerer",
+      "path": [
+        "spellcasting",
+        "info",
+        1,
+        "desc"
+      ],
+      "heading": "Spell Slots",
+      "source_end_boundary": "Spells Known of 1st Level and Higher",
+      "official_chapter_pages": [
+        42,
+        45
+      ],
+      "source_body": "The Sorcerer table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these sorcerer spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest. For example, if you know the 1st-‐‐level spell burning hands and have a 1st-‐‐level and a 2nd-‐‐level spell slot available, you can cast burning hands using either slot.",
+      "candidate_paragraphs": [
+        "The Sorcerer table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these sorcerer spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
+        "For example, if you know the 1st-level spell burning hands and have a 1st-level and a 2nd-level spell slot available, you can cast burning hands using either slot."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/sorcerer",
+      "path": [
+        "spellcasting",
+        "info",
+        2,
+        "desc"
+      ],
+      "heading": "Spells Known of 1st Level and Higher",
+      "source_end_boundary": "Spellcasting Ability",
+      "official_chapter_pages": [
+        42,
+        45
+      ],
+      "source_body": "You know two 1st-‐‐level spells of your choice from the sorcerer spell list. The Spells Known column of the Sorcerer table shows when you learn more sorcerer spells of your choice. Each of these spells must be of a level for which you have spell slots. For instance, when you reach 3rd level in this class, you can learn one new spell of 1st or 2nd level. Additionally, when you gain a level in this class, you can choose one of the sorcerer spells you know and replace it with another spell from the sorcerer spell list, which also must be of a level for which you have spell slots.",
+      "candidate_paragraphs": [
+        "You know two 1st-level spells of your choice from the sorcerer spell list.",
+        "The Spells Known column of the Sorcerer table shows when you learn more sorcerer spells of your choice. Each of these spells must be of a level for which you have spell slots. For instance, when you reach 3rd level in this class, you can learn one new spell of 1st or 2nd level. ",
+        "Additionally, when you gain a level in this class, you can choose one of the sorcerer spells you know and replace it with another spell from the sorcerer spell list, which also must be of a level for which you have spell slots."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/sorcerer",
+      "path": [
+        "spellcasting",
+        "info",
+        3,
+        "desc"
+      ],
+      "heading": "Spellcasting Ability",
+      "source_end_boundary": "Spellcasting Focus",
+      "official_chapter_pages": [
+        42,
+        45
+      ],
+      "source_body": "Charisma is your spellcasting ability for your sorcerer spells, since the power of your magic relies on your ability to project your will into the world. You use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your Charisma modifier when setting the saving throw DC for a sorcerer spell you cast and when making an attack roll with one. Spell save DC = 8 + your proficiency bonus + your Charisma modifier Spell attack modifier = your proficiency bonus + your Charisma modifier",
+      "candidate_paragraphs": [
+        "Charisma is your spellcasting ability for your sorcerer spells, since the power of your magic relies on your ability to project your will into the world. You use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your Charisma modifier when setting the saving throw DC for a sorcerer spell you cast and when making an attack roll with one.",
+        "Spell save DC = 8 + your proficiency bonus + your Charisma modifier.",
+        "Spell attack modifier = your proficiency bonus + your Charisma modifier."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/sorcerer",
+      "path": [
+        "spellcasting",
+        "info",
+        4,
+        "desc"
+      ],
+      "heading": "Spellcasting Focus",
+      "source_end_boundary": "Sorcerous Origin",
+      "official_chapter_pages": [
+        42,
+        45
+      ],
+      "source_body": "You can use an arcane focus as a spellcasting focus for your sorcerer spells.",
+      "candidate_paragraphs": [
+        "You can use an arcane focus as a spellcasting focus for your sorcerer spells."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/warlock",
+      "path": [
+        "spellcasting",
+        "info",
+        0,
+        "desc"
+      ],
+      "heading": "Cantrips",
+      "source_end_boundary": "Spell Slots",
+      "official_chapter_pages": [
+        46,
+        51
+      ],
+      "source_body": "You know two cantrips of your choice from the warlock spell list. You learn additional warlock cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Warlock table.",
+      "candidate_paragraphs": [
+        "You know two cantrips of your choice from the warlock spell list. You learn additional warlock cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Warlock table."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/warlock",
+      "path": [
+        "spellcasting",
+        "info",
+        1,
+        "desc"
+      ],
+      "heading": "Spell Slots",
+      "source_end_boundary": "Spells Known of 1st Level and Higher",
+      "official_chapter_pages": [
+        46,
+        51
+      ],
+      "source_body": "The Warlock table shows how many spell slots you have. The table also shows what the level of those slots is; all of your spell slots are the same level. To cast one of your warlock spells of 1st level or higher, you must expend a spell slot. You regain all expended spell slots when you finish a short or long rest. For example, when you are 5th level, you have two 3rd-‐‐level spell slots. To cast the 1st-‐‐level spell thunderwave, you must spend one of those slots, and you cast it as a 3rd-‐‐level spell.",
+      "candidate_paragraphs": [
+        "The Warlock table shows how many spell slots you have. The table also shows what the level of those slots is; all of your spell slots are the same level. To cast one of your warlock spells of 1st level or higher, you must expend a spell slot. You regain all expended spell slots when you finish a short or long rest.",
+        "For example, when you are 5th level, you have two 3rd-level spell slots. To cast the 1st-level spell thunderwave, you must spend one of those slots, and you cast it as a 3rd-level spell."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/warlock",
+      "path": [
+        "spellcasting",
+        "info",
+        2,
+        "desc"
+      ],
+      "heading": "Spells Known of 1st Level and Higher",
+      "source_end_boundary": "Spellcasting Ability",
+      "official_chapter_pages": [
+        46,
+        51
+      ],
+      "source_body": "At 1st level, you know two 1st-‐‐level spells of your choice from the warlock spell list. The Spells Known column of the Warlock table shows when you learn more warlock spells of your choice of 1st level and higher. A spell you choose must be of a level no higher than what's shown in the table's Slot Level column for your level. When you reach 6th level, for example, you learn a new warlock spell, which can be 1st, 2nd, or 3rd level. Additionally, when you gain a level in this class, you can choose one of the warlock spells you know and replace it with another spell from the warlock spell list, which also must be of a level for which you have spell slots.",
+      "candidate_paragraphs": [
+        "At 1st level, you know two 1st-level spells of your choice from the warlock spell list.",
+        "The Spells Known column of the Warlock table shows when you learn more warlock spells of your choice of 1st level and higher. ",
+        "A spell you choose must be of a level no higher than what's shown in the table's Slot Level column for your level. When you reach 6th level, for example, you learn a new warlock spell, which can be 1st, 2nd, or 3rd level.",
+        "Additionally, when you gain a level in this class, you can choose one of the warlock spells you know and replace it with another spell from the warlock spell list, which also must be of a level for which you have spell slots."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/warlock",
+      "path": [
+        "spellcasting",
+        "info",
+        3,
+        "desc"
+      ],
+      "heading": "Spellcasting Ability",
+      "source_end_boundary": "Spellcasting Focus",
+      "official_chapter_pages": [
+        46,
+        51
+      ],
+      "source_body": "Charisma is your spellcasting ability for your warlock spells, so you use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your Charisma modifier when setting the saving throw DC for a warlock spell you cast and when making an attack roll with one. Spell save DC = 8 + your proficiency bonus + your Charisma modifier Spell attack modifier = your proficiency bonus + your Charisma modifier",
+      "candidate_paragraphs": [
+        "Charisma is your spellcasting ability for your warlock spells, so you use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your Charisma modifier when setting the saving throw DC for a warlock spell you cast and when making an attack roll with one.",
+        "Spell save DC = 8 + your proficiency bonus + your Charisma modifier.",
+        "Spell attack modifier = your proficiency bonus + your Charisma modifier."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/warlock",
+      "path": [
+        "spellcasting",
+        "info",
+        4,
+        "desc"
+      ],
+      "heading": "Spellcasting Focus",
+      "source_end_boundary": "Eldritch Invocations",
+      "official_chapter_pages": [
+        46,
+        51
+      ],
+      "source_body": "You can use an arcane focus as a spellcasting focus for your warlock spells.",
+      "candidate_paragraphs": [
+        "You can use an arcane focus as a spellcasting focus for your warlock spells."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/wizard",
+      "path": [
+        "spellcasting",
+        "info",
+        0,
+        "desc"
+      ],
+      "heading": "Cantrips",
+      "source_end_boundary": "Spellbook",
+      "official_chapter_pages": [
+        52,
+        55
+      ],
+      "source_body": "At 1st level, you know three cantrips of your choice from the wizard spell list. You learn additional wizard cantrips of your choice at higher levels, asshown in the Cantrips Known column of the Wizard table.",
+      "candidate_paragraphs": [
+        "At 1st level, you know three cantrips of your choice from the wizard spell list. You learn additional wizard cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Wizard table."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": "p52 col0 Cantrips to bottom + p52 col1 prose continuation below full-width table to Spellbook",
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/wizard",
+      "path": [
+        "spellcasting",
+        "info",
+        1,
+        "desc"
+      ],
+      "heading": "Spellbook",
+      "source_end_boundary": "Preparing and Casting Spells",
+      "official_chapter_pages": [
+        52,
+        55
+      ],
+      "source_body": "At 1st level, you have a spellbook containing six 1st-‐‐ level wizard spells of your choice. Your spellbook is the repository of the wizard spells you know, except your cantrips, which are fixed in your mind.",
+      "candidate_paragraphs": [
+        "At 1st level, you have a spellbook containing six 1st- level wizard spells of your choice. Your spellbook is the repository of the wizard spells you know, except your cantrips, which are fixed in your mind."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/wizard",
+      "path": [
+        "spellcasting",
+        "info",
+        2,
+        "desc"
+      ],
+      "heading": "Preparing and Casting Spells",
+      "source_end_boundary": "Spellcasting Ability",
+      "official_chapter_pages": [
+        52,
+        55
+      ],
+      "source_body": "The Wizard table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest. You prepare the list of wizard spells that are available for you to cast. To do so, choose a number of wizard spells from your spellbook equal to your Intelligence modifier + your wizard level (minimum of one spell). The spells must be of a level for which you have spell slots. For example, if you're a 3rd-‐‐level wizard, you have four 1st-‐‐level and two 2nd-‐‐level spell slots. With an Intelligence of 16, your list of prepared spells can include six spells of 1st or 2nd level, in any combination, chosen from your spellbook. If you prepare the 1st-‐‐level spell magic missile, you can cast it using a 1st-‐‐level or a 2nd-‐‐level slot. Casting the spell doesn't remove it from your list of prepared spells. You can change your list of prepared spells when you finish a long rest. Preparing a new list of wizard spells requires time spent studying your spellbook and memorizing the incantations and gestures you must make to cast the spell: at least 1 minute per spell level for each spell on your list.",
+      "candidate_paragraphs": [
+        "The Wizard table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.",
+        "You prepare the list of wizard spells that are available for you to cast. To do so, choose a number of wizard spells from your spellbook equal to your Intelligence modifier + your wizard level (minimum of one spell). The spells must be of a level for which you have spell slots.",
+        "For example, if you're a 3rd-level wizard, you have four 1st-level and two 2nd-level spell slots. With an Intelligence of 16, your list of prepared spells can include six spells of 1st or 2nd level, in any combination, chosen from your spellbook. If you prepare the 1st-level spell magic missile, you can cast it using a 1st-level or a 2nd-level slot. Casting the spell doesn't remove it from your list of prepared spells.",
+        "You can change your list of prepared spells when you finish a long rest. Preparing a new list of wizard spells requires time spent studying your spellbook and memorizing the incantations and gestures you must make to cast the spell: at least 1 minute per spell level for each spell on your list."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/wizard",
+      "path": [
+        "spellcasting",
+        "info",
+        3,
+        "desc"
+      ],
+      "heading": "Spellcasting Ability",
+      "source_end_boundary": "Ritual Casting",
+      "official_chapter_pages": [
+        52,
+        55
+      ],
+      "source_body": "Intelligence is your spellcasting ability for your wizard spells, since you learn your spells through dedicated study and memorization. You use your Intelligence whenever a spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for a wizard spell you cast and when making an attack roll with one. Spell save DC = 8 + your proficiency bonus + your Intelligence modifier Spell attack modifier = your proficiency bonus + your Intelligence modifier",
+      "candidate_paragraphs": [
+        "Intelligence is your spellcasting ability for your wizard spells, since you learn your spells through dedicated study and memorization. You use your Intelligence whenever a spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for a wizard spell you cast and when making an attack roll with one.",
+        "Spell save DC = 8 + your proficiency bonus + your Intelligence modifier.",
+        "Spell attack modifier = your proficiency bonus + your Intelligence modifier."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/wizard",
+      "path": [
+        "spellcasting",
+        "info",
+        4,
+        "desc"
+      ],
+      "heading": "Ritual Casting",
+      "source_end_boundary": "Spellcasting Focus",
+      "official_chapter_pages": [
+        52,
+        55
+      ],
+      "source_body": "You can cast a wizard spell as a ritual if that spell has the ritual tag and you have the spell in your spellbook. You don't need to have the spell prepared.",
+      "candidate_paragraphs": [
+        "You can cast a wizard spell as a ritual if that spell has the ritual tag and you have the spell in your spellbook. You don't need to have the spell prepared."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/wizard",
+      "path": [
+        "spellcasting",
+        "info",
+        5,
+        "desc"
+      ],
+      "heading": "Spellcasting Focus",
+      "source_end_boundary": "Learning Spells of 1st Level and Higher",
+      "official_chapter_pages": [
+        52,
+        55
+      ],
+      "source_body": "You can use an arcane focus as a spellcasting focus for your wizard spells.",
+      "candidate_paragraphs": [
+        "You can use an arcane focus as a spellcasting focus for your wizard spells."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/wizard",
+      "path": [
+        "spellcasting",
+        "info",
+        6,
+        "desc"
+      ],
+      "heading": "Learning Spells of 1st Level and Higher",
+      "source_end_boundary": "Arcane Recovery",
+      "official_chapter_pages": [
+        52,
+        55
+      ],
+      "source_body": "Each time you gain a wizard level, you can add two wizard spells of your choice to your spellbook for free. Each of these spells must be of a level for which you have spell slots, as shown on the Wizard table. On your adventures, you might find other spells that you can add to your spellbook (see the “Your Spellbook” sidebar).",
+      "candidate_paragraphs": [
+        "Each time you gain a wizard level, you can add two wizard spells of your choice to your spellbook for free. Each of these spells must be of a level for which you have spell slots, as shown on the Wizard table. On your adventures, you might find other spells that you can add to your spellbook (see the “Your Spellbook” sidebar)."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": null,
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    },
+    {
+      "record": "classes/wizard",
+      "path": [
+        "spellcasting",
+        "info",
+        7,
+        "desc"
+      ],
+      "heading": "Your Spellbook",
+      "source_end_boundary": "end_of_p55_col0_sidebar",
+      "official_chapter_pages": [
+        52,
+        55
+      ],
+      "source_body": "The spells that you add to your spellbook as you gain levels reflect the arcane research you conduct on your own, as well as intellectual breakthroughs you have had about the nature of the multiverse. You might find other spells during your adventures. You could discover a spell recorded on a scroll in an evil wizard's chest, for example, or in a dusty tome in an ancient library. Copying a Spell into the Book. When you find a wizard spell of 1st level or higher, you can add it to your spellbook if it is of a spell level you can prepare and if you can spare the time to decipher and copy it. Copying that spell into your spellbook involves reproducing the basic form of the spell, then deciphering the unique system of notation used by the wizard who wrote it. You must practice the spell until you understand the sounds or gestures required, then transcribe it into your spellbook using your own notation. For each level of the spell, the process takes 2 hours and costs 50 gp. The cost represents material components you expend as you experiment with the spell to master it, as well as the fine inks you need to record it. Once you have spent this time and money, you can prepare the spell just like your other spells. Replacing the Book. You can copy a spell from your own spellbook into another book—for example, if you want to make a backup copy of your spellbook. This is just like copying a new spell into your spellbook, but faster and easier, since you understand your own notation and already know how to cast the spell. You need spend only 1 hour and 10 gp for each level of the copied spell. If you lose your spellbook, you can use the same procedure to transcribe the spells that you have prepared into a new spellbook. Filling out the remainder of your spellbook requires you to find new spells to do so, as normal. For this reason, many wizards keep backup spellbooks in a safe place. The Book's Appearance. Your spellbook is a unique compilation of spells, with its own decorative flourishes and margin notes. It might be a plain, functional leather volume that you received as a gift from your master, a finely bound gilt-‐edged tome you found in an ancient library, or even a loose collection of notes scrounged together after you lost your previous spellbook in a mishap.",
+      "candidate_paragraphs": [
+        "The spells that you add to your spellbook as you gain levels reflect the arcane research you conduct on your own, as well as intellectual breakthroughs you have had about the nature of the multiverse. You might find other spells during your adventures. You could discover a spell recorded on a scroll in an evil wizard's chest, for example, or in a dusty tome in an ancient library. Copying a Spell into the Book. When you find a wizard spell of 1st level or higher, you can add it to your spellbook if it is of a spell level you can prepare and if you can spare the time to decipher and copy it. Copying that spell into your spellbook involves reproducing the basic form of the spell, then deciphering the unique system of notation used by the wizard who wrote it. You must practice the spell until you understand the sounds or gestures required, then transcribe it into your spellbook using your own notation. For each level of the spell, the process takes 2 hours and costs 50 gp. The cost represents material components you expend as you experiment with the spell to master it, as well as the fine inks you need to record it. Once you have spent this time and money, you can prepare the spell just like your other spells. Replacing the Book. You can copy a spell from your own spellbook into another book—for example, if you want to make a backup copy of your spellbook. This is just like copying a new spell into your spellbook, but faster and easier, since you understand your own notation and already know how to cast the spell. You need spend only 1 hour and 10 gp for each level of the copied spell. If you lose your spellbook, you can use the same procedure to transcribe the spells that you have prepared into a new spellbook. Filling out the remainder of your spellbook requires you to find new spells to do so, as normal. For this reason, many wizards keep backup spellbooks in a safe place. The Book's Appearance. Your spellbook is a unique compilation of spells, with its own decorative flourishes and margin notes. It might be a plain, functional leather volume that you received as a gift from your master, a finely bound gilt-edged tome you found in an ancient library, or even a loose collection of notes scrounged together after you lost your previous spellbook in a mishap."
+      ],
+      "normalized_full_interval_equal": true,
+      "layout_reconstruction": "p54 col1 Your Spellbook through p55 col0 sidebar end; strip source footer only",
+      "classification": "complete selected subsection wording interval comparison; not entire Spellcasting feature/table/runtime approval"
+    }
+  ],
+  "spellcasting_feature_reference_checks": [
+    {
+      "record": "features/spellcasting-bard",
+      "path": [
+        "reference"
+      ],
+      "expected": "/api/2014/classes/bard/spellcasting",
+      "actual": "/api/2014/classes/bard/spellcasting",
+      "match": true,
+      "destination_exists": true
+    },
+    {
+      "record": "features/spellcasting-cleric",
+      "path": [
+        "reference"
+      ],
+      "expected": "/api/2014/classes/cleric/spellcasting",
+      "actual": "/api/2014/classes/cleric/spellcasting",
+      "match": true,
+      "destination_exists": true
+    },
+    {
+      "record": "features/spellcasting-druid",
+      "path": [
+        "reference"
+      ],
+      "expected": "/api/2014/classes/druid/spellcasting",
+      "actual": "/api/2014/classes/druid/spellcasting",
+      "match": true,
+      "destination_exists": true
+    },
+    {
+      "record": "features/spellcasting-paladin",
+      "path": [
+        "reference"
+      ],
+      "expected": "/api/2014/classes/paladin/spellcasting",
+      "actual": "/api/2014/classes/paladin/spellcasting",
+      "match": true,
+      "destination_exists": true
+    },
+    {
+      "record": "features/spellcasting-ranger",
+      "path": [
+        "reference"
+      ],
+      "expected": "/api/2014/classes/ranger/spellcasting",
+      "actual": "/api/2014/classes/ranger/spellcasting",
+      "match": true,
+      "destination_exists": true
+    },
+    {
+      "record": "features/spellcasting-sorcerer",
+      "path": [
+        "reference"
+      ],
+      "expected": "/api/2014/classes/sorcerer/spellcasting",
+      "actual": "/api/2014/classes/sorcerer/spellcasting",
+      "match": true,
+      "destination_exists": true
+    },
+    {
+      "record": "features/pact-magic",
+      "path": [
+        "reference"
+      ],
+      "expected": "/api/2014/classes/warlock/spellcasting",
+      "actual": "/api/2014/classes/warlock/spellcasting",
+      "match": true,
+      "destination_exists": true
+    },
+    {
+      "record": "features/spellcasting-wizard",
+      "path": [
+        "reference"
+      ],
+      "expected": "/api/2014/classes/wizard/spellcasting",
+      "actual": "/api/2014/classes/wizard/spellcasting",
+      "match": true,
+      "destination_exists": true
+    }
+  ],
+  "subclass_parent_and_grant_checks": [
+    {
+      "record": "subclasses/berserker",
+      "parent_class": "barbarian",
+      "official_pages": [
+        10
+      ],
+      "subclass_level_records_expected_and_actual": [
+        3,
+        6,
+        10,
+        14
+      ],
+      "granted_feature_ids_by_level": {
+        "3": [
+          "frenzy"
+        ],
+        "6": [
+          "mindless-rage"
+        ],
+        "10": [
+          "intimidating-presence"
+        ],
+        "14": [
+          "retaliation"
+        ]
+      },
+      "review": "manual semantic source grant check; no automatic complete feature-body signoff",
+      "note": ""
+    },
+    {
+      "record": "subclasses/lore",
+      "parent_class": "bard",
+      "official_pages": [
+        13,
+        14
+      ],
+      "subclass_level_records_expected_and_actual": [
+        3,
+        6,
+        14
+      ],
+      "granted_feature_ids_by_level": {
+        "3": [
+          "bonus-proficiencies",
+          "cutting-words"
+        ],
+        "6": [
+          "additional-magical-secrets"
+        ],
+        "14": [
+          "peerless-skill"
+        ]
+      },
+      "review": "manual semantic source grant check; no automatic complete feature-body signoff",
+      "note": ""
+    },
+    {
+      "record": "subclasses/life",
+      "parent_class": "cleric",
+      "official_pages": [
+        17,
+        18
+      ],
+      "subclass_level_records_expected_and_actual": [
+        1,
+        2,
+        6,
+        8,
+        17
+      ],
+      "granted_feature_ids_by_level": {
+        "1": [
+          "bonus-proficiency",
+          "disciple-of-life"
+        ],
+        "2": [
+          "channel-divinity-preserve-life"
+        ],
+        "6": [
+          "blessed-healer"
+        ],
+        "8": [
+          "divine-strike"
+        ],
+        "17": [
+          "supreme-healing"
+        ]
+      },
+      "review": "manual semantic source grant check; no automatic complete feature-body signoff",
+      "note": ""
+    },
+    {
+      "record": "subclasses/land",
+      "parent_class": "druid",
+      "official_pages": [
+        21,
+        22
+      ],
+      "subclass_level_records_expected_and_actual": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        9,
+        10,
+        14
+      ],
+      "granted_feature_ids_by_level": {
+        "2": [
+          "bonus-cantrip",
+          "natural-recovery"
+        ],
+        "3": [
+          "circle-spells-1"
+        ],
+        "5": [
+          "circle-spells-2"
+        ],
+        "6": [
+          "druid-lands-stride"
+        ],
+        "7": [
+          "circle-spells-3"
+        ],
+        "9": [
+          "circle-spells-4"
+        ],
+        "10": [
+          "natures-ward"
+        ],
+        "14": [
+          "natures-sanctuary"
+        ]
+      },
+      "review": "manual semantic source grant check; no automatic complete feature-body signoff",
+      "note": ""
+    },
+    {
+      "record": "subclasses/champion",
+      "parent_class": "fighter",
+      "official_pages": [
+        25
+      ],
+      "subclass_level_records_expected_and_actual": [
+        3,
+        7,
+        10,
+        15,
+        18
+      ],
+      "granted_feature_ids_by_level": {
+        "3": [
+          "improved-critical"
+        ],
+        "7": [
+          "remarkable-athlete"
+        ],
+        "10": [
+          "additional-fighting-style"
+        ],
+        "15": [
+          "superior-critical"
+        ],
+        "18": [
+          "survivor"
+        ]
+      },
+      "review": "manual semantic source grant check; no automatic complete feature-body signoff",
+      "note": ""
+    },
+    {
+      "record": "subclasses/open-hand",
+      "parent_class": "monk",
+      "official_pages": [
+        28,
+        29
+      ],
+      "subclass_level_records_expected_and_actual": [
+        3,
+        6,
+        11,
+        17
+      ],
+      "granted_feature_ids_by_level": {
+        "3": [
+          "open-hand-technique"
+        ],
+        "6": [
+          "wholeness-of-body"
+        ],
+        "11": [
+          "tranquility"
+        ],
+        "17": [
+          "quivering-palm"
+        ]
+      },
+      "review": "manual semantic source grant check; no automatic complete feature-body signoff",
+      "note": ""
+    },
+    {
+      "record": "subclasses/devotion",
+      "parent_class": "paladin",
+      "official_pages": [
+        33
+      ],
+      "subclass_level_records_expected_and_actual": [
+        3,
+        7,
+        15,
+        18,
+        20
+      ],
+      "granted_feature_ids_by_level": {
+        "3": [
+          "channel-divinity-sacred-weapon",
+          "channel-divinity-turn-the-unholy"
+        ],
+        "7": [
+          "aura-of-devotion"
+        ],
+        "15": [
+          "purity-of-spirit"
+        ],
+        "18": [],
+        "20": [
+          "holy-nimbus"
+        ]
+      },
+      "review": "manual semantic source grant check; no automatic complete feature-body signoff",
+      "note": "Devotion level18 is an empty derived row; official Aura of Devotion range improvement is retained in its existing level7 description and base Aura improvements; not a new independent feature."
+    },
+    {
+      "record": "subclasses/hunter",
+      "parent_class": "ranger",
+      "official_pages": [
+        37,
+        38
+      ],
+      "subclass_level_records_expected_and_actual": [
+        3,
+        7,
+        11,
+        15
+      ],
+      "granted_feature_ids_by_level": {
+        "3": [
+          "hunters-prey"
+        ],
+        "7": [
+          "defensive-tactics"
+        ],
+        "11": [
+          "multiattack"
+        ],
+        "15": [
+          "superior-hunters-defense"
+        ]
+      },
+      "review": "manual semantic source grant check; no automatic complete feature-body signoff",
+      "note": ""
+    },
+    {
+      "record": "subclasses/thief",
+      "parent_class": "rogue",
+      "official_pages": [
+        40,
+        41
+      ],
+      "subclass_level_records_expected_and_actual": [
+        3,
+        9,
+        13,
+        17
+      ],
+      "granted_feature_ids_by_level": {
+        "3": [
+          "fast-hands",
+          "second-story-work"
+        ],
+        "9": [
+          "supreme-sneak"
+        ],
+        "13": [
+          "use-magic-device"
+        ],
+        "17": [
+          "thiefs-reflexes"
+        ]
+      },
+      "review": "manual semantic source grant check; no automatic complete feature-body signoff",
+      "note": ""
+    },
+    {
+      "record": "subclasses/draconic",
+      "parent_class": "sorcerer",
+      "official_pages": [
+        44,
+        45
+      ],
+      "subclass_level_records_expected_and_actual": [
+        1,
+        6,
+        14,
+        18
+      ],
+      "granted_feature_ids_by_level": {
+        "1": [
+          "dragon-ancestor",
+          "draconic-resilience"
+        ],
+        "6": [
+          "elemental-affinity"
+        ],
+        "14": [
+          "dragon-wings"
+        ],
+        "18": [
+          "draconic-presence"
+        ]
+      },
+      "review": "manual semantic source grant check; no automatic complete feature-body signoff",
+      "note": ""
+    },
+    {
+      "record": "subclasses/fiend",
+      "parent_class": "warlock",
+      "official_pages": [
+        50,
+        51
+      ],
+      "subclass_level_records_expected_and_actual": [
+        1,
+        6,
+        10,
+        14
+      ],
+      "granted_feature_ids_by_level": {
+        "1": [
+          "dark-ones-blessing"
+        ],
+        "6": [
+          "dark-ones-own-luck"
+        ],
+        "10": [
+          "fiendish-resilience"
+        ],
+        "14": [
+          "hurl-through-hell"
+        ]
+      },
+      "review": "manual semantic source grant check; no automatic complete feature-body signoff",
+      "note": ""
+    },
+    {
+      "record": "subclasses/evocation",
+      "parent_class": "wizard",
+      "official_pages": [
+        54
+      ],
+      "subclass_level_records_expected_and_actual": [
+        2,
+        6,
+        10,
+        14
+      ],
+      "granted_feature_ids_by_level": {
+        "2": [
+          "evocation-savant",
+          "sculpt-spells"
+        ],
+        "6": [
+          "potent-cantrip"
+        ],
+        "10": [
+          "empowered-evocation"
+        ],
+        "14": [
+          "overchannel"
+        ]
+      },
+      "review": "manual semantic source grant check; no automatic complete feature-body signoff",
+      "note": ""
+    }
+  ],
+  "reference_only_proposals": [
+    {
+      "record": "features/additional-magical-secrets",
+      "path": [
+        "selection_reference"
+      ],
+      "expected_field_absent": true,
+      "expected": null,
+      "proposed": {
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "choose": 2,
+        "kind": "spell",
+        "source_lists": "any_class",
+        "allowed_level": "cantrip_or_level_you_can_cast_as_shown_on_Bard_table",
+        "counts_as_class": "bard",
+        "counts_against_spells_known": false
+      },
+      "official_page": 13,
+      "official_column": 1,
+      "source_interval": [
+        "Additional Magical Secrets",
+        "Peerless Skill"
+      ],
+      "current_text": [
+        "At 6th level, you learn two spells of your choice from any class. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip. The chosen spells count as bard spells for you but don't count against the number of bard spells you know."
+      ],
+      "classification": "optional normalized choice structure; official grant prose already exists, no whole-catalog source loss asserted"
+    },
+    {
+      "record": "features/bonus-proficiencies",
+      "path": [
+        "selection_reference"
+      ],
+      "expected_field_absent": true,
+      "expected": null,
+      "proposed": {
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "choose": 3,
+        "kind": "skill_proficiency",
+        "source": "any_standard_skill",
+        "distinct": true
+      },
+      "official_page": 13,
+      "official_column": 1,
+      "source_interval": [
+        "Bonus Proficiencies",
+        "Cutting Words"
+      ],
+      "current_text": [
+        "When you join the College of Lore at 3rd level, you gain proficiency with three skills of your choice."
+      ],
+      "classification": "optional normalized choice structure; official grant prose already exists, no whole-catalog source loss asserted"
+    },
+    {
+      "record": "features/bonus-cantrip",
+      "path": [
+        "selection_reference"
+      ],
+      "expected_field_absent": true,
+      "expected": null,
+      "proposed": {
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "choose": 1,
+        "kind": "spell",
+        "source_list": "druid",
+        "spell_level": 0,
+        "additional_to_base_cantrips": true
+      },
+      "official_page": 21,
+      "official_column": 1,
+      "source_interval": [
+        "Bonus Cantrip",
+        "Natural Recovery"
+      ],
+      "current_text": [
+        "When you choose this circle at 2nd level, you learn one additional druid cantrip of your choice."
+      ],
+      "classification": "optional normalized choice structure; official grant prose already exists, no whole-catalog source loss asserted"
+    }
+  ],
+  "summary": {
+    "subclass_spell_relations": 86,
+    "spell_table_intervals": 10,
+    "class_spellcasting_subsections": 40,
+    "class_spellcasting_feature_references": 8,
+    "subclasses_checked": 12,
+    "new_confirmed_wrong_values": 0
+  },
+  "already_independently_preserved": [
+    "Life p17 ten domain spell relations; Domain Spells semantics features and spell_grant_mode always_prepared",
+    "Land p22 seven terrain tables and56 relations; 3/5/7/9 access and selected terrain relationship, choice first at3",
+    "Devotion p33 ten oath spell relations and always_prepared mode; Holy Nimbus corrected canonical tail remains intact",
+    "Fiend p50 ten expanded-list relations; not automatic known/prepared grants; prerequisite class levels are derived earliest availability",
+    "Wizard Learning Spells p53 and Your Spellbook p54-55 independent class info records already retained; do not report missing",
+    "Champion/Hunter/Draconic option children are separately represented; shorter parent descriptions are not missing child effects. Lore grants are separate level records, while its free skill/spell choice constraints remain in prose and are reference-normalization proposals."
+  ],
+  "boundaries": [
+    "No new source-value overlay proposed when verified data already matches.",
+    "Normalized alphanumeric interval equality is reproducible wording evidence, not punctuation/operator or executable-rule certification. Source bodies retained for review.",
+    "Forty selected info subsections do not include every class Spellcasting intro, growth table, spell list, ritual general rules, or complete build legality.",
+    "Eight other selected subclasses legitimately have no fixed subclass spells table; Lore spell choice must not be replaced by a made-up fixed list.",
+    "Choice schemas proposed here are optional reference normalization, not existing execution support; no P08 implementation evaluated.",
+    "Subclass grant checks are manual semantic checks, not a newly universal machine grant gate.",
+    "407 full feature bodies, all derived choice predicates, replacement/exclusion behavior and every prerequisite graph remain outside whole-catalog signoff."
+  ]
+}

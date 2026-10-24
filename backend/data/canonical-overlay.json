@@ -5747,6 +5747,78 @@
         "You can use your sorcery points to gain additional spell slots, or sacrifice spell slots to gain additional sorcery points. You learn other ways to use your sorcery points as you reach higher levels."
       ],
       "reason": "Related source subsection absent from canonical feature description; preserving existing separate action child definitions."
+    },
+    {
+      "id": "official-selection-reference-additional-magical-secrets",
+      "kind": "features",
+      "records": [
+        "additional-magical-secrets"
+      ],
+      "page": 13,
+      "heading": "Additional Magical Secrets",
+      "operation": "set_field",
+      "path": [
+        "selection_reference"
+      ],
+      "expected": null,
+      "value": {
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "choose": 2,
+        "kind": "spell",
+        "source_lists": "any_class",
+        "allowed_level": "cantrip_or_level_you_can_cast_as_shown_on_Bard_table",
+        "counts_as_class": "bard",
+        "counts_against_spells_known": false
+      },
+      "reason": "optional normalized choice structure; official grant prose already exists, no whole-catalog source loss asserted"
+    },
+    {
+      "id": "official-selection-reference-bonus-proficiencies",
+      "kind": "features",
+      "records": [
+        "bonus-proficiencies"
+      ],
+      "page": 13,
+      "heading": "Bonus Proficiencies",
+      "operation": "set_field",
+      "path": [
+        "selection_reference"
+      ],
+      "expected": null,
+      "value": {
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "choose": 3,
+        "kind": "skill_proficiency",
+        "source": "any_standard_skill",
+        "distinct": true
+      },
+      "reason": "optional normalized choice structure; official grant prose already exists, no whole-catalog source loss asserted"
+    },
+    {
+      "id": "official-selection-reference-bonus-cantrip",
+      "kind": "features",
+      "records": [
+        "bonus-cantrip"
+      ],
+      "page": 21,
+      "heading": "Bonus Cantrip",
+      "operation": "set_field",
+      "path": [
+        "selection_reference"
+      ],
+      "expected": null,
+      "value": {
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "choose": 1,
+        "kind": "spell",
+        "source_list": "druid",
+        "spell_level": 0,
+        "additional_to_base_cantrips": true
+      },
+      "reason": "optional normalized choice structure; official grant prose already exists, no whole-catalog source loss asserted"
     }
   ],
   "record_additions": [
