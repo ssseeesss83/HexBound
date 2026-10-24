@@ -2,6 +2,8 @@
 backend/data/srd2014/*.json text eol=lf
 backend/data/5e-database-LICENSE.md text eol=lf
 backend/data/source-manifest.json text eol=lf
+backend/data/official/*.json text eol=lf
+backend/data/official/*.pdf -text
 *.py text eol=lf
 *.js text eol=lf
 *.cjs text eol=lf

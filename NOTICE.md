@@ -4,6 +4,8 @@ This work includes material taken from the System Reference Document 5.1 (“SRD
 
 Official source document: https://media.wizards.com/2023/downloads/dnd/SRD_CC_v5.1.pdf
 
+The complete, unchanged official CC BY 4.0 PDF is retained at `backend/data/official/SRD_CC_v5.1.pdf`. Derived full-page text and heading inventories are stored beside it, with extraction versions, hashes and printed-page mappings. Normalized reading text is a project adaptation; the original PDF remains authoritative for typography, tables and source wording. Candidate community transcriptions are audited separately and are not certified as exact official text merely because their original file hashes match.
+
 Structured data is adapted from 5e-bits/5e-database, commit a6212beb4b278917c2cff41c2b04c4ef4f3e0d6f, under the MIT License. Copyright (c) [2018-2020] [Adrian Padua, Christopher Ward]. The complete upstream MIT license is included at [backend/data/5e-database-LICENSE.md](backend/data/5e-database-LICENSE.md).
 
 Upstream snapshot: https://github.com/5e-bits/5e-database/tree/a6212beb4b278917c2cff41c2b04c4ef4f3e0d6f/src/2014/en

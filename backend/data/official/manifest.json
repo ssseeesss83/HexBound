@@ -1,0 +1,29 @@
+{
+  "ruleset_id": "dnd5e-2014-srd5.1",
+  "source_url": "https://media.wizards.com/2023/downloads/dnd/SRD_CC_v5.1.pdf",
+  "retrieved_at": "2026-10-24",
+  "license": "CC-BY-4.0",
+  "original": {
+    "file": "SRD_CC_v5.1.pdf",
+    "sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+    "bytes": 3158713,
+    "pages": 403
+  },
+  "extraction": {
+    "pypdf": "6.10.0",
+    "pdfplumber": "0.11.9",
+    "note": "Derived text is normalized; full PDF preserves all tables and original typography."
+  },
+  "derived": [
+    {
+      "file": "pages.json",
+      "sha256": "a3d4be9c2a612c0cba1dcc0bc3ce875f52cef1b4924f743142be600614ade1c6",
+      "bytes": 6061525
+    },
+    {
+      "file": "headings.json",
+      "sha256": "896c018bd844f0dc5e8f1759c9c8dd27d74856047d938c41ff132c7a110deb02",
+      "bytes": 199214
+    }
+  ]
+}

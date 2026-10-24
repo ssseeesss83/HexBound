@@ -1,0 +1,3 @@
+# Reproducible source collection only; the game server reads local JSON.
+pypdf==6.10.0
+pdfplumber==0.11.9
