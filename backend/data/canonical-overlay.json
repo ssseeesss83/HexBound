@@ -2612,6 +2612,362 @@
         "language_eligibility": "a_language_spoken_by_selected_favored_enemies_if_any",
         "execution_status": "reference_pending_full_choice_validation"
       }
+    },
+    {
+      "id": "official-disintegrate-slot-table",
+      "kind": "spells",
+      "records": [
+        "disintegrate"
+      ],
+      "page": 136,
+      "heading": "Disintegrate",
+      "operation": "set_field",
+      "path": [
+        "damage",
+        0,
+        "damage_at_slot_level"
+      ],
+      "expected": {
+        "6": "10d6 + 40"
+      },
+      "value": {
+        "6": "10d6 + 40",
+        "7": "13d6 + 40",
+        "8": "16d6 + 40",
+        "9": "19d6 + 40"
+      }
+    },
+    {
+      "id": "official-freezing-sphere-slot-table",
+      "kind": "spells",
+      "records": [
+        "freezing-sphere"
+      ],
+      "page": 148,
+      "heading": "Freezing Sphere",
+      "operation": "set_field",
+      "path": [
+        "damage",
+        0,
+        "damage_at_slot_level"
+      ],
+      "expected": {
+        "6": "10d6"
+      },
+      "value": {
+        "6": "10d6",
+        "7": "11d6",
+        "8": "12d6",
+        "9": "13d6"
+      }
+    },
+    {
+      "id": "official-phantasmal-killer-slot-table",
+      "kind": "spells",
+      "records": [
+        "phantasmal-killer"
+      ],
+      "page": 167,
+      "heading": "Phantasmal Killer",
+      "operation": "set_field",
+      "path": [
+        "damage",
+        0,
+        "damage_at_slot_level"
+      ],
+      "expected": {
+        "4": "4d10"
+      },
+      "value": {
+        "4": "4d10",
+        "5": "5d10",
+        "6": "6d10",
+        "7": "7d10",
+        "8": "8d10",
+        "9": "9d10"
+      }
+    },
+    {
+      "id": "official-wall-of-fire-slot-table",
+      "kind": "spells",
+      "records": [
+        "wall-of-fire"
+      ],
+      "page": 190,
+      "heading": "Wall of Fire",
+      "operation": "set_field",
+      "path": [
+        "damage",
+        0,
+        "damage_at_slot_level"
+      ],
+      "expected": {
+        "4": "5d8"
+      },
+      "value": {
+        "4": "5d8",
+        "5": "6d8",
+        "6": "7d8",
+        "7": "8d8",
+        "8": "9d8",
+        "9": "10d8"
+      }
+    },
+    {
+      "id": "official-flame-blade-slot-table",
+      "kind": "spells",
+      "records": [
+        "flame-blade"
+      ],
+      "page": 145,
+      "heading": "Flame Blade",
+      "operation": "set_field",
+      "path": [
+        "damage",
+        0,
+        "damage_at_slot_level"
+      ],
+      "expected": {
+        "2": "3d6",
+        "4": "4d6",
+        "6": "5d6",
+        "8": "6d6"
+      },
+      "value": {
+        "2": "3d6",
+        "3": "3d6",
+        "4": "4d6",
+        "5": "4d6",
+        "6": "5d6",
+        "7": "5d6",
+        "8": "6d6",
+        "9": "6d6"
+      }
+    },
+    {
+      "id": "official-sleep-not-damage",
+      "kind": "spells",
+      "records": [
+        "sleep"
+      ],
+      "page": 180,
+      "heading": "Sleep",
+      "operation": "set_field",
+      "path": [
+        "damage"
+      ],
+      "expected": [
+        {
+          "damage_at_slot_level": {
+            "1": "5d8"
+          }
+        }
+      ],
+      "value": []
+    },
+    {
+      "id": "official-sleep-budget-kind",
+      "kind": "spells",
+      "records": [
+        "sleep"
+      ],
+      "page": 180,
+      "heading": "Sleep",
+      "operation": "set_field",
+      "path": [
+        "effect_kind"
+      ],
+      "expected": null,
+      "value": "sleep_hit_point_budget",
+      "mapping_type": "derived_effect_classification"
+    },
+    {
+      "id": "official-sleep-hp-budget",
+      "kind": "spells",
+      "records": [
+        "sleep"
+      ],
+      "page": 180,
+      "heading": "Sleep",
+      "operation": "set_field",
+      "path": [
+        "hit_point_budget_at_slot_level"
+      ],
+      "expected": null,
+      "value": {
+        "1": "5d8",
+        "2": "7d8",
+        "3": "9d8",
+        "4": "11d8",
+        "5": "13d8",
+        "6": "15d8",
+        "7": "17d8",
+        "8": "19d8",
+        "9": "21d8"
+      },
+      "mapping_type": "derived_effect_classification"
+    },
+    {
+      "id": "official-flame-blade-attack-type",
+      "kind": "spells",
+      "records": [
+        "flame-blade"
+      ],
+      "page": 145,
+      "heading": "Flame Blade",
+      "operation": "set_field",
+      "path": [
+        "attack_type"
+      ],
+      "expected": null,
+      "value": "melee"
+    },
+    {
+      "id": "official-scorching-ray-attack-type",
+      "kind": "spells",
+      "records": [
+        "scorching-ray"
+      ],
+      "page": 176,
+      "heading": "Scorching Ray",
+      "operation": "set_field",
+      "path": [
+        "attack_type"
+      ],
+      "expected": null,
+      "value": "ranged"
+    },
+    {
+      "id": "official-call-lightning-primary-save-summary",
+      "kind": "spells",
+      "records": [
+        "call-lightning"
+      ],
+      "page": 123,
+      "heading": "Call Lightning",
+      "operation": "set_field",
+      "path": [
+        "dc"
+      ],
+      "expected": null,
+      "value": {
+        "dc_type": {
+          "index": "dex",
+          "name": "DEX",
+          "url": "/api/2014/ability-scores/dex"
+        },
+        "dc_success": "half"
+      }
+    },
+    {
+      "id": "official-flaming-sphere-primary-save-summary",
+      "kind": "spells",
+      "records": [
+        "flaming-sphere"
+      ],
+      "page": 145,
+      "heading": "Flaming Sphere",
+      "operation": "set_field",
+      "path": [
+        "dc"
+      ],
+      "expected": null,
+      "value": {
+        "dc_type": {
+          "index": "dex",
+          "name": "DEX",
+          "url": "/api/2014/ability-scores/dex"
+        },
+        "dc_success": "half"
+      }
+    },
+    {
+      "id": "official-levitate-primary-save-summary",
+      "kind": "spells",
+      "records": [
+        "levitate"
+      ],
+      "page": 159,
+      "heading": "Levitate",
+      "operation": "set_field",
+      "path": [
+        "dc"
+      ],
+      "expected": null,
+      "value": {
+        "dc_type": {
+          "index": "con",
+          "name": "CON",
+          "url": "/api/2014/ability-scores/con"
+        },
+        "dc_success": "none"
+      }
+    },
+    {
+      "id": "official-spirit-guardians-primary-save-summary",
+      "kind": "spells",
+      "records": [
+        "spirit-guardians"
+      ],
+      "page": 182,
+      "heading": "Spirit Guardians",
+      "operation": "set_field",
+      "path": [
+        "dc"
+      ],
+      "expected": null,
+      "value": {
+        "dc_type": {
+          "index": "wis",
+          "name": "WIS",
+          "url": "/api/2014/ability-scores/wis"
+        },
+        "dc_success": "half"
+      }
+    },
+    {
+      "id": "official-web-primary-save-summary",
+      "kind": "spells",
+      "records": [
+        "web"
+      ],
+      "page": 192,
+      "heading": "Web",
+      "operation": "set_field",
+      "path": [
+        "dc"
+      ],
+      "expected": null,
+      "value": {
+        "dc_type": {
+          "index": "dex",
+          "name": "DEX",
+          "url": "/api/2014/ability-scores/dex"
+        },
+        "dc_success": "none"
+      }
+    },
+    {
+      "id": "official-zone-of-truth-primary-save-summary",
+      "kind": "spells",
+      "records": [
+        "zone-of-truth"
+      ],
+      "page": 194,
+      "heading": "Zone of Truth",
+      "operation": "set_field",
+      "path": [
+        "dc"
+      ],
+      "expected": null,
+      "value": {
+        "dc_type": {
+          "index": "cha",
+          "name": "CHA",
+          "url": "/api/2014/ability-scores/cha"
+        },
+        "dc_success": "none"
+      }
     }
   ],
   "record_additions": [

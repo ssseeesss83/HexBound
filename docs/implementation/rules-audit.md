@@ -46,3 +46,13 @@
 - 规范候选记录数变为 **2,321**，比原始 2,317 多四条有官方来源的授予记录；历史包仍固定为 2,317。安装校验按各自版本的库存核对，不用新库存否定旧快照。
 - 407 项特性均能从等级授予和显式选择图达到；新增可达性、授予职业 / 子职业 / 等级以及嵌套等级引用检查。可达不代表完整执行。
 - 宿敌的非类人生物类型与“两种不同类人生物种族”分为互斥选择；后者要求世界种族目录，语言资格绑定实际宿敌。由于完整选择执行仍未接入，继续标记 reference，禁止据 `humanoids` 一词获得对全部类人生物的收益。
+
+## 法术数值复审与首批修正
+
+已按官方页码修复五张逐环表：Disintegrate 135–136、Freezing Sphere 147–148、Phantasmal Killer 167、Wall of Fire 190、Flame Blade 145。Sleep 第 180 页是生命值预算而非伤害，规范记录新增派生预算分类及完整升环表，damage 置空，原始归档和冻结历史包均不变。
+
+Flame Blade / Scorching Ray 的近战 / 远程攻击类别补齐；Call Lightning、Flaming Sphere、Levitate、Spirit Guardians、Web、Zone of Truth 补入主豁免属性及成功结果。顶层摘要不表达条件性、重复触发、目标排除或持续限制。Web 脱离仍是 Strength check。Arcane Hand / Dispel Evil and Good 的攻击属于特定效果分支，不草率设整个法术为攻击。
+
+另核对一致的范围：19 个简单逐环伤害表、9 个伤害戏法的 1/5/11/17 级骰表、6 个直接治疗升环表；53 项材料头中的金额及显式消耗词未丢失。只签这些字段，不据此签收完整法术。材料消耗不得统一为单个布尔值，Clone / Legend Lore 为部分消耗，Forbiddance 有正文条件。
+
+明确待补效果分支：Acid Arrow 延迟伤害，Fire Shield 冷伤选项，Wall of Ice 寒气 CON / 5d6，Wall of Thorns 后续挥砍，Storm of Vengeance 后续轮次，Spirit Guardians 伤害类型与排除，Magic Missile 逐弹分配。Aid / False Life 不能按普通治疗解释。上述缺口继续阻止总签收。

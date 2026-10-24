@@ -128,3 +128,12 @@ P02 的官方参数总签收仍未完成，候选包继续禁止激活。P09 还
 - 新增 5 项权威环境验收通过。全量首轮 **397 passed、2 failed**；两项为旧格式比较未剥离新增元数据和空环境字段，修复后相关 **36 passed**。8 组界面冒烟通过（账号房间组并行端口争用后单独重跑通过）；专业只读复审 **35 passed**。
 
 本步没有把 NPC / 遭遇接入世界实体，也没有开放分队或合队 API。离开地点后的连续环境时间模拟及严格环境伤害规则仍由 P08 统一，当前六秒烧损仍是既有原型规则。
+
+## P02e · 法术升环参数与效果分类修正
+
+- 对照官方页码修复 Disintegrate、Freezing Sphere、Phantasmal Killer、Wall of Fire、Flame Blade 的完整逐环伤害表；Flame Blade 保留每两环增加的阶梯，不误作每环增加。
+- Sleep 的 5d8 改为生命值预算，移出 damage，并保存 1–9 环预算表及派生分类。历史冻结快照不变，睡眠目标排序 / 免疫 / 唤醒尚未实现。
+- 补入 Flame Blade / Scorching Ray 攻击类别和六个缺失的主豁免摘要；不设置固定 DC，不把 Web 脱离 STR 检定误写成豁免。
+- 16 项补丁均包含原值断言、官方页码和字段路径；资料 / 包版本 / 目录专项 **53 passed**，包含历史快照隔离与候选禁止无签收启用。
+
+仅核验这些精确字段。Acid Arrow、Fire Shield、Wall of Ice / Thorns、Storm of Vengeance 等多阶段效果，Scorching Ray 逐射线分配、材料部分消耗及持续触发仍待结构化。P02 未完成，不提升处理器支持等级。
