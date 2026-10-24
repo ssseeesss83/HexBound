@@ -144,3 +144,5 @@ tools/audit_magic_figurine_ioun_variants.py核23个完整白名单小节及稀�
 传奇动作资料由tools/extract_monster_legendary.py独立从官方字体 / 属性块边界提取30块93选项；tools/audit_monster_legendary.py核32候选卡99选项、预算与费用，共1,101检查零差异。补32budget、32完整general/per-creature引用及99cost，不改现有动作描述或嵌套数值。未标费用的1明确为单选项推导，显式2 / 3保留标签。p260变形不继承例外与所有使用 / 恢复限制完整，形态ref不授予使用资格；原始守卫与预修快照保留。此批不签形态机械资格或传奇执行。
 
 tools/audit_monster_headers.py独立核317官方头部→334候选的速度、熟练、感官、语言、伤害弱点 / 抗性 / 免疫、状态免疫、CR及熟练加值，3,674检查零差异。459修正为334完整来源引用+125字段差异（含排序 / 大小写，不全是数值错）；关键错值、deafened重复及遗漏熟练已纠正。p256全部CR / PB表消费，形态和可选变体均保存原文选择证据；完整限定不丢。头部summary不表达所有条件特性，尤其Vampire雾形的不能行动 / 发言及条件伤免仍需统一执行层；不能依据空头部列表声称没有特性效果。预修快照保留全部原守卫，未签动作正文 / 参数 / 运行时。
+
+怪物完整来源tools/extract_monster_blocks.py按固定字体 / 坐标保存317整块及全部事件span；Challenge之后逐字词 / 数值 / 符号拼接校验无缺段，包含47段可能有规则含义的Cambria说明。两侧栏按明确owner单列；43嵌套标题尚不扁平化成动作。tools/audit_monster_bodies.py核334完整source引用零差异，只新增引用，不宣称现有动作desc已核。说明起点用整段字体边界，避免ReefShark / BanditCaptain句中加粗导致末项动作混入说明；Frog与FireBeetle规则事实完整保留。原值守卫不变，正文 / 参数 / 执行继续待核。
