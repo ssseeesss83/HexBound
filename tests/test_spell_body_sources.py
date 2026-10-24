@@ -46,7 +46,16 @@ def test_rule_bearing_corrections_and_source_ambiguity_remain_explicit():
     blocked = [r for r in review['differences'] if r['category'] == 'source_ambiguity']
     assert [r['id'] for r in blocked] == ['animal-friendship']
     assert blocked[0]['recommended_canonical_fields'] is None
-    assert c.SPELLS['animal-friendship']['higher_level'] == []
+    # Original audit is retained; a later same-edition primary source resolves it.
+    evidence = json.loads((c.DATA_DIR / 'official/animal-friendship-source-resolution.json').read_text(encoding='utf-8'))
+    block = next(b for b in json.loads((c.DATA_DIR / 'official/spell-blocks.json').read_text(encoding='utf-8'))
+                 if b['official_title'] == 'Animal Friendship')
+    assert hashlib.sha256(block['official_text'].encode()).hexdigest() == evidence['official_spell_block_sha256']
+    raw = body_fields(block)['higher_level'][0]
+    assert evidence['resolution']['status'] == 'source_confirmed_reference_pending_execution'
+    assert evidence['confirmation']['edition_evidence'] == ['Legacy', 'Basic Rules (2014), pg. 212']
+    assert c.SPELLS['animal-friendship']['higher_level'] == [raw.replace('beast t level', 'beast for each slot level')]
+    assert 'beast t level' in raw
 
 
 def test_body_corrections_do_not_rewrite_installed_historical_data():

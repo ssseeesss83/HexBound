@@ -5263,6 +5263,46 @@
         320
       ],
       "scope": "remove only the unverified extra item paragraph; preserve official action text and all other abilities"
+    },
+    {
+      "id": "official-confirmed-animal-friendship-higher-level",
+      "kind": "spells",
+      "records": [
+        "animal-friendship"
+      ],
+      "page": 115,
+      "heading": "Animal Friendship: source-confirmed missing upcast words",
+      "operation": "set_field",
+      "path": [
+        "higher_level"
+      ],
+      "expected": [],
+      "value": [
+        "When you cast this spell using a spell slot of 2nd level or higher, you can affect one additional beast for each slot level above 1st."
+      ],
+      "source_resolution": {
+        "id": "animal-friendship-srd-missing-upcast-words",
+        "ruleset_id": "dnd5e-2014-srd5.1",
+        "retrieved_at": "2026-10-24",
+        "official_pdf_page": 115,
+        "official_spell_block_sha256": "28d49e33b625bf0c7cc1398b9c9bbd8679328f7fe4ff82245066bfab90936a7a",
+        "source_defect": "additional beast t level above 1st.",
+        "confirmation": {
+          "url": "https://www.dndbeyond.com/spells/1993-animal-friendship",
+          "title": "Animal Friendship - D&D Beyond",
+          "edition_evidence": [
+            "Legacy",
+            "Basic Rules (2014), pg. 212"
+          ],
+          "verified_fragment": "one additional beast for each slot level above 1st."
+        },
+        "resolution": {
+          "replace": "beast t level",
+          "with": "beast for each slot level",
+          "status": "source_confirmed_reference_pending_execution"
+        },
+        "scope": "Restore missing words only. Do not broaden the selected source inventory or infer runtime support."
+      }
     }
   ],
   "record_additions": [

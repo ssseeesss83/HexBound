@@ -76,3 +76,7 @@ Animal Friendship 第 115 页原始 PDF 自身存在 `additional beast t level` 
 `official/character-source-review.json` 保存运动技能 p79 完整段落、侍僧 p60–61 介绍与装备及矮人 p3 重甲速度例外。祈祷物和香支是无官方价重的叙事授予，不复用香块或普通书价重；法衣只复用身份引用，其社区零价重未获官方签收。
 
 `official/monster-source-review.json` 保存七条带 expected 断言的修正和原段隔离凭据：鼠人鼠形 / 虎人虎形大小的命名兽形跨页来源、三种成年龙变形、巫妖 Disrupt Life 目标与成功减半及 Night Hag Items 非 SRD 段落。官方心石 / 灵魂袋动作前提保留。传奇动作预算与时机通则 p260 已收集，完整结构和实际执行仍待后续批次。
+
+## Animal Friendship 缺字后续核对
+
+原始 PDF 与初次审计均保留。2026-10-24 读取 [D&D Beyond 官方旧版条目](https://www.dndbeyond.com/spells/1993-animal-friendship)，其明确标注 Legacy、Basic Rules (2014), pg. 212，确认缺字处为 “beast for each slot level”。`official/animal-friendship-source-resolution.json` 固定同版证据、最小替换及原始法术块摘要；候选补入缺失升环段。此处仅修复 SRD 已选条目的文字，不扩大资料范围，不签收多目标魅惑执行。
