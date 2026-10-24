@@ -67,6 +67,7 @@ def validate_records(records, *, inventory=None):
         from .magic_figurine_ioun_variants import issues as magic_named_issues
         from .monster_inventory import issues as monster_inventory_issues
         from .monster_legendary import issues as monster_legendary_issues
+        from .monster_headers import issues as monster_header_issues
         errors.extend(growth_issues(records))
         errors.extend(armor_issues(records))
         errors.extend(equipment_issues(records))
@@ -87,6 +88,7 @@ def validate_records(records, *, inventory=None):
         errors.extend(magic_named_issues(records))
         errors.extend(monster_inventory_issues(records))
         errors.extend(monster_legendary_issues(records))
+        errors.extend(monster_header_issues(records))
         errors.extend("Feature is unreachable from class grants or choices: " + fid for fid in unreachable_features(records))
     if set(records) != set(inventory):
         errors.append("Rules collection set is incomplete")
