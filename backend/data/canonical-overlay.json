@@ -1323,6 +1323,429 @@
       "expected": "Up to 1 minute",
       "value": "up to one minute",
       "kind": "spells"
+    },
+    {
+      "id": "official-starting-paladin",
+      "kind": "classes",
+      "records": [
+        "paladin"
+      ],
+      "page": 30,
+      "heading": "Paladin",
+      "operation": "set_field",
+      "path": [
+        "starting_equipment_options",
+        1,
+        "from",
+        "options",
+        1,
+        "choice"
+      ],
+      "expected": {
+        "desc": "any simple weapon",
+        "choose": 1,
+        "type": "equipment",
+        "from": {
+          "option_set_type": "equipment_category",
+          "equipment_category": {
+            "index": "simple-weapons",
+            "name": "Simple Weapons",
+            "url": "/api/2014/equipment-categories/simple-weapons"
+          }
+        }
+      },
+      "value": {
+        "desc": "any simple melee weapon",
+        "choose": 1,
+        "type": "equipment",
+        "from": {
+          "option_set_type": "equipment_category",
+          "equipment_category": {
+            "index": "simple-melee-weapons",
+            "name": "Simple Melee Weapons",
+            "url": "/api/2014/equipment-categories/simple-melee-weapons"
+          }
+        }
+      }
+    },
+    {
+      "id": "official-starting-rogue",
+      "kind": "classes",
+      "records": [
+        "rogue"
+      ],
+      "page": 39,
+      "heading": "Rogue",
+      "operation": "set_field",
+      "path": [
+        "starting_equipment_options",
+        1,
+        "from",
+        "options",
+        0,
+        "items"
+      ],
+      "expected": [
+        {
+          "option_type": "counted_reference",
+          "count": 1,
+          "of": {
+            "index": "shortbow",
+            "name": "Shortbow",
+            "url": "/api/2014/equipment/shortbow"
+          }
+        },
+        {
+          "option_type": "counted_reference",
+          "count": 20,
+          "of": {
+            "index": "arrow",
+            "name": "Arrow",
+            "url": "/api/2014/equipment/arrow"
+          }
+        }
+      ],
+      "value": [
+        {
+          "option_type": "counted_reference",
+          "count": 1,
+          "of": {
+            "index": "shortbow",
+            "name": "Shortbow",
+            "url": "/api/2014/equipment/shortbow"
+          }
+        },
+        {
+          "option_type": "counted_reference",
+          "count": 20,
+          "of": {
+            "index": "arrow",
+            "name": "Arrow",
+            "url": "/api/2014/equipment/arrow"
+          }
+        },
+        {
+          "option_type": "counted_reference",
+          "count": 1,
+          "of": {
+            "index": "quiver",
+            "name": "Quiver",
+            "url": "/api/2014/equipment/quiver"
+          }
+        }
+      ]
+    },
+    {
+      "id": "official-starting-monk",
+      "kind": "classes",
+      "records": [
+        "monk"
+      ],
+      "page": 26,
+      "heading": "Monk",
+      "operation": "set_field",
+      "path": [
+        "proficiency_choices",
+        1,
+        "from",
+        "options",
+        0,
+        "choice",
+        "from",
+        "options"
+      ],
+      "expected": [
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "alchemists-supplies",
+            "name": "Alchemist's Supplies",
+            "url": "/api/2014/proficiencies/alchemists-supplies"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "brewers-supplies",
+            "name": "Brewer's Supplies",
+            "url": "/api/2014/proficiencies/brewers-supplies"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "calligraphers-supplies",
+            "name": "Calligrapher's Supplies",
+            "url": "/api/2014/proficiencies/calligraphers-supplies"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "carpenters-tools",
+            "name": "Carpenter's Tools",
+            "url": "/api/2014/proficiencies/carpenters-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "cartographers-tools",
+            "name": "Cartographer's Tools",
+            "url": "/api/2014/proficiencies/cartographers-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "cobblers-tools",
+            "name": "Cobbler's Tools",
+            "url": "/api/2014/proficiencies/cobblers-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "cooks-utensils",
+            "name": "Cook's utensils",
+            "url": "/api/2014/proficiencies/cooks-utensils"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "glassblowers-tools",
+            "name": "Glassblower's Tools",
+            "url": "/api/2014/proficiencies/glassblowers-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "jewelers-tools",
+            "name": "Jeweler's Tools",
+            "url": "/api/2014/proficiencies/jewelers-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "leatherworkers-tools",
+            "name": "Leatherworker's Tools",
+            "url": "/api/2014/proficiencies/leatherworkers-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "masons-tools",
+            "name": "Mason's Tools",
+            "url": "/api/2014/proficiencies/masons-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "painters-supplies",
+            "name": "Painter's Supplies",
+            "url": "/api/2014/proficiencies/painters-supplies"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "potters-tools",
+            "name": "Potter's Tools",
+            "url": "/api/2014/proficiencies/potters-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "smiths-tools",
+            "name": "Smith's Tools",
+            "url": "/api/2014/proficiencies/smiths-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "tinkers-tools",
+            "name": "Tinker's Tools",
+            "url": "/api/2014/proficiencies/tinkers-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "weavers-tools",
+            "name": "Weaver's Tools",
+            "url": "/api/2014/proficiencies/weavers-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "woodcarvers-tools",
+            "name": "Woodcarver's Tools",
+            "url": "/api/2014/proficiencies/woodcarvers-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "disguise-kit",
+            "name": "Disguise Kit",
+            "url": "/api/2014/proficiencies/disguise-kit"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "forgery-kit",
+            "name": "Forgery Kit",
+            "url": "/api/2014/proficiencies/forgery-kit"
+          }
+        }
+      ],
+      "value": [
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "alchemists-supplies",
+            "name": "Alchemist's Supplies",
+            "url": "/api/2014/proficiencies/alchemists-supplies"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "brewers-supplies",
+            "name": "Brewer's Supplies",
+            "url": "/api/2014/proficiencies/brewers-supplies"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "calligraphers-supplies",
+            "name": "Calligrapher's Supplies",
+            "url": "/api/2014/proficiencies/calligraphers-supplies"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "carpenters-tools",
+            "name": "Carpenter's Tools",
+            "url": "/api/2014/proficiencies/carpenters-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "cartographers-tools",
+            "name": "Cartographer's Tools",
+            "url": "/api/2014/proficiencies/cartographers-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "cobblers-tools",
+            "name": "Cobbler's Tools",
+            "url": "/api/2014/proficiencies/cobblers-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "cooks-utensils",
+            "name": "Cook's utensils",
+            "url": "/api/2014/proficiencies/cooks-utensils"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "glassblowers-tools",
+            "name": "Glassblower's Tools",
+            "url": "/api/2014/proficiencies/glassblowers-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "jewelers-tools",
+            "name": "Jeweler's Tools",
+            "url": "/api/2014/proficiencies/jewelers-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "leatherworkers-tools",
+            "name": "Leatherworker's Tools",
+            "url": "/api/2014/proficiencies/leatherworkers-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "masons-tools",
+            "name": "Mason's Tools",
+            "url": "/api/2014/proficiencies/masons-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "painters-supplies",
+            "name": "Painter's Supplies",
+            "url": "/api/2014/proficiencies/painters-supplies"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "potters-tools",
+            "name": "Potter's Tools",
+            "url": "/api/2014/proficiencies/potters-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "smiths-tools",
+            "name": "Smith's Tools",
+            "url": "/api/2014/proficiencies/smiths-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "tinkers-tools",
+            "name": "Tinker's Tools",
+            "url": "/api/2014/proficiencies/tinkers-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "weavers-tools",
+            "name": "Weaver's Tools",
+            "url": "/api/2014/proficiencies/weavers-tools"
+          }
+        },
+        {
+          "option_type": "reference",
+          "item": {
+            "index": "woodcarvers-tools",
+            "name": "Woodcarver's Tools",
+            "url": "/api/2014/proficiencies/woodcarvers-tools"
+          }
+        }
+      ]
     }
   ]
 }

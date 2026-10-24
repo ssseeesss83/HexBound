@@ -133,6 +133,17 @@ def test_candidate_metadata_changes_cannot_change_historical_package(tmp_path, p
     assert p.install_package(store, p.build_legacy_package())["replayed"]
 
 
+def test_official_starting_equipment_and_tool_corrections_leave_history_unchanged(package):
+    paladin = c.CLASSES["paladin"]["starting_equipment_options"][1]["from"]["options"][1]["choice"]
+    assert paladin["from"]["equipment_category"]["index"] == "simple-melee-weapons"
+    rogue = c.CLASSES["rogue"]["starting_equipment_options"][1]["from"]["options"][0]["items"]
+    assert {row["of"]["index"]: row["count"] for row in rogue} == {"shortbow": 1, "arrow": 20, "quiver": 1}
+    tools = c.CLASSES["monk"]["proficiency_choices"][1]["from"]["options"][0]["choice"]["from"]["options"]
+    assert len(tools) == 17 and not {"disguise-kit", "forgery-kit"} & {row["item"]["index"] for row in tools}
+    assert package["records"]["classes"]["paladin"]["starting_equipment_options"][1]["from"]["options"][1]["choice"]["from"]["equipment_category"]["index"] == "simple-weapons"
+    assert not p.validate_records(p.build_package()["records"])
+
+
 @pytest.mark.parametrize("failure", ["url", "owner", "material", "edition", "level"])
 def test_structural_validator_independently_checks_source_relations(package, failure):
     records = deepcopy(package["records"])

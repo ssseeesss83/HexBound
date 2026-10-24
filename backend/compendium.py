@@ -198,7 +198,7 @@ for _fix in ERRATA["corrections"]:
 CANONICAL_OVERLAY = json.loads((DATA_DIR / "canonical-overlay.json").read_text(encoding="utf-8"))
 for _correction in CANONICAL_OVERLAY["corrections"]:
     for _feature_id in _correction["records"]:
-        _tables = {"features": FEATURES, "levels": LEVELS, "spells": SPELLS, "monsters": MONSTERS}
+        _tables = {"features": FEATURES, "levels": LEVELS, "spells": SPELLS, "monsters": MONSTERS, "classes": CLASSES}
         _feature = _tables[_correction.get("kind", "features")][_feature_id]
         if _correction["operation"] == "replace_description":
             _feature["desc"] = copy.deepcopy(_correction["paragraphs"])
