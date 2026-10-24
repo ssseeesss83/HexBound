@@ -140,3 +140,5 @@ tools/audit_magic_feather_variants.py消费六符记区间与完整小节，修�
 tools/audit_magic_figurine_ioun_variants.py核23个完整白名单小节及稀有度，保留嵌套stats / 多子能力 / 尾段和规则例外，184检查零差异。69派生引用及23格式修正；9个profiles恰覆盖126规范变体，无重叠或漏项。尚非逐字段总签收，也不签机械执行。
 
 官方怪物目录tools/audit_monster_inventory.py独立确认317属性块和10个非属性族标题，明确绑定334候选卡：309直接、2别名、18形态、5可选变体。monster-inventory-review.json保存坐标、体型行、绑定及p378 / 391变体正文，身份与覆盖零差异；不签数值、完整正文、变形动作资格或执行。
+
+传奇动作资料由tools/extract_monster_legendary.py独立从官方字体 / 属性块边界提取30块93选项；tools/audit_monster_legendary.py核32候选卡99选项、预算与费用，共1,101检查零差异。补32budget、32完整general/per-creature引用及99cost，不改现有动作描述或嵌套数值。未标费用的1明确为单选项推导，显式2 / 3保留标签。p260变形不继承例外与所有使用 / 恢复限制完整，形态ref不授予使用资格；原始守卫与预修快照保留。此批不签形态机械资格或传奇执行。

@@ -30271,6 +30271,4506 @@
         "status": "reference_pending_execution",
         "runtime_verified": false
       }
+    },
+    {
+      "id": "official-monster-legendary-aboleth-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "aboleth"
+      ],
+      "page": 261,
+      "heading": "Aboleth",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-aboleth-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "aboleth"
+      ],
+      "page": 261,
+      "heading": "Aboleth",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Aboleth",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The aboleth can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The aboleth regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe aboleth can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The aboleth regains spent\nlegendary actions at the start of its turn.\nDetect. The aboleth makes a Wisdom (Perception)\ncheck.\nTail Swipe. The aboleth makes one tail attack.\nPsychic Drain (Costs 2 Actions). One creature charmed\nby the aboleth takes 10 (3d6) psychic damage, and\nthe aboleth regains hit points equal to the damage\nthe creature takes.",
+        "printed_pages": [
+          261
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 261,
+            "column": 1,
+            "top": 364.6
+          },
+          {
+            "label": "Tail Swipe.",
+            "name": "Tail Swipe",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 261,
+            "column": 1,
+            "top": 391.9
+          },
+          {
+            "label": "Psychic Drain (Costs 2 Actions).",
+            "name": "Psychic Drain (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 261,
+            "column": 1,
+            "top": 407.3
+          }
+        ],
+        "binding": {
+          "record_id": "aboleth",
+          "name": "Aboleth",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-aboleth-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "aboleth"
+      ],
+      "page": 261,
+      "heading": "Aboleth",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-aboleth-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "aboleth"
+      ],
+      "page": 261,
+      "heading": "Aboleth",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-aboleth-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "aboleth"
+      ],
+      "page": 261,
+      "heading": "Aboleth",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-solar-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "solar"
+      ],
+      "page": 262,
+      "heading": "Solar",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-solar-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "solar"
+      ],
+      "page": 262,
+      "heading": "Solar",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Solar",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The solar can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The solar regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe solar can take 3 legendary actions, choosing from\nthe options below. Only one legendary action option\ncan be used at a time and only at the end of another\ncreature’s turn. The solar regains spent legendary\nactions at the start of its turn.\nTeleport. The solar magically teleports, along with any\nequipment it is wearing or carrying, up to 120 feet to\nan unoccupied space it can see.\nSearing Burst (Costs 2 Actions). The solar emits\nmagical, divine energy. Each creature of its choice in\na 10-­‐foot radius must make a DC 23 Dexterity saving\nthrow, taking 14 (4d6) fire damage plus 14 (4d6)\nradiant damage on a failed save, or half as much\ndamage on a successful one.\nBlinding Gaze (Costs 3 Actions). The solar targets one\ncreature it can see within 30 feet of it. If the target\ncan see it, the target must succeed on a DC 15\nConstitution saving throw or be blinded until magic\nsuch as the lesser restoration spell removes the\nblindness.",
+        "printed_pages": [
+          263
+        ],
+        "options": [
+          {
+            "label": "Teleport.",
+            "name": "Teleport",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 263,
+            "column": 1,
+            "top": 190.6
+          },
+          {
+            "label": "Searing Burst (Costs 2 Actions).",
+            "name": "Searing Burst (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 263,
+            "column": 1,
+            "top": 230.2
+          },
+          {
+            "label": "Blinding Gaze (Costs 3 Actions).",
+            "name": "Blinding Gaze (Costs 3 Actions)",
+            "cost": 3,
+            "cost_basis": "explicit_label",
+            "page": 263,
+            "column": 1,
+            "top": 306.5
+          }
+        ],
+        "binding": {
+          "record_id": "solar",
+          "name": "Solar",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-solar-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "solar"
+      ],
+      "page": 262,
+      "heading": "Solar",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-solar-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "solar"
+      ],
+      "page": 262,
+      "heading": "Solar",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-solar-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "solar"
+      ],
+      "page": 262,
+      "heading": "Solar",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-ancient-black-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "ancient-black-dragon"
+      ],
+      "page": 280,
+      "heading": "Ancient Black Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-ancient-black-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "ancient-black-dragon"
+      ],
+      "page": 280,
+      "heading": "Ancient Black Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Ancient Black Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 23 Dexterity saving throw or\ntake 15 (2d6 + 8) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          280,
+          281
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 281,
+            "column": 0,
+            "top": 74.4
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 281,
+            "column": 0,
+            "top": 101.8
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 281,
+            "column": 0,
+            "top": 116.9
+          }
+        ],
+        "binding": {
+          "record_id": "ancient-black-dragon",
+          "name": "Ancient Black Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-ancient-black-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-black-dragon"
+      ],
+      "page": 280,
+      "heading": "Ancient Black Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-black-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-black-dragon"
+      ],
+      "page": 280,
+      "heading": "Ancient Black Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-black-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-black-dragon"
+      ],
+      "page": 280,
+      "heading": "Ancient Black Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-adult-black-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "adult-black-dragon"
+      ],
+      "page": 281,
+      "heading": "Adult Black Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-adult-black-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "adult-black-dragon"
+      ],
+      "page": 281,
+      "heading": "Adult Black Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Adult Black Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 19 Dexterity saving throw or\ntake 13 (2d6 + 6) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          281
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 281,
+            "column": 1,
+            "top": 291.4
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 281,
+            "column": 1,
+            "top": 318.7
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 281,
+            "column": 1,
+            "top": 333.8
+          }
+        ],
+        "binding": {
+          "record_id": "adult-black-dragon",
+          "name": "Adult Black Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-adult-black-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-black-dragon"
+      ],
+      "page": 281,
+      "heading": "Adult Black Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-black-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-black-dragon"
+      ],
+      "page": 281,
+      "heading": "Adult Black Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-black-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-black-dragon"
+      ],
+      "page": 281,
+      "heading": "Adult Black Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-ancient-blue-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "ancient-blue-dragon"
+      ],
+      "page": 282,
+      "heading": "Ancient Blue Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-ancient-blue-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "ancient-blue-dragon"
+      ],
+      "page": 282,
+      "heading": "Ancient Blue Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Ancient Blue Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 24 Dexterity saving throw or\ntake 16 (2d6 + 9) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          283
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 283,
+            "column": 0,
+            "top": 156.3
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 283,
+            "column": 0,
+            "top": 183.6
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 283,
+            "column": 0,
+            "top": 199.0
+          }
+        ],
+        "binding": {
+          "record_id": "ancient-blue-dragon",
+          "name": "Ancient Blue Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-ancient-blue-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-blue-dragon"
+      ],
+      "page": 282,
+      "heading": "Ancient Blue Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-blue-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-blue-dragon"
+      ],
+      "page": 282,
+      "heading": "Ancient Blue Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-blue-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-blue-dragon"
+      ],
+      "page": 282,
+      "heading": "Ancient Blue Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-adult-blue-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "adult-blue-dragon"
+      ],
+      "page": 283,
+      "heading": "Adult Blue Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-adult-blue-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "adult-blue-dragon"
+      ],
+      "page": 283,
+      "heading": "Adult Blue Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Adult Blue Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 20 Dexterity saving throw or\ntake 14 (2d6 + 7) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          283
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 283,
+            "column": 1,
+            "top": 367.4
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 283,
+            "column": 1,
+            "top": 395.0
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 283,
+            "column": 1,
+            "top": 410.2
+          }
+        ],
+        "binding": {
+          "record_id": "adult-blue-dragon",
+          "name": "Adult Blue Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-adult-blue-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-blue-dragon"
+      ],
+      "page": 283,
+      "heading": "Adult Blue Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-blue-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-blue-dragon"
+      ],
+      "page": 283,
+      "heading": "Adult Blue Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-blue-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-blue-dragon"
+      ],
+      "page": 283,
+      "heading": "Adult Blue Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-ancient-green-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "ancient-green-dragon"
+      ],
+      "page": 284,
+      "heading": "Ancient Green Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-ancient-green-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "ancient-green-dragon"
+      ],
+      "page": 284,
+      "heading": "Ancient Green Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Ancient Green Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 23 Dexterity saving throw or\ntake 15 (2d6 + 8) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          285
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 285,
+            "column": 0,
+            "top": 227.3
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 285,
+            "column": 0,
+            "top": 254.7
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 285,
+            "column": 0,
+            "top": 270.0
+          }
+        ],
+        "binding": {
+          "record_id": "ancient-green-dragon",
+          "name": "Ancient Green Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-ancient-green-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-green-dragon"
+      ],
+      "page": 284,
+      "heading": "Ancient Green Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-green-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-green-dragon"
+      ],
+      "page": 284,
+      "heading": "Ancient Green Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-green-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-green-dragon"
+      ],
+      "page": 284,
+      "heading": "Ancient Green Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-adult-green-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "adult-green-dragon"
+      ],
+      "page": 285,
+      "heading": "Adult Green Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-adult-green-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "adult-green-dragon"
+      ],
+      "page": 285,
+      "heading": "Adult Green Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Adult Green Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 19 Dexterity saving throw or\ntake 13 (2d6 + 6) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          285
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 285,
+            "column": 1,
+            "top": 492.2
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 285,
+            "column": 1,
+            "top": 519.6
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 285,
+            "column": 1,
+            "top": 534.7
+          }
+        ],
+        "binding": {
+          "record_id": "adult-green-dragon",
+          "name": "Adult Green Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-adult-green-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-green-dragon"
+      ],
+      "page": 285,
+      "heading": "Adult Green Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-green-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-green-dragon"
+      ],
+      "page": 285,
+      "heading": "Adult Green Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-green-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-green-dragon"
+      ],
+      "page": 285,
+      "heading": "Adult Green Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-ancient-red-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "ancient-red-dragon"
+      ],
+      "page": 286,
+      "heading": "Ancient Red Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-ancient-red-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "ancient-red-dragon"
+      ],
+      "page": 286,
+      "heading": "Ancient Red Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Ancient Red Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 25 Dexterity saving throw or\ntake 17 (2d6 + 10) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          287
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 287,
+            "column": 0,
+            "top": 367.5
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 287,
+            "column": 0,
+            "top": 395.1
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 287,
+            "column": 0,
+            "top": 410.2
+          }
+        ],
+        "binding": {
+          "record_id": "ancient-red-dragon",
+          "name": "Ancient Red Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-ancient-red-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-red-dragon"
+      ],
+      "page": 286,
+      "heading": "Ancient Red Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-red-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-red-dragon"
+      ],
+      "page": 286,
+      "heading": "Ancient Red Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-red-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-red-dragon"
+      ],
+      "page": 286,
+      "heading": "Ancient Red Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-adult-red-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "adult-red-dragon"
+      ],
+      "page": 287,
+      "heading": "Adult Red Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-adult-red-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "adult-red-dragon"
+      ],
+      "page": 287,
+      "heading": "Adult Red Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Adult Red Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 22 Dexterity saving throw or\ntake 15 (2d6 + 8) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          287
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 287,
+            "column": 1,
+            "top": 572.2
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 287,
+            "column": 1,
+            "top": 599.5
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 287,
+            "column": 1,
+            "top": 614.9
+          }
+        ],
+        "binding": {
+          "record_id": "adult-red-dragon",
+          "name": "Adult Red Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-adult-red-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-red-dragon"
+      ],
+      "page": 287,
+      "heading": "Adult Red Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-red-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-red-dragon"
+      ],
+      "page": 287,
+      "heading": "Adult Red Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-red-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-red-dragon"
+      ],
+      "page": 287,
+      "heading": "Adult Red Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-ancient-white-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "ancient-white-dragon"
+      ],
+      "page": 288,
+      "heading": "Ancient White Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-ancient-white-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "ancient-white-dragon"
+      ],
+      "page": 288,
+      "heading": "Ancient White Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Ancient White Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 22 Dexterity saving throw or\ntake 15 (2d6 + 8) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          289
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 289,
+            "column": 0,
+            "top": 395.1
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 289,
+            "column": 0,
+            "top": 422.4
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 289,
+            "column": 0,
+            "top": 437.5
+          }
+        ],
+        "binding": {
+          "record_id": "ancient-white-dragon",
+          "name": "Ancient White Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-ancient-white-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-white-dragon"
+      ],
+      "page": 288,
+      "heading": "Ancient White Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-white-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-white-dragon"
+      ],
+      "page": 288,
+      "heading": "Ancient White Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-white-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-white-dragon"
+      ],
+      "page": 288,
+      "heading": "Ancient White Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-adult-white-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "adult-white-dragon"
+      ],
+      "page": 289,
+      "heading": "Adult White Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-adult-white-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "adult-white-dragon"
+      ],
+      "page": 289,
+      "heading": "Adult White Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Adult White Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 19 Dexterity saving throw or\ntake 13 (2d6 + 6) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          289,
+          290
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 289,
+            "column": 1,
+            "top": 651.4
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 289,
+            "column": 1,
+            "top": 678.7
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 290,
+            "column": 0,
+            "top": 74.4
+          }
+        ],
+        "binding": {
+          "record_id": "adult-white-dragon",
+          "name": "Adult White Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-adult-white-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-white-dragon"
+      ],
+      "page": 289,
+      "heading": "Adult White Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-white-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-white-dragon"
+      ],
+      "page": 289,
+      "heading": "Adult White Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-white-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-white-dragon"
+      ],
+      "page": 289,
+      "heading": "Adult White Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-ancient-brass-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "ancient-brass-dragon"
+      ],
+      "page": 290,
+      "heading": "Ancient Brass Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-ancient-brass-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "ancient-brass-dragon"
+      ],
+      "page": 290,
+      "heading": "Ancient Brass Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Ancient Brass Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 22 Dexterity saving throw or\ntake 15 (2d6 + 8) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          291
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 291,
+            "column": 1,
+            "top": 156.2
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 291,
+            "column": 1,
+            "top": 183.6
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 291,
+            "column": 1,
+            "top": 199.0
+          }
+        ],
+        "binding": {
+          "record_id": "ancient-brass-dragon",
+          "name": "Ancient Brass Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-ancient-brass-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-brass-dragon"
+      ],
+      "page": 290,
+      "heading": "Ancient Brass Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-brass-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-brass-dragon"
+      ],
+      "page": 290,
+      "heading": "Ancient Brass Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-brass-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-brass-dragon"
+      ],
+      "page": 290,
+      "heading": "Ancient Brass Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-adult-brass-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "adult-brass-dragon"
+      ],
+      "page": 291,
+      "heading": "Adult Brass Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-adult-brass-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "adult-brass-dragon"
+      ],
+      "page": 291,
+      "heading": "Adult Brass Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Adult Brass Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 19 Dexterity saving throw or\ntake 13 (2d6 + 6) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          292
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 292,
+            "column": 0,
+            "top": 471.1
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 292,
+            "column": 0,
+            "top": 498.7
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 292,
+            "column": 0,
+            "top": 513.9
+          }
+        ],
+        "binding": {
+          "record_id": "adult-brass-dragon",
+          "name": "Adult Brass Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-adult-brass-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-brass-dragon"
+      ],
+      "page": 291,
+      "heading": "Adult Brass Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-brass-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-brass-dragon"
+      ],
+      "page": 291,
+      "heading": "Adult Brass Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-brass-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-brass-dragon"
+      ],
+      "page": 291,
+      "heading": "Adult Brass Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-ancient-bronze-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "ancient-bronze-dragon"
+      ],
+      "page": 293,
+      "heading": "Ancient Bronze Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-ancient-bronze-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "ancient-bronze-dragon"
+      ],
+      "page": 293,
+      "heading": "Ancient Bronze Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Ancient Bronze Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 24 Dexterity saving throw or\ntake 16 (2d6 + 9) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          293,
+          294
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 294,
+            "column": 0,
+            "top": 114.0
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 294,
+            "column": 0,
+            "top": 141.4
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 294,
+            "column": 0,
+            "top": 156.5
+          }
+        ],
+        "binding": {
+          "record_id": "ancient-bronze-dragon",
+          "name": "Ancient Bronze Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-ancient-bronze-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-bronze-dragon"
+      ],
+      "page": 293,
+      "heading": "Ancient Bronze Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-bronze-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-bronze-dragon"
+      ],
+      "page": 293,
+      "heading": "Ancient Bronze Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-bronze-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-bronze-dragon"
+      ],
+      "page": 293,
+      "heading": "Ancient Bronze Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-adult-bronze-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "adult-bronze-dragon"
+      ],
+      "page": 294,
+      "heading": "Adult Bronze Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-adult-bronze-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "adult-bronze-dragon"
+      ],
+      "page": 294,
+      "heading": "Adult Bronze Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Adult Bronze Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 20 Dexterity saving throw or\ntake 14 (2d6 + 7) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          294
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 294,
+            "column": 1,
+            "top": 568.8
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 294,
+            "column": 1,
+            "top": 596.4
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 294,
+            "column": 1,
+            "top": 611.5
+          }
+        ],
+        "binding": {
+          "record_id": "adult-bronze-dragon",
+          "name": "Adult Bronze Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-adult-bronze-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-bronze-dragon"
+      ],
+      "page": 294,
+      "heading": "Adult Bronze Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-bronze-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-bronze-dragon"
+      ],
+      "page": 294,
+      "heading": "Adult Bronze Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-bronze-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-bronze-dragon"
+      ],
+      "page": 294,
+      "heading": "Adult Bronze Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-ancient-copper-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "ancient-copper-dragon"
+      ],
+      "page": 295,
+      "heading": "Ancient Copper Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-ancient-copper-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "ancient-copper-dragon"
+      ],
+      "page": 295,
+      "heading": "Ancient Copper Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Ancient Copper Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 23 Dexterity saving throw or\ntake 15 (2d6 + 8) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          296
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 296,
+            "column": 1,
+            "top": 251.8
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 296,
+            "column": 1,
+            "top": 279.1
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 296,
+            "column": 1,
+            "top": 294.2
+          }
+        ],
+        "binding": {
+          "record_id": "ancient-copper-dragon",
+          "name": "Ancient Copper Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-ancient-copper-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-copper-dragon"
+      ],
+      "page": 295,
+      "heading": "Ancient Copper Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-copper-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-copper-dragon"
+      ],
+      "page": 295,
+      "heading": "Ancient Copper Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-copper-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-copper-dragon"
+      ],
+      "page": 295,
+      "heading": "Ancient Copper Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-adult-copper-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "adult-copper-dragon"
+      ],
+      "page": 296,
+      "heading": "Adult Copper Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-adult-copper-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "adult-copper-dragon"
+      ],
+      "page": 296,
+      "heading": "Adult Copper Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Adult Copper Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 19 Dexterity saving throw or\ntake 13 (2d6 + 6) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          297
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 297,
+            "column": 0,
+            "top": 632.4
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 297,
+            "column": 0,
+            "top": 659.8
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 297,
+            "column": 1,
+            "top": 74.4
+          }
+        ],
+        "binding": {
+          "record_id": "adult-copper-dragon",
+          "name": "Adult Copper Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-adult-copper-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-copper-dragon"
+      ],
+      "page": 296,
+      "heading": "Adult Copper Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-copper-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-copper-dragon"
+      ],
+      "page": 296,
+      "heading": "Adult Copper Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-copper-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-copper-dragon"
+      ],
+      "page": 296,
+      "heading": "Adult Copper Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-ancient-gold-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "ancient-gold-dragon"
+      ],
+      "page": 298,
+      "heading": "Ancient Gold Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-ancient-gold-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "ancient-gold-dragon"
+      ],
+      "page": 298,
+      "heading": "Ancient Gold Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Ancient Gold Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 25 Dexterity saving throw or\ntake 17 (2d6 + 10) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          299
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 299,
+            "column": 0,
+            "top": 504.7
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 299,
+            "column": 0,
+            "top": 532.3
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 299,
+            "column": 0,
+            "top": 547.5
+          }
+        ],
+        "binding": {
+          "record_id": "ancient-gold-dragon",
+          "name": "Ancient Gold Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-ancient-gold-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-gold-dragon"
+      ],
+      "page": 298,
+      "heading": "Ancient Gold Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-gold-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-gold-dragon"
+      ],
+      "page": 298,
+      "heading": "Ancient Gold Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-gold-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-gold-dragon"
+      ],
+      "page": 298,
+      "heading": "Ancient Gold Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-adult-gold-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "adult-gold-dragon"
+      ],
+      "page": 299,
+      "heading": "Adult Gold Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-adult-gold-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "adult-gold-dragon"
+      ],
+      "page": 299,
+      "heading": "Adult Gold Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Adult Gold Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 22 Dexterity saving throw or\ntake 15 (2d6 + 8) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          300
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 300,
+            "column": 0,
+            "top": 413.3
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 300,
+            "column": 0,
+            "top": 440.9
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 300,
+            "column": 0,
+            "top": 456.0
+          }
+        ],
+        "binding": {
+          "record_id": "adult-gold-dragon",
+          "name": "Adult Gold Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-adult-gold-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-gold-dragon"
+      ],
+      "page": 299,
+      "heading": "Adult Gold Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-gold-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-gold-dragon"
+      ],
+      "page": 299,
+      "heading": "Adult Gold Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-gold-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-gold-dragon"
+      ],
+      "page": 299,
+      "heading": "Adult Gold Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-ancient-silver-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "ancient-silver-dragon"
+      ],
+      "page": 301,
+      "heading": "Ancient Silver Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-ancient-silver-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "ancient-silver-dragon"
+      ],
+      "page": 301,
+      "heading": "Ancient Silver Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Ancient Silver Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 25 Dexterity saving throw or\ntake 17 (2d6 + 10) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          302
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 302,
+            "column": 0,
+            "top": 156.3
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 302,
+            "column": 0,
+            "top": 183.6
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 302,
+            "column": 0,
+            "top": 199.0
+          }
+        ],
+        "binding": {
+          "record_id": "ancient-silver-dragon",
+          "name": "Ancient Silver Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-ancient-silver-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-silver-dragon"
+      ],
+      "page": 301,
+      "heading": "Ancient Silver Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-silver-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-silver-dragon"
+      ],
+      "page": 301,
+      "heading": "Ancient Silver Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-ancient-silver-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "ancient-silver-dragon"
+      ],
+      "page": 301,
+      "heading": "Ancient Silver Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-adult-silver-dragon-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "adult-silver-dragon"
+      ],
+      "page": 302,
+      "heading": "Adult Silver Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-adult-silver-dragon-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "adult-silver-dragon"
+      ],
+      "page": 302,
+      "heading": "Adult Silver Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Adult Silver Dragon",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 21 Dexterity saving throw or\ntake 15 (2d6 + 8) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed.",
+        "printed_pages": [
+          302,
+          303
+        ],
+        "options": [
+          {
+            "label": "Detect.",
+            "name": "Detect",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 302,
+            "column": 1,
+            "top": 605.5
+          },
+          {
+            "label": "Tail Attack.",
+            "name": "Tail Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 302,
+            "column": 1,
+            "top": 632.9
+          },
+          {
+            "label": "Wing Attack (Costs 2 Actions).",
+            "name": "Wing Attack (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 303,
+            "column": 0,
+            "top": 74.4
+          }
+        ],
+        "binding": {
+          "record_id": "adult-silver-dragon",
+          "name": "Adult Silver Dragon",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-adult-silver-dragon-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-silver-dragon"
+      ],
+      "page": 302,
+      "heading": "Adult Silver Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-silver-dragon-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-silver-dragon"
+      ],
+      "page": 302,
+      "heading": "Adult Silver Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-adult-silver-dragon-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "adult-silver-dragon"
+      ],
+      "page": 302,
+      "heading": "Adult Silver Dragon",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-kraken-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "kraken"
+      ],
+      "page": 324,
+      "heading": "Kraken",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-kraken-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "kraken"
+      ],
+      "page": 324,
+      "heading": "Kraken",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Kraken",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The kraken can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The kraken regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe kraken can take 3 legendary actions, choosing from\nthe options below. Only one legendary action option\ncan be used at a time and only at the end of another\ncreature’s turn. The kraken regains spent legendary\nactions at the start of its turn.\nTentacle Attack or Fling. The kraken makes one\ntentacle attack or uses its Fling.\nLightning Storm (Costs 2 Actions). The kraken uses\nLightning Storm.\nInk Cloud (Costs 3 Actions). While underwater, the\nkraken expels an ink cloud in a 60-­‐foot radius. The\ncloud spreads around corners, and that area is\nheavily obscured to creatures other than the kraken.\nEach creature other than the kraken that ends its\nturn there must succeed on a DC 23 Constitution\nsaving throw, taking 16 (3d10) poison damage on a\nfailed save, or half as much damage on a successful\none. A strong current disperses the cloud, which\notherwise disappears at the end of the kraken’s next\nturn.",
+        "printed_pages": [
+          325
+        ],
+        "options": [
+          {
+            "label": "Tentacle Attack or Fling.",
+            "name": "Tentacle Attack or Fling",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 325,
+            "column": 0,
+            "top": 190.6
+          },
+          {
+            "label": "Lightning Storm (Costs 2 Actions).",
+            "name": "Lightning Storm (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 325,
+            "column": 0,
+            "top": 218.2
+          },
+          {
+            "label": "Ink Cloud (Costs 3 Actions).",
+            "name": "Ink Cloud (Costs 3 Actions)",
+            "cost": 3,
+            "cost_basis": "explicit_label",
+            "page": 325,
+            "column": 0,
+            "top": 245.5
+          }
+        ],
+        "binding": {
+          "record_id": "kraken",
+          "name": "Kraken",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-kraken-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "kraken"
+      ],
+      "page": 324,
+      "heading": "Kraken",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-kraken-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "kraken"
+      ],
+      "page": 324,
+      "heading": "Kraken",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-kraken-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "kraken"
+      ],
+      "page": 324,
+      "heading": "Kraken",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-lich-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "lich"
+      ],
+      "page": 325,
+      "heading": "Lich",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-lich-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "lich"
+      ],
+      "page": 325,
+      "heading": "Lich",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Lich",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The lich can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The lich regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe lich can take 3 legendary actions, choosing from\nthe options below. Only one legendary action option\ncan be used at a time and only at the end of another\ncreature’s turn. The lich regains spent legendary\nactions at the start of its turn.\nCantrip. The lich casts a cantrip.\nParalyzing Touch (Costs 2 Actions). The lich uses its\nParalyzing Touch.\nFrightening Gaze (Costs 2 Actions). The lich fixes its\ngaze on one creature it can see within 10 feet of it.\nThe target must succeed on a DC 18 Wisdom saving\nthrow against this magic or become frightened for 1\nminute. The frightened target can repeat the saving\nthrow at the end of each of its turns, ending the\neffect on itself on a success. If a target’s saving throw\nis successful or the effect ends for it, the target is\nimmune to the lich’s gaze for the next 24 hours.\nDisrupt Life (Costs 3 Actions). Each non-­‐undead\ncreature within 20 feet of the lich must make a DC\n18 Constitution saving throw against this magic,\ntaking 21 (6d6) necrotic damage on a failed save, or\nhalf as much damage on a successful one.",
+        "printed_pages": [
+          326
+        ],
+        "options": [
+          {
+            "label": "Cantrip.",
+            "name": "Cantrip",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 326,
+            "column": 0,
+            "top": 520.1
+          },
+          {
+            "label": "Paralyzing Touch (Costs 2 Actions).",
+            "name": "Paralyzing Touch (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 326,
+            "column": 0,
+            "top": 535.5
+          },
+          {
+            "label": "Frightening Gaze (Costs 2 Actions).",
+            "name": "Frightening Gaze (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 326,
+            "column": 0,
+            "top": 562.8
+          },
+          {
+            "label": "Disrupt Life (Costs 3 Actions).",
+            "name": "Disrupt Life (Costs 3 Actions)",
+            "cost": 3,
+            "cost_basis": "explicit_label",
+            "page": 326,
+            "column": 1,
+            "top": 74.4
+          }
+        ],
+        "binding": {
+          "record_id": "lich",
+          "name": "Lich",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-lich-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "lich"
+      ],
+      "page": 325,
+      "heading": "Lich",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-lich-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "lich"
+      ],
+      "page": 325,
+      "heading": "Lich",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-lich-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "lich"
+      ],
+      "page": 325,
+      "heading": "Lich",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-lich-legendary_actions-3-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "lich"
+      ],
+      "page": 325,
+      "heading": "Lich",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        3,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-mummy-lord-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "mummy-lord"
+      ],
+      "page": 334,
+      "heading": "Mummy Lord",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-mummy-lord-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "mummy-lord"
+      ],
+      "page": 334,
+      "heading": "Mummy Lord",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Mummy Lord",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The mummy lord can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The mummy lord regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe mummy lord can take 3 legendary actions,\nchoosing from the options below. Only one legendary\naction option can be used at a time and only at the end\nof another creature’s turn. The mummy lord regains\nspent legendary actions at the start of its turn.\nAttack. The mummy lord makes one attack with its\nrotting fist or uses its Dreadful Glare.\nBlinding Dust. Blinding dust and sand swirls magically\naround the mummy lord. Each creature within 5 feet\nof the mummy lord must succeed on a DC 16\nConstitution saving throw or be blinded until the end\nof the creature’s next turn.\nBlasphemous Word (Costs 2 Actions). The mummy\nlord utters a blasphemous word. Each non-­‐undead\ncreature within 10 feet of the mummy lord that can\nhear the magical utterance must succeed on a DC 16\nConstitution saving throw or be stunned until the\nend of the mummy lord’s next turn.\nChannel Negative Energy (Costs 2 Actions). The\nmummy lord magically unleashes negative energy.\nCreatures within 60 feet of the mummy lord,\nincluding ones behind barriers and around corners,\ncan’t regain hit points until the end of the mummy\nlord’s next turn.\nWhirlwind of Sand (Costs 2 Actions). The mummy lord\nmagically transforms into a whirlwind of sand, moves\nup to 60 feet, and reverts to its normal form. While\nin whirlwind form, the mummy lord is immune to all\ndamage, and it can’t be grappled, petrified, knocked\nprone, restrained, or stunned. Equipment worn or\ncarried by the mummy lord remain in its possession.",
+        "printed_pages": [
+          334,
+          335
+        ],
+        "options": [
+          {
+            "label": "Attack.",
+            "name": "Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 334,
+            "column": 1,
+            "top": 581.3
+          },
+          {
+            "label": "Blinding Dust.",
+            "name": "Blinding Dust",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 334,
+            "column": 1,
+            "top": 608.9
+          },
+          {
+            "label": "Blasphemous Word (Costs 2 Actions).",
+            "name": "Blasphemous Word (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 335,
+            "column": 0,
+            "top": 74.4
+          },
+          {
+            "label": "Channel Negative Energy (Costs 2 Actions).",
+            "name": "Channel Negative Energy (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 335,
+            "column": 0,
+            "top": 150.5
+          },
+          {
+            "label": "Whirlwind of Sand (Costs 2 Actions).",
+            "name": "Whirlwind of Sand (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 335,
+            "column": 0,
+            "top": 226.8
+          }
+        ],
+        "binding": {
+          "record_id": "mummy-lord",
+          "name": "Mummy Lord",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-mummy-lord-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "mummy-lord"
+      ],
+      "page": 334,
+      "heading": "Mummy Lord",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-mummy-lord-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "mummy-lord"
+      ],
+      "page": 334,
+      "heading": "Mummy Lord",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-mummy-lord-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "mummy-lord"
+      ],
+      "page": 334,
+      "heading": "Mummy Lord",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-mummy-lord-legendary_actions-3-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "mummy-lord"
+      ],
+      "page": 334,
+      "heading": "Mummy Lord",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        3,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-mummy-lord-legendary_actions-4-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "mummy-lord"
+      ],
+      "page": 334,
+      "heading": "Mummy Lord",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        4,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-androsphinx-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "androsphinx"
+      ],
+      "page": 347,
+      "heading": "Androsphinx",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-androsphinx-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "androsphinx"
+      ],
+      "page": 347,
+      "heading": "Androsphinx",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Androsphinx",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The sphinx can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The sphinx regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe sphinx can take 3 legendary actions, choosing from\nthe options below. Only one legendary action option\ncan be used at a time and only at the end of another\ncreature’s turn. The sphinx regains spent legendary\nactions at the start of its turn.\nClaw Attack. The sphinx makes one claw attack.\nTeleport (Costs 2 Actions). The sphinx magically\nteleports, along with any equipment it is wearing or\ncarrying, up to 120 feet to an unoccupied space it\ncan see.\nCast a Spell (Costs 3 Actions). The sphinx casts a spell\nfrom its list of prepared spells, using a spell slot as\nnormal.",
+        "printed_pages": [
+          348
+        ],
+        "options": [
+          {
+            "label": "Claw Attack.",
+            "name": "Claw Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 348,
+            "column": 0,
+            "top": 227.3
+          },
+          {
+            "label": "Teleport (Costs 2 Actions).",
+            "name": "Teleport (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 348,
+            "column": 0,
+            "top": 242.4
+          },
+          {
+            "label": "Cast a Spell (Costs 3 Actions).",
+            "name": "Cast a Spell (Costs 3 Actions)",
+            "cost": 3,
+            "cost_basis": "explicit_label",
+            "page": 348,
+            "column": 0,
+            "top": 294.3
+          }
+        ],
+        "binding": {
+          "record_id": "androsphinx",
+          "name": "Androsphinx",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-androsphinx-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "androsphinx"
+      ],
+      "page": 347,
+      "heading": "Androsphinx",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-androsphinx-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "androsphinx"
+      ],
+      "page": 347,
+      "heading": "Androsphinx",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-androsphinx-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "androsphinx"
+      ],
+      "page": 347,
+      "heading": "Androsphinx",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-gynosphinx-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "gynosphinx"
+      ],
+      "page": 348,
+      "heading": "Gynosphinx",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-gynosphinx-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "gynosphinx"
+      ],
+      "page": 348,
+      "heading": "Gynosphinx",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Gynosphinx",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The sphinx can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The sphinx regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe sphinx can take 3 legendary actions, choosing from\nthe options below. Only one legendary action option\ncan be used at a time and only at the end of another\ncreature’s turn. The sphinx regains spent legendary\nactions at the start of its turn.\nClaw Attack. The sphinx makes one claw attack.\nTeleport (Costs 2 Actions). The sphinx magically\nteleports, along with any equipment it is wearing or\ncarrying, up to 120 feet to an unoccupied space it\ncan see.\nCast a Spell (Costs 3 Actions). The sphinx casts a spell\nfrom its list of prepared spells, using a spell slot as\nnormal.",
+        "printed_pages": [
+          348
+        ],
+        "options": [
+          {
+            "label": "Claw Attack.",
+            "name": "Claw Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 348,
+            "column": 1,
+            "top": 398.2
+          },
+          {
+            "label": "Teleport (Costs 2 Actions).",
+            "name": "Teleport (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 348,
+            "column": 1,
+            "top": 413.5
+          },
+          {
+            "label": "Cast a Spell (Costs 3 Actions).",
+            "name": "Cast a Spell (Costs 3 Actions)",
+            "cost": 3,
+            "cost_basis": "explicit_label",
+            "page": 348,
+            "column": 1,
+            "top": 465.4
+          }
+        ],
+        "binding": {
+          "record_id": "gynosphinx",
+          "name": "Gynosphinx",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-gynosphinx-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "gynosphinx"
+      ],
+      "page": 348,
+      "heading": "Gynosphinx",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-gynosphinx-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "gynosphinx"
+      ],
+      "page": 348,
+      "heading": "Gynosphinx",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-gynosphinx-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "gynosphinx"
+      ],
+      "page": 348,
+      "heading": "Gynosphinx",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-tarrasque-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "tarrasque"
+      ],
+      "page": 350,
+      "heading": "Tarrasque",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-tarrasque-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "tarrasque"
+      ],
+      "page": 350,
+      "heading": "Tarrasque",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Tarrasque",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The tarrasque can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The tarrasque regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe tarrasque can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The tarrasque regains spent\nlegendary actions at the start of its turn.\nAttack. The tarrasque makes one claw attack or tail\nattack.\nMove. The tarrasque moves up to half its speed.\nChomp (Costs 2 Actions). The tarrasque makes one\nbite attack or uses its Swallow.",
+        "printed_pages": [
+          350,
+          351
+        ],
+        "options": [
+          {
+            "label": "Attack.",
+            "name": "Attack",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 351,
+            "column": 0,
+            "top": 101.8
+          },
+          {
+            "label": "Move.",
+            "name": "Move",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 351,
+            "column": 0,
+            "top": 129.1
+          },
+          {
+            "label": "Chomp (Costs 2 Actions).",
+            "name": "Chomp (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 351,
+            "column": 0,
+            "top": 144.3
+          }
+        ],
+        "binding": {
+          "record_id": "tarrasque",
+          "name": "Tarrasque",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-tarrasque-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "tarrasque"
+      ],
+      "page": 350,
+      "heading": "Tarrasque",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-tarrasque-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "tarrasque"
+      ],
+      "page": 350,
+      "heading": "Tarrasque",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-tarrasque-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "tarrasque"
+      ],
+      "page": 350,
+      "heading": "Tarrasque",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-unicorn-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "unicorn"
+      ],
+      "page": 351,
+      "heading": "Unicorn",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-unicorn-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "unicorn"
+      ],
+      "page": 351,
+      "heading": "Unicorn",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Unicorn",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The unicorn can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The unicorn regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe unicorn can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The unicorn regains spent\nlegendary actions at the start of its turn.\nHooves. The unicorn makes one attack with its hooves.\nShimmering Shield (Costs 2 Actions). The unicorn\ncreates a shimmering, magical field around itself or\nanother creature it can see within 60 feet of it. The\ntarget gains a +2 bonus to AC until the end of the\nunicorn’s next turn.\nHeal Self (Costs 3 Actions). The unicorn magically\nregains 11 (2d8 + 2) hit points.",
+        "printed_pages": [
+          352
+        ],
+        "options": [
+          {
+            "label": "Hooves.",
+            "name": "Hooves",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 352,
+            "column": 0,
+            "top": 669.6
+          },
+          {
+            "label": "Shimmering Shield (Costs 2 Actions).",
+            "name": "Shimmering Shield (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 352,
+            "column": 1,
+            "top": 74.4
+          },
+          {
+            "label": "Heal Self (Costs 3 Actions).",
+            "name": "Heal Self (Costs 3 Actions)",
+            "cost": 3,
+            "cost_basis": "explicit_label",
+            "page": 352,
+            "column": 1,
+            "top": 138.2
+          }
+        ],
+        "binding": {
+          "record_id": "unicorn",
+          "name": "Unicorn",
+          "mapping_type": "official_stat_header"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-unicorn-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "unicorn"
+      ],
+      "page": 351,
+      "heading": "Unicorn",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-unicorn-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "unicorn"
+      ],
+      "page": 351,
+      "heading": "Unicorn",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-unicorn-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "unicorn"
+      ],
+      "page": 351,
+      "heading": "Unicorn",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-vampire-vampire-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "vampire-vampire"
+      ],
+      "page": 352,
+      "heading": "Vampire",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-vampire-vampire-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "vampire-vampire"
+      ],
+      "page": 352,
+      "heading": "Vampire",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Vampire",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The vampire can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The vampire regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe vampire can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The vampire regains spent\nlegendary actions at the start of its turn.\nMove. The vampire moves up to its speed without\nprovoking opportunity attacks.\nUnarmed Strike. The vampire makes one unarmed\nstrike.\nBite (Costs 2 Actions). The vampire makes one bite\nattack.",
+        "printed_pages": [
+          353
+        ],
+        "options": [
+          {
+            "label": "Move.",
+            "name": "Move",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 353,
+            "column": 1,
+            "top": 575.0
+          },
+          {
+            "label": "Unarmed Strike.",
+            "name": "Unarmed Strike",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 353,
+            "column": 1,
+            "top": 602.4
+          },
+          {
+            "label": "Bite (Costs 2 Actions).",
+            "name": "Bite (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 353,
+            "column": 1,
+            "top": 630.0
+          }
+        ],
+        "binding": {
+          "record_id": "vampire-vampire",
+          "name": "Vampire, Vampire Form",
+          "mapping_type": "derived_monster_form"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-vampire-vampire-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "vampire-vampire"
+      ],
+      "page": 352,
+      "heading": "Vampire",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-vampire-vampire-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "vampire-vampire"
+      ],
+      "page": 352,
+      "heading": "Vampire",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-vampire-vampire-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "vampire-vampire"
+      ],
+      "page": 352,
+      "heading": "Vampire",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-vampire-bat-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "vampire-bat"
+      ],
+      "page": 352,
+      "heading": "Vampire",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-vampire-bat-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "vampire-bat"
+      ],
+      "page": 352,
+      "heading": "Vampire",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Vampire",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The vampire can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The vampire regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe vampire can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The vampire regains spent\nlegendary actions at the start of its turn.\nMove. The vampire moves up to its speed without\nprovoking opportunity attacks.\nUnarmed Strike. The vampire makes one unarmed\nstrike.\nBite (Costs 2 Actions). The vampire makes one bite\nattack.",
+        "printed_pages": [
+          353
+        ],
+        "options": [
+          {
+            "label": "Move.",
+            "name": "Move",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 353,
+            "column": 1,
+            "top": 575.0
+          },
+          {
+            "label": "Unarmed Strike.",
+            "name": "Unarmed Strike",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 353,
+            "column": 1,
+            "top": 602.4
+          },
+          {
+            "label": "Bite (Costs 2 Actions).",
+            "name": "Bite (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 353,
+            "column": 1,
+            "top": 630.0
+          }
+        ],
+        "binding": {
+          "record_id": "vampire-bat",
+          "name": "Vampire, Bat Form",
+          "mapping_type": "derived_monster_form"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-vampire-bat-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "vampire-bat"
+      ],
+      "page": 352,
+      "heading": "Vampire",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-vampire-bat-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "vampire-bat"
+      ],
+      "page": 352,
+      "heading": "Vampire",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-vampire-bat-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "vampire-bat"
+      ],
+      "page": 352,
+      "heading": "Vampire",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-monster-legendary-vampire-mist-legendary_actions_budget",
+      "kind": "monsters",
+      "records": [
+        "vampire-mist"
+      ],
+      "page": 352,
+      "heading": "Vampire",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions_budget"
+      ],
+      "expected": null,
+      "value": 3
+    },
+    {
+      "id": "official-monster-legendary-vampire-mist-legendary_rules_reference",
+      "kind": "monsters",
+      "records": [
+        "vampire-mist"
+      ],
+      "page": 352,
+      "heading": "Vampire",
+      "operation": "set_field",
+      "path": [
+        "legendary_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "heading": "Vampire",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "ee454d03695a028f506f82b9a33dcbb2073c7b0e74a64bc4c0de9df3c32f75a3",
+        "general_rules": {
+          "page": 260,
+          "column": 0,
+          "bbox": [
+            0,
+            214.0,
+            306.0,
+            469.0
+          ],
+          "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+        },
+        "per_creature_prelude": "Legendary Actions The vampire can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The vampire regains spent legendary actions at the start of its turn.",
+        "creature_text": "Legendary Actions\nThe vampire can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The vampire regains spent\nlegendary actions at the start of its turn.\nMove. The vampire moves up to its speed without\nprovoking opportunity attacks.\nUnarmed Strike. The vampire makes one unarmed\nstrike.\nBite (Costs 2 Actions). The vampire makes one bite\nattack.",
+        "printed_pages": [
+          353
+        ],
+        "options": [
+          {
+            "label": "Move.",
+            "name": "Move",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 353,
+            "column": 1,
+            "top": 575.0
+          },
+          {
+            "label": "Unarmed Strike.",
+            "name": "Unarmed Strike",
+            "cost": 1,
+            "cost_basis": "single_action_option_default",
+            "page": 353,
+            "column": 1,
+            "top": 602.4
+          },
+          {
+            "label": "Bite (Costs 2 Actions).",
+            "name": "Bite (Costs 2 Actions)",
+            "cost": 2,
+            "cost_basis": "explicit_label",
+            "page": 353,
+            "column": 1,
+            "top": 630.0
+          }
+        ],
+        "binding": {
+          "record_id": "vampire-mist",
+          "name": "Vampire, Mist Form",
+          "mapping_type": "derived_monster_form"
+        },
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "limitation": "A derived form binding is not permission to use these options in that form; form eligibility and combat timing require separate adjudication."
+      }
+    },
+    {
+      "id": "official-monster-legendary-vampire-mist-legendary_actions-0-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "vampire-mist"
+      ],
+      "page": 352,
+      "heading": "Vampire",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        0,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-vampire-mist-legendary_actions-1-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "vampire-mist"
+      ],
+      "page": 352,
+      "heading": "Vampire",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        1,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 1
+    },
+    {
+      "id": "official-monster-legendary-vampire-mist-legendary_actions-2-legendary_cost",
+      "kind": "monsters",
+      "records": [
+        "vampire-mist"
+      ],
+      "page": 352,
+      "heading": "Vampire",
+      "operation": "set_field",
+      "path": [
+        "legendary_actions",
+        2,
+        "legendary_cost"
+      ],
+      "expected": null,
+      "value": 2
     }
   ],
   "record_additions": [

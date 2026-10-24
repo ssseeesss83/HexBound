@@ -1,0 +1,2019 @@
+{
+  "profile": "official-monster-legendary-blocks-v1",
+  "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+  "headings_sha256": "896c018bd844f0dc5e8f1759c9c8dd27d74856047d938c41ff132c7a110deb02",
+  "general_rules": {
+    "page": 260,
+    "column": 0,
+    "bbox": [
+      0,
+      214.0,
+      306.0,
+      469.0
+    ],
+    "text": "Legendary Creatures\nA legendary creature can do things that ordinary\ncreatures can’t. It can take special actions outside its\nturn, and it might exert magical influence for miles\naround.\nIf a creature assumes the form of a legendary\ncreature, such as through a spell, it doesn’t gain that\nform’s legendary actions, lair actions, or regional\neffects.\nLegendary Actions\nA legendary creature can take a certain number of\nspecial actions—called legendary actions—outside\nits turn. Only one legendary action option can be\nused at a time and only at the end of another\ncreature’s turn. A creature regains its spent\nlegendary actions at the start of its turn. It can forgo\nusing them, and it can’t use them while incapacitated\nor otherwise unable to take actions. If surprised, it\ncan’t use them until after its first turn in the combat."
+  },
+  "blocks": [
+    {
+      "title": "Aboleth",
+      "stat_header": {
+        "page": 261,
+        "column": 0,
+        "top": 117.0,
+        "size": 12.0,
+        "title": "Aboleth",
+        "size_type_alignment_line": "Large aberration, lawful evil",
+        "bindings": [
+          {
+            "record_id": "aboleth",
+            "name": "Aboleth",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 261,
+          "column": 1,
+          "bbox": [
+            306.0,
+            281.7452,
+            612.0,
+            470.48
+          ],
+          "text": "Legendary Actions\nThe aboleth can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The aboleth regains spent\nlegendary actions at the start of its turn.\nDetect. The aboleth makes a Wisdom (Perception)\ncheck.\nTail Swipe. The aboleth makes one tail attack.\nPsychic Drain (Costs 2 Actions). One creature charmed\nby the aboleth takes 10 (3d6) psychic damage, and\nthe aboleth regains hit points equal to the damage\nthe creature takes."
+        }
+      ],
+      "prelude": "Legendary Actions The aboleth can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The aboleth regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 261,
+          "column": 1,
+          "top": 364.6
+        },
+        {
+          "label": "Tail Swipe.",
+          "name": "Tail Swipe",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 261,
+          "column": 1,
+          "top": 391.9
+        },
+        {
+          "label": "Psychic Drain (Costs 2 Actions).",
+          "name": "Psychic Drain (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 261,
+          "column": 1,
+          "top": 407.3
+        }
+      ]
+    },
+    {
+      "title": "Solar",
+      "stat_header": {
+        "page": 262,
+        "column": 1,
+        "top": 559.0,
+        "size": 12.0,
+        "title": "Solar",
+        "size_type_alignment_line": "Large celestial, lawful good",
+        "bindings": [
+          {
+            "record_id": "solar",
+            "name": "Solar",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 263,
+          "column": 1,
+          "bbox": [
+            306.0,
+            107.98519999999996,
+            612.0,
+            394.16
+          ],
+          "text": "Legendary Actions\nThe solar can take 3 legendary actions, choosing from\nthe options below. Only one legendary action option\ncan be used at a time and only at the end of another\ncreature’s turn. The solar regains spent legendary\nactions at the start of its turn.\nTeleport. The solar magically teleports, along with any\nequipment it is wearing or carrying, up to 120 feet to\nan unoccupied space it can see.\nSearing Burst (Costs 2 Actions). The solar emits\nmagical, divine energy. Each creature of its choice in\na 10-­‐foot radius must make a DC 23 Dexterity saving\nthrow, taking 14 (4d6) fire damage plus 14 (4d6)\nradiant damage on a failed save, or half as much\ndamage on a successful one.\nBlinding Gaze (Costs 3 Actions). The solar targets one\ncreature it can see within 30 feet of it. If the target\ncan see it, the target must succeed on a DC 15\nConstitution saving throw or be blinded until magic\nsuch as the lesser restoration spell removes the\nblindness."
+        }
+      ],
+      "prelude": "Legendary Actions The solar can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The solar regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Teleport.",
+          "name": "Teleport",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 263,
+          "column": 1,
+          "top": 190.6
+        },
+        {
+          "label": "Searing Burst (Costs 2 Actions).",
+          "name": "Searing Burst (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 263,
+          "column": 1,
+          "top": 230.2
+        },
+        {
+          "label": "Blinding Gaze (Costs 3 Actions).",
+          "name": "Blinding Gaze (Costs 3 Actions)",
+          "cost": 3,
+          "cost_basis": "explicit_label",
+          "page": 263,
+          "column": 1,
+          "top": 306.5
+        }
+      ]
+    },
+    {
+      "title": "Ancient Black Dragon",
+      "stat_header": {
+        "page": 280,
+        "column": 0,
+        "top": 623.0,
+        "size": 12.0,
+        "title": "Ancient Black Dragon",
+        "size_type_alignment_line": "Gargantuan dragon, chaotic evil",
+        "bindings": [
+          {
+            "record_id": "ancient-black-dragon",
+            "name": "Ancient Black Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 280,
+          "column": 1,
+          "bbox": [
+            306.0,
+            615.1052,
+            612.0,
+            748
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn."
+        },
+        {
+          "page": 281,
+          "column": 0,
+          "bbox": [
+            0.0,
+            0,
+            306.0,
+            204.0
+          ],
+          "text": "Detect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 23 Dexterity saving throw or\ntake 15 (2d6 + 8) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 281,
+          "column": 0,
+          "top": 74.4
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 281,
+          "column": 0,
+          "top": 101.8
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 281,
+          "column": 0,
+          "top": 116.9
+        }
+      ]
+    },
+    {
+      "title": "Adult Black Dragon",
+      "stat_header": {
+        "page": 281,
+        "column": 0,
+        "top": 206.0,
+        "size": 12.0,
+        "title": "Adult Black Dragon",
+        "size_type_alignment_line": "Huge dragon, chaotic evil",
+        "bindings": [
+          {
+            "record_id": "adult-black-dragon",
+            "name": "Adult Black Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 281,
+          "column": 1,
+          "bbox": [
+            306.0,
+            208.54520000000002,
+            612.0,
+            421.0
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 19 Dexterity saving throw or\ntake 13 (2d6 + 6) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 281,
+          "column": 1,
+          "top": 291.4
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 281,
+          "column": 1,
+          "top": 318.7
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 281,
+          "column": 1,
+          "top": 333.8
+        }
+      ]
+    },
+    {
+      "title": "Ancient Blue Dragon",
+      "stat_header": {
+        "page": 282,
+        "column": 1,
+        "top": 75.0,
+        "size": 12.0,
+        "title": "Ancient Blue Dragon",
+        "size_type_alignment_line": "Gargantuan dragon, lawful evil",
+        "bindings": [
+          {
+            "record_id": "ancient-blue-dragon",
+            "name": "Ancient Blue Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 283,
+          "column": 0,
+          "bbox": [
+            0.0,
+            73.42039999999997,
+            306.0,
+            286.0
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 24 Dexterity saving throw or\ntake 16 (2d6 + 9) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 283,
+          "column": 0,
+          "top": 156.3
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 283,
+          "column": 0,
+          "top": 183.6
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 283,
+          "column": 0,
+          "top": 199.0
+        }
+      ]
+    },
+    {
+      "title": "Adult Blue Dragon",
+      "stat_header": {
+        "page": 283,
+        "column": 0,
+        "top": 288.0,
+        "size": 12.0,
+        "title": "Adult Blue Dragon",
+        "size_type_alignment_line": "Huge dragon, lawful evil",
+        "bindings": [
+          {
+            "record_id": "adult-blue-dragon",
+            "name": "Adult Blue Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 283,
+          "column": 1,
+          "bbox": [
+            306.0,
+            284.8652,
+            612.0,
+            497.0
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 20 Dexterity saving throw or\ntake 14 (2d6 + 7) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 283,
+          "column": 1,
+          "top": 367.4
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 283,
+          "column": 1,
+          "top": 395.0
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 283,
+          "column": 1,
+          "top": 410.2
+        }
+      ]
+    },
+    {
+      "title": "Ancient Green Dragon",
+      "stat_header": {
+        "page": 284,
+        "column": 1,
+        "top": 104.0,
+        "size": 12.0,
+        "title": "Ancient Green Dragon",
+        "size_type_alignment_line": "Gargantuan dragon, lawful evil",
+        "bindings": [
+          {
+            "record_id": "ancient-green-dragon",
+            "name": "Ancient Green Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 285,
+          "column": 0,
+          "bbox": [
+            0.0,
+            144.46519999999998,
+            306.0,
+            357.0
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 23 Dexterity saving throw or\ntake 15 (2d6 + 8) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 285,
+          "column": 0,
+          "top": 227.3
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 285,
+          "column": 0,
+          "top": 254.7
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 285,
+          "column": 0,
+          "top": 270.0
+        }
+      ]
+    },
+    {
+      "title": "Adult Green Dragon",
+      "stat_header": {
+        "page": 285,
+        "column": 0,
+        "top": 359.0,
+        "size": 12.0,
+        "title": "Adult Green Dragon",
+        "size_type_alignment_line": "Huge dragon, lawful evil",
+        "bindings": [
+          {
+            "record_id": "adult-green-dragon",
+            "name": "Adult Green Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 285,
+          "column": 1,
+          "bbox": [
+            306.0,
+            409.4252,
+            612.0,
+            622.0
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 19 Dexterity saving throw or\ntake 13 (2d6 + 6) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 285,
+          "column": 1,
+          "top": 492.2
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 285,
+          "column": 1,
+          "top": 519.6
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 285,
+          "column": 1,
+          "top": 534.7
+        }
+      ]
+    },
+    {
+      "title": "Ancient Red Dragon",
+      "stat_header": {
+        "page": 286,
+        "column": 1,
+        "top": 285.0,
+        "size": 12.0,
+        "title": "Ancient Red Dragon",
+        "size_type_alignment_line": "Gargantuan dragon, chaotic evil",
+        "bindings": [
+          {
+            "record_id": "ancient-red-dragon",
+            "name": "Ancient Red Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 287,
+          "column": 0,
+          "bbox": [
+            0.0,
+            284.8652,
+            306.0,
+            497.0
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 25 Dexterity saving throw or\ntake 17 (2d6 + 10) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 287,
+          "column": 0,
+          "top": 367.5
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 287,
+          "column": 0,
+          "top": 395.1
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 287,
+          "column": 0,
+          "top": 410.2
+        }
+      ]
+    },
+    {
+      "title": "Adult Red Dragon",
+      "stat_header": {
+        "page": 287,
+        "column": 0,
+        "top": 499.0,
+        "size": 12.0,
+        "title": "Adult Red Dragon",
+        "size_type_alignment_line": "Huge dragon, chaotic evil",
+        "bindings": [
+          {
+            "record_id": "adult-red-dragon",
+            "name": "Adult Red Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 287,
+          "column": 1,
+          "bbox": [
+            306.0,
+            489.34520000000003,
+            612.0,
+            748
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 22 Dexterity saving throw or\ntake 15 (2d6 + 8) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 287,
+          "column": 1,
+          "top": 572.2
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 287,
+          "column": 1,
+          "top": 599.5
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 287,
+          "column": 1,
+          "top": 614.9
+        }
+      ]
+    },
+    {
+      "title": "Ancient White Dragon",
+      "stat_header": {
+        "page": 288,
+        "column": 1,
+        "top": 269.0,
+        "size": 12.0,
+        "title": "Ancient White Dragon",
+        "size_type_alignment_line": "Gargantuan dragon, chaotic evil",
+        "bindings": [
+          {
+            "record_id": "ancient-white-dragon",
+            "name": "Ancient White Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 289,
+          "column": 0,
+          "bbox": [
+            0.0,
+            312.22520000000003,
+            306.0,
+            524.0
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 22 Dexterity saving throw or\ntake 15 (2d6 + 8) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 289,
+          "column": 0,
+          "top": 395.1
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 289,
+          "column": 0,
+          "top": 422.4
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 289,
+          "column": 0,
+          "top": 437.5
+        }
+      ]
+    },
+    {
+      "title": "Adult White Dragon",
+      "stat_header": {
+        "page": 289,
+        "column": 0,
+        "top": 526.0,
+        "size": 12.0,
+        "title": "Adult White Dragon",
+        "size_type_alignment_line": "Huge dragon, chaotic evil",
+        "bindings": [
+          {
+            "record_id": "adult-white-dragon",
+            "name": "Adult White Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 289,
+          "column": 1,
+          "bbox": [
+            306.0,
+            568.7852,
+            612.0,
+            748
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack."
+        },
+        {
+          "page": 290,
+          "column": 0,
+          "bbox": [
+            0.0,
+            0,
+            306.0,
+            161.0
+          ],
+          "text": "Wing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 19 Dexterity saving throw or\ntake 13 (2d6 + 6) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 289,
+          "column": 1,
+          "top": 651.4
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 289,
+          "column": 1,
+          "top": 678.7
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 290,
+          "column": 0,
+          "top": 74.4
+        }
+      ]
+    },
+    {
+      "title": "Ancient Brass Dragon",
+      "stat_header": {
+        "page": 290,
+        "column": 1,
+        "top": 447.0,
+        "size": 12.0,
+        "title": "Ancient Brass Dragon",
+        "size_type_alignment_line": "Gargantuan dragon, chaotic good",
+        "bindings": [
+          {
+            "record_id": "ancient-brass-dragon",
+            "name": "Ancient Brass Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 291,
+          "column": 1,
+          "bbox": [
+            306.0,
+            73.42520000000002,
+            612.0,
+            286.0
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 22 Dexterity saving throw or\ntake 15 (2d6 + 8) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 291,
+          "column": 1,
+          "top": 156.2
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 291,
+          "column": 1,
+          "top": 183.6
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 291,
+          "column": 1,
+          "top": 199.0
+        }
+      ]
+    },
+    {
+      "title": "Adult Brass Dragon",
+      "stat_header": {
+        "page": 291,
+        "column": 1,
+        "top": 288.0,
+        "size": 12.0,
+        "title": "Adult Brass Dragon",
+        "size_type_alignment_line": "Huge dragon, chaotic good",
+        "bindings": [
+          {
+            "record_id": "adult-brass-dragon",
+            "name": "Adult Brass Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 292,
+          "column": 0,
+          "bbox": [
+            0.0,
+            388.5452,
+            306.0,
+            601.0
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 19 Dexterity saving throw or\ntake 13 (2d6 + 6) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 292,
+          "column": 0,
+          "top": 471.1
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 292,
+          "column": 0,
+          "top": 498.7
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 292,
+          "column": 0,
+          "top": 513.9
+        }
+      ]
+    },
+    {
+      "title": "Ancient Bronze Dragon",
+      "stat_header": {
+        "page": 293,
+        "column": 0,
+        "top": 376.0,
+        "size": 12.0,
+        "title": "Ancient Bronze Dragon",
+        "size_type_alignment_line": "Gargantuan dragon, lawful good",
+        "bindings": [
+          {
+            "record_id": "ancient-bronze-dragon",
+            "name": "Ancient Bronze Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 293,
+          "column": 1,
+          "bbox": [
+            306.0,
+            650.3851999999999,
+            612.0,
+            748
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action"
+        },
+        {
+          "page": 294,
+          "column": 0,
+          "bbox": [
+            0.0,
+            0,
+            306.0,
+            243.0
+          ],
+          "text": "option can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 24 Dexterity saving throw or\ntake 16 (2d6 + 9) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 294,
+          "column": 0,
+          "top": 114.0
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 294,
+          "column": 0,
+          "top": 141.4
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 294,
+          "column": 0,
+          "top": 156.5
+        }
+      ]
+    },
+    {
+      "title": "Adult Bronze Dragon",
+      "stat_header": {
+        "page": 294,
+        "column": 0,
+        "top": 245.0,
+        "size": 12.0,
+        "title": "Adult Bronze Dragon",
+        "size_type_alignment_line": "Huge dragon, lawful good",
+        "bindings": [
+          {
+            "record_id": "adult-bronze-dragon",
+            "name": "Adult Bronze Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 294,
+          "column": 1,
+          "bbox": [
+            306.0,
+            486.22520000000003,
+            612.0,
+            748
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 20 Dexterity saving throw or\ntake 14 (2d6 + 7) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 294,
+          "column": 1,
+          "top": 568.8
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 294,
+          "column": 1,
+          "top": 596.4
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 294,
+          "column": 1,
+          "top": 611.5
+        }
+      ]
+    },
+    {
+      "title": "Ancient Copper Dragon",
+      "stat_header": {
+        "page": 295,
+        "column": 1,
+        "top": 505.0,
+        "size": 12.0,
+        "title": "Ancient Copper Dragon",
+        "size_type_alignment_line": "Gargantuan dragon, chaotic good",
+        "bindings": [
+          {
+            "record_id": "ancient-copper-dragon",
+            "name": "Ancient Copper Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 296,
+          "column": 1,
+          "bbox": [
+            306.0,
+            168.9452,
+            612.0,
+            381.0
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 23 Dexterity saving throw or\ntake 15 (2d6 + 8) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 296,
+          "column": 1,
+          "top": 251.8
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 296,
+          "column": 1,
+          "top": 279.1
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 296,
+          "column": 1,
+          "top": 294.2
+        }
+      ]
+    },
+    {
+      "title": "Adult Copper Dragon",
+      "stat_header": {
+        "page": 296,
+        "column": 1,
+        "top": 383.0,
+        "size": 12.0,
+        "title": "Adult Copper Dragon",
+        "size_type_alignment_line": "Huge dragon, chaotic good",
+        "bindings": [
+          {
+            "record_id": "adult-copper-dragon",
+            "name": "Adult Copper Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 297,
+          "column": 0,
+          "bbox": [
+            0.0,
+            549.5852,
+            306.0,
+            748
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack."
+        },
+        {
+          "page": 297,
+          "column": 1,
+          "bbox": [
+            306.0,
+            0,
+            612.0,
+            161.0
+          ],
+          "text": "Wing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 19 Dexterity saving throw or\ntake 13 (2d6 + 6) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 297,
+          "column": 0,
+          "top": 632.4
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 297,
+          "column": 0,
+          "top": 659.8
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 297,
+          "column": 1,
+          "top": 74.4
+        }
+      ]
+    },
+    {
+      "title": "Ancient Gold Dragon",
+      "stat_header": {
+        "page": 298,
+        "column": 1,
+        "top": 125.0,
+        "size": 12.0,
+        "title": "Ancient Gold Dragon",
+        "size_type_alignment_line": "Gargantuan dragon, lawful good",
+        "bindings": [
+          {
+            "record_id": "ancient-gold-dragon",
+            "name": "Ancient Gold Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 299,
+          "column": 0,
+          "bbox": [
+            0.0,
+            422.14520000000005,
+            306.0,
+            634.0
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 25 Dexterity saving throw or\ntake 17 (2d6 + 10) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 299,
+          "column": 0,
+          "top": 504.7
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 299,
+          "column": 0,
+          "top": 532.3
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 299,
+          "column": 0,
+          "top": 547.5
+        }
+      ]
+    },
+    {
+      "title": "Adult Gold Dragon",
+      "stat_header": {
+        "page": 299,
+        "column": 0,
+        "top": 636.0,
+        "size": 12.0,
+        "title": "Adult Gold Dragon",
+        "size_type_alignment_line": "Huge dragon, lawful good",
+        "bindings": [
+          {
+            "record_id": "adult-gold-dragon",
+            "name": "Adult Gold Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 300,
+          "column": 0,
+          "bbox": [
+            0.0,
+            330.70520000000005,
+            306.0,
+            543.0
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 22 Dexterity saving throw or\ntake 15 (2d6 + 8) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 300,
+          "column": 0,
+          "top": 413.3
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 300,
+          "column": 0,
+          "top": 440.9
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 300,
+          "column": 0,
+          "top": 456.0
+        }
+      ]
+    },
+    {
+      "title": "Ancient Silver Dragon",
+      "stat_header": {
+        "page": 301,
+        "column": 0,
+        "top": 446.0,
+        "size": 12.0,
+        "title": "Ancient Silver Dragon",
+        "size_type_alignment_line": "Gargantuan dragon, lawful good",
+        "bindings": [
+          {
+            "record_id": "ancient-silver-dragon",
+            "name": "Ancient Silver Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 302,
+          "column": 0,
+          "bbox": [
+            0.0,
+            73.42039999999997,
+            306.0,
+            286.0
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack.\nWing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 15 feet of the dragon\nmust succeed on a DC 25 Dexterity saving throw or\ntake 17 (2d6 + 10) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 302,
+          "column": 0,
+          "top": 156.3
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 302,
+          "column": 0,
+          "top": 183.6
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 302,
+          "column": 0,
+          "top": 199.0
+        }
+      ]
+    },
+    {
+      "title": "Adult Silver Dragon",
+      "stat_header": {
+        "page": 302,
+        "column": 0,
+        "top": 288.0,
+        "size": 12.0,
+        "title": "Adult Silver Dragon",
+        "size_type_alignment_line": "Huge dragon, lawful good",
+        "bindings": [
+          {
+            "record_id": "adult-silver-dragon",
+            "name": "Adult Silver Dragon",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 302,
+          "column": 1,
+          "bbox": [
+            306.0,
+            522.7052000000001,
+            612.0,
+            748
+          ],
+          "text": "Legendary Actions\nThe dragon can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The dragon regains spent\nlegendary actions at the start of its turn.\nDetect. The dragon makes a Wisdom (Perception)\ncheck.\nTail Attack. The dragon makes a tail attack."
+        },
+        {
+          "page": 303,
+          "column": 0,
+          "bbox": [
+            0.0,
+            0,
+            306.0,
+            161.0
+          ],
+          "text": "Wing Attack (Costs 2 Actions). The dragon beats its\nwings. Each creature within 10 feet of the dragon\nmust succeed on a DC 21 Dexterity saving throw or\ntake 15 (2d6 + 8) bludgeoning damage and be\nknocked prone. The dragon can then fly up to half its\nflying speed."
+        }
+      ],
+      "prelude": "Legendary Actions The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Detect.",
+          "name": "Detect",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 302,
+          "column": 1,
+          "top": 605.5
+        },
+        {
+          "label": "Tail Attack.",
+          "name": "Tail Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 302,
+          "column": 1,
+          "top": 632.9
+        },
+        {
+          "label": "Wing Attack (Costs 2 Actions).",
+          "name": "Wing Attack (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 303,
+          "column": 0,
+          "top": 74.4
+        }
+      ]
+    },
+    {
+      "title": "Kraken",
+      "stat_header": {
+        "page": 324,
+        "column": 0,
+        "top": 477.0,
+        "size": 12.0,
+        "title": "Kraken",
+        "size_type_alignment_line": "Gargantuan monstrosity (titan), chaotic evil",
+        "bindings": [
+          {
+            "record_id": "kraken",
+            "name": "Kraken",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 325,
+          "column": 0,
+          "bbox": [
+            0.0,
+            107.98519999999996,
+            306.0,
+            406.94
+          ],
+          "text": "Legendary Actions\nThe kraken can take 3 legendary actions, choosing from\nthe options below. Only one legendary action option\ncan be used at a time and only at the end of another\ncreature’s turn. The kraken regains spent legendary\nactions at the start of its turn.\nTentacle Attack or Fling. The kraken makes one\ntentacle attack or uses its Fling.\nLightning Storm (Costs 2 Actions). The kraken uses\nLightning Storm.\nInk Cloud (Costs 3 Actions). While underwater, the\nkraken expels an ink cloud in a 60-­‐foot radius. The\ncloud spreads around corners, and that area is\nheavily obscured to creatures other than the kraken.\nEach creature other than the kraken that ends its\nturn there must succeed on a DC 23 Constitution\nsaving throw, taking 16 (3d10) poison damage on a\nfailed save, or half as much damage on a successful\none. A strong current disperses the cloud, which\notherwise disappears at the end of the kraken’s next\nturn."
+        }
+      ],
+      "prelude": "Legendary Actions The kraken can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The kraken regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Tentacle Attack or Fling.",
+          "name": "Tentacle Attack or Fling",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 325,
+          "column": 0,
+          "top": 190.6
+        },
+        {
+          "label": "Lightning Storm (Costs 2 Actions).",
+          "name": "Lightning Storm (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 325,
+          "column": 0,
+          "top": 218.2
+        },
+        {
+          "label": "Ink Cloud (Costs 3 Actions).",
+          "name": "Ink Cloud (Costs 3 Actions)",
+          "cost": 3,
+          "cost_basis": "explicit_label",
+          "page": 325,
+          "column": 0,
+          "top": 245.5
+        }
+      ]
+    },
+    {
+      "title": "Lich",
+      "stat_header": {
+        "page": 325,
+        "column": 1,
+        "top": 316.0,
+        "size": 12.0,
+        "title": "Lich",
+        "size_type_alignment_line": "Medium undead, any evil alignment",
+        "bindings": [
+          {
+            "record_id": "lich",
+            "name": "Lich",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 326,
+          "column": 0,
+          "bbox": [
+            0.0,
+            437.5052,
+            306.0,
+            748
+          ],
+          "text": "Legendary Actions\nThe lich can take 3 legendary actions, choosing from\nthe options below. Only one legendary action option\ncan be used at a time and only at the end of another\ncreature’s turn. The lich regains spent legendary\nactions at the start of its turn.\nCantrip. The lich casts a cantrip.\nParalyzing Touch (Costs 2 Actions). The lich uses its\nParalyzing Touch.\nFrightening Gaze (Costs 2 Actions). The lich fixes its\ngaze on one creature it can see within 10 feet of it.\nThe target must succeed on a DC 18 Wisdom saving\nthrow against this magic or become frightened for 1\nminute. The frightened target can repeat the saving\nthrow at the end of each of its turns, ending the\neffect on itself on a success. If a target’s saving throw\nis successful or the effect ends for it, the target is\nimmune to the lich’s gaze for the next 24 hours."
+        },
+        {
+          "page": 326,
+          "column": 1,
+          "bbox": [
+            306.0,
+            0,
+            612.0,
+            149.0
+          ],
+          "text": "Disrupt Life (Costs 3 Actions). Each non-­‐undead\ncreature within 20 feet of the lich must make a DC\n18 Constitution saving throw against this magic,\ntaking 21 (6d6) necrotic damage on a failed save, or\nhalf as much damage on a successful one."
+        }
+      ],
+      "prelude": "Legendary Actions The lich can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The lich regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Cantrip.",
+          "name": "Cantrip",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 326,
+          "column": 0,
+          "top": 520.1
+        },
+        {
+          "label": "Paralyzing Touch (Costs 2 Actions).",
+          "name": "Paralyzing Touch (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 326,
+          "column": 0,
+          "top": 535.5
+        },
+        {
+          "label": "Frightening Gaze (Costs 2 Actions).",
+          "name": "Frightening Gaze (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 326,
+          "column": 0,
+          "top": 562.8
+        },
+        {
+          "label": "Disrupt Life (Costs 3 Actions).",
+          "name": "Disrupt Life (Costs 3 Actions)",
+          "cost": 3,
+          "cost_basis": "explicit_label",
+          "page": 326,
+          "column": 1,
+          "top": 74.4
+        }
+      ]
+    },
+    {
+      "title": "Mummy Lord",
+      "stat_header": {
+        "page": 334,
+        "column": 0,
+        "top": 276.0,
+        "size": 12.0,
+        "title": "Mummy Lord",
+        "size_type_alignment_line": "Medium undead, lawful evil",
+        "bindings": [
+          {
+            "record_id": "mummy-lord",
+            "name": "Mummy Lord",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 334,
+          "column": 1,
+          "bbox": [
+            306.0,
+            498.70520000000005,
+            612.0,
+            748
+          ],
+          "text": "Legendary Actions\nThe mummy lord can take 3 legendary actions,\nchoosing from the options below. Only one legendary\naction option can be used at a time and only at the end\nof another creature’s turn. The mummy lord regains\nspent legendary actions at the start of its turn.\nAttack. The mummy lord makes one attack with its\nrotting fist or uses its Dreadful Glare.\nBlinding Dust. Blinding dust and sand swirls magically\naround the mummy lord. Each creature within 5 feet\nof the mummy lord must succeed on a DC 16\nConstitution saving throw or be blinded until the end\nof the creature’s next turn."
+        },
+        {
+          "page": 335,
+          "column": 0,
+          "bbox": [
+            0.0,
+            0,
+            306.0,
+            339.5
+          ],
+          "text": "Blasphemous Word (Costs 2 Actions). The mummy\nlord utters a blasphemous word. Each non-­‐undead\ncreature within 10 feet of the mummy lord that can\nhear the magical utterance must succeed on a DC 16\nConstitution saving throw or be stunned until the\nend of the mummy lord’s next turn.\nChannel Negative Energy (Costs 2 Actions). The\nmummy lord magically unleashes negative energy.\nCreatures within 60 feet of the mummy lord,\nincluding ones behind barriers and around corners,\ncan’t regain hit points until the end of the mummy\nlord’s next turn.\nWhirlwind of Sand (Costs 2 Actions). The mummy lord\nmagically transforms into a whirlwind of sand, moves\nup to 60 feet, and reverts to its normal form. While\nin whirlwind form, the mummy lord is immune to all\ndamage, and it can’t be grappled, petrified, knocked\nprone, restrained, or stunned. Equipment worn or\ncarried by the mummy lord remain in its possession."
+        }
+      ],
+      "prelude": "Legendary Actions The mummy lord can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The mummy lord regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Attack.",
+          "name": "Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 334,
+          "column": 1,
+          "top": 581.3
+        },
+        {
+          "label": "Blinding Dust.",
+          "name": "Blinding Dust",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 334,
+          "column": 1,
+          "top": 608.9
+        },
+        {
+          "label": "Blasphemous Word (Costs 2 Actions).",
+          "name": "Blasphemous Word (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 335,
+          "column": 0,
+          "top": 74.4
+        },
+        {
+          "label": "Channel Negative Energy (Costs 2 Actions).",
+          "name": "Channel Negative Energy (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 335,
+          "column": 0,
+          "top": 150.5
+        },
+        {
+          "label": "Whirlwind of Sand (Costs 2 Actions).",
+          "name": "Whirlwind of Sand (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 335,
+          "column": 0,
+          "top": 226.8
+        }
+      ]
+    },
+    {
+      "title": "Androsphinx",
+      "stat_header": {
+        "page": 347,
+        "column": 0,
+        "top": 483.0,
+        "size": 12.0,
+        "title": "Androsphinx",
+        "size_type_alignment_line": "Large monstrosity, lawful neutral",
+        "bindings": [
+          {
+            "record_id": "androsphinx",
+            "name": "Androsphinx",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 348,
+          "column": 0,
+          "bbox": [
+            0.0,
+            144.46519999999998,
+            306.0,
+            345.0
+          ],
+          "text": "Legendary Actions\nThe sphinx can take 3 legendary actions, choosing from\nthe options below. Only one legendary action option\ncan be used at a time and only at the end of another\ncreature’s turn. The sphinx regains spent legendary\nactions at the start of its turn.\nClaw Attack. The sphinx makes one claw attack.\nTeleport (Costs 2 Actions). The sphinx magically\nteleports, along with any equipment it is wearing or\ncarrying, up to 120 feet to an unoccupied space it\ncan see.\nCast a Spell (Costs 3 Actions). The sphinx casts a spell\nfrom its list of prepared spells, using a spell slot as\nnormal."
+        }
+      ],
+      "prelude": "Legendary Actions The sphinx can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The sphinx regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Claw Attack.",
+          "name": "Claw Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 348,
+          "column": 0,
+          "top": 227.3
+        },
+        {
+          "label": "Teleport (Costs 2 Actions).",
+          "name": "Teleport (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 348,
+          "column": 0,
+          "top": 242.4
+        },
+        {
+          "label": "Cast a Spell (Costs 3 Actions).",
+          "name": "Cast a Spell (Costs 3 Actions)",
+          "cost": 3,
+          "cost_basis": "explicit_label",
+          "page": 348,
+          "column": 0,
+          "top": 294.3
+        }
+      ]
+    },
+    {
+      "title": "Gynosphinx",
+      "stat_header": {
+        "page": 348,
+        "column": 0,
+        "top": 347.0,
+        "size": 12.0,
+        "title": "Gynosphinx",
+        "size_type_alignment_line": "Large monstrosity, lawful neutral",
+        "bindings": [
+          {
+            "record_id": "gynosphinx",
+            "name": "Gynosphinx",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 348,
+          "column": 1,
+          "bbox": [
+            306.0,
+            315.58520000000004,
+            612.0,
+            516.0
+          ],
+          "text": "Legendary Actions\nThe sphinx can take 3 legendary actions, choosing from\nthe options below. Only one legendary action option\ncan be used at a time and only at the end of another\ncreature’s turn. The sphinx regains spent legendary\nactions at the start of its turn.\nClaw Attack. The sphinx makes one claw attack.\nTeleport (Costs 2 Actions). The sphinx magically\nteleports, along with any equipment it is wearing or\ncarrying, up to 120 feet to an unoccupied space it\ncan see.\nCast a Spell (Costs 3 Actions). The sphinx casts a spell\nfrom its list of prepared spells, using a spell slot as\nnormal."
+        }
+      ],
+      "prelude": "Legendary Actions The sphinx can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The sphinx regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Claw Attack.",
+          "name": "Claw Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 348,
+          "column": 1,
+          "top": 398.2
+        },
+        {
+          "label": "Teleport (Costs 2 Actions).",
+          "name": "Teleport (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 348,
+          "column": 1,
+          "top": 413.5
+        },
+        {
+          "label": "Cast a Spell (Costs 3 Actions).",
+          "name": "Cast a Spell (Costs 3 Actions)",
+          "cost": 3,
+          "cost_basis": "explicit_label",
+          "page": 348,
+          "column": 1,
+          "top": 465.4
+        }
+      ]
+    },
+    {
+      "title": "Tarrasque",
+      "stat_header": {
+        "page": 350,
+        "column": 0,
+        "top": 251.0,
+        "size": 12.0,
+        "title": "Tarrasque",
+        "size_type_alignment_line": "Gargantuan monstrosity (titan), unaligned",
+        "bindings": [
+          {
+            "record_id": "tarrasque",
+            "name": "Tarrasque",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 350,
+          "column": 1,
+          "bbox": [
+            306.0,
+            644.3851999999999,
+            612.0,
+            748
+          ],
+          "text": "Legendary Actions\nThe tarrasque can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of"
+        },
+        {
+          "page": 351,
+          "column": 0,
+          "bbox": [
+            0.0,
+            0,
+            306.0,
+            182.0
+          ],
+          "text": "another creature’s turn. The tarrasque regains spent\nlegendary actions at the start of its turn.\nAttack. The tarrasque makes one claw attack or tail\nattack.\nMove. The tarrasque moves up to half its speed.\nChomp (Costs 2 Actions). The tarrasque makes one\nbite attack or uses its Swallow."
+        }
+      ],
+      "prelude": "Legendary Actions The tarrasque can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The tarrasque regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Attack.",
+          "name": "Attack",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 351,
+          "column": 0,
+          "top": 101.8
+        },
+        {
+          "label": "Move.",
+          "name": "Move",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 351,
+          "column": 0,
+          "top": 129.1
+        },
+        {
+          "label": "Chomp (Costs 2 Actions).",
+          "name": "Chomp (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 351,
+          "column": 0,
+          "top": 144.3
+        }
+      ]
+    },
+    {
+      "title": "Unicorn",
+      "stat_header": {
+        "page": 351,
+        "column": 1,
+        "top": 532.0,
+        "size": 12.0,
+        "title": "Unicorn",
+        "size_type_alignment_line": "Large celestial, lawful good",
+        "bindings": [
+          {
+            "record_id": "unicorn",
+            "name": "Unicorn",
+            "mapping_type": "official_stat_header"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 352,
+          "column": 0,
+          "bbox": [
+            0.0,
+            586.7852,
+            306.0,
+            748
+          ],
+          "text": "Legendary Actions\nThe unicorn can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The unicorn regains spent\nlegendary actions at the start of its turn.\nHooves. The unicorn makes one attack with its hooves."
+        },
+        {
+          "page": 352,
+          "column": 1,
+          "bbox": [
+            306.0,
+            0,
+            612.0,
+            189.98000000000002
+          ],
+          "text": "Shimmering Shield (Costs 2 Actions). The unicorn\ncreates a shimmering, magical field around itself or\nanother creature it can see within 60 feet of it. The\ntarget gains a +2 bonus to AC until the end of the\nunicorn’s next turn.\nHeal Self (Costs 3 Actions). The unicorn magically\nregains 11 (2d8 + 2) hit points."
+        }
+      ],
+      "prelude": "Legendary Actions The unicorn can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The unicorn regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Hooves.",
+          "name": "Hooves",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 352,
+          "column": 0,
+          "top": 669.6
+        },
+        {
+          "label": "Shimmering Shield (Costs 2 Actions).",
+          "name": "Shimmering Shield (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 352,
+          "column": 1,
+          "top": 74.4
+        },
+        {
+          "label": "Heal Self (Costs 3 Actions).",
+          "name": "Heal Self (Costs 3 Actions)",
+          "cost": 3,
+          "cost_basis": "explicit_label",
+          "page": 352,
+          "column": 1,
+          "top": 138.2
+        }
+      ]
+    },
+    {
+      "title": "Vampire",
+      "stat_header": {
+        "page": 352,
+        "column": 1,
+        "top": 249.0,
+        "size": 12.0,
+        "title": "Vampire",
+        "size_type_alignment_line": "Medium undead (shapechanger), lawful evil",
+        "bindings": [
+          {
+            "record_id": "vampire-vampire",
+            "name": "Vampire, Vampire Form",
+            "mapping_type": "derived_monster_form"
+          },
+          {
+            "record_id": "vampire-bat",
+            "name": "Vampire, Bat Form",
+            "mapping_type": "derived_monster_form"
+          },
+          {
+            "record_id": "vampire-mist",
+            "name": "Vampire, Mist Form",
+            "mapping_type": "derived_monster_form"
+          }
+        ]
+      },
+      "segments": [
+        {
+          "page": 353,
+          "column": 1,
+          "bbox": [
+            306.0,
+            492.22520000000003,
+            612.0,
+            748
+          ],
+          "text": "Legendary Actions\nThe vampire can take 3 legendary actions, choosing\nfrom the options below. Only one legendary action\noption can be used at a time and only at the end of\nanother creature’s turn. The vampire regains spent\nlegendary actions at the start of its turn.\nMove. The vampire moves up to its speed without\nprovoking opportunity attacks.\nUnarmed Strike. The vampire makes one unarmed\nstrike.\nBite (Costs 2 Actions). The vampire makes one bite\nattack."
+        }
+      ],
+      "prelude": "Legendary Actions The vampire can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The vampire regains spent legendary actions at the start of its turn.",
+      "budget": 3,
+      "options": [
+        {
+          "label": "Move.",
+          "name": "Move",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 353,
+          "column": 1,
+          "top": 575.0
+        },
+        {
+          "label": "Unarmed Strike.",
+          "name": "Unarmed Strike",
+          "cost": 1,
+          "cost_basis": "single_action_option_default",
+          "page": 353,
+          "column": 1,
+          "top": 602.4
+        },
+        {
+          "label": "Bite (Costs 2 Actions).",
+          "name": "Bite (Costs 2 Actions)",
+          "cost": 2,
+          "cost_basis": "explicit_label",
+          "page": 353,
+          "column": 1,
+          "top": 630.0
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "pdfplumber": "0.11.9",
+    "order": "official stat windows; Legendary Actions to next stat/family heading; footer excluded",
+    "option_labels": "Calibri bold 9.84; explicit costs or single-action default; no candidate input"
+  }
+}
