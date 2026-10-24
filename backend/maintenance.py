@@ -13,6 +13,7 @@ import json
 from pathlib import Path
 import sqlite3
 import tempfile
+import time
 from zipfile import ZipFile, ZIP_DEFLATED
 
 # Version 10 also protects the persisted author-content format: v2 graph drafts
@@ -119,6 +120,20 @@ def inspect_backup(archive):
     return manifest
 
 
+def _publish_new_directory(stage,target):
+    """Retry only Windows transient access/sharing errors, at most 350ms."""
+    for attempt in range(4):
+        if target.exists():
+            raise FileExistsError(target)
+        try:
+            stage.rename(target)
+            return
+        except PermissionError as error:
+            if getattr(error,'winerror',None) not in {5,32} or attempt==3:
+                raise
+            time.sleep(0.05*2**attempt)
+
+
 def restore_backup(archive, destination):
     """Restore to a NEW directory with database and the matching content bytes."""
     manifest = inspect_backup(archive)
@@ -140,7 +155,7 @@ def restore_backup(archive, destination):
                 raise ValueError("Restored database integrity check failed")
             if db.execute("PRAGMA user_version").fetchone()[0] != manifest["schema_version"]:
                 raise ValueError("Backup schema marker mismatch")
-        stage.rename(target)
+        _publish_new_directory(stage,target)
     return manifest
 
 

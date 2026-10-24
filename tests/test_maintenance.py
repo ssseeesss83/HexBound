@@ -207,3 +207,64 @@ def test_source_audit_detects_corruption(tmp_path, monkeypatch, change):
     else:
         (compendium.DATA_DIR / "5e-database-LICENSE.md").unlink()
     assert compendium.verify_source_integrity()
+
+
+@pytest.mark.parametrize('winerror',[5,32])
+def test_restore_publication_retries_only_transient_windows_locks(tmp_path,monkeypatch,winerror):
+    from backend import maintenance
+    stage,target = tmp_path/'stage',tmp_path/'published'
+    stage.mkdir()
+    (stage/'data').write_bytes(b'verified data')
+    original = Path.rename
+    attempts,delays = [],[]
+    def locked(self,destination):
+        attempts.append((self,destination))
+        if len(attempts)<3:
+            error = PermissionError('transient Windows lock')
+            error.winerror = winerror
+            raise error
+        return original(self,destination)
+    monkeypatch.setattr(Path,'rename',locked)
+    monkeypatch.setattr(maintenance.time,'sleep',delays.append)
+    maintenance._publish_new_directory(stage,target)
+    assert (target/'data').read_bytes()==b'verified data'
+    assert len(attempts)==3 and delays==[0.05,0.1]
+    assert not stage.exists()
+
+
+@pytest.mark.parametrize('winerror',[None,5])
+def test_restore_publication_permission_failure_is_bounded_and_preserves_source(tmp_path,monkeypatch,winerror):
+    from backend import maintenance
+    stage,target = tmp_path/'stage',tmp_path/'published'
+    stage.mkdir()
+    (stage/'data').write_bytes(b'verified data')
+    attempts,delays = [],[]
+    def denied(self,destination):
+        attempts.append(1)
+        error = PermissionError('persistent denied')
+        if winerror is not None:error.winerror=winerror
+        raise error
+    monkeypatch.setattr(Path,'rename',denied)
+    monkeypatch.setattr(maintenance.time,'sleep',delays.append)
+    with pytest.raises(PermissionError):maintenance._publish_new_directory(stage,target)
+    assert len(attempts)==(1 if winerror is None else 4)
+    assert delays==([] if winerror is None else [0.05,0.1,0.2])
+    assert not target.exists() and (stage/'data').read_bytes()==b'verified data'
+
+
+def test_restore_publication_rechecks_new_destination_after_transient_lock(tmp_path,monkeypatch):
+    from backend import maintenance
+    stage,target = tmp_path/'stage',tmp_path/'published'
+    stage.mkdir()
+    (stage/'data').write_bytes(b'verified data')
+    def occupied(self,destination):
+        destination.mkdir()
+        (destination/'existing').write_bytes(b'preserve owner data')
+        error = PermissionError('transient Windows lock')
+        error.winerror=5
+        raise error
+    monkeypatch.setattr(Path,'rename',occupied)
+    monkeypatch.setattr(maintenance.time,'sleep',lambda seconds:None)
+    with pytest.raises(FileExistsError):maintenance._publish_new_directory(stage,target)
+    assert (target/'existing').read_bytes()==b'preserve owner data'
+    assert not (target/'data').exists() and (stage/'data').read_bytes()==b'verified data'
