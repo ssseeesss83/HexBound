@@ -134,3 +134,5 @@ tools/audit_magic_crafting_variants.py独立消费三表，核飞毯超载算式
 tools/audit_magic_bag_variants.py消费三种戏法袋的完整八面表，核24怪物身份链接及3变体24字段；引用错误不由此工具自造怪物修复。源共同行动 / 指挥 / 每日限制完整，9处仅补派生引用，不签召唤执行。
 
 tools/audit_magic_scrying_variants.py核共同规则及七选定小节，水晶球Legendary来自明确变体前文；四元素统御戒指共同适用对象保留原文“elementals from the linked plane”，不收窄为同名卡。充能 / 解锁 / 专注例外及范围完整，仅资料签收。
+
+tools/audit_magic_feather_variants.py消费六符记区间与完整小节，修复子项共同single-use漏句；选择已定的GM随机句不用于显示，完整父来源与选定d100行保留。Whip第二段、各限制及结束条件完整，未接效果执行。

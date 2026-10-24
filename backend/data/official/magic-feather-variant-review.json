@@ -1,0 +1,915 @@
+{
+  "profile": "official-magic-feather-variants-v1",
+  "official_families": 1,
+  "normalized_variants": 6,
+  "checks": [
+    {
+      "record": "feather-token-anchor",
+      "field": "name",
+      "expected": "Anchor Feather Token",
+      "actual": "Anchor Feather Token",
+      "match": true
+    },
+    {
+      "record": "feather-token-anchor",
+      "field": "equipment_category",
+      "expected": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "actual": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "match": true
+    },
+    {
+      "record": "feather-token-anchor",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "feather-token-anchor",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "feather-token-anchor",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather. Different types of feather tokens exist, each with a different single-use effect.",
+        "You can use an action to touch the token to a boat or ship. For the next 24 hours, the vessel can't be moved by any means. Touching the token to the vessel again ends the effect. When the effect ends, the token disappears."
+      ],
+      "actual": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather.",
+        "You can use an action to touch the token to a boat or ship. For the next 24 hours, the vessel can't be moved by any means. Touching the token to the vessel again ends the effect. When the effect ends, the token disappears."
+      ],
+      "match": false
+    },
+    {
+      "record": "feather-token-anchor",
+      "field": "derived_from",
+      "expected": "magic-items/feather-token",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-anchor",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-anchor",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "feather-token",
+        "selected_heading": "Anchor",
+        "selection_row": "01–20 Anchor 51–65 Swan boat",
+        "selection": {
+          "d100_range": [
+            1,
+            20
+          ],
+          "single_use": true
+        },
+        "complete_parent_text": "Wondrous item, rare\nThis tiny object looks like a feather. Different types\nof feather tokens exist, each with a different single-­‐‑\nuse effect. The GM chooses the kind of token or\ndetermines it randomly.\nd100 Feather Token d100 Feather Token\n01–20 Anchor 51–65 Swan boat\n21–35 Bird 66–90 Tree\n36–50 Fan 91–00 Whip\nAnchor. You can use an action to touch the token\nto a boat or ship. For the next 24 hours, the vessel\ncan’t be moved by any means. Touching the token to\nthe vessel again ends the effect. When the effect ends,\nthe token disappears.\nBird. You can use an action to toss the token 5 feet\ninto the air. The token disappears and an enormous,\nmulticolored bird takes its place. The bird has the\nstatistics of a roc, but it obeys your simple\ncommands and can’t attack. It can carry up to 500\npounds while flying at its maximum speed (16 miles\nan hour for a maximum of 144 miles per day, with a\none-­‐‑hour rest for every 3 hours of flying), or 1,000\npounds at half that speed. The bird disappears after\nflying its maximum distance for a day or if it drops to\n0 hit points. You can dismiss the bird as an action.\nFan. If you are on a boat or ship, you can use an\naction to toss the token up to 10 feet in the air. The\ntoken disappears, and a giant flapping fan takes its\nplace. The fan floats and creates a wind strong\nenough to fill the sails of one ship, increasing its\nspeed by 5 miles per hour for 8 hours. You can\ndismiss the fan as an action.\nSwan Boat. You can use an action to touch the\ntoken to a body of water at least 60 feet in diameter.\nThe token disappears, and a 50-­‐‑foot-­‐‑long, 20-­‐‑foot-­‐‑\nwide boat shaped like a swan takes its place. The\nboat is self-­‐‑propelled and moves across water at a\nspeed of 6 miles per hour. You can use an action\nwhile on the boat to command it to move or to turn\nup to 90 degrees. The boat can carry up to thirty-­‐‑two\nMedium or smaller creatures. A Large creature\ncounts as four Medium creatures, while a Huge\ncreature counts as nine. The boat remains for 24\nhours and then disappears. You can dismiss the boat\nas an action.\nTree. You must be outdoors to use this token. You\ncan use an action to touch it to an unoccupied space\non the ground. The token disappears, and in its place\na nonmagical oak tree springs into existence. The\ntree is 60 feet tall and has a 5-­‐‑foot-­‐‑diameter trunk,\nand its branches at the top spread out in a 20-­‐‑foot\nradius.\nWhip. You can use an action to throw the token to\na point within 10 feet of you. The token disappears,\nand a floating whip takes its place. You can then use\na bonus action to make a melee spell attack against a\ncreature within 10 feet of the whip, with an attack\nbonus of +9. On a hit, the target takes 1d6 + 5 force\ndamage.\nAs a bonus action on your turn, you can direct the\nwhip to fly up to 20 feet and repeat the attack\nagainst a creature within 10 feet of it. The whip\ndisappears after 1 hour, when you use an action to\ndismiss it, or when you are incapacitated or die.",
+        "printed_pages": [
+          221
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-bird",
+      "field": "name",
+      "expected": "Bird Feather Token",
+      "actual": "Bird Feather Token",
+      "match": true
+    },
+    {
+      "record": "feather-token-bird",
+      "field": "equipment_category",
+      "expected": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "actual": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "match": true
+    },
+    {
+      "record": "feather-token-bird",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "feather-token-bird",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "feather-token-bird",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather. Different types of feather tokens exist, each with a different single-use effect.",
+        "You can use an action to toss the token 5 feet into the air. The token disappears and an enormous, multicolored bird takes its place. The bird has the statistics of a roc, but it obeys your simple commands and can't attack. It can carry up to 500 pounds while flying at its maximum speed (16 miles an hour for a maximum of 144 miles per day, with a one-hour rest for every 3 hours of flying), or 1,000 pounds at half that speed. The bird disappears after flying its maximum distance for a day or if it drops to 0 hit points. You can dismiss the bird as an action."
+      ],
+      "actual": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather.",
+        "You can use an action to toss the token 5 feet into the air. The token disappears and an enormous, multicolored bird takes its place. The bird has the statistics of a roc, but it obeys your simple commands and can't attack. It can carry up to 500 pounds while flying at its maximum speed (16 miles an hour for a maximum of 144 miles per day, with a one-hour rest for every 3 hours of flying), or 1,000 pounds at half that speed. The bird disappears after flying its maximum distance for a day or if it drops to 0 hit points. You can dismiss the bird as an action."
+      ],
+      "match": false
+    },
+    {
+      "record": "feather-token-bird",
+      "field": "derived_from",
+      "expected": "magic-items/feather-token",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-bird",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-bird",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "feather-token",
+        "selected_heading": "Bird",
+        "selection_row": "21–35 Bird 66–90 Tree",
+        "selection": {
+          "d100_range": [
+            21,
+            35
+          ],
+          "single_use": true
+        },
+        "complete_parent_text": "Wondrous item, rare\nThis tiny object looks like a feather. Different types\nof feather tokens exist, each with a different single-­‐‑\nuse effect. The GM chooses the kind of token or\ndetermines it randomly.\nd100 Feather Token d100 Feather Token\n01–20 Anchor 51–65 Swan boat\n21–35 Bird 66–90 Tree\n36–50 Fan 91–00 Whip\nAnchor. You can use an action to touch the token\nto a boat or ship. For the next 24 hours, the vessel\ncan’t be moved by any means. Touching the token to\nthe vessel again ends the effect. When the effect ends,\nthe token disappears.\nBird. You can use an action to toss the token 5 feet\ninto the air. The token disappears and an enormous,\nmulticolored bird takes its place. The bird has the\nstatistics of a roc, but it obeys your simple\ncommands and can’t attack. It can carry up to 500\npounds while flying at its maximum speed (16 miles\nan hour for a maximum of 144 miles per day, with a\none-­‐‑hour rest for every 3 hours of flying), or 1,000\npounds at half that speed. The bird disappears after\nflying its maximum distance for a day or if it drops to\n0 hit points. You can dismiss the bird as an action.\nFan. If you are on a boat or ship, you can use an\naction to toss the token up to 10 feet in the air. The\ntoken disappears, and a giant flapping fan takes its\nplace. The fan floats and creates a wind strong\nenough to fill the sails of one ship, increasing its\nspeed by 5 miles per hour for 8 hours. You can\ndismiss the fan as an action.\nSwan Boat. You can use an action to touch the\ntoken to a body of water at least 60 feet in diameter.\nThe token disappears, and a 50-­‐‑foot-­‐‑long, 20-­‐‑foot-­‐‑\nwide boat shaped like a swan takes its place. The\nboat is self-­‐‑propelled and moves across water at a\nspeed of 6 miles per hour. You can use an action\nwhile on the boat to command it to move or to turn\nup to 90 degrees. The boat can carry up to thirty-­‐‑two\nMedium or smaller creatures. A Large creature\ncounts as four Medium creatures, while a Huge\ncreature counts as nine. The boat remains for 24\nhours and then disappears. You can dismiss the boat\nas an action.\nTree. You must be outdoors to use this token. You\ncan use an action to touch it to an unoccupied space\non the ground. The token disappears, and in its place\na nonmagical oak tree springs into existence. The\ntree is 60 feet tall and has a 5-­‐‑foot-­‐‑diameter trunk,\nand its branches at the top spread out in a 20-­‐‑foot\nradius.\nWhip. You can use an action to throw the token to\na point within 10 feet of you. The token disappears,\nand a floating whip takes its place. You can then use\na bonus action to make a melee spell attack against a\ncreature within 10 feet of the whip, with an attack\nbonus of +9. On a hit, the target takes 1d6 + 5 force\ndamage.\nAs a bonus action on your turn, you can direct the\nwhip to fly up to 20 feet and repeat the attack\nagainst a creature within 10 feet of it. The whip\ndisappears after 1 hour, when you use an action to\ndismiss it, or when you are incapacitated or die.",
+        "printed_pages": [
+          221
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-fan",
+      "field": "name",
+      "expected": "Fan Feather Token",
+      "actual": "Fan Feather Token",
+      "match": true
+    },
+    {
+      "record": "feather-token-fan",
+      "field": "equipment_category",
+      "expected": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "actual": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "match": true
+    },
+    {
+      "record": "feather-token-fan",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "feather-token-fan",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "feather-token-fan",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather. Different types of feather tokens exist, each with a different single-use effect.",
+        "If you are on a boat or ship, you can use an action to toss the token up to 10 feet in the air. The token disappears, and a giant flapping fan takes its place. The fan floats and creates a wind strong enough to fill the sails of one ship, increasing its speed by 5 miles per hour for 8 hours. You can dismiss the fan as an action."
+      ],
+      "actual": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather.",
+        "If you are on a boat or ship, you can use an action to toss the token up to 10 feet in the air. The token disappears, and a giant flapping fan takes its place. The fan floats and creates a wind strong enough to fill the sails of one ship, increasing its speed by 5 miles per hour for 8 hours. You can dismiss the fan as an action."
+      ],
+      "match": false
+    },
+    {
+      "record": "feather-token-fan",
+      "field": "derived_from",
+      "expected": "magic-items/feather-token",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-fan",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-fan",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "feather-token",
+        "selected_heading": "Fan",
+        "selection_row": "36–50 Fan 91–00 Whip",
+        "selection": {
+          "d100_range": [
+            36,
+            50
+          ],
+          "single_use": true
+        },
+        "complete_parent_text": "Wondrous item, rare\nThis tiny object looks like a feather. Different types\nof feather tokens exist, each with a different single-­‐‑\nuse effect. The GM chooses the kind of token or\ndetermines it randomly.\nd100 Feather Token d100 Feather Token\n01–20 Anchor 51–65 Swan boat\n21–35 Bird 66–90 Tree\n36–50 Fan 91–00 Whip\nAnchor. You can use an action to touch the token\nto a boat or ship. For the next 24 hours, the vessel\ncan’t be moved by any means. Touching the token to\nthe vessel again ends the effect. When the effect ends,\nthe token disappears.\nBird. You can use an action to toss the token 5 feet\ninto the air. The token disappears and an enormous,\nmulticolored bird takes its place. The bird has the\nstatistics of a roc, but it obeys your simple\ncommands and can’t attack. It can carry up to 500\npounds while flying at its maximum speed (16 miles\nan hour for a maximum of 144 miles per day, with a\none-­‐‑hour rest for every 3 hours of flying), or 1,000\npounds at half that speed. The bird disappears after\nflying its maximum distance for a day or if it drops to\n0 hit points. You can dismiss the bird as an action.\nFan. If you are on a boat or ship, you can use an\naction to toss the token up to 10 feet in the air. The\ntoken disappears, and a giant flapping fan takes its\nplace. The fan floats and creates a wind strong\nenough to fill the sails of one ship, increasing its\nspeed by 5 miles per hour for 8 hours. You can\ndismiss the fan as an action.\nSwan Boat. You can use an action to touch the\ntoken to a body of water at least 60 feet in diameter.\nThe token disappears, and a 50-­‐‑foot-­‐‑long, 20-­‐‑foot-­‐‑\nwide boat shaped like a swan takes its place. The\nboat is self-­‐‑propelled and moves across water at a\nspeed of 6 miles per hour. You can use an action\nwhile on the boat to command it to move or to turn\nup to 90 degrees. The boat can carry up to thirty-­‐‑two\nMedium or smaller creatures. A Large creature\ncounts as four Medium creatures, while a Huge\ncreature counts as nine. The boat remains for 24\nhours and then disappears. You can dismiss the boat\nas an action.\nTree. You must be outdoors to use this token. You\ncan use an action to touch it to an unoccupied space\non the ground. The token disappears, and in its place\na nonmagical oak tree springs into existence. The\ntree is 60 feet tall and has a 5-­‐‑foot-­‐‑diameter trunk,\nand its branches at the top spread out in a 20-­‐‑foot\nradius.\nWhip. You can use an action to throw the token to\na point within 10 feet of you. The token disappears,\nand a floating whip takes its place. You can then use\na bonus action to make a melee spell attack against a\ncreature within 10 feet of the whip, with an attack\nbonus of +9. On a hit, the target takes 1d6 + 5 force\ndamage.\nAs a bonus action on your turn, you can direct the\nwhip to fly up to 20 feet and repeat the attack\nagainst a creature within 10 feet of it. The whip\ndisappears after 1 hour, when you use an action to\ndismiss it, or when you are incapacitated or die.",
+        "printed_pages": [
+          221
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-swan-boat",
+      "field": "name",
+      "expected": "Swan Boat Feather Token",
+      "actual": "Swan Boat Feather Token",
+      "match": true
+    },
+    {
+      "record": "feather-token-swan-boat",
+      "field": "equipment_category",
+      "expected": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "actual": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "match": true
+    },
+    {
+      "record": "feather-token-swan-boat",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "feather-token-swan-boat",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "feather-token-swan-boat",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather. Different types of feather tokens exist, each with a different single-use effect.",
+        "You can use an action to touch the token to a body of water at least 60 feet in diameter. The token disappears, and a 50-foot-long, 20-foot-wide boat shaped like a swan takes its place. The boat is self-propelled and moves across water at a speed of 6 miles per hour. You can use an action while on the boat to command it to move or to turn up to 90 degrees. The boat can carry up to thirty-two Medium or smaller creatures. A Large creature counts as four Medium creatures, while a Huge creature counts as nine. The boat remains for 24 hours and then disappears. You can dismiss the boat as an action."
+      ],
+      "actual": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather.",
+        "You can use an action to touch the token to a body of water at least 60 feet in diameter. The token disappears, and a 50-foot-long, 20-foot wide boat shaped like a swan takes its place. The boat is self-propelled and moves across water at a speed of 6 miles per hour. You can use an action while on the boat to command it to move or to turn up to 90 degrees. The boat can carry up to thirty-two Medium or smaller creatures. A Large creature counts as four Medium creatures, while a Huge creature counts as nine. The boat remains for 24 hours and then disappears. You can dismiss the boat as an action."
+      ],
+      "match": false
+    },
+    {
+      "record": "feather-token-swan-boat",
+      "field": "derived_from",
+      "expected": "magic-items/feather-token",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-swan-boat",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-swan-boat",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "feather-token",
+        "selected_heading": "Swan Boat",
+        "selection_row": "01–20 Anchor 51–65 Swan boat",
+        "selection": {
+          "d100_range": [
+            51,
+            65
+          ],
+          "single_use": true
+        },
+        "complete_parent_text": "Wondrous item, rare\nThis tiny object looks like a feather. Different types\nof feather tokens exist, each with a different single-­‐‑\nuse effect. The GM chooses the kind of token or\ndetermines it randomly.\nd100 Feather Token d100 Feather Token\n01–20 Anchor 51–65 Swan boat\n21–35 Bird 66–90 Tree\n36–50 Fan 91–00 Whip\nAnchor. You can use an action to touch the token\nto a boat or ship. For the next 24 hours, the vessel\ncan’t be moved by any means. Touching the token to\nthe vessel again ends the effect. When the effect ends,\nthe token disappears.\nBird. You can use an action to toss the token 5 feet\ninto the air. The token disappears and an enormous,\nmulticolored bird takes its place. The bird has the\nstatistics of a roc, but it obeys your simple\ncommands and can’t attack. It can carry up to 500\npounds while flying at its maximum speed (16 miles\nan hour for a maximum of 144 miles per day, with a\none-­‐‑hour rest for every 3 hours of flying), or 1,000\npounds at half that speed. The bird disappears after\nflying its maximum distance for a day or if it drops to\n0 hit points. You can dismiss the bird as an action.\nFan. If you are on a boat or ship, you can use an\naction to toss the token up to 10 feet in the air. The\ntoken disappears, and a giant flapping fan takes its\nplace. The fan floats and creates a wind strong\nenough to fill the sails of one ship, increasing its\nspeed by 5 miles per hour for 8 hours. You can\ndismiss the fan as an action.\nSwan Boat. You can use an action to touch the\ntoken to a body of water at least 60 feet in diameter.\nThe token disappears, and a 50-­‐‑foot-­‐‑long, 20-­‐‑foot-­‐‑\nwide boat shaped like a swan takes its place. The\nboat is self-­‐‑propelled and moves across water at a\nspeed of 6 miles per hour. You can use an action\nwhile on the boat to command it to move or to turn\nup to 90 degrees. The boat can carry up to thirty-­‐‑two\nMedium or smaller creatures. A Large creature\ncounts as four Medium creatures, while a Huge\ncreature counts as nine. The boat remains for 24\nhours and then disappears. You can dismiss the boat\nas an action.\nTree. You must be outdoors to use this token. You\ncan use an action to touch it to an unoccupied space\non the ground. The token disappears, and in its place\na nonmagical oak tree springs into existence. The\ntree is 60 feet tall and has a 5-­‐‑foot-­‐‑diameter trunk,\nand its branches at the top spread out in a 20-­‐‑foot\nradius.\nWhip. You can use an action to throw the token to\na point within 10 feet of you. The token disappears,\nand a floating whip takes its place. You can then use\na bonus action to make a melee spell attack against a\ncreature within 10 feet of the whip, with an attack\nbonus of +9. On a hit, the target takes 1d6 + 5 force\ndamage.\nAs a bonus action on your turn, you can direct the\nwhip to fly up to 20 feet and repeat the attack\nagainst a creature within 10 feet of it. The whip\ndisappears after 1 hour, when you use an action to\ndismiss it, or when you are incapacitated or die.",
+        "printed_pages": [
+          221
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-tree",
+      "field": "name",
+      "expected": "Tree Feather Token",
+      "actual": "Tree Feather Token",
+      "match": true
+    },
+    {
+      "record": "feather-token-tree",
+      "field": "equipment_category",
+      "expected": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "actual": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "match": true
+    },
+    {
+      "record": "feather-token-tree",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "feather-token-tree",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "feather-token-tree",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather. Different types of feather tokens exist, each with a different single-use effect.",
+        "You must be outdoors to use this token. You can use an action to touch it to an unoccupied space on the ground. The token disappears, and in its place a nonmagical oak tree springs into existence. The tree is 60 feet tall and has a 5-foot-diameter trunk, and its branches at the top spread out in a 20-foot radius."
+      ],
+      "actual": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather.",
+        "You must be outdoors to use this token. You can use an action to touch it to an unoccupied space on the ground. The token disappears, and in its place a nonmagical oak tree springs into existence. The tree is 60 feet tall and has a 5-foot-diameter trunk, and its branches at the top spread out in a 20-foot radius."
+      ],
+      "match": false
+    },
+    {
+      "record": "feather-token-tree",
+      "field": "derived_from",
+      "expected": "magic-items/feather-token",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-tree",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-tree",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "feather-token",
+        "selected_heading": "Tree",
+        "selection_row": "21–35 Bird 66–90 Tree",
+        "selection": {
+          "d100_range": [
+            66,
+            90
+          ],
+          "single_use": true
+        },
+        "complete_parent_text": "Wondrous item, rare\nThis tiny object looks like a feather. Different types\nof feather tokens exist, each with a different single-­‐‑\nuse effect. The GM chooses the kind of token or\ndetermines it randomly.\nd100 Feather Token d100 Feather Token\n01–20 Anchor 51–65 Swan boat\n21–35 Bird 66–90 Tree\n36–50 Fan 91–00 Whip\nAnchor. You can use an action to touch the token\nto a boat or ship. For the next 24 hours, the vessel\ncan’t be moved by any means. Touching the token to\nthe vessel again ends the effect. When the effect ends,\nthe token disappears.\nBird. You can use an action to toss the token 5 feet\ninto the air. The token disappears and an enormous,\nmulticolored bird takes its place. The bird has the\nstatistics of a roc, but it obeys your simple\ncommands and can’t attack. It can carry up to 500\npounds while flying at its maximum speed (16 miles\nan hour for a maximum of 144 miles per day, with a\none-­‐‑hour rest for every 3 hours of flying), or 1,000\npounds at half that speed. The bird disappears after\nflying its maximum distance for a day or if it drops to\n0 hit points. You can dismiss the bird as an action.\nFan. If you are on a boat or ship, you can use an\naction to toss the token up to 10 feet in the air. The\ntoken disappears, and a giant flapping fan takes its\nplace. The fan floats and creates a wind strong\nenough to fill the sails of one ship, increasing its\nspeed by 5 miles per hour for 8 hours. You can\ndismiss the fan as an action.\nSwan Boat. You can use an action to touch the\ntoken to a body of water at least 60 feet in diameter.\nThe token disappears, and a 50-­‐‑foot-­‐‑long, 20-­‐‑foot-­‐‑\nwide boat shaped like a swan takes its place. The\nboat is self-­‐‑propelled and moves across water at a\nspeed of 6 miles per hour. You can use an action\nwhile on the boat to command it to move or to turn\nup to 90 degrees. The boat can carry up to thirty-­‐‑two\nMedium or smaller creatures. A Large creature\ncounts as four Medium creatures, while a Huge\ncreature counts as nine. The boat remains for 24\nhours and then disappears. You can dismiss the boat\nas an action.\nTree. You must be outdoors to use this token. You\ncan use an action to touch it to an unoccupied space\non the ground. The token disappears, and in its place\na nonmagical oak tree springs into existence. The\ntree is 60 feet tall and has a 5-­‐‑foot-­‐‑diameter trunk,\nand its branches at the top spread out in a 20-­‐‑foot\nradius.\nWhip. You can use an action to throw the token to\na point within 10 feet of you. The token disappears,\nand a floating whip takes its place. You can then use\na bonus action to make a melee spell attack against a\ncreature within 10 feet of the whip, with an attack\nbonus of +9. On a hit, the target takes 1d6 + 5 force\ndamage.\nAs a bonus action on your turn, you can direct the\nwhip to fly up to 20 feet and repeat the attack\nagainst a creature within 10 feet of it. The whip\ndisappears after 1 hour, when you use an action to\ndismiss it, or when you are incapacitated or die.",
+        "printed_pages": [
+          221
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-whip",
+      "field": "name",
+      "expected": "Whip Feather Token",
+      "actual": "Whip Feather Token",
+      "match": true
+    },
+    {
+      "record": "feather-token-whip",
+      "field": "equipment_category",
+      "expected": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "actual": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "match": true
+    },
+    {
+      "record": "feather-token-whip",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "feather-token-whip",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "feather-token-whip",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather. Different types of feather tokens exist, each with a different single-use effect.",
+        "You can use an action to throw the token to a point within 10 feet of you. The token disappears, and a floating whip takes its place. You can then use a bonus action to make a melee spell attack against a creature within 10 feet of the whip, with an attack bonus of +9. On a hit, the target takes 1d6 + 5 force damage. As a bonus action on your turn, you can direct the whip to fly up to 20 feet and repeat the attack against a creature within 10 feet of it. The whip disappears after 1 hour, when you use an action to dismiss it, or when you are incapacitated or die."
+      ],
+      "actual": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather.",
+        "You can use an action to throw the token to a point within 10 feet of you. The token disappears, and a floating whip takes its place. You can then use a bonus action to make a melee spell attack against a creature within 10 feet of the whip, with an attack bonus of +9. On a hit, the target takes 1d6 + 5 force damage.",
+        "As a bonus action on your turn, you can direct the whip to fly up to 20 feet and repeat the attack against a creature within 10 feet of it. The whip disappears after 1 hour, when you use an action to dismiss it, or when you are incapacitated or die."
+      ],
+      "match": false
+    },
+    {
+      "record": "feather-token-whip",
+      "field": "derived_from",
+      "expected": "magic-items/feather-token",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-whip",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-whip",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "feather-token",
+        "selected_heading": "Whip",
+        "selection_row": "36–50 Fan 91–00 Whip",
+        "selection": {
+          "d100_range": [
+            91,
+            100
+          ],
+          "single_use": true
+        },
+        "complete_parent_text": "Wondrous item, rare\nThis tiny object looks like a feather. Different types\nof feather tokens exist, each with a different single-­‐‑\nuse effect. The GM chooses the kind of token or\ndetermines it randomly.\nd100 Feather Token d100 Feather Token\n01–20 Anchor 51–65 Swan boat\n21–35 Bird 66–90 Tree\n36–50 Fan 91–00 Whip\nAnchor. You can use an action to touch the token\nto a boat or ship. For the next 24 hours, the vessel\ncan’t be moved by any means. Touching the token to\nthe vessel again ends the effect. When the effect ends,\nthe token disappears.\nBird. You can use an action to toss the token 5 feet\ninto the air. The token disappears and an enormous,\nmulticolored bird takes its place. The bird has the\nstatistics of a roc, but it obeys your simple\ncommands and can’t attack. It can carry up to 500\npounds while flying at its maximum speed (16 miles\nan hour for a maximum of 144 miles per day, with a\none-­‐‑hour rest for every 3 hours of flying), or 1,000\npounds at half that speed. The bird disappears after\nflying its maximum distance for a day or if it drops to\n0 hit points. You can dismiss the bird as an action.\nFan. If you are on a boat or ship, you can use an\naction to toss the token up to 10 feet in the air. The\ntoken disappears, and a giant flapping fan takes its\nplace. The fan floats and creates a wind strong\nenough to fill the sails of one ship, increasing its\nspeed by 5 miles per hour for 8 hours. You can\ndismiss the fan as an action.\nSwan Boat. You can use an action to touch the\ntoken to a body of water at least 60 feet in diameter.\nThe token disappears, and a 50-­‐‑foot-­‐‑long, 20-­‐‑foot-­‐‑\nwide boat shaped like a swan takes its place. The\nboat is self-­‐‑propelled and moves across water at a\nspeed of 6 miles per hour. You can use an action\nwhile on the boat to command it to move or to turn\nup to 90 degrees. The boat can carry up to thirty-­‐‑two\nMedium or smaller creatures. A Large creature\ncounts as four Medium creatures, while a Huge\ncreature counts as nine. The boat remains for 24\nhours and then disappears. You can dismiss the boat\nas an action.\nTree. You must be outdoors to use this token. You\ncan use an action to touch it to an unoccupied space\non the ground. The token disappears, and in its place\na nonmagical oak tree springs into existence. The\ntree is 60 feet tall and has a 5-­‐‑foot-­‐‑diameter trunk,\nand its branches at the top spread out in a 20-­‐‑foot\nradius.\nWhip. You can use an action to throw the token to\na point within 10 feet of you. The token disappears,\nand a floating whip takes its place. You can then use\na bonus action to make a melee spell attack against a\ncreature within 10 feet of the whip, with an attack\nbonus of +9. On a hit, the target takes 1d6 + 5 force\ndamage.\nAs a bonus action on your turn, you can direct the\nwhip to fly up to 20 feet and repeat the attack\nagainst a creature within 10 feet of it. The whip\ndisappears after 1 hour, when you use an action to\ndismiss it, or when you are incapacitated or die.",
+        "printed_pages": [
+          221
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    }
+  ],
+  "differences": [
+    {
+      "record": "feather-token-anchor",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather. Different types of feather tokens exist, each with a different single-use effect.",
+        "You can use an action to touch the token to a boat or ship. For the next 24 hours, the vessel can't be moved by any means. Touching the token to the vessel again ends the effect. When the effect ends, the token disappears."
+      ],
+      "actual": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather.",
+        "You can use an action to touch the token to a boat or ship. For the next 24 hours, the vessel can't be moved by any means. Touching the token to the vessel again ends the effect. When the effect ends, the token disappears."
+      ],
+      "match": false
+    },
+    {
+      "record": "feather-token-anchor",
+      "field": "derived_from",
+      "expected": "magic-items/feather-token",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-anchor",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-anchor",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "feather-token",
+        "selected_heading": "Anchor",
+        "selection_row": "01–20 Anchor 51–65 Swan boat",
+        "selection": {
+          "d100_range": [
+            1,
+            20
+          ],
+          "single_use": true
+        },
+        "complete_parent_text": "Wondrous item, rare\nThis tiny object looks like a feather. Different types\nof feather tokens exist, each with a different single-­‐‑\nuse effect. The GM chooses the kind of token or\ndetermines it randomly.\nd100 Feather Token d100 Feather Token\n01–20 Anchor 51–65 Swan boat\n21–35 Bird 66–90 Tree\n36–50 Fan 91–00 Whip\nAnchor. You can use an action to touch the token\nto a boat or ship. For the next 24 hours, the vessel\ncan’t be moved by any means. Touching the token to\nthe vessel again ends the effect. When the effect ends,\nthe token disappears.\nBird. You can use an action to toss the token 5 feet\ninto the air. The token disappears and an enormous,\nmulticolored bird takes its place. The bird has the\nstatistics of a roc, but it obeys your simple\ncommands and can’t attack. It can carry up to 500\npounds while flying at its maximum speed (16 miles\nan hour for a maximum of 144 miles per day, with a\none-­‐‑hour rest for every 3 hours of flying), or 1,000\npounds at half that speed. The bird disappears after\nflying its maximum distance for a day or if it drops to\n0 hit points. You can dismiss the bird as an action.\nFan. If you are on a boat or ship, you can use an\naction to toss the token up to 10 feet in the air. The\ntoken disappears, and a giant flapping fan takes its\nplace. The fan floats and creates a wind strong\nenough to fill the sails of one ship, increasing its\nspeed by 5 miles per hour for 8 hours. You can\ndismiss the fan as an action.\nSwan Boat. You can use an action to touch the\ntoken to a body of water at least 60 feet in diameter.\nThe token disappears, and a 50-­‐‑foot-­‐‑long, 20-­‐‑foot-­‐‑\nwide boat shaped like a swan takes its place. The\nboat is self-­‐‑propelled and moves across water at a\nspeed of 6 miles per hour. You can use an action\nwhile on the boat to command it to move or to turn\nup to 90 degrees. The boat can carry up to thirty-­‐‑two\nMedium or smaller creatures. A Large creature\ncounts as four Medium creatures, while a Huge\ncreature counts as nine. The boat remains for 24\nhours and then disappears. You can dismiss the boat\nas an action.\nTree. You must be outdoors to use this token. You\ncan use an action to touch it to an unoccupied space\non the ground. The token disappears, and in its place\na nonmagical oak tree springs into existence. The\ntree is 60 feet tall and has a 5-­‐‑foot-­‐‑diameter trunk,\nand its branches at the top spread out in a 20-­‐‑foot\nradius.\nWhip. You can use an action to throw the token to\na point within 10 feet of you. The token disappears,\nand a floating whip takes its place. You can then use\na bonus action to make a melee spell attack against a\ncreature within 10 feet of the whip, with an attack\nbonus of +9. On a hit, the target takes 1d6 + 5 force\ndamage.\nAs a bonus action on your turn, you can direct the\nwhip to fly up to 20 feet and repeat the attack\nagainst a creature within 10 feet of it. The whip\ndisappears after 1 hour, when you use an action to\ndismiss it, or when you are incapacitated or die.",
+        "printed_pages": [
+          221
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-bird",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather. Different types of feather tokens exist, each with a different single-use effect.",
+        "You can use an action to toss the token 5 feet into the air. The token disappears and an enormous, multicolored bird takes its place. The bird has the statistics of a roc, but it obeys your simple commands and can't attack. It can carry up to 500 pounds while flying at its maximum speed (16 miles an hour for a maximum of 144 miles per day, with a one-hour rest for every 3 hours of flying), or 1,000 pounds at half that speed. The bird disappears after flying its maximum distance for a day or if it drops to 0 hit points. You can dismiss the bird as an action."
+      ],
+      "actual": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather.",
+        "You can use an action to toss the token 5 feet into the air. The token disappears and an enormous, multicolored bird takes its place. The bird has the statistics of a roc, but it obeys your simple commands and can't attack. It can carry up to 500 pounds while flying at its maximum speed (16 miles an hour for a maximum of 144 miles per day, with a one-hour rest for every 3 hours of flying), or 1,000 pounds at half that speed. The bird disappears after flying its maximum distance for a day or if it drops to 0 hit points. You can dismiss the bird as an action."
+      ],
+      "match": false
+    },
+    {
+      "record": "feather-token-bird",
+      "field": "derived_from",
+      "expected": "magic-items/feather-token",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-bird",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-bird",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "feather-token",
+        "selected_heading": "Bird",
+        "selection_row": "21–35 Bird 66–90 Tree",
+        "selection": {
+          "d100_range": [
+            21,
+            35
+          ],
+          "single_use": true
+        },
+        "complete_parent_text": "Wondrous item, rare\nThis tiny object looks like a feather. Different types\nof feather tokens exist, each with a different single-­‐‑\nuse effect. The GM chooses the kind of token or\ndetermines it randomly.\nd100 Feather Token d100 Feather Token\n01–20 Anchor 51–65 Swan boat\n21–35 Bird 66–90 Tree\n36–50 Fan 91–00 Whip\nAnchor. You can use an action to touch the token\nto a boat or ship. For the next 24 hours, the vessel\ncan’t be moved by any means. Touching the token to\nthe vessel again ends the effect. When the effect ends,\nthe token disappears.\nBird. You can use an action to toss the token 5 feet\ninto the air. The token disappears and an enormous,\nmulticolored bird takes its place. The bird has the\nstatistics of a roc, but it obeys your simple\ncommands and can’t attack. It can carry up to 500\npounds while flying at its maximum speed (16 miles\nan hour for a maximum of 144 miles per day, with a\none-­‐‑hour rest for every 3 hours of flying), or 1,000\npounds at half that speed. The bird disappears after\nflying its maximum distance for a day or if it drops to\n0 hit points. You can dismiss the bird as an action.\nFan. If you are on a boat or ship, you can use an\naction to toss the token up to 10 feet in the air. The\ntoken disappears, and a giant flapping fan takes its\nplace. The fan floats and creates a wind strong\nenough to fill the sails of one ship, increasing its\nspeed by 5 miles per hour for 8 hours. You can\ndismiss the fan as an action.\nSwan Boat. You can use an action to touch the\ntoken to a body of water at least 60 feet in diameter.\nThe token disappears, and a 50-­‐‑foot-­‐‑long, 20-­‐‑foot-­‐‑\nwide boat shaped like a swan takes its place. The\nboat is self-­‐‑propelled and moves across water at a\nspeed of 6 miles per hour. You can use an action\nwhile on the boat to command it to move or to turn\nup to 90 degrees. The boat can carry up to thirty-­‐‑two\nMedium or smaller creatures. A Large creature\ncounts as four Medium creatures, while a Huge\ncreature counts as nine. The boat remains for 24\nhours and then disappears. You can dismiss the boat\nas an action.\nTree. You must be outdoors to use this token. You\ncan use an action to touch it to an unoccupied space\non the ground. The token disappears, and in its place\na nonmagical oak tree springs into existence. The\ntree is 60 feet tall and has a 5-­‐‑foot-­‐‑diameter trunk,\nand its branches at the top spread out in a 20-­‐‑foot\nradius.\nWhip. You can use an action to throw the token to\na point within 10 feet of you. The token disappears,\nand a floating whip takes its place. You can then use\na bonus action to make a melee spell attack against a\ncreature within 10 feet of the whip, with an attack\nbonus of +9. On a hit, the target takes 1d6 + 5 force\ndamage.\nAs a bonus action on your turn, you can direct the\nwhip to fly up to 20 feet and repeat the attack\nagainst a creature within 10 feet of it. The whip\ndisappears after 1 hour, when you use an action to\ndismiss it, or when you are incapacitated or die.",
+        "printed_pages": [
+          221
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-fan",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather. Different types of feather tokens exist, each with a different single-use effect.",
+        "If you are on a boat or ship, you can use an action to toss the token up to 10 feet in the air. The token disappears, and a giant flapping fan takes its place. The fan floats and creates a wind strong enough to fill the sails of one ship, increasing its speed by 5 miles per hour for 8 hours. You can dismiss the fan as an action."
+      ],
+      "actual": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather.",
+        "If you are on a boat or ship, you can use an action to toss the token up to 10 feet in the air. The token disappears, and a giant flapping fan takes its place. The fan floats and creates a wind strong enough to fill the sails of one ship, increasing its speed by 5 miles per hour for 8 hours. You can dismiss the fan as an action."
+      ],
+      "match": false
+    },
+    {
+      "record": "feather-token-fan",
+      "field": "derived_from",
+      "expected": "magic-items/feather-token",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-fan",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-fan",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "feather-token",
+        "selected_heading": "Fan",
+        "selection_row": "36–50 Fan 91–00 Whip",
+        "selection": {
+          "d100_range": [
+            36,
+            50
+          ],
+          "single_use": true
+        },
+        "complete_parent_text": "Wondrous item, rare\nThis tiny object looks like a feather. Different types\nof feather tokens exist, each with a different single-­‐‑\nuse effect. The GM chooses the kind of token or\ndetermines it randomly.\nd100 Feather Token d100 Feather Token\n01–20 Anchor 51–65 Swan boat\n21–35 Bird 66–90 Tree\n36–50 Fan 91–00 Whip\nAnchor. You can use an action to touch the token\nto a boat or ship. For the next 24 hours, the vessel\ncan’t be moved by any means. Touching the token to\nthe vessel again ends the effect. When the effect ends,\nthe token disappears.\nBird. You can use an action to toss the token 5 feet\ninto the air. The token disappears and an enormous,\nmulticolored bird takes its place. The bird has the\nstatistics of a roc, but it obeys your simple\ncommands and can’t attack. It can carry up to 500\npounds while flying at its maximum speed (16 miles\nan hour for a maximum of 144 miles per day, with a\none-­‐‑hour rest for every 3 hours of flying), or 1,000\npounds at half that speed. The bird disappears after\nflying its maximum distance for a day or if it drops to\n0 hit points. You can dismiss the bird as an action.\nFan. If you are on a boat or ship, you can use an\naction to toss the token up to 10 feet in the air. The\ntoken disappears, and a giant flapping fan takes its\nplace. The fan floats and creates a wind strong\nenough to fill the sails of one ship, increasing its\nspeed by 5 miles per hour for 8 hours. You can\ndismiss the fan as an action.\nSwan Boat. You can use an action to touch the\ntoken to a body of water at least 60 feet in diameter.\nThe token disappears, and a 50-­‐‑foot-­‐‑long, 20-­‐‑foot-­‐‑\nwide boat shaped like a swan takes its place. The\nboat is self-­‐‑propelled and moves across water at a\nspeed of 6 miles per hour. You can use an action\nwhile on the boat to command it to move or to turn\nup to 90 degrees. The boat can carry up to thirty-­‐‑two\nMedium or smaller creatures. A Large creature\ncounts as four Medium creatures, while a Huge\ncreature counts as nine. The boat remains for 24\nhours and then disappears. You can dismiss the boat\nas an action.\nTree. You must be outdoors to use this token. You\ncan use an action to touch it to an unoccupied space\non the ground. The token disappears, and in its place\na nonmagical oak tree springs into existence. The\ntree is 60 feet tall and has a 5-­‐‑foot-­‐‑diameter trunk,\nand its branches at the top spread out in a 20-­‐‑foot\nradius.\nWhip. You can use an action to throw the token to\na point within 10 feet of you. The token disappears,\nand a floating whip takes its place. You can then use\na bonus action to make a melee spell attack against a\ncreature within 10 feet of the whip, with an attack\nbonus of +9. On a hit, the target takes 1d6 + 5 force\ndamage.\nAs a bonus action on your turn, you can direct the\nwhip to fly up to 20 feet and repeat the attack\nagainst a creature within 10 feet of it. The whip\ndisappears after 1 hour, when you use an action to\ndismiss it, or when you are incapacitated or die.",
+        "printed_pages": [
+          221
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-swan-boat",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather. Different types of feather tokens exist, each with a different single-use effect.",
+        "You can use an action to touch the token to a body of water at least 60 feet in diameter. The token disappears, and a 50-foot-long, 20-foot-wide boat shaped like a swan takes its place. The boat is self-propelled and moves across water at a speed of 6 miles per hour. You can use an action while on the boat to command it to move or to turn up to 90 degrees. The boat can carry up to thirty-two Medium or smaller creatures. A Large creature counts as four Medium creatures, while a Huge creature counts as nine. The boat remains for 24 hours and then disappears. You can dismiss the boat as an action."
+      ],
+      "actual": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather.",
+        "You can use an action to touch the token to a body of water at least 60 feet in diameter. The token disappears, and a 50-foot-long, 20-foot wide boat shaped like a swan takes its place. The boat is self-propelled and moves across water at a speed of 6 miles per hour. You can use an action while on the boat to command it to move or to turn up to 90 degrees. The boat can carry up to thirty-two Medium or smaller creatures. A Large creature counts as four Medium creatures, while a Huge creature counts as nine. The boat remains for 24 hours and then disappears. You can dismiss the boat as an action."
+      ],
+      "match": false
+    },
+    {
+      "record": "feather-token-swan-boat",
+      "field": "derived_from",
+      "expected": "magic-items/feather-token",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-swan-boat",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-swan-boat",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "feather-token",
+        "selected_heading": "Swan Boat",
+        "selection_row": "01–20 Anchor 51–65 Swan boat",
+        "selection": {
+          "d100_range": [
+            51,
+            65
+          ],
+          "single_use": true
+        },
+        "complete_parent_text": "Wondrous item, rare\nThis tiny object looks like a feather. Different types\nof feather tokens exist, each with a different single-­‐‑\nuse effect. The GM chooses the kind of token or\ndetermines it randomly.\nd100 Feather Token d100 Feather Token\n01–20 Anchor 51–65 Swan boat\n21–35 Bird 66–90 Tree\n36–50 Fan 91–00 Whip\nAnchor. You can use an action to touch the token\nto a boat or ship. For the next 24 hours, the vessel\ncan’t be moved by any means. Touching the token to\nthe vessel again ends the effect. When the effect ends,\nthe token disappears.\nBird. You can use an action to toss the token 5 feet\ninto the air. The token disappears and an enormous,\nmulticolored bird takes its place. The bird has the\nstatistics of a roc, but it obeys your simple\ncommands and can’t attack. It can carry up to 500\npounds while flying at its maximum speed (16 miles\nan hour for a maximum of 144 miles per day, with a\none-­‐‑hour rest for every 3 hours of flying), or 1,000\npounds at half that speed. The bird disappears after\nflying its maximum distance for a day or if it drops to\n0 hit points. You can dismiss the bird as an action.\nFan. If you are on a boat or ship, you can use an\naction to toss the token up to 10 feet in the air. The\ntoken disappears, and a giant flapping fan takes its\nplace. The fan floats and creates a wind strong\nenough to fill the sails of one ship, increasing its\nspeed by 5 miles per hour for 8 hours. You can\ndismiss the fan as an action.\nSwan Boat. You can use an action to touch the\ntoken to a body of water at least 60 feet in diameter.\nThe token disappears, and a 50-­‐‑foot-­‐‑long, 20-­‐‑foot-­‐‑\nwide boat shaped like a swan takes its place. The\nboat is self-­‐‑propelled and moves across water at a\nspeed of 6 miles per hour. You can use an action\nwhile on the boat to command it to move or to turn\nup to 90 degrees. The boat can carry up to thirty-­‐‑two\nMedium or smaller creatures. A Large creature\ncounts as four Medium creatures, while a Huge\ncreature counts as nine. The boat remains for 24\nhours and then disappears. You can dismiss the boat\nas an action.\nTree. You must be outdoors to use this token. You\ncan use an action to touch it to an unoccupied space\non the ground. The token disappears, and in its place\na nonmagical oak tree springs into existence. The\ntree is 60 feet tall and has a 5-­‐‑foot-­‐‑diameter trunk,\nand its branches at the top spread out in a 20-­‐‑foot\nradius.\nWhip. You can use an action to throw the token to\na point within 10 feet of you. The token disappears,\nand a floating whip takes its place. You can then use\na bonus action to make a melee spell attack against a\ncreature within 10 feet of the whip, with an attack\nbonus of +9. On a hit, the target takes 1d6 + 5 force\ndamage.\nAs a bonus action on your turn, you can direct the\nwhip to fly up to 20 feet and repeat the attack\nagainst a creature within 10 feet of it. The whip\ndisappears after 1 hour, when you use an action to\ndismiss it, or when you are incapacitated or die.",
+        "printed_pages": [
+          221
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-tree",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather. Different types of feather tokens exist, each with a different single-use effect.",
+        "You must be outdoors to use this token. You can use an action to touch it to an unoccupied space on the ground. The token disappears, and in its place a nonmagical oak tree springs into existence. The tree is 60 feet tall and has a 5-foot-diameter trunk, and its branches at the top spread out in a 20-foot radius."
+      ],
+      "actual": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather.",
+        "You must be outdoors to use this token. You can use an action to touch it to an unoccupied space on the ground. The token disappears, and in its place a nonmagical oak tree springs into existence. The tree is 60 feet tall and has a 5-foot-diameter trunk, and its branches at the top spread out in a 20-foot radius."
+      ],
+      "match": false
+    },
+    {
+      "record": "feather-token-tree",
+      "field": "derived_from",
+      "expected": "magic-items/feather-token",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-tree",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-tree",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "feather-token",
+        "selected_heading": "Tree",
+        "selection_row": "21–35 Bird 66–90 Tree",
+        "selection": {
+          "d100_range": [
+            66,
+            90
+          ],
+          "single_use": true
+        },
+        "complete_parent_text": "Wondrous item, rare\nThis tiny object looks like a feather. Different types\nof feather tokens exist, each with a different single-­‐‑\nuse effect. The GM chooses the kind of token or\ndetermines it randomly.\nd100 Feather Token d100 Feather Token\n01–20 Anchor 51–65 Swan boat\n21–35 Bird 66–90 Tree\n36–50 Fan 91–00 Whip\nAnchor. You can use an action to touch the token\nto a boat or ship. For the next 24 hours, the vessel\ncan’t be moved by any means. Touching the token to\nthe vessel again ends the effect. When the effect ends,\nthe token disappears.\nBird. You can use an action to toss the token 5 feet\ninto the air. The token disappears and an enormous,\nmulticolored bird takes its place. The bird has the\nstatistics of a roc, but it obeys your simple\ncommands and can’t attack. It can carry up to 500\npounds while flying at its maximum speed (16 miles\nan hour for a maximum of 144 miles per day, with a\none-­‐‑hour rest for every 3 hours of flying), or 1,000\npounds at half that speed. The bird disappears after\nflying its maximum distance for a day or if it drops to\n0 hit points. You can dismiss the bird as an action.\nFan. If you are on a boat or ship, you can use an\naction to toss the token up to 10 feet in the air. The\ntoken disappears, and a giant flapping fan takes its\nplace. The fan floats and creates a wind strong\nenough to fill the sails of one ship, increasing its\nspeed by 5 miles per hour for 8 hours. You can\ndismiss the fan as an action.\nSwan Boat. You can use an action to touch the\ntoken to a body of water at least 60 feet in diameter.\nThe token disappears, and a 50-­‐‑foot-­‐‑long, 20-­‐‑foot-­‐‑\nwide boat shaped like a swan takes its place. The\nboat is self-­‐‑propelled and moves across water at a\nspeed of 6 miles per hour. You can use an action\nwhile on the boat to command it to move or to turn\nup to 90 degrees. The boat can carry up to thirty-­‐‑two\nMedium or smaller creatures. A Large creature\ncounts as four Medium creatures, while a Huge\ncreature counts as nine. The boat remains for 24\nhours and then disappears. You can dismiss the boat\nas an action.\nTree. You must be outdoors to use this token. You\ncan use an action to touch it to an unoccupied space\non the ground. The token disappears, and in its place\na nonmagical oak tree springs into existence. The\ntree is 60 feet tall and has a 5-­‐‑foot-­‐‑diameter trunk,\nand its branches at the top spread out in a 20-­‐‑foot\nradius.\nWhip. You can use an action to throw the token to\na point within 10 feet of you. The token disappears,\nand a floating whip takes its place. You can then use\na bonus action to make a melee spell attack against a\ncreature within 10 feet of the whip, with an attack\nbonus of +9. On a hit, the target takes 1d6 + 5 force\ndamage.\nAs a bonus action on your turn, you can direct the\nwhip to fly up to 20 feet and repeat the attack\nagainst a creature within 10 feet of it. The whip\ndisappears after 1 hour, when you use an action to\ndismiss it, or when you are incapacitated or die.",
+        "printed_pages": [
+          221
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-whip",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather. Different types of feather tokens exist, each with a different single-use effect.",
+        "You can use an action to throw the token to a point within 10 feet of you. The token disappears, and a floating whip takes its place. You can then use a bonus action to make a melee spell attack against a creature within 10 feet of the whip, with an attack bonus of +9. On a hit, the target takes 1d6 + 5 force damage. As a bonus action on your turn, you can direct the whip to fly up to 20 feet and repeat the attack against a creature within 10 feet of it. The whip disappears after 1 hour, when you use an action to dismiss it, or when you are incapacitated or die."
+      ],
+      "actual": [
+        "Wondrous item, rare",
+        "This tiny object looks like a feather.",
+        "You can use an action to throw the token to a point within 10 feet of you. The token disappears, and a floating whip takes its place. You can then use a bonus action to make a melee spell attack against a creature within 10 feet of the whip, with an attack bonus of +9. On a hit, the target takes 1d6 + 5 force damage.",
+        "As a bonus action on your turn, you can direct the whip to fly up to 20 feet and repeat the attack against a creature within 10 feet of it. The whip disappears after 1 hour, when you use an action to dismiss it, or when you are incapacitated or die."
+      ],
+      "match": false
+    },
+    {
+      "record": "feather-token-whip",
+      "field": "derived_from",
+      "expected": "magic-items/feather-token",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-whip",
+      "field": "source_text_kind",
+      "expected": "derived_named_section",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "feather-token-whip",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "feather-token",
+        "selected_heading": "Whip",
+        "selection_row": "36–50 Fan 91–00 Whip",
+        "selection": {
+          "d100_range": [
+            91,
+            100
+          ],
+          "single_use": true
+        },
+        "complete_parent_text": "Wondrous item, rare\nThis tiny object looks like a feather. Different types\nof feather tokens exist, each with a different single-­‐‑\nuse effect. The GM chooses the kind of token or\ndetermines it randomly.\nd100 Feather Token d100 Feather Token\n01–20 Anchor 51–65 Swan boat\n21–35 Bird 66–90 Tree\n36–50 Fan 91–00 Whip\nAnchor. You can use an action to touch the token\nto a boat or ship. For the next 24 hours, the vessel\ncan’t be moved by any means. Touching the token to\nthe vessel again ends the effect. When the effect ends,\nthe token disappears.\nBird. You can use an action to toss the token 5 feet\ninto the air. The token disappears and an enormous,\nmulticolored bird takes its place. The bird has the\nstatistics of a roc, but it obeys your simple\ncommands and can’t attack. It can carry up to 500\npounds while flying at its maximum speed (16 miles\nan hour for a maximum of 144 miles per day, with a\none-­‐‑hour rest for every 3 hours of flying), or 1,000\npounds at half that speed. The bird disappears after\nflying its maximum distance for a day or if it drops to\n0 hit points. You can dismiss the bird as an action.\nFan. If you are on a boat or ship, you can use an\naction to toss the token up to 10 feet in the air. The\ntoken disappears, and a giant flapping fan takes its\nplace. The fan floats and creates a wind strong\nenough to fill the sails of one ship, increasing its\nspeed by 5 miles per hour for 8 hours. You can\ndismiss the fan as an action.\nSwan Boat. You can use an action to touch the\ntoken to a body of water at least 60 feet in diameter.\nThe token disappears, and a 50-­‐‑foot-­‐‑long, 20-­‐‑foot-­‐‑\nwide boat shaped like a swan takes its place. The\nboat is self-­‐‑propelled and moves across water at a\nspeed of 6 miles per hour. You can use an action\nwhile on the boat to command it to move or to turn\nup to 90 degrees. The boat can carry up to thirty-­‐‑two\nMedium or smaller creatures. A Large creature\ncounts as four Medium creatures, while a Huge\ncreature counts as nine. The boat remains for 24\nhours and then disappears. You can dismiss the boat\nas an action.\nTree. You must be outdoors to use this token. You\ncan use an action to touch it to an unoccupied space\non the ground. The token disappears, and in its place\na nonmagical oak tree springs into existence. The\ntree is 60 feet tall and has a 5-­‐‑foot-­‐‑diameter trunk,\nand its branches at the top spread out in a 20-­‐‑foot\nradius.\nWhip. You can use an action to throw the token to\na point within 10 feet of you. The token disappears,\nand a floating whip takes its place. You can then use\na bonus action to make a melee spell attack against a\ncreature within 10 feet of the whip, with an attack\nbonus of +9. On a hit, the target takes 1d6 + 5 force\ndamage.\nAs a bonus action on your turn, you can direct the\nwhip to fly up to 20 feet and repeat the attack\nagainst a creature within 10 feet of it. The whip\ndisappears after 1 hour, when you use an action to\ndismiss it, or when you are incapacitated or die.",
+        "printed_pages": [
+          221
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    }
+  ],
+  "limitations": [
+    "Complete source prose and single-use reference only; item use, flight, boats, terrain and whip attacks are not executed."
+  ],
+  "snapshot_note": "Before this invocation; rerun for current candidate."
+}
