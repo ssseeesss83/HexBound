@@ -77,6 +77,13 @@ def _fingerprint(state):
     keys = ("id", "status", "host_id", "scene", "scene_id", "scene_index", "members",
             "combat", "flags", "campaign", "completed", "rest_used", "mode", "environment", "progression")
     snapshot = {key: state.get(key) for key in keys}
+    if state.get("campaign"):
+        current = state["campaign"]
+        actors = {member["id"] for member in state["members"]}
+        snapshot["campaign"] = {"package": current.get("package"), "node_id": current.get("node_id"),
+                                "visited": current.get("visited"),
+                                "spent": {actor: value for actor, value in current.get("spent", {}).items() if actor in actors},
+                                "cleared_here": current.get("node_id") in current.get("cleared", [])}
     if "text_scope" in state:
         from .session_scope import audience_key
         snapshot["audience_scope"] = audience_key(state)

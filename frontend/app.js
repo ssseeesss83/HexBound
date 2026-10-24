@@ -509,7 +509,7 @@ let activeJournalKey = null;
 let activeTextScope = null;
 function renderRoom() {
   if (!room) return;
-  const scope = JSON.stringify([room.id, session.member_id, room.text_scope]);
+  const scope = JSON.stringify([room.id, session.member_id, room.scene_instance_id, room.membership_epoch, room.text_scope]);
   if (activeTextScope !== scope) {
     window.HexBoundLiveLog?.clear();
     activeJournalKey = null;
@@ -825,6 +825,8 @@ async function command(type, payload = {}) {
     command_id: newCommandId(),
     expected_version: room.version,
     expected_action_revision: room.action_revision,
+    expected_scene_instance_id: room.scene_instance_id,
+    expected_membership_epoch: room.membership_epoch,
     type,
     payload,
   };

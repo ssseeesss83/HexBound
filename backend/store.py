@@ -10,7 +10,7 @@ from pathlib import Path
 from contextlib import contextmanager
 
 from .maintenance import SCHEMA_VERSION, check_database_version, backup_database
-from .scene_storage import pack as pack_scene, unpack as unpack_scene
+from .scene_storage import pack as pack_scene, unpack as unpack_scene, STORAGE_VERSION as SCENE_STORAGE_VERSION
 
 
 def token_hash(token: str) -> str:
@@ -65,7 +65,7 @@ class Store:
             for row in db.execute("SELECT id,state FROM rooms").fetchall():
                 payload = json.loads(row["state"])
                 state = unpack_scene(payload)
-                if "text_scope" not in state or "action_revision" not in state or "scene_storage_version" not in payload:
+                if "text_scope" not in state or "action_revision" not in state or payload.get("scene_storage_version") != SCENE_STORAGE_VERSION:
                     initialize(state)
                     db.execute("UPDATE rooms SET state=? WHERE id=?", (json.dumps(pack_scene(state), ensure_ascii=False), row["id"]))
 
@@ -124,6 +124,8 @@ class Store:
         result = []
         for row in rows:
             state = unpack_scene(json.loads(row["state"]))
+            from .scene_storage import for_actor
+            state = for_actor(state, row["member_id"])
             member = next((m for m in state["members"] if m["id"] == row["member_id"]), {})
             result.append({"room_id": state["id"], "room_name": state["name"], "player_name": member.get("name", ""), "status": state["status"], "mode": state["mode"], "member_id": row["member_id"], "host": state["host_id"] == row["member_id"], "party_size": len(state["members"]), "scene_title": state.get("scene", {}).get("title", ""), "invite_code": state["invite_code"]})
         return result
@@ -244,7 +246,13 @@ class Store:
 
     def _sync_heroes(self, db, state):
         for member in state["members"]:
-            member["character"]["world_minutes"] = max(member["character"].get("world_minutes",0),state.get("progression",{}).get("world_minutes",0))
+            context = state.get("member_contexts", {}).get(member["id"], {})
+            sid = context.get("scene_instance_id", "scene-main")
+            if sid == state.get("_scene_execution_view", "scene-main"):
+                clock = state.get("progression", {})
+            else:
+                clock = state.get("scene_instances", {}).get(sid, {}).get("local", {}).get("progression_clock", {})
+            member["character"]["world_minutes"] = max(member["character"].get("world_minutes",0),clock.get("world_minutes",0))
             hero_id = member.get("hero_id")
             if not hero_id:
                 continue

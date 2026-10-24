@@ -23,6 +23,7 @@ from .store import Store
 from . import rules_packages
 from .rules_context import active_store, using_version
 from . import session_scope
+from . import scene_storage
 from .heroes import create_hero_router
 from .studio import create_studio_router, compile_scenario
 from .accounts import create_accounts_router, require_user, authenticate_websocket
@@ -60,6 +61,8 @@ class Command(Input):
     command_id: str = Field(min_length=8, max_length=100)
     expected_version: int = Field(ge=0)
     expected_action_revision: int | None = Field(default=None, ge=0, strict=True)
+    expected_scene_instance_id: str | None = Field(default=None, max_length=100)
+    expected_membership_epoch: int | None = Field(default=None, ge=1, strict=True)
     type: Literal["start", "pause", "resume", "action", "chat", "narrate", "end_turn", "set_interaction", "scene_edit", "level_up", "manage_spells", "rest", "equip_skills", "director_propose", "director_resolve", "director_cancel", "configure_character", "prepare_level_up"]
     payload: dict = Field(default_factory=dict)
 
@@ -219,6 +222,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
         state["events"].append(item)
 
     def public(state: dict, viewer: str) -> dict:
+        state = scene_storage.for_actor(state, viewer)
         with active_store(store), using_version(state.get("rules_package_version", rules_packages.LEGACY_PACKAGE)):
             return _public(state, viewer)
 
@@ -251,6 +255,8 @@ def create_app(db_path: str | None = None) -> FastAPI:
             "engine_profile": state.get("engine_profile", rules_packages.ENGINE_PROFILE),
             "status": state["status"], "version": state["version"], "host_id": state["host_id"],
             "action_revision": state["action_revision"],
+            "scene_instance_id": state["_scene_execution_view"],
+            "membership_epoch": state["member_contexts"][viewer]["epoch"],
             "invite_code": state["invite_code"], "party": party, "scene": scene,
             "starting_level": state.get("starting_level", 1),
             "events": journal[-150:], "last_event_seq": journal[-1]["id"] if journal else 0,
@@ -286,7 +292,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
 
     async def add_dm_response(room_id: str, base_action_revision: int, request_id: str, kind: str,
                               scene: dict, mode: str, theme: str, intent: str, recent: list, actions: list,
-                              interaction_mode: str = "guided", audience_scope=None):
+                              interaction_mode: str = "guided", audience_scope=None, scene_instance_id=scene_storage.MAIN_SCENE):
         # Network calls intentionally occur outside the room lock and transaction.
         try:
             if kind == "scene" and interaction_mode == "assisted" and dm.configured:
@@ -302,7 +308,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
         except asyncio.CancelledError:
             # A disconnected/cancelled HTTP task must not permanently block narration.
             async with locks[room_id]:
-                current = get_state(room_id)
+                current = scene_storage.for_scene(get_state(room_id), scene_instance_id)
                 if current.get("dm_pending") == request_id:
                     previous = current["version"]
                     current["dm_pending"] = None
@@ -314,7 +320,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
         except Exception:
             text, source, suggestion, generated = "DM 暂时无法回应。已结算的行动保持有效，可以继续使用场景行动。", "fallback", None, None
         async with locks[room_id]:
-            current = get_state(room_id)
+            current = scene_storage.for_scene(get_state(room_id), scene_instance_id)
             if current.get("dm_pending") != request_id:
                 return
             previous = current["version"]
@@ -482,7 +488,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
     @app.get("/api/rooms/{room_id}/characters/{target_member_id}")
     async def character_detail(room_id: str, target_member_id: str, request: Request, authorization: str | None = Header(default=None)):
         viewer=auth(room_id,authorization,request)
-        state=get_state(room_id)
+        state=scene_storage.for_actor(get_state(room_id), viewer)
         target=next((m for m in state["members"] if m["id"]==target_member_id),None)
         if not target:
             raise HTTPException(404,"角色不存在")
@@ -513,6 +519,13 @@ def create_app(db_path: str | None = None) -> FastAPI:
         member_id = auth(room_id, authorization, request)
         throttle("command:" + member_id, 120)
         def matches_revision(state):
+            context = state["member_contexts"][member_id]
+            if body.expected_scene_instance_id is not None and context["scene_instance_id"] != body.expected_scene_instance_id:
+                return False
+            if body.expected_membership_epoch is not None and context["epoch"] != body.expected_membership_epoch:
+                return False
+            if len(state["scene_instances"]) > 1 and (body.expected_scene_instance_id is None or body.expected_membership_epoch is None):
+                return False
             if body.type == "chat":
                 return True
             if body.expected_action_revision is not None:
@@ -541,7 +554,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
             raise HTTPException(422, "命令参数无效") from exc
         generated_scenes = None
         # Generation may take seconds; do not hold a database transaction or room lock.
-        candidate = get_state(room_id)
+        candidate = scene_storage.for_actor(get_state(room_id), member_id)
         if store.prior_command(room_id,member_id,body.command_id) is not None:
             return {"room":public(candidate,member_id),"replayed":True}
         if not matches_revision(candidate):
@@ -579,7 +592,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
             if prior is not None:
                 # Current snapshot avoids regressing UI after a successfully retried write.
                 return {"room": public(get_state(room_id), member_id), "replayed": True}
-            state = get_state(room_id)
+            state = scene_storage.for_actor(get_state(room_id), member_id)
             if not matches_revision(state):
                 raise HTTPException(409, "房间已更新，请同步后重试")
             member = next(m for m in state["members"] if m["id"] == member_id)
@@ -776,7 +789,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
         await broadcast(room_id)
         if pending:
             await add_dm_response(room_id, state["action_revision"], request_id, pending, copy.deepcopy(state["scene"]),
-                                  state["mode"], state["theme"], payload.get("text", "请依据刚刚确认的结果描述后果，并建议下一步合法行动。"), session_scope.common_memory(state, [m["id"] for m in state["members"]])[-8:], actions_for(state, member_id), state.get("interaction_mode", "guided"), session_scope.audience_key(state))
+                                  state["mode"], state["theme"], payload.get("text", "请依据刚刚确认的结果描述后果，并建议下一步合法行动。"), session_scope.common_memory(state, [m["id"] for m in state["members"]])[-8:], actions_for(state, member_id), state.get("interaction_mode", "guided"), session_scope.audience_key(state), state["_scene_execution_view"])
             response = {"room": public(get_state(room_id), member_id)}
         auth(room_id, authorization, request)
         return response
@@ -833,10 +846,17 @@ def create_app(db_path: str | None = None) -> FastAPI:
         for row in db.execute("SELECT id,state FROM rooms").fetchall():
             from .scene_storage import unpack as unpack_scene, pack as pack_scene
             state = unpack_scene(json.loads(row["state"]))
-            if state.get("dm_pending"):
-                state["dm_pending"] = None
-                state["version"] += 1
-                event(state, "system", "服务已恢复；上一次未完成的 DM 请求已取消，可继续行动。")
+            changed = False
+            for sid in state["scene_instances"]:
+                current = scene_storage.for_scene(state, sid)
+                if not current.get("dm_pending"):
+                    continue
+                current["dm_pending"] = None
+                current["version"] += 1
+                event(current, "system", "服务已恢复；上一次未完成的 DM 请求已取消，可继续行动。")
+                state = unpack_scene(pack_scene(current))
+                changed = True
+            if changed:
                 db.execute("UPDATE rooms SET state=?,version=? WHERE id=?",
                            (json.dumps(pack_scene(state), ensure_ascii=False), state["version"], state["id"]))
 

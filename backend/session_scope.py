@@ -42,7 +42,7 @@ def stamp_event(state, event, *, audience=None, channel=None):
     if "_audience" in event:
         raise ValueError("Event audiences are immutable")
     scope = state["text_scope"]
-    channel = channel or MAIN_CHANNEL
+    channel = channel or state.get("_text_channel", MAIN_CHANNEL)
     if channel not in scope["channels"]:
         raise ValueError("Unknown text channel")
     active = {row["id"] for row in state.get("members", [])}
@@ -89,7 +89,8 @@ def common_rows(state, rows, recipients):
             for event in rows if recipients and all(visible_to(state, event, viewer) for viewer in recipients)]
 
 
-def remember(state, row, channel=MAIN_CHANNEL):
+def remember(state, row, channel=None):
+    channel = channel or state.get("_text_channel", MAIN_CHANNEL)
     row["_channel"] = channel
     row["_audience"] = {viewer: {"epoch": member["epoch"]}
                         for viewer, member in state["text_scope"]["members"].items() if member["channel"] == channel}
