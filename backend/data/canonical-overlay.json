@@ -24078,6 +24078,2066 @@
         "status": "reference_pending_execution",
         "runtime_verified": false
       }
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-acid-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-acid"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/potion-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-acid-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-acid"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-acid-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-acid"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "1 Acid 6 Necrotic",
+        "selection": {
+          "damage_type": "acid",
+          "d10_face": 1,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-necrotic-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-necrotic"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/potion-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-necrotic-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-necrotic"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-necrotic-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-necrotic"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "1 Acid 6 Necrotic",
+        "selection": {
+          "damage_type": "necrotic",
+          "d10_face": 6,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-cold-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-cold"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/potion-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-cold-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-cold"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-cold-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-cold"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "2 Cold 7 Poison",
+        "selection": {
+          "damage_type": "cold",
+          "d10_face": 2,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-poison-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-poison"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/potion-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-poison-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-poison"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-poison-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-poison"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "2 Cold 7 Poison",
+        "selection": {
+          "damage_type": "poison",
+          "d10_face": 7,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-fire-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-fire"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/potion-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-fire-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-fire"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-fire-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-fire"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "3 Fire 8 Psychic",
+        "selection": {
+          "damage_type": "fire",
+          "d10_face": 3,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-psychic-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-psychic"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/potion-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-psychic-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-psychic"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-psychic-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-psychic"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "3 Fire 8 Psychic",
+        "selection": {
+          "damage_type": "psychic",
+          "d10_face": 8,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-force-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-force"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/potion-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-force-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-force"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-force-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-force"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "4 Force 9 Radiant",
+        "selection": {
+          "damage_type": "force",
+          "d10_face": 4,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-radiant-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-radiant"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/potion-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-radiant-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-radiant"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-radiant-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-radiant"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "4 Force 9 Radiant",
+        "selection": {
+          "damage_type": "radiant",
+          "d10_face": 9,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-lightning-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-lightning"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/potion-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-lightning-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-lightning"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-lightning-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-lightning"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "5 Lightning 10 Thunder",
+        "selection": {
+          "damage_type": "lightning",
+          "d10_face": 5,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-thunder-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-thunder"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/potion-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-thunder-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-thunder"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-potion-of-resistance-thunder-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-resistance-thunder"
+      ],
+      "page": 235,
+      "heading": "Potion of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "5 Lightning 10 Thunder",
+        "selection": {
+          "damage_type": "thunder",
+          "d10_face": 10,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-acid-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-acid"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/ring-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-acid-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-acid"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-acid-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-acid"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "1 Acid Pearl",
+        "selection": {
+          "damage_type": "acid",
+          "d10_face": 1,
+          "gem": "Pearl"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-cold-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-cold"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/ring-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-cold-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-cold"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-cold-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-cold"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "2 Cold Tourmaline",
+        "selection": {
+          "damage_type": "cold",
+          "d10_face": 2,
+          "gem": "Tourmaline"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-fire-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-fire"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/ring-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-fire-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-fire"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-fire-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-fire"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "3 Fire Garnet",
+        "selection": {
+          "damage_type": "fire",
+          "d10_face": 3,
+          "gem": "Garnet"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-force-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-force"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/ring-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-force-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-force"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-force-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-force"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "4 Force Sapphire",
+        "selection": {
+          "damage_type": "force",
+          "d10_face": 4,
+          "gem": "Sapphire"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-lightning-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-lightning"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/ring-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-lightning-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-lightning"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-lightning-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-lightning"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "5 Lightning Citrine",
+        "selection": {
+          "damage_type": "lightning",
+          "d10_face": 5,
+          "gem": "Citrine"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-necrotic-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-necrotic"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/ring-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-necrotic-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-necrotic"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-necrotic-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-necrotic"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "6 Necrotic Jet",
+        "selection": {
+          "damage_type": "necrotic",
+          "d10_face": 6,
+          "gem": "Jet"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-poison-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-poison"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/ring-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-poison-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-poison"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-poison-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-poison"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "7 Poison Amethyst",
+        "selection": {
+          "damage_type": "poison",
+          "d10_face": 7,
+          "gem": "Amethyst"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-psychic-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-psychic"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/ring-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-psychic-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-psychic"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-psychic-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-psychic"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "8 Psychic Jade",
+        "selection": {
+          "damage_type": "psychic",
+          "d10_face": 8,
+          "gem": "Jade"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-radiant-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-radiant"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/ring-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-radiant-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-radiant"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-radiant-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-radiant"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "9 Radiant Topaz",
+        "selection": {
+          "damage_type": "radiant",
+          "d10_face": 9,
+          "gem": "Topaz"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-thunder-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-thunder"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/ring-of-resistance"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-thunder-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-thunder"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-ring-of-resistance-thunder-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "ring-of-resistance-thunder"
+      ],
+      "page": 237,
+      "heading": "Ring of Resistance",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "10 Thunder Spinel",
+        "selection": {
+          "damage_type": "thunder",
+          "d10_face": 10,
+          "gem": "Spinel"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-black-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-black"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/dragon-scale-mail"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-black-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-black"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-black-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-black"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Black Acid Gold Fire",
+        "selection": {
+          "dragon_type": "black",
+          "damage_type": "acid"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-gold-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-gold"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/dragon-scale-mail"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-gold-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-gold"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-gold-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-gold"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Black Acid Gold Fire",
+        "selection": {
+          "dragon_type": "gold",
+          "damage_type": "fire"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-blue-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-blue"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/dragon-scale-mail"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-blue-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-blue"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-blue-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-blue"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Blue Lightning Green Poison",
+        "selection": {
+          "dragon_type": "blue",
+          "damage_type": "lightning"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-green-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-green"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/dragon-scale-mail"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-green-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-green"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-green-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-green"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Blue Lightning Green Poison",
+        "selection": {
+          "dragon_type": "green",
+          "damage_type": "poison"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-brass-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-brass"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/dragon-scale-mail"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-brass-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-brass"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-brass-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-brass"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Brass Fire Red Fire",
+        "selection": {
+          "dragon_type": "brass",
+          "damage_type": "fire"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-red-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-red"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/dragon-scale-mail"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-red-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-red"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-red-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-red"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Brass Fire Red Fire",
+        "selection": {
+          "dragon_type": "red",
+          "damage_type": "fire"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-bronze-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-bronze"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/dragon-scale-mail"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-bronze-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-bronze"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-bronze-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-bronze"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Bronze Lightning Silver Cold",
+        "selection": {
+          "dragon_type": "bronze",
+          "damage_type": "lightning"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-silver-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-silver"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/dragon-scale-mail"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-silver-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-silver"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-silver-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-silver"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Bronze Lightning Silver Cold",
+        "selection": {
+          "dragon_type": "silver",
+          "damage_type": "cold"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-copper-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-copper"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/dragon-scale-mail"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-copper-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-copper"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-copper-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-copper"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Copper Acid White Cold",
+        "selection": {
+          "dragon_type": "copper",
+          "damage_type": "acid"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-white-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-white"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/dragon-scale-mail"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-white-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-white"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-dragon-scale-mail-white-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "dragon-scale-mail-white"
+      ],
+      "page": 219,
+      "heading": "Dragon Scale Mail",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Copper Acid White Cold",
+        "selection": {
+          "dragon_type": "white",
+          "damage_type": "cold"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-elemental-gem-air-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "elemental-gem-air"
+      ],
+      "page": 220,
+      "heading": "Elemental Gem",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/elemental-gem"
+    },
+    {
+      "id": "official-magic-affinity-elemental-gem-air-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "elemental-gem-air"
+      ],
+      "page": 220,
+      "heading": "Elemental Gem",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-elemental-gem-air-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "elemental-gem-air"
+      ],
+      "page": 220,
+      "heading": "Elemental Gem",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "elemental-gem",
+        "selection_row": "Blue sapphire Air elemental",
+        "selection": {
+          "gem": "Blue sapphire",
+          "elemental_type": "air"
+        },
+        "complete_parent_text": "Wondrous item, uncommon\nThis gem contains a mote of elemental energy. When\nyou use an action to break the gem, an elemental is\nsummoned as if you had cast the conjure elemental\nspell, and the gem’s magic is lost. The type of gem\ndetermines the elemental summoned by the spell.\nGem Summoned Elemental\nBlue sapphire Air elemental\nYellow diamond Earth elemental\nRed corundum Fire elemental\nEmerald Water elemental",
+        "printed_pages": [
+          220
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-elemental-gem-earth-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "elemental-gem-earth"
+      ],
+      "page": 220,
+      "heading": "Elemental Gem",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/elemental-gem"
+    },
+    {
+      "id": "official-magic-affinity-elemental-gem-earth-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "elemental-gem-earth"
+      ],
+      "page": 220,
+      "heading": "Elemental Gem",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-elemental-gem-earth-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "elemental-gem-earth"
+      ],
+      "page": 220,
+      "heading": "Elemental Gem",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "elemental-gem",
+        "selection_row": "Yellow diamond Earth elemental",
+        "selection": {
+          "gem": "Yellow diamond",
+          "elemental_type": "earth"
+        },
+        "complete_parent_text": "Wondrous item, uncommon\nThis gem contains a mote of elemental energy. When\nyou use an action to break the gem, an elemental is\nsummoned as if you had cast the conjure elemental\nspell, and the gem’s magic is lost. The type of gem\ndetermines the elemental summoned by the spell.\nGem Summoned Elemental\nBlue sapphire Air elemental\nYellow diamond Earth elemental\nRed corundum Fire elemental\nEmerald Water elemental",
+        "printed_pages": [
+          220
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-elemental-gem-fire-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "elemental-gem-fire"
+      ],
+      "page": 220,
+      "heading": "Elemental Gem",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/elemental-gem"
+    },
+    {
+      "id": "official-magic-affinity-elemental-gem-fire-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "elemental-gem-fire"
+      ],
+      "page": 220,
+      "heading": "Elemental Gem",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-elemental-gem-fire-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "elemental-gem-fire"
+      ],
+      "page": 220,
+      "heading": "Elemental Gem",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "elemental-gem",
+        "selection_row": "Red corundum Fire elemental",
+        "selection": {
+          "gem": "Red corundum",
+          "elemental_type": "fire"
+        },
+        "complete_parent_text": "Wondrous item, uncommon\nThis gem contains a mote of elemental energy. When\nyou use an action to break the gem, an elemental is\nsummoned as if you had cast the conjure elemental\nspell, and the gem’s magic is lost. The type of gem\ndetermines the elemental summoned by the spell.\nGem Summoned Elemental\nBlue sapphire Air elemental\nYellow diamond Earth elemental\nRed corundum Fire elemental\nEmerald Water elemental",
+        "printed_pages": [
+          220
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-affinity-elemental-gem-water-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "elemental-gem-water"
+      ],
+      "page": 220,
+      "heading": "Elemental Gem",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/elemental-gem"
+    },
+    {
+      "id": "official-magic-affinity-elemental-gem-water-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "elemental-gem-water"
+      ],
+      "page": 220,
+      "heading": "Elemental Gem",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-affinity-elemental-gem-water-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "elemental-gem-water"
+      ],
+      "page": 220,
+      "heading": "Elemental Gem",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "elemental-gem",
+        "selection_row": "Emerald Water elemental",
+        "selection": {
+          "gem": "Emerald",
+          "elemental_type": "water"
+        },
+        "complete_parent_text": "Wondrous item, uncommon\nThis gem contains a mote of elemental energy. When\nyou use an action to break the gem, an elemental is\nsummoned as if you had cast the conjure elemental\nspell, and the gem’s magic is lost. The type of gem\ndetermines the elemental summoned by the spell.\nGem Summoned Elemental\nBlue sapphire Air elemental\nYellow diamond Earth elemental\nRed corundum Fire elemental\nEmerald Water elemental",
+        "printed_pages": [
+          220
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
     }
   ],
   "record_additions": [

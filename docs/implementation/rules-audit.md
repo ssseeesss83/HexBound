@@ -126,3 +126,5 @@ tools/audit_magic_bonus_variants.py核五类15条+1/+2/+3变体，先从来源he
 tools/audit_magic_consumable_variants.py独立消费四药水、十卷轴官方选择行，校验14变体112字段。卷轴child原uninterrupted条件反转与缺抄录段已更正，保留职业表、材料成分豁免、正常时间、被打断不损失、高阶检定失败消失、Wizard Arcana检定及无论成功失败销毁。药水恢复量与正文无差异；选择参数保留为reference，不宣称已接施法、治疗或消耗执行。
 
 tools/audit_magic_giant_variants.py按两张原表核十二腰带 / 药水变体，Stone/Frost共享行双映射、不同稀有度、完整力量不降低条件与药水1小时均保留。36缺派生说明 / 引用补齐、两处多余冠词清理；数值无需改动。未接Strength或计时执行。
+
+tools/audit_magic_affinity_variants.py核四表34变体272字段，完整消费双列、d10面、宝石与元素类型；源绑定保留动作、佩戴 / 同调、持续 / 恢复、感应范围及消耗条件，既有数值 / 正文无差异。102缺派生注释及完整来源引用补齐，不升级效果执行状态。

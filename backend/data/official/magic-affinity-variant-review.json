@@ -1,0 +1,4323 @@
+{
+  "profile": "official-magic-affinity-variants-v1",
+  "official_families": 4,
+  "normalized_variants": 34,
+  "checks": [
+    {
+      "record": "potion-of-resistance-acid",
+      "field": "name",
+      "expected": "Potion of Acid Resistance",
+      "actual": "Potion of Acid Resistance",
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-acid",
+      "field": "equipment_category",
+      "expected": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "actual": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-acid",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-acid",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-acid",
+      "field": "desc",
+      "expected": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to acid damage for 1 hour."
+      ],
+      "actual": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to acid damage for 1 hour."
+      ],
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-acid",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-acid",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-acid",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "1 Acid 6 Necrotic",
+        "selection": {
+          "damage_type": "acid",
+          "d10_face": 1,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-necrotic",
+      "field": "name",
+      "expected": "Potion of Necrotic Resistance",
+      "actual": "Potion of Necrotic Resistance",
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-necrotic",
+      "field": "equipment_category",
+      "expected": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "actual": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-necrotic",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-necrotic",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-necrotic",
+      "field": "desc",
+      "expected": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to necrotic damage for 1 hour."
+      ],
+      "actual": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to necrotic damage for 1 hour."
+      ],
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-necrotic",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-necrotic",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-necrotic",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "1 Acid 6 Necrotic",
+        "selection": {
+          "damage_type": "necrotic",
+          "d10_face": 6,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-cold",
+      "field": "name",
+      "expected": "Potion of Cold Resistance",
+      "actual": "Potion of Cold Resistance",
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-cold",
+      "field": "equipment_category",
+      "expected": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "actual": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-cold",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-cold",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-cold",
+      "field": "desc",
+      "expected": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to cold damage for 1 hour."
+      ],
+      "actual": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to cold damage for 1 hour."
+      ],
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-cold",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-cold",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-cold",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "2 Cold 7 Poison",
+        "selection": {
+          "damage_type": "cold",
+          "d10_face": 2,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-poison",
+      "field": "name",
+      "expected": "Potion of Poison Resistance",
+      "actual": "Potion of Poison Resistance",
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-poison",
+      "field": "equipment_category",
+      "expected": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "actual": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-poison",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-poison",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-poison",
+      "field": "desc",
+      "expected": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to poison damage for 1 hour."
+      ],
+      "actual": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to poison damage for 1 hour."
+      ],
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-poison",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-poison",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-poison",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "2 Cold 7 Poison",
+        "selection": {
+          "damage_type": "poison",
+          "d10_face": 7,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-fire",
+      "field": "name",
+      "expected": "Potion of Fire Resistance",
+      "actual": "Potion of Fire Resistance",
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-fire",
+      "field": "equipment_category",
+      "expected": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "actual": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-fire",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-fire",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-fire",
+      "field": "desc",
+      "expected": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to fire damage for 1 hour."
+      ],
+      "actual": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to fire damage for 1 hour."
+      ],
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-fire",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-fire",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-fire",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "3 Fire 8 Psychic",
+        "selection": {
+          "damage_type": "fire",
+          "d10_face": 3,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-psychic",
+      "field": "name",
+      "expected": "Potion of Psychic Resistance",
+      "actual": "Potion of Psychic Resistance",
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-psychic",
+      "field": "equipment_category",
+      "expected": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "actual": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-psychic",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-psychic",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-psychic",
+      "field": "desc",
+      "expected": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to psychic damage for 1 hour."
+      ],
+      "actual": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to psychic damage for 1 hour."
+      ],
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-psychic",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-psychic",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-psychic",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "3 Fire 8 Psychic",
+        "selection": {
+          "damage_type": "psychic",
+          "d10_face": 8,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-force",
+      "field": "name",
+      "expected": "Potion of Force Resistance",
+      "actual": "Potion of Force Resistance",
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-force",
+      "field": "equipment_category",
+      "expected": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "actual": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-force",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-force",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-force",
+      "field": "desc",
+      "expected": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to force damage for 1 hour."
+      ],
+      "actual": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to force damage for 1 hour."
+      ],
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-force",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-force",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-force",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "4 Force 9 Radiant",
+        "selection": {
+          "damage_type": "force",
+          "d10_face": 4,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-radiant",
+      "field": "name",
+      "expected": "Potion of Radiant Resistance",
+      "actual": "Potion of Radiant Resistance",
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-radiant",
+      "field": "equipment_category",
+      "expected": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "actual": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-radiant",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-radiant",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-radiant",
+      "field": "desc",
+      "expected": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to radiant damage for 1 hour."
+      ],
+      "actual": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to radiant damage for 1 hour."
+      ],
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-radiant",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-radiant",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-radiant",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "4 Force 9 Radiant",
+        "selection": {
+          "damage_type": "radiant",
+          "d10_face": 9,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-lightning",
+      "field": "name",
+      "expected": "Potion of Lightning Resistance",
+      "actual": "Potion of Lightning Resistance",
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-lightning",
+      "field": "equipment_category",
+      "expected": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "actual": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-lightning",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-lightning",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-lightning",
+      "field": "desc",
+      "expected": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to lightning damage for 1 hour."
+      ],
+      "actual": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to lightning damage for 1 hour."
+      ],
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-lightning",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-lightning",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-lightning",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "5 Lightning 10 Thunder",
+        "selection": {
+          "damage_type": "lightning",
+          "d10_face": 5,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-thunder",
+      "field": "name",
+      "expected": "Potion of Thunder Resistance",
+      "actual": "Potion of Thunder Resistance",
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-thunder",
+      "field": "equipment_category",
+      "expected": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "actual": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-thunder",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-thunder",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-thunder",
+      "field": "desc",
+      "expected": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to thunder damage for 1 hour."
+      ],
+      "actual": [
+        "Potion, uncommon",
+        "When you drink this potion, you gain resistance to thunder damage for 1 hour."
+      ],
+      "match": true
+    },
+    {
+      "record": "potion-of-resistance-thunder",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-thunder",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-thunder",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "5 Lightning 10 Thunder",
+        "selection": {
+          "damage_type": "thunder",
+          "d10_face": 10,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-acid",
+      "field": "name",
+      "expected": "Ring of Acid Resistance",
+      "actual": "Ring of Acid Resistance",
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-acid",
+      "field": "equipment_category",
+      "expected": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "actual": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-acid",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-acid",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-acid",
+      "field": "desc",
+      "expected": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to acid damage while wearing this pearl ring."
+      ],
+      "actual": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to acid damage while wearing this pearl ring."
+      ],
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-acid",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-acid",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-acid",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "1 Acid Pearl",
+        "selection": {
+          "damage_type": "acid",
+          "d10_face": 1,
+          "gem": "Pearl"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-cold",
+      "field": "name",
+      "expected": "Ring of Cold Resistance",
+      "actual": "Ring of Cold Resistance",
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-cold",
+      "field": "equipment_category",
+      "expected": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "actual": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-cold",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-cold",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-cold",
+      "field": "desc",
+      "expected": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to cold damage while wearing this tourmaline ring."
+      ],
+      "actual": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to cold damage while wearing this tourmaline ring."
+      ],
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-cold",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-cold",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-cold",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "2 Cold Tourmaline",
+        "selection": {
+          "damage_type": "cold",
+          "d10_face": 2,
+          "gem": "Tourmaline"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-fire",
+      "field": "name",
+      "expected": "Ring of Fire Resistance",
+      "actual": "Ring of Fire Resistance",
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-fire",
+      "field": "equipment_category",
+      "expected": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "actual": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-fire",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-fire",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-fire",
+      "field": "desc",
+      "expected": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to fire damage while wearing this garnet ring."
+      ],
+      "actual": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to fire damage while wearing this garnet ring."
+      ],
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-fire",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-fire",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-fire",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "3 Fire Garnet",
+        "selection": {
+          "damage_type": "fire",
+          "d10_face": 3,
+          "gem": "Garnet"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-force",
+      "field": "name",
+      "expected": "Ring of Force Resistance",
+      "actual": "Ring of Force Resistance",
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-force",
+      "field": "equipment_category",
+      "expected": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "actual": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-force",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-force",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-force",
+      "field": "desc",
+      "expected": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to force damage while wearing this sapphire ring."
+      ],
+      "actual": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to force damage while wearing this sapphire ring."
+      ],
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-force",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-force",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-force",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "4 Force Sapphire",
+        "selection": {
+          "damage_type": "force",
+          "d10_face": 4,
+          "gem": "Sapphire"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-lightning",
+      "field": "name",
+      "expected": "Ring of Lightning Resistance",
+      "actual": "Ring of Lightning Resistance",
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-lightning",
+      "field": "equipment_category",
+      "expected": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "actual": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-lightning",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-lightning",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-lightning",
+      "field": "desc",
+      "expected": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to lightning damage while wearing this citrine ring."
+      ],
+      "actual": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to lightning damage while wearing this citrine ring."
+      ],
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-lightning",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-lightning",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-lightning",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "5 Lightning Citrine",
+        "selection": {
+          "damage_type": "lightning",
+          "d10_face": 5,
+          "gem": "Citrine"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-necrotic",
+      "field": "name",
+      "expected": "Ring of Necrotic Resistance",
+      "actual": "Ring of Necrotic Resistance",
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-necrotic",
+      "field": "equipment_category",
+      "expected": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "actual": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-necrotic",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-necrotic",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-necrotic",
+      "field": "desc",
+      "expected": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to necrotic damage while wearing this jet ring."
+      ],
+      "actual": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to necrotic damage while wearing this jet ring."
+      ],
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-necrotic",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-necrotic",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-necrotic",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "6 Necrotic Jet",
+        "selection": {
+          "damage_type": "necrotic",
+          "d10_face": 6,
+          "gem": "Jet"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-poison",
+      "field": "name",
+      "expected": "Ring of Poison Resistance",
+      "actual": "Ring of Poison Resistance",
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-poison",
+      "field": "equipment_category",
+      "expected": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "actual": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-poison",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-poison",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-poison",
+      "field": "desc",
+      "expected": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to poison damage while wearing this amethyst ring."
+      ],
+      "actual": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to poison damage while wearing this amethyst ring."
+      ],
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-poison",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-poison",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-poison",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "7 Poison Amethyst",
+        "selection": {
+          "damage_type": "poison",
+          "d10_face": 7,
+          "gem": "Amethyst"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-psychic",
+      "field": "name",
+      "expected": "Ring of Psychic Resistance",
+      "actual": "Ring of Psychic Resistance",
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-psychic",
+      "field": "equipment_category",
+      "expected": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "actual": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-psychic",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-psychic",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-psychic",
+      "field": "desc",
+      "expected": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to psychic damage while wearing this jade ring."
+      ],
+      "actual": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to psychic damage while wearing this jade ring."
+      ],
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-psychic",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-psychic",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-psychic",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "8 Psychic Jade",
+        "selection": {
+          "damage_type": "psychic",
+          "d10_face": 8,
+          "gem": "Jade"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-radiant",
+      "field": "name",
+      "expected": "Ring of Radiant Resistance",
+      "actual": "Ring of Radiant Resistance",
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-radiant",
+      "field": "equipment_category",
+      "expected": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "actual": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-radiant",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-radiant",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-radiant",
+      "field": "desc",
+      "expected": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to radiant damage while wearing this topaz ring."
+      ],
+      "actual": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to radiant damage while wearing this topaz ring."
+      ],
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-radiant",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-radiant",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-radiant",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "9 Radiant Topaz",
+        "selection": {
+          "damage_type": "radiant",
+          "d10_face": 9,
+          "gem": "Topaz"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-thunder",
+      "field": "name",
+      "expected": "Ring of Thunder Resistance",
+      "actual": "Ring of Thunder Resistance",
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-thunder",
+      "field": "equipment_category",
+      "expected": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "actual": {
+        "index": "ring",
+        "name": "Ring",
+        "url": "/api/2014/equipment-categories/ring"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-thunder",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-thunder",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-thunder",
+      "field": "desc",
+      "expected": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to thunder damage while wearing this spinel ring."
+      ],
+      "actual": [
+        "Ring, rare (requires attunement)",
+        "You have resistance to thunder damage while wearing this spinel ring."
+      ],
+      "match": true
+    },
+    {
+      "record": "ring-of-resistance-thunder",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-thunder",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-thunder",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "10 Thunder Spinel",
+        "selection": {
+          "damage_type": "thunder",
+          "d10_face": 10,
+          "gem": "Spinel"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-black",
+      "field": "name",
+      "expected": "Black Dragon Scale Mail",
+      "actual": "Black Dragon Scale Mail",
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-black",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-black",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-black",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-black",
+      "field": "desc",
+      "expected": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a black dragon. Sometimes dragons collect their cast-­-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued. While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to acid damage. Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest black dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "actual": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a black dragon. Sometimes dragons collect their cast-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued.",
+        "While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to acid damage.",
+        "Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest black dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-black",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-black",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-black",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Black Acid Gold Fire",
+        "selection": {
+          "dragon_type": "black",
+          "damage_type": "acid"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-gold",
+      "field": "name",
+      "expected": "Gold Dragon Scale Mail",
+      "actual": "Gold Dragon Scale Mail",
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-gold",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-gold",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-gold",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-gold",
+      "field": "desc",
+      "expected": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a gold dragon. Sometimes dragons collect their cast-­-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued. While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to fire damage. Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest gold dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "actual": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a gold dragon. Sometimes dragons collect their cast-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued.",
+        "While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to fire damage.",
+        "Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest gold dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-gold",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-gold",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-gold",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Black Acid Gold Fire",
+        "selection": {
+          "dragon_type": "gold",
+          "damage_type": "fire"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-blue",
+      "field": "name",
+      "expected": "Blue Dragon Scale Mail",
+      "actual": "Blue Dragon Scale Mail",
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-blue",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-blue",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-blue",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-blue",
+      "field": "desc",
+      "expected": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a blue dragon. Sometimes dragons collect their cast-­-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued. While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to lightning damage. Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest blue dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "actual": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a blue dragon. Sometimes dragons collect their cast-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued.",
+        "While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to lightning damage.",
+        "Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest blue dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-blue",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-blue",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-blue",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Blue Lightning Green Poison",
+        "selection": {
+          "dragon_type": "blue",
+          "damage_type": "lightning"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-green",
+      "field": "name",
+      "expected": "Green Dragon Scale Mail",
+      "actual": "Green Dragon Scale Mail",
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-green",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-green",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-green",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-green",
+      "field": "desc",
+      "expected": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a green dragon. Sometimes dragons collect their cast-­-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued. While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to poison damage. Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest green dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "actual": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a green dragon. Sometimes dragons collect their cast-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued.",
+        "While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to poison damage.",
+        "Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest green dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-green",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-green",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-green",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Blue Lightning Green Poison",
+        "selection": {
+          "dragon_type": "green",
+          "damage_type": "poison"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-brass",
+      "field": "name",
+      "expected": "Brass Dragon Scale Mail",
+      "actual": "Brass Dragon Scale Mail",
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-brass",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-brass",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-brass",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-brass",
+      "field": "desc",
+      "expected": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a brass dragon. Sometimes dragons collect their cast-­-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued. While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to fire damage. Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest brass dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "actual": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a brass dragon. Sometimes dragons collect their cast-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued.",
+        "While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to fire damage.",
+        "Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest brass dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-brass",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-brass",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-brass",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Brass Fire Red Fire",
+        "selection": {
+          "dragon_type": "brass",
+          "damage_type": "fire"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-red",
+      "field": "name",
+      "expected": "Red Dragon Scale Mail",
+      "actual": "Red Dragon Scale Mail",
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-red",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-red",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-red",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-red",
+      "field": "desc",
+      "expected": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a red dragon. Sometimes dragons collect their cast-­-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued. While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to fire damage. Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest red dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "actual": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a red dragon. Sometimes dragons collect their cast-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued.",
+        "While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to fire damage.",
+        "Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest red dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-red",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-red",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-red",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Brass Fire Red Fire",
+        "selection": {
+          "dragon_type": "red",
+          "damage_type": "fire"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-bronze",
+      "field": "name",
+      "expected": "Bronze Dragon Scale Mail",
+      "actual": "Bronze Dragon Scale Mail",
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-bronze",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-bronze",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-bronze",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-bronze",
+      "field": "desc",
+      "expected": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a bronze dragon. Sometimes dragons collect their cast-­-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued. While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to lightning damage. Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest bronze dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "actual": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a bronze dragon. Sometimes dragons collect their cast-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued.",
+        "While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to lightning damage.",
+        "Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest bronze dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-bronze",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-bronze",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-bronze",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Bronze Lightning Silver Cold",
+        "selection": {
+          "dragon_type": "bronze",
+          "damage_type": "lightning"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-silver",
+      "field": "name",
+      "expected": "Silver Dragon Scale Mail",
+      "actual": "Silver Dragon Scale Mail",
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-silver",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-silver",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-silver",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-silver",
+      "field": "desc",
+      "expected": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a silver dragon. Sometimes dragons collect their cast-­-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued. While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to cold damage. Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest silver dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "actual": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a silver dragon. Sometimes dragons collect their cast-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued.",
+        "While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to cold damage.",
+        "Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest silver dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-silver",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-silver",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-silver",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Bronze Lightning Silver Cold",
+        "selection": {
+          "dragon_type": "silver",
+          "damage_type": "cold"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-copper",
+      "field": "name",
+      "expected": "Copper Dragon Scale Mail",
+      "actual": "Copper Dragon Scale Mail",
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-copper",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-copper",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-copper",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-copper",
+      "field": "desc",
+      "expected": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a copper dragon. Sometimes dragons collect their cast-­-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued. While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to acid damage. Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest copper dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "actual": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a copper dragon. Sometimes dragons collect their cast-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued.",
+        "While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to acid damage.",
+        "Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest copper dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-copper",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-copper",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-copper",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Copper Acid White Cold",
+        "selection": {
+          "dragon_type": "copper",
+          "damage_type": "acid"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-white",
+      "field": "name",
+      "expected": "White Dragon Scale Mail",
+      "actual": "White Dragon Scale Mail",
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-white",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-white",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-white",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-white",
+      "field": "desc",
+      "expected": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a white dragon. Sometimes dragons collect their cast-­-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued. While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to cold damage. Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest white dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "actual": [
+        "Armor (scale mail), very rare (requires attunement)",
+        "Dragon scale mail is made of the scales of a white dragon. Sometimes dragons collect their cast-off scales and gift them to humanoids. Other times, hunters carefully skin and preserve the hide of a dead dragon. In either case, dragon scale mail is highly valued.",
+        "While wearing this armor, you gain a +1 bonus to AC, you have advantage on saving throws against the Frightful Presence and breath weapons of dragons, and you have resistance to cold damage.",
+        "Additionally, you can focus your senses as an action to magically discern the distance and direction to the closest white dragon within 30 miles of you. This special action can't be used again until the next dawn."
+      ],
+      "match": true
+    },
+    {
+      "record": "dragon-scale-mail-white",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-white",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-white",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Copper Acid White Cold",
+        "selection": {
+          "dragon_type": "white",
+          "damage_type": "cold"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-air",
+      "field": "name",
+      "expected": "Air Elemental Gem",
+      "actual": "Air Elemental Gem",
+      "match": true
+    },
+    {
+      "record": "elemental-gem-air",
+      "field": "equipment_category",
+      "expected": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "actual": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "match": true
+    },
+    {
+      "record": "elemental-gem-air",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "elemental-gem-air",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "elemental-gem-air",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, uncommon",
+        "This blue sapphire contains a mote of elemental energy. When you use an action to break the gem, an air elemental is summoned as if you had cast the conjure elemental spell, and the gem's magic is lost."
+      ],
+      "actual": [
+        "Wondrous item, uncommon",
+        "This blue sapphire contains a mote of elemental energy. When you use an action to break the gem, an air elemental is summoned as if you had cast the conjure elemental spell, and the gem's magic is lost."
+      ],
+      "match": true
+    },
+    {
+      "record": "elemental-gem-air",
+      "field": "derived_from",
+      "expected": "magic-items/elemental-gem",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-air",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-air",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "elemental-gem",
+        "selection_row": "Blue sapphire Air elemental",
+        "selection": {
+          "gem": "Blue sapphire",
+          "elemental_type": "air"
+        },
+        "complete_parent_text": "Wondrous item, uncommon\nThis gem contains a mote of elemental energy. When\nyou use an action to break the gem, an elemental is\nsummoned as if you had cast the conjure elemental\nspell, and the gem’s magic is lost. The type of gem\ndetermines the elemental summoned by the spell.\nGem Summoned Elemental\nBlue sapphire Air elemental\nYellow diamond Earth elemental\nRed corundum Fire elemental\nEmerald Water elemental",
+        "printed_pages": [
+          220
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-earth",
+      "field": "name",
+      "expected": "Earth Elemental Gem",
+      "actual": "Earth Elemental Gem",
+      "match": true
+    },
+    {
+      "record": "elemental-gem-earth",
+      "field": "equipment_category",
+      "expected": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "actual": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "match": true
+    },
+    {
+      "record": "elemental-gem-earth",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "elemental-gem-earth",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "elemental-gem-earth",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, uncommon",
+        "This yellow diamond contains a mote of elemental energy. When you use an action to break the gem, an earth elemental is summoned as if you had cast the conjure elemental spell, and the gem's magic is lost."
+      ],
+      "actual": [
+        "Wondrous item, uncommon",
+        "This yellow diamond contains a mote of elemental energy. When you use an action to break the gem, an earth elemental is summoned as if you had cast the conjure elemental spell, and the gem's magic is lost."
+      ],
+      "match": true
+    },
+    {
+      "record": "elemental-gem-earth",
+      "field": "derived_from",
+      "expected": "magic-items/elemental-gem",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-earth",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-earth",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "elemental-gem",
+        "selection_row": "Yellow diamond Earth elemental",
+        "selection": {
+          "gem": "Yellow diamond",
+          "elemental_type": "earth"
+        },
+        "complete_parent_text": "Wondrous item, uncommon\nThis gem contains a mote of elemental energy. When\nyou use an action to break the gem, an elemental is\nsummoned as if you had cast the conjure elemental\nspell, and the gem’s magic is lost. The type of gem\ndetermines the elemental summoned by the spell.\nGem Summoned Elemental\nBlue sapphire Air elemental\nYellow diamond Earth elemental\nRed corundum Fire elemental\nEmerald Water elemental",
+        "printed_pages": [
+          220
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-fire",
+      "field": "name",
+      "expected": "Fire Elemental Gem",
+      "actual": "Fire Elemental Gem",
+      "match": true
+    },
+    {
+      "record": "elemental-gem-fire",
+      "field": "equipment_category",
+      "expected": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "actual": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "match": true
+    },
+    {
+      "record": "elemental-gem-fire",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "elemental-gem-fire",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "elemental-gem-fire",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, uncommon",
+        "This red corundum contains a mote of elemental energy. When you use an action to break the gem, a fire elemental is summoned as if you had cast the conjure elemental spell, and the gem's magic is lost."
+      ],
+      "actual": [
+        "Wondrous item, uncommon",
+        "This red corundum contains a mote of elemental energy. When you use an action to break the gem, a fire elemental is summoned as if you had cast the conjure elemental spell, and the gem's magic is lost."
+      ],
+      "match": true
+    },
+    {
+      "record": "elemental-gem-fire",
+      "field": "derived_from",
+      "expected": "magic-items/elemental-gem",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-fire",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-fire",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "elemental-gem",
+        "selection_row": "Red corundum Fire elemental",
+        "selection": {
+          "gem": "Red corundum",
+          "elemental_type": "fire"
+        },
+        "complete_parent_text": "Wondrous item, uncommon\nThis gem contains a mote of elemental energy. When\nyou use an action to break the gem, an elemental is\nsummoned as if you had cast the conjure elemental\nspell, and the gem’s magic is lost. The type of gem\ndetermines the elemental summoned by the spell.\nGem Summoned Elemental\nBlue sapphire Air elemental\nYellow diamond Earth elemental\nRed corundum Fire elemental\nEmerald Water elemental",
+        "printed_pages": [
+          220
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-water",
+      "field": "name",
+      "expected": "Water Elemental Gem",
+      "actual": "Water Elemental Gem",
+      "match": true
+    },
+    {
+      "record": "elemental-gem-water",
+      "field": "equipment_category",
+      "expected": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "actual": {
+        "index": "wondrous-items",
+        "name": "Wondrous Items",
+        "url": "/api/2014/equipment-categories/wondrous-items"
+      },
+      "match": true
+    },
+    {
+      "record": "elemental-gem-water",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "elemental-gem-water",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "elemental-gem-water",
+      "field": "desc",
+      "expected": [
+        "Wondrous item, uncommon",
+        "This emerald contains a mote of elemental energy. When you use an action to break the gem, a water elemental is summoned as if you had cast the conjure elemental spell, and the gem's magic is lost."
+      ],
+      "actual": [
+        "Wondrous item, uncommon",
+        "This emerald contains a mote of elemental energy. When you use an action to break the gem, a water elemental is summoned as if you had cast the conjure elemental spell, and the gem's magic is lost."
+      ],
+      "match": true
+    },
+    {
+      "record": "elemental-gem-water",
+      "field": "derived_from",
+      "expected": "magic-items/elemental-gem",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-water",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-water",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "elemental-gem",
+        "selection_row": "Emerald Water elemental",
+        "selection": {
+          "gem": "Emerald",
+          "elemental_type": "water"
+        },
+        "complete_parent_text": "Wondrous item, uncommon\nThis gem contains a mote of elemental energy. When\nyou use an action to break the gem, an elemental is\nsummoned as if you had cast the conjure elemental\nspell, and the gem’s magic is lost. The type of gem\ndetermines the elemental summoned by the spell.\nGem Summoned Elemental\nBlue sapphire Air elemental\nYellow diamond Earth elemental\nRed corundum Fire elemental\nEmerald Water elemental",
+        "printed_pages": [
+          220
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    }
+  ],
+  "differences": [
+    {
+      "record": "potion-of-resistance-acid",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-acid",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-acid",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "1 Acid 6 Necrotic",
+        "selection": {
+          "damage_type": "acid",
+          "d10_face": 1,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-necrotic",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-necrotic",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-necrotic",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "1 Acid 6 Necrotic",
+        "selection": {
+          "damage_type": "necrotic",
+          "d10_face": 6,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-cold",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-cold",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-cold",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "2 Cold 7 Poison",
+        "selection": {
+          "damage_type": "cold",
+          "d10_face": 2,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-poison",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-poison",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-poison",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "2 Cold 7 Poison",
+        "selection": {
+          "damage_type": "poison",
+          "d10_face": 7,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-fire",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-fire",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-fire",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "3 Fire 8 Psychic",
+        "selection": {
+          "damage_type": "fire",
+          "d10_face": 3,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-psychic",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-psychic",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-psychic",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "3 Fire 8 Psychic",
+        "selection": {
+          "damage_type": "psychic",
+          "d10_face": 8,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-force",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-force",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-force",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "4 Force 9 Radiant",
+        "selection": {
+          "damage_type": "force",
+          "d10_face": 4,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-radiant",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-radiant",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-radiant",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "4 Force 9 Radiant",
+        "selection": {
+          "damage_type": "radiant",
+          "d10_face": 9,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-lightning",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-lightning",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-lightning",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "5 Lightning 10 Thunder",
+        "selection": {
+          "damage_type": "lightning",
+          "d10_face": 5,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-thunder",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-thunder",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-resistance-thunder",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-resistance",
+        "selection_row": "5 Lightning 10 Thunder",
+        "selection": {
+          "damage_type": "thunder",
+          "d10_face": 10,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, uncommon\nWhen you drink this potion, you gain resistance to\none type of damage for 1 hour. The GM chooses the\ntype or determines it randomly from the options\nbelow.\nd10 Damage Type d10 Damage Type\n1 Acid 6 Necrotic\n2 Cold 7 Poison\n3 Fire 8 Psychic\n4 Force 9 Radiant\n5 Lightning 10 Thunder",
+        "printed_pages": [
+          235
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-acid",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-acid",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-acid",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "1 Acid Pearl",
+        "selection": {
+          "damage_type": "acid",
+          "d10_face": 1,
+          "gem": "Pearl"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-cold",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-cold",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-cold",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "2 Cold Tourmaline",
+        "selection": {
+          "damage_type": "cold",
+          "d10_face": 2,
+          "gem": "Tourmaline"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-fire",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-fire",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-fire",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "3 Fire Garnet",
+        "selection": {
+          "damage_type": "fire",
+          "d10_face": 3,
+          "gem": "Garnet"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-force",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-force",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-force",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "4 Force Sapphire",
+        "selection": {
+          "damage_type": "force",
+          "d10_face": 4,
+          "gem": "Sapphire"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-lightning",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-lightning",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-lightning",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "5 Lightning Citrine",
+        "selection": {
+          "damage_type": "lightning",
+          "d10_face": 5,
+          "gem": "Citrine"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-necrotic",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-necrotic",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-necrotic",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "6 Necrotic Jet",
+        "selection": {
+          "damage_type": "necrotic",
+          "d10_face": 6,
+          "gem": "Jet"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-poison",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-poison",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-poison",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "7 Poison Amethyst",
+        "selection": {
+          "damage_type": "poison",
+          "d10_face": 7,
+          "gem": "Amethyst"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-psychic",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-psychic",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-psychic",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "8 Psychic Jade",
+        "selection": {
+          "damage_type": "psychic",
+          "d10_face": 8,
+          "gem": "Jade"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-radiant",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-radiant",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-radiant",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "9 Radiant Topaz",
+        "selection": {
+          "damage_type": "radiant",
+          "d10_face": 9,
+          "gem": "Topaz"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-thunder",
+      "field": "derived_from",
+      "expected": "magic-items/ring-of-resistance",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-thunder",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ring-of-resistance-thunder",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ring-of-resistance",
+        "selection_row": "10 Thunder Spinel",
+        "selection": {
+          "damage_type": "thunder",
+          "d10_face": 10,
+          "gem": "Spinel"
+        },
+        "complete_parent_text": "Ring, rare (requires attunement)\nYou have resistance to one damage type while\nwearing this ring. The gem in the ring indicates the\ntype, which the GM chooses or determines randomly.\nd10 Damage Type Gem\n1 Acid Pearl\n2 Cold Tourmaline\n3 Fire Garnet\n4 Force Sapphire\n5 Lightning Citrine\n6 Necrotic Jet\n7 Poison Amethyst\n8 Psychic Jade\n9 Radiant Topaz\n10 Thunder Spinel",
+        "printed_pages": [
+          237
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-black",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-black",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-black",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Black Acid Gold Fire",
+        "selection": {
+          "dragon_type": "black",
+          "damage_type": "acid"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-gold",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-gold",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-gold",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Black Acid Gold Fire",
+        "selection": {
+          "dragon_type": "gold",
+          "damage_type": "fire"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-blue",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-blue",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-blue",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Blue Lightning Green Poison",
+        "selection": {
+          "dragon_type": "blue",
+          "damage_type": "lightning"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-green",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-green",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-green",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Blue Lightning Green Poison",
+        "selection": {
+          "dragon_type": "green",
+          "damage_type": "poison"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-brass",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-brass",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-brass",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Brass Fire Red Fire",
+        "selection": {
+          "dragon_type": "brass",
+          "damage_type": "fire"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-red",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-red",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-red",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Brass Fire Red Fire",
+        "selection": {
+          "dragon_type": "red",
+          "damage_type": "fire"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-bronze",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-bronze",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-bronze",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Bronze Lightning Silver Cold",
+        "selection": {
+          "dragon_type": "bronze",
+          "damage_type": "lightning"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-silver",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-silver",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-silver",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Bronze Lightning Silver Cold",
+        "selection": {
+          "dragon_type": "silver",
+          "damage_type": "cold"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-copper",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-copper",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-copper",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Copper Acid White Cold",
+        "selection": {
+          "dragon_type": "copper",
+          "damage_type": "acid"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-white",
+      "field": "derived_from",
+      "expected": "magic-items/dragon-scale-mail",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-white",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "dragon-scale-mail-white",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "dragon-scale-mail",
+        "selection_row": "Copper Acid White Cold",
+        "selection": {
+          "dragon_type": "white",
+          "damage_type": "cold"
+        },
+        "complete_parent_text": "Armor (scale mail), very rare (requires attunement)\nDragon scale mail is made of the scales of one kind of\ndragon. Sometimes dragons collect their cast-­‐‑off\nscales and gift them to humanoids. Other times,\nhunters carefully skin and preserve the hide of a\ndead dragon. In either case, dragon scale mail is\nhighly valued.\nWhile wearing this armor, you gain a +1 bonus to\nAC, you have advantage on saving throws against the\nFrightful Presence and breath weapons of dragons,\nand you have resistance to one damage type that is\ndetermined by the kind of dragon that provided the\nscales (see the table).\nAdditionally, you can focus your senses as an\naction to magically discern the distance and\ndirection to the closest dragon within 30 miles of\nyou that is of the same type as the armor. This\nspecial action can’t be used again until the next\ndawn.\nDragon Resistance Dragon Resistance\nBlack Acid Gold Fire\nBlue Lightning Green Poison\nBrass Fire Red Fire\nBronze Lightning Silver Cold\nCopper Acid White Cold",
+        "printed_pages": [
+          219
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-air",
+      "field": "derived_from",
+      "expected": "magic-items/elemental-gem",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-air",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-air",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "elemental-gem",
+        "selection_row": "Blue sapphire Air elemental",
+        "selection": {
+          "gem": "Blue sapphire",
+          "elemental_type": "air"
+        },
+        "complete_parent_text": "Wondrous item, uncommon\nThis gem contains a mote of elemental energy. When\nyou use an action to break the gem, an elemental is\nsummoned as if you had cast the conjure elemental\nspell, and the gem’s magic is lost. The type of gem\ndetermines the elemental summoned by the spell.\nGem Summoned Elemental\nBlue sapphire Air elemental\nYellow diamond Earth elemental\nRed corundum Fire elemental\nEmerald Water elemental",
+        "printed_pages": [
+          220
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-earth",
+      "field": "derived_from",
+      "expected": "magic-items/elemental-gem",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-earth",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-earth",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "elemental-gem",
+        "selection_row": "Yellow diamond Earth elemental",
+        "selection": {
+          "gem": "Yellow diamond",
+          "elemental_type": "earth"
+        },
+        "complete_parent_text": "Wondrous item, uncommon\nThis gem contains a mote of elemental energy. When\nyou use an action to break the gem, an elemental is\nsummoned as if you had cast the conjure elemental\nspell, and the gem’s magic is lost. The type of gem\ndetermines the elemental summoned by the spell.\nGem Summoned Elemental\nBlue sapphire Air elemental\nYellow diamond Earth elemental\nRed corundum Fire elemental\nEmerald Water elemental",
+        "printed_pages": [
+          220
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-fire",
+      "field": "derived_from",
+      "expected": "magic-items/elemental-gem",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-fire",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-fire",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "elemental-gem",
+        "selection_row": "Red corundum Fire elemental",
+        "selection": {
+          "gem": "Red corundum",
+          "elemental_type": "fire"
+        },
+        "complete_parent_text": "Wondrous item, uncommon\nThis gem contains a mote of elemental energy. When\nyou use an action to break the gem, an elemental is\nsummoned as if you had cast the conjure elemental\nspell, and the gem’s magic is lost. The type of gem\ndetermines the elemental summoned by the spell.\nGem Summoned Elemental\nBlue sapphire Air elemental\nYellow diamond Earth elemental\nRed corundum Fire elemental\nEmerald Water elemental",
+        "printed_pages": [
+          220
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-water",
+      "field": "derived_from",
+      "expected": "magic-items/elemental-gem",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-water",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "elemental-gem-water",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "elemental-gem",
+        "selection_row": "Emerald Water elemental",
+        "selection": {
+          "gem": "Emerald",
+          "elemental_type": "water"
+        },
+        "complete_parent_text": "Wondrous item, uncommon\nThis gem contains a mote of elemental energy. When\nyou use an action to break the gem, an elemental is\nsummoned as if you had cast the conjure elemental\nspell, and the gem’s magic is lost. The type of gem\ndetermines the elemental summoned by the spell.\nGem Summoned Elemental\nBlue sapphire Air elemental\nYellow diamond Earth elemental\nRed corundum Fire elemental\nEmerald Water elemental",
+        "printed_pages": [
+          220
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    }
+  ],
+  "limitations": [
+    "Source choices only; resistance, AC, dragon sensing, summoning and item consumption are not executed here."
+  ],
+  "snapshot_note": "Before this invocation; rerun for current candidate."
+}
