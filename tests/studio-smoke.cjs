@@ -180,7 +180,7 @@ async function run() {
   click('#graph-draft');
   await eventually(() => q('[data-g-field=outline]'), 'Independent graph draft did not render');
   assert.ok(q('#publish').disabled, 'Graph draft must not publish through the old runtime');
-  assert.ok(q('#preview').textContent.includes('连接'), 'Graph draft preview failed');
+  assert.ok(q('#preview').textContent.includes('作者预览'), 'Graph draft preview failed');
   q('[data-g-field=outline]').value = '沿主线探索，允许临场续写。';
   q('[data-g-field=outline]').dispatchEvent(new w.Event('input', {bubbles:true}));
   click('#save');
@@ -192,10 +192,44 @@ async function run() {
   assert.equal(graphData.outline, '沿主线探索，允许临场续写。');
   assert.equal(graphData.nodes[0].legacy_actions.length, 1);
   assert.equal(graphData.edges.filter(edge => edge.from === graphData.entry_node_id).length, 2);
+  click('[data-tab=history]');
+  await eventually(() => document.querySelectorAll('.history-row').length === 2, 'Graph history revisions missing');
+  click('[data-diff="1"]');
+  assert.ok(q('.graph-diff-entry').textContent.includes('outline'), 'Stable graph diff did not show outline change');
+  assert.ok(q('[role=dialog]').textContent.includes('沿主线探索，允许临场续写。'));
+  click('[data-close]');
+  click('[data-tab=edit]');
+  const badGraph=JSON.parse(JSON.stringify(graphData));
+  badGraph.edges[0].to='not-created';
+  q('#raw-json').value=JSON.stringify(badGraph);
+  click('#apply-json');click('#save');await saved();
+  click('#validate');
+  await eventually(() => q('[data-issue="0"]'), 'Graph issue was not rendered');
+  click('[data-issue="0"]');
+  assert.equal(document.activeElement.dataset.gField,'edges.0.to','Validation issue did not focus its edge target');
+  q('[data-g-field="edges.0.to"]').value=graphData.edges[0].to;
+  q('[data-g-field="edges.0.to"]').dispatchEvent(new w.Event('change',{bubbles:true}));
+  click('#save');await saved();click('#validate');
+  await eventually(() => q('.valid-status'), 'Graph correction did not restore valid topology');
   const oldBook = await fetch(`${origin}/api/studio/items/dom-test-book`, {
     headers: {Authorization: `Bearer ${adminToken}`},
   }).then(response => response.json());
   assert.equal(oldBook.published.schema_version, undefined, 'Creating graph draft rewrote original publication');
+  const normalFetch=w.fetch;
+  let releaseHistory;
+  w.fetch=async(url,options)=>{
+    const response=await normalFetch(url,options);
+    if(String(url).includes(`/api/studio/items/${graphData.id}/history`))
+      await new Promise(resolve=>{releaseHistory=resolve;});
+    return response;
+  };
+  click('[data-tab=history]');
+  await eventually(()=>releaseHistory,'History response gate was not reached');
+  click('[data-kind=skill]');
+  releaseHistory();w.fetch=normalFetch;
+  await delay(50);
+  assert.equal(q('#history-list'),null,'Late graph history resurrected a stale detail panel');
+  assert.equal(q('.history-row'),null,'Late history leaked into another item category');
   console.log('Studio DOM integration passed: public/admin auth, card CRUD, validation, publish, duplicate, archive, bundle import/export, branch editor, history restore.');
 }
 

@@ -244,5 +244,87 @@
       book.nodes.splice(book.nodes.indexOf(node),1);selections.set(book,book.entry_node_id);redraw();
     });
   }
-  window.HexboundStoryEditor={render,bind,navigation};
+  function conditionText(book,expr,depth=0) {
+    if(!expr)return '无需附加条件';
+    if(depth>=12)return '条件过深，请校验';
+    if(['all','any'].includes(expr.op))return `（${(expr.children||[]).map(child=>conditionText(book,child,depth+1)).join(expr.op==='all'?' 且 ':' 或 ')}）`;
+    if(expr.op==='not')return `不满足：${conditionText(book,expr.children?.[0],depth+1)}`;
+    if(expr.op==='fact_equals')return `${expr.ref} 等于 ${JSON.stringify(expr.value)}`;
+    if(expr.op==='milestone_state')return `${expr.ref} 为 ${states[expr.state]||expr.state}`;
+    return `${expr.op==='has_item'?'持有物品':'已发生事件'}：${expr.ref}`;
+  }
+  function preview(book,monsters={}) {
+    const node=book.nodes.find(n=>n.id===(selections.get(book)||book.entry_node_id))||book.nodes[0];
+    if(!node)return '<p>尚无可预览节点</p>';
+    let text=`<div class="preview-card"><p class="helper">作者预览 · 包含完整分支与秘密，不会推进冒险</p><h2>${esc(node.title)}</h2><p>${esc(kinds[node.kind])}</p>`;
+    if(node.kind==='frontier') {
+      const c=node.continuation||{};
+      text+=`<p>待续写出口，不作为空场景进入。</p><p>${esc(c.summary)}</p><h4>未解线索</h4>${(c.unresolved_threads||[]).map(t=>`<p>${esc(t)}</p>`).join('')}<h4>续写约束</h4>${(c.constraints||[]).map(t=>`<p>${esc(t)}</p>`).join('')}<p>续写失败：${esc(book.nodes.find(n=>n.id===c.fallback_scene_id)?.title||'留在原场景')}</p>`;
+    } else text+=`<p class="graph-preview-prose">${esc(node.text)}</p><p>${esc(node.objective)}</p>`;
+    if(node.kind==='key')text+=`<h4>推进条件</h4><p>${esc(conditionText(book,node.advancement_condition))}</p><h4>失败后果</h4><p>${esc(node.failure_consequences)}</p>`;
+    if(node.kind==='ending')text+=`<p>适用条件：${esc(conditionText(book,node.ending_condition))}</p>`;
+    if(node.monster_ids?.length)text+=`<p>预设怪兽：${node.monster_ids.map(id=>esc(monsters[id]||id)).join('、')}</p>`;
+    for(const edge of book.edges.filter(e=>e.from===node.id))text+=`<div class="preview-scene"><strong>→ ${esc(book.nodes.find(n=>n.id===edge.to)?.title||edge.to)}</strong><p>${esc(edge.outcome)}</p><p>${esc(edge.legacy_action_id?`原行动 ${edge.legacy_action_id} · ${{success:'成功',failure:'失败',direct:'直接'}[edge.legacy_result]}`:conditionText(book,edge.condition))}</p><p>${esc({public:'公开',known:'知情者可见',secret:'仅 DM'}[edge.visibility])}</p></div>`;
+    return text+'</div>';
+  }
+  function diff(before,after,limit=200) {
+    const changes=[];let truncated=false;
+    function add(path,kind,left,right) {
+      if(changes.length>=limit){truncated=true;return;}
+      changes.push({path,kind,before:left,after:right});
+    }
+    function walk(left,right,path=[],depth=0) {
+      if(truncated||Object.is(left,right))return;
+      if(depth>40){add(path,'changed',left,right);return;}
+      if(left===undefined){add(path,'added',undefined,right);return;}
+      if(right===undefined){add(path,'removed',left,undefined);return;}
+      if(Array.isArray(left)&&Array.isArray(right)) {
+        const identified=rows=>rows.every(row=>row&&typeof row==='object'&&typeof row.id==='string')&&new Set(rows.map(r=>r.id)).size===rows.length;
+        if((left.length||right.length)&&identified(left)&&identified(right)) {
+          const oldIds=left.map(r=>r.id),newIds=right.map(r=>r.id);
+          const oldCommon=oldIds.filter(id=>newIds.includes(id)),newCommon=newIds.filter(id=>oldIds.includes(id));
+          if(oldCommon.some((id,i)=>id!==newCommon[i]))add([...path,'顺序'],'order_changed',oldIds,newIds);
+          const oldMap=new Map(left.map(r=>[r.id,r])),newMap=new Map(right.map(r=>[r.id,r]));
+          for(const id of new Set([...oldMap.keys(),...newMap.keys()]))walk(oldMap.get(id),newMap.get(id),[...path,id],depth+1);
+        } else for(let i=0;i<Math.max(left.length,right.length);i++)walk(left[i],right[i],[...path,i],depth+1);
+      } else if(left&&right&&!Array.isArray(left)&&!Array.isArray(right)&&typeof left==='object'&&typeof right==='object') {
+        for(const key of [...new Set([...Object.keys(left),...Object.keys(right)])].sort())walk(left[key],right[key],[...path,key],depth+1);
+      } else add(path,'changed',left,right);
+    }
+    walk(before,after);return {changes,truncated};
+  }
+  function diffHtml(before,after) {
+    const result=diff(before,after);
+    const display=value=>value===undefined?'—':JSON.stringify(value,null,2);
+    return `<p>${result.changes.length} 项差异${result.truncated?'（已达显示上限，请同时核对原始数据）':''}</p>${result.changes.map(change=>`<section class="graph-diff-entry"><h4>${esc(change.path.join(' / '))} · ${esc({added:'新增',removed:'移除',changed:'修改',order_changed:'调整顺序'}[change.kind])}</h4><div class="graph-diff-values"><div><strong>历史版本</strong><pre>${esc(display(change.before))}</pre></div><div><strong>当前草稿</strong><pre>${esc(display(change.after))}</pre></div></div></section>`).join('')||'<p>内容相同。</p>'}`;
+  }
+  function locate(book,issue) {
+    let path=issue.match(/(?:nodes|edges|fact_definitions|milestones|npc_goals)\.\d+(?:\.[a-z_]+|\.\d+)*/)?.[0];
+    let index=-1;
+    if(path?.startsWith('nodes.'))index=Number(path.split('.')[1]);
+    if(path?.startsWith('edges.'))index=book.nodes.findIndex(n=>n.id===book.edges[Number(path.split('.')[1])]?.from);
+    if(!path) {
+      const boundary=(word,id)=>new RegExp(`${word} ${id.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}(?![A-Za-z0-9_-])`).test(issue);
+      index=book.nodes.findIndex(n=>boundary('节点',n.id)||boundary('末端',n.id)||issue.startsWith(n.id+' '));
+      if(index>=0)path=`nodes.${index}.title`;
+      else {
+        const ei=book.edges.findIndex(e=>boundary('边',e.id)||issue.startsWith(e.id+' '));
+        if(ei>=0){path=`edges.${ei}.to`;index=book.nodes.findIndex(n=>n.id===book.edges[ei].from);}
+      }
+    }
+    if(index>=0&&book.nodes[index])selections.set(book,book.nodes[index].id);
+    if(path&&/^nodes\.\d+$/.test(path))path+='.title';
+    if(path&&/^edges\.\d+$/.test(path))path+='.to';
+    if(path&&/^(?:fact_definitions|milestones|npc_goals)\.\d+$/.test(path))path+='.id';
+    if(!path&&issue.includes('入口'))path='entry_node_id';
+    return path||null;
+  }
+  function focus(root,path) {
+    if(!path)return false;
+    const control=[...root.querySelectorAll('[data-g-field],[data-g-op],[data-g-cond-ref]')].find(el=>el.dataset.gField===path||el.dataset.gOp===path||el.dataset.gCondRef===path.replace(/\.ref$/,''));
+    if(!control)return false;
+    for(let parent=control.parentElement;parent;parent=parent.parentElement)if(parent.tagName==='DETAILS')parent.open=true;
+    control.scrollIntoView?.({behavior:'smooth',block:'center'});control.focus();return true;
+  }
+  window.HexboundStoryEditor={render,bind,navigation,preview,diff,diffHtml,locate,focus};
 })();

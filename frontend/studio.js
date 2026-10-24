@@ -320,7 +320,7 @@ function validationHtml() {
     return `<div class="issues" role="alert"><h3>请先解决 ${issues.length} 个问题</h3><ul>${issues.map((i, index) => `<li>${e(typeof i === "string" ? i : JSON.stringify(i))} <button class="inline-link" data-issue="${index}">定位字段 ↗</button></li>`).join("")}</ul></div>`;
   return (
     (valid === true
-      ? '<div class="valid-status">✓ 内容校验通过。确认内容后即可发布。</div>'
+      ? `<div class="valid-status">✓ ${model?.schema_version===2?'图结构与引用校验通过，仍需审阅叙事与运行条件。':'内容校验通过。确认内容后即可发布。'}</div>`
       : "") +
     (warnings.length
       ? `<p class="helper">${warnings.map(e).join("；")}</p>`
@@ -698,7 +698,7 @@ function uniqueId(prefix, arr = []) {
 function updatePreview() {
   if (kind === 'scenario' && model?.schema_version === 2) {
     const preview = $('#preview');
-    if (preview) preview.innerHTML = `<div class="preview-card"><h2>${e(model.name)}</h2><p>${e(model.outline)}</p><p>${e(model.nodes?.length || 0)} 个节点 · ${e(model.edges?.length || 0)} 条连接</p><p class="helper">作者图草稿 · 运行接入前暂不发布</p></div>`;
+    if (preview) preview.innerHTML = window.HexboundStoryEditor.preview(model, getRefOptions('monster'));
     return;
   }
   const preview = $("#preview");
@@ -778,6 +778,16 @@ function bindValidation() {
         if (tab !== "edit") {
           tab = "edit";
           renderDetail();
+        }
+        if (kind === 'scenario' && model.schema_version === 2) {
+          const path = window.HexboundStoryEditor.locate(model, issue);
+          tab = 'edit'; renderDetail();
+          if (!window.HexboundStoryEditor.focus($('#editor'),path)) {
+            const advanced = $('#raw-json')?.closest('details');
+            if (advanced) advanced.open = true;
+            $('#raw-json')?.focus();
+          }
+          return;
         }
         let field = issue.match(
           /(?:nodes\.\d+\.)?(?:(?:actions|objects)\.\d+\.)?(?:name|description|id|text|title|starting_level|entry_node_id|next_node_id|success_node_id|failure_node_id|skill_id|hp|ac|dice|damage_dice|effect|target|uses|bonus|dc)/,
@@ -1082,17 +1092,27 @@ async function exportCurrent() {
   }
 }
 async function loadHistory() {
+  const historyItemId = selected.id, historyRevision = selected.revision;
+  const current = () => admin && selected?.id === historyItemId && selected.revision === historyRevision && tab === 'history';
   try {
     const data = await api(
-      `/api/studio/items/${encodeURIComponent(selected.id)}/history`,
+      `/api/studio/items/${encodeURIComponent(historyItemId)}/history`,
     );
+    if (!current()) return;
     $("#history-list").innerHTML =
       (data.items || [])
         .map(
           (h, i) =>
-            `<div class="history-row"><div class="row between"><strong>r${e(h.revision)} · ${e({ create: "创建", update: "保存草稿", publish: "发布", archive: "归档", duplicate: "复制", import: "导入" }[h.action] || h.action)}</strong><button class="small" data-history="${i}">查看内容</button></div><p>${e(h.created_at || "")} ${h.published_revision ? "· 发布 r" + e(h.published_revision) : ""}</p></div>`,
+            `<div class="history-row"><div class="row between"><strong>r${e(h.revision)} · ${e({ create: "创建", update: "保存草稿", publish: "发布", archive: "归档", duplicate: "复制", import: "导入", 'graph-draft':'创建图草稿' }[h.action] || h.action)}</strong><button class="small" data-history="${i}">查看内容</button><button class="small" data-diff="${i}">与当前草稿对比</button></div><p>${e(h.created_at || "")} ${h.published_revision ? "· 发布 r" + e(h.published_revision) : ""}</p></div>`,
         )
         .join("") || '<p class="helper">暂无版本记录。</p>';
+    document.querySelectorAll('[data-diff]').forEach(button => button.onclick = () => {
+      if (!current()) return;
+      const historical = data.items[Number(button.dataset.diff)];
+      modal(`版本差异 · r${historical.revision} → 当前草稿`,
+        `<p class="helper">只读比较${dirty?'，包含未保存修改':''}。新增 / 移除 / 修改按稳定 ID 对照，不执行或恢复内容。</p>` +
+        window.HexboundStoryEditor.diffHtml(historical.data, model));
+    });
     document.querySelectorAll("[data-history]").forEach(
       (b) =>
         (b.onclick = () =>
@@ -1103,19 +1123,21 @@ async function loadHistory() {
               $("#restore-version", overlay)?.addEventListener(
                 "click",
                 async () => {
+                  if (!current()) { close(); return; }
                   if (dirty && !dirtyConfirm()) return;
                   try {
                     const result = await api(
-                      `/api/studio/items/${encodeURIComponent(selected.id)}/restore`,
+                      `/api/studio/items/${encodeURIComponent(historyItemId)}/restore`,
                       {
                         method: "POST",
                         body: JSON.stringify({
-                          expected_revision: selected.revision,
+                          expected_revision: historyRevision,
                           revision:
                             data.items[Number(b.dataset.history)].revision,
                         }),
                       },
                     );
+                    if (!current()) { close(); toast('原内容已恢复为新草稿，请重新打开查看。'); return; }
                     selected = extractItem(result);
                     model = clone(selected.draft);
                     dirty = false;
@@ -1135,6 +1157,7 @@ async function loadHistory() {
           )),
     );
   } catch (error) {
+    if (!current()) return;
     const list = $("#history-list");
     if (list)
       list.innerHTML = `<p class="studio-error">${e(error.message)}</p>`;
