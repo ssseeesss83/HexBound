@@ -1,5 +1,6 @@
 """A01/A02/A30: real SQLite/WAL backup, corruption and forward-version gates."""
 import json
+from copy import deepcopy
 from pathlib import Path
 import sqlite3
 from zipfile import ZipFile
@@ -11,6 +12,15 @@ from backend.maintenance import backup_database, restore_backup, SCHEMA_VERSION
 from backend.store import Store
 
 
+def without_scope_metadata(state):
+    state = deepcopy(state)
+    state.pop("text_scope", None)
+    for event in state["events"]:
+        event.pop("_audience", None)
+        event.pop("_channel", None)
+    return state
+
+
 def test_legacy_migration_and_backup_preserve_room_and_receipts(tmp_path):
     fixture = json.loads((Path(__file__).parent / "fixtures/legacy_room_v06.json").read_text(encoding="utf-8"))
     path = tmp_path / "legacy.sqlite3"
@@ -20,12 +30,12 @@ def test_legacy_migration_and_backup_preserve_room_and_receipts(tmp_path):
         db.execute("INSERT INTO commands VALUES(?,?,?,?)", (fixture["id"], "p0", "settled-command", '{"replayed":true}'))
         db.execute("PRAGMA user_version=0")
     migrated = Store(str(path))
-    assert migrated.get(fixture["id"]) == fixture
+    assert without_scope_metadata(migrated.get(fixture["id"])) == fixture
     backups = list((tmp_path / "backups").glob("*.zip"))
     assert len(backups) == 1
     restore_backup(backups[0], tmp_path / "restored")
     restored = Store(str(tmp_path / "restored/database.sqlite3"))
-    assert restored.get(fixture["id"]) == fixture
+    assert without_scope_metadata(restored.get(fixture["id"])) == fixture
     assert restored.prior_command(fixture["id"], "p0", "settled-command") == {"replayed": True}
     # Reopening a current schema does not migrate or make another backup.
     Store(str(path))
@@ -104,7 +114,7 @@ def test_actual_pre_account_table_gets_column_without_changing_state(tmp_path):
     finally:
         db.close()
     store = Store(str(path))
-    assert store.get(fixture["id"]) == fixture
+    assert without_scope_metadata(store.get(fixture["id"])) == fixture
     assert store.prior_command(fixture["id"], "p0", "old-command") == {"replayed": True}
     with store.connect() as db:
         assert "user_id" in {row["name"] for row in db.execute("PRAGMA table_info(members)")}

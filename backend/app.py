@@ -22,6 +22,7 @@ from .dm import DM
 from .store import Store
 from . import rules_packages
 from .rules_context import active_store, using_version
+from . import session_scope
 from .heroes import create_hero_router
 from .studio import create_studio_router, compile_scenario
 from .accounts import create_accounts_router, require_user, authenticate_websocket
@@ -210,14 +211,18 @@ def create_app(db_path: str | None = None) -> FastAPI:
         return state
 
     def event(state: dict, kind: str, text: str, actor_name: str = "DM", **extra):
-        state["events"].append({"id": len(state["events"]) + 1, "kind": kind,
-                                "actor_name": actor_name, "text": text, **extra})
+        session_scope.initialize(state)
+        item = {"id": len(state["events"]) + 1, "kind": kind,
+                "actor_name": actor_name, "text": text, **extra}
+        session_scope.stamp_event(state, item)
+        state["events"].append(item)
 
     def public(state: dict, viewer: str) -> dict:
         with active_store(store), using_version(state.get("rules_package_version", rules_packages.LEGACY_PACKAGE)):
             return _public(state, viewer)
 
     def _public(state: dict, viewer: str) -> dict:
+        journal = session_scope.visible_events(state, viewer)
         online = set(peers.get(state["id"], {}).values())
         party = []
         for member in state["members"]:
@@ -246,7 +251,8 @@ def create_app(db_path: str | None = None) -> FastAPI:
             "status": state["status"], "version": state["version"], "host_id": state["host_id"],
             "invite_code": state["invite_code"], "party": party, "scene": scene,
             "starting_level": state.get("starting_level", 1),
-            "events": copy.deepcopy(state["events"][-150:]), "last_event_seq": len(state["events"]),
+            "events": journal[-150:], "last_event_seq": journal[-1]["id"] if journal else 0,
+            "text_scope": session_scope.scope_key(state, viewer),
             "available_actions": actions, "combat": copy.deepcopy(state.get("combat")),
             "dm_source": state.get("dm_source", "local"), "dm_pending": bool(state.get("dm_pending")),
             "interaction_mode": state.get("interaction_mode", "guided"),
@@ -489,13 +495,15 @@ def create_app(db_path: str | None = None) -> FastAPI:
         return {"character":sheet,"setup":setup,"advancement":characters.level_up_preview(preview_character),"owner":viewer==target_member_id and store.owns_active_hero(room_id,target_member_id),"hero_id":target.get("hero_id") if viewer==target_member_id else None}
 
     @app.get("/api/rooms/{room_id}/events")
-    async def events(room_id: str, request: Request, after: int = 0, authorization: str | None = Header(default=None)):
-        auth(room_id, authorization, request)
+    async def events(room_id: str, request: Request, after: int = 0, cursor: str | None = None, authorization: str | None = Header(default=None)):
+        viewer = auth(room_id, authorization, request)
         if after < 0:
             raise HTTPException(422, "事件序号不能为负数")
         state = get_state(room_id)
-        result = state["events"][after:after + 200]
-        return {"events": result, "last_event_seq": len(state["events"]), "has_more": after + len(result) < len(state["events"])}
+        try:
+            return session_scope.history_page(state, viewer, after=after, cursor=cursor)
+        except ValueError as exc:
+            raise HTTPException(409, "历史记录范围已变化，请重新载入。") from exc
 
     @app.post("/api/rooms/{room_id}/commands")
     async def command(room_id: str, body: Command, request: Request, authorization: str | None = Header(default=None)):
@@ -755,7 +763,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
         await broadcast(room_id)
         if pending:
             await add_dm_response(room_id, state["version"], request_id, pending, copy.deepcopy(state["scene"]),
-                                  state["mode"], state["theme"], payload.get("text", "请依据刚刚确认的结果描述后果，并建议下一步合法行动。"), copy.deepcopy(state["events"][-8:]), actions_for(state, member_id), state.get("interaction_mode", "guided"))
+                                  state["mode"], state["theme"], payload.get("text", "请依据刚刚确认的结果描述后果，并建议下一步合法行动。"), session_scope.common_memory(state, [m["id"] for m in state["members"]])[-8:], actions_for(state, member_id), state.get("interaction_mode", "guided"))
             response = {"room": public(get_state(room_id), member_id)}
         auth(room_id, authorization, request)
         return response

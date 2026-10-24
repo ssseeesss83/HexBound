@@ -506,8 +506,17 @@ function eventHtml(event) {
   return `<article class="event ${kind === "chat" ? "chat" : ""}"><div class="event-meta"><span class="${dm ? "dm-label" : ""}">${dm ? `✦ ${event.source === "llm" ? "AI 主持人" : event.source === "fallback" ? "本地主持 · 模型回退" : "本地主持"}` : esc(event.actor_name || "规则引擎")}</span><span>·</span><span>${esc(kind === "chat" ? "桌边交谈" : event.roll ? "权威判定" : dm ? "冒险日志" : "角色行动")}</span><span style="margin-left:auto">${String(event.seq || event.id || "").padStart(3, "0")}</span></div><p>${esc(event.text)}</p>${event.roll ? rollHtml(event.roll) : ""}${event.suggested_action_id && (room.available_actions || []).some((a) => a.id === event.suggested_action_id && (!a.host_only || room.host_id === session.member_id)) ? `<button class="small" data-action="${esc(event.suggested_action_id)}" ${busy || !connected || room.status !== "playing" ? "disabled" : ""}>建议行动：${esc((room.available_actions || []).find((a) => a.id === event.suggested_action_id)?.label)} ↗</button>` : ""}</article>`;
 }
 let activeJournalKey = null;
+let activeTextScope = null;
 function renderRoom() {
   if (!room) return;
+  const scope = JSON.stringify([room.id, session.member_id, room.text_scope]);
+  if (activeTextScope !== scope) {
+    window.HexBoundLiveLog?.clear();
+    activeJournalKey = null;
+    activeTextScope = scope;
+    draft = '';
+    $('#intent')?.remove();
+  }
   if(activeJournalKey) window.HexBoundLiveLog?.capture(activeJournalKey);
   trackEncounter();
   if ((room.combat?.active && combatView === "battle") || showSettlement) {
@@ -767,13 +776,15 @@ function roomMenu() {
         button.textContent = "正在汇集全部记录…";
         try {
           const all = [];
-          let after = 0;
+          let cursor = null;
+          const exportScope = activeTextScope;
           while (true) {
             const page = await api(
-              `/api/rooms/${session.room_id}/events?after=${after}`,
+              `/api/rooms/${session.room_id}/events${cursor ? '?cursor=' + encodeURIComponent(cursor) : ''}`,
             );
+            if (activeTextScope !== exportScope) throw new Error('当前交流范围已变化，请重新导出。');
             all.push(...page.events);
-            after += page.events.length;
+            cursor = page.cursor;
             if (!page.has_more || !page.events.length) break;
           }
           const lines = [

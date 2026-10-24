@@ -127,6 +127,10 @@ def _encounters(state):
 
 
 def build_context(state, member_id, intent, policy="balanced"):
+    state = copy.deepcopy(state)
+    from . import session_scope
+    session_scope.initialize(state)
+    recipients = {m["id"] for m in state["members"]}
     _guard(state, member_id)
     if policy not in {"strict", "balanced"}:
         raise ValueError("未知导演策略")
@@ -144,8 +148,8 @@ def build_context(state, member_id, intent, policy="balanced"):
                     for item in _anchors(state, member_id).values()],
         "encounters": list(_encounters(state).values()) if policy == "balanced" else [],
         "confirmed_events": [{key: item[key] for key in ("kind", "text", "actor_name") if key in item}
-                             for item in state.get("events", [])[-8:]],
-        "memory": copy.deepcopy(state.get("director", {}).get("memory", [])[-12:]),
+                             for item in session_scope.common_memory(state, recipients)[-8:]],
+        "memory": session_scope.common_rows(state, state.get("director", {}).get("memory", []), recipients)[-12:],
         "free_actions": free_actions.context(state, member_id),
         "schema": Decision.model_json_schema(),
     }
@@ -398,7 +402,9 @@ def resolve(state, member_id, proposal):
         events.insert(0, rules.event("dm", decision["text"], actor_id=member_id, director=True))
     director.setdefault("resolved_ids", []).append(proposal["id"])
     director["resolved_ids"] = director["resolved_ids"][-200:]
-    director.setdefault("memory", []).append({"scene_id": proposal["scene_id"], "actor_id": member_id,
-                                             "kind": decision["kind"], "text": memory_text[:1000]})
+    from . import session_scope
+    session_scope.initialize(state)
+    director.setdefault("memory", []).append(session_scope.remember(state, {"scene_id": proposal["scene_id"], "actor_id": member_id,
+                                             "kind": decision["kind"], "text": memory_text[:1000]}))
     director["memory"] = director["memory"][-32:]
     return events

@@ -78,6 +78,31 @@ def test_rules_activation_keeps_old_room_and_joiners_on_original_snapshot(env, t
     assert new_state['members'][0]['character']['hit_dice']['die'] == 12
 
 
+def test_event_audiences_match_snapshot_websocket_history_and_model_memory(env):
+    from backend import session_scope
+    a, b, store, _ = env
+    created = room(a).json()
+    rid = created['room']['id']
+    joined = b.post('/api/rooms/join', json={'invite_code': created['invite_code'], 'player_name': 'Other'}).json()
+    other_id = joined['member_id']
+    def secret(state):
+        item = {'id': len(state['events']) + 1, 'kind': 'dm', 'text': 'PRIVATE-KNOWLEDGE'}
+        session_scope.stamp_event(state, item, audience={other_id})
+        state['events'].append(item)
+    seed(store, rid, secret)
+    for path in ('', '/events'):
+        assert 'PRIVATE-KNOWLEDGE' not in a.get('/api/rooms/' + rid + path).text
+        assert 'PRIVATE-KNOWLEDGE' in b.get('/api/rooms/' + rid + path).text
+        assert '_audience' not in b.get('/api/rooms/' + rid + path).text
+    host_page = a.get('/api/rooms/' + rid + '/events').json()
+    assert b.get('/api/rooms/' + rid + '/events', params={'cursor': host_page['cursor']}).status_code == 409
+    with a.websocket_connect('/api/rooms/' + rid + '/ws') as ws:
+        ws.send_json({})
+        assert 'PRIVATE-KNOWLEDGE' not in str(ws.receive_json())
+    state = store.get(rid)
+    assert 'PRIVATE-KNOWLEDGE' not in str(session_scope.common_memory(state, {m['id'] for m in state['members']}))
+
+
 def test_vault_owner_and_server_derived_fields(env):
     a, b, store, _ = env
     h = hero(a)

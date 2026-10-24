@@ -60,6 +60,12 @@ class Store:
             db.execute("CREATE TABLE IF NOT EXISTS rules_activation (ruleset_id TEXT PRIMARY KEY, package_version TEXT NOT NULL REFERENCES rules_packages(version))")
             db.execute("CREATE TABLE IF NOT EXISTS rules_documents (package_version TEXT NOT NULL REFERENCES rules_packages(version), page INTEGER NOT NULL, payload TEXT NOT NULL, PRIMARY KEY(package_version,page))")
             db.execute(f"PRAGMA user_version={SCHEMA_VERSION}")
+            from .session_scope import initialize
+            for row in db.execute("SELECT id,state FROM rooms").fetchall():
+                state = json.loads(row["state"])
+                if "text_scope" not in state:
+                    initialize(state)
+                    db.execute("UPDATE rooms SET state=? WHERE id=?", (json.dumps(state, ensure_ascii=False), row["id"]))
 
     @contextmanager
     def connect(self):
@@ -73,6 +79,8 @@ class Store:
             db.close()
 
     def create(self, state: dict, member_id: str, token: str, user_id: str | None = None):
+        from .session_scope import initialize
+        initialize(state)
         from .rules_identity import RULESET_ID, PACKAGE_VERSION, ENGINE_PROFILE
         from .rules_context import active_version
         state.setdefault("ruleset_id", RULESET_ID)
@@ -153,6 +161,8 @@ class Store:
                 raise ValueError("六席已满，请加入其他房间")
             self._bind_hero(db, state, member, user_id)
             state["members"].append(member)
+            from .session_scope import add_member
+            add_member(state, member["id"])
             state["version"] += 1
             db.execute("INSERT INTO members (id,room_id,token_hash,user_id) VALUES (?, ?, ?, ?)", (member["id"], room_id, token_hash(token), user_id))
             db.execute("UPDATE rooms SET state=?, version=? WHERE id=?",
@@ -166,6 +176,8 @@ class Store:
         return json.loads(row["response"]) if row else None
 
     def save(self, state: dict, previous_version: int, receipt: tuple[str, str, dict] | None = None):
+        from .session_scope import initialize
+        initialize(state)
         with self.connect() as db:
             db.execute("BEGIN IMMEDIATE")
             self._sync_heroes(db, state)
