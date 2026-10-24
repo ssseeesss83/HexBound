@@ -122,3 +122,5 @@ p64完整穿脱段及四类时间保存到现有护甲分类的timing_reference�
 母项header后续审计tools/audit_magic_headers.py覆盖240项720检查，独立解析完整跨行类型 / 稀有度 / 同调原句，保存reference_pending_execution证据。虫群法杖Rare、蟒蛇法杖Uncommon两处结构稀有度纠正。水晶球的header是家族两档，正文明确普通型Very Rare；现有记录兼任普通型，保留原值并注typical_item及正文证据，避免把建模迁移误报为转录错误。完整同调限定仅引用、不执行。预修快照magic-base-header-review.json保留两差异与缺引用证据。
 
 tools/audit_magic_bonus_variants.py核五类15条+1/+2/+3变体，先从来源header独立解析稀有度与数值，再核派生正文及类型 / 名称 / 来源归属。完整母项原文、明确bonus选择、source_text_kind与未执行标记保留；39处补注释，既有数值与正文无需修改。Shield延续既有完整来源门禁，Armor不同稀有度表不套错，Wand不加豁免DC。其余111变体与装备效果执行继续待验收。
+
+tools/audit_magic_consumable_variants.py独立消费四药水、十卷轴官方选择行，校验14变体112字段。卷轴child原uninterrupted条件反转与缺抄录段已更正，保留职业表、材料成分豁免、正常时间、被打断不损失、高阶检定失败消失、Wizard Arcana检定及无论成功失败销毁。药水恢复量与正文无差异；选择参数保留为reference，不宣称已接施法、治疗或消耗执行。

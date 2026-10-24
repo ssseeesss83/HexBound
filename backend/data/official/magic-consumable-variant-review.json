@@ -1,0 +1,1971 @@
+{
+  "profile": "official-magic-consumable-variants-v1",
+  "official_families": 2,
+  "normalized_variants": 14,
+  "checks": [
+    {
+      "record": "potion-of-healing-common",
+      "field": "name",
+      "expected": "Potion of Healing",
+      "actual": "Potion of Healing",
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-common",
+      "field": "equipment_category",
+      "expected": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "actual": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-common",
+      "field": "rarity",
+      "expected": {
+        "name": "Common"
+      },
+      "actual": {
+        "name": "Common"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-common",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-common",
+      "field": "desc",
+      "expected": [
+        "Potion, common",
+        "You regain 2d4 + 2 hit points when you drink this potion. The potion's red liquid glimmers when agitated."
+      ],
+      "actual": [
+        "Potion, common",
+        "You regain 2d4 + 2 hit points when you drink this potion. The potion's red liquid glimmers when agitated."
+      ],
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-common",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-healing",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-common",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-common",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-healing",
+        "selection_row": "Healing Common 2d4 + 2",
+        "selection": {
+          "healing_dice": "2d4",
+          "healing_bonus": 2
+        },
+        "complete_parent_text": "Potion, rarity varies\nYou regain hit points when you drink this potion.\nThe number of hit points depends on the potion’s\nrarity, as shown in the Potions of Healing table.\nWhatever its potency, the potion’s red liquid\nglimmers when agitated.\nPotions of Healing\nPotion of … Rarity HP Regained\nHealing Common 2d4 + 2\nGreater healing Uncommon 4d4 + 4\nSuperior healing Rare 8d4 + 8\nSupreme healing Very rare 10d4 + 20",
+        "printed_pages": [
+          234
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-greater",
+      "field": "name",
+      "expected": "Potion of Greater Healing",
+      "actual": "Potion of Greater Healing",
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-greater",
+      "field": "equipment_category",
+      "expected": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "actual": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-greater",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-greater",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-greater",
+      "field": "desc",
+      "expected": [
+        "Potion, uncommon",
+        "You regain 4d4 + 4 hit points when you drink this potion. The potion's red liquid glimmers when agitated."
+      ],
+      "actual": [
+        "Potion, uncommon",
+        "You regain 4d4 + 4 hit points when you drink this potion. The potion's red liquid glimmers when agitated."
+      ],
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-greater",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-healing",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-greater",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-greater",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-healing",
+        "selection_row": "Greater healing Uncommon 4d4 + 4",
+        "selection": {
+          "healing_dice": "4d4",
+          "healing_bonus": 4
+        },
+        "complete_parent_text": "Potion, rarity varies\nYou regain hit points when you drink this potion.\nThe number of hit points depends on the potion’s\nrarity, as shown in the Potions of Healing table.\nWhatever its potency, the potion’s red liquid\nglimmers when agitated.\nPotions of Healing\nPotion of … Rarity HP Regained\nHealing Common 2d4 + 2\nGreater healing Uncommon 4d4 + 4\nSuperior healing Rare 8d4 + 8\nSupreme healing Very rare 10d4 + 20",
+        "printed_pages": [
+          234
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-superior",
+      "field": "name",
+      "expected": "Potion of Superior Healing",
+      "actual": "Potion of Superior Healing",
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-superior",
+      "field": "equipment_category",
+      "expected": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "actual": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-superior",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-superior",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-superior",
+      "field": "desc",
+      "expected": [
+        "Potion, rare",
+        "You regain 8d4 + 8 hit points when you drink this potion. The potion's red liquid glimmers when agitated."
+      ],
+      "actual": [
+        "Potion, rare",
+        "You regain 8d4 + 8 hit points when you drink this potion. The potion's red liquid glimmers when agitated."
+      ],
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-superior",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-healing",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-superior",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-superior",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-healing",
+        "selection_row": "Superior healing Rare 8d4 + 8",
+        "selection": {
+          "healing_dice": "8d4",
+          "healing_bonus": 8
+        },
+        "complete_parent_text": "Potion, rarity varies\nYou regain hit points when you drink this potion.\nThe number of hit points depends on the potion’s\nrarity, as shown in the Potions of Healing table.\nWhatever its potency, the potion’s red liquid\nglimmers when agitated.\nPotions of Healing\nPotion of … Rarity HP Regained\nHealing Common 2d4 + 2\nGreater healing Uncommon 4d4 + 4\nSuperior healing Rare 8d4 + 8\nSupreme healing Very rare 10d4 + 20",
+        "printed_pages": [
+          234
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-supreme",
+      "field": "name",
+      "expected": "Potion of Supreme Healing",
+      "actual": "Potion of Supreme Healing",
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-supreme",
+      "field": "equipment_category",
+      "expected": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "actual": {
+        "index": "potion",
+        "name": "Potion",
+        "url": "/api/2014/equipment-categories/potion"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-supreme",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-supreme",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-supreme",
+      "field": "desc",
+      "expected": [
+        "Potion, very rare",
+        "You regain 10d4 + 20 hit points when you drink this potion. The potion's red liquid glimmers when agitated."
+      ],
+      "actual": [
+        "Potion, very rare",
+        "You regain 10d4 + 20 hit points when you drink this potion. The potion's red liquid glimmers when agitated."
+      ],
+      "match": true
+    },
+    {
+      "record": "potion-of-healing-supreme",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-healing",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-supreme",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-supreme",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-healing",
+        "selection_row": "Supreme healing Very rare 10d4 + 20",
+        "selection": {
+          "healing_dice": "10d4",
+          "healing_bonus": 20
+        },
+        "complete_parent_text": "Potion, rarity varies\nYou regain hit points when you drink this potion.\nThe number of hit points depends on the potion’s\nrarity, as shown in the Potions of Healing table.\nWhatever its potency, the potion’s red liquid\nglimmers when agitated.\nPotions of Healing\nPotion of … Rarity HP Regained\nHealing Common 2d4 + 2\nGreater healing Uncommon 4d4 + 4\nSuperior healing Rare 8d4 + 8\nSupreme healing Very rare 10d4 + 20",
+        "printed_pages": [
+          234
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-cantrip",
+      "field": "name",
+      "expected": "Spell Scroll (Cantrip)",
+      "actual": "Spell Scroll (Cantrip)",
+      "match": true
+    },
+    {
+      "record": "spell-scroll-cantrip",
+      "field": "equipment_category",
+      "expected": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "actual": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-cantrip",
+      "field": "rarity",
+      "expected": {
+        "name": "Common"
+      },
+      "actual": {
+        "name": "Common"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-cantrip",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "spell-scroll-cantrip",
+      "field": "desc",
+      "expected": [
+        "Scroll, common",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains a cantrip. The spell's saving throw DC is 13 and its attack bonus is +5. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, common",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains a cantrip. The spell's saving throw is 13 and the attack bonus is +5."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-cantrip",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-cantrip",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-cantrip",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "Cantrip Common 13 +5",
+        "selection": {
+          "spell_level": 0,
+          "save_dc": 13,
+          "attack_bonus": 5
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-1st",
+      "field": "name",
+      "expected": "Spell Scroll (1st)",
+      "actual": "Spell Scroll (1st)",
+      "match": true
+    },
+    {
+      "record": "spell-scroll-1st",
+      "field": "equipment_category",
+      "expected": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "actual": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-1st",
+      "field": "rarity",
+      "expected": {
+        "name": "Common"
+      },
+      "actual": {
+        "name": "Common"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-1st",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "spell-scroll-1st",
+      "field": "desc",
+      "expected": [
+        "Scroll, common",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains a 1st-level spell. The spell's saving throw DC is 13 and its attack bonus is +5. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, common",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains a 1st level spell. The spell's saving throw is 13 and the attack bonus is +5.",
+        "A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 11. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-1st",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-1st",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-1st",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "1st Common 13 +5",
+        "selection": {
+          "spell_level": 1,
+          "save_dc": 13,
+          "attack_bonus": 5
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-2nd",
+      "field": "name",
+      "expected": "Spell Scroll (2nd)",
+      "actual": "Spell Scroll (2nd)",
+      "match": true
+    },
+    {
+      "record": "spell-scroll-2nd",
+      "field": "equipment_category",
+      "expected": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "actual": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-2nd",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-2nd",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "spell-scroll-2nd",
+      "field": "desc",
+      "expected": [
+        "Scroll, uncommon",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains a 2nd-level spell. The spell's saving throw DC is 13 and its attack bonus is +5. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, uncommon",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains a 2nd level spell. The spell's saving throw is 13 and the attack bonus is +5.",
+        "A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 12. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-2nd",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-2nd",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-2nd",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "2nd Uncommon 13 +5",
+        "selection": {
+          "spell_level": 2,
+          "save_dc": 13,
+          "attack_bonus": 5
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-3rd",
+      "field": "name",
+      "expected": "Spell Scroll (3rd)",
+      "actual": "Spell Scroll (3rd)",
+      "match": true
+    },
+    {
+      "record": "spell-scroll-3rd",
+      "field": "equipment_category",
+      "expected": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "actual": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-3rd",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-3rd",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "spell-scroll-3rd",
+      "field": "desc",
+      "expected": [
+        "Scroll, uncommon",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains a 3rd-level spell. The spell's saving throw DC is 15 and its attack bonus is +7. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, uncommon",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains a 3rd level spell. The spell's saving throw is 15 and the attack bonus is +7.",
+        "A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 13. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-3rd",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-3rd",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-3rd",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "3rd Uncommon 15 +7",
+        "selection": {
+          "spell_level": 3,
+          "save_dc": 15,
+          "attack_bonus": 7
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-4th",
+      "field": "name",
+      "expected": "Spell Scroll (4th)",
+      "actual": "Spell Scroll (4th)",
+      "match": true
+    },
+    {
+      "record": "spell-scroll-4th",
+      "field": "equipment_category",
+      "expected": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "actual": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-4th",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-4th",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "spell-scroll-4th",
+      "field": "desc",
+      "expected": [
+        "Scroll, rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains a 4th-level spell. The spell's saving throw DC is 15 and its attack bonus is +7. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains a 4th level spell. The spell's saving throw is 15 and the attack bonus is +7.",
+        "A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 14. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-4th",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-4th",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-4th",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "4th Rare 15 +7",
+        "selection": {
+          "spell_level": 4,
+          "save_dc": 15,
+          "attack_bonus": 7
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-5th",
+      "field": "name",
+      "expected": "Spell Scroll (5th)",
+      "actual": "Spell Scroll (5th)",
+      "match": true
+    },
+    {
+      "record": "spell-scroll-5th",
+      "field": "equipment_category",
+      "expected": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "actual": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-5th",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-5th",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "spell-scroll-5th",
+      "field": "desc",
+      "expected": [
+        "Scroll, rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains a 5th-level spell. The spell's saving throw DC is 17 and its attack bonus is +9. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains a 5th level spell. The spell's saving throw is 17 and the attack bonus is +9.",
+        "A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 15. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-5th",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-5th",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-5th",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "5th Rare 17 +9",
+        "selection": {
+          "spell_level": 5,
+          "save_dc": 17,
+          "attack_bonus": 9
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-6th",
+      "field": "name",
+      "expected": "Spell Scroll (6th)",
+      "actual": "Spell Scroll (6th)",
+      "match": true
+    },
+    {
+      "record": "spell-scroll-6th",
+      "field": "equipment_category",
+      "expected": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "actual": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-6th",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-6th",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "spell-scroll-6th",
+      "field": "desc",
+      "expected": [
+        "Scroll, very rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains a 6th-level spell. The spell's saving throw DC is 17 and its attack bonus is +9. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, very rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains a 6th level spell. The spell's saving throw is 18 and the attack bonus is +10.",
+        "A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 16. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-6th",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-6th",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-6th",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "6th Very rare 17 +9",
+        "selection": {
+          "spell_level": 6,
+          "save_dc": 17,
+          "attack_bonus": 9
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-7th",
+      "field": "name",
+      "expected": "Spell Scroll (7th)",
+      "actual": "Spell Scroll (7th)",
+      "match": true
+    },
+    {
+      "record": "spell-scroll-7th",
+      "field": "equipment_category",
+      "expected": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "actual": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-7th",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-7th",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "spell-scroll-7th",
+      "field": "desc",
+      "expected": [
+        "Scroll, very rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains a 7th-level spell. The spell's saving throw DC is 18 and its attack bonus is +10. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, very rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains a 7th level spell. The spell's saving throw is 18 and the attack bonus is +10.",
+        "A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 17. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-7th",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-7th",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-7th",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "7th Very rare 18 +10",
+        "selection": {
+          "spell_level": 7,
+          "save_dc": 18,
+          "attack_bonus": 10
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-8th",
+      "field": "name",
+      "expected": "Spell Scroll (8th)",
+      "actual": "Spell Scroll (8th)",
+      "match": true
+    },
+    {
+      "record": "spell-scroll-8th",
+      "field": "equipment_category",
+      "expected": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "actual": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-8th",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-8th",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "spell-scroll-8th",
+      "field": "desc",
+      "expected": [
+        "Scroll, very rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains an 8th-level spell. The spell's saving throw DC is 18 and its attack bonus is +10. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, very rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains an 8th level spell. The spell's saving throw is 18 and the attack bonus is +10.",
+        "A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 18. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-8th",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-8th",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-8th",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "8th Very rare 18 +10",
+        "selection": {
+          "spell_level": 8,
+          "save_dc": 18,
+          "attack_bonus": 10
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-9th",
+      "field": "name",
+      "expected": "Spell Scroll (9th)",
+      "actual": "Spell Scroll (9th)",
+      "match": true
+    },
+    {
+      "record": "spell-scroll-9th",
+      "field": "equipment_category",
+      "expected": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "actual": {
+        "index": "scroll",
+        "name": "Scroll",
+        "url": "/api/2014/equipment-categories/scroll"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-9th",
+      "field": "rarity",
+      "expected": {
+        "name": "Legendary"
+      },
+      "actual": {
+        "name": "Legendary"
+      },
+      "match": true
+    },
+    {
+      "record": "spell-scroll-9th",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "spell-scroll-9th",
+      "field": "desc",
+      "expected": [
+        "Scroll, legendary",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains a 9th-level spell. The spell's saving throw DC is 19 and its attack bonus is +11. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, legendary",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains a 9th level spell. The spell's saving throw is 19 and the attack bonus is +11.",
+        "A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 19. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-9th",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-9th",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-9th",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "9th Legendary 19 +11",
+        "selection": {
+          "spell_level": 9,
+          "save_dc": 19,
+          "attack_bonus": 11
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    }
+  ],
+  "differences": [
+    {
+      "record": "potion-of-healing-common",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-healing",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-common",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-common",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-healing",
+        "selection_row": "Healing Common 2d4 + 2",
+        "selection": {
+          "healing_dice": "2d4",
+          "healing_bonus": 2
+        },
+        "complete_parent_text": "Potion, rarity varies\nYou regain hit points when you drink this potion.\nThe number of hit points depends on the potion’s\nrarity, as shown in the Potions of Healing table.\nWhatever its potency, the potion’s red liquid\nglimmers when agitated.\nPotions of Healing\nPotion of … Rarity HP Regained\nHealing Common 2d4 + 2\nGreater healing Uncommon 4d4 + 4\nSuperior healing Rare 8d4 + 8\nSupreme healing Very rare 10d4 + 20",
+        "printed_pages": [
+          234
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-greater",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-healing",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-greater",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-greater",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-healing",
+        "selection_row": "Greater healing Uncommon 4d4 + 4",
+        "selection": {
+          "healing_dice": "4d4",
+          "healing_bonus": 4
+        },
+        "complete_parent_text": "Potion, rarity varies\nYou regain hit points when you drink this potion.\nThe number of hit points depends on the potion’s\nrarity, as shown in the Potions of Healing table.\nWhatever its potency, the potion’s red liquid\nglimmers when agitated.\nPotions of Healing\nPotion of … Rarity HP Regained\nHealing Common 2d4 + 2\nGreater healing Uncommon 4d4 + 4\nSuperior healing Rare 8d4 + 8\nSupreme healing Very rare 10d4 + 20",
+        "printed_pages": [
+          234
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-superior",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-healing",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-superior",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-superior",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-healing",
+        "selection_row": "Superior healing Rare 8d4 + 8",
+        "selection": {
+          "healing_dice": "8d4",
+          "healing_bonus": 8
+        },
+        "complete_parent_text": "Potion, rarity varies\nYou regain hit points when you drink this potion.\nThe number of hit points depends on the potion’s\nrarity, as shown in the Potions of Healing table.\nWhatever its potency, the potion’s red liquid\nglimmers when agitated.\nPotions of Healing\nPotion of … Rarity HP Regained\nHealing Common 2d4 + 2\nGreater healing Uncommon 4d4 + 4\nSuperior healing Rare 8d4 + 8\nSupreme healing Very rare 10d4 + 20",
+        "printed_pages": [
+          234
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-supreme",
+      "field": "derived_from",
+      "expected": "magic-items/potion-of-healing",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-supreme",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "potion-of-healing-supreme",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "potion-of-healing",
+        "selection_row": "Supreme healing Very rare 10d4 + 20",
+        "selection": {
+          "healing_dice": "10d4",
+          "healing_bonus": 20
+        },
+        "complete_parent_text": "Potion, rarity varies\nYou regain hit points when you drink this potion.\nThe number of hit points depends on the potion’s\nrarity, as shown in the Potions of Healing table.\nWhatever its potency, the potion’s red liquid\nglimmers when agitated.\nPotions of Healing\nPotion of … Rarity HP Regained\nHealing Common 2d4 + 2\nGreater healing Uncommon 4d4 + 4\nSuperior healing Rare 8d4 + 8\nSupreme healing Very rare 10d4 + 20",
+        "printed_pages": [
+          234
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-cantrip",
+      "field": "desc",
+      "expected": [
+        "Scroll, common",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains a cantrip. The spell's saving throw DC is 13 and its attack bonus is +5. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, common",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains a cantrip. The spell's saving throw is 13 and the attack bonus is +5."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-cantrip",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-cantrip",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-cantrip",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "Cantrip Common 13 +5",
+        "selection": {
+          "spell_level": 0,
+          "save_dc": 13,
+          "attack_bonus": 5
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-1st",
+      "field": "desc",
+      "expected": [
+        "Scroll, common",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains a 1st-level spell. The spell's saving throw DC is 13 and its attack bonus is +5. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, common",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains a 1st level spell. The spell's saving throw is 13 and the attack bonus is +5.",
+        "A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 11. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-1st",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-1st",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-1st",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "1st Common 13 +5",
+        "selection": {
+          "spell_level": 1,
+          "save_dc": 13,
+          "attack_bonus": 5
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-2nd",
+      "field": "desc",
+      "expected": [
+        "Scroll, uncommon",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains a 2nd-level spell. The spell's saving throw DC is 13 and its attack bonus is +5. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, uncommon",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains a 2nd level spell. The spell's saving throw is 13 and the attack bonus is +5.",
+        "A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 12. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-2nd",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-2nd",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-2nd",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "2nd Uncommon 13 +5",
+        "selection": {
+          "spell_level": 2,
+          "save_dc": 13,
+          "attack_bonus": 5
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-3rd",
+      "field": "desc",
+      "expected": [
+        "Scroll, uncommon",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains a 3rd-level spell. The spell's saving throw DC is 15 and its attack bonus is +7. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, uncommon",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains a 3rd level spell. The spell's saving throw is 15 and the attack bonus is +7.",
+        "A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 13. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-3rd",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-3rd",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-3rd",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "3rd Uncommon 15 +7",
+        "selection": {
+          "spell_level": 3,
+          "save_dc": 15,
+          "attack_bonus": 7
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-4th",
+      "field": "desc",
+      "expected": [
+        "Scroll, rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains a 4th-level spell. The spell's saving throw DC is 15 and its attack bonus is +7. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains a 4th level spell. The spell's saving throw is 15 and the attack bonus is +7.",
+        "A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 14. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-4th",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-4th",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-4th",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "4th Rare 15 +7",
+        "selection": {
+          "spell_level": 4,
+          "save_dc": 15,
+          "attack_bonus": 7
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-5th",
+      "field": "desc",
+      "expected": [
+        "Scroll, rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains a 5th-level spell. The spell's saving throw DC is 17 and its attack bonus is +9. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains a 5th level spell. The spell's saving throw is 17 and the attack bonus is +9.",
+        "A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 15. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-5th",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-5th",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-5th",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "5th Rare 17 +9",
+        "selection": {
+          "spell_level": 5,
+          "save_dc": 17,
+          "attack_bonus": 9
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-6th",
+      "field": "desc",
+      "expected": [
+        "Scroll, very rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains a 6th-level spell. The spell's saving throw DC is 17 and its attack bonus is +9. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, very rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains a 6th level spell. The spell's saving throw is 18 and the attack bonus is +10.",
+        "A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 16. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-6th",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-6th",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-6th",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "6th Very rare 17 +9",
+        "selection": {
+          "spell_level": 6,
+          "save_dc": 17,
+          "attack_bonus": 9
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-7th",
+      "field": "desc",
+      "expected": [
+        "Scroll, very rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains a 7th-level spell. The spell's saving throw DC is 18 and its attack bonus is +10. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, very rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains a 7th level spell. The spell's saving throw is 18 and the attack bonus is +10.",
+        "A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 17. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-7th",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-7th",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-7th",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "7th Very rare 18 +10",
+        "selection": {
+          "spell_level": 7,
+          "save_dc": 18,
+          "attack_bonus": 10
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-8th",
+      "field": "desc",
+      "expected": [
+        "Scroll, very rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains an 8th-level spell. The spell's saving throw DC is 18 and its attack bonus is +10. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, very rare",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains an 8th level spell. The spell's saving throw is 18 and the attack bonus is +10.",
+        "A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 18. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-8th",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-8th",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-8th",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "8th Very rare 18 +10",
+        "selection": {
+          "spell_level": 8,
+          "save_dc": 18,
+          "attack_bonus": 10
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-9th",
+      "field": "desc",
+      "expected": [
+        "Scroll, legendary",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is interrupted, the scroll is not lost. If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect. This scroll contains a 9th-level spell. The spell's saving throw DC is 19 and its attack bonus is +11. A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 10 +the spell's level. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "actual": [
+        "Scroll, legendary",
+        "A spell scroll bears the words of a single spell, written in a mystical cipher. If the spell is on your class's spell list, you can read the scroll and cast its spell without providing any material components. Otherwise, the scroll is unintelligible. Casting the spell by reading the scroll requires the spell's normal casting time. Once the spell is cast, the words on the scroll fade, and it crumbles to dust. If the casting is uninterrupted, the scroll is not lost.",
+        "If the spell is on your class's spell list but of a higher level than you can normally cast, you must make an ability check using your spellcasting ability to determine whether you cast it successfully. The DC equals 10 + the spell's level. On a failed check, the spell disappears from the scroll with no other effect.",
+        "This scroll contains a 9th level spell. The spell's saving throw is 19 and the attack bonus is +11.",
+        "A wizard spell on a spell scroll can be copied just as spells in spellbooks can be copied. When a spell is copied from a spell scroll, the copier must succeed on an Intelligence (Arcana) check with a DC equal to 19. If the check succeeds, the spell is successfully copied. Whether the check succeeds or fails, the spell scroll is destroyed."
+      ],
+      "match": false
+    },
+    {
+      "record": "spell-scroll-9th",
+      "field": "derived_from",
+      "expected": "magic-items/spell-scroll",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-9th",
+      "field": "source_text_kind",
+      "expected": "derived_table_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "spell-scroll-9th",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "spell-scroll",
+        "selection_row": "9th Legendary 19 +11",
+        "selection": {
+          "spell_level": 9,
+          "save_dc": 19,
+          "attack_bonus": 11
+        },
+        "complete_parent_text": "Scroll, varies\nA spell scroll bears the words of a single spell,\nwritten in a mystical cipher. If the spell is on your\nclass’s spell list, you can read the scroll and cast its\nspell without providing any material components.\nOtherwise, the scroll is unintelligible. Casting the\nspell by reading the scroll requires the spell’s normal\ncasting time. Once the spell is cast, the words on the\nscroll fade, and it crumbles to dust. If the casting is\ninterrupted, the scroll is not lost.\nIf the spell is on your class’s spell list but of a\nhigher level than you can normally cast, you must\nmake an ability check using your spellcasting ability\nto determine whether you cast it successfully. The\nDC equals 10 + the spell’s level. On a failed check, the\nspell disappears from the scroll with no other effect.\nThe level of the spell on the scroll determines the\nspell’s saving throw DC and attack bonus, as well as\nthe scroll’s rarity, as shown in the Spell Scroll table.\nSpell Scroll\nSpell Level Rarity Save DC Attack Bonus\nCantrip Common 13 +5\n1st Common 13 +5\n2nd Uncommon 13 +5\n3rd Uncommon 15 +7\n4th Rare 15 +7\n5th Rare 17 +9\n6th Very rare 17 +9\n7th Very rare 18 +10\n8th Very rare 18 +10\n9th Legendary 19 +11\nA wizard spell on a spell scroll can be copied just as\nspells in spellbooks can be copied. When a spell is\ncopied from a spell scroll, the copier must succeed on\nan Intelligence (Arcana) check with a DC equal to 10\n+the spell’s level. If the check succeeds, the spell is\nsuccessfully copied. Whether the check succeeds or\nfails, the spell scroll is destroyed.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    }
+  ],
+  "limitations": [
+    "Four healing potions and ten scrolls only; casting eligibility, interrupted casting, copying, healing and item destruction are reference rules pending execution."
+  ],
+  "snapshot_note": "Before this invocation; rerun for current candidate."
+}
