@@ -1,0 +1,8 @@
+# Preserve the exact bytes of the pinned upstream archive on Windows and Unix.
+backend/data/srd2014/*.json text eol=lf
+backend/data/5e-database-LICENSE.md text eol=lf
+backend/data/source-manifest.json text eol=lf
+*.py text eol=lf
+*.js text eol=lf
+*.cjs text eol=lf
+*.md text eol=lf

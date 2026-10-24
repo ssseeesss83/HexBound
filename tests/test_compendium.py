@@ -52,7 +52,7 @@ def test_spellcasting_tables_preserve_half_and_pact_caster_rules():
 
 
 def test_complete_spell_text_and_mechanics_are_not_truncated_or_reshaped():
-    raw = json.loads((c.DATA_DIR / "srd2014/5e-SRD-Spells.json").read_text())
+    raw = json.loads((c.DATA_DIR / "srd2014/5e-SRD-Spells.json").read_text(encoding="utf-8"))
     for original in raw:
         spell = c.SPELLS[original["index"]]
         for field, value in original.items():
@@ -68,7 +68,7 @@ def test_complete_spell_text_and_mechanics_are_not_truncated_or_reshaped():
 
 def test_raw_2014_data_has_no_2024_url_or_non_srd_spell_injection():
     for file in c.SOURCE["files"]:
-        raw = (c.DATA_DIR / file["file"]).read_text()
+        raw = (c.DATA_DIR / file["file"]).read_text(encoding="utf-8")
         assert "/api/2024/" not in raw
     assert "artificer" not in c.CLASSES
     assert "chromatic-orb" not in c.SPELLS
@@ -93,7 +93,7 @@ def test_only_known_translation_names_are_added():
 
 
 def test_explicit_life_domain_erratum_preserves_original_archive():
-    raw = json.loads((c.DATA_DIR / "srd2014/5e-SRD-Subclasses.json").read_text())
+    raw = json.loads((c.DATA_DIR / "srd2014/5e-SRD-Subclasses.json").read_text(encoding="utf-8"))
     original = next(row for row in raw if row["index"] == "life")
     assert len(original["spells"]) == 9
     corrected = c.SUBCLASSES["life"]

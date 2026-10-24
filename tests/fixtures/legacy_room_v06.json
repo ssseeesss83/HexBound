@@ -1,0 +1,635 @@
+{
+  "id": "legacy-fixture",
+  "invite_code": "SAMPLE01",
+  "name": "Migration sample",
+  "mode": "preset",
+  "theme": "",
+  "host_id": "p0",
+  "status": "playing",
+  "version": 8,
+  "interaction_mode": "assisted",
+  "starting_level": 1,
+  "members": [
+    {
+      "id": "p0",
+      "name": "Sample",
+      "character": {
+        "id": "fighter",
+        "template_id": "fighter",
+        "class_id": "fighter",
+        "name": "Sample",
+        "level": 1,
+        "xp": 100,
+        "milestone_credits": 0,
+        "abilities": {
+          "str": 15,
+          "con": 14,
+          "dex": 13,
+          "wis": 12,
+          "cha": 10,
+          "int": 8
+        },
+        "skills": [
+          "acrobatics",
+          "animal-handling"
+        ],
+        "expertise": [],
+        "subclass_id": null,
+        "hp": 7,
+        "max_hp": 12,
+        "ac": 18,
+        "weapon": {
+          "name": "长剑",
+          "ability": "str",
+          "dice": "1d8"
+        },
+        "hit_dice": {
+          "die": 10,
+          "max": 1,
+          "current": 1
+        },
+        "resources": {
+          "second-wind": {
+            "max": 1,
+            "current": 1,
+            "recharge": "short",
+            "name": "回气",
+            "automated": true
+          }
+        },
+        "spell_slots": {},
+        "pact_slots": {
+          "max": 0,
+          "current": 0,
+          "level": 0,
+          "recharge": "short"
+        },
+        "death_successes": 0,
+        "death_failures": 0,
+        "stable": false,
+        "dead": false,
+        "potions": 2,
+        "growth_history": [],
+        "notes": [
+          "标准数组按职业固定分配；尚未叠加种族、背景或专长收益。",
+          "此人物提供完整单职业成长数据；仅标记自动化的能力会由脚本执行。"
+        ],
+        "profile": {
+          "appearance": "",
+          "personality": "",
+          "background": "",
+          "talents": []
+        },
+        "ability_generation": "standard-array",
+        "proficiency": 2,
+        "saving_throws": [
+          "str",
+          "con"
+        ],
+        "skill_modifiers": {
+          "acrobatics": 3,
+          "animal-handling": 3,
+          "arcana": -1,
+          "athletics": 2,
+          "deception": 0,
+          "history": -1,
+          "insight": 1,
+          "intimidation": 0,
+          "investigation": -1,
+          "medicine": 1,
+          "nature": -1,
+          "perception": 1,
+          "performance": 0,
+          "persuasion": 0,
+          "religion": -1,
+          "sleight-of-hand": 1,
+          "stealth": 1,
+          "survival": 1
+        },
+        "save_modifiers": {
+          "str": 4,
+          "dex": 1,
+          "con": 4,
+          "int": -1,
+          "wis": 1,
+          "cha": 0
+        },
+        "features": [
+          {
+            "id": "fighter-fighting-style",
+            "name": "Fighting Style",
+            "level": 1,
+            "description": "You adopt a particular style of fighting as your specialty. Choose one of the following options. You can't take a Fighting Style option more than once, even if you later get to choose again.",
+            "automated": false,
+            "note": "规则参考：复杂效果尚需主持人裁定，不会自动生成数值"
+          },
+          {
+            "id": "second-wind",
+            "name": "Second Wind",
+            "level": 1,
+            "description": "You have a limited well of stamina that you can draw on to protect yourself from harm. On your turn, you can use a bonus action to regain hit points equal to 1d10 + your fighter level. Once you use this feature, you must finish a short or long rest before you can use it again.",
+            "automated": true,
+            "note": "已接入规则处理器"
+          }
+        ],
+        "spellcasting": {
+          "ability": null,
+          "known_limit": 0,
+          "prepared_limit": 0,
+          "cantrips_limit": 0,
+          "max_spell_level": 0,
+          "save_dc": null,
+          "attack_bonus": null
+        },
+        "always_prepared_spells": [],
+        "ruleset": "srd-5.1",
+        "character_schema_version": 1,
+        "class": "fighter",
+        "class_name": "战士",
+        "cantrips": [],
+        "magical_secrets": [],
+        "known_spells": [],
+        "spellbook": [],
+        "prepared_spells": [],
+        "arcanum": {},
+        "ritual_spells": []
+      }
+    }
+  ],
+  "events": [
+    {
+      "kind": "scene",
+      "text": "海雾盖住熄灭的灯塔。摆渡人把一把铜钥匙推到你们面前：天亮前，让归船看见那束光。 石板边堆着潮湿沙土。"
+    },
+    {
+      "kind": "scene",
+      "text": "巡逻的盐壳守卫挡住窄巷。它已经认不出你们，只记得不许任何人通过。"
+    },
+    {
+      "kind": "roll",
+      "text": "盐壳守卫 的先攻为 2。",
+      "actor_id": "enemy:0:salt-warden",
+      "roll": {
+        "kind": "initiative",
+        "dice": [
+          2
+        ],
+        "selected": 2,
+        "modifier": 0,
+        "total": 2,
+        "dc": 10,
+        "success": false,
+        "advantage": false,
+        "disadvantage": false
+      }
+    },
+    {
+      "kind": "roll",
+      "text": "Sample 的先攻为 3。",
+      "actor_id": "p0",
+      "roll": {
+        "kind": "initiative",
+        "dice": [
+          2
+        ],
+        "selected": 2,
+        "modifier": 1,
+        "total": 3,
+        "dc": 10,
+        "success": false,
+        "advantage": false,
+        "disadvantage": false
+      }
+    },
+    {
+      "kind": "combat",
+      "text": "遭遇开始。行动顺序已经由服务器确定。"
+    },
+    {
+      "id": 6,
+      "kind": "roll",
+      "actor_id": "p0",
+      "text": "Recorded attack",
+      "roll": {
+        "rolls": [
+          17
+        ],
+        "total": 22,
+        "success": true
+      }
+    }
+  ],
+  "dm_pending": null,
+  "progression": {
+    "mode": "xp",
+    "world_minutes": 60
+  },
+  "campaign": {
+    "package": {
+      "scenario": {
+        "id": "book-last-lantern",
+        "starting_level": 3,
+        "name": "雾港最后一盏灯 · 分支剧本",
+        "description": "调查失落的透镜，与旧日守卫交涉，沿不同道路重新点亮灯塔。",
+        "tags": [
+          "原创",
+          "入门",
+          "分支"
+        ],
+        "entry_node_id": "dock",
+        "skill_ids": [
+          "blade-strike",
+          "field-mending",
+          "read-traces",
+          "steady-voice",
+          "take-cover"
+        ],
+        "monster_ids": [
+          "salt-warden"
+        ],
+        "nodes": [
+          {
+            "id": "dock",
+            "title": "雨夜码头",
+            "text": "海雾盖住熄灭的灯塔。摆渡人把一把铜钥匙推到你们面前：天亮前，让归船看见那束光。 石板边堆着潮湿沙土。",
+            "objective": "找到前往海关的道路",
+            "actions": [
+              {
+                "id": "follow-traces",
+                "label": "沿足迹寻找海关侧门",
+                "skill_id": "read-traces",
+                "success_node_id": "customs",
+                "failure_node_id": "alley"
+              },
+              {
+                "id": "ask-boatman",
+                "label": "向摆渡人询问安全路线",
+                "skill_id": "steady-voice",
+                "success_node_id": "customs",
+                "failure_node_id": "alley"
+              }
+            ],
+            "objects": [
+              {
+                "id": "dock-sand",
+                "name": "码头沙土",
+                "description": "潮湿沙土堆在码头石板边，留下行人的脚印。",
+                "tags": [
+                  "sand",
+                  "searchable"
+                ],
+                "hp": 10,
+                "dc": 10
+              }
+            ]
+          },
+          {
+            "id": "alley",
+            "title": "盐雾小巷",
+            "text": "巡逻的盐壳守卫挡住窄巷。它已经认不出你们，只记得不许任何人通过。",
+            "objective": "击败守卫并抵达海关",
+            "monster_ids": [
+              "salt-warden"
+            ],
+            "actions": [
+              {
+                "id": "enter-customs",
+                "label": "推开海关的侧门",
+                "next_node_id": "customs"
+              }
+            ],
+            "objects": []
+          },
+          {
+            "id": "customs",
+            "title": "失落透镜",
+            "text": "铁柜下压着灯塔透镜。旧账册记录了一句誓言：灯在，人归。",
+            "objective": "带走透镜，寻找塔顶的入口",
+            "actions": [
+              {
+                "id": "read-ledger",
+                "label": "辨认旧账册上的机关图",
+                "skill_id": "read-traces",
+                "success_node_id": "tower",
+                "failure_node_id": "stairs"
+              },
+              {
+                "id": "take-stairs",
+                "label": "带着透镜绕行长阶",
+                "next_node_id": "stairs"
+              }
+            ],
+            "objects": [
+              {
+                "id": "iron-cabinet",
+                "name": "海关铁柜",
+                "description": "倾倒的铁柜压住透镜，可以合力移动并作为遮挡。",
+                "tags": [
+                  "movable",
+                  "cover",
+                  "interactable"
+                ],
+                "hp": 30,
+                "dc": 12
+              },
+              {
+                "id": "ledger",
+                "name": "关税账册",
+                "description": "盐水浸湿的纸页仍有干燥边角，记载机关与誓言。",
+                "tags": [
+                  "searchable",
+                  "flammable"
+                ],
+                "hp": 5,
+                "dc": 12
+              }
+            ]
+          },
+          {
+            "id": "stairs",
+            "title": "长阶上的名字",
+            "text": "你们绕过损坏的升降梯，在每级台阶上看见一个守夜人的名字。尽头仍有微弱火光。 旧绞盘锈死在梯旁，墙上刻着守夜誓言。",
+            "objective": "抵达灯塔顶层",
+            "actions": [
+              {
+                "id": "climb",
+                "label": "继续攀登，回应上方的灯火",
+                "next_node_id": "tower"
+              }
+            ],
+            "objects": [
+              {
+                "id": "winch",
+                "name": "锈蚀绞盘",
+                "description": "升降梯的旧绞盘卡在阶梯旁。",
+                "tags": [
+                  "interactable",
+                  "cover"
+                ],
+                "hp": 25,
+                "dc": 12
+              },
+              {
+                "id": "names",
+                "name": "刻字石阶",
+                "description": "刻在台阶上的名字和墙上誓言留下旧日线索。",
+                "tags": [
+                  "searchable"
+                ],
+                "hp": 40,
+                "dc": 12
+              }
+            ]
+          },
+          {
+            "id": "tower",
+            "title": "守灯人的最后一夜",
+            "text": "老人握着最后一粒火。他不相信有人会接替自己。窗外的海雾已漫过船帆。 灯座中留着被盐壳束住的干燥灯芯。",
+            "objective": "决定如何点亮灯塔",
+            "actions": [
+              {
+                "id": "promise",
+                "label": "以新的誓言接过灯火",
+                "skill_id": "steady-voice",
+                "success_node_id": "dawn",
+                "failure_node_id": "quiet-dawn"
+              },
+              {
+                "id": "repair-light",
+                "label": "默默装好透镜，陪他守到天亮",
+                "next_node_id": "quiet-dawn"
+              }
+            ],
+            "objects": [
+              {
+                "id": "wick",
+                "name": "灯芯",
+                "description": "灯座中的干燥灯芯被薄薄盐壳束住。",
+                "tags": [
+                  "flammable",
+                  "interactable"
+                ],
+                "hp": 10,
+                "dc": 12
+              },
+              {
+                "id": "last-flame",
+                "name": "最后的火种",
+                "description": "守望者掌中可见的一粒火，需要他允许才能接近。",
+                "tags": [
+                  "fire"
+                ],
+                "hp": 1,
+                "dc": 15
+              }
+            ]
+          },
+          {
+            "id": "dawn",
+            "title": "归航之光",
+            "text": "旧守灯人终于松开手。你们的誓言化为晨光，第一艘归船缓缓靠岸。",
+            "objective": "冒险完成",
+            "ending": true,
+            "objects": []
+          },
+          {
+            "id": "quiet-dawn",
+            "title": "无言的黎明",
+            "text": "没人再提起誓言。你们陪老人一起点亮透镜，海上回应了第一声汽笛。",
+            "objective": "冒险完成",
+            "ending": true,
+            "objects": []
+          }
+        ]
+      },
+      "skills": {
+        "blade-strike": {
+          "id": "blade-strike",
+          "name": "守卫剑击",
+          "description": "以力量挥出一次武器攻击。",
+          "tags": [
+            "基础",
+            "战斗"
+          ],
+          "effect": "attack",
+          "ability": "str",
+          "dice": "1d8",
+          "bonus": 0,
+          "dc": 12,
+          "uses": null,
+          "target": "enemy"
+        },
+        "field-mending": {
+          "id": "field-mending",
+          "name": "应急治疗",
+          "description": "为自己或同伴恢复生命，每场冒险三次。",
+          "tags": [
+            "治疗"
+          ],
+          "effect": "heal",
+          "ability": "wis",
+          "dice": "2d4",
+          "bonus": 2,
+          "dc": 12,
+          "uses": 3,
+          "target": "ally"
+        },
+        "read-traces": {
+          "id": "read-traces",
+          "name": "辨认痕迹",
+          "description": "调查机关、足迹与留下的文字。",
+          "tags": [
+            "探索"
+          ],
+          "effect": "check",
+          "ability": "int",
+          "dice": "1d20",
+          "bonus": 0,
+          "dc": 12,
+          "uses": null,
+          "target": "scene"
+        },
+        "steady-voice": {
+          "id": "steady-voice",
+          "name": "坚定交涉",
+          "description": "用诚实与勇气说服徘徊者。",
+          "tags": [
+            "社交"
+          ],
+          "effect": "check",
+          "ability": "cha",
+          "dice": "1d20",
+          "bonus": 0,
+          "dc": 10,
+          "uses": null,
+          "target": "scene"
+        },
+        "take-cover": {
+          "id": "take-cover",
+          "name": "谨慎闪避",
+          "description": "专注保护自己，消耗本回合动作。",
+          "tags": [
+            "防御"
+          ],
+          "effect": "defend",
+          "ability": "dex",
+          "dice": "1d4",
+          "bonus": 0,
+          "dc": 12,
+          "uses": null,
+          "target": "self"
+        }
+      },
+      "monsters": {
+        "salt-warden": {
+          "id": "salt-warden",
+          "name": "盐壳守卫",
+          "description": "忘却了姓名，仍在履行旧日职责的守卫。",
+          "tags": [
+            "雾港",
+            "守卫"
+          ],
+          "hp": 12,
+          "ac": 11,
+          "attack_bonus": 2,
+          "damage_dice": "1d4",
+          "damage_bonus": 0,
+          "initiative_bonus": 0
+        }
+      },
+      "revisions": {
+        "blade-strike": 1,
+        "field-mending": 1,
+        "read-traces": 1,
+        "steady-voice": 1,
+        "take-cover": 1,
+        "salt-warden": 1,
+        "book-last-lantern": 1
+      }
+    },
+    "node_id": "alley",
+    "spent": {},
+    "cleared": [],
+    "visited": [
+      "dock",
+      "alley"
+    ]
+  },
+  "completed": false,
+  "combat": {
+    "active": true,
+    "round": 1,
+    "index": 0,
+    "order": [
+      "p0",
+      "enemy:0:salt-warden"
+    ],
+    "turn_actor_id": "p0",
+    "action_used": false,
+    "dodging": [],
+    "enemies": [
+      {
+        "id": "enemy:0:salt-warden",
+        "name": "盐壳守卫",
+        "description": "忘却了姓名，仍在履行旧日职责的守卫。",
+        "tags": [
+          "雾港",
+          "守卫"
+        ],
+        "hp": 12,
+        "ac": 11,
+        "attack_bonus": 2,
+        "damage_dice": "1d4",
+        "damage_bonus": 0,
+        "initiative_bonus": 0,
+        "card_id": "salt-warden",
+        "max_hp": 12
+      }
+    ],
+    "encounter_id": "4b62136730704ef38fff7e81747d80a6",
+    "scene_id": "alley",
+    "bonus_action_used": false,
+    "reactions_used": []
+  },
+  "scene_id": "alley",
+  "scene": {
+    "id": "alley",
+    "title": "盐雾小巷",
+    "text": "巡逻的盐壳守卫挡住窄巷。它已经认不出你们，只记得不许任何人通过。",
+    "objective": "击败守卫并抵达海关",
+    "eyebrow": "雾港最后一盏灯 · 分支剧本",
+    "objects": []
+  },
+  "director": {
+    "proposals": {
+      "p0": {
+        "id": "9b55d28f8e5142a28002ff6f7f55aa4f",
+        "actor_id": "p0",
+        "scene_id": "alley",
+        "policy": "balanced",
+        "decision": {
+          "kind": "dialogue",
+          "label": "Ask",
+          "text": "Ask the guard",
+          "skill_id": null,
+          "anchor_action_id": null,
+          "difficulty": "moderate",
+          "success_text": "",
+          "failure_text": "",
+          "monster_id": null,
+          "action_id": null,
+          "target_id": null,
+          "object_id": null
+        },
+        "dc": null,
+        "cost": "不消耗规则资源；只记录对话。",
+        "requires_host": false,
+        "plan": null,
+        "_fingerprint": "9696fff26cb8b26b36fb5b41f6a7ed39a8e253f936eda5e060766497d805d778"
+      }
+    }
+  },
+  "reward_ledger": [
+    "objective:dock"
+  ]
+}

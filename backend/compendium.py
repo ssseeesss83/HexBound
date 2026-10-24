@@ -270,9 +270,18 @@ def verify_source_integrity():
         raw = path.read_bytes()
         if hashlib.sha256(raw).hexdigest() != file["sha256"]:
             errors.append(f"SHA256 mismatch: {file['file']}")
-        if len(json.loads(raw)) != file["records"]:
+        if len(raw) != file["bytes"]:
+            errors.append(f"Byte count mismatch: {file['file']}")
+        try:
+            records = json.loads(raw)
+        except (ValueError, UnicodeError):
+            errors.append(f"Invalid JSON: {file['file']}")
+            continue
+        if not isinstance(records, list) or len(records) != file["records"]:
             errors.append(f"Record count mismatch: {file['file']}")
     license_path = DATA_DIR / "5e-database-LICENSE.md"
-    if hashlib.sha256(license_path.read_bytes()).hexdigest() != SOURCE["license_sha256"]:
+    if not license_path.is_file():
+        errors.append("Missing upstream license")
+    elif hashlib.sha256(license_path.read_bytes()).hexdigest() != SOURCE["license_sha256"]:
         errors.append("Upstream license integrity mismatch")
     return errors

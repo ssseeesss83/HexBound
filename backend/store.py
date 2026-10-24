@@ -9,6 +9,8 @@ from copy import deepcopy
 from pathlib import Path
 from contextlib import contextmanager
 
+from .maintenance import SCHEMA_VERSION, check_database_version, backup_database
+
 
 def token_hash(token: str) -> str:
     return hashlib.sha256(token.encode()).hexdigest()
@@ -18,7 +20,14 @@ class Store:
     def __init__(self, path: str):
         self.path = path
         Path(path).parent.mkdir(parents=True, exist_ok=True)
+        if Path(path).is_file():
+            with self.connect() as db:
+                version = check_database_version(db)
+                populated = db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='rooms'").fetchone()
+            if version == 0 and populated:
+                backup_database(path, Path(path).parent / "backups" / f"pre-schema-1-{uuid.uuid4().hex}.zip")
         with self.connect() as db:
+            check_database_version(db)
             db.executescript("""
                 PRAGMA journal_mode=WAL;
                 CREATE TABLE IF NOT EXISTS rooms (
@@ -46,6 +55,7 @@ class Store:
             if "user_id" not in columns:
                 db.execute("ALTER TABLE members ADD COLUMN user_id TEXT")
             db.execute("CREATE UNIQUE INDEX IF NOT EXISTS members_room_user ON members(room_id,user_id) WHERE user_id IS NOT NULL")
+            db.execute(f"PRAGMA user_version={SCHEMA_VERSION}")
 
     @contextmanager
     def connect(self):
