@@ -162,7 +162,7 @@ function home() {
           )
           .join("")}</div></section>`
       : ""
-  }<section class="feature-grid"><div class="feature"><div class="eyebrow">01 / Your story</div><h3>沿着剧本，或走出地图</h3><p>预设、自由与混合模式，为不同的冒险留出空间。</p></div><div class="feature"><div class="eyebrow">02 / True consequence</div><h3>每次掷骰，都有据可查</h3><p>脚本执行检定与战斗。模型讲述结果，不替你决定命运。</p></div><div class="feature"><div class="eyebrow">03 / Together</div><h3>六个席位，一段共同记忆</h3><p>实时同行、自动保存。暂时离席，也不会失去故事。</p></div></section><footer class="footer"><span>HEXBOUND / 六席之间 · 原创文字冒险</span><button class="ghost small" id="rules">查看本版规则范围 ↗</button></footer></main>`;
+  }<section class="feature-grid"><div class="feature"><div class="eyebrow">01 / Your story</div><h3>沿着剧本，或走出地图</h3><p>剧本组织主线，AI DM 根据你的行动主持冒险。</p></div><div class="feature"><div class="eyebrow">02 / True consequence</div><h3>每次掷骰，都有据可查</h3><p>脚本执行检定与战斗。模型讲述结果，不替你决定命运。</p></div><div class="feature"><div class="eyebrow">03 / Together</div><h3>六个席位，一段共同记忆</h3><p>实时同行、自动保存。暂时离席，也不会失去故事。</p></div></section><footer class="footer"><span>HEXBOUND / 六席之间 · 原创文字冒险</span><button class="ghost small" id="rules">查看本版规则范围 ↗</button></footer></main>`;
   $(".home-header").insertAdjacentHTML(
     "beforeend",
     `<a class="small" href="/account.html">${account ? esc(account.display_name) + " · 账号中心" : "登录 / 注册"}</a>`,
@@ -483,6 +483,7 @@ function renderRoom() {
     builderState = null;
     selectedTarget = '';
     freeActionDraft = '';
+    skillIntentId = '';
     freeActionPending = false;
     failedProposals.clear();
     previousCombatActive = false;
@@ -1921,6 +1922,7 @@ async function equipSkillsDialog() {
 
 let actionEntry = "skills",
   freeActionDraft = "",
+  skillIntentId = "",
   freeActionPending = false;
 const failedProposals = new Set();
 function installActionEntries() {
@@ -1931,10 +1933,12 @@ function installActionEntries() {
     "beforebegin",
     `<nav class="action-entry-tabs" aria-label="行动方式"><button data-action-entry="skills" aria-pressed="${actionEntry === "skills"}">⚔ 技能行动<small>职业、法术与规则动作</small></button><button data-action-entry="free" aria-pressed="${actionEntry === "free"}">✦ 自由行动<small>描述意图，先裁定后执行${(room.director_proposals || []).length ? ` · ${(room.director_proposals || []).length} 项待处理` : ""}</small></button></nav>`,
   );
+  const standardSkills = catalog.standard_skills || [];
+  if (standardSkills.length) skillArea.insertAdjacentHTML("beforeend", `<details class="standard-skills"><summary>18 项标准技能 · 选择尝试方法</summary><p class="helper">选择技能后描述目标；DM 决定是否检定及后果。</p><div class="actions">${standardSkills.map(skill => `<button type="button" data-method-skill="${esc(skill.id)}">${esc(skill.name)} · ${esc(abilities[skill.ability] || skill.ability)}</button>`).join("")}</div></details>`);
   skillArea.classList.toggle("action-entry-hidden", actionEntry !== "skills");
   skillArea.insertAdjacentHTML(
     "afterend",
-    `<section class="free-action-panel ${actionEntry === "free" ? "" : "action-entry-hidden"}"><div class="eyebrow">INTENT → RULING → CONFIRM</div><h3>你想如何改变眼前的局面？</h3><p class="helper">自由描述不等于免费行动。DM 将给出目标、检定、风险与资源代价；确认后由规则脚本执行。</p>${freeActionContextHtml()}<form id="free-action-form"><label class="sr-only" for="free-action-intent">描述你的自由行动</label><textarea id="free-action-intent" maxlength="1500" required placeholder="例如：推倒木箱挡住敌人，借掩体接近门口…">${esc(freeActionDraft)}</textarea><div class="row between"><small>${room.combat?.active ? "战斗中仍受回合、动作与移动资源限制。" : "探索行动也可能消耗时间、资源或触发风险。"}</small><button class="primary" ${busy || !connected || room.status !== "playing" ? "disabled" : ""}>${freeActionPending ? "正在裁定…" : "请求裁定 ↗"}</button></div><p class="free-action-status" role="status">${freeActionPending ? "DM 正在把你的意图转换为可审核的规则计划；尚未执行行动。" : ""}</p></form><div id="free-action-proposals"></div></section>`,
+    `<section class="free-action-panel ${actionEntry === "free" ? "" : "action-entry-hidden"}"><div class="eyebrow">INTENT → RULING → CONFIRM</div><h3>你想如何改变眼前的局面？</h3><p class="helper">自由描述不等于免费行动。DM 将给出目标、检定、风险与资源代价；确认后由系统结算。</p>${freeActionContextHtml()}<form id="free-action-form"><label>希望采用的方法<select id="intent-skill"><option value="">由 DM 判断</option>${standardSkills.map(skill => `<option value="${esc(skill.id)}" ${skillIntentId === skill.id ? "selected" : ""}>${esc(skill.name)}</option>`).join("")}</select></label><label class="sr-only" for="free-action-intent">描述你的自由行动</label><textarea id="free-action-intent" maxlength="1500" required placeholder="例如：推倒木箱挡住敌人，借掩体接近门口…">${esc(freeActionDraft)}</textarea><div class="row between"><small>${room.combat?.active ? "战斗中仍受回合、动作与移动资源限制。" : "探索行动也可能消耗时间、资源或触发风险。"}</small><button class="primary" ${busy || !connected || room.status !== "playing" ? "disabled" : ""}>${freeActionPending ? "正在裁定…" : "请求裁定 ↗"}</button></div><p class="free-action-status" role="status">${freeActionPending ? "DM 正在把你的意图转换为可审核的规则计划；尚未执行行动。" : ""}</p></form><div id="free-action-proposals"></div></section>`,
   );
   app.querySelectorAll("[data-action-entry]").forEach(
     (button) =>
@@ -1956,6 +1960,13 @@ function installActionEntries() {
         $("#free-action-intent").focus();
       }),
   );
+  $("#intent-skill").onchange = event => (skillIntentId = event.target.value);
+  app.querySelectorAll('[data-method-skill]').forEach(button => button.onclick = () => {
+    skillIntentId = button.dataset.methodSkill;
+    actionEntry = 'free';
+    renderRoom();
+    $('#free-action-intent')?.focus();
+  });
   $("#free-action-intent").oninput = (event) =>
     (freeActionDraft = event.target.value);
   $("#free-action-form").onsubmit = async (event) => {
@@ -1964,7 +1975,7 @@ function installActionEntries() {
     if (!text || busy) return;
     freeActionDraft = text;
     freeActionPending = true;
-    await command("director_propose", { text });
+    await command("director_propose", { text, ...(skillIntentId ? { skill_id: skillIntentId } : {}) });
     freeActionPending = false;
     renderRoom();
   };
@@ -2007,8 +2018,10 @@ function freeActionContextHtml() {
 }
 function proposalDetails(proposal) {
   const plan = proposal.plan;
+  const method = (catalog.standard_skills || []).find(skill => skill.id === proposal.action_intent?.preferred_skill_id);
+  const declaration = method ? `<p class="helper">方法意向：${esc(method.name)}；是否检定以本次裁定为准。</p>` : "";
   if (!plan)
-    return `${proposal.kind === "check" ? `<p><strong>${esc(proposal.skill_name || "检定")} · DC ${esc(proposal.dc)}</strong></p><p>成功：${esc(proposal.success_text || "按照提案推进")}</p><p>失败：${esc(proposal.failure_text || "按照提案承受后果")}</p>` : ""}${proposal.cost ? `<p>代价：${esc(humanPlanValue(proposal.cost))}</p>` : ""}`;
+    return `${declaration}${proposal.kind === "check" ? `<p><strong>${esc(proposal.skill_name || "检定")} · DC ${esc(proposal.dc)}</strong></p><p>成功：${esc(proposal.success_text || "按照提案推进")}</p><p>失败：${esc(proposal.failure_text || "按照提案承受后果")}</p>` : ""}${proposal.cost ? `<p>代价：${esc(humanPlanValue(proposal.cost))}</p>` : ""}`;
   const target =
     (plan.targets || []).find((item) => item.id === plan.target_id) ||
     room.party.find((item) => item.id === plan.target_id) ||
@@ -2018,7 +2031,7 @@ function proposalDetails(proposal) {
     (room.free_actions?.objects || []).find(
       (item) => item.id === plan.object_id,
     );
-  return `<dl class="proposal-facts"><div class="proposal-fact"><dt>资源代价</dt><dd>${esc(plan.cost_label || humanPlanValue(plan.cost || proposal.cost))}</dd></div><div class="proposal-fact"><dt>执行目标</dt><dd>${esc([target?.name, object?.name].filter(Boolean).join(" · ") || "自己 / 当前环境")}</dd></div></dl><p><strong>检定与规则效果</strong></p><ul class="proposal-effects">${(plan.summary || []).map((text) => `<li>${esc(text)}</li>`).join("") || `<li>${esc(humanPlanValue(plan.check || plan.effects || "按规则计划执行"))}</li>`}</ul><p class="proposal-warning">${esc(proposal.risk || plan.risk || proposal.failure_text || "需要检定的行动可能失败。失败不会退还已使用的动作或移动；不会保证造成效果。")}</p>`;
+  return `${declaration}<dl class="proposal-facts"><div class="proposal-fact"><dt>资源代价</dt><dd>${esc(plan.cost_label || humanPlanValue(plan.cost || proposal.cost))}</dd></div><div class="proposal-fact"><dt>执行目标</dt><dd>${esc([target?.name, object?.name].filter(Boolean).join(" · ") || "自己 / 当前环境")}</dd></div></dl><p><strong>检定与规则效果</strong></p><ul class="proposal-effects">${(plan.summary || []).map((text) => `<li>${esc(text)}</li>`).join("") || `<li>${esc(humanPlanValue(plan.check || plan.effects || "按规则计划执行"))}</li>`}</ul><p class="proposal-warning">${esc(proposal.risk || plan.risk || proposal.failure_text || "需要检定的行动可能失败。失败不会退还已使用的动作或移动；不会保证造成效果。")}</p>`;
 }
 function installDmProposals() {
   installActionEntries();
@@ -2070,6 +2083,7 @@ function installDmProposals() {
         );
         if (!freeActionDraft)
           freeActionDraft = proposal?.intent || proposal?.text || "";
+        skillIntentId = proposal?.action_intent?.preferred_skill_id || "";
         actionEntry = "free";
         renderRoom();
         $("#free-action-intent")?.focus();

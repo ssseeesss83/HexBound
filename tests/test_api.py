@@ -142,6 +142,22 @@ def test_local_roleplay_never_changes_mechanics(client):
     assert result["events"][-1]["source"] == "local"
 
 
+def test_standard_skill_is_only_an_intent_and_cannot_supply_rules(client):
+    assert len(client.get('/api/catalog').json()['standard_skills']) == 18
+    session = create(client)
+    before = command(client, session, 'start').json()['room']
+    response = command(client, session, 'director_propose', {'text':'查看眼前敞开的门', 'skill_id':'perception'})
+    assert response.status_code == 200
+    room = response.json()['room']
+    proposal = room['director_proposals'][0]
+    assert proposal['action_intent']['preferred_skill_id'] == 'perception'
+    assert proposal['kind'] == 'dialogue' and proposal['dc'] is None
+    assert room['party'] == before['party'] and room['scene'] == before['scene']
+    assert not any(e.get('roll') for e in room['events'])
+    for patch in [{'skill_id':'invented'}, {'dc':1}, {'cost':0}, {'actor_id':'other'}]:
+        assert command(client, session, 'director_propose', {'text':'look', **patch}).status_code == 422
+
+
 @pytest.mark.parametrize("mode", ["free", "hybrid"])
 def test_creation_rejects_retired_modes_even_with_llm(app, client, mode):
     app.state.dm.configured = True

@@ -210,6 +210,53 @@ def test_model_proposal_and_invalid_output_fallback_leave_state_untouched():
     assert result["source"] == "fallback" and room == before
 
 
+def test_all_standard_skills_are_method_declarations_without_rules_parameters():
+    from backend.action_intents import declare
+    room = state()
+    before = copy.deepcopy(room)
+    assert len(director.SKILL_ABILITIES) == 18
+    for skill in director.SKILL_ABILITIES:
+        intent = declare(room, 'hero', 'inspect a visible object', skill)
+        assert intent['source'] == 'skill' and intent['preferred_skill_id'] == skill
+        assert not {'dc', 'roll', 'cost', 'success', 'effects'} & intent.keys()
+    assert room == before
+    with pytest.raises(ValueError, match='18'):
+        declare(room, 'hero', 'look', 'invented-skill')
+
+
+def test_skill_selection_can_receive_no_roll_or_a_different_ruling(monkeypatch):
+    room = state()
+    before = copy.deepcopy(room)
+    def forbidden(*args, **kwargs):
+        raise AssertionError('Planning must not roll dice')
+    monkeypatch.setattr(rules, 'roll_dice', forbidden)
+    class Model:
+        configured = True
+        async def _complete(self, prompt, context, *args, **kwargs):
+            assert context['action_intent']['preferred_skill_id'] == 'perception'
+            return json.dumps({'kind':'dialogue', 'label':'无需检定', 'text':'眼前没有不确定性，无需掷骰。'})
+    result = asyncio.run(director.propose(Model(), room, 'hero', 'look at the open door', skill_id='perception'))
+    assert result['proposal']['decision']['kind'] == 'dialogue'
+    assert result['proposal']['action_intent']['source'] == 'skill'
+    class DifferentSkill(Model):
+        async def _complete(self, *args, **kwargs):
+            return json.dumps(check(skill_id='arcana'))
+    other = asyncio.run(director.propose(DifferentSkill(), room, 'hero', 'identify the rune', skill_id='perception'))
+    assert other['proposal']['decision']['skill_id'] == 'arcana'
+    assert room == before
+
+
+def test_local_unknown_intent_does_not_automatically_bind_first_challenge(monkeypatch):
+    class Local:
+        configured = False
+    room = state()
+    before = copy.deepcopy(room)
+    result = asyncio.run(director.propose(Local(), room, 'hero', 'walk through an open door'))
+    assert result['proposal']['decision']['kind'] == 'dialogue'
+    assert result['proposal']['dc'] is None
+    assert room == before
+
+
 def test_real_character_proficiency_and_expertise_feed_director(monkeypatch):
     from backend import characters
     hero = characters.create_character("rogue", "暗巷旅人", {

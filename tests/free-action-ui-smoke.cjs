@@ -205,7 +205,10 @@ async function main() {
     "start request complete",
   );
   assert(q('[data-action-entry="skills"]'));
-  click('[data-action-entry="free"]');
+  assert.equal(d.querySelectorAll('[data-method-skill]').length,18);
+  click('[data-method-skill="perception"]');
+  assert.equal(q('#intent-skill').value,'perception');
+  assert.equal(q('.dm-proposal'),null,'skill selection does not request or roll anything');
   assert(q(".composer .actions").classList.contains("action-entry-hidden"));
   assert(
     q("[data-free-object=crate]")?.textContent.includes("木箱"),
@@ -228,6 +231,9 @@ async function main() {
     "exploration proposal",
   );
   assert(q(".dm-proposal").textContent.includes("确认前不会掷骰"));
+  assert(q('.dm-proposal').textContent.includes('方法意向：察觉'));
+  assert(!q('.dm-proposal').textContent.includes('DC '),'local intent does not manufacture a check');
+  assert(!q('.roll-ticket'),'planning did not roll');
   click("[data-director-cancel]");
   await until(() => !q(".dm-proposal"), "cancel no execution");
   click('[data-action-entry="skills"]');

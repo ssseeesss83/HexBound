@@ -73,6 +73,10 @@ class TextPayload(Input):
     text: str = Field(min_length=1, max_length=1500)
 
 
+class IntentPayload(TextPayload):
+    skill_id: str | None = Field(default=None, max_length=40)
+
+
 class GroupScope(Input):
     scene_instance_id: str = Field(min_length=1, max_length=100)
     membership_epoch: int = Field(ge=1, strict=True)
@@ -420,6 +424,8 @@ def create_app(db_path: str | None = None) -> FastAPI:
                             "class_name":item.get("name_zh") or item["name"],"role":"SRD 5.1 核心职业","max_hp":c["max_hp"],"ac":c["ac"],"abilities":c["abilities"],"description":"1—20级成长与独立角色档案"})
         base["characters"]=presets
         base["templates"]=presets
+        base["standard_skills"] = [{"id": sid, "name": director.SKILL_NAMES[sid], "ability": ability}
+                                   for sid, ability in director.SKILL_ABILITIES.items()]
         base["rules"]["supported"] += ["12核心职业与18技能档案","1—20级升级与法术管理","个人动作和法术资源"]
         base["rules"]["limitations"] = ["2014 SRD 5.1规则；完整目录与自动化能力分别标识","复杂空间、召唤及未注册效果仅供规则查阅","不包含扩展书专有职业与全部子职业；暂不支持多职业","种族/背景目前使用明确的通用预设，非完整选择系统"]
         return {**base, "auth": {"allow_guests": allow_guests()}, "llm": {"configured": dm.configured, "model": dm.model if dm.configured else "本地叙事"}}
@@ -635,7 +641,9 @@ def create_app(db_path: str | None = None) -> FastAPI:
             return state["version"] == body.expected_version
         # Validate payloads before performing any mutation.
         try:
-            if body.type in ("chat", "narrate", "director_propose"):
+            if body.type == "director_propose":
+                payload = IntentPayload.model_validate(body.payload).model_dump()
+            elif body.type in ("chat", "narrate"):
                 payload = TextPayload.model_validate(body.payload).model_dump()
             elif body.type == "action":
                 payload = ActionPayload.model_validate(body.payload).model_dump()
@@ -674,7 +682,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 raise HTTPException(409,"请先开始或恢复冒险")
             throttle("director:"+member_id,12)
             try:
-                proposed = await director.propose(dm,copy.deepcopy(candidate),member_id,payload["text"])
+                proposed = await director.propose(dm,copy.deepcopy(candidate),member_id,payload["text"], skill_id=payload.get("skill_id"))
             except ValueError as exc:
                 raise HTTPException(422,str(exc)) from exc
         pending = None
