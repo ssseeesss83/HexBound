@@ -142,35 +142,39 @@ def test_local_roleplay_never_changes_mechanics(client):
     assert result["events"][-1]["source"] == "local"
 
 
-def test_free_requires_llm_and_generated_scenes_are_persisted(app, client):
-    rejected = client.post("/api/rooms", json={"starting_level": 1, "player_name": "旅人", "character_id": "fighter", "mode": "free"})
-    assert rejected.status_code == 422
+@pytest.mark.parametrize("mode", ["free", "hybrid"])
+def test_creation_rejects_retired_modes_even_with_llm(app, client, mode):
     app.state.dm.configured = True
+    response = client.post("/api/rooms", json={"starting_level": 1, "player_name": "旅人", "mode": mode})
+    assert response.status_code == 422
+
+
+def test_legacy_free_room_uses_existing_frozen_scenes(app, client):
     from backend.content import SCENES
-    generated = copy.deepcopy(SCENES)
-    generated[0]["title"] = "机械花园"
-    generated[0]["actions"][0]["dc"] = 15
-    async def generate(theme):
-        assert theme == "机械城市"
-        return generated
-    app.state.dm.adventure = generate
-    session = create(client, mode="free", theme="机械城市")
+    session = create(client)
+    state = app.state.store.get(session["room"]["id"])
+    previous = state["version"]
+    state["mode"] = "free"
+    state["scenes"] = copy.deepcopy(SCENES)
+    state["scenes"][0]["title"] = "旧房间冻结花园"
+    state["scene"] = copy.deepcopy(state["scenes"][0])
+    state["version"] += 1
+    app.state.store.save(state, previous)
     result = command(client, session, "start")
     assert result.status_code == 200
-    assert result.json()["room"]["scene"]["title"] == "机械花园"
-    stored = app.state.store.get(session["room"]["id"])
-    assert stored["scenes"][0]["actions"][0]["dc"] == 15
-    assert stored["status"] == "playing"
+    assert result.json()["room"]["scene"]["title"] == "旧房间冻结花园"
+    assert app.state.store.get(state["id"])["mode"] == "free"
 
 
-def test_free_generation_failure_keeps_lobby(app, client):
-    app.state.dm.configured = True
-    async def broken(theme):
-        raise ValueError("invalid JSON")
-    app.state.dm.adventure = broken
-    session = create(client, mode="free")
-    assert command(client, session, "start").status_code == 502
-    assert app.state.store.get(session["room"]["id"])["status"] == "lobby"
+def test_legacy_empty_free_room_requires_author_preparation(app, client):
+    session = create(client)
+    state = app.state.store.get(session["room"]["id"])
+    previous = state["version"]
+    state["mode"] = "free"
+    state["version"] += 1
+    app.state.store.save(state, previous)
+    assert command(client, session, "start").status_code == 409
+    assert app.state.store.get(state["id"])["status"] == "lobby"
 
 
 @pytest.mark.parametrize("interference", ["chat", "pause", "scope"])
@@ -261,38 +265,7 @@ def test_restart_cancels_pending_dm_request(app, client):
     assert saved["version"] == state["version"] + 1
 
 
-def test_free_generation_concurrent_chat_keeps_lobby_and_allows_retry(app):
-    async def run():
-        from backend.content import SCENES
-        reached, release = asyncio.Event(), asyncio.Event()
-        app.state.dm.configured = True
-        async def slow(theme):
-            reached.set()
-            await release.wait()
-            return copy.deepcopy(SCENES)
-        app.state.dm.adventure = slow
-        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url="http://test") as client:
-            host = (await client.post("/api/rooms", json={"starting_level": 1, "player_name": "房主", "character_id": "fighter", "mode": "free"})).json()
-            guest = (await client.post("/api/rooms/join", json={"invite_code": host["invite_code"], "player_name": "同伴", "character_id": "rogue"})).json()
-            url = "/api/rooms/" + host["room"]["id"]
-            async def send(session, kind, version, payload={}):
-                return await client.post(url + "/commands", headers=headers(session), json={"command_id": uuid.uuid4().hex, "expected_version": version, "type": kind, "payload": payload})
-            task = asyncio.create_task(send(host, "start", guest["room"]["version"]))
-            await asyncio.wait_for(reached.wait(), 2)
-            paused = await asyncio.wait_for(send(host, "pause", guest["room"]["version"]), 2)
-            assert paused.status_code == 409  # Lobby has not become a running game.
-            chat = await asyncio.wait_for(send(guest, "chat", guest["room"]["version"], {"text": "补充一个主题"}), 2)
-            assert chat.status_code == 200
-            release.set()
-            assert (await task).status_code == 409
-            current = (await client.get(url, headers=headers(host))).json()
-            assert current["status"] == "lobby" and not current["dm_pending"]
-            retried = await send(host, "start", current["version"])
-            assert retried.status_code == 200 and retried.json()["room"]["status"] == "playing"
-    asyncio.run(run())
-
-
-def test_pause_during_hybrid_start_discards_response_without_pending_lock(app):
+def test_pause_during_script_start_discards_response_without_pending_lock(app):
     async def run():
         reached, release = asyncio.Event(), asyncio.Event()
         async def slow(scene, mode, theme):
@@ -301,7 +274,7 @@ def test_pause_during_hybrid_start_discards_response_without_pending_lock(app):
             return {**scene, "text": "不应写入的过期场景"}, "llm"
         app.state.dm.scene = slow
         async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url="http://test") as client:
-            session = (await client.post("/api/rooms", json={"starting_level": 1, "player_name": "房主", "character_id": "fighter", "mode": "hybrid"})).json()
+            session = (await client.post("/api/rooms", json={"starting_level": 1, "player_name": "房主", "character_id": "fighter"})).json()
             url = "/api/rooms/" + session["room"]["id"]
             async def send(kind, version):
                 return await client.post(url + "/commands", headers=headers(session), json={"command_id": uuid.uuid4().hex, "expected_version": version, "type": kind})

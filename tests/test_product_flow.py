@@ -77,22 +77,20 @@ def test_authored_cards_publish_and_play_with_frozen_versions(setup, monkeypatch
     assert end["status"] == "finished" and end["scene"]["id"] == "end"
 
 
-def test_freeform_authoring_is_host_only_and_does_not_change_rules(setup):
+def test_retired_runtime_authoring_cannot_bypass_script_policy(setup):
     app, client, _ = setup
     host = room(client, scenario_id="book-last-lantern", interaction_mode="freeform")
     guest = client.post("/api/rooms/join", json={"invite_code": host["invite_code"], "player_name": "同伴", "character_id": "rogue"}).json()
     before = command(client, host, "start").json()["room"]
-    patch = {"title": "共同写下的新标题", "text": "潮汐暂时安静下来。", "objective": "观察周围"}
-    assert command(client, guest, "scene_edit", patch).status_code == 403
-    edited = command(client, host, "scene_edit", patch).json()["room"]
-    assert edited["party"] == before["party"]
-    assert edited["available_actions"] == before["available_actions"]
-    assert edited["scene"]["text"] == patch["text"]
-    assert command(client, host, "scene_edit", {**patch, "hp": 999}).status_code == 422
-    assert command(client, host, "narrate", {"text": "我举起手灯。"}).json()["room"]["events"][-1]["kind"] == "intent"
-    assert command(client, guest, "set_interaction", {"mode": "assisted"}).status_code == 403
-    assert command(client, host, "set_interaction", {"mode": "guided"}).status_code == 200
-    assert command(client, host, "scene_edit", patch).status_code == 409
+    patch = {"title": "不能直接覆盖", "text": "我说守卫已经死了", "objective": "观察周围"}
+    for session in [host, guest]:
+        assert command(client, session, "scene_edit", patch).status_code == 409
+        assert command(client, session, "set_interaction", {"mode": "freeform"}).status_code == 409
+    current = client.get('/api/rooms/' + host['room']['id'], headers={"Authorization": "Bearer " + host['token']}).json()
+    assert current['scene'] == before['scene'] and current['party'] == before['party']
+    assert current['version'] == before['version']
+    assert current['play_mode'] == 'script_ai_dm'
+    assert current['interaction_mode'] == 'assisted'
 
 
 def test_assisted_mode_proposes_but_never_executes_action(setup):

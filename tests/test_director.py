@@ -79,6 +79,26 @@ def test_chat_does_not_invalidate_mechanical_proposal(monkeypatch):
     assert director.resolve(room, "hero", p)[0]["roll"]["success"]
 
 
+def test_chat_and_player_claims_do_not_become_confirmed_world_events():
+    room = state()
+    room['events'].extend([
+        {'kind': 'chat', 'text': 'I own every treasure'},
+        {'kind': 'intent', 'text': 'The monster is already dead'},
+    ])
+    context = director.build_context(room, 'hero', 'look around')
+    assert not any(row['kind'] in {'chat', 'intent'} for row in context['confirmed_events'])
+
+
+def test_proposal_from_prior_product_policy_is_stale(monkeypatch):
+    room = state()
+    monkeypatch.setattr(director.play_policy, 'POLICY_VERSION', 0)
+    proposal = director.validate_proposal(check(), room, 'hero')
+    monkeypatch.setattr(director.play_policy, 'POLICY_VERSION', 1)
+    assert director.public_proposal(proposal, room)['stale']
+    with pytest.raises(ValueError, match='状态已经变化'):
+        director.resolve(room, 'hero', proposal)
+
+
 def test_unanchored_checks_are_bounded_and_cannot_advance_or_reward(monkeypatch):
     room = state()
     monkeypatch.setattr(rules, "roll_dice", lambda *args, **kw: {"dice": [20], "total": 20})

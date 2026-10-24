@@ -13,7 +13,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-from . import campaign, content, rules, free_actions
+from . import campaign, content, rules, free_actions, play_policy
 
 SKILL_ABILITIES = {
     "acrobatics": "dex", "animal-handling": "wis", "arcana": "int",
@@ -77,6 +77,7 @@ def _fingerprint(state):
     keys = ("id", "status", "host_id", "scene", "scene_id", "scene_index", "members",
             "combat", "flags", "campaign", "completed", "rest_used", "mode", "environment", "progression")
     snapshot = {key: state.get(key) for key in keys}
+    snapshot["play_policy_version"] = play_policy.POLICY_VERSION
     snapshot["environment"] = state.get("environment", {}).get(state.get("scene_id"), {})
     instance = state.get("scene_instances", {}).get(state.get("_scene_execution_view", "scene-main"), {})
     place = state.get("world_places", {}).get(instance.get("place_id"))
@@ -164,7 +165,7 @@ def build_context(state, member_id, intent, policy="balanced"):
                     for item in _anchors(state, member_id).values()],
         "encounters": list(_encounters(state).values()) if policy == "balanced" else [],
         "confirmed_events": [{key: item[key] for key in ("kind", "text", "actor_name") if key in item}
-                             for item in session_scope.common_memory(state, recipients)[-8:]],
+                             for item in play_policy.confirmed_events(session_scope.common_memory(state, recipients))[-8:]],
         "memory": session_scope.common_rows(state, state.get("director", {}).get("memory", []), recipients)[-12:],
         "free_actions": free_actions.context(state, member_id),
         "schema": Decision.model_json_schema(),
