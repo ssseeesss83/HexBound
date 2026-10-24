@@ -17,7 +17,8 @@ def _member(state, member_id):
 
 
 def _node(state):
-    return next(n for n in state["campaign"]["package"]["scenario"]["nodes"] if n["id"] == state["campaign"]["node_id"])
+    from .story_runtime import node
+    return node(state, state['campaign']['node_id'])
 
 
 def _skill(state, skill_id):
