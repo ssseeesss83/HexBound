@@ -143,3 +143,38 @@ def test_offline_optional_branch_survives_restart_and_can_be_skipped(app,monkeyp
         frame = route(restored,rid,'customs-lens')
         assert frame['scene']['id']=='lens' and frame['route_wait'] is None
         assert not restored.app.state.store.get(rid)['reward_ledger']
+
+
+def test_public_branch_return_does_not_require_model_authored_escape(app,monkeypatch):
+    import asyncio
+    from backend import story_generation
+    from test_story_generation import Provider
+    host = account(app,'branch_traveler')
+    created = host.post('/api/rooms',json=dict(player_name='归客',scenario_id=BOOK_ID)).json()
+    rid = created['room']['id']
+    ok(command(host,rid,'configure_character',dict(build=build())))
+    ok(command(host,rid,'start'))
+    monkeypatch.setattr(rules.secrets,'randbelow',lambda n:n-1)
+    check(host,rid,'dock','perception'); route(host,rid,'dock-market')
+    check(host,rid,'market','investigation'); route(host,rid,'market-customs')
+    check(host,rid,'customs','investigation')
+    route(host,rid,'follow-courier')
+    before = app.state.store.get(rid)
+    job = before['pending_transition']['generation_job_id']
+    # Validated deterministic provider supplies no return edge; no DB injection.
+    result = asyncio.run(story_generation.run(app.state.generation_jobs,Provider(),job))
+    assert result['status']=='committed'
+    branch = route(host,rid,'follow-courier')
+    assert branch['scene']['id']!='customs'
+    onward = next(row['id'] for row in branch['available_actions'] if row['id'].endswith('onward'))
+    waiting = settle(host,rid,onward)
+    assert waiting['route_wait']['status']=='unavailable'
+    settle(host,rid,'story-cancel')
+    frame = host.get('/api/rooms/'+rid).json()
+    back = next(row['id'] for row in frame['available_actions'] if row['id'].startswith('story-route:back-'))
+    frame = settle(host,rid,back)
+    assert frame['scene']['id']=='customs'
+    after = app.state.store.get(rid)
+    assert after['campaign']['story_state']==before['campaign']['story_state']
+    assert after['members']==before['members'] and not after['reward_ledger']
+    assert route(host,rid,'customs-lens')['scene']['id']=='lens'

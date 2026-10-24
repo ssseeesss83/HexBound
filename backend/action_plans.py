@@ -103,8 +103,8 @@ def prepare(state, actor, action_id, target_id=None, options=None, *, now=None):
             label,description,executor = '取消路线等待','确认后取消当前场景的路线等待，已完成的行动结果保留。','story_cancel'
         else:
             route_plan = routes.prepare(state,actor,action_id[12:])
-            view,_,_ = routes._source(state)
-            edge = next(row for row in view['book']['edges'] if row['id']==route_plan['edge_id'])
+            view,_,source = routes._source(state)
+            edge = routes.route_edge(state,view,source,route_plan['edge_id'])
             label,executor = edge['label'],'story_route'
             description = ('确认后前往这条路线。' if route_plan['destination']['status']=='ready'
                            else '这条路线仍在准备。确认后留在当前场景等待，可以继续行动或明确取消；准备好后须重新审核。')

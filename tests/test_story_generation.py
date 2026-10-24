@@ -51,6 +51,68 @@ class Provider:
         return json.dumps(patch)
 
 
+@pytest.mark.parametrize('blocked_return',[False,True])
+def test_committed_branch_has_server_retreat_even_without_usable_model_return(jobs,blocked_return,monkeypatch):
+    from backend import story_transitions as routes, action_plans, rules
+    service,rid = jobs
+    class NoEscape(Provider):
+        async def _complete(self,system,data,*args,**kwargs):
+            raw = await super()._complete(system,data,*args,**kwargs)
+            if blocked_return and 'binding' in data:
+                patch = json.loads(raw)
+                patch['new_edges'].append(dict(id=data['namespace']+'blocked-return',
+                    **{'from':patch['entry_node_id']},to='dock',
+                    condition=dict(op='fact_equals',ref='lens',value=True)))
+                return json.dumps(patch)
+            return raw
+    job = enqueue(jobs)
+    assert asyncio.run(story_generation.run(service,NoEscape(),job['id'],clock=lambda:101))['status']=='committed'
+    state = service.store.get(rid)
+    routes.resolve(state,'p',routes.prepare(state,'p','follow-courier'),receipt_id='enter-branch')
+    before = deepcopy(state)
+    onward = next(row for row in routes.menu(state,'p') if row['id'].endswith('onward'))
+    routes.resolve(state,'p',routes.prepare(state,'p',onward['id'][12:]),receipt_id='wait-next')
+    routes.resolve_cancel(state,'p',routes.prepare_cancel(state,'p'))
+    back = next(row for row in routes.menu(state,'p') if row['id'].startswith('story-route:back-'))
+    plan = action_plans.prepare(state,'p',back['id'])
+    assert plan['executor']=='story_route' and not plan['resources']
+    monkeypatch.setattr(rules,'roll_dice',lambda *a,**k:pytest.fail('Retreat rolled'))
+    routes.resolve(state,'p',plan['route_plan'],receipt_id='retreat')
+    assert state['campaign']['node_id']=='dock'
+    assert state['campaign']['story_state']==before['campaign']['story_state']
+    assert state['members']==before['members']
+    assert not state.get('reward_ledger')
+    assert not any(row['id'].startswith('story-route:back-') for row in routes.menu(state,'p'))
+
+
+def test_nested_branch_retains_visited_ancestor_exit_if_child_omits_fallback(jobs):
+    from backend import story_transitions as routes
+    service,rid = jobs
+    class NoChildFallback(Provider):
+        async def _complete(self,system,data,*args,**kwargs):
+            raw = await super()._complete(system,data,*args,**kwargs)
+            if 'binding' in data:
+                patch = json.loads(raw)
+                patch['new_nodes'][1]['continuation']['fallback_scene_id'] = None
+                return json.dumps(patch)
+            return raw
+    first = enqueue(jobs)
+    assert asyncio.run(story_generation.run(service,NoChildFallback(),first['id'],clock=lambda:101))['status']=='committed'
+    state = service.store.get(rid)
+    routes.resolve(state,'p',routes.prepare(state,'p','follow-courier'),receipt_id='enter-parent')
+    previous = state['version'];state['version']+=1
+    service.store.save(state,previous)
+    child = service.enqueue(rid,'p','r'+first['id']+'_next',now=102)
+    assert asyncio.run(story_generation.run(service,NoChildFallback(),child['id'],clock=lambda:103))['status']=='committed'
+    state = service.store.get(rid)
+    routes.resolve(state,'p',routes.prepare(state,'p','r'+first['id']+'_onward'),receipt_id='enter-child')
+    back = next(row for row in routes.menu(state,'p') if row['id'].startswith('story-route:back-'))
+    plan = routes.prepare(state,'p',back['id'][12:])
+    assert plan['destination']['node_id']=='dock'
+    routes.resolve(state,'p',plan,receipt_id='leave-child')
+    assert state['campaign']['node_id']=='dock'
+
+
 def test_worker_generates_reviews_and_commits_without_entry_or_repeating(jobs):
     service,rid = jobs
     job = enqueue(jobs)

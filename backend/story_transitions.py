@@ -49,13 +49,46 @@ def _source(state):
     return view,facts,source
 
 
+def available_edges(state, view, source):
+    """Public routes and server retreat to a committed branch's visited fallback."""
+    edges = [row for row in view['book']['edges'] if row['from']==source['id']
+             and row['visibility']=='public' and row['legacy_action_id'] is None]
+    commits = state['campaign']['runtime_graph']['commits']
+    commit = next((row for row in commits
+                   if source['id'].startswith('r'+row['job_id']+'_')),None)
+    origin_job = commit['job_id'] if commit else None
+    seen = set()
+    while commit and commit['job_id'] not in seen:
+        seen.add(commit['job_id'])
+        frontier = next((n for n in view['book']['nodes'] if n['id']==commit['frontier_id']),None)
+        fallback = (frontier.get('continuation') or {}).get('fallback_scene_id') if frontier else None
+        target = next((n for n in view['book']['nodes'] if n['id']==fallback),None)
+        if target and target['kind'] in {'scene','key'} and fallback!=source['id'] and fallback in state['campaign']['visited']:
+            edge_id = 'back-'+origin_job
+            # An author cannot suppress this exit by claiming the ID. Keep a
+            # deterministic alternate ID if a frozen edge already uses it.
+            while any(row['id']==edge_id for row in view['book']['edges']):
+                edge_id = 'back-'+_hash(edge_id)[:32]
+            edges.append(dict(id=edge_id, **{'from':source['id']}, to=fallback,
+                label='返回此前的主线场景（保留已结算结果）',condition=None,
+                visibility='public',priority=100,legacy_action_id=None))
+            break
+        # A child frontier may omit fallback or name an unvisited new scene.
+        # Walk only its verified commit lineage to a visited ancestor fallback.
+        commit = next((row for row in commits if frontier and
+                       frontier['id'].startswith('r'+row['job_id']+'_')),None)
+    return edges
+
+
+def route_edge(state, view, source, edge_id):
+    return next((row for row in available_edges(state,view,source) if row['id']==edge_id),None)
+
+
 def prepare(state, actor, edge_id, *, prerequisite_receipt_ids=None):
     """Read current edge/target conditions without moving, revealing or rolling."""
     scope = _guard(state,actor)
     view,facts,source = _source(state)
-    edge = next((row for row in view['book']['edges'] if row['id']==edge_id
-                 and row['from']==source['id'] and row['visibility']=='public'
-                 and row['legacy_action_id'] is None),None)
+    edge = route_edge(state,view,source,edge_id)
     if edge is None:
         raise ValueError('当前路线不可用')
     result = story_runtime.evaluate(edge['condition'],view,facts)
@@ -246,9 +279,7 @@ def menu(state, actor):
     except (ValueError,KeyError):
         return result
     pending = state.get('pending_transition')
-    for edge in sorted(view['book']['edges'],key=lambda row:(-row['priority'],row['id'])):
-        if edge['from']!=source['id'] or edge['visibility']!='public' or edge['legacy_action_id'] is not None:
-            continue
+    for edge in sorted(available_edges(state,view,source),key=lambda row:(-row['priority'],row['id'])):
         if pending and pending['plan']['edge_id']!=edge['id']:
             continue
         try:

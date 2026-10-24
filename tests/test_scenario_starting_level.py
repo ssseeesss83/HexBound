@@ -26,6 +26,8 @@ def studio(tmp_path, monkeypatch):
     monkeypatch.setenv("HEXBOUND_LEGACY_ADMIN_TOKEN", "1")
     monkeypatch.setenv("HEXBOUND_ADMIN_TOKEN", "level-test")
     store = Store(str(tmp_path / "content.sqlite3"))
+    from backend.rules_packages import install_package, build_legacy_package
+    install_package(store, build_legacy_package())
     app = FastAPI()
     app.include_router(create_studio_router(store, DM()))
     with TestClient(app) as client:
