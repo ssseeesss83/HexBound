@@ -516,6 +516,7 @@ function renderRoom() {
     activeTextScope = scope;
     draft = '';
     $('#intent')?.remove();
+    document.querySelectorAll("[data-group-dialog]").forEach((node) => node.remove());
   }
   if(activeJournalKey) window.HexBoundLiveLog?.capture(activeJournalKey);
   trackEncounter();
@@ -728,7 +729,7 @@ function roomMenu() {
   }
   const host = room.host_id === session.member_id;
   openDialog(
-    `<div class="row between"><h2 id="dialog-title">冒险桌设置</h2><button class="ghost" data-close>×</button></div><div class="form"><p class="helper">${esc(room.name)} · ${esc(modeNames[room.mode])}<br>进度自动保存在服务器，刷新会恢复当前角色。</p>${host && room.status === "playing" ? '<button id="pause">暂停冒险</button>' : ""}${host && room.status === "paused" ? '<button id="resume">继续冒险</button>' : ""}<button id="export-log">导出冒险日志</button><button id="view-rules">查看规则范围</button><button id="return-home" ${busy ? "disabled" : ""}>返回首页 · 保留我的席位</button><p class="helper">${account ? "席位已绑定账号，换设备登录后也可从首页继续冒险。" : "这是兼容模式的匿名席位。请保留浏览器数据，或登录账号认领席位。"}</p></div>`,
+    `<div class="row between"><h2 id="dialog-title">冒险桌设置</h2><button class="ghost" data-close>×</button></div><div class="form"><p class="helper">${esc(room.name)} · ${esc(modeNames[room.mode])}<br>进度自动保存在服务器，刷新会恢复当前角色。</p>${host && room.status === "playing" ? '<button id="pause">暂停冒险</button>' : ""}${host && room.status === "paused" ? '<button id="resume">继续冒险</button>' : ""}${host && ["playing", "paused"].includes(room.status) ? '<button id="party-groups">分队与合队</button>' : ""}<button id="export-log">导出冒险日志</button><button id="view-rules">查看规则范围</button><button id="return-home" ${busy ? "disabled" : ""}>返回首页 · 保留我的席位</button><p class="helper">${account ? "席位已绑定账号，换设备登录后也可从首页继续冒险。" : "这是兼容模式的匿名席位。请保留浏览器数据，或登录账号认领席位。"}</p></div>`,
     (overlay, close) => {
       if (host && room.status !== "finished") {
         $(".form", overlay).insertAdjacentHTML(
@@ -761,6 +762,10 @@ function roomMenu() {
       $("#resume", overlay)?.addEventListener("click", () => {
         close();
         command("resume");
+      });
+      $("#party-groups", overlay)?.addEventListener("click", () => {
+        close();
+        openPartyGroups();
       });
       $("#view-rules", overlay).onclick = () => {
         close();
@@ -2198,3 +2203,139 @@ async function saveCharacterBuild() {
 }
 
 boot();
+
+function groupScope() {
+  return { scene_instance_id: room.scene_instance_id,
+    membership_epoch: room.membership_epoch, action_revision: room.action_revision };
+}
+function groupIdentity() {
+  return JSON.stringify([session?.room_id, session?.member_id, room?.scene_instance_id, room?.membership_epoch]);
+}
+function pendingGroupKey() {
+  return `hexbound-group:${session?.room_id}:${session?.member_id}`;
+}
+function readPendingGroup() {
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(pendingGroupKey()) || 'null');
+    return saved?.plan?.plan_id && saved?.commandId ? saved : null;
+  } catch { return null; }
+}
+function openPartyGroups() {
+  if (busy || !connected || room.host_id !== session.member_id) return;
+  const identity = groupIdentity(), roomId = session.room_id;
+  openDialog(`<div class="row between"><h2 id="dialog-title">分队与合队</h2><button class="ghost" data-close aria-label="关闭">×</button></div><p class="helper">仅在没有战斗或待结算步骤的安全检查点操作。合队还需要同地点、同时间。</p><div id="group-content" class="form"><p role="status">正在读取队伍名单…</p></div>`, async (overlay, close) => {
+    overlay.dataset.groupDialog = identity;
+    const content = $('#group-content', overlay);
+    let groups, plan = null, commandId = null, inFlight = false, unknown = false;
+    const pendingKey = pendingGroupKey();
+    overlay.addEventListener('click', event => {
+      if ((unknown || (inFlight && busy)) && (event.target === overlay || event.target.closest('[data-close]'))) {
+        event.preventDefault(); event.stopImmediatePropagation();
+      }
+    }, true);
+    overlay.addEventListener('keydown', event => {
+      if ((unknown || (inFlight && busy)) && event.key === 'Escape') {
+        event.preventDefault(); event.stopImmediatePropagation();
+      }
+    }, true);
+    const valid = () => overlay.isConnected && groupIdentity() === identity;
+    const fail = (message) => {
+      const error = $('#group-error', overlay);
+      if (error) error.textContent = message;
+      else if (overlay.isConnected) content.innerHTML = `<p class="error" role="alert">${esc(message)}</p><button data-close>关闭并重新打开</button>`;
+    };
+    const showForm = () => {
+      if (!valid()) return;
+      const others = groups.filter(group => group.id !== room.scene_instance_id);
+      content.innerHTML = `<form id="group-form" class="form"><label>操作<select name="operation"><option value="split">组成独立小队</option>${others.length ? '<option value="merge">另一小队与本队会合</option>' : ''}</select></label><div id="group-members"><p class="helper">选择前往新小队的成员，双方至少保留一人。新小队将有独立的文字交流与行动。</p><div class="target-checklist">${room.party.map(member => `<label><input type="checkbox" name="member" value="${esc(member.id)}">${esc(member.name)}${member.id === session.member_id ? '（你）' : ''}</label>`).join('')}</div></div><label id="group-source" hidden>会合的小队<select name="source">${others.map(group => `<option value="${esc(group.id)}">${esc(group.members.map(member => member.name).join('、'))}</option>`).join('')}</select></label><p id="group-error" class="error" role="alert"></p><button type="submit" class="primary">查看操作方案 ↗</button></form>`;
+      const form = $('#group-form', overlay);
+      form.elements.operation.onchange = () => {
+        const split = form.elements.operation.value === 'split';
+        $('#group-members', overlay).hidden = !split;
+        $('#group-source', overlay).hidden = split;
+        $('#group-error', overlay).textContent = '';
+      };
+      form.onsubmit = async (event) => {
+        event.preventDefault();
+        if (inFlight || !valid()) return;
+        const operation = form.elements.operation.value;
+        const members = [...form.querySelectorAll('[name="member"]:checked')].map(input => input.value);
+        if (operation === 'split' && (!members.length || members.length >= room.party.length)) {
+          fail('请选择部分成员，双方至少保留一人。'); return;
+        }
+        inFlight = true;
+        const button = form.querySelector('[type="submit"]');
+        button.disabled = true;
+        $('#group-error', overlay).textContent = '';
+        try {
+          const payload = { operation, expected_scope: groupScope(), ...(operation === 'split' ? {members} : {source:form.elements.source.value, target:room.scene_instance_id}) };
+          const prepared = await api(`/api/rooms/${roomId}/groups/prepare`, {method:'POST', body:JSON.stringify(payload)});
+          if (!valid()) return;
+          plan = prepared; commandId = newCommandId(); showReview();
+        } catch (error) { fail(error.message); }
+        finally { inFlight = false; if (button.isConnected) button.disabled = false; }
+      };
+    };
+    const showReview = () => {
+      if (!valid() || !plan) return;
+      const names = new Map(groups.flatMap(group => group.members).map(member => [member.id, member.name]));
+      const moved = plan.members.map(id => names.get(id) || '冒险者').join('、');
+      const split = plan.operation === 'split';
+      content.innerHTML = `<div class="form"><h3>${unknown ? '核对分组结果' : `核对${split ? '分队' : '合队'}方案`}</h3>${unknown ? '<p class="notice" role="status">上次提交尚未收到完整回执，操作可能已经完成。请核对原操作；重试不会重复分组。</p>' : ''}<p>${esc(moved)}${split ? '将组成独立小队，留在当前位置。' : '将与当前小队会合。'}</p><p class="helper">${split ? `新小队由 ${esc(names.get(plan.new_leader_id) || '所选成员')} 担任领队，文字交流和行动独立进行。` : '合队保留每个人的已知范围，不会把另一队的私密记录合并公开。'}待执行提案与在途 DM 回应会取消。状态变化后需要重新准备。</p><p id="group-error" class="error" role="alert"></p><button id="group-confirm" class="primary">${unknown ? '核对并重试原操作' : `确认${split ? '分队' : '合队'}`} ↗</button>${unknown ? '' : '<button id="group-back">返回修改</button><button data-close>取消</button>'}</div>`;
+      overlay.querySelector('.row [data-close]').hidden = unknown;
+      $('#group-back', overlay)?.addEventListener('click', () => { if (!inFlight && !unknown) { plan = null; commandId = null; showForm(); } });
+      $('#group-confirm', overlay).onclick = async () => {
+        if (inFlight || !valid() || !plan) return;
+        inFlight = true; busy = true;
+        const button = $('#group-confirm', overlay);
+        button.disabled = true;
+        $('#group-error', overlay).textContent = '';
+        const body = {plan_id:plan.plan_id, command_id:commandId};
+        try {
+          try { sessionStorage.setItem(pendingKey, JSON.stringify({plan, commandId})); }
+          catch {
+            fail('浏览器无法保存重试信息，本次尚未发送，请恢复存储后重试。');
+            return;
+          }
+          let result;
+          try {
+            result = await api(`/api/rooms/${roomId}/groups/commit`, {method:'POST', body:JSON.stringify(body)});
+          } catch (error) {
+            if (!(error instanceof TypeError)) throw error;
+            result = await api(`/api/rooms/${roomId}/groups/commit`, {method:'POST', body:JSON.stringify(body)});
+          }
+          if (result.group_change?.group_plan_id !== body.plan_id || result.group_change?.operation !== `scene_${plan.operation}` || result.room?.id !== roomId || !Number.isInteger(result.room?.version)) {
+            throw new Error('尚未收到完整操作回执。');
+          }
+          sessionStorage.removeItem(pendingKey);
+          unknown = false;
+          if (session?.room_id === roomId && result.room?.version >= room.version) room = result.room;
+          close(); toast('队伍分组已更新。');
+        } catch (error) {
+          if ([409, 422].includes(error.status)) {
+            sessionStorage.removeItem(pendingKey); unknown = false;
+            plan = null; commandId = null;
+            try {
+              const latest = await api(`/api/rooms/${roomId}`);
+              if (session?.room_id === roomId && latest.version >= room.version) room = latest;
+            } catch {}
+            if (valid()) { showForm(); fail(error.message + ' 请重新查看方案。'); }
+          } else {
+            unknown = true;
+            if (valid()) { showReview(); fail(error.message); }
+          }
+        } finally {
+          inFlight = false; busy = false;
+          if (button.isConnected) button.disabled = false;
+          renderRoom();
+        }
+      };
+    };
+    try {
+      groups = (await api(`/api/rooms/${roomId}/groups`)).groups;
+      const pending = readPendingGroup();
+      if (pending) { plan = pending.plan; commandId = pending.commandId; unknown = true; showReview(); }
+      else showForm();
+    } catch (error) { fail(error.message); }
+  });
+}

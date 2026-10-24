@@ -9,7 +9,8 @@
     "test:combat": "node tests/combat-ui-smoke.cjs",
     "test:free-action": "node tests/free-action-ui-smoke.cjs",
     "test:logs": "node tests/log-ui-smoke.cjs",
-    "test:builder": "node tests/character-builder-ui-smoke.cjs"
+    "test:builder": "node tests/character-builder-ui-smoke.cjs",
+    "test:groups": "node tests/groups-ui-smoke.cjs"
   },
   "devDependencies": {
     "jsdom": "26.1.0",

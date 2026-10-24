@@ -387,7 +387,12 @@ class Store:
             payload = {'operation':operation,'arguments':arguments,'proof':asdict(plan)}
             db.execute('DELETE FROM group_plans WHERE created_at<? OR (room_id=? AND actor_id=?)', (now-1800,room_id,actor))
             db.execute('INSERT INTO group_plans VALUES(?,?,?,?,?)', (plan_id,room_id,actor,now,json.dumps(payload,ensure_ascii=False)))
-            return {'plan_id':plan_id,'operation':operation,'source':source,'target':target,'members':moved,'expires_in_seconds':1800}
+            preview = {'plan_id':plan_id,'operation':operation,'source':source,'target':target,'members':moved,'expires_in_seconds':1800}
+            if operation == 'split':
+                candidates = [member['id'] for member in room['members'] if member['id'] in moved]
+                old_leader = room['scene_instances'][source].get('leader_id')
+                preview['new_leader_id'] = old_leader if old_leader in candidates else (actor if actor in candidates else candidates[0])
+            return preview
 
     def commit_group_change(self, room_id, actor, plan_id, command_id):
         """Validate the saved read-set, then commit scope, events and receipt."""
