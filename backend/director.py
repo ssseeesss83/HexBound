@@ -232,7 +232,7 @@ def public_proposal(proposal, state=None):
     decision = proposal["decision"]
     qualified = state is None or attempts.proposal_available(state, proposal['actor_id'], decision)
     native_stale = False
-    if state is not None and decision['kind']=='capability' and proposal['plan'].get('executor')=='story':
+    if state is not None and decision['kind']=='capability' and proposal['plan'].get('executor') in {'story','story_route','story_cancel'}:
         try:
             action_plans.revalidate(state,proposal['actor_id'],proposal['plan'])
         except (ValueError,KeyError):
@@ -304,6 +304,9 @@ def _capability_fallback(state, member_id, intent, skill_id=None):
         return dict(kind='capability',action_id=selected['id'],label=selected['label'],
                     action_options=dict(skill_id=skill_id),
                     text='准备尝试这项剧情行动，请审核检定与代价后确认。')
+    if selected.get('kind')=='story_route':
+        return dict(kind='capability',action_id=selected['id'],label=selected['label'],
+                    text='请审核当前路线选择后确认。')
     targets = selected.get('targets', [])
     named = [row for row in targets if row['name'] in intent]
     target = named[0] if len(named) == 1 else targets[0] if not named and len(targets) == 1 else None
@@ -435,7 +438,7 @@ def resolve(state, member_id, proposal):
         raise ValueError("该提案已经结算，不可重复掷骰")
     verified = validate_proposal(proposal["decision"], state, member_id, proposal.get("policy", "balanced"))
     decision = verified["decision"]
-    if decision["kind"] != "dialogue":
+    if decision["kind"] != "dialogue" and not (verified.get('plan') or {}).get('executor')=='story_cancel':
         from .world_combat import validate_read_set
         validate_read_set(state)
     if verified["requires_host"] and member_id != state.get("host_id", state.get("host_member_id")):
@@ -452,6 +455,10 @@ def resolve(state, member_id, proposal):
         if plan['executor'] == 'story':
             from .story_challenges import resolve as resolve_story
             events.extend(resolve_story(state,member_id,plan['story_plan'],receipt_id=proposal['id']))
+        elif plan['executor'] in {'story_route','story_cancel'}:
+            from . import story_transitions as routes
+            events.extend(routes.resolve_cancel(state,member_id,plan['route_plan']) if plan['executor']=='story_cancel'
+                          else routes.resolve(state,member_id,plan['route_plan'],receipt_id=proposal['id']))
         elif plan['executor'] in {'campaign', 'rules'}:
             executor = campaign if plan['executor'] == 'campaign' else rules
             events.extend(executor.apply_action(state, member_id, plan['action_id'], plan['target_id']))

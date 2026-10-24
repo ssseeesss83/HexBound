@@ -1,4 +1,4 @@
-"""Pure route review and durable waiting, never entry or model execution.
+"""Reviewed native routes and durable waiting; no model execution.
 
 Only explicit public edge conditions govern routes. main_path is navigation;
 key.advancement_condition describes conflict completion, not every exit's gate.
@@ -85,7 +85,8 @@ def prepare(state, actor, edge_id, *, prerequisite_receipt_ids=None):
             raise ValueError('前置结算回执不存在')
     return dict(scope=scope,source_node_id=source['id'],edge_id=edge['id'],
                 author_digest=view['author_digest'],edge_digest=_hash(edge),
-                destination=destination,read_set=reads,prerequisite_receipt_ids=sorted(proofs))
+                destination=destination,read_set=reads,prerequisite_receipt_ids=sorted(proofs),
+                pending_transition_id=(state.get('pending_transition') or {}).get('id'))
 
 
 def _receipts(state):
@@ -170,3 +171,91 @@ def status(state, actor):
         return dict(status='ready_for_review' if current['destination']['status']=='ready' else 'waiting')
     except (ValueError,KeyError):
         return dict(status='review_required')
+
+
+def prepare_cancel(state, actor):
+    scope = _guard(state,actor,route=False)
+    pending = state.get('pending_transition')
+    if not pending:
+        raise ValueError('当前没有路线等待')
+    receipt = _receipts(state).get(pending['id'])
+    if not receipt or receipt['status']!='waiting' or receipt['scope']['scene_instance_id']!=scope['scene_instance_id']:
+        raise ValueError('路线等待已经变化')
+    return dict(scope=scope,transition_id=pending['id'])
+
+
+def resolve(state, actor, plan, *, receipt_id):
+    """Confirm a fresh server plan once, on a copy; no frontier is playable."""
+    TypeAdapter(Identifier).validate_python(receipt_id,strict=True)
+    scope = _guard(state,actor)
+    receipts = _receipts(state)
+    fingerprint = _hash(plan)
+    prior = receipts.get(receipt_id)
+    if prior is not None:
+        if prior['digest']!=fingerprint or prior['scope']!=scope:
+            raise ValueError('同一路线回执不能用于不同请求')
+        return []
+    current = prepare(state,actor,plan['edge_id'],prerequisite_receipt_ids=plan['prerequisite_receipt_ids'])
+    if current!=plan:
+        raise ValueError('路线或等待已经变化，请重新审核')
+    pending = state.get('pending_transition')
+    if pending and pending['plan']['edge_id']!=plan['edge_id']:
+        raise ValueError('请先明确取消已有路线等待')
+    if plan['destination']['status']=='pending':
+        request(state,actor,plan,transition_id=receipt_id)
+        return [campaign.rules.event('system','路线正在准备中。仍可在当前场景行动，也可取消等待。',actor_id=actor)]
+    if len(receipts)>=10000:
+        raise ValueError('路线回执已达到上限')
+    work = deepcopy(state)
+    work['pending_transition'] = None
+    sid = scope['scene_instance_id']
+    if sid in work.get('scene_instances',{}):
+        work['scene_instances'][sid]['local'].pop('pending_transition',None)
+    if pending:
+        old = work['campaign'].get('transition_receipts',{}).get(pending['id'])
+        if not old or old['status']!='waiting' or old['scope']['scene_instance_id']!=sid:
+            raise ValueError('路线等待已经变化')
+        old['status'] = 'entered'
+    events = []
+    campaign._enter(work,plan['destination']['node_id'],events)
+    work['campaign'].setdefault('transition_receipts',{})[receipt_id] = dict(
+        digest=fingerprint,scope=deepcopy(scope),status='entered')
+    state.clear()
+    state.update(work)
+    return events
+
+
+def resolve_cancel(state, actor, plan):
+    if prepare_cancel(state,actor)!=plan:
+        raise ValueError('路线等待已经变化，请重新审核')
+    cancel(state,actor,plan['transition_id'])
+    return [campaign.rules.event('system','已取消路线等待。',actor_id=actor)]
+
+
+def menu(state, actor):
+    """Only legal public choices; no target IDs, contracts or future prose."""
+    result = []
+    try:
+        prepare_cancel(state,actor)
+        result.append(dict(id='story-cancel',label='取消路线等待',kind='story_route',target='none',action_cost='none'))
+    except (ValueError,KeyError):
+        pass
+    try:
+        _guard(state,actor)
+        view,_,source = _source(state)
+    except (ValueError,KeyError):
+        return result
+    pending = state.get('pending_transition')
+    for edge in sorted(view['book']['edges'],key=lambda row:(-row['priority'],row['id'])):
+        if edge['from']!=source['id'] or edge['visibility']!='public' or edge['legacy_action_id'] is not None:
+            continue
+        if pending and pending['plan']['edge_id']!=edge['id']:
+            continue
+        try:
+            plan = prepare(state,actor,edge['id'])
+            if pending and plan['destination']['status']=='pending':
+                continue
+            result.append(dict(id='story-route:'+edge['id'],label=edge['label'],kind='story_route',target='none',action_cost='none'))
+        except ValueError:
+            continue
+    return result

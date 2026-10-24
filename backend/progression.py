@@ -15,7 +15,8 @@ def award(state, before):
         rewards.append((key,total,"战胜遭遇"))
     moved=before.get("scene_id") != state.get("scene_id")
     resolved=not before.get("flags",{}).get("scene_resolved") and state.get("flags",{}).get("scene_resolved")
-    if before.get("status") == "playing" and (moved or resolved):
+    native = state.get('campaign',{}).get('package',{}).get('scenario',{}).get('schema_version')==2
+    if not native and before.get("status") == "playing" and (moved or resolved):
         # An original campaign reward, explicitly distinct from SRD monster XP.
         rewards.append(("objective:"+str(before.get("scene_id")),100*len(state["members"]),"完成场景目标"))
         if moved:

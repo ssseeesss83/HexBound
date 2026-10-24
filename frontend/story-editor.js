@@ -108,7 +108,7 @@
     const edges = book.edges.map((edge,ei)=>({edge,ei})).filter(row=>row.edge.from===node.id);
     body += edges.map(({edge,ei}) => {
       const p = `edges.${ei}`;
-      return `<section class="node-action"><h4>连接 ${esc(edge.id)}</h4>${select('前往',`${p}.to`,edge.to,nodeOptions(book))}${area('结果说明',`${p}.outcome`,edge.outcome)}${select('可见范围',`${p}.visibility`,edge.visibility,{public:'公开',known:'知情者可见',secret:'仅 DM'})}${field('优先级',`${p}.priority`,edge.priority,'number')}${field('主路径',`${p}.main_path`,edge.main_path,'checkbox')}${edge.legacy_action_id?`<p class="helper">原行动 ${esc(edge.legacy_action_id)} · ${esc(edge.legacy_result)}，保留原检定出口。</p><button data-g-convert="${ei}">转换为普通连接</button>`:`<h4>进入条件</h4>${condition(book,edge.condition,`${p}.condition`)}<button data-g-remove-edge="${ei}">移除连接</button>`}</section>`;
+      return `<section class="node-action"><h4>连接 ${esc(edge.id)}</h4>${field('玩家路线选项',`${p}.label`,edge.label||'继续前行')}${select('前往',`${p}.to`,edge.to,nodeOptions(book))}${area('结果说明',`${p}.outcome`,edge.outcome)}${select('可见范围',`${p}.visibility`,edge.visibility,{public:'公开',known:'知情者可见',secret:'仅 DM'})}${field('优先级',`${p}.priority`,edge.priority,'number')}${field('主路径',`${p}.main_path`,edge.main_path,'checkbox')}${edge.legacy_action_id?`<p class="helper">原行动 ${esc(edge.legacy_action_id)} · ${esc(edge.legacy_result)}，保留原检定出口。</p><button data-g-convert="${ei}">转换为普通连接</button>`:`<h4>进入条件</h4>${condition(book,edge.condition,`${p}.condition`)}<button data-g-remove-edge="${ei}">移除连接</button>`}</section>`;
     }).join('');
     if (['key','scene'].includes(node.kind)) body += `<button id="graph-add-edge">添加连接</button>`;
     const linked = book.edges.some(e=>e.from===node.id||e.to===node.id);
@@ -245,7 +245,7 @@
     const selected=selections.get(book)||book.entry_node_id,node=book.nodes.find(n=>n.id===selected)||book.nodes[0];
     root.querySelector('#graph-add-edge')?.addEventListener('click',()=>{
       if(book.edges.length>=1200)return;
-      book.edges.push({id:unique('edge',book.edges),from:node.id,to:book.nodes.find(n=>n.id!==node.id)?.id||node.id,condition:null,outcome:'',visibility:'public',priority:0,main_path:false,legacy_action_id:null,legacy_result:null});redraw();
+      book.edges.push({id:unique('edge',book.edges),label:'继续前行',from:node.id,to:book.nodes.find(n=>n.id!==node.id)?.id||node.id,condition:null,outcome:'',visibility:'public',priority:0,main_path:false,legacy_action_id:null,legacy_result:null});redraw();
     });
     root.querySelector('#graph-remove-node')?.addEventListener('click',()=>{
       if(node.id===book.entry_node_id||book.edges.some(e=>e.from===node.id||e.to===node.id))return;

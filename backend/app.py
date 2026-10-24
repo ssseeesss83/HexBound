@@ -25,6 +25,7 @@ from .rules_context import active_store, using_version
 from . import session_scope
 from . import scene_storage
 from . import play_policy
+from . import story_transitions
 from .heroes import create_hero_router
 from .studio import create_studio_router, compile_scenario
 from .accounts import create_accounts_router, require_user, authenticate_websocket
@@ -306,6 +307,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
             "scenario": state.get("scenario_summary"),
             "progression": state.get("progression", {"mode":"xp","world_minutes":0}),
             "combat_capabilities": abilities.capabilities(state,viewer),
+            "route_wait": story_transitions.status(state,viewer),
             "free_actions": free_actions.context(state,viewer),
             "director_proposals": [director.public_proposal(p,state) for actor,p in state.get("director",{}).get("proposals",{}).items() if actor==viewer],
         }
@@ -693,7 +695,8 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 if body.type == 'capability_propose':
                     from .world_combat import validate_read_set
                     try:
-                        validate_read_set(candidate)
+                        if payload['action_id']!='story-cancel':
+                            validate_read_set(candidate)
                     except ValueError as exc:
                         raise HTTPException(409, str(exc)) from exc
                     proposed = director.propose_selected(candidate, member_id, payload['action_id'], payload.get('target_id'),
@@ -717,7 +720,12 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 raise HTTPException(409, "房间已更新，请同步后重试")
             from .world_combat import validate_read_set, enter_place
             try:
-                if body.type not in {"chat", "narrate", "director_propose", "director_cancel", "pause", "resume"}:
+                stored = state.get('director',{}).get('proposals',{}).get(member_id)
+                cancellation = (proposed or {}).get('proposal') if body.type=='capability_propose' else stored if body.type=='director_resolve' and stored and stored['id']==payload['proposal_id'] else None
+                cancel_only = bool(cancellation and cancellation['decision']['kind']=='capability'
+                                   and cancellation['decision']['action_id']=='story-cancel'
+                                   and cancellation['plan']['executor']=='story_cancel')
+                if not cancel_only and body.type not in {"chat", "narrate", "director_propose", "director_cancel", "pause", "resume"}:
                     validate_read_set(state)
             except ValueError as exc:
                 raise HTTPException(409, str(exc)) from exc
@@ -780,7 +788,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 state["director"]["proposals"].pop(member_id,None)
                 if proposal["decision"]["kind"] == 'capability' and state.get('scene_id') != old_scene:
                     pending = 'scene'
-                elif proposal["decision"]["kind"] in {"free_action", "capability"} and dm.configured and not state.get("dm_pending"):
+                elif proposal["decision"]["kind"] in {"free_action", "capability"} and (proposal.get('plan') or {}).get('executor') not in {'story_route','story_cancel'} and dm.configured and not state.get("dm_pending"):
                     pending = "narrate"
                 if state.get("completed"):
                     state["status"]="finished"

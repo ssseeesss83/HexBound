@@ -49,6 +49,8 @@ assert.equal(typeof book.fact_definitions[1].initial,'number');
 field('fact_definitions.1.visibility','dm_secret');
 assert.equal(book.fact_definitions[1].visibility,'dm_secret');
 click('[data-g-select="dock"]');
+field('edges.0.label','跟随信使进入小巷','input');
+assert.equal(book.edges[0].label,'跟随信使进入小巷');
 field('nodes.0.id','harbor');
 assert.equal(book.entry_node_id,'harbor');
 assert.equal(book.edges[0].from,'harbor');

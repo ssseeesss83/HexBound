@@ -194,6 +194,7 @@ class StoryNode(StrictModel):
 
 class StoryEdge(StrictModel):
     id: Identifier
+    label: str = Field(default='继续前行', min_length=1, max_length=100)
     source: Identifier = Field(alias='from')
     to: Identifier
     condition: Condition | None = None

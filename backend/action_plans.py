@@ -85,14 +85,32 @@ def prepare(state, actor, action_id, target_id=None, options=None, *, now=None):
     opts = Options.model_validate({} if options is None else options).model_dump()
     if target_id and opts['target_ids'] and target_id not in opts['target_ids']:
         raise ValueError('单目标与目标列表不一致')
-    validate_read_set(state)
+    if action_id!='story-cancel':
+        validate_read_set(state)
     c = a.member(state, actor)['character']
     resources, restores = [], []
     executor = 'abilities'
     native_plan = None
+    route_plan = None
     if opts['skill_id'] is not None and not action_id.startswith('story-check:'):
         raise ValueError('只有原生剧情挑战可选择检定方法')
-    if action_id.startswith('story-check:'):
+    if action_id.startswith('story-route:') or action_id=='story-cancel':
+        from . import story_transitions as routes
+        if target_id is not None or any(value not in (None, []) for value in opts.values()):
+            raise ValueError('路线只接受当前已登记的选择')
+        if action_id=='story-cancel':
+            route_plan = routes.prepare_cancel(state,actor)
+            label,description,executor = '取消路线等待','确认后取消当前场景的路线等待，已完成的行动结果保留。','story_cancel'
+        else:
+            route_plan = routes.prepare(state,actor,action_id[12:])
+            view,_,_ = routes._source(state)
+            edge = next(row for row in view['book']['edges'] if row['id']==route_plan['edge_id'])
+            label,executor = edge['label'],'story_route'
+            description = ('确认后前往这条路线。' if route_plan['destination']['status']=='ready'
+                           else '这条路线仍在准备。确认后留在当前场景等待，可以继续行动或明确取消；准备好后须重新审核。')
+        cap = dict(label=label,description=description,action_cost='none',party_action=True)
+        ids,normalized = [],{}
+    elif action_id.startswith('story-check:'):
         from . import story_challenges
         from .director import SKILL_NAMES
         if target_id is not None or any(value not in (None, []) for key,value in opts.items() if key!='skill_id'):
@@ -215,6 +233,8 @@ def prepare(state, actor, action_id, target_id=None, options=None, *, now=None):
                 schema_version=PLAN_SCHEMA_VERSION)
     if native_plan is not None:
         result['story_plan'] = native_plan
+    if route_plan is not None:
+        result['route_plan'] = route_plan
     return result
 
 
@@ -233,6 +253,8 @@ def revalidate(state, actor, plan, *, now=None):
             raise ValueError('行动的目标或代价已变化，请重新选择')
     if current.get('story_plan') != plan.get('story_plan'):
         raise ValueError('剧情检定的相关事实已变化，请重新裁定')
+    if current.get('route_plan') != plan.get('route_plan'):
+        raise ValueError('路线或等待已变化，请重新审核')
     return deepcopy(plan)
 
 
@@ -276,4 +298,5 @@ def menu(state, actor):
         result.append(dict(id='attack', label='武器攻击', kind='basic', target='enemy',
                            targets=targets, action_cost='attack'))
     from .story_challenges import menu as story_menu
-    return result + story_menu(state,actor)
+    from .story_transitions import menu as route_menu
+    return result + story_menu(state,actor) + route_menu(state,actor)

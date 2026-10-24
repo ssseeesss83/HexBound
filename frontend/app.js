@@ -1019,6 +1019,7 @@ function actionDisabledReason(action) {
   if (
     room.combat?.active &&
     room.combat.turn_actor_id !== session.member_id &&
+    action.id !== 'story-cancel' &&
     action.action_cost !== "reaction"
   )
     return "等待你的回合";
@@ -1933,6 +1934,14 @@ function installActionEntries() {
   if (room.status === "lobby" || room.status === "finished") return;
   const skillArea = $(".combat-actions") || $(".composer .actions");
   if (!skillArea) return;
+  if (room.route_wait) {
+    const text = {
+      waiting: '路线正在准备中。你可以继续在当前场景行动，或由领队取消等待。',
+      ready_for_review: '路线已准备好。请由领队重新选择路线、审核并确认后前往。',
+      review_required: '路线条件已变化。请由领队重新审核，或取消等待。',
+    }[room.route_wait.status];
+    if (text) skillArea.insertAdjacentHTML('beforebegin', `<p class="notice route-wait" role="status">${esc(text)}</p>`);
+  }
   skillArea.insertAdjacentHTML(
     "beforebegin",
     `<nav class="action-entry-tabs" aria-label="行动方式"><button data-action-entry="skills" aria-pressed="${actionEntry === "skills"}">⚔ 技能行动<small>职业、法术与规则动作</small></button><button data-action-entry="free" aria-pressed="${actionEntry === "free"}">✦ 自由行动<small>描述意图，先裁定后执行${(room.director_proposals || []).length ? ` · ${(room.director_proposals || []).length} 项待处理` : ""}</small></button></nav>`,

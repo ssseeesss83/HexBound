@@ -111,6 +111,17 @@ def start_campaign(state, package):
 
 
 def _enter(state, node_id, events):
+    from . import story_runtime
+    author = state['campaign']['package']['scenario']
+    # Validate v2 targets before touching location, cursor, visits or initiative.
+    target = story_runtime.node(state,node_id)
+    if author.get('schema_version')==2:
+        if target['kind']=='frontier':
+            raise ValueError('续写出口尚不可进入，请重新审核路线')
+        if target['kind']=='ending':
+            view = story_runtime.effective_book(author,state['campaign']['runtime_graph'])
+            if not story_runtime.evaluate(target['ending_condition'],view,state['campaign']['story_state'])['value']:
+                raise ValueError('当前尚未满足结局条件')
     from .world_combat import enter_place
     enter_place(state, node_id)
     state["campaign"]["node_id"] = node_id
@@ -122,7 +133,7 @@ def _enter(state, node_id, events):
     attach_current(state)
     state["combat"] = None
     state["campaign"]["visited"].append(node_id)
-    state["completed"] = bool(node.get("ending"))
+    state["completed"] = target.get('kind')=='ending' if author.get('schema_version')==2 else bool(node.get("ending"))
     events.append(rules.event("ending" if state["completed"] else "scene", node["text"]))
     if state["completed"]:
         state["ending"] = node["text"]
