@@ -5303,6 +5303,29 @@
         },
         "scope": "Restore missing words only. Do not broaden the selected source inventory or infer runtime support."
       }
+    },
+    {
+      "id": "official-holy-nimbus-recharge",
+      "records": [
+        "holy-nimbus"
+      ],
+      "page": 33,
+      "heading": "Holy Nimbus",
+      "operation": "set_field",
+      "path": [
+        "desc"
+      ],
+      "expected": [
+        "At 20th level, as an action, you can emanate an aura of sunlight. For 1 minute, bright light shines from you in a 30-foot radius, and dim light shines 30 feet beyond that.",
+        "Whenever an enemy creature starts its turn in the bright light, the creature takes 10 radiant damage.",
+        "In addition, for the duration, you have advantage on saving throws against spells cast by fiends or undead."
+      ],
+      "value": [
+        "At 20th level, as an action, you can emanate an aura of sunlight. For 1 minute, bright light shines from you in a 30-foot radius, and dim light shines 30 feet beyond that.",
+        "Whenever an enemy creature starts its turn in the bright light, the creature takes 10 radiant damage.",
+        "In addition, for the duration, you have advantage on saving throws against spells cast by fiends or undead.",
+        "Once you use this feature, you can't use it again until you finish a long rest."
+      ]
     }
   ],
   "record_additions": [

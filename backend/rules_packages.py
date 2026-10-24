@@ -47,6 +47,8 @@ def validate_records(records, *, inventory=None):
     inventory = compendium.COLLECTIONS if inventory is None else inventory
     errors = []
     if canonical:
+        from .class_growth import growth_issues
+        errors.extend(growth_issues(records))
         errors.extend("Feature is unreachable from class grants or choices: " + fid for fid in unreachable_features(records))
     if set(records) != set(inventory):
         errors.append("Rules collection set is incomplete")

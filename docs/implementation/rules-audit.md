@@ -80,3 +80,9 @@ Animal Friendship 第 115 页原始 PDF 自身存在 `additional beast t level` 
 ## Animal Friendship 缺字后续核对
 
 原始 PDF 与初次审计均保留。2026-10-24 读取 [D&D Beyond 官方旧版条目](https://www.dndbeyond.com/spells/1993-animal-friendship)，其明确标注 Legacy、Basic Rules (2014), pg. 212，确认缺字处为 “beast for each slot level”。`official/animal-friendship-source-resolution.json` 固定同版证据、最小替换及原始法术块摘要；候选补入缺失升环段。此处仅修复 SRD 已选条目的文字，不扩大资料范围，不签收多目标魅惑执行。
+
+## 职业成长与特性正文初审
+
+`tools/audit_class_growth.py` 可复现 `official/class-growth-review.json`。固定官方 PDF / pages 摘要，2601 项数值零差异，覆盖240行熟练、160行施法表、240行ASI累计及现有职业成长字段；候选初始化将漂移或未审字段作为错误。显式公式是人工核对的来源转录，非从候选反推；grant_matrix 仅列证据，machine_approved_grant_rows 为0。
+
+`official/feature-body-review.json` 记录407特性初审和完整局限。Holy Nimbus p33缺失长休恢复句已补；其余子串 / 段落匹配不能证明来源块无遗漏，不能据本次初审签收全部特性、前置或执行。
