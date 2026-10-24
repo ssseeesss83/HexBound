@@ -330,8 +330,7 @@ function validationHtml() {
 function editorHtml() {
   const base = `<div class="field-grid">${field("内容名称", "name", model.name, "text", 'maxlength="80"')}${field("唯一标识 ID", "id", model.id, "text", selected.id ? "readonly" : 'pattern="[a-zA-Z0-9_-]+"')}</div>${area("公开简介 · 请勿在此填写剧情谜底", "description", model.description)}${field("标签 · 使用逗号分隔", "tags", (model.tags || []).join(", "))}`;
   if (kind === 'scenario' && model.schema_version === 2)
-    return base + area('剧本大纲', 'outline', model.outline, 6) +
-      '<p class="helper">图草稿是独立的作者版本，可在下方原始数据区编辑并校验；暂不能发布开团。</p>';
+    return base + window.HexboundStoryEditor.render(model, getRefOptions('monster'));
   if (kind === "skill")
     return (
       base +
@@ -446,6 +445,12 @@ function redrawEditor() {
 }
 function bindEditor() {
   const editor = $("#editor");
+  if (kind === 'scenario' && model.schema_version === 2) {
+    window.HexboundStoryEditor.bind(editor, model, (redraw, modified=true) => {
+      if (modified) touch();
+      if (redraw) redrawEditor();
+    });
+  }
   if (kind === "skill") {
     const inactive =
       model.effect === "defend"

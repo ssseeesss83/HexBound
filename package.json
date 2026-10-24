@@ -11,7 +11,8 @@
     "test:logs": "node tests/log-ui-smoke.cjs",
     "test:builder": "node tests/character-builder-ui-smoke.cjs",
     "test:groups": "node tests/groups-ui-smoke.cjs",
-    "test:scope": "node tests/scope-ui-lifecycle.cjs"
+    "test:scope": "node tests/scope-ui-lifecycle.cjs",
+    "test:story-editor": "node tests/story-editor-ui.cjs"
   },
   "devDependencies": {
     "jsdom": "26.1.0",

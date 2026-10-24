@@ -88,6 +88,7 @@ async function run() {
   w.URL.createObjectURL = blob => { exportedBlob = blob; return 'blob:test-export'; };
   w.URL.revokeObjectURL = () => {};
   w.HTMLAnchorElement.prototype.click = () => {};
+  w.eval(fs.readFileSync(path.join(project, 'frontend/story-editor.js'), 'utf8'));
   w.eval(fs.readFileSync(path.join(project, 'frontend/studio.js'), 'utf8'));
 
   await eventually(() => q('#auth'), 'Public catalog did not render');
@@ -177,10 +178,11 @@ async function run() {
   assert.ok(publicBooks.items.every(item => !item.nodes && !item.draft), 'Public summaries must not reveal scenario nodes');
   click('[data-tab=edit]');
   click('#graph-draft');
-  await eventually(() => q('[data-field=outline]'), 'Independent graph draft did not render');
+  await eventually(() => q('[data-g-field=outline]'), 'Independent graph draft did not render');
   assert.ok(q('#publish').disabled, 'Graph draft must not publish through the old runtime');
   assert.ok(q('#preview').textContent.includes('连接'), 'Graph draft preview failed');
-  field('outline', '沿主线探索，允许临场续写。');
+  q('[data-g-field=outline]').value = '沿主线探索，允许临场续写。';
+  q('[data-g-field=outline]').dispatchEvent(new w.Event('input', {bubbles:true}));
   click('#save');
   await saved();
   click('#validate');
