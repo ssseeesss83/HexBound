@@ -6,6 +6,7 @@ const {JSDOM} = require('jsdom'), WebSocket = require('ws');
 const root = path.resolve(__dirname,'..'), temporary = fs.mkdtempSync(path.join(os.tmpdir(),'hexbound-groups-'));
 const windows=[], sockets=[], commits=[], heldWindows=new Set();
 let server, base, logs='', dropCommits=0, truncateCommit=false, user=0;
+let heldCharacterFor=null, releaseCharacter=null, characterCaptured=false;
 const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 async function until(check,label) {
   for(let n=0;n<250;n++) { if(await check()) return; await sleep(30); }
@@ -20,6 +21,9 @@ async function page() {
   w.fetch=async(url,options={})=>{
     if(String(url).endsWith('/groups/commit')) commits.push(JSON.parse(options.body));
     const response=await fetch(new URL(url,base),{...options,headers:{...options.headers,Cookie:cookie}});
+    if(heldCharacterFor===w && /\/api\/rooms\/[^/]+\/characters\//.test(String(url))) {
+      characterCaptured=true; await new Promise(resolve=>releaseCharacter=resolve);
+    }
     if(dropCommits > 0 && String(url).endsWith('/groups/commit')) {
       dropCommits--; await response.arrayBuffer(); throw new w.TypeError('Simulated lost commit response');
     }
@@ -74,12 +78,21 @@ async function main() {
   click(host,`[name="member"][value="${guestId}"]`);submit(host,'#group-form');
   await until(()=>host.document.querySelector('#group-confirm'),'fresh preview');
   guest.document.querySelector('#intent').value='UNSENT_OLD_SCOPE';
+  click(guest,'[data-action-entry="free"]');
+  guest.document.querySelector('#free-action-intent').value='OLD_ACTION_DRAFT';
+  guest.document.querySelector('#free-action-intent').dispatchEvent(new guest.Event('input'));
+  heldCharacterFor=guest;click(guest,`[data-sheet="${identity.member_id}"]`);
+  await until(()=>characterCaptured,'old-scope character response held');
   const retryStart=commits.length;
   dropCommits=1;click(host,'#group-confirm');
   await until(()=>host.document.querySelectorAll('.party-member').length===1 && guest.document.querySelectorAll('.party-member').length===1,'split synchronized');
   await until(()=>commits.length===retryStart+2 && !host.document.querySelector('[data-group-dialog]'),'retry complete');
   assert.deepEqual(commits[retryStart],commits[retryStart+1],'retry uses exactly the same command and plan');
   assert.equal(guest.document.querySelector('#intent').value,'','scope change clears old draft');
+  assert.equal(guest.document.querySelector('#free-action-intent').value,'','scope change clears action draft');
+  assert(!guest.document.querySelector('#character-sheet'),'scope change closes character controls');
+  heldCharacterFor=null;releaseCharacter();await sleep(30);
+  assert(!guest.document.querySelector('#character-sheet'),'late character response cannot resurrect old scope');
   click(guest,'#room-menu');assert(!guest.document.querySelector('#party-groups'),'table control remains host only');click(guest,'[data-close]');
   guest.document.querySelector('#compose-mode').value='chat';guest.document.querySelector('#compose-mode').dispatchEvent(new guest.Event('change'));
   guest.document.querySelector('#intent').value='PRIVATE_SIDE_CHAT';submit(guest,'#intent-form');

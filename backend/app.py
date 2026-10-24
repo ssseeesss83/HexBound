@@ -240,8 +240,20 @@ def create_app(db_path: str | None = None) -> FastAPI:
         session_scope.stamp_event(state, item)
         state["events"].append(item)
 
-    def public(state: dict, viewer: str) -> dict:
+    def bind_response_scope(request, state, viewer):
+        context = state["member_contexts"][viewer]
+        text = state["text_scope"]["members"][viewer]
+        proof = {"room_id":state["id"], "viewer":viewer, "scene":context["scene_instance_id"],
+                 "membership_epoch":context["epoch"], "channel":text["channel"], "text_epoch":text["epoch"]}
+        proofs = getattr(request.state, "response_scopes", {})
+        proofs[(state["id"],viewer)] = proof
+        request.state.response_scopes = proofs
+        return proof
+
+    def public(state: dict, viewer: str, request=None) -> dict:
         state = scene_storage.for_actor(state, viewer)
+        if request is not None:
+            bind_response_scope(request, state, viewer)
         with active_store(store), using_version(state.get("rules_package_version", rules_packages.LEGACY_PACKAGE)):
             return _public(state, viewer)
 
@@ -300,7 +312,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
                     peers[room_id].pop(ws, None)
                     peer_tokens.pop(ws, None)
                     return
-                await asyncio.wait_for(ws.send_json({"type": "snapshot", "room": public(state, member_id)}), timeout=3)
+                await asyncio.wait_for(ws.send_json({"type": "snapshot", "room": public(get_state(room_id), member_id)}), timeout=3)
             except Exception:
                 peers[room_id].pop(ws, None)
                 peer_tokens.pop(ws, None)
@@ -374,6 +386,20 @@ def create_app(db_path: str | None = None) -> FastAPI:
         response.headers["Referrer-Policy"] = "same-origin"
         if request.url.path.startswith("/api/"):
             response.headers["Cache-Control"] = "no-store"
+        proofs = list(getattr(request.state, "response_scopes", {}).values())
+        if proofs and response.status_code < 400:
+            try:
+                for proof in proofs:
+                    if request.cookies.get("hexbound_session") or request.headers.get("authorization"):
+                        if auth(proof["room_id"], request.headers.get("authorization"), request) != proof["viewer"]:
+                            raise HTTPException(403, "房间身份已变化")
+                    latest = get_state(proof["room_id"])
+                    current = bind_response_scope(request, latest, proof["viewer"])
+                    if current != proof:
+                        return JSONResponse(status_code=409, headers={"Cache-Control":"no-store", "X-Content-Type-Options":"nosniff", "Referrer-Policy":"same-origin"},
+                            content={"detail":"队伍范围已变化，请重新载入。", "retry_same_command":True})
+            except (HTTPException, KeyError, ValueError):
+                return JSONResponse(status_code=403, headers={"Cache-Control":"no-store", "X-Content-Type-Options":"nosniff", "Referrer-Policy":"same-origin"}, content={"detail":"当前房间授权已失效，请重新登录。", "retry_same_command":True})
         return response
 
     @app.get("/api/health")
@@ -447,7 +473,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
             store.create(state, member_id, token, user["id"] if user else None)
         except ValueError as exc:
             raise HTTPException(409,str(exc)) from exc
-        return {"room": public(state, member_id), "member_id": member_id, "token": None if user else token, "invite_code": state["invite_code"]}
+        return {"room": public(state, member_id, request), "member_id": member_id, "token": None if user else token, "invite_code": state["invite_code"]}
 
     @app.post("/api/rooms/join")
     async def join_room(body: JoinRoom, request: Request):
@@ -470,12 +496,15 @@ def create_app(db_path: str | None = None) -> FastAPI:
         except (ValueError, KeyError) as exc:
             raise HTTPException(409, str(exc)) from exc
         await broadcast(room_id)
-        return {"room": public(state, member_id), "member_id": member_id, "token": None if user else token, "invite_code": state["invite_code"]}
+        return {"room": public(state, member_id, request), "member_id": member_id, "token": None if user else token, "invite_code": state["invite_code"]}
 
     @app.get("/api/my/rooms")
     async def my_rooms(request: Request):
         user = require_user(request)
-        return {"items": store.account_rooms(user["id"])}
+        items = store.account_rooms(user["id"])
+        for item in items:
+            bind_response_scope(request,get_state(item["room_id"]),item["member_id"])
+        return {"items":items}
 
     @app.post("/api/rooms/{room_id}/resume")
     async def resume_seat(room_id: str, request: Request):
@@ -484,7 +513,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
         if not member_id:
             raise HTTPException(403, "此账号没有该房间的席位")
         state = get_state(room_id)
-        return {"room": public(state, member_id), "member_id": member_id, "token": None, "invite_code": state["invite_code"]}
+        return {"room": public(state, member_id, request), "member_id": member_id, "token": None, "invite_code": state["invite_code"]}
 
     @app.post("/api/rooms/{room_id}/claim")
     async def claim_seat(room_id: str, body: ClaimSeat, request: Request):
@@ -498,12 +527,12 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 raise HTTPException(409, str(exc)) from exc
             state = get_state(room_id)
         await broadcast(room_id)
-        return {"room": public(state, member_id), "member_id": member_id, "token": None, "invite_code": state["invite_code"]}
+        return {"room": public(state, member_id, request), "member_id": member_id, "token": None, "invite_code": state["invite_code"]}
 
     @app.get("/api/rooms/{room_id}")
     async def room(room_id: str, request: Request, authorization: str | None = Header(default=None)):
         member_id = auth(room_id, authorization, request)
-        return public(get_state(room_id), member_id)
+        return public(get_state(room_id), member_id, request)
 
     @app.get("/api/rooms/{room_id}/groups")
     async def groups(room_id: str, request: Request, authorization: str | None = Header(default=None)):
@@ -511,6 +540,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
         state = get_state(room_id)
         if state["host_id"] != actor:
             raise HTTPException(403, "只有房主可以查看分组桌务")
+        bind_response_scope(request,state,actor)
         # Table administration shows a roster, never foreign scenes or counters.
         result = []
         for sid in state["scene_instances"]:
@@ -532,8 +562,10 @@ def create_app(db_path: str | None = None) -> FastAPI:
             if get_state(room_id)["host_id"] != actor:
                 raise HTTPException(403, "只有房主可以准备分组桌务")
             try:
-                return store.prepare_group_change(room_id, actor, body.operation, members=body.members,
+                prepared = store.prepare_group_change(room_id, actor, body.operation, members=body.members,
                     source=body.source, target=body.target, expected_scope=body.expected_scope.model_dump())
+                bind_response_scope(request,get_state(room_id),actor)
+                return prepared
             except ValueError as exc:
                 raise HTTPException(409, str(exc)) from exc
 
@@ -549,7 +581,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 receipt = store.commit_group_change(room_id,actor,body.plan_id,body.command_id)
             except ValueError as exc:
                 raise HTTPException(409, str(exc)) from exc
-            result = {"room":public(get_state(room_id),actor), "group_change":receipt}
+            result = {"room":public(get_state(room_id),actor,request), "group_change":receipt}
         await broadcast(room_id)
         return result
 
@@ -557,6 +589,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
     async def character_detail(room_id: str, target_member_id: str, request: Request, authorization: str | None = Header(default=None)):
         viewer=auth(room_id,authorization,request)
         state=scene_storage.for_actor(get_state(room_id), viewer)
+        bind_response_scope(request,state,viewer)
         target=next((m for m in state["members"] if m["id"]==target_member_id),None)
         if not target:
             raise HTTPException(404,"角色不存在")
@@ -577,6 +610,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
         if after < 0:
             raise HTTPException(422, "事件序号不能为负数")
         state = get_state(room_id)
+        bind_response_scope(request,state,viewer)
         try:
             return session_scope.history_page(state, viewer, after=after, cursor=cursor)
         except ValueError as exc:
@@ -624,7 +658,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
         # Generation may take seconds; do not hold a database transaction or room lock.
         candidate = scene_storage.for_actor(get_state(room_id), member_id)
         if store.prior_command(room_id,member_id,body.command_id) is not None:
-            return {"room":public(candidate,member_id),"replayed":True}
+            return {"room":public(candidate,member_id,request),"replayed":True}
         if not matches_revision(candidate):
             raise HTTPException(409,"房间已更新，请同步后重试")
         if body.type == "start" and candidate["host_id"] != member_id:
@@ -642,7 +676,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 raise HTTPException(422,str(exc)) from exc
         if body.type == "start" and candidate["mode"] == "free" and not candidate.get("scenes"):
             if store.prior_command(room_id, member_id, body.command_id) is not None:
-                return {"room": public(candidate, member_id), "replayed": True}
+                return {"room": public(candidate, member_id, request), "replayed": True}
             if candidate["host_id"] != member_id:
                 raise HTTPException(403, "只有房主可以开始冒险")
             if not matches_revision(candidate) or candidate["status"] != "lobby":
@@ -659,7 +693,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
             prior = store.prior_command(room_id, member_id, body.command_id)
             if prior is not None:
                 # Current snapshot avoids regressing UI after a successfully retried write.
-                return {"room": public(get_state(room_id), member_id), "replayed": True}
+                return {"room": public(get_state(room_id), member_id, request), "replayed": True}
             state = scene_storage.for_actor(get_state(room_id), member_id)
             if not matches_revision(state):
                 raise HTTPException(409, "房间已更新，请同步后重试")
@@ -859,13 +893,13 @@ def create_app(db_path: str | None = None) -> FastAPI:
             if pending:
                 request_id = uuid.uuid4().hex
                 state["dm_pending"] = request_id
-            response = {"room": public(state, member_id)}
+            response = {"room": public(state, member_id, request)}
             store.save(state, previous, (member_id, body.command_id, {"version": state["version"]}))
         await broadcast(room_id)
         if pending:
             await add_dm_response(room_id, state["action_revision"], request_id, pending, copy.deepcopy(state["scene"]),
                                   state["mode"], state["theme"], payload.get("text", "请依据刚刚确认的结果描述后果，并建议下一步合法行动。"), session_scope.common_memory(state, [m["id"] for m in state["members"]])[-8:], actions_for(state, member_id), state.get("interaction_mode", "guided"), session_scope.audience_key(state), state["_scene_execution_view"])
-            response = {"room": public(get_state(room_id), member_id)}
+            response = {"room": public(get_state(room_id), member_id, request)}
         auth(room_id, authorization, request)
         return response
 

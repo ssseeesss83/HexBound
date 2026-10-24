@@ -138,9 +138,10 @@ async function api(path, options = {}) {
       ...options.headers,
     },
   });
-  let data;
+  let data, parsed = false;
   try {
     data = await response.json();
+    parsed = true;
   } catch {
     data = {};
   }
@@ -151,6 +152,8 @@ async function api(path, options = {}) {
         : `请求未完成 (${response.status})`,
     );
     error.status = response.status;
+    error.retrySameCommand = data.retry_same_command === true;
+    error.responseIncomplete = !parsed;
     throw error;
   }
   return data;
@@ -516,7 +519,17 @@ function renderRoom() {
     activeTextScope = scope;
     draft = '';
     $('#intent')?.remove();
-    document.querySelectorAll("[data-group-dialog]").forEach((node) => node.remove());
+    document.querySelectorAll('.modal-backdrop').forEach((node) => node.remove());
+    sheetState = null;
+    characterChoices = null;
+    builderState = null;
+    selectedTarget = '';
+    freeActionDraft = '';
+    freeActionPending = false;
+    failedProposals.clear();
+    previousCombatActive = false;
+    showSettlement = false;
+    encounterRoomId = null;
   }
   if(activeJournalKey) window.HexBoundLiveLog?.capture(activeJournalKey);
   trackEncounter();
@@ -843,7 +856,7 @@ async function command(type, payload = {}) {
         body: JSON.stringify(body),
       });
     } catch (error) {
-      if (!(error instanceof TypeError)) throw error;
+      if (!(error instanceof TypeError) && !error.retrySameCommand) throw error;
       toast("连接波动，正在安全重试同一操作…");
       result = await api(`/api/rooms/${session.room_id}/commands`, {
         method: "POST",
@@ -1424,6 +1437,7 @@ async function ensureSheetCatalog() {
   sheetCatalog = { spells, classes, loaded: true };
 }
 async function openCharacterSheet(memberId, initialTab = "overview") {
+  const requestScope = activeTextScope;
   const member = room.party.find((p) => p.id === memberId);
   if (!member) return;
   return openDialog(
@@ -1432,6 +1446,7 @@ async function openCharacterSheet(memberId, initialTab = "overview") {
       $(".modal", overlay).classList.add("sheet-modal");
       sheetTab = initialTab;
       sheetState = {
+        scope: requestScope,
         memberId,
         overlay,
         close,
@@ -1443,7 +1458,7 @@ async function openCharacterSheet(memberId, initialTab = "overview") {
         const data = await api(
           `/api/rooms/${session.room_id}/characters/${memberId}`,
         );
-        if (!overlay.isConnected) return;
+        if (!overlay.isConnected || activeTextScope !== requestScope || sheetState?.overlay !== overlay) return;
         sheetState = {
           ...sheetState,
           ...data,
@@ -1454,7 +1469,7 @@ async function openCharacterSheet(memberId, initialTab = "overview") {
         };
         renderCharacterSheet();
       } catch (error) {
-        if (overlay.isConnected)
+        if (overlay.isConnected && activeTextScope === requestScope)
           $("#character-sheet", overlay).innerHTML =
             `<p class="error">${esc(error.message)}</p><p class="helper">完整人物数据尚未读取。当前生命 ${member.hp} / ${member.max_hp}。</p>`;
       }
@@ -1467,7 +1482,7 @@ async function reloadCharacterSheet() {
   const data = await api(
     `/api/rooms/${session.room_id}/characters/${state.memberId}`,
   );
-  if (!state.overlay.isConnected) return;
+  if (!state.overlay.isConnected || activeTextScope !== state.scope || sheetState?.overlay !== state.overlay) return;
   sheetState = { ...state, ...data };
   renderCharacterSheet();
 }
@@ -1795,7 +1810,8 @@ function growthChoiceHtml(character, choices, preview) {
 }
 async function confirmLevelUp(event) {
   event.preventDefault();
-  if (!sheetState.owner || busy || !connected || sheetState.loading || sheetState.mutationPending) return;
+  if (!sheetState?.owner || busy || !connected || sheetState.loading || sheetState.mutationPending) return;
+  const mutationSheet = sheetState;
   const form = event.currentTarget,
     values = new FormData(form),
     choices = {},
@@ -1836,17 +1852,21 @@ async function confirmLevelUp(event) {
     };
   const button = $("[type=submit]", form);
   button.disabled = true;
-  sheetState.mutationPending=true;
+  mutationSheet.mutationPending=true;
   try {
     if (await command(room.status === "lobby" ? "prepare_level_up" : "level_up", { choices })) {
       toast("角色已升级，成长记录已保存。");
-      await reloadCharacterSheet();
+      if (sheetState?.overlay === mutationSheet.overlay && activeTextScope === mutationSheet.scope)
+        await reloadCharacterSheet();
     } else if(form.isConnected) {
       $('#growth-error',form).textContent='升级未完成，请检查规则或连接状态后重试。';
     }
   } finally {
-    sheetState.mutationPending=false;
-    refreshSheetVitals();
+    mutationSheet.mutationPending=false;
+    if (sheetState?.overlay === mutationSheet.overlay && activeTextScope === mutationSheet.scope) {
+      sheetState.mutationPending=false;
+      refreshSheetVitals();
+    }
   }
 }
 async function spellManagementDialog() {
@@ -2132,9 +2152,11 @@ function baseCharacterBuild(character={}) {
   return {class_id:character.class_id||'fighter',name:character.name||'',abilities:{str:15,dex:14,con:13,int:12,wis:10,cha:8,...character.abilities},profile:{appearance:'',personality:'',background:'',talents:[],...character.profile},choices:{},levels:[]};
 }
 async function openCharacterBuilder(options={}) {
+  const requestScope=activeTextScope, roomId=session?.room_id;
   try{await ensureSheetCatalog();}catch(error){toast(error.message);return;}
+  if(options.roomMember && (activeTextScope!==requestScope || session?.room_id!==roomId))return;
   let character=options.hero?.character||options.roomMember||{};
-  if(options.roomMember){try{const detail=await api(`/api/rooms/${session.room_id}/characters/${options.roomMember.id}`);character=detail.character;}catch(error){toast(error.message);return;}}
+  if(options.roomMember){try{const detail=await api(`/api/rooms/${roomId}/characters/${options.roomMember.id}`);if(activeTextScope!==requestScope || session?.room_id!==roomId)return;character=detail.character;}catch(error){if(activeTextScope===requestScope)toast(error.message);return;}}
   const build=JSON.parse(JSON.stringify(options.hero?.build||character.build||baseCharacterBuild(character)));
   const actualTarget=options.targetLevel||character.level||1;
   builderState={...options,build,targetLevel:actualTarget,stage:'identity',preview:null,pending:false,error:'',notes:[],editingLevel:null};
@@ -2312,7 +2334,7 @@ function openPartyGroups() {
           if (session?.room_id === roomId && result.room?.version >= room.version) room = result.room;
           close(); toast('队伍分组已更新。');
         } catch (error) {
-          if ([409, 422].includes(error.status)) {
+          if ([409, 422].includes(error.status) && !error.retrySameCommand && !error.responseIncomplete) {
             sessionStorage.removeItem(pendingKey); unknown = false;
             plan = null; commandId = null;
             try {
