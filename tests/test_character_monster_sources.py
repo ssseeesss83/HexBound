@@ -71,7 +71,11 @@ def test_quarantine_removes_only_unverified_night_hag_items():
     report = json.loads((c.DATA_DIR / 'official/monster-source-review.json').read_text(encoding='utf-8'))
     correction = next(r for r in report['corrections'] if r['records'] == ['night-hag'])
     assert any(a['name'] == 'Night Hag Items' for a in correction['expected'])
-    assert correction['value'] == hag['special_abilities']
+    # Later source reconciliation adds provenance to every retained trait.
+    # The quarantine must still preserve their original rules/parameters.
+    assert correction['value'] == [
+        {key:value for key,value in trait.items() if key!='official_action_reference'}
+        for trait in hag['special_abilities']]
 
 
 def test_candidate_contains_corrections_and_frozen_history_keeps_originals():

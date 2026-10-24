@@ -146,3 +146,5 @@ tools/audit_magic_figurine_ioun_variants.py核23个完整白名单小节及稀�
 tools/audit_monster_headers.py独立核317官方头部→334候选的速度、熟练、感官、语言、伤害弱点 / 抗性 / 免疫、状态免疫、CR及熟练加值，3,674检查零差异。459修正为334完整来源引用+125字段差异（含排序 / 大小写，不全是数值错）；关键错值、deafened重复及遗漏熟练已纠正。p256全部CR / PB表消费，形态和可选变体均保存原文选择证据；完整限定不丢。头部summary不表达所有条件特性，尤其Vampire雾形的不能行动 / 发言及条件伤免仍需统一执行层；不能依据空头部列表声称没有特性效果。预修快照保留全部原守卫，未签动作正文 / 参数 / 运行时。
 
 怪物完整来源tools/extract_monster_blocks.py按固定字体 / 坐标保存317整块及全部事件span；Challenge之后逐字词 / 数值 / 符号拼接校验无缺段，包含47段可能有规则含义的Cambria说明。两侧栏按明确owner单列；43嵌套标题尚不扁平化成动作。tools/audit_monster_bodies.py核334完整source引用零差异，只新增引用，不宣称现有动作desc已核。说明起点用整段字体边界，避免ReefShark / BanditCaptain句中加粗导致末项动作混入说明；Frog与FireBeetle规则事实完整保留。原值守卫不变，正文 / 参数 / 执行继续待核。
+
+tools/audit_monster_action_bodies.py独立核1,505项正文（550特性 / 844动作 / 12反应 / 99传奇）及名称库存，共4,346检查零差异。43嵌套标题并入父动作完整范围，use / recharge / form限制不因目录短名省略而丢失；五显式别名和侧栏派生可追溯。1,661修正为1,505完整ref+156正文，包含单位 / 排版差异与Solar100HP、疫病巨鼠平均4等实质更正。仅改desc及official_action_reference，未改任何嵌套数值；全部原守卫保留、来源锚稳定。普通Spider与SwarmSpider来源独立，条件形态与参数执行继续待核。
