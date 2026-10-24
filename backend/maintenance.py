@@ -26,7 +26,8 @@ from zipfile import ZipFile, ZIP_DEFLATED
 # Version 17 protects compiled clue registrations and mechanism-bound approvals.
 # Version 18 protects recoverable preemption stages and dispatch accounting.
 # Version 19 protects atomic scene-wait to generation-job bindings.
-SCHEMA_VERSION = 19
+# Version 20 protects explicit retry lineage and scene-local budget receipts.
+SCHEMA_VERSION = 20
 BACKUP_FORMAT = "hexbound-backup-v1"
 DATA_ROOT = Path(__file__).parent / "data"
 

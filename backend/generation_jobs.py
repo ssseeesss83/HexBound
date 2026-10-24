@@ -48,9 +48,13 @@ class Job(StrictModel):
     error_code: Literal['lease_expired','dependency_changed','provider_failed','preempted'] | None = None
     output: dict | None = None
     commit_receipt: dict | None = None
+    retry_of: story_patches.JobID | None = None
+    retry_receipt_id: story_patches.JobID | None = None
 
     @model_validator(mode='after')
     def lease_shape(self):
+        if (self.retry_of is None)!=(self.retry_receipt_id is None):
+            raise ValueError('追加预算必须保留原任务及授权回执')
         leased = self.status in {'running','validated'}
         if leased != (self.lease_token is not None and self.lease_until is not None):
             raise ValueError('任务状态与租约不一致')
@@ -147,7 +151,7 @@ class GenerationJobs:
             state = scene_storage.for_actor(json.loads(row['state']),actor)
             return self._enqueue_in_transaction(db,state,room_id,actor,frontier_id,priority=priority,budget=budget,now=now)
 
-    def _enqueue_in_transaction(self,db,state,room_id,actor,frontier_id,*,priority,budget,now):
+    def _enqueue_in_transaction(self,db,state,room_id,actor,frontier_id,*,priority,budget,now,retry_of=None,retry_receipt_id=None):
         if not db.in_transaction:
             raise RuntimeError('入队须在调用方持有的事务内完成')
         sid = uuid.uuid4().hex
@@ -156,9 +160,20 @@ class GenerationJobs:
         dedup_input = {key:value for key,value in auth.items() if key not in {'job_id','namespace','expires_at'}}
         dedup_input['scope'] = {key:value for key,value in auth['scope'].items() if key not in {'actor_id','membership_epoch'}}
         dedup = _hash(dedup_input)
+        if retry_of is not None:
+            prior = db.execute('SELECT * FROM generation_jobs WHERE id=?',(retry_of,)).fetchone()
+            prior = _decode(prior) if prior else None
+            if (not prior or prior['status']!='terminal_failed' or prior['room_id']!=room_id
+                    or prior['authorization']['scope']['scene_instance_id']!=auth['scope']['scene_instance_id']
+                    or prior['authorization']['source_node_id']!=auth['source_node_id']
+                    or prior['authorization']['frontier_id']!=frontier_id or retry_receipt_id is None
+                    or budget['max_attempts']!=1):
+                raise ValueError('追加预算授权与原任务不匹配')
         old = db.execute("SELECT * FROM generation_jobs WHERE room_id=? AND dedup_key=? AND status IN ('queued','running','validated','retryable_failed')",(room_id,dedup)).fetchone()
         if old:
             existing = _decode(old)
+            if retry_of is not None:
+                raise ValueError('已有有效续写任务，不再追加并行预算')
             # A required request can promote queued work without replacing
             # its identity, budget, lease or original authority snapshot.
             if now<existing['authorization']['expires_at']:
@@ -168,7 +183,7 @@ class GenerationJobs:
             existing.update(status='stale',error_code='dependency_changed',lease_token=None,lease_until=None,output=None,attempt_stage=None)
             _save(db,existing)
         exhausted = db.execute("SELECT * FROM generation_jobs WHERE room_id=? AND dedup_key=? AND status='terminal_failed' ORDER BY rowid DESC LIMIT 1",(room_id,dedup)).fetchone()
-        if exhausted:
+        if exhausted and retry_of is None:
             # Repeated automatic triggers are not fresh generation budget.
             # An explicit additional-budget/retry contract belongs to the
             # logical waiting request, not to ordinary enqueue calls.
@@ -176,7 +191,8 @@ class GenerationJobs:
         count = db.execute("SELECT COUNT(*) FROM generation_jobs WHERE room_id=? AND status IN ('queued','running','validated','retryable_failed')",(room_id,)).fetchone()[0]
         if count>=16:raise ValueError('当前冒险的续写队列已满')
         job = Job(id=sid,room_id=room_id,dedup_key=dedup,status='queued',priority=priority,
-                  authorization=auth,budget=budget,dispatches=Dispatches(),created_at=now,next_run_at=now).model_dump(mode='json')
+                  authorization=auth,budget=budget,dispatches=Dispatches(),created_at=now,next_run_at=now,
+                  retry_of=retry_of,retry_receipt_id=retry_receipt_id).model_dump(mode='json')
         db.execute('INSERT INTO generation_jobs VALUES(?,?,?,?,?,?,?)',
                    (sid,room_id,dedup,'queued',priority,None,json.dumps(job,ensure_ascii=False)))
         return deepcopy(job)

@@ -62,6 +62,7 @@ class Store:
             db.execute("CREATE TABLE IF NOT EXISTS group_plans (id TEXT PRIMARY KEY, room_id TEXT NOT NULL REFERENCES rooms(id), actor_id TEXT NOT NULL, created_at REAL NOT NULL, payload TEXT NOT NULL)")
             db.execute("CREATE TABLE IF NOT EXISTS generation_jobs (id TEXT PRIMARY KEY, room_id TEXT NOT NULL REFERENCES rooms(id), dedup_key TEXT NOT NULL, status TEXT NOT NULL, priority INTEGER NOT NULL, lease_until REAL, payload TEXT NOT NULL)")
             db.execute("CREATE UNIQUE INDEX IF NOT EXISTS generation_jobs_active ON generation_jobs(room_id,dedup_key) WHERE status IN ('queued','running','validated','retryable_failed')")
+            db.execute("CREATE UNIQUE INDEX IF NOT EXISTS generation_jobs_retry ON generation_jobs(room_id,json_extract(payload,'$.retry_of')) WHERE json_extract(payload,'$.retry_of') IS NOT NULL")
             db.execute("CREATE TABLE IF NOT EXISTS rules_documents (package_version TEXT NOT NULL REFERENCES rules_packages(version), page INTEGER NOT NULL, payload TEXT NOT NULL, PRIMARY KEY(package_version,page))")
             from .session_scope import initialize
             from .world_environment import migrate
