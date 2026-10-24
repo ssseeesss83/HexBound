@@ -6008,6 +6008,998 @@
         "quantity": 120,
         "unit": "gp"
       }
+    },
+    {
+      "id": "official-equipment-body-amulet",
+      "kind": "equipment",
+      "records": [
+        "amulet"
+      ],
+      "page": 67,
+      "heading": "Holy Symbol",
+      "operation": "set_field",
+      "path": [
+        "desc"
+      ],
+      "expected": [
+        "A holy symbol is a representation of a god or pantheon. It might be an amulet depicting a symbol representing a deity, the same symbol carefully engraved or inlaid as an emblem on a shield, or a tiny box holding a fragment of a sacred relic.",
+        "Appendix B lists the symbols commonly associated with many gods in the multiverse. A cleric or paladin can use a holy symbol as a spellcasting focus. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield."
+      ],
+      "value": [
+        "A holy symbol is a representation of a god or pantheon. It might be an amulet depicting a symbol representing a deity, the same symbol carefully engraved or inlaid as an emblem on a shield, or a tiny box holding a fragment of a sacred relic. Appendix PH-B \"Fantasy-Historical Pantheons\" lists the symbols commonly associated with many gods in the multiverse. A cleric or paladin can use a holy symbol as a spellcasting focus. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield."
+      ]
+    },
+    {
+      "id": "official-equipment-body-emblem",
+      "kind": "equipment",
+      "records": [
+        "emblem"
+      ],
+      "page": 67,
+      "heading": "Holy Symbol",
+      "operation": "set_field",
+      "path": [
+        "desc"
+      ],
+      "expected": [
+        "A holy symbol is a representation of a god or pantheon. It might be an amulet depicting a symbol representing a deity, the same symbol carefully engraved or inlaid as an emblem on a shield, or a tiny box holding a fragment of a sacred relic.",
+        "Appendix B lists the symbols commonly associated with many gods in the multiverse. A cleric or paladin can use a holy symbol as a spellcasting focus. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield."
+      ],
+      "value": [
+        "A holy symbol is a representation of a god or pantheon. It might be an amulet depicting a symbol representing a deity, the same symbol carefully engraved or inlaid as an emblem on a shield, or a tiny box holding a fragment of a sacred relic. Appendix PH-B \"Fantasy-Historical Pantheons\" lists the symbols commonly associated with many gods in the multiverse. A cleric or paladin can use a holy symbol as a spellcasting focus. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield."
+      ]
+    },
+    {
+      "id": "official-equipment-body-reliquary",
+      "kind": "equipment",
+      "records": [
+        "reliquary"
+      ],
+      "page": 67,
+      "heading": "Holy Symbol",
+      "operation": "set_field",
+      "path": [
+        "desc"
+      ],
+      "expected": [
+        "A holy symbol is a representation of a god or pantheon. It might be an amulet depicting a symbol representing a deity, the same symbol carefully engraved or inlaid as an emblem on a shield, or a tiny box holding a fragment of a sacred relic.",
+        "Appendix B lists the symbols commonly associated with many gods in the multiverse. A cleric or paladin can use a holy symbol as a spellcasting focus. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield."
+      ],
+      "value": [
+        "A holy symbol is a representation of a god or pantheon. It might be an amulet depicting a symbol representing a deity, the same symbol carefully engraved or inlaid as an emblem on a shield, or a tiny box holding a fragment of a sacred relic. Appendix PH-B \"Fantasy-Historical Pantheons\" lists the symbols commonly associated with many gods in the multiverse. A cleric or paladin can use a holy symbol as a spellcasting focus. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield."
+      ]
+    },
+    {
+      "id": "official-equipment-body-burglars-pack",
+      "kind": "equipment",
+      "records": [
+        "burglars-pack"
+      ],
+      "page": 70,
+      "heading": "Equipment Packs",
+      "operation": "set_field",
+      "path": [
+        "desc"
+      ],
+      "expected": null,
+      "value": [
+        "Burglar's Pack (16 gp). Includes a backpack, a bag of 1,000 ball bearings, 10 feet of string, a bell, 5 candles, a crowbar, a hammer, 10 pitons, a hooded lantern, 2 flasks of oil, 5 days rations, a tinderbox, and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it."
+      ]
+    },
+    {
+      "id": "official-equipment-body-diplomats-pack",
+      "kind": "equipment",
+      "records": [
+        "diplomats-pack"
+      ],
+      "page": 70,
+      "heading": "Equipment Packs",
+      "operation": "set_field",
+      "path": [
+        "desc"
+      ],
+      "expected": null,
+      "value": [
+        "Diplomat's Pack (39 gp). Includes a chest, 2 cases for maps and scrolls, a set of fine clothes, a bottle of ink, an ink pen, a lamp, 2 flasks of oil, 5 sheets of paper, a vial of perfume, sealing wax, and soap."
+      ]
+    },
+    {
+      "id": "official-equipment-body-dungeoneers-pack",
+      "kind": "equipment",
+      "records": [
+        "dungeoneers-pack"
+      ],
+      "page": 70,
+      "heading": "Equipment Packs",
+      "operation": "set_field",
+      "path": [
+        "desc"
+      ],
+      "expected": null,
+      "value": [
+        "Dungeoneer's Pack (12 gp). Includes a backpack, a crowbar, a hammer, 10 pitons, 10 torches, a tinderbox, 10 days of rations, and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it."
+      ]
+    },
+    {
+      "id": "official-equipment-body-entertainers-pack",
+      "kind": "equipment",
+      "records": [
+        "entertainers-pack"
+      ],
+      "page": 70,
+      "heading": "Equipment Packs",
+      "operation": "set_field",
+      "path": [
+        "desc"
+      ],
+      "expected": null,
+      "value": [
+        "Entertainer's Pack (40 gp). Includes a backpack, a bedroll, 2 costumes, 5 candles, 5 days of rations, a waterskin, and a disguise kit."
+      ]
+    },
+    {
+      "id": "official-equipment-body-explorers-pack",
+      "kind": "equipment",
+      "records": [
+        "explorers-pack"
+      ],
+      "page": 70,
+      "heading": "Equipment Packs",
+      "operation": "set_field",
+      "path": [
+        "desc"
+      ],
+      "expected": null,
+      "value": [
+        "Explorer's Pack (10 gp). Includes a backpack, a bedroll, a mess kit, a tinderbox, 10 torches, 10 days of rations, and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it."
+      ]
+    },
+    {
+      "id": "official-equipment-body-priests-pack",
+      "kind": "equipment",
+      "records": [
+        "priests-pack"
+      ],
+      "page": 70,
+      "heading": "Equipment Packs",
+      "operation": "set_field",
+      "path": [
+        "desc"
+      ],
+      "expected": null,
+      "value": [
+        "Priest's Pack (19 gp). Includes a backpack, a blanket, 10 candles, a tinderbox, an alms box, 2 blocks of incense, a censer, vestments, 2 days of rations, and a waterskin."
+      ]
+    },
+    {
+      "id": "official-equipment-body-scholars-pack",
+      "kind": "equipment",
+      "records": [
+        "scholars-pack"
+      ],
+      "page": 70,
+      "heading": "Equipment Packs",
+      "operation": "set_field",
+      "path": [
+        "desc"
+      ],
+      "expected": null,
+      "value": [
+        "Scholar's Pack (40 gp). Includes a backpack, a book of lore, a bottle of ink, an ink pen, 10 sheets of parchment, a little bag of sand, and a small knife."
+      ]
+    },
+    {
+      "id": "official-equipment-reference-tools",
+      "kind": "equipment-categories",
+      "records": [
+        "tools"
+      ],
+      "page": 70,
+      "heading": "Equipment source reference",
+      "operation": "set_field",
+      "path": [
+        "source_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "blocks": [
+          "A tool helps you to do something you couldn't otherwise do, such as craft or repair an item, forge a document, or pick a lock. Your race, class, background, or feats give you proficiency with certain tools. Proficiency with a tool allows you to add your proficiency bonus to any ability check you make using that tool. Tool use is not tied to a single ability, since proficiency with a tool represents broader knowledge of its use. For example, the GM might ask you to make a Dexterity check to carve a fine detail with your woodcarver's tools, or a Strength check to make something out of particularly hard wood."
+        ],
+        "printed_pages": [
+          70
+        ],
+        "heading": "Tools"
+      }
+    },
+    {
+      "id": "official-equipment-reference-mounts-and-vehicles",
+      "kind": "equipment-categories",
+      "records": [
+        "mounts-and-vehicles"
+      ],
+      "page": 71,
+      "heading": "Equipment source reference",
+      "operation": "set_field",
+      "path": [
+        "source_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "blocks": [
+          "A good mount can help you move more quickly through the wilderness, but its primary purpose is to carry the gear that would otherwise slow you down. The Mounts and Other Animals table shows each animal's speed and base carrying capacity. An animal pulling a carriage, cart, chariot, sled, or wagon can move weight up to five times its base carrying capacity, including the weight of the vehicle. If multiple animals pull the same vehicle, they can add their carrying capacity together. Mounts other than those listed here are available in fantasy gaming worlds, but they are rare and not normally available for purchase. These include flying mounts (pegasi, griffons, hippogriffs, and similar animals) and even aquatic mounts (giant sea horses, for example). Acquiring such a mount often means securing an egg and raising the creature yourself, making a bargain with a powerful entity, or negotiating with the mount itself.",
+          "If you have proficiency with a certain kind of vehicle (land or water), you can add your proficiency bonus to any check you make to control that kind of vehicle in difficult circumstances."
+        ],
+        "printed_pages": [
+          71
+        ],
+        "heading": "Mounts and Vehicles"
+      }
+    },
+    {
+      "id": "official-equipment-reference-adventuring-gear",
+      "kind": "equipment-categories",
+      "records": [
+        "adventuring-gear"
+      ],
+      "page": 69,
+      "heading": "Equipment source reference",
+      "operation": "set_field",
+      "path": [
+        "source_rules_reference"
+      ],
+      "expected": null,
+      "value": {
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "blocks": [],
+        "printed_pages": [
+          69,
+          70
+        ],
+        "heading": "Container Capacity",
+        "capacities": {
+          "backpack": "1 cubic foot/30 pounds of gear",
+          "barrel": "40 gallons liquid, 4 cubic feet solid",
+          "basket": "2 cubic feet/40 pounds of gear",
+          "bottle-glass": "11⁄2 pints liquid",
+          "bucket": "3 gallons liquid, 1/2 cubic foot solid",
+          "chest": "12 cubic feet/300 pounds of gear",
+          "flask-or-tankard": "1 pint liquid",
+          "jug-or-pitcher": "1 gallon liquid",
+          "pot-iron": "1 gallon liquid",
+          "pouch": "1/5 cubic foot/6 pounds of gear",
+          "sack": "1 cubic foot/30 pounds of gear",
+          "vial": "4 ounces liquid",
+          "waterskin": "4 pints liquid"
+        },
+        "backpack_note": "You can also strap items, such as a bedroll or a coil of rope, to the outside of a backpack."
+      }
+    },
+    {
+      "id": "official-equipment-reference-alms-box",
+      "kind": "equipment",
+      "records": [
+        "alms-box"
+      ],
+      "page": 70,
+      "heading": "Equipment source reference",
+      "operation": "set_field",
+      "path": [
+        "component_source_reference"
+      ],
+      "expected": null,
+      "value": {
+        "source_text_kind": "derived_pack_component_caption",
+        "official_page": 70,
+        "pack_id": "priests-pack",
+        "official_body": "Priest's Pack (19 gp). Includes a backpack, a blanket, 10 candles, a tinderbox, an alms box, 2 blocks of incense, a censer, vestments, 2 days of rations, and a waterskin.",
+        "cost_status": "not_stated",
+        "weight_status": "not_stated",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-equipment-reference-block-of-incense",
+      "kind": "equipment",
+      "records": [
+        "block-of-incense"
+      ],
+      "page": 70,
+      "heading": "Equipment source reference",
+      "operation": "set_field",
+      "path": [
+        "component_source_reference"
+      ],
+      "expected": null,
+      "value": {
+        "source_text_kind": "derived_pack_component_caption",
+        "official_page": 70,
+        "pack_id": "priests-pack",
+        "official_body": "Priest's Pack (19 gp). Includes a backpack, a blanket, 10 candles, a tinderbox, an alms box, 2 blocks of incense, a censer, vestments, 2 days of rations, and a waterskin.",
+        "cost_status": "not_stated",
+        "weight_status": "not_stated",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-equipment-reference-censer",
+      "kind": "equipment",
+      "records": [
+        "censer"
+      ],
+      "page": 70,
+      "heading": "Equipment source reference",
+      "operation": "set_field",
+      "path": [
+        "component_source_reference"
+      ],
+      "expected": null,
+      "value": {
+        "source_text_kind": "derived_pack_component_caption",
+        "official_page": 70,
+        "pack_id": "priests-pack",
+        "official_body": "Priest's Pack (19 gp). Includes a backpack, a blanket, 10 candles, a tinderbox, an alms box, 2 blocks of incense, a censer, vestments, 2 days of rations, and a waterskin.",
+        "cost_status": "not_stated",
+        "weight_status": "not_stated",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-equipment-reference-vestments",
+      "kind": "equipment",
+      "records": [
+        "vestments"
+      ],
+      "page": 70,
+      "heading": "Equipment source reference",
+      "operation": "set_field",
+      "path": [
+        "component_source_reference"
+      ],
+      "expected": null,
+      "value": {
+        "source_text_kind": "derived_pack_component_caption",
+        "official_page": 70,
+        "pack_id": "priests-pack",
+        "official_body": "Priest's Pack (19 gp). Includes a backpack, a blanket, 10 candles, a tinderbox, an alms box, 2 blocks of incense, a censer, vestments, 2 days of rations, and a waterskin.",
+        "cost_status": "not_stated",
+        "weight_status": "not_stated",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-equipment-reference-little-bag-of-sand",
+      "kind": "equipment",
+      "records": [
+        "little-bag-of-sand"
+      ],
+      "page": 70,
+      "heading": "Equipment source reference",
+      "operation": "set_field",
+      "path": [
+        "component_source_reference"
+      ],
+      "expected": null,
+      "value": {
+        "source_text_kind": "derived_pack_component_caption",
+        "official_page": 70,
+        "pack_id": "scholars-pack",
+        "official_body": "Scholar's Pack (40 gp). Includes a backpack, a book of lore, a bottle of ink, an ink pen, 10 sheets of parchment, a little bag of sand, and a small knife.",
+        "cost_status": "not_stated",
+        "weight_status": "not_stated",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-equipment-reference-small-knife",
+      "kind": "equipment",
+      "records": [
+        "small-knife"
+      ],
+      "page": 70,
+      "heading": "Equipment source reference",
+      "operation": "set_field",
+      "path": [
+        "component_source_reference"
+      ],
+      "expected": null,
+      "value": {
+        "source_text_kind": "derived_pack_component_caption",
+        "official_page": 70,
+        "pack_id": "scholars-pack",
+        "official_body": "Scholar's Pack (40 gp). Includes a backpack, a book of lore, a bottle of ink, an ink pen, 10 sheets of parchment, a little bag of sand, and a small knife.",
+        "cost_status": "not_stated",
+        "weight_status": "not_stated",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-equipment-reference-string-10-feet",
+      "kind": "equipment",
+      "records": [
+        "string-10-feet"
+      ],
+      "page": 70,
+      "heading": "Equipment source reference",
+      "operation": "set_field",
+      "path": [
+        "component_source_reference"
+      ],
+      "expected": null,
+      "value": {
+        "source_text_kind": "derived_pack_component_caption",
+        "official_page": 70,
+        "pack_id": "burglars-pack",
+        "official_body": "Burglar's Pack (16 gp). Includes a backpack, a bag of 1,000 ball bearings, 10 feet of string, a bell, 5 candles, a crowbar, a hammer, 10 pitons, a hooded lantern, 2 flasks of oil, 5 days rations, a tinderbox, and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it.",
+        "cost_status": "not_stated",
+        "weight_status": "not_stated",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-equipment-antitoxin-vial-weight",
+      "kind": "equipment",
+      "records": [
+        "antitoxin-vial"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-bell-weight",
+      "kind": "equipment",
+      "records": [
+        "bell"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-candle-weight",
+      "kind": "equipment",
+      "records": [
+        "candle"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-chalk-1-piece-weight",
+      "kind": "equipment",
+      "records": [
+        "chalk-1-piece"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-sprig-of-mistletoe-weight",
+      "kind": "equipment",
+      "records": [
+        "sprig-of-mistletoe"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-totem-weight",
+      "kind": "equipment",
+      "records": [
+        "totem"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-emblem-weight",
+      "kind": "equipment",
+      "records": [
+        "emblem"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-ink-1-ounce-bottle-weight",
+      "kind": "equipment",
+      "records": [
+        "ink-1-ounce-bottle"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-ink-pen-weight",
+      "kind": "equipment",
+      "records": [
+        "ink-pen"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-magnifying-glass-weight",
+      "kind": "equipment",
+      "records": [
+        "magnifying-glass"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-paper-one-sheet-weight",
+      "kind": "equipment",
+      "records": [
+        "paper-one-sheet"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-parchment-one-sheet-weight",
+      "kind": "equipment",
+      "records": [
+        "parchment-one-sheet"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-perfume-vial-weight",
+      "kind": "equipment",
+      "records": [
+        "perfume-vial"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-poison-basic-vial-weight",
+      "kind": "equipment",
+      "records": [
+        "poison-basic-vial"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-sealing-wax-weight",
+      "kind": "equipment",
+      "records": [
+        "sealing-wax"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-signal-whistle-weight",
+      "kind": "equipment",
+      "records": [
+        "signal-whistle"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-signet-ring-weight",
+      "kind": "equipment",
+      "records": [
+        "signet-ring"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-soap-weight",
+      "kind": "equipment",
+      "records": [
+        "soap"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-vial-weight",
+      "kind": "equipment",
+      "records": [
+        "vial"
+      ],
+      "page": 69,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-dice-set-weight",
+      "kind": "equipment",
+      "records": [
+        "dice-set"
+      ],
+      "page": 70,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-playing-card-set-weight",
+      "kind": "equipment",
+      "records": [
+        "playing-card-set"
+      ],
+      "page": 70,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-stabling-1-day-weight",
+      "kind": "equipment",
+      "records": [
+        "stabling-1-day"
+      ],
+      "page": 72,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-alms-box-cost",
+      "kind": "equipment",
+      "records": [
+        "alms-box"
+      ],
+      "page": 70,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 0,
+        "unit": "cp"
+      },
+      "value": null
+    },
+    {
+      "id": "official-equipment-alms-box-weight",
+      "kind": "equipment",
+      "records": [
+        "alms-box"
+      ],
+      "page": 70,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-block-of-incense-cost",
+      "kind": "equipment",
+      "records": [
+        "block-of-incense"
+      ],
+      "page": 70,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 0,
+        "unit": "cp"
+      },
+      "value": null
+    },
+    {
+      "id": "official-equipment-block-of-incense-weight",
+      "kind": "equipment",
+      "records": [
+        "block-of-incense"
+      ],
+      "page": 70,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-censer-cost",
+      "kind": "equipment",
+      "records": [
+        "censer"
+      ],
+      "page": 70,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 0,
+        "unit": "cp"
+      },
+      "value": null
+    },
+    {
+      "id": "official-equipment-censer-weight",
+      "kind": "equipment",
+      "records": [
+        "censer"
+      ],
+      "page": 70,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-vestments-cost",
+      "kind": "equipment",
+      "records": [
+        "vestments"
+      ],
+      "page": 70,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 0,
+        "unit": "cp"
+      },
+      "value": null
+    },
+    {
+      "id": "official-equipment-vestments-weight",
+      "kind": "equipment",
+      "records": [
+        "vestments"
+      ],
+      "page": 70,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-little-bag-of-sand-cost",
+      "kind": "equipment",
+      "records": [
+        "little-bag-of-sand"
+      ],
+      "page": 70,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 0,
+        "unit": "cp"
+      },
+      "value": null
+    },
+    {
+      "id": "official-equipment-little-bag-of-sand-weight",
+      "kind": "equipment",
+      "records": [
+        "little-bag-of-sand"
+      ],
+      "page": 70,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-small-knife-cost",
+      "kind": "equipment",
+      "records": [
+        "small-knife"
+      ],
+      "page": 70,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 0,
+        "unit": "cp"
+      },
+      "value": null
+    },
+    {
+      "id": "official-equipment-small-knife-weight",
+      "kind": "equipment",
+      "records": [
+        "small-knife"
+      ],
+      "page": 70,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
+    },
+    {
+      "id": "official-equipment-string-10-feet-cost",
+      "kind": "equipment",
+      "records": [
+        "string-10-feet"
+      ],
+      "page": 70,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "cost"
+      ],
+      "expected": {
+        "quantity": 0,
+        "unit": "cp"
+      },
+      "value": null
+    },
+    {
+      "id": "official-equipment-string-10-feet-weight",
+      "kind": "equipment",
+      "records": [
+        "string-10-feet"
+      ],
+      "page": 70,
+      "heading": "Equipment",
+      "operation": "set_field",
+      "path": [
+        "weight"
+      ],
+      "expected": 0,
+      "value": null
     }
   ],
   "record_additions": [

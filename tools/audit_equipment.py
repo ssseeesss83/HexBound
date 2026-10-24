@@ -21,7 +21,7 @@ def main():
     if args.apply_corrections:
         path=compendium.DATA_DIR/'canonical-overlay.json'
         overlay=json.loads(path.read_text(encoding='utf-8'))
-        for row in report['diffs']:
+        for row in report['diffs']+report['unspecified_measurement_diffs']:
             rid=row['record'].split('/',1)[1]
             correction=dict(id='official-equipment-'+rid+'-'+row['path'][0],kind='equipment',records=[rid],
                 page=row['official_page'],heading='Equipment',operation='set_field',path=row['path'],
@@ -29,7 +29,7 @@ def main():
             overlay['corrections']=[old for old in overlay['corrections'] if old['id']!=correction['id']]+[correction]
         path.write_text(json.dumps(overlay,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report['summary'],sort_keys=True))
-    return int(bool(report['diffs']) and not args.apply_corrections)
+    return int(bool(report['diffs'] or report['unspecified_measurement_diffs']) and not args.apply_corrections)
 
 
 if __name__=='__main__':raise SystemExit(main())

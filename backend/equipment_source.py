@@ -128,6 +128,7 @@ def audit(records,source_dir=None):
             if isinstance(row,dict) and isinstance(row.get('equipment_category'),dict)
             and row['equipment_category'].get('index') in {'adventuring-gear','tools','mounts-and-vehicles'}}
     checks=[]
+    unspecified=[]
     for rid,source_row in expected_rows.items():
         row=equipment.get(rid,{})
         row=row if isinstance(row,dict) else {}
@@ -142,6 +143,11 @@ def audit(records,source_dir=None):
             checks.append(dict(record='equipment/'+rid,path=[field],expected=deepcopy(want),actual=deepcopy(got),
                 match=strict_equal(got,want),official_page=source_row['official_page'],official_row=source_row['official_row'],
                 derivation=deepcopy(source_row['derivation'])))
+        for field in ('cost','weight'):
+            if source_row['notes'].get(field+'_status')!='not_stated':continue
+            unspecified.append(dict(record='equipment/'+rid,path=[field],expected=None,actual=deepcopy(row.get(field)),
+                match=row.get(field) is None,source_status='not_stated',official_page=source_row['official_page'],
+                official_row=source_row['official_row'],derivation=deepcopy(source_row['derivation'])))
     magic=records.get('magic-items',{})
     magic=magic if isinstance(magic,dict) else {}
     potion=magic.get('potion-of-healing-common',{})
@@ -156,6 +162,7 @@ def audit(records,source_dir=None):
     return dict(profile='remaining-equipment-measurements-v1',inventory_match=actual==set(expected_rows),
         missing_records=sorted(set(expected_rows)-actual),unexpected_records=sorted(actual-set(expected_rows)),
         checks=checks,diffs=[row for row in checks if not row['match']],
+        unspecified_measurement_checks=unspecified,unspecified_measurement_diffs=[row for row in unspecified if not row['match']],
         unspecified_measurements={rid:row['notes'] for rid,row in expected_rows.items() if row['notes']},
         cross_collection_rows=[healing],cross_collection_checks=cross_checks,
         cross_collection_diffs=[row for row in cross_checks if not row['match']],
@@ -170,4 +177,5 @@ def issues(records):
     if not report['inventory_match']:result.append('Remaining equipment inventory differs from official source mapping')
     result.extend('Official equipment measurement differs: '+row['record']+'/'+'.'.join(row['path']) for row in report['diffs'])
     result.extend('Official equipment cross-reference differs: '+row['record']+'/'+row['check'] for row in report['cross_collection_diffs'])
+    result.extend('Unknown equipment measurement must remain null/absent: '+row['record']+'/'+'.'.join(row['path']) for row in report['unspecified_measurement_diffs'])
     return result
