@@ -20,11 +20,37 @@ def encode(value):
     return json.dumps(normalized, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
 
-def validate_records(records):
+def unreachable_features(records):
+    def references(value):
+        if isinstance(value, dict):
+            url = value.get("url", "")
+            if url.startswith("/api/2014/features/"):
+                yield url.rsplit("/", 1)[1]
+            for child in value.values():
+                yield from references(child)
+        elif isinstance(value, list):
+            for child in value:
+                yield from references(child)
+    reached = set()
+    pending = list(references(list(records.get("levels", {}).values())))
+    while pending:
+        fid = pending.pop()
+        if fid in reached or fid not in records.get("features", {}):
+            continue
+        reached.add(fid)
+        pending.extend(references(records["features"][fid].get("feature_specific", {})))
+    return sorted(set(records.get("features", {})) - reached)
+
+
+def validate_records(records, *, inventory=None):
+    canonical = inventory is None
+    inventory = compendium.COLLECTIONS if inventory is None else inventory
     errors = []
-    if set(records) != set(compendium.COLLECTIONS):
+    if canonical:
+        errors.extend("Feature is unreachable from class grants or choices: " + fid for fid in unreachable_features(records))
+    if set(records) != set(inventory):
         errors.append("Rules collection set is incomplete")
-    for kind, expected in compendium.COLLECTIONS.items():
+    for kind, expected in inventory.items():
         if set(records.get(kind, {})) != set(expected):
             errors.append("Rules record inventory differs: " + kind)
     classes = records.get("classes", {})
@@ -35,6 +61,13 @@ def validate_records(records):
     if set(records.get("subclasses", {})) != set(compendium.SUBCLASS_NAMES_ZH):
         errors.append("Selected subclass inventory is incomplete")
     levels = records.get("levels", {})
+    for lid, row in levels.items():
+        for ref in row.get("features", []):
+            feature = records.get("features", {}).get(ref.get("index"), {})
+            if feature and (feature.get("class", {}).get("index") != row.get("class", {}).get("index")
+                            or feature.get("level") != row.get("level")
+                            or (feature.get("subclass") and feature["subclass"]["index"] != row.get("subclass", {}).get("index"))):
+                errors.append("Feature grant class/subclass/level mismatch: " + lid + "/" + ref.get("index", ""))
     for class_id in classes:
         for ref in classes[class_id].get("subclasses", []):
             target = records.get("subclasses", {}).get(ref.get("index"), {})
@@ -56,6 +89,11 @@ def validate_records(records):
             def walk(value, field=None):
                 if isinstance(value, dict):
                     if isinstance(value.get("url"), str) and "index" in value:
+                        level_ref = re.fullmatch(r"/api/2014/(?:classes|subclasses)/([^/]+)/levels/(\d+)", value["url"])
+                        if level_ref:
+                            level_id = level_ref[1] + "-" + level_ref[2]
+                            if value["index"] != level_id or level_id not in records.get("levels", {}):
+                                errors.append("Invalid level reference: " + value["url"])
                         target = re.fullmatch(r"/api/2014/([^/]+)/([^/]+)", value["url"])
                         if target and target[2] != value["index"]:
                             errors.append("Reference ID/URL mismatch: " + value["url"])
@@ -143,7 +181,8 @@ def install_package(store, package=None):
         raise ValueError("Package digest mismatch")
     if package.get("ruleset_id") != RULESET_ID:
         raise ValueError("Unknown ruleset")
-    errors = validate_records(package["records"])
+    inventory = build_legacy_package()["records"] if package["package_version"] == LEGACY_PACKAGE else None
+    errors = validate_records(package["records"], inventory=inventory)
     if [row["page"] for row in package.get("documents", [])] != list(range(1, 404)):
         errors.append("Official rule documents are incomplete")
     if errors:

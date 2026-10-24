@@ -34,7 +34,7 @@ def test_every_core_class_has_all_twenty_progression_records():
             assert record["class"]["index"] == class_id
             assert record["prof_bonus"] == 2 + (level - 1) // 4
             assert all(feature["index"] in c.FEATURES for feature in record["features"])
-    assert sum(len(records) for records in c.SUBCLASS_LEVELS.values()) == 50
+    assert sum(len(records) for records in c.SUBCLASS_LEVELS.values()) == 54  # Four official Land spell grants restored.
 
 
 def test_spellcasting_tables_preserve_half_and_pact_caster_rules():

@@ -2021,6 +2021,807 @@
       ],
       "expected": null,
       "value": "The Fiend lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you."
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-level",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "level"
+      ],
+      "expected": 2,
+      "value": 3
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-source_text_kind",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_choice_alias"
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-archive_level",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "archive_level"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-arctic-level",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-arctic"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "level"
+      ],
+      "expected": 2,
+      "value": 3
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-arctic-source_text_kind",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-arctic"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_choice_alias"
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-arctic-archive_level",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-arctic"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "archive_level"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-coast-level",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-coast"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "level"
+      ],
+      "expected": 2,
+      "value": 3
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-coast-source_text_kind",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-coast"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_choice_alias"
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-coast-archive_level",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-coast"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "archive_level"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-desert-level",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-desert"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "level"
+      ],
+      "expected": 2,
+      "value": 3
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-desert-source_text_kind",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-desert"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_choice_alias"
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-desert-archive_level",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-desert"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "archive_level"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-forest-level",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-forest"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "level"
+      ],
+      "expected": 2,
+      "value": 3
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-forest-source_text_kind",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-forest"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_choice_alias"
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-forest-archive_level",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-forest"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "archive_level"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-grassland-level",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-grassland"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "level"
+      ],
+      "expected": 2,
+      "value": 3
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-grassland-source_text_kind",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-grassland"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_choice_alias"
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-grassland-archive_level",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-grassland"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "archive_level"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-mountain-level",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-mountain"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "level"
+      ],
+      "expected": 2,
+      "value": 3
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-mountain-source_text_kind",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-mountain"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_choice_alias"
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-mountain-archive_level",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-mountain"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "archive_level"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-swamp-level",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-swamp"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "level"
+      ],
+      "expected": 2,
+      "value": 3
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-swamp-source_text_kind",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-swamp"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_choice_alias"
+    },
+    {
+      "id": "official-land-selection-circle-of-the-land-swamp-archive_level",
+      "kind": "features",
+      "records": [
+        "circle-of-the-land-swamp"
+      ],
+      "page": 21,
+      "heading": "Circle Spells",
+      "operation": "set_field",
+      "path": [
+        "archive_level"
+      ],
+      "expected": null,
+      "value": 2
+    },
+    {
+      "id": "official-favored-enemy-1-type-choice-structure",
+      "kind": "features",
+      "records": [
+        "favored-enemy-1-type"
+      ],
+      "page": 35,
+      "heading": "Favored Enemy",
+      "operation": "set_field",
+      "path": [
+        "feature_specific"
+      ],
+      "expected": {
+        "enemy_type_options": {
+          "desc": "one enemy type",
+          "choose": 1,
+          "type": "string",
+          "from": {
+            "option_set_type": "options_array",
+            "options": [
+              "aberrations",
+              "beasts",
+              "celestials",
+              "constructs",
+              "dragons",
+              "elementals",
+              "fey",
+              "fiends",
+              "giants",
+              "monstrosities",
+              "oozes",
+              "plants",
+              "undead",
+              "humanoids"
+            ]
+          }
+        }
+      },
+      "value": {
+        "enemy_type_options": {
+          "desc": "one listed non-humanoid creature type, or two humanoid races",
+          "choose": 1,
+          "type": "string",
+          "from": {
+            "option_set_type": "options_array",
+            "options": [
+              "aberrations",
+              "beasts",
+              "celestials",
+              "constructs",
+              "dragons",
+              "elementals",
+              "fey",
+              "fiends",
+              "giants",
+              "monstrosities",
+              "oozes",
+              "plants",
+              "undead"
+            ]
+          }
+        },
+        "choice_mode": "one_creature_type_or_two_humanoid_races",
+        "humanoid_race_alternative": {
+          "choose": 2,
+          "distinct": true,
+          "eligibility": "humanoid_race",
+          "examples": [
+            "gnolls",
+            "orcs"
+          ],
+          "requires_world_race_catalog": true
+        },
+        "language_eligibility": "a_language_spoken_by_selected_favored_enemies_if_any",
+        "execution_status": "reference_pending_full_choice_validation"
+      }
+    },
+    {
+      "id": "official-favored-enemy-2-types-choice-structure",
+      "kind": "features",
+      "records": [
+        "favored-enemy-2-types"
+      ],
+      "page": 35,
+      "heading": "Favored Enemy",
+      "operation": "set_field",
+      "path": [
+        "feature_specific"
+      ],
+      "expected": {
+        "enemy_type_options": {
+          "desc": "one enemy type",
+          "choose": 1,
+          "type": "string",
+          "from": {
+            "option_set_type": "options_array",
+            "options": [
+              "aberrations",
+              "beasts",
+              "celestials",
+              "constructs",
+              "dragons",
+              "elementals",
+              "fey",
+              "fiends",
+              "giants",
+              "monstrosities",
+              "oozes",
+              "plants",
+              "undead",
+              "humanoids"
+            ]
+          }
+        }
+      },
+      "value": {
+        "enemy_type_options": {
+          "desc": "one listed non-humanoid creature type, or two humanoid races",
+          "choose": 1,
+          "type": "string",
+          "from": {
+            "option_set_type": "options_array",
+            "options": [
+              "aberrations",
+              "beasts",
+              "celestials",
+              "constructs",
+              "dragons",
+              "elementals",
+              "fey",
+              "fiends",
+              "giants",
+              "monstrosities",
+              "oozes",
+              "plants",
+              "undead"
+            ]
+          }
+        },
+        "choice_mode": "one_creature_type_or_two_humanoid_races",
+        "humanoid_race_alternative": {
+          "choose": 2,
+          "distinct": true,
+          "eligibility": "humanoid_race",
+          "examples": [
+            "gnolls",
+            "orcs"
+          ],
+          "requires_world_race_catalog": true
+        },
+        "language_eligibility": "a_language_spoken_by_selected_favored_enemies_if_any",
+        "execution_status": "reference_pending_full_choice_validation"
+      }
+    },
+    {
+      "id": "official-favored-enemy-3-enemies-choice-structure",
+      "kind": "features",
+      "records": [
+        "favored-enemy-3-enemies"
+      ],
+      "page": 35,
+      "heading": "Favored Enemy",
+      "operation": "set_field",
+      "path": [
+        "feature_specific"
+      ],
+      "expected": {
+        "enemy_type_options": {
+          "desc": "one enemy type",
+          "choose": 1,
+          "type": "string",
+          "from": {
+            "option_set_type": "options_array",
+            "options": [
+              "aberrations",
+              "beasts",
+              "celestials",
+              "constructs",
+              "dragons",
+              "elementals",
+              "fey",
+              "fiends",
+              "giants",
+              "monstrosities",
+              "oozes",
+              "plants",
+              "undead",
+              "humanoids"
+            ]
+          }
+        }
+      },
+      "value": {
+        "enemy_type_options": {
+          "desc": "one listed non-humanoid creature type, or two humanoid races",
+          "choose": 1,
+          "type": "string",
+          "from": {
+            "option_set_type": "options_array",
+            "options": [
+              "aberrations",
+              "beasts",
+              "celestials",
+              "constructs",
+              "dragons",
+              "elementals",
+              "fey",
+              "fiends",
+              "giants",
+              "monstrosities",
+              "oozes",
+              "plants",
+              "undead"
+            ]
+          }
+        },
+        "choice_mode": "one_creature_type_or_two_humanoid_races",
+        "humanoid_race_alternative": {
+          "choose": 2,
+          "distinct": true,
+          "eligibility": "humanoid_race",
+          "examples": [
+            "gnolls",
+            "orcs"
+          ],
+          "requires_world_race_catalog": true
+        },
+        "language_eligibility": "a_language_spoken_by_selected_favored_enemies_if_any",
+        "execution_status": "reference_pending_full_choice_validation"
+      }
+    }
+  ],
+  "record_additions": [
+    {
+      "kind": "levels",
+      "record": {
+        "index": "land-3",
+        "id": "land-3",
+        "display_name": "Land 3",
+        "level": 3,
+        "features": [
+          {
+            "index": "circle-spells-1",
+            "name": "Circle Spells",
+            "url": "/api/2014/features/circle-spells-1"
+          }
+        ],
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        },
+        "subclass": {
+          "index": "land",
+          "name": "Land",
+          "url": "/api/2014/subclasses/land"
+        },
+        "url": "/api/2014/subclasses/land/levels/3",
+        "edition": "2014",
+        "srd_version": "5.1",
+        "ruleset_id": "dnd5e-2014-srd5.1",
+        "source_refs": {
+          "official_document": "official/SRD_CC_v5.1.pdf",
+          "printed_pages": [
+            21,
+            22
+          ],
+          "mapping_type": "official_normalized_grant",
+          "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0"
+        },
+        "choice_binding": {
+          "id": "land-terrain",
+          "kind": "derived_land_terrain_selection",
+          "effective_level": 3,
+          "choose": 1,
+          "parent": {
+            "index": "circle-of-the-land",
+            "name": "Circle of the Land",
+            "url": "/api/2014/features/circle-of-the-land"
+          },
+          "options": [
+            {
+              "index": "circle-of-the-land-arctic",
+              "name": "Circle of the Land: Arctic",
+              "url": "/api/2014/features/circle-of-the-land-arctic"
+            },
+            {
+              "index": "circle-of-the-land-coast",
+              "name": "Circle of the Land: Coast",
+              "url": "/api/2014/features/circle-of-the-land-coast"
+            },
+            {
+              "index": "circle-of-the-land-desert",
+              "name": "Circle of the Land: Desert",
+              "url": "/api/2014/features/circle-of-the-land-desert"
+            },
+            {
+              "index": "circle-of-the-land-forest",
+              "name": "Circle of the Land: Forest",
+              "url": "/api/2014/features/circle-of-the-land-forest"
+            },
+            {
+              "index": "circle-of-the-land-grassland",
+              "name": "Circle of the Land: Grassland",
+              "url": "/api/2014/features/circle-of-the-land-grassland"
+            },
+            {
+              "index": "circle-of-the-land-mountain",
+              "name": "Circle of the Land: Mountain",
+              "url": "/api/2014/features/circle-of-the-land-mountain"
+            },
+            {
+              "index": "circle-of-the-land-swamp",
+              "name": "Circle of the Land: Swamp",
+              "url": "/api/2014/features/circle-of-the-land-swamp"
+            }
+          ],
+          "repeat_selection": false
+        }
+      }
+    },
+    {
+      "kind": "levels",
+      "record": {
+        "index": "land-5",
+        "id": "land-5",
+        "display_name": "Land 5",
+        "level": 5,
+        "features": [
+          {
+            "index": "circle-spells-2",
+            "name": "Circle Spells",
+            "url": "/api/2014/features/circle-spells-2"
+          }
+        ],
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        },
+        "subclass": {
+          "index": "land",
+          "name": "Land",
+          "url": "/api/2014/subclasses/land"
+        },
+        "url": "/api/2014/subclasses/land/levels/5",
+        "edition": "2014",
+        "srd_version": "5.1",
+        "ruleset_id": "dnd5e-2014-srd5.1",
+        "source_refs": {
+          "official_document": "official/SRD_CC_v5.1.pdf",
+          "printed_pages": [
+            21,
+            22
+          ],
+          "mapping_type": "official_normalized_grant",
+          "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0"
+        },
+        "required_choice_binding": "land-terrain"
+      }
+    },
+    {
+      "kind": "levels",
+      "record": {
+        "index": "land-7",
+        "id": "land-7",
+        "display_name": "Land 7",
+        "level": 7,
+        "features": [
+          {
+            "index": "circle-spells-3",
+            "name": "Circle Spells",
+            "url": "/api/2014/features/circle-spells-3"
+          }
+        ],
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        },
+        "subclass": {
+          "index": "land",
+          "name": "Land",
+          "url": "/api/2014/subclasses/land"
+        },
+        "url": "/api/2014/subclasses/land/levels/7",
+        "edition": "2014",
+        "srd_version": "5.1",
+        "ruleset_id": "dnd5e-2014-srd5.1",
+        "source_refs": {
+          "official_document": "official/SRD_CC_v5.1.pdf",
+          "printed_pages": [
+            21,
+            22
+          ],
+          "mapping_type": "official_normalized_grant",
+          "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0"
+        },
+        "required_choice_binding": "land-terrain"
+      }
+    },
+    {
+      "kind": "levels",
+      "record": {
+        "index": "land-9",
+        "id": "land-9",
+        "display_name": "Land 9",
+        "level": 9,
+        "features": [
+          {
+            "index": "circle-spells-4",
+            "name": "Circle Spells",
+            "url": "/api/2014/features/circle-spells-4"
+          }
+        ],
+        "class": {
+          "index": "druid",
+          "name": "Druid",
+          "url": "/api/2014/classes/druid"
+        },
+        "subclass": {
+          "index": "land",
+          "name": "Land",
+          "url": "/api/2014/subclasses/land"
+        },
+        "url": "/api/2014/subclasses/land/levels/9",
+        "edition": "2014",
+        "srd_version": "5.1",
+        "ruleset_id": "dnd5e-2014-srd5.1",
+        "source_refs": {
+          "official_document": "official/SRD_CC_v5.1.pdf",
+          "printed_pages": [
+            21,
+            22
+          ],
+          "mapping_type": "official_normalized_grant",
+          "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0"
+        },
+        "required_choice_binding": "land-terrain"
+      }
     }
   ]
 }

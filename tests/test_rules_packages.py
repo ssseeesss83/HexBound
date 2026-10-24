@@ -163,6 +163,50 @@ def test_reviewed_class_source_corrections_are_reproducible_and_explicit():
     assert c.PROFICIENCIES["disguise-kit"]["type"] == c.PROFICIENCIES["forgery-kit"]["type"] == "Other"
 
 
+def test_land_grants_are_reachable_and_terrain_selection_starts_at_three(package):
+    assert not p.unreachable_features(c.COLLECTIONS)
+    assert sum(map(len, c.COLLECTIONS.values())) == 2321
+    for index, level in enumerate((3, 5, 7, 9), 1):
+        row = c.SUBCLASS_LEVELS["land"][level]
+        assert row["features"][0]["index"] == "circle-spells-" + str(index)
+        assert row["source_refs"]["printed_pages"] == [21, 22]
+        if level == 3:
+            binding = row["choice_binding"]
+            assert binding["choose"] == 1 and binding["effective_level"] == 3
+            assert len(binding["options"]) == 7 and binding["repeat_selection"] is False
+        else:
+            assert row["required_choice_binding"] == "land-terrain" and "choice_binding" not in row
+    for ref in c.SUBCLASS_LEVELS["land"][3]["choice_binding"]["options"]:
+        alias = c.FEATURES[ref["index"]]
+        assert alias["level"] == 3 and alias["archive_level"] == 2
+        assert alias["source_text_kind"] == "derived_choice_alias"
+    assert "land-3" not in package["records"]["levels"]
+    assert p.validate_records(package["records"], inventory=package["records"]) == []
+    stage = deepcopy(c.COLLECTIONS)
+    stage["levels"]["land-3"].pop("choice_binding")
+    assert any("unreachable" in error for error in p.validate_records(stage))
+
+
+def test_favored_enemy_does_not_grant_all_humanoids_or_unconditional_language():
+    for fid in ("favored-enemy-1-type", "favored-enemy-2-types", "favored-enemy-3-enemies"):
+        choice = c.FEATURES[fid]["feature_specific"]
+        assert "humanoids" not in choice["enemy_type_options"]["from"]["options"]
+        assert choice["choice_mode"] == "one_creature_type_or_two_humanoid_races"
+        assert choice["humanoid_race_alternative"]["choose"] == 2
+        assert choice["humanoid_race_alternative"]["distinct"] is True
+        assert choice["language_eligibility"] == "a_language_spoken_by_selected_favored_enemies_if_any"
+        assert capabilities.feature_automation(fid)["status"] == "reference"
+
+
+def test_semantically_wrong_grants_and_nested_level_references_are_rejected():
+    stage = deepcopy(c.COLLECTIONS)
+    stage["levels"]["land-3"]["features"] = [{"index": "rage", "url": "/api/2014/features/rage"}]
+    assert any("grant class/subclass/level mismatch" in error for error in p.validate_records(stage))
+    stage = deepcopy(c.COLLECTIONS)
+    stage["features"]["rage"]["prerequisites"].append({"index": "warlock-99", "url": "/api/2014/classes/warlock/levels/99"})
+    assert any("Invalid level reference" in error for error in p.validate_records(stage))
+
+
 @pytest.mark.parametrize("failure", ["url", "owner", "material", "edition", "level"])
 def test_structural_validator_independently_checks_source_relations(package, failure):
     records = deepcopy(package["records"])
@@ -176,7 +220,7 @@ def test_structural_validator_independently_checks_source_relations(package, fai
         records["spells"]["fireball"]["edition"] = "2024"
     else:
         records["levels"].pop("wizard-20")
-    assert p.validate_records(records)
+    assert p.validate_records(records, inventory=package["records"])
 
 
 def test_official_spell_header_extraction_is_reproducible_and_matches_canonical():

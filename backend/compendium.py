@@ -166,6 +166,14 @@ WEAPON_PROPERTIES = _load("Weapon-Properties")
 RULES = _load("Rules")
 RULE_SECTIONS = _load("Rule-Sections")
 
+CANONICAL_OVERLAY = json.loads((DATA_DIR / "canonical-overlay.json").read_text(encoding="utf-8"))
+for _addition in CANONICAL_OVERLAY.get("record_additions", []):
+    _table = {"levels": LEVELS}[_addition["kind"]]
+    _row = copy.deepcopy(_addition["record"])
+    if _row["index"] in _table:
+        raise ValueError("Canonical record addition duplicates an existing ID")
+    _table[_row["index"]] = _row
+
 CLASS_LEVELS = {class_id: {} for class_id in CLASSES}
 SUBCLASS_LEVELS = {subclass_id: {} for subclass_id in SUBCLASSES}
 for _record in LEVELS.values():
@@ -195,7 +203,6 @@ for _fix in ERRATA["corrections"]:
             })
             _subclass.setdefault("source_corrections", []).append(_fix["id"])
 
-CANONICAL_OVERLAY = json.loads((DATA_DIR / "canonical-overlay.json").read_text(encoding="utf-8"))
 for _correction in CANONICAL_OVERLAY["corrections"]:
     for _feature_id in _correction["records"]:
         _tables = {"features": FEATURES, "levels": LEVELS, "spells": SPELLS, "monsters": MONSTERS, "classes": CLASSES,
