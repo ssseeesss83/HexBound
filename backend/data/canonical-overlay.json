@@ -7238,6 +7238,205 @@
           "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0"
         }
       }
+    },
+    {
+      "kind": "magic-items",
+      "record": {
+        "index": "shield",
+        "id": "shield",
+        "name": "Shield, +1, +2, or +3",
+        "display_name": "Shield, +1, +2, or +3",
+        "edition": "2014",
+        "srd_version": "5.1",
+        "ruleset_id": "dnd5e-2014-srd5.1",
+        "url": "/api/2014/magic-items/shield",
+        "equipment_category": {
+          "index": "armor",
+          "name": "Armor",
+          "url": "/api/2014/equipment-categories/armor"
+        },
+        "rarity": {
+          "name": "Varies"
+        },
+        "variant": false,
+        "variants": [
+          {
+            "index": "shield-1",
+            "name": "Shield, +1",
+            "url": "/api/2014/magic-items/shield-1"
+          },
+          {
+            "index": "shield-2",
+            "name": "Shield, +2",
+            "url": "/api/2014/magic-items/shield-2"
+          },
+          {
+            "index": "shield-3",
+            "name": "Shield, +3",
+            "url": "/api/2014/magic-items/shield-3"
+          }
+        ],
+        "desc": [
+          "Armor (shield), uncommon (+1), rare (+2), or very rare (+3)",
+          "While holding this shield, you have a bonus to AC determined by the shield's rarity. This bonus is in addition to the shield's normal bonus to AC."
+        ],
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "source_refs": {
+          "official_document": "official/SRD_CC_v5.1.pdf",
+          "printed_pages": [
+            242
+          ],
+          "canonical_page": 242,
+          "canonical_heading": "Shield, +1, +2, or +3",
+          "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+          "mapping_type": "official_heading"
+        }
+      }
+    },
+    {
+      "kind": "magic-items",
+      "record": {
+        "index": "shield-1",
+        "id": "shield-1",
+        "name": "Shield, +1",
+        "display_name": "Shield, +1",
+        "edition": "2014",
+        "srd_version": "5.1",
+        "ruleset_id": "dnd5e-2014-srd5.1",
+        "url": "/api/2014/magic-items/shield-1",
+        "equipment_category": {
+          "index": "armor",
+          "name": "Armor",
+          "url": "/api/2014/equipment-categories/armor"
+        },
+        "rarity": {
+          "name": "Uncommon"
+        },
+        "variant": true,
+        "variants": [],
+        "desc": [
+          "Armor (shield), uncommon (+1)",
+          "While holding this shield, you have a bonus to AC determined by the shield's rarity. This bonus is in addition to the shield's normal bonus to AC."
+        ],
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "source_refs": {
+          "official_document": "official/SRD_CC_v5.1.pdf",
+          "printed_pages": [
+            242
+          ],
+          "canonical_page": 242,
+          "canonical_heading": "Shield, +1, +2, or +3",
+          "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+          "mapping_type": "official_normalized_variant"
+        },
+        "derived_from": "magic-items/shield",
+        "source_text_kind": "derived_numeric_variant",
+        "shield_ac_bonus_reference": {
+          "amount": 1,
+          "requires_holding": true,
+          "additional_to_normal_shield": true,
+          "status": "reference_pending_execution",
+          "runtime_verified": false
+        }
+      }
+    },
+    {
+      "kind": "magic-items",
+      "record": {
+        "index": "shield-2",
+        "id": "shield-2",
+        "name": "Shield, +2",
+        "display_name": "Shield, +2",
+        "edition": "2014",
+        "srd_version": "5.1",
+        "ruleset_id": "dnd5e-2014-srd5.1",
+        "url": "/api/2014/magic-items/shield-2",
+        "equipment_category": {
+          "index": "armor",
+          "name": "Armor",
+          "url": "/api/2014/equipment-categories/armor"
+        },
+        "rarity": {
+          "name": "Rare"
+        },
+        "variant": true,
+        "variants": [],
+        "desc": [
+          "Armor (shield), rare (+2)",
+          "While holding this shield, you have a bonus to AC determined by the shield's rarity. This bonus is in addition to the shield's normal bonus to AC."
+        ],
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "source_refs": {
+          "official_document": "official/SRD_CC_v5.1.pdf",
+          "printed_pages": [
+            242
+          ],
+          "canonical_page": 242,
+          "canonical_heading": "Shield, +1, +2, or +3",
+          "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+          "mapping_type": "official_normalized_variant"
+        },
+        "derived_from": "magic-items/shield",
+        "source_text_kind": "derived_numeric_variant",
+        "shield_ac_bonus_reference": {
+          "amount": 2,
+          "requires_holding": true,
+          "additional_to_normal_shield": true,
+          "status": "reference_pending_execution",
+          "runtime_verified": false
+        }
+      }
+    },
+    {
+      "kind": "magic-items",
+      "record": {
+        "index": "shield-3",
+        "id": "shield-3",
+        "name": "Shield, +3",
+        "display_name": "Shield, +3",
+        "edition": "2014",
+        "srd_version": "5.1",
+        "ruleset_id": "dnd5e-2014-srd5.1",
+        "url": "/api/2014/magic-items/shield-3",
+        "equipment_category": {
+          "index": "armor",
+          "name": "Armor",
+          "url": "/api/2014/equipment-categories/armor"
+        },
+        "rarity": {
+          "name": "Very Rare"
+        },
+        "variant": true,
+        "variants": [],
+        "desc": [
+          "Armor (shield), very rare (+3)",
+          "While holding this shield, you have a bonus to AC determined by the shield's rarity. This bonus is in addition to the shield's normal bonus to AC."
+        ],
+        "status": "reference_pending_execution",
+        "runtime_verified": false,
+        "source_refs": {
+          "official_document": "official/SRD_CC_v5.1.pdf",
+          "printed_pages": [
+            242
+          ],
+          "canonical_page": 242,
+          "canonical_heading": "Shield, +1, +2, or +3",
+          "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+          "mapping_type": "official_normalized_variant"
+        },
+        "derived_from": "magic-items/shield",
+        "source_text_kind": "derived_numeric_variant",
+        "shield_ac_bonus_reference": {
+          "amount": 3,
+          "requires_holding": true,
+          "additional_to_normal_shield": true,
+          "status": "reference_pending_execution",
+          "runtime_verified": false
+        }
+      }
     }
   ]
 }

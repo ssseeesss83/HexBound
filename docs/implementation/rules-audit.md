@@ -108,3 +108,9 @@ p64完整穿脱段及四类时间保存到现有护甲分类的timing_reference�
 `tools/audit_equipment_bodies.py`比较102条已有规则正文与7包来源清单；修正圣徽三条附录措辞、补全七包desc。另保存三类一般规则引用、十三容器容量及背包附注，七件包内小物件明确为衍生caption并附原文。109正文与10引用当前零差异，历史正文快照保留预修差异。
 
 来源未定义表内破折号为精确零重量，也未给七件包内小物件单独价重；43空缺维度要求null/缺字段。只清空未知维度，保留已知售价；`equipment-source-absence-review.json`保留先前占位零证据。运行时购买或负重不得把未知量默认为零，此批不提供相关执行器。候选尚未启用，raw及legacy不变。
+
+## 魔法盾牌家族补录
+
+官方p242的Shield,+1/+2/+3没有社区对应条目；按一个官方母项、三个规范派生变体补入候选。`tools/normalize_magic_shields.py`只写overlay，`tools/audit_magic_shields.py`校验完整字段、固定来源、母子关系及参考状态。稀有度分别Uncommon/Rare/Very Rare，holding时在普通盾牌AC加值之外额外增加，不套用Armor家族稀有度或wearing条件。
+
+`official/magic-shields-review.json`记录当前零差异；candidate为2,326条（magic-items366），raw及legacy原样保留。此补录不签收魔法物品全集或装备AC执行。

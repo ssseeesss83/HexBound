@@ -1,0 +1,736 @@
+{
+  "profile": "official-magic-shields-v1",
+  "official_items": 1,
+  "normalized_variants": 3,
+  "records": 4,
+  "official_page": 242,
+  "checks": [
+    {
+      "record": "magic-items/shield",
+      "field": "index",
+      "expected": "shield",
+      "actual": "shield",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield",
+      "field": "id",
+      "expected": "shield",
+      "actual": "shield",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield",
+      "field": "name",
+      "expected": "Shield, +1, +2, or +3",
+      "actual": "Shield, +1, +2, or +3",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield",
+      "field": "display_name",
+      "expected": "Shield, +1, +2, or +3",
+      "actual": "Shield, +1, +2, or +3",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield",
+      "field": "edition",
+      "expected": "2014",
+      "actual": "2014",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield",
+      "field": "srd_version",
+      "expected": "5.1",
+      "actual": "5.1",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield",
+      "field": "ruleset_id",
+      "expected": "dnd5e-2014-srd5.1",
+      "actual": "dnd5e-2014-srd5.1",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield",
+      "field": "url",
+      "expected": "/api/2014/magic-items/shield",
+      "actual": "/api/2014/magic-items/shield",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "magic-items/shield",
+      "field": "rarity",
+      "expected": {
+        "name": "Varies"
+      },
+      "actual": {
+        "name": "Varies"
+      },
+      "match": true
+    },
+    {
+      "record": "magic-items/shield",
+      "field": "variant",
+      "expected": false,
+      "actual": false,
+      "match": true
+    },
+    {
+      "record": "magic-items/shield",
+      "field": "variants",
+      "expected": [
+        {
+          "index": "shield-1",
+          "name": "Shield, +1",
+          "url": "/api/2014/magic-items/shield-1"
+        },
+        {
+          "index": "shield-2",
+          "name": "Shield, +2",
+          "url": "/api/2014/magic-items/shield-2"
+        },
+        {
+          "index": "shield-3",
+          "name": "Shield, +3",
+          "url": "/api/2014/magic-items/shield-3"
+        }
+      ],
+      "actual": [
+        {
+          "index": "shield-1",
+          "name": "Shield, +1",
+          "url": "/api/2014/magic-items/shield-1"
+        },
+        {
+          "index": "shield-2",
+          "name": "Shield, +2",
+          "url": "/api/2014/magic-items/shield-2"
+        },
+        {
+          "index": "shield-3",
+          "name": "Shield, +3",
+          "url": "/api/2014/magic-items/shield-3"
+        }
+      ],
+      "match": true
+    },
+    {
+      "record": "magic-items/shield",
+      "field": "desc",
+      "expected": [
+        "Armor (shield), uncommon (+1), rare (+2), or very rare (+3)",
+        "While holding this shield, you have a bonus to AC determined by the shield's rarity. This bonus is in addition to the shield's normal bonus to AC."
+      ],
+      "actual": [
+        "Armor (shield), uncommon (+1), rare (+2), or very rare (+3)",
+        "While holding this shield, you have a bonus to AC determined by the shield's rarity. This bonus is in addition to the shield's normal bonus to AC."
+      ],
+      "match": true
+    },
+    {
+      "record": "magic-items/shield",
+      "field": "status",
+      "expected": "reference_pending_execution",
+      "actual": "reference_pending_execution",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield",
+      "field": "runtime_verified",
+      "expected": false,
+      "actual": false,
+      "match": true
+    },
+    {
+      "record": "magic-items/shield",
+      "field": "source_refs",
+      "expected": {
+        "official_document": "official/SRD_CC_v5.1.pdf",
+        "printed_pages": [
+          242
+        ],
+        "canonical_page": 242,
+        "canonical_heading": "Shield, +1, +2, or +3",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "mapping_type": "official_heading"
+      },
+      "actual": {
+        "official_document": "official/SRD_CC_v5.1.pdf",
+        "printed_pages": [
+          242
+        ],
+        "canonical_page": 242,
+        "canonical_heading": "Shield, +1, +2, or +3",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "mapping_type": "official_heading"
+      },
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-1",
+      "field": "index",
+      "expected": "shield-1",
+      "actual": "shield-1",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-1",
+      "field": "id",
+      "expected": "shield-1",
+      "actual": "shield-1",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-1",
+      "field": "name",
+      "expected": "Shield, +1",
+      "actual": "Shield, +1",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-1",
+      "field": "display_name",
+      "expected": "Shield, +1",
+      "actual": "Shield, +1",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-1",
+      "field": "edition",
+      "expected": "2014",
+      "actual": "2014",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-1",
+      "field": "srd_version",
+      "expected": "5.1",
+      "actual": "5.1",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-1",
+      "field": "ruleset_id",
+      "expected": "dnd5e-2014-srd5.1",
+      "actual": "dnd5e-2014-srd5.1",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-1",
+      "field": "url",
+      "expected": "/api/2014/magic-items/shield-1",
+      "actual": "/api/2014/magic-items/shield-1",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-1",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-1",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-1",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-1",
+      "field": "variants",
+      "expected": [],
+      "actual": [],
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-1",
+      "field": "desc",
+      "expected": [
+        "Armor (shield), uncommon (+1)",
+        "While holding this shield, you have a bonus to AC determined by the shield's rarity. This bonus is in addition to the shield's normal bonus to AC."
+      ],
+      "actual": [
+        "Armor (shield), uncommon (+1)",
+        "While holding this shield, you have a bonus to AC determined by the shield's rarity. This bonus is in addition to the shield's normal bonus to AC."
+      ],
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-1",
+      "field": "status",
+      "expected": "reference_pending_execution",
+      "actual": "reference_pending_execution",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-1",
+      "field": "runtime_verified",
+      "expected": false,
+      "actual": false,
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-1",
+      "field": "source_refs",
+      "expected": {
+        "official_document": "official/SRD_CC_v5.1.pdf",
+        "printed_pages": [
+          242
+        ],
+        "canonical_page": 242,
+        "canonical_heading": "Shield, +1, +2, or +3",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "mapping_type": "official_normalized_variant"
+      },
+      "actual": {
+        "official_document": "official/SRD_CC_v5.1.pdf",
+        "printed_pages": [
+          242
+        ],
+        "canonical_page": 242,
+        "canonical_heading": "Shield, +1, +2, or +3",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "mapping_type": "official_normalized_variant"
+      },
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-1",
+      "field": "derived_from",
+      "expected": "magic-items/shield",
+      "actual": "magic-items/shield",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-1",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": "derived_numeric_variant",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-1",
+      "field": "shield_ac_bonus_reference",
+      "expected": {
+        "amount": 1,
+        "requires_holding": true,
+        "additional_to_normal_shield": true,
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": {
+        "amount": 1,
+        "requires_holding": true,
+        "additional_to_normal_shield": true,
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-2",
+      "field": "index",
+      "expected": "shield-2",
+      "actual": "shield-2",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-2",
+      "field": "id",
+      "expected": "shield-2",
+      "actual": "shield-2",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-2",
+      "field": "name",
+      "expected": "Shield, +2",
+      "actual": "Shield, +2",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-2",
+      "field": "display_name",
+      "expected": "Shield, +2",
+      "actual": "Shield, +2",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-2",
+      "field": "edition",
+      "expected": "2014",
+      "actual": "2014",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-2",
+      "field": "srd_version",
+      "expected": "5.1",
+      "actual": "5.1",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-2",
+      "field": "ruleset_id",
+      "expected": "dnd5e-2014-srd5.1",
+      "actual": "dnd5e-2014-srd5.1",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-2",
+      "field": "url",
+      "expected": "/api/2014/magic-items/shield-2",
+      "actual": "/api/2014/magic-items/shield-2",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-2",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-2",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-2",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-2",
+      "field": "variants",
+      "expected": [],
+      "actual": [],
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-2",
+      "field": "desc",
+      "expected": [
+        "Armor (shield), rare (+2)",
+        "While holding this shield, you have a bonus to AC determined by the shield's rarity. This bonus is in addition to the shield's normal bonus to AC."
+      ],
+      "actual": [
+        "Armor (shield), rare (+2)",
+        "While holding this shield, you have a bonus to AC determined by the shield's rarity. This bonus is in addition to the shield's normal bonus to AC."
+      ],
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-2",
+      "field": "status",
+      "expected": "reference_pending_execution",
+      "actual": "reference_pending_execution",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-2",
+      "field": "runtime_verified",
+      "expected": false,
+      "actual": false,
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-2",
+      "field": "source_refs",
+      "expected": {
+        "official_document": "official/SRD_CC_v5.1.pdf",
+        "printed_pages": [
+          242
+        ],
+        "canonical_page": 242,
+        "canonical_heading": "Shield, +1, +2, or +3",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "mapping_type": "official_normalized_variant"
+      },
+      "actual": {
+        "official_document": "official/SRD_CC_v5.1.pdf",
+        "printed_pages": [
+          242
+        ],
+        "canonical_page": 242,
+        "canonical_heading": "Shield, +1, +2, or +3",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "mapping_type": "official_normalized_variant"
+      },
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-2",
+      "field": "derived_from",
+      "expected": "magic-items/shield",
+      "actual": "magic-items/shield",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-2",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": "derived_numeric_variant",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-2",
+      "field": "shield_ac_bonus_reference",
+      "expected": {
+        "amount": 2,
+        "requires_holding": true,
+        "additional_to_normal_shield": true,
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": {
+        "amount": 2,
+        "requires_holding": true,
+        "additional_to_normal_shield": true,
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-3",
+      "field": "index",
+      "expected": "shield-3",
+      "actual": "shield-3",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-3",
+      "field": "id",
+      "expected": "shield-3",
+      "actual": "shield-3",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-3",
+      "field": "name",
+      "expected": "Shield, +3",
+      "actual": "Shield, +3",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-3",
+      "field": "display_name",
+      "expected": "Shield, +3",
+      "actual": "Shield, +3",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-3",
+      "field": "edition",
+      "expected": "2014",
+      "actual": "2014",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-3",
+      "field": "srd_version",
+      "expected": "5.1",
+      "actual": "5.1",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-3",
+      "field": "ruleset_id",
+      "expected": "dnd5e-2014-srd5.1",
+      "actual": "dnd5e-2014-srd5.1",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-3",
+      "field": "url",
+      "expected": "/api/2014/magic-items/shield-3",
+      "actual": "/api/2014/magic-items/shield-3",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-3",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-3",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-3",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-3",
+      "field": "variants",
+      "expected": [],
+      "actual": [],
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-3",
+      "field": "desc",
+      "expected": [
+        "Armor (shield), very rare (+3)",
+        "While holding this shield, you have a bonus to AC determined by the shield's rarity. This bonus is in addition to the shield's normal bonus to AC."
+      ],
+      "actual": [
+        "Armor (shield), very rare (+3)",
+        "While holding this shield, you have a bonus to AC determined by the shield's rarity. This bonus is in addition to the shield's normal bonus to AC."
+      ],
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-3",
+      "field": "status",
+      "expected": "reference_pending_execution",
+      "actual": "reference_pending_execution",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-3",
+      "field": "runtime_verified",
+      "expected": false,
+      "actual": false,
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-3",
+      "field": "source_refs",
+      "expected": {
+        "official_document": "official/SRD_CC_v5.1.pdf",
+        "printed_pages": [
+          242
+        ],
+        "canonical_page": 242,
+        "canonical_heading": "Shield, +1, +2, or +3",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "mapping_type": "official_normalized_variant"
+      },
+      "actual": {
+        "official_document": "official/SRD_CC_v5.1.pdf",
+        "printed_pages": [
+          242
+        ],
+        "canonical_page": 242,
+        "canonical_heading": "Shield, +1, +2, or +3",
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "mapping_type": "official_normalized_variant"
+      },
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-3",
+      "field": "derived_from",
+      "expected": "magic-items/shield",
+      "actual": "magic-items/shield",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-3",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": "derived_numeric_variant",
+      "match": true
+    },
+    {
+      "record": "magic-items/shield-3",
+      "field": "shield_ac_bonus_reference",
+      "expected": {
+        "amount": 3,
+        "requires_holding": true,
+        "additional_to_normal_shield": true,
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": {
+        "amount": 3,
+        "requires_holding": true,
+        "additional_to_normal_shield": true,
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "match": true
+    }
+  ],
+  "diffs": [],
+  "limitations": [
+    "Reference transcription only; does not certify equipped AC, attunement, magic item execution or the full magic-item corpus."
+  ]
+}

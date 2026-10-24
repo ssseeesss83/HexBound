@@ -168,7 +168,7 @@ RULE_SECTIONS = _load("Rule-Sections")
 
 CANONICAL_OVERLAY = json.loads((DATA_DIR / "canonical-overlay.json").read_text(encoding="utf-8"))
 for _addition in CANONICAL_OVERLAY.get("record_additions", []):
-    _table = {"levels": LEVELS, "weapon-properties": WEAPON_PROPERTIES}[_addition["kind"]]
+    _table = {"levels": LEVELS, "weapon-properties": WEAPON_PROPERTIES, "magic-items": MAGIC_ITEMS}[_addition["kind"]]
     _row = copy.deepcopy(_addition["record"])
     if _row["index"] in _table:
         raise ValueError("Canonical record addition duplicates an existing ID")

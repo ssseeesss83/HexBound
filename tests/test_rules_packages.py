@@ -165,7 +165,8 @@ def test_reviewed_class_source_corrections_are_reproducible_and_explicit():
 
 def test_land_grants_are_reachable_and_terrain_selection_starts_at_three(package):
     assert not p.unreachable_features(c.COLLECTIONS)
-    assert sum(map(len, c.COLLECTIONS.values())) == 2322
+    # One omitted official shield family plus three normalized variants.
+    assert sum(map(len, c.COLLECTIONS.values())) == 2326
     for index, level in enumerate((3, 5, 7, 9), 1):
         row = c.SUBCLASS_LEVELS["land"][level]
         assert row["features"][0]["index"] == "circle-spells-" + str(index)
