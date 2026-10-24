@@ -175,10 +175,8 @@ def create_app(db_path: str | None = None) -> FastAPI:
     app.include_router(create_studio_router(store, dm))
 
     def actions_for(state, member_id):
-        base = (campaign if state.get("campaign") else content).available_actions(state, member_id)
-        if any(m["character"].get("class_id") for m in state["members"]):
-            base = [a for a in base if a["id"] != "rest"]
-        return base + [a for a in abilities.available_actions(state, member_id) if a["id"] not in {x["id"] for x in base}]
+        from .action_menu import available
+        return available(state, member_id)
 
     def append_rule_events(state, items, fallback_actor):
         for item in items:

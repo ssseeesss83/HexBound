@@ -106,11 +106,11 @@ def _fingerprint(state):
     return hashlib.sha256(raw.encode()).hexdigest()
 
 
-def _guard(state, member_id):
+def _guard(state, member_id, *, party_action=False):
     if state.get("status", "playing") != "playing" or state.get("completed"):
         raise ValueError("请在正在进行的冒险中提出行动")
     character = _member(state, member_id)["character"]
-    if character.get("dead") or character.get("hp", 0) <= 0:
+    if not party_action and (character.get("dead") or character.get("hp", 0) <= 0):
         raise ValueError("角色失去行动能力，无法发起自由行动")
 
 
@@ -185,21 +185,22 @@ def build_context(state, member_id, intent, policy="balanced", *, skill_id=None)
 
 
 def validate_proposal(raw, state, member_id, policy="balanced"):
-    _guard(state, member_id)
     if policy not in {"strict", "balanced"}:
         raise ValueError("未知导演策略")
     decision = Decision.model_validate(raw)
     data = decision.model_dump()
+    plan = None
+    if decision.kind == 'capability':
+        plan = action_plans.prepare(state, member_id, decision.action_id, decision.target_id, data['action_options'])
+    _guard(state, member_id, party_action=bool(plan and plan['party_action']))
     if decision.kind == "free_action":
         data = {k:v for k,v in data.items() if k in {"kind","action_id","target_id","object_id","label","text","success_text","failure_text"}}
     cost = "不消耗规则资源；只记录对话。"
     dc = None
     requires_host = False
-    plan = None
     if decision.kind not in ("dialogue", "free_action", "capability") and (state.get("combat") or {}).get("active"):
         raise ValueError("战斗中请使用角色已经拥有的技能和法术")
     if decision.kind == 'capability':
-        plan = action_plans.prepare(state, member_id, decision.action_id, decision.target_id, data['action_options'])
         cost = action_plans.describe_cost(plan)
     elif decision.kind == "free_action":
         plan = free_actions.validate(state,member_id,data)
@@ -241,7 +242,9 @@ def public_proposal(proposal, state=None):
             "plan": action_plans.public_plan(proposal['plan']) if decision['kind'] == 'capability' else copy.deepcopy(proposal.get("plan")),
             "intent": proposal.get("intent", ""), "action_intent": copy.deepcopy(proposal.get("action_intent")),
             "stale": bool(state is not None and proposal.get("_fingerprint") != _fingerprint(state))
-                      or bool(decision['kind'] == 'capability' and proposal['plan']['expires_at'] <= time.time())}
+                      or bool(decision['kind'] == 'capability' and (
+                          proposal['plan']['expires_at'] <= time.time()
+                          or proposal['plan'].get('schema_version') != action_plans.PLAN_SCHEMA_VERSION))}
 
 
 def _free_fallback(state, member_id, intent):
@@ -415,7 +418,6 @@ def resolve(state, member_id, proposal):
     Caller must discard the state on exceptions, as with other rule executors,
     and persist events plus the consumed proposal in the same room transaction.
     """
-    _guard(state, member_id)
     if proposal.get("actor_id") != member_id:
         raise ValueError("不能确认其他角色的行动提案")
     if proposal.get("scene_id") != state.get("scene_id", "") or proposal.get("_fingerprint") != _fingerprint(state):
@@ -439,7 +441,10 @@ def resolve(state, member_id, proposal):
     elif decision['kind'] == 'capability':
         from . import abilities
         plan = action_plans.revalidate(state, member_id, proposal['plan'])
-        if plan['action_id'] == 'attack':
+        if plan['executor'] in {'campaign', 'rules'}:
+            executor = campaign if plan['executor'] == 'campaign' else rules
+            events.extend(executor.apply_action(state, member_id, plan['action_id'], plan['target_id']))
+        elif plan['action_id'] == 'attack':
             events.extend(abilities.weapon_attack(state, member_id, plan['target_id']))
         else:
             events.extend(abilities.apply_action(state, member_id, plan['action_id'], plan['target_id'], plan['options']))

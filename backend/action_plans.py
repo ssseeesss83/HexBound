@@ -1,6 +1,6 @@
 """Read-only plans for existing prototype handlers; never simulate execution.
 
-This module is not yet an HTTP execution surface. Complete 2014 spatial/timing
+Complete 2014 spatial/timing
 semantics belong to the later engine profile, not to these prototype previews.
 """
 from copy import deepcopy
@@ -17,7 +17,7 @@ from .rules_identity import ENGINE_PROFILE, LEGACY_PACKAGE
 from .source_audit import RULESET_ID
 
 PLAN_TTL_SECONDS = 120
-PLAN_SCHEMA_VERSION = 1
+PLAN_SCHEMA_VERSION = 2
 
 
 class Options(BaseModel):
@@ -87,7 +87,17 @@ def prepare(state, actor, action_id, target_id=None, options=None, *, now=None):
     validate_read_set(state)
     c = a.member(state, actor)['character']
     resources, restores = [], []
-    if action_id == 'attack':
+    executor = 'abilities'
+    if not action_id.startswith(('cast:', 'feature:')) and action_id != 'end-concentration' and not (action_id == 'attack' and a.modern(c)):
+        from .scenario_plans import prepare as prepare_scenario
+        cap, ids, resources = prepare_scenario(state, actor, action_id, target_id, opts)
+        target_id = ids[0] if len(ids) == 1 else None
+        # A node check uses its authored skill internally, never client targets.
+        if action_id.startswith('node:'):
+            target_id = None
+        normalized = {}
+        executor = 'campaign' if state.get('campaign') else 'rules'
+    elif action_id == 'attack':
         if opts['slot_level'] or opts['resource_amount'] or opts['target_ids'] or opts['slot_source'] not in (None, 'spell'):
             raise ValueError('普通攻击不接受额外能力参数')
         target_id = _weapon_target(state, actor, target_id)
@@ -182,6 +192,7 @@ def prepare(state, actor, action_id, target_id=None, options=None, *, now=None):
             or (action_id.startswith('cast:') and a._effects()[action_id[5:]].get('concentration'))):
         ends_concentration = {key: c['concentration'][key] for key in ['spell_id', 'name'] if key in c['concentration']}
     return dict(id=uuid.uuid4().hex, **scope, action_id=action_id, target_id=target_id,
+                executor=executor, party_action=bool(cap.get('party_action')),
                 options=deepcopy(normalized), targets=[dict(id=sid, name=visible[sid]) for sid in ids],
                 label=cap['label'], action_cost=cost, budget=budget, ends_concentration=ends_concentration,
                 resources=resources, restores=restores, summary=[cap.get('description', '')],
@@ -199,7 +210,7 @@ def revalidate(state, actor, plan, *, now=None):
     if any(plan.get(key) != value for key, value in _scope(state, actor).items()) or plan.get('fingerprint') != _fingerprint(state):
         raise ValueError('场景、角色或规则状态已变化，请重新选择')
     current = prepare(state, actor, plan['action_id'], plan['target_id'], plan['options'], now=now)
-    for key in ['action_id', 'target_id', 'options', 'targets', 'action_cost', 'budget', 'resources', 'restores', 'ends_concentration']:
+    for key in ['executor', 'party_action', 'action_id', 'target_id', 'options', 'targets', 'action_cost', 'budget', 'resources', 'restores', 'ends_concentration']:
         if current[key] != plan[key]:
             raise ValueError('行动的目标或代价已变化，请重新选择')
     return deepcopy(plan)
