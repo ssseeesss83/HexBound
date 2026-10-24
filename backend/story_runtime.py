@@ -12,6 +12,7 @@ from pydantic import Field, field_validator
 
 from . import story_graph as g
 from .schemas import Identifier, StrictModel
+from .story_registration import RegisteredClue,validate_clues
 
 Digest = Annotated[str, Field(pattern=r'^[0-9a-f]{64}$')]
 
@@ -22,6 +23,8 @@ class GraphCommit(StrictModel):
     patch_digest: Digest
     frontier_id: Identifier
     entry_node_id: Identifier
+    compiled_digest: Digest | None = None
+    compiler_digest: Digest | None = None
 
 
 class VersionOne(StrictModel):
@@ -43,6 +46,7 @@ class RuntimeGraph(VersionOne):
     fact_definitions: list[g.FactDefinition] = Field(default_factory=list, max_length=200)
     frontier_resolutions: dict[Identifier, Identifier] = Field(default_factory=dict, max_length=200)
     commits: list[GraphCommit] = Field(default_factory=list, max_length=200)
+    narrative_entities: list[RegisteredClue] = Field(default_factory=list,max_length=200)
 
 
 class ValueState(StrictModel):
@@ -108,8 +112,20 @@ def effective_book(book, runtime_graph=None):
             or len({row['frontier_id'] for row in commits}) != len(commits)
             or {row['frontier_id']:row['entry_node_id'] for row in commits} != extension['frontier_resolutions']):
         raise ValueError('运行图版本与提交来源不一致')
-    if not commits and any(extension[field] for field in ['nodes','edges','fact_definitions']):
+    if not commits and any(extension[field] for field in ['nodes','edges','fact_definitions','narrative_entities']):
         raise ValueError('运行扩展缺少提交来源')
+    for commit in commits:
+        if (commit['compiled_digest'] is None)!=(commit['compiler_digest'] is None):
+            raise ValueError('编译来源摘要不完整')
+        if commit['compiled_digest'] is not None:
+            prefix = 'r'+commit['job_id']+'_'
+            increment = dict(nodes=[row for row in extension['nodes'] if row['id'].startswith(prefix)],
+                edges=[row for row in extension['edges'] if row['id'].startswith(prefix)],
+                fact_definitions=[row for row in extension['fact_definitions'] if row['id'].startswith(prefix)],
+                narrative_entities=[row for row in extension['narrative_entities'] if row['source_job_id']==commit['job_id']],
+                compiler_digest=commit['compiler_digest'])
+            if digest(increment)!=commit['compiled_digest']:
+                raise ValueError('运行图与已审查编译增量不一致')
     combined = deepcopy(author)
     for field in ['nodes', 'edges', 'fact_definitions']:
         ids = [row['id'] for row in author[field] + extension[field]]
@@ -137,8 +153,15 @@ def effective_book(book, runtime_graph=None):
                 if action.get(field) in resolutions:
                     action[field] = resolutions[action[field]]
     g.parse_book(validation)
+    validate_clues(extension['narrative_entities'],combined)
+    for clue in extension['narrative_entities']:
+        if not any(row['job_id']==clue['source_job_id'] and row['frontier_id']==clue['source_frontier_id']
+                   and row['compiler_digest']==clue['compiler_digest']
+                   and row['compiled_digest'] is not None for row in commits):
+            raise ValueError('运行线索缺少对应编译来源')
     return dict(book=combined, frontier_resolutions=deepcopy(resolutions),
-                graph_revision=extension['graph_revision'], author_digest=extension['author_digest'])
+                graph_revision=extension['graph_revision'], author_digest=extension['author_digest'],
+                narrative_entities=deepcopy(extension['narrative_entities']))
 
 
 def destination(view, node_id):

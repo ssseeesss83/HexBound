@@ -44,6 +44,8 @@ def context(state,authorization):
                           for sid,row in frozen.items() if sid in authorization['continuation']['allowed_monster_ids']],
         allowed_monster_ids=[sid for sid in authorization['continuation']['allowed_monster_ids'] if sid in frozen],
         allowed_rejoin_ids=authorization['rejoin_node_ids'],allowed_existing_place_ids=authorization['allowed_existing_place_ids'],
+        registered_clues=[row for row in state['campaign']['runtime_graph'].get('narrative_entities',[])
+            if set(row['lineage']) & set(authorization['frontier_lineage']) or row['node_id'] in permitted_nodes],
         schema=story_patches.GraphPatch.model_json_schema()))
 
 
@@ -84,8 +86,11 @@ async def run(service,provider,job_id,*,clock=time.time):
                 '仅生成眼前一小段1至3个可玩节点，最多两层，不递归展开整个故事。末端保留完整frontier。'
                 '保留父续写契约的约束、已确认事实引用、未解线索、NPC目标及候选里程碑，不伪造玩家成功或动机。'
                 '不能改旧节点、添加旧节点出口、生成新结局或猜未授权汇合点；已有汇合仅allowed_rejoin_ids。'
-                '怪兽只能引用allowed_monster_ids。不能创建新物件/实体/道具、机械能力、伤害、资源或奖励。'
-                '现阶段挑战只能复制源场景同地点同目标同问题的完整规则和condition，换新的namespace挑战ID；不能移除前提或创设新目标。'
+                '怪兽只能引用allowed_monster_ids。不能创建物理道具/NPC或机械能力、伤害、资源、奖励。'
+                '普通challenges只能复制源场景同地点同目标同问题的完整规则和condition，换namespace挑战ID；不能移除前提。'
+                '需要新目标时，仅可用new_entities登记clue并以new_challenges请求发现或解读；必须归属同一新增独立地点、绑定自身新增boolean state事实，false只表示未解决。'
+                '每线索只能一挑战，选固定method_recipe与difficulty，ID/技能/DC/唯一成功效果由服务器计算；不能给请求加id、dc、condition、effects或证据。'
+                '不得把旧目标改名或搬到下一出口变成新线索，须检查registered_clues及来源谱系。内部描述不是玩家公开文本。'
                 '显式新地点必须namespace，复用地点只能allowed_existing_place_ids；不填place_id则创建独立新地点。'
                 '新事实须可变、非世界前提并用false/0/空串中性初值。引用既有事实只能使用read_set中的ID。'
                 'source_metadata.reason简述此分支如何接续当前因果，不当作授权或规则。新场景文本只是机会，不宣称玩家已移动、掷骰或获奖。',

@@ -245,7 +245,7 @@ class GenerationJobs:
             job = _decode(row)
             self._lease(db,job,lease_token,now)
             fresh = story_patches.review(_view(db,job),job['authorization'],json.loads(candidate.payload_json),now=now)
-            if candidate.job_id!=job_id or candidate.patch_digest!=fresh.patch_digest:
+            if candidate.job_id!=job_id or candidate.patch_digest!=fresh.patch_digest or candidate.compiled_digest!=fresh.compiled_digest:
                 raise ValueError('剧情候选与任务不一致')
             approval.verify(job['authorization'],fresh)
             output = dict(patch=json.loads(fresh.payload_json),approval=approval.model_dump(mode='json'))
@@ -282,6 +282,7 @@ class GenerationJobs:
             canonical['campaign']['story_state'] = json.loads(fresh.state_json)
             canonical['version'] = room['version']+1
             receipt = dict(job_id=job_id,patch_digest=fresh.patch_digest,
+                compiled_digest=fresh.compiled_digest,
                 graph_revision=canonical['campaign']['runtime_graph']['graph_revision'],
                 room_version=canonical['version'],worker_digest=_hash(lease_token))
             updated = db.execute('UPDATE rooms SET state=?,version=? WHERE id=? AND version=?',

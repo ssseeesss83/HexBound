@@ -15,7 +15,7 @@ def candidate(state=None,authorization=None):
     auth = patches.grant(state,'p','follow',job_id=JOB,now=10) if authorization is None else deepcopy(authorization)
     prefix = auth['namespace']
     patch = dict(job_id=auth['job_id'],base_graph_revision=auth['base_graph_revision'],scene_instance_id='scene-main',
-        frontier_id='follow',entry_node_id=prefix+'street',read_set=deepcopy(auth['read_set']),
+        frontier_id=auth['frontier_id'],entry_node_id=prefix+'street',read_set=deepcopy(auth['read_set']),
         new_nodes=[dict(id=prefix+'street',kind='scene',title='Street',text='The courier turns into a street.'),
                    dict(id=prefix+'next',kind='frontier',title='Continue',continuation=deepcopy(auth['continuation']))],
         new_edges=[dict(id=prefix+'onward',**{'from':prefix+'street'},to=prefix+'next')],

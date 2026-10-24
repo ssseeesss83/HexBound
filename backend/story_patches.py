@@ -17,6 +17,7 @@ from .action_plans import _scope
 from .schemas import Identifier, StrictModel
 from .story_challenges import _hash
 from .story_effects import snapshot
+from . import story_registration as registration
 from .story_transitions import _source
 
 JobID = Annotated[str,Field(pattern=r'^[0-9a-f]{32}$')]
@@ -38,7 +39,8 @@ class GraphPatch(StrictModel):
     new_fact_definitions: list[g.FactDefinition] = Field(default_factory=list,max_length=10)
     # Typed physical/narrative entity registration is a later boundary. Unknown
     # raw entities are rejected rather than silently ignored or materialized.
-    new_entities: list[dict] = Field(default_factory=list,max_length=0)
+    new_entities: list[registration.Clue] = Field(default_factory=list,max_length=6)
+    new_challenges: list[registration.ClueRequest] = Field(default_factory=list,max_length=6)
     continuation: g.Continuation
     source_metadata: SourceNote
 
@@ -47,6 +49,7 @@ class GraphPatch(StrictModel):
 class ReviewedPatch:
     job_id: str
     patch_digest: str
+    compiled_digest: str
     payload_json: str
     graph_json: str
     state_json: str
@@ -93,6 +96,15 @@ def grant(state, actor, frontier_id, *, job_id, now=None, ttl=120):
     if frontier_id not in reachable:
         raise ValueError('续写出口不属于当前邻近分支')
     contract = frontier['continuation']
+    lineage = [frontier_id]
+    cursor = frontier_id
+    while True:
+        parent = next((row for row in state['campaign']['runtime_graph']['commits']
+                       if cursor.startswith('r'+row['job_id']+'_')),None)
+        if parent is None:break
+        cursor = parent['frontier_id']
+        if cursor in lineage:raise ValueError('续写来源谱系存在循环')
+        lineage.insert(0,cursor)
     refs = {'facts:'+sid for sid in contract['confirmed_fact_ids']}
     refs |= {'facts:'+row['id'] for row in view['book']['fact_definitions'] if row['kind']=='premise'}
     refs |= {'milestones:'+sid for sid in contract['candidate_milestone_ids']}
@@ -112,6 +124,7 @@ def grant(state, actor, frontier_id, *, job_id, now=None, ttl=120):
                 namespace=prefix,author_digest=view['author_digest'],base_graph_revision=view['graph_revision'],
                 package_digest=_hash(state['campaign']['package']),
                 runtime_graph_digest=_hash(state['campaign']['runtime_graph']),
+                compiler_digest=registration.compiler_digest(),frontier_lineage=lineage,
                 audience=session_scope.audience_key(staged),read_set=reads,
                 member_epochs={m['id']:state.get('member_contexts',{}).get(m['id'],{}).get('epoch',1) for m in state['members']},
                 rejoin_node_ids=[contract['fallback_scene_id']] if contract['fallback_scene_id'] else [],
@@ -222,15 +235,20 @@ def review(state, authorization, raw, *, now=None):
         if fact['kind']=='premise' or not fact['mutable'] or type(fact['initial']) is not type(neutral) or fact['initial']!=neutral:
             raise ValueError('生成不能宣称新世界前提或已确认事实')
     _depth(nodes,edges,patch['entry_node_id'])
+    nodes,entities,new_facts = registration.compile_clues(patch,authorization,view['narrative_entities'])
+    compiled = _hash(dict(nodes=nodes,edges=edges,fact_definitions=new_facts,narrative_entities=entities,
+                          compiler_digest=registration.compiler_digest()))
     graph = deepcopy(state['campaign']['runtime_graph'])
     graph['nodes'] += nodes
     graph['edges'] += edges
     graph['fact_definitions'] += new_facts
+    graph.setdefault('narrative_entities',[]).extend(entities)
     graph['graph_revision'] += 1
     graph['frontier_resolutions'][patch['frontier_id']] = patch['entry_node_id']
     identity = _hash(patch)
     graph['commits'].append(dict(job_id=patch['job_id'],revision=graph['graph_revision'],patch_digest=identity,
-                                 frontier_id=patch['frontier_id'],entry_node_id=patch['entry_node_id']))
+                                 frontier_id=patch['frontier_id'],entry_node_id=patch['entry_node_id'],compiled_digest=compiled,
+                                 compiler_digest=registration.compiler_digest()))
     result = runtime.effective_book(state['campaign']['package']['scenario'],graph)
     updated_facts = deepcopy(facts)
     for fact in new_facts:updated_facts['facts'][fact['id']]=dict(value=fact['initial'],revision=0)
@@ -258,4 +276,4 @@ def review(state, authorization, raw, *, now=None):
             old_refs |= {'milestones:'+sid for sid in node['continuation']['candidate_milestone_ids']}
     if old_refs-set(authorization['read_set']):
         raise ValueError('补丁引用了授权输入之外的既有事实')
-    return ReviewedPatch(patch['job_id'],identity,_json(patch),_json(graph),_json(updated_facts))
+    return ReviewedPatch(patch['job_id'],identity,compiled,_json(patch),_json(graph),_json(updated_facts))

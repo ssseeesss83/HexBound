@@ -22,7 +22,8 @@ from zipfile import ZipFile, ZIP_DEFLATED
 # Version 14 protects scene-local transition waits and durable request receipts.
 # Version 15 protects durable generation jobs and revocable worker leases.
 # Version 16 protects validated narrative approvals and atomic graph receipts.
-SCHEMA_VERSION = 16
+# Version 17 protects compiled clue registrations and mechanism-bound approvals.
+SCHEMA_VERSION = 17
 BACKUP_FORMAT = "hexbound-backup-v1"
 DATA_ROOT = Path(__file__).parent / "data"
 
