@@ -56,6 +56,7 @@ def validate_records(records, *, inventory=None):
         from .magic_inventory import issues as magic_inventory_issues
         from .magic_bodies import issues as magic_body_issues
         from .magic_headers import issues as magic_header_issues
+        from .magic_bonus_variants import issues as magic_bonus_issues
         errors.extend(growth_issues(records))
         errors.extend(armor_issues(records))
         errors.extend(equipment_issues(records))
@@ -65,6 +66,7 @@ def validate_records(records, *, inventory=None):
         errors.extend(magic_inventory_issues(records))
         errors.extend(magic_body_issues(records))
         errors.extend(magic_header_issues(records))
+        errors.extend(magic_bonus_issues(records))
         errors.extend("Feature is unreachable from class grants or choices: " + fid for fid in unreachable_features(records))
     if set(records) != set(inventory):
         errors.append("Rules collection set is incomplete")

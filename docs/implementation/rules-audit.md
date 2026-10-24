@@ -120,3 +120,5 @@ p64完整穿脱段及四类时间保存到现有护甲分类的timing_reference�
 240魔法物品母项完整正文现由tools/extract_magic_bodies.py从固定PDF按官方标题坐标提取，magic-item-blocks.json保留原始分段、坐标与跨页正文。tools/audit_magic_bodies.py独立映射稳定ID，校验240正文及240完整source reference。46条候选正文改用官方完整文本，包含资料与Markdown格式差异，预修快照保留；符号比较保留倍乘、脚注标记及分数，不能以排版清洗丢失规则。Deck的Avatar of Death、Figurine的Giant Fly保留在条目中；Wings与Orb之间的sentient通则不混入正文。此批不签126变体、独立结构稀有度 / 类别字段、通则或机械执行。candidate 2,326、raw及legacy仍冻结。
 
 母项header后续审计tools/audit_magic_headers.py覆盖240项720检查，独立解析完整跨行类型 / 稀有度 / 同调原句，保存reference_pending_execution证据。虫群法杖Rare、蟒蛇法杖Uncommon两处结构稀有度纠正。水晶球的header是家族两档，正文明确普通型Very Rare；现有记录兼任普通型，保留原值并注typical_item及正文证据，避免把建模迁移误报为转录错误。完整同调限定仅引用、不执行。预修快照magic-base-header-review.json保留两差异与缺引用证据。
+
+tools/audit_magic_bonus_variants.py核五类15条+1/+2/+3变体，先从来源header独立解析稀有度与数值，再核派生正文及类型 / 名称 / 来源归属。完整母项原文、明确bonus选择、source_text_kind与未执行标记保留；39处补注释，既有数值与正文无需修改。Shield延续既有完整来源门禁，Armor不同稀有度表不套错，Wand不加豁免DC。其余111变体与装备效果执行继续待验收。

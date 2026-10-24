@@ -1,0 +1,1786 @@
+{
+  "profile": "official-magic-bonus-variants-v1",
+  "official_families": 5,
+  "normalized_variants": 15,
+  "checks": [
+    {
+      "record": "ammunition-1",
+      "field": "name",
+      "expected": "Ammunition, +1",
+      "actual": "Ammunition, +1",
+      "match": true
+    },
+    {
+      "record": "ammunition-1",
+      "field": "equipment_category",
+      "expected": {
+        "index": "ammunition",
+        "name": "Ammunition",
+        "url": "/api/2014/equipment-categories/ammunition"
+      },
+      "actual": {
+        "index": "ammunition",
+        "name": "Ammunition",
+        "url": "/api/2014/equipment-categories/ammunition"
+      },
+      "match": true
+    },
+    {
+      "record": "ammunition-1",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "ammunition-1",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "ammunition-1",
+      "field": "desc",
+      "expected": [
+        "Weapon (any ammunition), uncommon",
+        "You have a +1 bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
+      ],
+      "actual": [
+        "Weapon (any ammunition), uncommon",
+        "You have a +1 bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
+      ],
+      "match": true
+    },
+    {
+      "record": "ammunition-1",
+      "field": "derived_from",
+      "expected": "magic-items/ammunition",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ammunition-1",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ammunition-1",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ammunition",
+        "numeric_bonus": 1,
+        "selected_rarity": "uncommon",
+        "selection_header": "Weapon (any ammunition), uncommon (+1), rare (+2), or very rare (+3)",
+        "complete_parent_text": "Weapon (any ammunition), uncommon (+1), rare\n(+2), or very rare (+3)\nYou have a bonus to attack and damage rolls made\nwith this piece of magic ammunition. The bonus is\ndetermined by the rarity of the ammunition. Once it\nhits a target, the ammunition is no longer magical.",
+        "printed_pages": [
+          207
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ammunition-2",
+      "field": "name",
+      "expected": "Ammunition, +2",
+      "actual": "Ammunition, +2",
+      "match": true
+    },
+    {
+      "record": "ammunition-2",
+      "field": "equipment_category",
+      "expected": {
+        "index": "ammunition",
+        "name": "Ammunition",
+        "url": "/api/2014/equipment-categories/ammunition"
+      },
+      "actual": {
+        "index": "ammunition",
+        "name": "Ammunition",
+        "url": "/api/2014/equipment-categories/ammunition"
+      },
+      "match": true
+    },
+    {
+      "record": "ammunition-2",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "ammunition-2",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "ammunition-2",
+      "field": "desc",
+      "expected": [
+        "Weapon (any ammunition), rare",
+        "You have a +2 bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
+      ],
+      "actual": [
+        "Weapon (any ammunition), rare",
+        "You have a +2 bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
+      ],
+      "match": true
+    },
+    {
+      "record": "ammunition-2",
+      "field": "derived_from",
+      "expected": "magic-items/ammunition",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ammunition-2",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ammunition-2",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ammunition",
+        "numeric_bonus": 2,
+        "selected_rarity": "rare",
+        "selection_header": "Weapon (any ammunition), uncommon (+1), rare (+2), or very rare (+3)",
+        "complete_parent_text": "Weapon (any ammunition), uncommon (+1), rare\n(+2), or very rare (+3)\nYou have a bonus to attack and damage rolls made\nwith this piece of magic ammunition. The bonus is\ndetermined by the rarity of the ammunition. Once it\nhits a target, the ammunition is no longer magical.",
+        "printed_pages": [
+          207
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ammunition-3",
+      "field": "name",
+      "expected": "Ammunition, +3",
+      "actual": "Ammunition, +3",
+      "match": true
+    },
+    {
+      "record": "ammunition-3",
+      "field": "equipment_category",
+      "expected": {
+        "index": "ammunition",
+        "name": "Ammunition",
+        "url": "/api/2014/equipment-categories/ammunition"
+      },
+      "actual": {
+        "index": "ammunition",
+        "name": "Ammunition",
+        "url": "/api/2014/equipment-categories/ammunition"
+      },
+      "match": true
+    },
+    {
+      "record": "ammunition-3",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "ammunition-3",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "ammunition-3",
+      "field": "desc",
+      "expected": [
+        "Weapon (any ammunition), very rare",
+        "You have a +3 bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
+      ],
+      "actual": [
+        "Weapon (any ammunition), very rare",
+        "You have a +3 bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
+      ],
+      "match": true
+    },
+    {
+      "record": "ammunition-3",
+      "field": "derived_from",
+      "expected": "magic-items/ammunition",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ammunition-3",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ammunition-3",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ammunition",
+        "numeric_bonus": 3,
+        "selected_rarity": "very rare",
+        "selection_header": "Weapon (any ammunition), uncommon (+1), rare (+2), or very rare (+3)",
+        "complete_parent_text": "Weapon (any ammunition), uncommon (+1), rare\n(+2), or very rare (+3)\nYou have a bonus to attack and damage rolls made\nwith this piece of magic ammunition. The bonus is\ndetermined by the rarity of the ammunition. Once it\nhits a target, the ammunition is no longer magical.",
+        "printed_pages": [
+          207
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "armor-1",
+      "field": "name",
+      "expected": "Armor, +1",
+      "actual": "Armor, +1",
+      "match": true
+    },
+    {
+      "record": "armor-1",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "armor-1",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "armor-1",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "armor-1",
+      "field": "desc",
+      "expected": [
+        "Armor (light, medium, or heavy), rare",
+        "You have a +1 bonus to AC while wearing this armor."
+      ],
+      "actual": [
+        "Armor (light, medium, or heavy), rare",
+        "You have a +1 bonus to AC while wearing this armor."
+      ],
+      "match": true
+    },
+    {
+      "record": "armor-1",
+      "field": "derived_from",
+      "expected": "magic-items/armor",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "armor-1",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "armor-1",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "armor",
+        "numeric_bonus": 1,
+        "selected_rarity": "rare",
+        "selection_header": "Armor (light, medium, or heavy), rare (+1), very rare (+2), or legendary (+3)",
+        "complete_parent_text": "Armor (light, medium, or heavy), rare (+1), very rare\n(+2), or legendary (+3)\nYou have a bonus to AC while wearing this armor.\nThe bonus is determined by its rarity.",
+        "printed_pages": [
+          208
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "armor-2",
+      "field": "name",
+      "expected": "Armor, +2",
+      "actual": "Armor, +2",
+      "match": true
+    },
+    {
+      "record": "armor-2",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "armor-2",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "armor-2",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "armor-2",
+      "field": "desc",
+      "expected": [
+        "Armor (light, medium, or heavy), very rare",
+        "You have a +2 bonus to AC while wearing this armor."
+      ],
+      "actual": [
+        "Armor (light, medium, or heavy), very rare",
+        "You have a +2 bonus to AC while wearing this armor."
+      ],
+      "match": true
+    },
+    {
+      "record": "armor-2",
+      "field": "derived_from",
+      "expected": "magic-items/armor",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "armor-2",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "armor-2",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "armor",
+        "numeric_bonus": 2,
+        "selected_rarity": "very rare",
+        "selection_header": "Armor (light, medium, or heavy), rare (+1), very rare (+2), or legendary (+3)",
+        "complete_parent_text": "Armor (light, medium, or heavy), rare (+1), very rare\n(+2), or legendary (+3)\nYou have a bonus to AC while wearing this armor.\nThe bonus is determined by its rarity.",
+        "printed_pages": [
+          208
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "armor-3",
+      "field": "name",
+      "expected": "Armor, +3",
+      "actual": "Armor, +3",
+      "match": true
+    },
+    {
+      "record": "armor-3",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "armor-3",
+      "field": "rarity",
+      "expected": {
+        "name": "Legendary"
+      },
+      "actual": {
+        "name": "Legendary"
+      },
+      "match": true
+    },
+    {
+      "record": "armor-3",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "armor-3",
+      "field": "desc",
+      "expected": [
+        "Armor (light, medium, or heavy), legendary",
+        "You have a +3 bonus to AC while wearing this armor."
+      ],
+      "actual": [
+        "Armor (light, medium, or heavy), legendary",
+        "You have a +3 bonus to AC while wearing this armor."
+      ],
+      "match": true
+    },
+    {
+      "record": "armor-3",
+      "field": "derived_from",
+      "expected": "magic-items/armor",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "armor-3",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "armor-3",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "armor",
+        "numeric_bonus": 3,
+        "selected_rarity": "legendary",
+        "selection_header": "Armor (light, medium, or heavy), rare (+1), very rare (+2), or legendary (+3)",
+        "complete_parent_text": "Armor (light, medium, or heavy), rare (+1), very rare\n(+2), or legendary (+3)\nYou have a bonus to AC while wearing this armor.\nThe bonus is determined by its rarity.",
+        "printed_pages": [
+          208
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "shield-1",
+      "field": "name",
+      "expected": "Shield, +1",
+      "actual": "Shield, +1",
+      "match": true
+    },
+    {
+      "record": "shield-1",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "shield-1",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "shield-1",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "shield-1",
+      "field": "desc",
+      "expected": [
+        "Armor (shield), uncommon (+1)",
+        "While holding this shield, you have a bonus to AC determined by the shield's rarity. This bonus is in addition to the shield's normal bonus to AC."
+      ],
+      "actual": [
+        "Armor (shield), uncommon (+1)",
+        "While holding this shield, you have a bonus to AC determined by the shield's rarity. This bonus is in addition to the shield's normal bonus to AC."
+      ],
+      "match": true
+    },
+    {
+      "record": "shield-1",
+      "field": "derived_from",
+      "expected": "magic-items/shield",
+      "actual": "magic-items/shield",
+      "match": true
+    },
+    {
+      "record": "shield-1",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": "derived_numeric_variant",
+      "match": true
+    },
+    {
+      "record": "shield-1",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "shield",
+        "numeric_bonus": 1,
+        "selected_rarity": "uncommon",
+        "selection_header": "Armor (shield), uncommon (+1), rare (+2), or very rare (+3)",
+        "complete_parent_text": "Armor (shield), uncommon (+1), rare (+2), or very\nrare (+3)\nWhile holding this shield, you have a bonus to AC\ndetermined by the shield’s rarity. This bonus is in\naddition to the shield’s normal bonus to AC.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "shield-2",
+      "field": "name",
+      "expected": "Shield, +2",
+      "actual": "Shield, +2",
+      "match": true
+    },
+    {
+      "record": "shield-2",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "shield-2",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "shield-2",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "shield-2",
+      "field": "desc",
+      "expected": [
+        "Armor (shield), rare (+2)",
+        "While holding this shield, you have a bonus to AC determined by the shield's rarity. This bonus is in addition to the shield's normal bonus to AC."
+      ],
+      "actual": [
+        "Armor (shield), rare (+2)",
+        "While holding this shield, you have a bonus to AC determined by the shield's rarity. This bonus is in addition to the shield's normal bonus to AC."
+      ],
+      "match": true
+    },
+    {
+      "record": "shield-2",
+      "field": "derived_from",
+      "expected": "magic-items/shield",
+      "actual": "magic-items/shield",
+      "match": true
+    },
+    {
+      "record": "shield-2",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": "derived_numeric_variant",
+      "match": true
+    },
+    {
+      "record": "shield-2",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "shield",
+        "numeric_bonus": 2,
+        "selected_rarity": "rare",
+        "selection_header": "Armor (shield), uncommon (+1), rare (+2), or very rare (+3)",
+        "complete_parent_text": "Armor (shield), uncommon (+1), rare (+2), or very\nrare (+3)\nWhile holding this shield, you have a bonus to AC\ndetermined by the shield’s rarity. This bonus is in\naddition to the shield’s normal bonus to AC.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "shield-3",
+      "field": "name",
+      "expected": "Shield, +3",
+      "actual": "Shield, +3",
+      "match": true
+    },
+    {
+      "record": "shield-3",
+      "field": "equipment_category",
+      "expected": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "actual": {
+        "index": "armor",
+        "name": "Armor",
+        "url": "/api/2014/equipment-categories/armor"
+      },
+      "match": true
+    },
+    {
+      "record": "shield-3",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "shield-3",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "shield-3",
+      "field": "desc",
+      "expected": [
+        "Armor (shield), very rare (+3)",
+        "While holding this shield, you have a bonus to AC determined by the shield's rarity. This bonus is in addition to the shield's normal bonus to AC."
+      ],
+      "actual": [
+        "Armor (shield), very rare (+3)",
+        "While holding this shield, you have a bonus to AC determined by the shield's rarity. This bonus is in addition to the shield's normal bonus to AC."
+      ],
+      "match": true
+    },
+    {
+      "record": "shield-3",
+      "field": "derived_from",
+      "expected": "magic-items/shield",
+      "actual": "magic-items/shield",
+      "match": true
+    },
+    {
+      "record": "shield-3",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": "derived_numeric_variant",
+      "match": true
+    },
+    {
+      "record": "shield-3",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "shield",
+        "numeric_bonus": 3,
+        "selected_rarity": "very rare",
+        "selection_header": "Armor (shield), uncommon (+1), rare (+2), or very rare (+3)",
+        "complete_parent_text": "Armor (shield), uncommon (+1), rare (+2), or very\nrare (+3)\nWhile holding this shield, you have a bonus to AC\ndetermined by the shield’s rarity. This bonus is in\naddition to the shield’s normal bonus to AC.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "wand-of-the-war-mage-1",
+      "field": "name",
+      "expected": "Wand of the War Mage, +1",
+      "actual": "Wand of the War Mage, +1",
+      "match": true
+    },
+    {
+      "record": "wand-of-the-war-mage-1",
+      "field": "equipment_category",
+      "expected": {
+        "index": "wand",
+        "name": "Wand",
+        "url": "/api/2014/equipment-categories/wand"
+      },
+      "actual": {
+        "index": "wand",
+        "name": "Wand",
+        "url": "/api/2014/equipment-categories/wand"
+      },
+      "match": true
+    },
+    {
+      "record": "wand-of-the-war-mage-1",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "wand-of-the-war-mage-1",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "wand-of-the-war-mage-1",
+      "field": "desc",
+      "expected": [
+        "Wand, uncommon (requires attunement by a spellcaster)",
+        "While holding this wand, you gain a +1 bonus to spell attack rolls. In addition, you ignore half cover when making a spell attack."
+      ],
+      "actual": [
+        "Wand, uncommon (requires attunement by a spellcaster)",
+        "While holding this wand, you gain a +1 bonus to spell attack rolls. In addition, you ignore half cover when making a spell attack."
+      ],
+      "match": true
+    },
+    {
+      "record": "wand-of-the-war-mage-1",
+      "field": "derived_from",
+      "expected": "magic-items/wand-of-the-war-mage",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "wand-of-the-war-mage-1",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "wand-of-the-war-mage-1",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "wand-of-the-war-mage",
+        "numeric_bonus": 1,
+        "selected_rarity": "uncommon",
+        "selection_header": "Wand, uncommon (+1), rare (+2), or very rare (+3) (requires attunement by a spellcaster)",
+        "complete_parent_text": "Wand, uncommon (+1), rare (+2), or very rare (+3)\n(requires attunement by a spellcaster)\nWhile holding this wand, you gain a bonus to spell\nattack rolls determined by the wand’s rarity. In\naddition, you ignore half cover when making a spell\nattack.",
+        "printed_pages": [
+          249
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "wand-of-the-war-mage-2",
+      "field": "name",
+      "expected": "Wand of the War Mage, +2",
+      "actual": "Wand of the War Mage, +2",
+      "match": true
+    },
+    {
+      "record": "wand-of-the-war-mage-2",
+      "field": "equipment_category",
+      "expected": {
+        "index": "wand",
+        "name": "Wand",
+        "url": "/api/2014/equipment-categories/wand"
+      },
+      "actual": {
+        "index": "wand",
+        "name": "Wand",
+        "url": "/api/2014/equipment-categories/wand"
+      },
+      "match": true
+    },
+    {
+      "record": "wand-of-the-war-mage-2",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "wand-of-the-war-mage-2",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "wand-of-the-war-mage-2",
+      "field": "desc",
+      "expected": [
+        "Wand, rare (requires attunement by a spellcaster)",
+        "While holding this wand, you gain a +2 bonus to spell attack rolls. In addition, you ignore half cover when making a spell attack."
+      ],
+      "actual": [
+        "Wand, rare (requires attunement by a spellcaster)",
+        "While holding this wand, you gain a +2 bonus to spell attack rolls. In addition, you ignore half cover when making a spell attack."
+      ],
+      "match": true
+    },
+    {
+      "record": "wand-of-the-war-mage-2",
+      "field": "derived_from",
+      "expected": "magic-items/wand-of-the-war-mage",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "wand-of-the-war-mage-2",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "wand-of-the-war-mage-2",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "wand-of-the-war-mage",
+        "numeric_bonus": 2,
+        "selected_rarity": "rare",
+        "selection_header": "Wand, uncommon (+1), rare (+2), or very rare (+3) (requires attunement by a spellcaster)",
+        "complete_parent_text": "Wand, uncommon (+1), rare (+2), or very rare (+3)\n(requires attunement by a spellcaster)\nWhile holding this wand, you gain a bonus to spell\nattack rolls determined by the wand’s rarity. In\naddition, you ignore half cover when making a spell\nattack.",
+        "printed_pages": [
+          249
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "wand-of-the-war-mage-3",
+      "field": "name",
+      "expected": "Wand of the War Mage, +3",
+      "actual": "Wand of the War Mage, +3",
+      "match": true
+    },
+    {
+      "record": "wand-of-the-war-mage-3",
+      "field": "equipment_category",
+      "expected": {
+        "index": "wand",
+        "name": "Wand",
+        "url": "/api/2014/equipment-categories/wand"
+      },
+      "actual": {
+        "index": "wand",
+        "name": "Wand",
+        "url": "/api/2014/equipment-categories/wand"
+      },
+      "match": true
+    },
+    {
+      "record": "wand-of-the-war-mage-3",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "wand-of-the-war-mage-3",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "wand-of-the-war-mage-3",
+      "field": "desc",
+      "expected": [
+        "Wand, very rare (requires attunement by a spellcaster)",
+        "While holding this wand, you gain a +3 bonus to spell attack rolls. In addition, you ignore half cover when making a spell attack."
+      ],
+      "actual": [
+        "Wand, very rare (requires attunement by a spellcaster)",
+        "While holding this wand, you gain a +3 bonus to spell attack rolls. In addition, you ignore half cover when making a spell attack."
+      ],
+      "match": true
+    },
+    {
+      "record": "wand-of-the-war-mage-3",
+      "field": "derived_from",
+      "expected": "magic-items/wand-of-the-war-mage",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "wand-of-the-war-mage-3",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "wand-of-the-war-mage-3",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "wand-of-the-war-mage",
+        "numeric_bonus": 3,
+        "selected_rarity": "very rare",
+        "selection_header": "Wand, uncommon (+1), rare (+2), or very rare (+3) (requires attunement by a spellcaster)",
+        "complete_parent_text": "Wand, uncommon (+1), rare (+2), or very rare (+3)\n(requires attunement by a spellcaster)\nWhile holding this wand, you gain a bonus to spell\nattack rolls determined by the wand’s rarity. In\naddition, you ignore half cover when making a spell\nattack.",
+        "printed_pages": [
+          249
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "weapon-1",
+      "field": "name",
+      "expected": "Weapon, +1",
+      "actual": "Weapon, +1",
+      "match": true
+    },
+    {
+      "record": "weapon-1",
+      "field": "equipment_category",
+      "expected": {
+        "index": "weapon",
+        "name": "Weapon",
+        "url": "/api/2014/equipment-categories/weapon"
+      },
+      "actual": {
+        "index": "weapon",
+        "name": "Weapon",
+        "url": "/api/2014/equipment-categories/weapon"
+      },
+      "match": true
+    },
+    {
+      "record": "weapon-1",
+      "field": "rarity",
+      "expected": {
+        "name": "Uncommon"
+      },
+      "actual": {
+        "name": "Uncommon"
+      },
+      "match": true
+    },
+    {
+      "record": "weapon-1",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "weapon-1",
+      "field": "desc",
+      "expected": [
+        "Weapon (any), uncommon",
+        "You have a +1 bonus to attack and damage rolls made with this magic weapon."
+      ],
+      "actual": [
+        "Weapon (any), uncommon",
+        "You have a +1 bonus to attack and damage rolls made with this magic weapon."
+      ],
+      "match": true
+    },
+    {
+      "record": "weapon-1",
+      "field": "derived_from",
+      "expected": "magic-items/weapon",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "weapon-1",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "weapon-1",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "weapon",
+        "numeric_bonus": 1,
+        "selected_rarity": "uncommon",
+        "selection_header": "Weapon (any), uncommon (+1), rare (+2), or very rare (+3)",
+        "complete_parent_text": "Weapon (any), uncommon (+1), rare (+2), or very\nrare (+3)\nYou have a bonus to attack and damage rolls made\nwith this magic weapon. The bonus is determined by\nthe weapon’s rarity.",
+        "printed_pages": [
+          250
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "weapon-2",
+      "field": "name",
+      "expected": "Weapon, +2",
+      "actual": "Weapon, +2",
+      "match": true
+    },
+    {
+      "record": "weapon-2",
+      "field": "equipment_category",
+      "expected": {
+        "index": "weapon",
+        "name": "Weapon",
+        "url": "/api/2014/equipment-categories/weapon"
+      },
+      "actual": {
+        "index": "weapon",
+        "name": "Weapon",
+        "url": "/api/2014/equipment-categories/weapon"
+      },
+      "match": true
+    },
+    {
+      "record": "weapon-2",
+      "field": "rarity",
+      "expected": {
+        "name": "Rare"
+      },
+      "actual": {
+        "name": "Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "weapon-2",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "weapon-2",
+      "field": "desc",
+      "expected": [
+        "Weapon (any), rare",
+        "You have a +2 bonus to attack and damage rolls made with this magic weapon."
+      ],
+      "actual": [
+        "Weapon (any), rare",
+        "You have a +2 bonus to attack and damage rolls made with this magic weapon."
+      ],
+      "match": true
+    },
+    {
+      "record": "weapon-2",
+      "field": "derived_from",
+      "expected": "magic-items/weapon",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "weapon-2",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "weapon-2",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "weapon",
+        "numeric_bonus": 2,
+        "selected_rarity": "rare",
+        "selection_header": "Weapon (any), uncommon (+1), rare (+2), or very rare (+3)",
+        "complete_parent_text": "Weapon (any), uncommon (+1), rare (+2), or very\nrare (+3)\nYou have a bonus to attack and damage rolls made\nwith this magic weapon. The bonus is determined by\nthe weapon’s rarity.",
+        "printed_pages": [
+          250
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "weapon-3",
+      "field": "name",
+      "expected": "Weapon, +3",
+      "actual": "Weapon, +3",
+      "match": true
+    },
+    {
+      "record": "weapon-3",
+      "field": "equipment_category",
+      "expected": {
+        "index": "weapon",
+        "name": "Weapon",
+        "url": "/api/2014/equipment-categories/weapon"
+      },
+      "actual": {
+        "index": "weapon",
+        "name": "Weapon",
+        "url": "/api/2014/equipment-categories/weapon"
+      },
+      "match": true
+    },
+    {
+      "record": "weapon-3",
+      "field": "rarity",
+      "expected": {
+        "name": "Very Rare"
+      },
+      "actual": {
+        "name": "Very Rare"
+      },
+      "match": true
+    },
+    {
+      "record": "weapon-3",
+      "field": "variant",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "record": "weapon-3",
+      "field": "desc",
+      "expected": [
+        "Weapon (any), very rare",
+        "You have a +3 bonus to attack and damage rolls made with this magic weapon."
+      ],
+      "actual": [
+        "Weapon (any), very rare",
+        "You have a +3 bonus to attack and damage rolls made with this magic weapon."
+      ],
+      "match": true
+    },
+    {
+      "record": "weapon-3",
+      "field": "derived_from",
+      "expected": "magic-items/weapon",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "weapon-3",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "weapon-3",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "weapon",
+        "numeric_bonus": 3,
+        "selected_rarity": "very rare",
+        "selection_header": "Weapon (any), uncommon (+1), rare (+2), or very rare (+3)",
+        "complete_parent_text": "Weapon (any), uncommon (+1), rare (+2), or very\nrare (+3)\nYou have a bonus to attack and damage rolls made\nwith this magic weapon. The bonus is determined by\nthe weapon’s rarity.",
+        "printed_pages": [
+          250
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    }
+  ],
+  "differences": [
+    {
+      "record": "ammunition-1",
+      "field": "derived_from",
+      "expected": "magic-items/ammunition",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ammunition-1",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ammunition-1",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ammunition",
+        "numeric_bonus": 1,
+        "selected_rarity": "uncommon",
+        "selection_header": "Weapon (any ammunition), uncommon (+1), rare (+2), or very rare (+3)",
+        "complete_parent_text": "Weapon (any ammunition), uncommon (+1), rare\n(+2), or very rare (+3)\nYou have a bonus to attack and damage rolls made\nwith this piece of magic ammunition. The bonus is\ndetermined by the rarity of the ammunition. Once it\nhits a target, the ammunition is no longer magical.",
+        "printed_pages": [
+          207
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ammunition-2",
+      "field": "derived_from",
+      "expected": "magic-items/ammunition",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ammunition-2",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ammunition-2",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ammunition",
+        "numeric_bonus": 2,
+        "selected_rarity": "rare",
+        "selection_header": "Weapon (any ammunition), uncommon (+1), rare (+2), or very rare (+3)",
+        "complete_parent_text": "Weapon (any ammunition), uncommon (+1), rare\n(+2), or very rare (+3)\nYou have a bonus to attack and damage rolls made\nwith this piece of magic ammunition. The bonus is\ndetermined by the rarity of the ammunition. Once it\nhits a target, the ammunition is no longer magical.",
+        "printed_pages": [
+          207
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ammunition-3",
+      "field": "derived_from",
+      "expected": "magic-items/ammunition",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ammunition-3",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "ammunition-3",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "ammunition",
+        "numeric_bonus": 3,
+        "selected_rarity": "very rare",
+        "selection_header": "Weapon (any ammunition), uncommon (+1), rare (+2), or very rare (+3)",
+        "complete_parent_text": "Weapon (any ammunition), uncommon (+1), rare\n(+2), or very rare (+3)\nYou have a bonus to attack and damage rolls made\nwith this piece of magic ammunition. The bonus is\ndetermined by the rarity of the ammunition. Once it\nhits a target, the ammunition is no longer magical.",
+        "printed_pages": [
+          207
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "armor-1",
+      "field": "derived_from",
+      "expected": "magic-items/armor",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "armor-1",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "armor-1",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "armor",
+        "numeric_bonus": 1,
+        "selected_rarity": "rare",
+        "selection_header": "Armor (light, medium, or heavy), rare (+1), very rare (+2), or legendary (+3)",
+        "complete_parent_text": "Armor (light, medium, or heavy), rare (+1), very rare\n(+2), or legendary (+3)\nYou have a bonus to AC while wearing this armor.\nThe bonus is determined by its rarity.",
+        "printed_pages": [
+          208
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "armor-2",
+      "field": "derived_from",
+      "expected": "magic-items/armor",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "armor-2",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "armor-2",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "armor",
+        "numeric_bonus": 2,
+        "selected_rarity": "very rare",
+        "selection_header": "Armor (light, medium, or heavy), rare (+1), very rare (+2), or legendary (+3)",
+        "complete_parent_text": "Armor (light, medium, or heavy), rare (+1), very rare\n(+2), or legendary (+3)\nYou have a bonus to AC while wearing this armor.\nThe bonus is determined by its rarity.",
+        "printed_pages": [
+          208
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "armor-3",
+      "field": "derived_from",
+      "expected": "magic-items/armor",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "armor-3",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "armor-3",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "armor",
+        "numeric_bonus": 3,
+        "selected_rarity": "legendary",
+        "selection_header": "Armor (light, medium, or heavy), rare (+1), very rare (+2), or legendary (+3)",
+        "complete_parent_text": "Armor (light, medium, or heavy), rare (+1), very rare\n(+2), or legendary (+3)\nYou have a bonus to AC while wearing this armor.\nThe bonus is determined by its rarity.",
+        "printed_pages": [
+          208
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "shield-1",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "shield",
+        "numeric_bonus": 1,
+        "selected_rarity": "uncommon",
+        "selection_header": "Armor (shield), uncommon (+1), rare (+2), or very rare (+3)",
+        "complete_parent_text": "Armor (shield), uncommon (+1), rare (+2), or very\nrare (+3)\nWhile holding this shield, you have a bonus to AC\ndetermined by the shield’s rarity. This bonus is in\naddition to the shield’s normal bonus to AC.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "shield-2",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "shield",
+        "numeric_bonus": 2,
+        "selected_rarity": "rare",
+        "selection_header": "Armor (shield), uncommon (+1), rare (+2), or very rare (+3)",
+        "complete_parent_text": "Armor (shield), uncommon (+1), rare (+2), or very\nrare (+3)\nWhile holding this shield, you have a bonus to AC\ndetermined by the shield’s rarity. This bonus is in\naddition to the shield’s normal bonus to AC.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "shield-3",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "shield",
+        "numeric_bonus": 3,
+        "selected_rarity": "very rare",
+        "selection_header": "Armor (shield), uncommon (+1), rare (+2), or very rare (+3)",
+        "complete_parent_text": "Armor (shield), uncommon (+1), rare (+2), or very\nrare (+3)\nWhile holding this shield, you have a bonus to AC\ndetermined by the shield’s rarity. This bonus is in\naddition to the shield’s normal bonus to AC.",
+        "printed_pages": [
+          242
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "wand-of-the-war-mage-1",
+      "field": "derived_from",
+      "expected": "magic-items/wand-of-the-war-mage",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "wand-of-the-war-mage-1",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "wand-of-the-war-mage-1",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "wand-of-the-war-mage",
+        "numeric_bonus": 1,
+        "selected_rarity": "uncommon",
+        "selection_header": "Wand, uncommon (+1), rare (+2), or very rare (+3) (requires attunement by a spellcaster)",
+        "complete_parent_text": "Wand, uncommon (+1), rare (+2), or very rare (+3)\n(requires attunement by a spellcaster)\nWhile holding this wand, you gain a bonus to spell\nattack rolls determined by the wand’s rarity. In\naddition, you ignore half cover when making a spell\nattack.",
+        "printed_pages": [
+          249
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "wand-of-the-war-mage-2",
+      "field": "derived_from",
+      "expected": "magic-items/wand-of-the-war-mage",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "wand-of-the-war-mage-2",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "wand-of-the-war-mage-2",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "wand-of-the-war-mage",
+        "numeric_bonus": 2,
+        "selected_rarity": "rare",
+        "selection_header": "Wand, uncommon (+1), rare (+2), or very rare (+3) (requires attunement by a spellcaster)",
+        "complete_parent_text": "Wand, uncommon (+1), rare (+2), or very rare (+3)\n(requires attunement by a spellcaster)\nWhile holding this wand, you gain a bonus to spell\nattack rolls determined by the wand’s rarity. In\naddition, you ignore half cover when making a spell\nattack.",
+        "printed_pages": [
+          249
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "wand-of-the-war-mage-3",
+      "field": "derived_from",
+      "expected": "magic-items/wand-of-the-war-mage",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "wand-of-the-war-mage-3",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "wand-of-the-war-mage-3",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "wand-of-the-war-mage",
+        "numeric_bonus": 3,
+        "selected_rarity": "very rare",
+        "selection_header": "Wand, uncommon (+1), rare (+2), or very rare (+3) (requires attunement by a spellcaster)",
+        "complete_parent_text": "Wand, uncommon (+1), rare (+2), or very rare (+3)\n(requires attunement by a spellcaster)\nWhile holding this wand, you gain a bonus to spell\nattack rolls determined by the wand’s rarity. In\naddition, you ignore half cover when making a spell\nattack.",
+        "printed_pages": [
+          249
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "weapon-1",
+      "field": "derived_from",
+      "expected": "magic-items/weapon",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "weapon-1",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "weapon-1",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "weapon",
+        "numeric_bonus": 1,
+        "selected_rarity": "uncommon",
+        "selection_header": "Weapon (any), uncommon (+1), rare (+2), or very rare (+3)",
+        "complete_parent_text": "Weapon (any), uncommon (+1), rare (+2), or very\nrare (+3)\nYou have a bonus to attack and damage rolls made\nwith this magic weapon. The bonus is determined by\nthe weapon’s rarity.",
+        "printed_pages": [
+          250
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "weapon-2",
+      "field": "derived_from",
+      "expected": "magic-items/weapon",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "weapon-2",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "weapon-2",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "weapon",
+        "numeric_bonus": 2,
+        "selected_rarity": "rare",
+        "selection_header": "Weapon (any), uncommon (+1), rare (+2), or very rare (+3)",
+        "complete_parent_text": "Weapon (any), uncommon (+1), rare (+2), or very\nrare (+3)\nYou have a bonus to attack and damage rolls made\nwith this magic weapon. The bonus is determined by\nthe weapon’s rarity.",
+        "printed_pages": [
+          250
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "weapon-3",
+      "field": "derived_from",
+      "expected": "magic-items/weapon",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "weapon-3",
+      "field": "source_text_kind",
+      "expected": "derived_numeric_variant",
+      "actual": null,
+      "match": false
+    },
+    {
+      "record": "weapon-3",
+      "field": "official_variant_reference",
+      "expected": {
+        "parent_id": "weapon",
+        "numeric_bonus": 3,
+        "selected_rarity": "very rare",
+        "selection_header": "Weapon (any), uncommon (+1), rare (+2), or very rare (+3)",
+        "complete_parent_text": "Weapon (any), uncommon (+1), rare (+2), or very\nrare (+3)\nYou have a bonus to attack and damage rolls made\nwith this magic weapon. The bonus is determined by\nthe weapon’s rarity.",
+        "printed_pages": [
+          250
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      },
+      "actual": null,
+      "match": false
+    }
+  ],
+  "limitations": [
+    "Only five source bonus families are transcribed here; remaining variants, equipped AC, ammunition consumption and attack/spell modifiers are not certified."
+  ],
+  "snapshot_note": "Before this invocation; rerun for current candidate."
+}
