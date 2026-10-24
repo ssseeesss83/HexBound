@@ -335,6 +335,9 @@ def create_app(db_path: str | None = None) -> FastAPI:
                               interaction_mode: str = "guided", audience_scope=None, scene_instance_id=scene_storage.MAIN_SCENE):
         # Network calls intentionally occur outside the room lock and transaction.
         try:
+            # Announcing the committed action belongs to the same cancellation
+            # boundary as narration; slow WS delivery must not strand pending.
+            await broadcast(room_id)
             if kind == "scene" and interaction_mode == "assisted" and dm.configured:
                 text, source, suggestion = await dm.narrate(scene, "介绍眼前的局势，并建议一个可选行动；不要代替玩家决定。", recent, actions)
                 generated = None
@@ -424,6 +427,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
                             "class_name":item.get("name_zh") or item["name"],"role":"SRD 5.1 核心职业","max_hp":c["max_hp"],"ac":c["ac"],"abilities":c["abilities"],"description":"1—20级成长与独立角色档案"})
         base["characters"]=presets
         base["templates"]=presets
+        base["modes"] = [{"id": "preset", "label": "剧本 + AI DM"}]
         base["standard_skills"] = [{"id": sid, "name": director.SKILL_NAMES[sid], "ability": ability}
                                    for sid, ability in director.SKILL_ABILITIES.items()]
         base["rules"]["supported"] += ["12核心职业与18技能档案","1—20级升级与法术管理","个人动作和法术资源"]
@@ -666,6 +670,10 @@ def create_app(db_path: str | None = None) -> FastAPI:
         candidate = scene_storage.for_actor(get_state(room_id), member_id)
         if store.prior_command(room_id,member_id,body.command_id) is not None:
             return {"room":public(candidate,member_id,request),"replayed":True}
+        # Successful legacy receipts replay above. New roleplay declarations use
+        # exactly the same planning/confirmation boundary as the action form.
+        if body.type == "narrate":
+            body = body.model_copy(update={"type": "director_propose"})
         try:
             play_policy.validate_command(candidate, body.type)
         except ValueError as exc:
@@ -736,19 +744,13 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 event(state, "system", "冒险继续。")
             elif body.type == "chat":
                 event(state, "chat", payload["text"], member["name"])
-            elif body.type == "narrate":
-                if state["status"] != "playing":
-                    raise HTTPException(409, "请先开始或恢复冒险")
-                if state.get("dm_pending"):
-                    raise HTTPException(409, "DM 正在回应，请稍候")
-                event(state, "intent", payload["text"], member["name"])
-                pending = "narrate"
             elif body.type == "director_propose":
                 if director.public_proposal(proposed["proposal"], state)["stale"]:
                     raise HTTPException(409, "场景或交流范围已变化，请重新提出行动。")
                 state.setdefault("director",{}).setdefault("proposals",{})[member_id]=proposed["proposal"]
                 event(state,"intent",payload["text"],member["name"])
-                event(state,"dm",proposed["text"],source=proposed["source"])
+                event(state,"dm",proposed["text"],source=proposed["source"],
+                      adjudication_pending=True, proposal_id=proposed["proposal"]["id"])
             elif body.type == "director_cancel":
                 own = state.get("director",{}).get("proposals",{}).get(member_id)
                 if not own or own["id"] != payload["proposal_id"]:
@@ -873,11 +875,12 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 state["dm_pending"] = request_id
             response = {"room": public(state, member_id, request)}
             store.save(state, previous, (member_id, body.command_id, {"version": state["version"]}))
-        await broadcast(room_id)
         if pending:
             await add_dm_response(room_id, state["action_revision"], request_id, pending, copy.deepcopy(state["scene"]),
                                   state["mode"], state["theme"], payload.get("text", "请依据刚刚确认的结果描述后果，并建议下一步合法行动。"), play_policy.confirmed_events(session_scope.common_memory(state, [m["id"] for m in state["members"]]))[-8:], actions_for(state, member_id), "assisted", session_scope.audience_key(state), state["_scene_execution_view"])
             response = {"room": public(get_state(room_id), member_id, request)}
+        else:
+            await broadcast(room_id)
         auth(room_id, authorization, request)
         return response
 

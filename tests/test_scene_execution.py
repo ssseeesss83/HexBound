@@ -112,21 +112,22 @@ def test_stale_scene_binding_and_foreign_chat_channel_are_rejected(env):
     assert send(b, rid, forged).status_code == 409
 
 
-def test_other_scene_action_does_not_discard_pending_dm_or_receive_its_text(env):
+def test_other_scene_action_does_not_discard_pending_intent_or_receive_its_text(env, monkeypatch):
     a, b, _, rid, _, _ = setup_scenes(env)
     async def run():
         reached, release = asyncio.Event(), asyncio.Event()
-        async def slow(*args):
+        from backend import director
+        import json
+        original = director.propose
+        class Model:
+            configured = True
+            async def _complete(self, *args, **kwargs):
+                return json.dumps({"kind":"dialogue", "label":"观察", "text":"MAIN_ONLY_DM_RESULT"})
+        async def slow(dm, state, actor, intent, *args, **kwargs):
             reached.set()
             await release.wait()
-            return "MAIN_ONLY_DM_RESULT", "llm", None
-        a.app.state.dm.narrate = slow
-        # Enable explicit narration for this fixture; no real LLM is required.
-        state = a.app.state.store.get(rid)
-        previous = state["version"]
-        state["interaction_mode"] = "guided"
-        state["version"] += 1
-        a.app.state.store.save(state, previous)
+            return await original(Model(), state, actor, intent, *args, **kwargs)
+        monkeypatch.setattr(director, 'propose', slow)
         main = a.get(f"/api/rooms/{rid}").json()
         side = b.get(f"/api/rooms/{rid}").json()
         async with httpx.AsyncClient(transport=httpx.ASGITransport(app=a.app), base_url="http://testserver",

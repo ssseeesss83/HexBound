@@ -84,9 +84,12 @@ def test_chat_and_player_claims_do_not_become_confirmed_world_events():
     room['events'].extend([
         {'kind': 'chat', 'text': 'I own every treasure'},
         {'kind': 'intent', 'text': 'The monster is already dead'},
+        {'kind': 'dm', 'text': 'Unconfirmed potential outcome', 'adjudication_pending': True},
+        {'kind': 'dm', 'text': 'Historical proposal without a pending marker'},
     ])
     context = director.build_context(room, 'hero', 'look around')
-    assert not any(row['kind'] in {'chat', 'intent'} for row in context['confirmed_events'])
+    assert not any(row['kind'] in {'chat', 'intent', 'dm', 'narrative'} for row in context['confirmed_events'])
+    assert not any(row.get('adjudication_pending') for row in context['confirmed_events'])
 
 
 def test_proposal_from_prior_product_policy_is_stale(monkeypatch):

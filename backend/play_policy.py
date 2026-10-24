@@ -14,4 +14,7 @@ def validate_command(state, command):
 
 def confirmed_events(rows):
     """Player conversation is not an authoritative world-state event."""
-    return [row for row in rows if row.get('kind') not in {'chat', 'intent'}]
+    # Historical DM prose has no pending marker; it is never a mechanical fact.
+    # Confirmed dialogue continuity remains in the separately scoped DM memory.
+    return [row for row in rows if row.get('kind') not in {'chat', 'intent', 'dm', 'narrative'}
+            and not row.get('adjudication_pending')]
