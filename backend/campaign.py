@@ -343,6 +343,8 @@ def apply_action(state, member_id, action_id, target_id=None):
     character = _member(state, member_id)["character"]
     events = []
     if action_id.startswith("node:"):
+        from . import attempts
+        challenge = attempts.require(state, member_id, action_id)
         action = next(a for a in _node(state)["actions"] if a["id"] == action_id[5:])
         if target_id is not None:
             raise ValueError("节点行动不接受客户端目标")
@@ -357,6 +359,7 @@ def apply_action(state, member_id, action_id, target_id=None):
             r = outcome["roll"]
             next_node = action.get("success_node_id" if r["success"] else "failure_node_id") or next_node
             events.append(outcome)
+            attempts.record_roll(state, challenge, member_id, r, outcome)
         else:
             events.append(rules.event("action", action["label"], actor_id=member_id))
         if next_node:

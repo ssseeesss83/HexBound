@@ -102,16 +102,15 @@ def test_proposal_from_prior_product_policy_is_stale(monkeypatch):
         director.resolve(room, 'hero', proposal)
 
 
-def test_unanchored_checks_are_bounded_and_cannot_advance_or_reward(monkeypatch):
+def test_unregistered_checks_require_clarification_without_counter_or_roll(monkeypatch):
     room = state()
-    monkeypatch.setattr(rules, "roll_dice", lambda *args, **kw: {"dice": [20], "total": 20})
+    monkeypatch.setattr(rules, "roll_dice", lambda *args, **kw: pytest.fail('Unregistered check rolled'))
     raw = check(anchor_action_id=None, difficulty="easy")
-    for _ in range(3):
-        events = director.resolve(room, "hero", director.validate_proposal(raw, room, "hero"))
-        assert events[0]["rewards_eligible"] is False
+    for _ in range(5):
+        with pytest.raises(ValueError, match='挑战'):
+            director.validate_proposal(raw, room, 'hero')
     assert room["scene_id"] == "dock" and room["flags"] == {}
-    with pytest.raises(ValueError, match="三次"):
-        director.validate_proposal(raw, room, "hero")
+    assert 'improv_checks' not in room.get('director', {})
     with pytest.raises(ValueError, match="严格模式"):
         director.validate_proposal(raw, state(), "hero", "strict")
 

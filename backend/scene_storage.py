@@ -122,6 +122,8 @@ def legacy_shape(view):
                 "world_schema", "world_places", "world_entities", "world_environment_version", "_object_origin_place", "_object_read_set",
                 "world_combat_version", "world_encounter_receipts", "_creature_read_set", "_scene_leader_id"):
         value.pop(key, None)
+    value.pop('attempt_ledger', None)
+    value.pop('attempt_ledger_version', None)
     for env in value.get("environment", {}).values():
         env.pop("entity_refs", None)
         for obj in env.get("objects", {}).values():

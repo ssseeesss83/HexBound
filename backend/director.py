@@ -15,7 +15,7 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from . import campaign, content, rules, free_actions, play_policy
-from . import action_plans
+from . import action_plans, attempts
 
 SKILL_ABILITIES = {
     "acrobatics": "dex", "animal-handling": "wis", "arcana": "int",
@@ -29,7 +29,6 @@ SKILL_NAMES = dict(zip(SKILL_ABILITIES, [
     "杂技", "驯兽", "奥秘", "运动", "欺瞒", "历史", "洞悉", "威吓", "调查",
     "医药", "自然", "察觉", "表演", "游说", "宗教", "巧手", "隐匿", "求生",
 ]))
-DIFFICULTIES = {"easy": 10, "moderate": 15, "hard": 20}
 
 
 class Decision(BaseModel):
@@ -123,7 +122,7 @@ def _anchors(state, member_id):
         result = {}
         for action in node.get("actions", []):
             aid = "node:" + action["id"]
-            if aid not in allowed or not action.get("skill_id"):
+            if aid not in allowed or not action.get("skill_id") or not attempts.available(state, member_id, aid):
                 continue
             skill = campaign._skill(state, action["skill_id"])
             if skill["effect"] != "check":
@@ -136,7 +135,7 @@ def _anchors(state, member_id):
     return {action["id"]: {"id": action["id"], "label": action["label"], "dc": action.get("dc", 12),
                             "uses_remaining": None, "_action": action}
             for action in content.scene_for(state).get("actions", [])
-            if action["id"] in allowed and action.get("ability")}
+            if action["id"] in allowed and action.get("ability") and attempts.available(state, member_id, action['id'])}
 
 
 def _encounters(state):
@@ -218,10 +217,7 @@ def validate_proposal(raw, state, member_id, policy="balanced"):
         else:
             if policy == "strict":
                 raise ValueError("严格模式仅允许为当前剧情挑战提出替代解法")
-            dc = DIFFICULTIES[decision.difficulty]
-            cost = "一次场景内技能检定；不发放经验、物品，不直接跳过剧情节点。"
-            if state.get("director", {}).get("improv_checks", {}).get(state.get("scene_id", ""), {}).get(member_id, 0) >= 3:
-                raise ValueError("本角色在当前场景的三次即兴检定已用完，请选择剧情行动")
+            raise ValueError('尚未登记可验证的挑战，请先明确目标和需要判断的问题；不能凭新措辞重新掷骰')
     elif decision.kind == "encounter":
         if policy != "balanced" or decision.monster_id not in _encounters(state):
             raise ValueError("遭遇只能选择当前房间冻结目录中的可用怪物")
@@ -329,7 +325,7 @@ async def propose(dm, state, member_id, intent, policy="balanced", *, skill_id=N
                 "只返回schema规定的JSON。kind可为dialogue/check/encounter/free_action/capability。dialogue可以回应NPC或环境，不宣称改变数值、取得物品、完成目标。"
                 "check从18技能中选最相关技能；若与当前挑战有关，anchor_action_id必须引用anchors中的id，DC与分支由服务器决定。"
                 "action_intent.preferred_skill_id只是玩家希望采用的方法，不是强制检定。先判断实际目标、是否存在风险与不确定性；无风险互动用dialogue说明，不能为点击技能而强加骰点。可解释为何改用其他技能。"
-                "没有锚点的即兴检定只能揭示当前场景局部信息，不发放奖励或直接推进主线；difficulty只能easy/moderate/hard。"
+                "check必须绑定anchors中已有挑战；物件搜索使用注册search配方。尚未登记的目标先用dialogue澄清，不自造挑战ID或骰点；换措辞、技能、队员不能重试同证据下已结算挑战。"
                 "success_text/failure_text是在掷骰之后才会采用的叙事，不包含虚构骰点、HP、伤害、经验、技能授予或新物品。"
                 "encounter只能引用encounters中的monster_id，不能生成属性，且需要房主确认。没有可用怪物时不能提出遭遇。"
                 "战斗或环境交互使用free_action，从free_actions.recipes选择一个可用action_id及其合法target_id/object_id。不可凭叙事创造未登记物体、法术、道具或能力。"
@@ -456,6 +452,7 @@ def resolve(state, member_id, proposal):
         memory_text = "\n".join(e.get("text", "") for e in events)[-1000:]
     elif decision["kind"] == "check":
         anchor = _anchors(state, member_id).get(decision["anchor_action_id"])
+        challenge = attempts.require(state, member_id, decision['anchor_action_id'])
         from .world_combat import preflight_place
         if anchor and state.get("campaign"):
             for destination in {anchor["_action"].get(key) for key in ("next_node_id", "success_node_id", "failure_node_id")} - {None, ""}:
@@ -469,6 +466,7 @@ def resolve(state, member_id, proposal):
         memory_text = decision["success_text"] if roll["success"] else decision["failure_text"]
         events.append(rules.event("roll", memory_text, actor_id=member_id, roll=roll, director=True,
                                   rewards_eligible=bool(anchor), anchor_action_id=decision["anchor_action_id"]))
+        attempts.record_roll(state, challenge, member_id, roll, events[-1])
         if anchor and state.get("campaign"):
             campaign._spend(state, member_id, anchor["_card"])
             action = anchor["_action"]
@@ -476,9 +474,6 @@ def resolve(state, member_id, proposal):
             campaign._enter(state, target, events)
         elif anchor:
             _legacy_outcome(state, anchor, roll, events)
-        else:
-            counts = director.setdefault("improv_checks", {}).setdefault(state.get("scene_id", ""), {})
-            counts[member_id] = counts.get(member_id, 0) + 1
     else:
         scene_id = state.get("scene_id", "")
         from .world_combat import preflight_place

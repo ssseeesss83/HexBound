@@ -18,7 +18,8 @@ from zipfile import ZipFile, ZIP_DEFLATED
 # Version 10 also protects the persisted author-content format: v2 graph drafts
 # must not be opened by older binaries that only understand v1 scenario JSON.
 # Version 11 protects persisted capability plans and their typed decisions.
-SCHEMA_VERSION = 11
+# Version 12 protects global challenge attempts from older reroll semantics.
+SCHEMA_VERSION = 12
 BACKUP_FORMAT = "hexbound-backup-v1"
 DATA_ROOT = Path(__file__).parent / "data"
 

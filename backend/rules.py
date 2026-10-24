@@ -262,6 +262,8 @@ def apply_action(state, member_id, action_id, target_id=None):
         events.extend(start_combat(state))
     else:
         action = next(a for a in content.scene_for(state)["actions"] if a["id"] == action_id)
+        from . import attempts
+        challenge = attempts.require(state, member_id, action_id)
         index = state.get("scene_index", 0)
         if index == 1:
             from .world_combat import preflight_place
@@ -298,6 +300,7 @@ def apply_action(state, member_id, action_id, target_id=None):
         if state.get("mode") != "free" and index == 3 and action_id == "parley" and r["success"] and not flags.get("oath"):
             text = "守望者相信你的善意，允许你点亮灯芯；但没有完整誓言，他仍无法离开。你答应陪他坐到天亮。"
         events.append(event("roll", text, actor_id=member_id, roll=r))
+        attempts.record_roll(state, challenge, member_id, r, events[-1])
         if index == 1 and not r["success"]:
             events.extend(start_combat(state))
     return events

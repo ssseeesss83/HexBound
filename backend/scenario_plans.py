@@ -14,6 +14,8 @@ def prepare(state, actor, action_id, target_id, options):
     cap = next((row for row in available(state, actor) if row['id'] == action_id), None)
     if not cap:
         raise ValueError('当前不可执行此动作')
+    from . import attempts
+    attempts.require(state, actor, action_id)
     c = a.member(state, actor)['character']
     combat = a._combat(state)
     if combat:

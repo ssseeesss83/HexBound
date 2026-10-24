@@ -105,7 +105,8 @@ def context(state, actor):
         if rid == 'topple':
             candidates = [o for o in candidates if not o.get('toppled')]
         if rid == 'search':
-            candidates = [o for o in candidates if not o.get('searched')]
+            from . import attempts
+            candidates = [o for o in candidates if not o.get('searched') and attempts.available(state, actor, 'search', object_id=o['id'])]
         targets = a._targets(state, actor, side) if side in {'enemy','ally','self'} else []
         if rid == 'help':
             targets = [t for t in targets if t['id'] != actor and _actor(state,t['id'])['hp'] > 0]
@@ -183,6 +184,8 @@ def resolve(state, actor, decision):
     from .world_combat import validate_read_set
     validate_read_set(state)
     plan = validate(state,actor,decision)
+    from . import attempts
+    challenge = attempts.require(state, actor, 'search', object_id=plan['object_id']) if plan['action_id'] == 'search' else None
     work = deepcopy(state)
     c = a.member(work,actor)['character']
     combat = a._combat(work)
@@ -268,6 +271,7 @@ def resolve(state, actor, decision):
     if not combat:
         advance_environment(work)
     events=[rules.event('roll' if roll else 'free_action',f"{plan['label']}：{'成功' if success else '失败'}。",actor_id=actor,target_id=target_id,object_id=plan['object_id'],action_id=rid,success=success,roll=roll,rule_plan=plan)]
+    attempts.record_roll(work, challenge, actor, roll, events[0])
     a.finish_combat(work,events)
     state.clear()
     state.update(work)

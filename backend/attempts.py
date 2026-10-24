@@ -7,6 +7,7 @@ This module is internal; its stored outcomes are never a public projection.
 from copy import deepcopy
 import hashlib
 import json
+import uuid
 from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, model_validator
@@ -59,7 +60,9 @@ def inspect(state, challenge, actor):
     if bucket and bucket['definition_digest'] != definition:
         raise ValueError('Challenge definition changed without a new identity')
     previous = (bucket.get('completed') or bucket.get('evidence', {}).get(evidence)) if bucket else None
-    if previous is None:
+    if bucket and bucket.get('legacy_consumed_unknown'):
+        status = 'legacy_consumed_unknown'
+    elif previous is None:
         status = 'eligible'
     elif previous['success']:
         status = 'resolved'
@@ -97,7 +100,8 @@ command receipt. This function cannot spend resources or roll dice.
                   audience=sorted(audience))
     ledger = state.setdefault('attempt_ledger', {})
     bucket = ledger.setdefault(qualified['identity'], dict(
-        definition_digest=qualified['definition_digest'], evidence={}))
+        definition_digest=qualified['definition_digest'],
+        definition=challenge.model_dump(exclude={'evidence'}), evidence={}))
     bucket['evidence'][qualified['evidence_digest']] = result
     if success:
         bucket['completed'] = deepcopy(result)
@@ -135,3 +139,72 @@ def lookup(state, action_id, *, object_id=None):
             return None
     return Challenge(place_id=place, challenge_id='authored:' + node_id + ':' + action_id,
                      question='resolve_authored_outcome', evidence={'frozen_definition': 0})
+
+
+def available(state, actor, action_id, *, object_id=None):
+    spec = lookup(state, action_id, object_id=object_id)
+    return spec is None or inspect(state, spec, actor)['status'] in {'eligible', 'eligible_with_cost'}
+
+
+def require(state, actor, action_id, *, object_id=None):
+    spec = lookup(state, action_id, object_id=object_id)
+    if spec and inspect(state, spec, actor)['status'] not in {'eligible', 'eligible_with_cost'}:
+        raise ValueError('同一挑战在当前证据下已经尝试；请依据已确认事实行动，不能重新掷骰')
+    return spec
+
+
+def record_roll(state, spec, actor, roll, event):
+    """Bind a settled mechanical result to an effect event, with no narration."""
+    if spec is None:
+        return
+    channel = state.get('_text_channel', 'party-main')
+    members = state.get('text_scope', {}).get('members')
+    audience = [row['id'] for row in state['members']
+                if members is None or members.get(row['id'], {}).get('channel') == channel]
+    receipt = uuid.uuid4().hex
+    record(state, spec, actor, success=roll['success'], outcome={'roll':deepcopy(roll)},
+           effect_receipt=receipt, audience=audience)
+    event['attempt_receipt'] = receipt
+
+
+def migrate(canonical):
+    """Pure migration of explicit legacy consumed markers; never invent rolls."""
+    from . import content, world_environment
+    result = deepcopy(canonical)
+    if result.get('attempt_ledger_version') == 1:
+        return result
+    if result.get('attempt_ledger_version') is not None:
+        raise ValueError('Unknown attempt ledger version')
+    result.setdefault('attempt_ledger', {})
+
+    def consumed(spec, source):
+        identity, _, definition = _keys(spec, 'legacy-party')
+        bucket = result['attempt_ledger'].setdefault(identity, dict(
+            definition_digest=definition, definition=spec.model_dump(exclude={'evidence'}), evidence={}))
+        bucket['legacy_consumed_unknown'] = True
+        bucket.setdefault('legacy_sources', []).append(source)
+
+    # Old counters contain no objective identity and cannot become challenge rows.
+    for sid, instance in result.get('scene_instances', {}).items():
+        local = instance['local']
+        if result.get('campaign'):
+            continue  # A spent card alone cannot identify which node was attempted.
+        definitions = result.get('scenes') or content.SCENES
+        for key, value in local.get('flags', {}).get('attempted', {}).items():
+            if value is not True:
+                continue
+            index, separator, action_id = key.partition(':')
+            if not separator or not index.isdecimal() or int(index) >= len(definitions):
+                continue
+            scene = definitions[int(index)]
+            view = {**result, **local, 'scene':scene, 'scene_id':scene['id'], 'scene_index':int(index)}
+            spec = lookup(view, action_id)
+            if spec:
+                consumed(spec, 'flags:' + sid + ':' + key)
+    for entity in result.get('world_entities', {}).values():
+        if entity['kind'] == 'object' and entity['state'].get('searched') is True:
+            spec = Challenge(place_id=entity['place_id'], challenge_id='search:' + entity['id'],
+                             question='discover_existing_contents', evidence={'registered_contents':0})
+            consumed(spec, 'searched:' + entity['id'])
+    result['attempt_ledger_version'] = 1
+    return result
