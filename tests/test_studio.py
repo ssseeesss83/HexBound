@@ -27,6 +27,75 @@ def setup(tmp_path, monkeypatch):
 AUTH = {"Authorization": "Bearer studio-test-secret"}
 
 
+def test_graph_draft_is_separate_revision_checked_and_cannot_run_or_publish(setup):
+    client, store, _ = setup
+    original = client.get('/api/studio/items/book-last-lantern', headers=AUTH).json()
+    package = compile_scenario(store, original['id'])
+    body = {'expected_revision': original['revision'], 'id': 'graph-copy'}
+    assert client.post(f"/api/studio/items/{original['id']}/graph-draft", json=body).status_code == 401
+    stale = {**body, 'expected_revision': original['revision']+1}
+    assert client.post(f"/api/studio/items/{original['id']}/graph-draft", headers=AUTH, json=stale).status_code == 409
+    response = client.post(f"/api/studio/items/{original['id']}/graph-draft", headers=AUTH, json=body)
+    assert response.status_code == 201, response.text
+    graph = response.json()
+    assert graph['draft']['schema_version'] == 2 and graph['published'] is None
+    assert graph['revision'] == 1 and graph['id'] == 'graph-copy'
+    assert client.get(f"/api/studio/items/{original['id']}", headers=AUTH).json() == original
+    assert compile_scenario(store, original['id']) == package
+    result = client.post('/api/studio/items/graph-copy/validate', headers=AUTH).json()
+    assert result['valid'] and result['warnings']
+    assert publish(client, graph).status_code == 422
+    assert not any(x['id'] == 'graph-copy' for x in client.get('/api/content').json()['items'])
+    assert client.post(f"/api/studio/items/{original['id']}/graph-draft", headers=AUTH, json=body).status_code == 409
+    # Defense in depth also rejects direct entry into the old runtime.
+    from backend.campaign import validate_package
+    with pytest.raises(ValueError, match='运行器'):
+        validate_package({'scenario': graph['draft'], 'skills': {}, 'monsters': {}})
+
+
+def test_graph_drafts_can_save_incomplete_topology_validate_and_round_trip(setup):
+    client, _, _ = setup
+    original = client.get('/api/studio/items/book-last-lantern', headers=AUTH).json()
+    graph = client.post('/api/studio/items/book-last-lantern/graph-draft', headers=AUTH,
+        json={'expected_revision': original['revision'], 'id': 'graph-edit'}).json()
+    changed = copy.deepcopy(graph['draft'])
+    changed['outline'] = 'New outline'
+    changed['edges'][0]['to'] = 'not-written-yet'
+    edited = client.put('/api/studio/items/graph-edit', headers=AUTH,
+                       json={'expected_revision': 1, 'data': changed})
+    assert edited.status_code == 200, edited.text
+    result = client.post('/api/studio/items/graph-edit/validate', headers=AUTH).json()
+    assert not result['valid'] and any('不存在' in issue or '旧行动' in issue for issue in result['issues'])
+    exported = client.post('/api/studio/export', headers=AUTH, json={'ids': ['graph-edit']}).json()
+    graph_row = next(row for row in exported['items'] if row['data']['id'] == 'graph-edit')
+    assert graph_row['data'] == edited.json()['draft']
+    graph_row['data']['id'] = 'graph-imported'
+    # Dependencies already exist: import only the independent graph draft.
+    imported = client.post('/api/studio/import', headers=AUTH,
+                          json={'package': {'format': FORMAT, 'items': [graph_row]}})
+    assert imported.status_code == 422
+    graph_row['data']['edges'] = graph['draft']['edges']
+    imported = client.post('/api/studio/import', headers=AUTH,
+                          json={'package': {'format': FORMAT, 'items': [graph_row]}})
+    assert imported.status_code == 201, imported.text
+    schema = client.get('/api/studio/schema/scenario?schema_version=2', headers=AUTH).json()
+    assert schema['properties']['schema_version']['const'] == 2
+    assert client.get('/api/studio/schema/skill?schema_version=2', headers=AUTH).status_code == 422
+
+
+def test_graph_draft_rejects_wrong_kind_and_unsafe_conditions_without_partial_write(setup):
+    client, _, _ = setup
+    skill_item = create(client, 'skill', skill())
+    assert client.post('/api/studio/items/new-check/graph-draft', headers=AUTH,
+        json={'expected_revision': skill_item['revision'], 'id': 'bad-graph'}).status_code == 422
+    from test_story_graph import sparse
+    draft = sparse()
+    draft['edges'][0]['condition'] = {'op': 'eval', 'code': 'execute()'}
+    assert client.post('/api/studio/items', headers=AUTH,
+                       json={'kind': 'scenario', 'data': draft}).status_code == 422
+    assert client.get('/api/studio/items/sparse', headers=AUTH).status_code == 404
+
+
 def skill(id="new-check", **kwargs):
     return {"id": id, "name": "调查", "description": "调查场景", "tags": ["调查"], "effect": "check", "ability": "wis", "dice": "1d20", "bonus": 0, "dc": 12, "uses": None, "target": "scene", **kwargs}
 

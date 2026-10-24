@@ -3,7 +3,7 @@ from copy import deepcopy
 import pytest
 
 from backend import story_graph as g
-from backend.schemas import parse_card
+from backend.schemas import parse_card, ScenarioBook
 from backend.studio import seed_items
 from backend.rules_identity import RULESET_ID, LEGACY_PACKAGE
 
@@ -39,7 +39,7 @@ def test_sparse_outline_can_end_in_continuation_without_prebuilding_branches():
     assert book['nodes'][0]['advancement_condition']['children'][1]['state'] == 'bypassed'
     # This author contract is not silently admitted to the old room compiler.
     with pytest.raises(ValueError):
-        parse_card('scenario', book)
+        ScenarioBook.model_validate(book)
 
 
 @pytest.mark.parametrize('bad', [

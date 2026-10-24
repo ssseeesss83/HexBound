@@ -135,6 +135,9 @@ MODELS = {"skill": SkillCard, "monster": MonsterCard, "scenario": ScenarioBook}
 def parse_card(kind: str, data: dict) -> dict:
     if kind not in MODELS:
         raise ValueError("未知内容类型")
+    if kind == 'scenario' and data.get('schema_version') == 2:
+        from .story_graph import parse_draft
+        return parse_draft(data)
     return MODELS[kind].model_validate(data).model_dump(mode="json")
 
 

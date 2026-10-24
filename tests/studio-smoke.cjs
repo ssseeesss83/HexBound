@@ -175,6 +175,25 @@ async function run() {
   const publicBooks = await fetch(`${origin}/api/content?kind=scenario`).then(response => response.json());
   assert.ok(publicBooks.items.some(item => item.id === 'dom-test-book'));
   assert.ok(publicBooks.items.every(item => !item.nodes && !item.draft), 'Public summaries must not reveal scenario nodes');
+  click('[data-tab=edit]');
+  click('#graph-draft');
+  await eventually(() => q('[data-field=outline]'), 'Independent graph draft did not render');
+  assert.ok(q('#publish').disabled, 'Graph draft must not publish through the old runtime');
+  assert.ok(q('#preview').textContent.includes('连接'), 'Graph draft preview failed');
+  field('outline', '沿主线探索，允许临场续写。');
+  click('#save');
+  await saved();
+  click('#validate');
+  await eventually(() => q('.valid-status'), 'Graph draft validation failed');
+  const graphData = JSON.parse(q('#raw-json').value);
+  assert.equal(graphData.schema_version, 2);
+  assert.equal(graphData.outline, '沿主线探索，允许临场续写。');
+  assert.equal(graphData.nodes[0].legacy_actions.length, 1);
+  assert.equal(graphData.edges.filter(edge => edge.from === graphData.entry_node_id).length, 2);
+  const oldBook = await fetch(`${origin}/api/studio/items/dom-test-book`, {
+    headers: {Authorization: `Bearer ${adminToken}`},
+  }).then(response => response.json());
+  assert.equal(oldBook.published.schema_version, undefined, 'Creating graph draft rewrote original publication');
   console.log('Studio DOM integration passed: public/admin auth, card CRUD, validation, publish, duplicate, archive, bundle import/export, branch editor, history restore.');
 }
 

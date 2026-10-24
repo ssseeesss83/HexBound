@@ -276,6 +276,15 @@ function renderDetail() {
   $("#duplicate").onclick = duplicate;
   $("#export").onclick = exportCurrent;
   $("#archive").onclick = archive;
+  if (kind === 'scenario' && selected.id && model.schema_version !== 2 && !selected.archived) {
+    $('.detail-actions', detail).insertAdjacentHTML('beforeend',
+      `<button id="graph-draft" ${busy || dirty ? 'disabled' : ''}>创建独立图草稿</button>`);
+    $('#graph-draft').onclick = createGraphDraft;
+  }
+  if (model.schema_version === 2) {
+    $('#publish').disabled = true;
+    $('#publish').title = '图草稿暂不能发布开团';
+  }
   detail.querySelectorAll("[data-tab]").forEach(
     (b) =>
       (b.onclick = () => {
@@ -320,6 +329,9 @@ function validationHtml() {
 }
 function editorHtml() {
   const base = `<div class="field-grid">${field("内容名称", "name", model.name, "text", 'maxlength="80"')}${field("唯一标识 ID", "id", model.id, "text", selected.id ? "readonly" : 'pattern="[a-zA-Z0-9_-]+"')}</div>${area("公开简介 · 请勿在此填写剧情谜底", "description", model.description)}${field("标签 · 使用逗号分隔", "tags", (model.tags || []).join(", "))}`;
+  if (kind === 'scenario' && model.schema_version === 2)
+    return base + area('剧本大纲', 'outline', model.outline, 6) +
+      '<p class="helper">图草稿是独立的作者版本，可在下方原始数据区编辑并校验；暂不能发布开团。</p>';
   if (kind === "skill")
     return (
       base +
@@ -679,6 +691,11 @@ function uniqueId(prefix, arr = []) {
   return `${prefix}-${n}`;
 }
 function updatePreview() {
+  if (kind === 'scenario' && model?.schema_version === 2) {
+    const preview = $('#preview');
+    if (preview) preview.innerHTML = `<div class="preview-card"><h2>${e(model.name)}</h2><p>${e(model.outline)}</p><p>${e(model.nodes?.length || 0)} 个节点 · ${e(model.edges?.length || 0)} 条连接</p><p class="helper">作者图草稿 · 运行接入前暂不发布</p></div>`;
+    return;
+  }
   const preview = $("#preview");
   if (!preview || !model) return;
   let stats = "",
@@ -911,6 +928,23 @@ async function save() {
     busy = false;
     shell();
   }
+}
+async function createGraphDraft() {
+  if (busy || dirty || !selected.id) return;
+  busy = true;
+  try {
+    const result = await api(`/api/studio/items/${encodeURIComponent(selected.id)}/graph-draft`, {
+      method: 'POST', body: JSON.stringify({expected_revision: selected.revision,
+        id: selected.id.slice(0, 43) + '-graph-' + crypto.randomUUID().slice(0, 8)}),
+    });
+    selected = extractItem(result);
+    model = clone(selected.draft);
+    dirty = false;
+    issues = []; warnings = []; valid = null; tab = 'edit';
+    await reloadItems();
+    toast('已创建独立图草稿，原剧本版本保留。');
+  } catch (error) { toast(error.message); }
+  finally { busy = false; shell(); }
 }
 async function validate() {
   if (dirty) {

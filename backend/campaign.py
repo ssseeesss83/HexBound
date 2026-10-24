@@ -51,6 +51,8 @@ def _conscious(state):
 def validate_package(package):
     """Defense in depth; Studio performs the full publishing validation."""
     scenario = package["scenario"]
+    if scenario.get('schema_version', 1) != 1:
+        raise ValueError('此剧情图尚未接入当前运行器')
     nodes = scenario["nodes"]
     if not nodes or len({n["id"] for n in nodes}) != len(nodes):
         raise ValueError("节点为空或ID重复")

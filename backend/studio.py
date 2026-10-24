@@ -15,6 +15,7 @@ from .schemas import Identifier, Kind, MODELS, StrictModel, graph_issues, parse_
 
 FORMAT = "hexbound-content-v1"
 MAX_PACKAGE_BYTES = 2_000_000
+GRAPH_RUNTIME_PENDING = '稀疏剧情图已支持作者草稿；运行图接入完成前暂不能发布或开团'
 
 
 def now():
@@ -117,7 +118,12 @@ class ContentService:
         return result
 
     def issues(self, kind, data, catalog):
-        issues = graph_issues(data) if kind == "scenario" else []
+        graph_v2 = kind == 'scenario' and data.get('schema_version') == 2
+        if graph_v2:
+            from .story_graph import graph_issues as story_issues
+            issues = story_issues(data)
+        else:
+            issues = graph_issues(data) if kind == "scenario" else []
         if kind == "skill":
             from .campaign import EFFECT_HANDLERS, EFFECT_TARGETS
             if data["effect"] not in EFFECT_HANDLERS or data["target"] not in EFFECT_TARGETS.get(data["effect"], set()):
@@ -126,7 +132,7 @@ class ContentService:
             candidate = catalog.get(ref)
             if not candidate or candidate[0] != required_kind:
                 issues.append(f"缺少有效的{required_kind}依赖：{ref}")
-        if kind == "scenario":
+        if kind == "scenario" and not graph_v2:
             for node in data["nodes"]:
                 escape = node["ending"]
                 for action in node["actions"]:
@@ -160,6 +166,8 @@ class ContentService:
             item = self.get(db, scenario_id)
             if item["kind"] != "scenario" or item["archived"] or item["published"] is None:
                 raise HTTPException(422, "只能载入未归档的已发布剧情本")
+            if item['published'].get('schema_version', 1) != 1:
+                raise HTTPException(422, GRAPH_RUNTIME_PENDING)
             catalog = self.catalog(db, published=True)
             issues = self.issues("scenario", item["published"], catalog)
             if issues:
@@ -196,6 +204,11 @@ class Revision(StrictModel):
 
 class Duplicate(StrictModel):
     id: Identifier | None = None
+    name: str | None = Field(default=None, min_length=1, max_length=80)
+
+
+class GraphDraft(Revision):
+    id: Identifier
     name: str | None = Field(default=None, min_length=1, max_length=80)
 
 
@@ -256,7 +269,12 @@ def create_studio_router(store, dm):
         return {"items": items, "total": len(items)}
 
     @secured.get("/schema/{kind}")
-    async def schema(kind: Kind):
+    async def schema(kind: Kind, schema_version: int = Query(default=1, ge=1, le=2)):
+        if schema_version == 2:
+            if kind != 'scenario':
+                raise HTTPException(422, '只有剧情本支持图草稿格式')
+            from .story_graph import StoryBook
+            return StoryBook.model_json_schema()
         return MODELS[kind].model_json_schema()
 
     @secured.get("/items")
@@ -309,12 +327,36 @@ def create_studio_router(store, dm):
             db.execute("INSERT INTO content_items VALUES (?,?,?,?,1,NULL,NULL,0,?)", (card["id"], original["kind"], card["name"], dumps(card), now()))
             return service.record(db, card["id"], "duplicate")
 
+    @secured.post('/items/{item_id}/graph-draft', status_code=201)
+    async def graph_draft(item_id: str, body: GraphDraft):
+        from .story_graph import migrate_legacy
+        with store.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            original = service.get(db, item_id)
+            service.check_revision(original, body.expected_revision)
+            if original['kind'] != 'scenario':
+                raise HTTPException(422, '只能从剧情本创建图草稿')
+            if db.execute('SELECT 1 FROM content_items WHERE id=?', (body.id,)).fetchone():
+                raise HTTPException(409, '图草稿 ID 已存在')
+            try:
+                card = migrate_legacy(original['draft'])
+            except ValueError as exc:
+                raise HTTPException(422, str(exc)[:2000]) from exc
+            card['id'] = body.id
+            card['name'] = body.name or (card['name'][:72] + ' · 图草稿')
+            db.execute('INSERT INTO content_items VALUES (?,?,?,?,1,NULL,NULL,0,?)',
+                       (card['id'], 'scenario', card['name'], dumps(card), now()))
+            return service.record(db, card['id'], 'graph-draft')
+
     @secured.post("/items/{item_id}/validate")
     async def validate(item_id: str):
         with store.connect() as db:
             item = service.get(db, item_id)
             issues = service.issues(item["kind"], item["draft"], service.catalog(db, published=True))
-        return {"valid": not issues, "issues": issues, "warnings": ["已归档内容不能发布"] if item["archived"] else []}
+        warnings = ['已归档内容不能发布'] if item['archived'] else []
+        if item['kind'] == 'scenario' and item['draft'].get('schema_version') == 2:
+            warnings.append(GRAPH_RUNTIME_PENDING)
+        return {"valid": not issues, "issues": issues, "warnings": warnings}
 
     @secured.post("/items/{item_id}/publish")
     async def publish(item_id: str, body: Revision):
@@ -324,6 +366,8 @@ def create_studio_router(store, dm):
             service.check_revision(item, body.expected_revision)
             if item["archived"]:
                 raise HTTPException(409, "已归档内容不能发布")
+            if item['kind'] == 'scenario' and item['draft'].get('schema_version') == 2:
+                raise HTTPException(422, GRAPH_RUNTIME_PENDING)
             catalog = service.catalog(db, published=True)
             catalog[item_id] = (item["kind"], item["draft"])
             issues = service.issues(item["kind"], item["draft"], catalog)

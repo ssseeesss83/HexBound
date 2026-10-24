@@ -305,9 +305,13 @@ def graph_issues(book):
     return list(dict.fromkeys(issues))
 
 
-def parse_book(data):
+def parse_draft(data):
     _preflight(data)
-    book = StoryBook.model_validate(data).model_dump(mode='json', by_alias=True)
+    return StoryBook.model_validate(data).model_dump(mode='json', by_alias=True)
+
+
+def parse_book(data):
+    book = parse_draft(data)
     issues = graph_issues(book)
     if issues:
         raise ValueError('；'.join(issues))
