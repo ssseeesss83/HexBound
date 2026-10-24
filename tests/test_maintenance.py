@@ -15,6 +15,7 @@ from backend.store import Store
 def without_scope_metadata(state):
     state = deepcopy(state)
     state.pop("text_scope", None)
+    state.pop("action_revision", None)
     for event in state["events"]:
         event.pop("_audience", None)
         event.pop("_channel", None)

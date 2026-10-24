@@ -59,6 +59,7 @@ class ClaimSeat(Input):
 class Command(Input):
     command_id: str = Field(min_length=8, max_length=100)
     expected_version: int = Field(ge=0)
+    expected_action_revision: int | None = Field(default=None, ge=0, strict=True)
     type: Literal["start", "pause", "resume", "action", "chat", "narrate", "end_turn", "set_interaction", "scene_edit", "level_up", "manage_spells", "rest", "equip_skills", "director_propose", "director_resolve", "director_cancel", "configure_character", "prepare_level_up"]
     payload: dict = Field(default_factory=dict)
 
@@ -249,6 +250,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
             "rules_package_version": state.get("rules_package_version", rules_packages.LEGACY_PACKAGE),
             "engine_profile": state.get("engine_profile", rules_packages.ENGINE_PROFILE),
             "status": state["status"], "version": state["version"], "host_id": state["host_id"],
+            "action_revision": state["action_revision"],
             "invite_code": state["invite_code"], "party": party, "scene": scene,
             "starting_level": state.get("starting_level", 1),
             "events": journal[-150:], "last_event_seq": journal[-1]["id"] if journal else 0,
@@ -282,9 +284,9 @@ def create_app(db_path: str | None = None) -> FastAPI:
                     pass
         await asyncio.gather(*(send(ws, member_id) for ws, member_id in list(peers[room_id].items())))
 
-    async def add_dm_response(room_id: str, base_version: int, request_id: str, kind: str,
+    async def add_dm_response(room_id: str, base_action_revision: int, request_id: str, kind: str,
                               scene: dict, mode: str, theme: str, intent: str, recent: list, actions: list,
-                              interaction_mode: str = "guided"):
+                              interaction_mode: str = "guided", audience_scope=None):
         # Network calls intentionally occur outside the room lock and transaction.
         try:
             if kind == "scene" and interaction_mode == "assisted" and dm.configured:
@@ -317,9 +319,10 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 return
             previous = current["version"]
             current["dm_pending"] = None
-            if previous == base_version:
+            if current["action_revision"] == base_action_revision and session_scope.audience_key(current) == audience_scope:
                 if generated is not None:
                     current["scene"] = generated
+                    current["action_revision"] += 1
                 current["dm_source"] = source
                 event(current, "dm", text, source=source, suggested_action_id=suggestion)
             else:
@@ -509,6 +512,12 @@ def create_app(db_path: str | None = None) -> FastAPI:
     async def command(room_id: str, body: Command, request: Request, authorization: str | None = Header(default=None)):
         member_id = auth(room_id, authorization, request)
         throttle("command:" + member_id, 120)
+        def matches_revision(state):
+            if body.type == "chat":
+                return True
+            if body.expected_action_revision is not None:
+                return state["action_revision"] == body.expected_action_revision
+            return state["version"] == body.expected_version
         # Validate payloads before performing any mutation.
         try:
             if body.type in ("chat", "narrate", "director_propose"):
@@ -535,7 +544,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
         candidate = get_state(room_id)
         if store.prior_command(room_id,member_id,body.command_id) is not None:
             return {"room":public(candidate,member_id),"replayed":True}
-        if candidate["version"] != body.expected_version:
+        if not matches_revision(candidate):
             raise HTTPException(409,"房间已更新，请同步后重试")
         if body.type == "start" and candidate["host_id"] != member_id:
             raise HTTPException(403,"只有房主可以开始冒险")
@@ -555,7 +564,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 return {"room": public(candidate, member_id), "replayed": True}
             if candidate["host_id"] != member_id:
                 raise HTTPException(403, "只有房主可以开始冒险")
-            if candidate["version"] != body.expected_version or candidate["status"] != "lobby":
+            if not matches_revision(candidate) or candidate["status"] != "lobby":
                 raise HTTPException(409, "房间已更新，请同步后重试")
             try:
                 generated_scenes = await dm.adventure(candidate["theme"])
@@ -571,7 +580,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 # Current snapshot avoids regressing UI after a successfully retried write.
                 return {"room": public(get_state(room_id), member_id), "replayed": True}
             state = get_state(room_id)
-            if state["version"] != body.expected_version:
+            if not matches_revision(state):
                 raise HTTPException(409, "房间已更新，请同步后重试")
             member = next(m for m in state["members"] if m["id"] == member_id)
             previous = state["version"]
@@ -635,6 +644,8 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 if state.get("interaction_mode", "guided") != "freeform":
                     pending = "narrate"
             elif body.type == "director_propose":
+                if director.public_proposal(proposed["proposal"], state)["stale"]:
+                    raise HTTPException(409, "场景或交流范围已变化，请重新提出行动。")
                 state.setdefault("director",{}).setdefault("proposals",{})[member_id]=proposed["proposal"]
                 event(state,"intent",payload["text"],member["name"])
                 event(state,"dm",proposed["text"],source=proposed["source"])
@@ -753,6 +764,8 @@ def create_app(db_path: str | None = None) -> FastAPI:
                 elif state.get("interaction_mode") == "assisted" and dm.configured and not state.get("dm_pending"):
                     pending = "narrate"
             state["version"] += 1
+            if body.type != "chat":
+                state["action_revision"] += 1
             if body.type in ("action","end_turn","director_resolve"):
                 append_rule_events(state,progression.award(state,before_action),member_id)
             if pending:
@@ -762,8 +775,8 @@ def create_app(db_path: str | None = None) -> FastAPI:
             store.save(state, previous, (member_id, body.command_id, {"version": state["version"]}))
         await broadcast(room_id)
         if pending:
-            await add_dm_response(room_id, state["version"], request_id, pending, copy.deepcopy(state["scene"]),
-                                  state["mode"], state["theme"], payload.get("text", "请依据刚刚确认的结果描述后果，并建议下一步合法行动。"), session_scope.common_memory(state, [m["id"] for m in state["members"]])[-8:], actions_for(state, member_id), state.get("interaction_mode", "guided"))
+            await add_dm_response(room_id, state["action_revision"], request_id, pending, copy.deepcopy(state["scene"]),
+                                  state["mode"], state["theme"], payload.get("text", "请依据刚刚确认的结果描述后果，并建议下一步合法行动。"), session_scope.common_memory(state, [m["id"] for m in state["members"]])[-8:], actions_for(state, member_id), state.get("interaction_mode", "guided"), session_scope.audience_key(state))
             response = {"room": public(get_state(room_id), member_id)}
         auth(room_id, authorization, request)
         return response

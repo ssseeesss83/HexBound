@@ -76,7 +76,11 @@ def _fingerprint(state):
     # Current actors, resources, graph position and flags do.
     keys = ("id", "status", "host_id", "scene", "scene_id", "scene_index", "members",
             "combat", "flags", "campaign", "completed", "rest_used", "mode", "environment", "progression")
-    raw = json.dumps({key: state.get(key) for key in keys}, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    snapshot = {key: state.get(key) for key in keys}
+    if "text_scope" in state:
+        from .session_scope import audience_key
+        snapshot["audience_scope"] = audience_key(state)
+    raw = json.dumps(snapshot, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(raw.encode()).hexdigest()
 
 

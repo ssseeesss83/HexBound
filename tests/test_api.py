@@ -87,7 +87,23 @@ def test_command_dedup_and_stale_version(client):
     assert second.status_code == 200 and second.json()["replayed"]
     assert first.json()["room"]["version"] == second.json()["room"]["version"]
     assert len([event for event in second.json()["room"]["events"] if event["kind"] == "roll"]) == 1
-    assert command(client, session, "chat", {"text": "迟到的消息"}, expected_version=0).status_code == 409
+    assert command(client, session, "chat", {"text": "迟到的消息"}, expected_version=0).status_code == 200
+    assert command(client, session, "pause", expected_version=0).status_code == 409
+
+
+def test_chat_changes_storage_but_not_action_revision_and_real_actions_still_conflict(client):
+    session = create(client)
+    started = command(client, session, "start").json()["room"]
+    chat = command(client, session, "chat", {"text": "先商量一下"}, expected_version=0).json()["room"]
+    assert chat["version"] > started["version"]
+    assert chat["action_revision"] == started["action_revision"]
+    result = command(client, session, "action", {"action_id": "investigate"},
+                     expected_version=started["version"], expected_action_revision=started["action_revision"])
+    assert result.status_code == 200, result.text
+    settled = result.json()["room"]
+    assert settled["action_revision"] > started["action_revision"]
+    assert command(client, session, "action", {"action_id": "investigate"},
+                   expected_action_revision=started["action_revision"]).status_code == 409
 
 
 def test_restart_preserves_progress_and_identity(app, client):
@@ -157,7 +173,8 @@ def test_free_generation_failure_keeps_lobby(app, client):
     assert app.state.store.get(session["room"]["id"])["status"] == "lobby"
 
 
-def test_llm_await_does_not_lock_room_and_stale_response_is_discarded(app):
+@pytest.mark.parametrize("interference", ["chat", "pause", "scope"])
+def test_llm_await_keeps_chat_valid_but_discards_response_after_real_change(app, interference):
     async def run():
         reached, release = asyncio.Event(), asyncio.Event()
         async def slow(*args):
@@ -174,11 +191,18 @@ def test_llm_await_does_not_lock_room_and_stale_response_is_discarded(app):
             task = asyncio.create_task(send("narrate", started["version"], {"text": "观察四周"}))
             await asyncio.wait_for(reached.wait(), 2)
             current = (await client.get(url, headers=headers(session))).json()
-            reply = await asyncio.wait_for(send("chat", current["version"], {"text": "仍可聊天"}), 2)
-            assert reply.status_code == 200
+            if interference == "scope":
+                state = app.state.store.get(session["room"]["id"])
+                previous = state["version"]
+                state["text_scope"]["members"][session["member_id"]]["epoch"] += 1
+                state["version"] += 1
+                app.state.store.save(state, previous)
+            else:
+                reply = await asyncio.wait_for(send(interference, current["version"], {"text": "仍可聊天"} if interference == "chat" else {}), 2)
+                assert reply.status_code == 200
             release.set()
             result = (await task).json()["room"]
-            assert all(event["text"] != "过期叙述不能出现" for event in result["events"])
+            assert any(event["text"] == "过期叙述不能出现" for event in result["events"]) == (interference == "chat")
             assert not result["dm_pending"]
     asyncio.run(run())
 

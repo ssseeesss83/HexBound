@@ -63,7 +63,7 @@ class Store:
             from .session_scope import initialize
             for row in db.execute("SELECT id,state FROM rooms").fetchall():
                 state = json.loads(row["state"])
-                if "text_scope" not in state:
+                if "text_scope" not in state or "action_revision" not in state:
                     initialize(state)
                     db.execute("UPDATE rooms SET state=? WHERE id=?", (json.dumps(state, ensure_ascii=False), row["id"]))
 
@@ -163,6 +163,7 @@ class Store:
             state["members"].append(member)
             from .session_scope import add_member
             add_member(state, member["id"])
+            state["action_revision"] += 1
             state["version"] += 1
             db.execute("INSERT INTO members (id,room_id,token_hash,user_id) VALUES (?, ?, ?, ?)", (member["id"], room_id, token_hash(token), user_id))
             db.execute("UPDATE rooms SET state=?, version=? WHERE id=?",

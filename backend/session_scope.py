@@ -15,6 +15,7 @@ MAIN_CHANNEL = "party-main"
 
 def initialize(state):
     """Migrate once and freeze historical audiences to existing members."""
+    state.setdefault("action_revision", state.get("version", 0))
     if "text_scope" not in state:
         state["text_scope"] = {"schema": 1, "cursor_secret": secrets.token_hex(32),
                                "members": {}, "channels": {MAIN_CHANNEL: {"id": MAIN_CHANNEL, "name": "队内交流"}}}
@@ -98,6 +99,10 @@ def remember(state, row, channel=MAIN_CHANNEL):
 def scope_key(state, viewer):
     member = membership(state, viewer)
     return {"viewer": viewer, "channel": member["channel"], "epoch": member["epoch"]}
+
+
+def audience_key(state):
+    return [scope_key(state, member["id"]) for member in sorted(state.get("members", []), key=lambda row: row["id"])]
 
 
 def _b64(value):

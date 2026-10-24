@@ -824,6 +824,7 @@ async function command(type, payload = {}) {
   const body = {
     command_id: newCommandId(),
     expected_version: room.version,
+    expected_action_revision: room.action_revision,
     type,
     payload,
   };
