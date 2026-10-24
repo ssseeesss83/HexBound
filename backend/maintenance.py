@@ -15,7 +15,9 @@ import sqlite3
 import tempfile
 from zipfile import ZipFile, ZIP_DEFLATED
 
-SCHEMA_VERSION = 9
+# Version 10 also protects the persisted author-content format: v2 graph drafts
+# must not be opened by older binaries that only understand v1 scenario JSON.
+SCHEMA_VERSION = 10
 BACKUP_FORMAT = "hexbound-backup-v1"
 DATA_ROOT = Path(__file__).parent / "data"
 

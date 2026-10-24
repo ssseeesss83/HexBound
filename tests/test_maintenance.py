@@ -12,6 +12,71 @@ from backend.maintenance import backup_database, restore_backup, SCHEMA_VERSION
 from backend.store import Store
 
 
+def test_author_content_format_upgrade_backs_up_without_rewriting_versions(tmp_path):
+    from backend.studio import ContentService
+    path = tmp_path / 'author.sqlite3'
+    store = Store(str(path))
+    ContentService(store)
+    with store.connect() as db:
+        before = [tuple(row) for row in db.execute('SELECT * FROM content_items ORDER BY id')]
+        history = [tuple(row) for row in db.execute('SELECT * FROM content_history ORDER BY item_id,revision')]
+        db.execute('PRAGMA user_version=9')
+    upgraded = Store(str(path))
+    with upgraded.connect() as db:
+        assert db.execute('PRAGMA user_version').fetchone()[0] == 10
+        assert [tuple(row) for row in db.execute('SELECT * FROM content_items ORDER BY id')] == before
+        assert [tuple(row) for row in db.execute('SELECT * FROM content_history ORDER BY item_id,revision')] == history
+    backups = list((tmp_path / 'backups').glob('pre-schema-10-*.zip'))
+    assert len(backups) == 1
+    restore_backup(backups[0], tmp_path / 'old-author-recovery')
+    with sqlite3.connect(tmp_path / 'old-author-recovery/database.sqlite3') as db:
+        assert db.execute('PRAGMA user_version').fetchone()[0] == 9
+        assert db.execute('SELECT * FROM content_items ORDER BY id').fetchall() == before
+
+
+def test_old_binary_refuses_graph_format_database_before_any_write(tmp_path, monkeypatch):
+    from backend import maintenance
+    from backend.story_graph import sparse_template
+    from backend.studio import ContentService, dumps
+    path = tmp_path / 'graph-format.sqlite3'
+    store = Store(str(path))
+    ContentService(store)
+    graph = sparse_template()
+    with store.connect() as db:
+        db.execute('INSERT INTO content_items VALUES (?,?,?,?,1,NULL,NULL,0,?)',
+                   (graph['id'],'scenario',graph['name'],dumps(graph),'2026-10-24'))
+    before = path.read_bytes()
+    monkeypatch.setattr(maintenance, 'SCHEMA_VERSION', 9)
+    with pytest.raises(ValueError, match='newer server'):
+        Store(str(path))
+    assert path.read_bytes() == before
+    with sqlite3.connect(path) as db:
+        assert db.execute('PRAGMA user_version').fetchone()[0] == 10
+        assert json.loads(db.execute('SELECT draft_json FROM content_items WHERE id=?',(graph['id'],)).fetchone()[0]) == graph
+
+
+def test_graph_draft_and_history_round_trip_in_verified_backup(tmp_path):
+    from backend.story_graph import sparse_template
+    from backend.studio import ContentService, dumps
+    path = tmp_path / 'graph-backup.sqlite3'
+    store = Store(str(path))
+    service = ContentService(store)
+    graph = sparse_template()
+    graph['outline'] = 'A secret author outline preserved verbatim.'
+    with store.connect() as db:
+        db.execute('INSERT INTO content_items VALUES (?,?,?,?,1,NULL,NULL,0,?)',
+                   (graph['id'],'scenario',graph['name'],dumps(graph),'2026-10-24'))
+        source = service.record(db, graph['id'], 'create')
+        history = [tuple(row) for row in db.execute('SELECT * FROM content_history WHERE item_id=?',(graph['id'],))]
+    archive = tmp_path / 'graph.zip'
+    backup_database(path,archive)
+    restore_backup(archive,tmp_path / 'graph-recovery')
+    recovered = Store(str(tmp_path / 'graph-recovery/database.sqlite3'))
+    with recovered.connect() as db:
+        assert ContentService(recovered).get(db,graph['id']) == source
+        assert [tuple(row) for row in db.execute('SELECT * FROM content_history WHERE item_id=?',(graph['id'],))] == history
+
+
 def without_scope_metadata(state):
     from backend.scene_storage import legacy_shape
     state = legacy_shape(state)
