@@ -43,7 +43,8 @@ let token = sessionStorage.getItem("hexbound-studio-token") || "",
   valid = null,
   busy = false,
   tab = "edit",
-  timer;
+  timer,
+  graphTemplate = null;
 const e = escapeHTML;
 function toast(text) {
   const node = $("#studio-toast");
@@ -239,6 +240,10 @@ function bindShell() {
   bindList();
 }
 function bindList() {
+  if (admin && kind === 'scenario' && graphTemplate && !$('#new-graph')) {
+    $('#list').insertAdjacentHTML('afterbegin','<button id="new-graph" class="primary" style="width:100%;margin-bottom:16px">＋ 新建稀疏剧本</button>');
+    $('#new-graph').onclick = newGraphItem;
+  }
   $("#search").oninput = (event) => {
     query = event.target.value;
     const position = event.target.selectionStart;
@@ -881,6 +886,14 @@ function newItem() {
   tab = "edit";
   shell();
 }
+function newGraphItem() {
+  if (!graphTemplate || !dirtyConfirm()) return;
+  model = clone(graphTemplate);
+  model.id = 'scenario-' + crypto.randomUUID().slice(0, 12);
+  selected = {id:null,kind:'scenario',revision:0,published_revision:null,archived:false};
+  dirty = true; issues = []; warnings = []; valid = null; tab = 'edit';
+  shell();
+}
 async function openItem(id) {
   if (!dirtyConfirm()) return;
   try {
@@ -1277,9 +1290,10 @@ function importDialog() {
 }
 function generateDialog() {
   if (!dirtyConfirm()) return;
+  const generationKind = kind, generationModel = model, generationSelection = selected;
   modal(
     "灵感助手",
-    `<p class="helper">让已配置的 LLM 提供${kinds[kind].name}草稿。生成内容不会自动保存或发布，仍需核对数值与分支。</p><form class="form" id="generate-form"><label>你的构想<textarea name="prompt" maxlength="1500" rows="5" placeholder="描述主题、风格与希望达成的玩法…" required></textarea></label><p class="studio-error" id="generate-error"></p><button class="primary">生成${kinds[kind].name}草稿 ✦</button></form>`,
+    `<p class="helper">让已配置的 LLM 提供${kinds[generationKind].name}草稿。生成内容不会自动保存或发布，仍需核对数值与分支。</p><form class="form" id="generate-form">${generationKind==='scenario'?'<label>草稿形式<select name="schema_version"><option value="2">大纲与关键路径 · 保留续写出口</option><option value="1">兼容旧格式</option></select></label>':''}<label>你的构想<textarea name="prompt" maxlength="1500" rows="5" placeholder="描述主题、风格与希望达成的玩法…" required></textarea></label><p class="studio-error" id="generate-error"></p><button class="primary">生成${kinds[generationKind].name}草稿 ✦</button></form>`,
     (overlay, close) => {
       $("#generate-form", overlay).onsubmit = async (event) => {
         event.preventDefault();
@@ -1290,14 +1304,16 @@ function generateDialog() {
           const data = await api("/api/studio/generate", {
             method: "POST",
             body: JSON.stringify({
-              kind,
+              kind: generationKind,
+              schema_version: Number($('[name=schema_version]', overlay)?.value || 1),
               prompt: $("[name=prompt]", overlay).value,
             }),
           });
+          if (!admin || !overlay.isConnected || kind !== generationKind || model !== generationModel || selected !== generationSelection) return;
           model = data.data;
           selected = {
             id: null,
-            kind,
+            kind: generationKind,
             revision: 0,
             published_revision: null,
             archived: false,
@@ -1328,6 +1344,7 @@ window.addEventListener("beforeunload", (event) => {
 async function boot() {
   try {
     const state = await api("/api/studio/status");
+    graphTemplate = state.author_graph_template || null;
     legacyEnabled = !!state.legacy_enabled;
     writeEnabled = legacyEnabled
       ? !!state.legacy_write_enabled

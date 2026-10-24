@@ -42,6 +42,15 @@ def test_sparse_outline_can_end_in_continuation_without_prebuilding_branches():
         ScenarioBook.model_validate(book)
 
 
+def test_native_author_template_is_valid_sparse_and_defaults_to_frozen_history():
+    template = g.sparse_template()
+    assert len(template['nodes']) == 2 and len(template['edges']) == 1
+    assert template['rules_package_version'] == LEGACY_PACKAGE
+    assert template['nodes'][1]['kind'] == 'frontier'
+    assert template['nodes'][1]['continuation']['fallback_scene_id'] == 'opening'
+    assert g.parse_book(template) == template
+
+
 @pytest.mark.parametrize('bad', [
     {'op': 'eval', 'code': '__import__("os")'}, {'op': 'all', 'children': []},
     {'op': 'not', 'children': [{'op': 'has_item', 'ref': 'lens-item'}]*2},

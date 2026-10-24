@@ -230,6 +230,47 @@ async function run() {
   await delay(50);
   assert.equal(q('#history-list'),null,'Late graph history resurrected a stale detail panel');
   assert.equal(q('.history-row'),null,'Late history leaked into another item category');
+  click('[data-kind=scenario]');
+  click('#new-graph');
+  const nativeGraph=JSON.parse(q('#raw-json').value);
+  assert.equal(nativeGraph.schema_version,2);
+  assert.equal(nativeGraph.nodes.length,2);
+  assert.equal(nativeGraph.nodes[1].kind,'frontier');
+  assert.ok(q('.graph-tree'));
+  click('#save');await saved();click('#validate');
+  await eventually(()=>q('.valid-status'),'Native sparse template did not validate');
+  const generatedGraph={...nativeGraph,id:'model-graph-dom',name:'模型稀疏草稿'};
+  let submittedGeneration;
+  w.fetch=async(url,options)=>{
+    if(String(url)==='/api/studio/generate') {
+      submittedGeneration=JSON.parse(options.body);
+      return new Response(JSON.stringify({kind:'scenario',data:generatedGraph,issues:[],saved:false,published:false}),
+                          {status:200,headers:{'Content-Type':'application/json'}});
+    }
+    return normalFetch(url,options);
+  };
+  click('#generate');
+  assert.equal(q('[name=schema_version]').value,'2');
+  q('[name=prompt]').value='只准备主线与续写出口';submit('#generate-form');
+  await eventually(()=>q('.detail-header h1')?.textContent==='模型稀疏草稿','Generated graph did not load as unsaved draft');
+  assert.equal(submittedGeneration.schema_version,2);
+  assert.equal(q('#save').disabled,false);
+  assert.equal((await fetch(`${origin}/api/studio/items/model-graph-dom`,{headers:{Authorization:`Bearer ${adminToken}`}})).status,404);
+  let releaseGeneration;
+  w.fetch=async(url,options)=>{
+    if(String(url)==='/api/studio/generate') {
+      await new Promise(resolve=>{releaseGeneration=resolve;});
+      return new Response(JSON.stringify({kind:'scenario',data:{...generatedGraph,name:'迟到模型'},issues:[],saved:false,published:false}),
+                          {status:200,headers:{'Content-Type':'application/json'}});
+    }
+    return normalFetch(url,options);
+  };
+  click('#generate');q('[name=prompt]').value='迟到草稿';submit('#generate-form');
+  await eventually(()=>releaseGeneration,'Generation response gate was not reached');
+  click('[data-close]');click('#new-graph');
+  const replacementId=JSON.parse(q('#raw-json').value).id;
+  releaseGeneration();await delay(50);w.fetch=normalFetch;
+  assert.equal(JSON.parse(q('#raw-json').value).id,replacementId,'Late cancelled generation replaced a newer draft');
   console.log('Studio DOM integration passed: public/admin auth, card CRUD, validation, publish, duplicate, archive, bundle import/export, branch editor, history restore.');
 }
 

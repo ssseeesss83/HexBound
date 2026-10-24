@@ -249,6 +249,103 @@ def test_llm_draft_is_never_saved_or_published(setup):
     assert client.get("/api/studio/items/llm-draft", headers=AUTH).status_code == 404
 
 
+def test_sparse_graph_generation_validates_before_return_and_does_not_save(setup):
+    client, _, dm = setup
+    template = client.get('/api/studio/status').json()['author_graph_template']
+    template['id'] = 'generated-sparse'
+    dm.configured = True
+    async def generated(system, data, json_mode, **kwargs):
+        assert json_mode and kwargs['max_tokens'] == 4000
+        assert data['schema']['properties']['rules_package_version']['const'] == template['rules_package_version']
+        assert data['schema']['properties']['nodes']['maxItems'] == 12
+        assert data['schema']['properties']['edges']['maxItems'] == 24
+        assert '不穷举分支' in system
+        return json.dumps(template)
+    dm._complete = generated
+    response = client.post('/api/studio/generate', headers=AUTH,
+                           json={'kind':'scenario','schema_version':2,'prompt':'主线与续写出口'})
+    assert response.status_code == 200, response.text
+    assert response.json()['data'] == template
+    assert response.json()['issues'] == [] and response.json()['saved'] is False
+    assert client.get('/api/studio/items/generated-sparse', headers=AUTH).status_code == 404
+    assert client.post('/api/studio/generate', headers=AUTH,
+                       json={'kind':'skill','schema_version':2,'prompt':'invalid'}).status_code == 422
+
+
+@pytest.mark.parametrize('failure', ['package','edition','fallback','mechanical_write','reference','condition','nodes','edges','frontier','legacy_action','legacy_attack'])
+def test_invalid_generated_graph_never_becomes_an_author_draft(setup, failure):
+    client, _, dm = setup
+    template = client.get('/api/studio/status').json()['author_graph_template']
+    template['id'] = 'bad-model-graph'
+    if failure == 'package': template['rules_package_version'] = 'uninstalled-version'
+    elif failure == 'edition': template['ruleset_id'] = 'dnd5e-2024'
+    elif failure == 'fallback': template['nodes'][1]['continuation']['fallback_scene_id'] = 'missing'
+    elif failure == 'mechanical_write': template['hp'] = 99
+    elif failure == 'reference':
+        template['monster_ids'] = ['unpublished-dragon']
+        template['nodes'][0]['monster_ids'] = ['unpublished-dragon']
+    elif failure == 'condition': template['edges'][0]['condition'] = {'op':'eval','code':'set_hp(99)'}
+    elif failure == 'nodes':
+        for index in range(11):
+            template['nodes'].append({'id':f's{index}','kind':'scene','title':'Scene','text':'Scene'})
+            template['edges'].append({'id':f'e{index}','from':'opening','to':f's{index}'})
+            template['edges'].append({'id':f'exit{index}','from':f's{index}','to':'continuation'})
+    elif failure == 'edges':
+        template['edges'] += [{'id':f'e{i}','from':'opening','to':'continuation'} for i in range(24)]
+    elif failure == 'frontier':
+        template['nodes'][1] = {'id':'continuation','kind':'ending','title':'End','text':'Dawn'}
+    else:
+        skill_id = 'blade-strike' if failure == 'legacy_attack' else 'read-traces'
+        template['skill_ids'] = [skill_id]
+        template['nodes'][0]['legacy_actions'] = [{'id':'try','label':'Try','skill_id':skill_id,
+            'success_node_id':'continuation','failure_node_id':'continuation'}]
+        template['edges'] = [{'id':result,'from':'opening','to':'continuation',
+            'legacy_action_id':'try','legacy_result':result} for result in ['success','failure']]
+    dm.configured = True
+    async def generated(*args, **kwargs): return json.dumps(template)
+    dm._complete = generated
+    response = client.post('/api/studio/generate', headers=AUTH,
+                           json={'kind':'scenario','schema_version':2,'prompt':'不可信素材'})
+    assert response.status_code == 502
+    assert 'data' not in response.json()
+    assert client.get('/api/studio/items/bad-model-graph', headers=AUTH).status_code == 404
+
+
+def test_graph_author_legacy_checks_do_not_accept_attack_cards(setup):
+    client, _, _ = setup
+    template = client.get('/api/studio/status').json()['author_graph_template']
+    template['id'] = 'author-wrong-check'
+    template['skill_ids'] = ['blade-strike']
+    template['nodes'][0]['legacy_actions'] = [{'id':'try','label':'Try','skill_id':'blade-strike',
+        'success_node_id':'continuation','failure_node_id':'continuation'}]
+    template['edges'] = [{'id':result,'from':'opening','to':'continuation',
+        'legacy_action_id':'try','legacy_result':result} for result in ['success','failure']]
+    assert client.post('/api/studio/items', headers=AUTH,json={'kind':'scenario','data':template}).status_code == 201
+    result=client.post('/api/studio/items/author-wrong-check/validate',headers=AUTH).json()
+    assert not result['valid'] and any('check 类型技能' in issue for issue in result['issues'])
+
+
+def test_graph_generation_rechecks_auth_and_dependencies_after_model_returns(setup, monkeypatch):
+    client, store, dm = setup
+    template = client.get('/api/studio/status').json()['author_graph_template']
+    dm.configured = True
+    async def revoke(*args, **kwargs):
+        monkeypatch.setenv('HEXBOUND_ADMIN_TOKEN','changed-during-generation')
+        return json.dumps(template)
+    dm._complete = revoke
+    body = {'kind':'scenario','schema_version':2,'prompt':'主线'}
+    assert client.post('/api/studio/generate', headers=AUTH,json=body).status_code == 401
+    monkeypatch.setenv('HEXBOUND_ADMIN_TOKEN','studio-test-secret')
+    template['monster_ids'] = ['salt-warden']
+    template['nodes'][0]['monster_ids'] = ['salt-warden']
+    async def archive_dependency(*args, **kwargs):
+        with store.connect() as db:
+            db.execute("UPDATE content_items SET archived=1 WHERE id='salt-warden'")
+        return json.dumps(template)
+    dm._complete = archive_dependency
+    assert client.post('/api/studio/generate', headers=AUTH,json=body).status_code == 502
+
+
 def test_seed_idempotent_and_graph_playable(setup):
     client, store, _ = setup
     before = client.get("/api/studio/items", headers=AUTH).json()["total"]

@@ -362,3 +362,21 @@ def navigation_rows(book):
         ordered = sorted(edges[nid], key=lambda e: (not e['main_path'], -e['priority'], e['id']))
         pending.extend((e['to'], depth+1, (*ancestors, nid), e['id']) for e in reversed(ordered))
     return rows
+
+
+def sparse_template(*, rules_package_version=LEGACY_PACKAGE):
+    """A complete author skeleton; no generated branch expansion or game state."""
+    return parse_book({
+        'id': 'new-sparse-book', 'name': '新的稀疏剧本', 'schema_version': 2,
+        'ruleset_id': RULESET_ID, 'rules_package_version': rules_package_version,
+        'outline': '在此写下主线目标、关键冲突与结局方向。', 'entry_node_id': 'opening',
+        'nodes': [
+            {'id': 'opening', 'kind': 'scene', 'title': '开场场景', 'main_path': True,
+             'text': '在此描述玩家最初能看见的场景。', 'objective': '在此填写开场目标。'},
+            {'id': 'continuation', 'kind': 'frontier', 'title': '待续写的道路', 'main_path': True,
+             'continuation': {'summary': '在此记录离开当前场景时需要延续的情境。',
+                              'confirmed_fact_ids': [], 'unresolved_threads': ['在此填写尚未解决的线索。'],
+                              'npc_goal_ids': [], 'allowed_monster_ids': [], 'candidate_milestone_ids': [],
+                              'constraints': ['保持已经确认的事件和资源结算。'], 'fallback_scene_id': 'opening'}}],
+        'edges': [{'id': 'opening-continuation', 'from': 'opening', 'to': 'continuation', 'main_path': True}],
+    })
