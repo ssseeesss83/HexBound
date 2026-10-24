@@ -1,0 +1,1701 @@
+{
+  "scope": "13 mundane armor/shield rows and reference timing only",
+  "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+  "source_pages_sha256": "a3d4be9c2a612c0cba1dcc0bc3ce875f52cef1b4924f743142be600614ade1c6",
+  "expected_ids": [
+    "breastplate",
+    "chain-mail",
+    "chain-shirt",
+    "half-plate-armor",
+    "hide-armor",
+    "leather-armor",
+    "padded-armor",
+    "plate-armor",
+    "ring-mail",
+    "scale-mail",
+    "shield",
+    "splint-armor",
+    "studded-leather-armor"
+  ],
+  "actual_ids": [
+    "breastplate",
+    "chain-mail",
+    "chain-shirt",
+    "half-plate-armor",
+    "hide-armor",
+    "leather-armor",
+    "padded-armor",
+    "plate-armor",
+    "ring-mail",
+    "scale-mail",
+    "shield",
+    "splint-armor",
+    "studded-leather-armor"
+  ],
+  "inventory_match": true,
+  "checks": [
+    {
+      "record": "equipment/padded-armor",
+      "path": [
+        "cost",
+        "quantity"
+      ],
+      "expected": 5,
+      "expected_absent": false,
+      "actual": 5,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Padded 5 gp 11 + Dex modifier — Disadvantage 8 lb.",
+      "official_page": 63
+    },
+    {
+      "record": "equipment/padded-armor",
+      "path": [
+        "cost",
+        "unit"
+      ],
+      "expected": "gp",
+      "expected_absent": false,
+      "actual": "gp",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Padded 5 gp 11 + Dex modifier — Disadvantage 8 lb.",
+      "official_page": 63
+    },
+    {
+      "record": "equipment/padded-armor",
+      "path": [
+        "weight"
+      ],
+      "expected": 8,
+      "expected_absent": false,
+      "actual": 8,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Padded 5 gp 11 + Dex modifier — Disadvantage 8 lb.",
+      "official_page": 63
+    },
+    {
+      "record": "equipment/padded-armor",
+      "path": [
+        "armor_category"
+      ],
+      "expected": "Light",
+      "expected_absent": false,
+      "actual": "Light",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Padded 5 gp 11 + Dex modifier — Disadvantage 8 lb.",
+      "official_page": 63
+    },
+    {
+      "record": "equipment/padded-armor",
+      "path": [
+        "str_minimum"
+      ],
+      "expected": 0,
+      "expected_absent": false,
+      "actual": 0,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Padded 5 gp 11 + Dex modifier — Disadvantage 8 lb.",
+      "official_page": 63
+    },
+    {
+      "record": "equipment/padded-armor",
+      "path": [
+        "stealth_disadvantage"
+      ],
+      "expected": true,
+      "expected_absent": false,
+      "actual": true,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Padded 5 gp 11 + Dex modifier — Disadvantage 8 lb.",
+      "official_page": 63
+    },
+    {
+      "record": "equipment/padded-armor",
+      "path": [
+        "armor_class",
+        "base"
+      ],
+      "expected": 11,
+      "expected_absent": false,
+      "actual": 11,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Padded 5 gp 11 + Dex modifier — Disadvantage 8 lb.",
+      "official_page": 63
+    },
+    {
+      "record": "equipment/padded-armor",
+      "path": [
+        "armor_class",
+        "dex_bonus"
+      ],
+      "expected": true,
+      "expected_absent": false,
+      "actual": true,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Padded 5 gp 11 + Dex modifier — Disadvantage 8 lb.",
+      "official_page": 63
+    },
+    {
+      "record": "equipment/padded-armor",
+      "path": [
+        "armor_class",
+        "max_bonus"
+      ],
+      "expected": null,
+      "expected_absent": true,
+      "actual": null,
+      "field_missing": true,
+      "match": true,
+      "official_row": "Padded 5 gp 11 + Dex modifier — Disadvantage 8 lb.",
+      "official_page": 63
+    },
+    {
+      "record": "equipment/leather-armor",
+      "path": [
+        "cost",
+        "quantity"
+      ],
+      "expected": 10,
+      "expected_absent": false,
+      "actual": 10,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Leather 10 gp 11 + Dex modifier — — 10 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/leather-armor",
+      "path": [
+        "cost",
+        "unit"
+      ],
+      "expected": "gp",
+      "expected_absent": false,
+      "actual": "gp",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Leather 10 gp 11 + Dex modifier — — 10 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/leather-armor",
+      "path": [
+        "weight"
+      ],
+      "expected": 10,
+      "expected_absent": false,
+      "actual": 10,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Leather 10 gp 11 + Dex modifier — — 10 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/leather-armor",
+      "path": [
+        "armor_category"
+      ],
+      "expected": "Light",
+      "expected_absent": false,
+      "actual": "Light",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Leather 10 gp 11 + Dex modifier — — 10 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/leather-armor",
+      "path": [
+        "str_minimum"
+      ],
+      "expected": 0,
+      "expected_absent": false,
+      "actual": 0,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Leather 10 gp 11 + Dex modifier — — 10 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/leather-armor",
+      "path": [
+        "stealth_disadvantage"
+      ],
+      "expected": false,
+      "expected_absent": false,
+      "actual": false,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Leather 10 gp 11 + Dex modifier — — 10 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/leather-armor",
+      "path": [
+        "armor_class",
+        "base"
+      ],
+      "expected": 11,
+      "expected_absent": false,
+      "actual": 11,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Leather 10 gp 11 + Dex modifier — — 10 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/leather-armor",
+      "path": [
+        "armor_class",
+        "dex_bonus"
+      ],
+      "expected": true,
+      "expected_absent": false,
+      "actual": true,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Leather 10 gp 11 + Dex modifier — — 10 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/leather-armor",
+      "path": [
+        "armor_class",
+        "max_bonus"
+      ],
+      "expected": null,
+      "expected_absent": true,
+      "actual": null,
+      "field_missing": true,
+      "match": true,
+      "official_row": "Leather 10 gp 11 + Dex modifier — — 10 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/studded-leather-armor",
+      "path": [
+        "cost",
+        "quantity"
+      ],
+      "expected": 45,
+      "expected_absent": false,
+      "actual": 45,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Studded leather 45 gp 12 + Dex modifier — — 13 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/studded-leather-armor",
+      "path": [
+        "cost",
+        "unit"
+      ],
+      "expected": "gp",
+      "expected_absent": false,
+      "actual": "gp",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Studded leather 45 gp 12 + Dex modifier — — 13 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/studded-leather-armor",
+      "path": [
+        "weight"
+      ],
+      "expected": 13,
+      "expected_absent": false,
+      "actual": 13,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Studded leather 45 gp 12 + Dex modifier — — 13 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/studded-leather-armor",
+      "path": [
+        "armor_category"
+      ],
+      "expected": "Light",
+      "expected_absent": false,
+      "actual": "Light",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Studded leather 45 gp 12 + Dex modifier — — 13 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/studded-leather-armor",
+      "path": [
+        "str_minimum"
+      ],
+      "expected": 0,
+      "expected_absent": false,
+      "actual": 0,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Studded leather 45 gp 12 + Dex modifier — — 13 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/studded-leather-armor",
+      "path": [
+        "stealth_disadvantage"
+      ],
+      "expected": false,
+      "expected_absent": false,
+      "actual": false,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Studded leather 45 gp 12 + Dex modifier — — 13 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/studded-leather-armor",
+      "path": [
+        "armor_class",
+        "base"
+      ],
+      "expected": 12,
+      "expected_absent": false,
+      "actual": 12,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Studded leather 45 gp 12 + Dex modifier — — 13 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/studded-leather-armor",
+      "path": [
+        "armor_class",
+        "dex_bonus"
+      ],
+      "expected": true,
+      "expected_absent": false,
+      "actual": true,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Studded leather 45 gp 12 + Dex modifier — — 13 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/studded-leather-armor",
+      "path": [
+        "armor_class",
+        "max_bonus"
+      ],
+      "expected": null,
+      "expected_absent": true,
+      "actual": null,
+      "field_missing": true,
+      "match": true,
+      "official_row": "Studded leather 45 gp 12 + Dex modifier — — 13 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/hide-armor",
+      "path": [
+        "cost",
+        "quantity"
+      ],
+      "expected": 10,
+      "expected_absent": false,
+      "actual": 10,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Hide 10 gp 12 + Dex modifier (max 2) — — 12 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/hide-armor",
+      "path": [
+        "cost",
+        "unit"
+      ],
+      "expected": "gp",
+      "expected_absent": false,
+      "actual": "gp",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Hide 10 gp 12 + Dex modifier (max 2) — — 12 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/hide-armor",
+      "path": [
+        "weight"
+      ],
+      "expected": 12,
+      "expected_absent": false,
+      "actual": 12,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Hide 10 gp 12 + Dex modifier (max 2) — — 12 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/hide-armor",
+      "path": [
+        "armor_category"
+      ],
+      "expected": "Medium",
+      "expected_absent": false,
+      "actual": "Medium",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Hide 10 gp 12 + Dex modifier (max 2) — — 12 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/hide-armor",
+      "path": [
+        "str_minimum"
+      ],
+      "expected": 0,
+      "expected_absent": false,
+      "actual": 0,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Hide 10 gp 12 + Dex modifier (max 2) — — 12 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/hide-armor",
+      "path": [
+        "stealth_disadvantage"
+      ],
+      "expected": false,
+      "expected_absent": false,
+      "actual": false,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Hide 10 gp 12 + Dex modifier (max 2) — — 12 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/hide-armor",
+      "path": [
+        "armor_class",
+        "base"
+      ],
+      "expected": 12,
+      "expected_absent": false,
+      "actual": 12,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Hide 10 gp 12 + Dex modifier (max 2) — — 12 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/hide-armor",
+      "path": [
+        "armor_class",
+        "dex_bonus"
+      ],
+      "expected": true,
+      "expected_absent": false,
+      "actual": true,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Hide 10 gp 12 + Dex modifier (max 2) — — 12 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/hide-armor",
+      "path": [
+        "armor_class",
+        "max_bonus"
+      ],
+      "expected": 2,
+      "expected_absent": false,
+      "actual": 2,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Hide 10 gp 12 + Dex modifier (max 2) — — 12 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/chain-shirt",
+      "path": [
+        "cost",
+        "quantity"
+      ],
+      "expected": 50,
+      "expected_absent": false,
+      "actual": 50,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Chain shirt 50 gp 13 + Dex modifier (max 2) — — 20 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/chain-shirt",
+      "path": [
+        "cost",
+        "unit"
+      ],
+      "expected": "gp",
+      "expected_absent": false,
+      "actual": "gp",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Chain shirt 50 gp 13 + Dex modifier (max 2) — — 20 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/chain-shirt",
+      "path": [
+        "weight"
+      ],
+      "expected": 20,
+      "expected_absent": false,
+      "actual": 20,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Chain shirt 50 gp 13 + Dex modifier (max 2) — — 20 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/chain-shirt",
+      "path": [
+        "armor_category"
+      ],
+      "expected": "Medium",
+      "expected_absent": false,
+      "actual": "Medium",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Chain shirt 50 gp 13 + Dex modifier (max 2) — — 20 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/chain-shirt",
+      "path": [
+        "str_minimum"
+      ],
+      "expected": 0,
+      "expected_absent": false,
+      "actual": 0,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Chain shirt 50 gp 13 + Dex modifier (max 2) — — 20 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/chain-shirt",
+      "path": [
+        "stealth_disadvantage"
+      ],
+      "expected": false,
+      "expected_absent": false,
+      "actual": false,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Chain shirt 50 gp 13 + Dex modifier (max 2) — — 20 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/chain-shirt",
+      "path": [
+        "armor_class",
+        "base"
+      ],
+      "expected": 13,
+      "expected_absent": false,
+      "actual": 13,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Chain shirt 50 gp 13 + Dex modifier (max 2) — — 20 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/chain-shirt",
+      "path": [
+        "armor_class",
+        "dex_bonus"
+      ],
+      "expected": true,
+      "expected_absent": false,
+      "actual": true,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Chain shirt 50 gp 13 + Dex modifier (max 2) — — 20 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/chain-shirt",
+      "path": [
+        "armor_class",
+        "max_bonus"
+      ],
+      "expected": 2,
+      "expected_absent": false,
+      "actual": 2,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Chain shirt 50 gp 13 + Dex modifier (max 2) — — 20 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/scale-mail",
+      "path": [
+        "cost",
+        "quantity"
+      ],
+      "expected": 50,
+      "expected_absent": false,
+      "actual": 50,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Scale mail 50 gp 14 + Dex modifier (max 2) — Disadvantage 45 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/scale-mail",
+      "path": [
+        "cost",
+        "unit"
+      ],
+      "expected": "gp",
+      "expected_absent": false,
+      "actual": "gp",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Scale mail 50 gp 14 + Dex modifier (max 2) — Disadvantage 45 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/scale-mail",
+      "path": [
+        "weight"
+      ],
+      "expected": 45,
+      "expected_absent": false,
+      "actual": 45,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Scale mail 50 gp 14 + Dex modifier (max 2) — Disadvantage 45 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/scale-mail",
+      "path": [
+        "armor_category"
+      ],
+      "expected": "Medium",
+      "expected_absent": false,
+      "actual": "Medium",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Scale mail 50 gp 14 + Dex modifier (max 2) — Disadvantage 45 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/scale-mail",
+      "path": [
+        "str_minimum"
+      ],
+      "expected": 0,
+      "expected_absent": false,
+      "actual": 0,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Scale mail 50 gp 14 + Dex modifier (max 2) — Disadvantage 45 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/scale-mail",
+      "path": [
+        "stealth_disadvantage"
+      ],
+      "expected": true,
+      "expected_absent": false,
+      "actual": true,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Scale mail 50 gp 14 + Dex modifier (max 2) — Disadvantage 45 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/scale-mail",
+      "path": [
+        "armor_class",
+        "base"
+      ],
+      "expected": 14,
+      "expected_absent": false,
+      "actual": 14,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Scale mail 50 gp 14 + Dex modifier (max 2) — Disadvantage 45 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/scale-mail",
+      "path": [
+        "armor_class",
+        "dex_bonus"
+      ],
+      "expected": true,
+      "expected_absent": false,
+      "actual": true,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Scale mail 50 gp 14 + Dex modifier (max 2) — Disadvantage 45 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/scale-mail",
+      "path": [
+        "armor_class",
+        "max_bonus"
+      ],
+      "expected": 2,
+      "expected_absent": false,
+      "actual": 2,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Scale mail 50 gp 14 + Dex modifier (max 2) — Disadvantage 45 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/breastplate",
+      "path": [
+        "cost",
+        "quantity"
+      ],
+      "expected": 400,
+      "expected_absent": false,
+      "actual": 400,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Breastplate 400 gp 14 + Dex modifier (max 2) — — 20 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/breastplate",
+      "path": [
+        "cost",
+        "unit"
+      ],
+      "expected": "gp",
+      "expected_absent": false,
+      "actual": "gp",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Breastplate 400 gp 14 + Dex modifier (max 2) — — 20 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/breastplate",
+      "path": [
+        "weight"
+      ],
+      "expected": 20,
+      "expected_absent": false,
+      "actual": 20,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Breastplate 400 gp 14 + Dex modifier (max 2) — — 20 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/breastplate",
+      "path": [
+        "armor_category"
+      ],
+      "expected": "Medium",
+      "expected_absent": false,
+      "actual": "Medium",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Breastplate 400 gp 14 + Dex modifier (max 2) — — 20 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/breastplate",
+      "path": [
+        "str_minimum"
+      ],
+      "expected": 0,
+      "expected_absent": false,
+      "actual": 0,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Breastplate 400 gp 14 + Dex modifier (max 2) — — 20 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/breastplate",
+      "path": [
+        "stealth_disadvantage"
+      ],
+      "expected": false,
+      "expected_absent": false,
+      "actual": false,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Breastplate 400 gp 14 + Dex modifier (max 2) — — 20 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/breastplate",
+      "path": [
+        "armor_class",
+        "base"
+      ],
+      "expected": 14,
+      "expected_absent": false,
+      "actual": 14,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Breastplate 400 gp 14 + Dex modifier (max 2) — — 20 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/breastplate",
+      "path": [
+        "armor_class",
+        "dex_bonus"
+      ],
+      "expected": true,
+      "expected_absent": false,
+      "actual": true,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Breastplate 400 gp 14 + Dex modifier (max 2) — — 20 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/breastplate",
+      "path": [
+        "armor_class",
+        "max_bonus"
+      ],
+      "expected": 2,
+      "expected_absent": false,
+      "actual": 2,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Breastplate 400 gp 14 + Dex modifier (max 2) — — 20 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/half-plate-armor",
+      "path": [
+        "cost",
+        "quantity"
+      ],
+      "expected": 750,
+      "expected_absent": false,
+      "actual": 750,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Half plate 750 gp 15 + Dex modifier (max 2) — Disadvantage 40 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/half-plate-armor",
+      "path": [
+        "cost",
+        "unit"
+      ],
+      "expected": "gp",
+      "expected_absent": false,
+      "actual": "gp",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Half plate 750 gp 15 + Dex modifier (max 2) — Disadvantage 40 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/half-plate-armor",
+      "path": [
+        "weight"
+      ],
+      "expected": 40,
+      "expected_absent": false,
+      "actual": 40,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Half plate 750 gp 15 + Dex modifier (max 2) — Disadvantage 40 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/half-plate-armor",
+      "path": [
+        "armor_category"
+      ],
+      "expected": "Medium",
+      "expected_absent": false,
+      "actual": "Medium",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Half plate 750 gp 15 + Dex modifier (max 2) — Disadvantage 40 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/half-plate-armor",
+      "path": [
+        "str_minimum"
+      ],
+      "expected": 0,
+      "expected_absent": false,
+      "actual": 0,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Half plate 750 gp 15 + Dex modifier (max 2) — Disadvantage 40 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/half-plate-armor",
+      "path": [
+        "stealth_disadvantage"
+      ],
+      "expected": true,
+      "expected_absent": false,
+      "actual": true,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Half plate 750 gp 15 + Dex modifier (max 2) — Disadvantage 40 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/half-plate-armor",
+      "path": [
+        "armor_class",
+        "base"
+      ],
+      "expected": 15,
+      "expected_absent": false,
+      "actual": 15,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Half plate 750 gp 15 + Dex modifier (max 2) — Disadvantage 40 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/half-plate-armor",
+      "path": [
+        "armor_class",
+        "dex_bonus"
+      ],
+      "expected": true,
+      "expected_absent": false,
+      "actual": true,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Half plate 750 gp 15 + Dex modifier (max 2) — Disadvantage 40 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/half-plate-armor",
+      "path": [
+        "armor_class",
+        "max_bonus"
+      ],
+      "expected": 2,
+      "expected_absent": false,
+      "actual": 2,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Half plate 750 gp 15 + Dex modifier (max 2) — Disadvantage 40 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/ring-mail",
+      "path": [
+        "cost",
+        "quantity"
+      ],
+      "expected": 30,
+      "expected_absent": false,
+      "actual": 30,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Ring mail 30 gp 14 — Disadvantage 40 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/ring-mail",
+      "path": [
+        "cost",
+        "unit"
+      ],
+      "expected": "gp",
+      "expected_absent": false,
+      "actual": "gp",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Ring mail 30 gp 14 — Disadvantage 40 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/ring-mail",
+      "path": [
+        "weight"
+      ],
+      "expected": 40,
+      "expected_absent": false,
+      "actual": 40,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Ring mail 30 gp 14 — Disadvantage 40 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/ring-mail",
+      "path": [
+        "armor_category"
+      ],
+      "expected": "Heavy",
+      "expected_absent": false,
+      "actual": "Heavy",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Ring mail 30 gp 14 — Disadvantage 40 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/ring-mail",
+      "path": [
+        "str_minimum"
+      ],
+      "expected": 0,
+      "expected_absent": false,
+      "actual": 0,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Ring mail 30 gp 14 — Disadvantage 40 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/ring-mail",
+      "path": [
+        "stealth_disadvantage"
+      ],
+      "expected": true,
+      "expected_absent": false,
+      "actual": true,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Ring mail 30 gp 14 — Disadvantage 40 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/ring-mail",
+      "path": [
+        "armor_class",
+        "base"
+      ],
+      "expected": 14,
+      "expected_absent": false,
+      "actual": 14,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Ring mail 30 gp 14 — Disadvantage 40 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/ring-mail",
+      "path": [
+        "armor_class",
+        "dex_bonus"
+      ],
+      "expected": false,
+      "expected_absent": false,
+      "actual": false,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Ring mail 30 gp 14 — Disadvantage 40 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/ring-mail",
+      "path": [
+        "armor_class",
+        "max_bonus"
+      ],
+      "expected": null,
+      "expected_absent": true,
+      "actual": null,
+      "field_missing": true,
+      "match": true,
+      "official_row": "Ring mail 30 gp 14 — Disadvantage 40 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/chain-mail",
+      "path": [
+        "cost",
+        "quantity"
+      ],
+      "expected": 75,
+      "expected_absent": false,
+      "actual": 75,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Chain mail 75 gp 16 Str 13 Disadvantage 55 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/chain-mail",
+      "path": [
+        "cost",
+        "unit"
+      ],
+      "expected": "gp",
+      "expected_absent": false,
+      "actual": "gp",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Chain mail 75 gp 16 Str 13 Disadvantage 55 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/chain-mail",
+      "path": [
+        "weight"
+      ],
+      "expected": 55,
+      "expected_absent": false,
+      "actual": 55,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Chain mail 75 gp 16 Str 13 Disadvantage 55 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/chain-mail",
+      "path": [
+        "armor_category"
+      ],
+      "expected": "Heavy",
+      "expected_absent": false,
+      "actual": "Heavy",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Chain mail 75 gp 16 Str 13 Disadvantage 55 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/chain-mail",
+      "path": [
+        "str_minimum"
+      ],
+      "expected": 13,
+      "expected_absent": false,
+      "actual": 13,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Chain mail 75 gp 16 Str 13 Disadvantage 55 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/chain-mail",
+      "path": [
+        "stealth_disadvantage"
+      ],
+      "expected": true,
+      "expected_absent": false,
+      "actual": true,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Chain mail 75 gp 16 Str 13 Disadvantage 55 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/chain-mail",
+      "path": [
+        "armor_class",
+        "base"
+      ],
+      "expected": 16,
+      "expected_absent": false,
+      "actual": 16,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Chain mail 75 gp 16 Str 13 Disadvantage 55 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/chain-mail",
+      "path": [
+        "armor_class",
+        "dex_bonus"
+      ],
+      "expected": false,
+      "expected_absent": false,
+      "actual": false,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Chain mail 75 gp 16 Str 13 Disadvantage 55 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/chain-mail",
+      "path": [
+        "armor_class",
+        "max_bonus"
+      ],
+      "expected": null,
+      "expected_absent": true,
+      "actual": null,
+      "field_missing": true,
+      "match": true,
+      "official_row": "Chain mail 75 gp 16 Str 13 Disadvantage 55 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/splint-armor",
+      "path": [
+        "cost",
+        "quantity"
+      ],
+      "expected": 200,
+      "expected_absent": false,
+      "actual": 200,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Splint 200 gp 17 Str 15 Disadvantage 60 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/splint-armor",
+      "path": [
+        "cost",
+        "unit"
+      ],
+      "expected": "gp",
+      "expected_absent": false,
+      "actual": "gp",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Splint 200 gp 17 Str 15 Disadvantage 60 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/splint-armor",
+      "path": [
+        "weight"
+      ],
+      "expected": 60,
+      "expected_absent": false,
+      "actual": 60,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Splint 200 gp 17 Str 15 Disadvantage 60 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/splint-armor",
+      "path": [
+        "armor_category"
+      ],
+      "expected": "Heavy",
+      "expected_absent": false,
+      "actual": "Heavy",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Splint 200 gp 17 Str 15 Disadvantage 60 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/splint-armor",
+      "path": [
+        "str_minimum"
+      ],
+      "expected": 15,
+      "expected_absent": false,
+      "actual": 15,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Splint 200 gp 17 Str 15 Disadvantage 60 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/splint-armor",
+      "path": [
+        "stealth_disadvantage"
+      ],
+      "expected": true,
+      "expected_absent": false,
+      "actual": true,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Splint 200 gp 17 Str 15 Disadvantage 60 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/splint-armor",
+      "path": [
+        "armor_class",
+        "base"
+      ],
+      "expected": 17,
+      "expected_absent": false,
+      "actual": 17,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Splint 200 gp 17 Str 15 Disadvantage 60 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/splint-armor",
+      "path": [
+        "armor_class",
+        "dex_bonus"
+      ],
+      "expected": false,
+      "expected_absent": false,
+      "actual": false,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Splint 200 gp 17 Str 15 Disadvantage 60 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/splint-armor",
+      "path": [
+        "armor_class",
+        "max_bonus"
+      ],
+      "expected": null,
+      "expected_absent": true,
+      "actual": null,
+      "field_missing": true,
+      "match": true,
+      "official_row": "Splint 200 gp 17 Str 15 Disadvantage 60 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/plate-armor",
+      "path": [
+        "cost",
+        "quantity"
+      ],
+      "expected": 1500,
+      "expected_absent": false,
+      "actual": 1500,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Plate 1,500 gp 18 Str 15 Disadvantage 65 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/plate-armor",
+      "path": [
+        "cost",
+        "unit"
+      ],
+      "expected": "gp",
+      "expected_absent": false,
+      "actual": "gp",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Plate 1,500 gp 18 Str 15 Disadvantage 65 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/plate-armor",
+      "path": [
+        "weight"
+      ],
+      "expected": 65,
+      "expected_absent": false,
+      "actual": 65,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Plate 1,500 gp 18 Str 15 Disadvantage 65 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/plate-armor",
+      "path": [
+        "armor_category"
+      ],
+      "expected": "Heavy",
+      "expected_absent": false,
+      "actual": "Heavy",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Plate 1,500 gp 18 Str 15 Disadvantage 65 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/plate-armor",
+      "path": [
+        "str_minimum"
+      ],
+      "expected": 15,
+      "expected_absent": false,
+      "actual": 15,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Plate 1,500 gp 18 Str 15 Disadvantage 65 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/plate-armor",
+      "path": [
+        "stealth_disadvantage"
+      ],
+      "expected": true,
+      "expected_absent": false,
+      "actual": true,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Plate 1,500 gp 18 Str 15 Disadvantage 65 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/plate-armor",
+      "path": [
+        "armor_class",
+        "base"
+      ],
+      "expected": 18,
+      "expected_absent": false,
+      "actual": 18,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Plate 1,500 gp 18 Str 15 Disadvantage 65 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/plate-armor",
+      "path": [
+        "armor_class",
+        "dex_bonus"
+      ],
+      "expected": false,
+      "expected_absent": false,
+      "actual": false,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Plate 1,500 gp 18 Str 15 Disadvantage 65 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/plate-armor",
+      "path": [
+        "armor_class",
+        "max_bonus"
+      ],
+      "expected": null,
+      "expected_absent": true,
+      "actual": null,
+      "field_missing": true,
+      "match": true,
+      "official_row": "Plate 1,500 gp 18 Str 15 Disadvantage 65 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/shield",
+      "path": [
+        "cost",
+        "quantity"
+      ],
+      "expected": 10,
+      "expected_absent": false,
+      "actual": 10,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Shield 10 gp +2 — — 6 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/shield",
+      "path": [
+        "cost",
+        "unit"
+      ],
+      "expected": "gp",
+      "expected_absent": false,
+      "actual": "gp",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Shield 10 gp +2 — — 6 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/shield",
+      "path": [
+        "weight"
+      ],
+      "expected": 6,
+      "expected_absent": false,
+      "actual": 6,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Shield 10 gp +2 — — 6 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/shield",
+      "path": [
+        "armor_category"
+      ],
+      "expected": "Shield",
+      "expected_absent": false,
+      "actual": "Shield",
+      "field_missing": false,
+      "match": true,
+      "official_row": "Shield 10 gp +2 — — 6 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/shield",
+      "path": [
+        "str_minimum"
+      ],
+      "expected": 0,
+      "expected_absent": false,
+      "actual": 0,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Shield 10 gp +2 — — 6 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/shield",
+      "path": [
+        "stealth_disadvantage"
+      ],
+      "expected": false,
+      "expected_absent": false,
+      "actual": false,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Shield 10 gp +2 — — 6 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/shield",
+      "path": [
+        "armor_class",
+        "base"
+      ],
+      "expected": 2,
+      "expected_absent": false,
+      "actual": 2,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Shield 10 gp +2 — — 6 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/shield",
+      "path": [
+        "armor_class",
+        "dex_bonus"
+      ],
+      "expected": false,
+      "expected_absent": false,
+      "actual": false,
+      "field_missing": false,
+      "match": true,
+      "official_row": "Shield 10 gp +2 — — 6 lb.",
+      "official_page": 64
+    },
+    {
+      "record": "equipment/shield",
+      "path": [
+        "armor_class",
+        "max_bonus"
+      ],
+      "expected": null,
+      "expected_absent": true,
+      "actual": null,
+      "field_missing": true,
+      "match": true,
+      "official_row": "Shield 10 gp +2 — — 6 lb.",
+      "official_page": 64
+    }
+  ],
+  "diffs": [],
+  "timing_reference": {
+    "status": "reference_pending_execution",
+    "runtime_verified": false,
+    "categories": {
+      "light": {
+        "don": {
+          "amount": 1,
+          "unit": "minutes"
+        },
+        "doff": {
+          "amount": 1,
+          "unit": "minutes"
+        }
+      },
+      "medium": {
+        "don": {
+          "amount": 5,
+          "unit": "minutes"
+        },
+        "doff": {
+          "amount": 1,
+          "unit": "minutes"
+        }
+      },
+      "heavy": {
+        "don": {
+          "amount": 10,
+          "unit": "minutes"
+        },
+        "doff": {
+          "amount": 5,
+          "unit": "minutes"
+        }
+      },
+      "shield": {
+        "don": {
+          "amount": 1,
+          "unit": "action"
+        },
+        "doff": {
+          "amount": 1,
+          "unit": "action"
+        }
+      }
+    },
+    "armor_ac_requires_full_don": true,
+    "assistance": {
+      "applies_to": "doff",
+      "factor": {
+        "numerator": 1,
+        "denominator": 2
+      },
+      "interpretation_pending": [
+        "fractional_action_timing"
+      ]
+    },
+    "source_text": "The time it takes to don or doff armor depends on the armor's category. Don. This is the time it takes to put on armor. You benefit from the armor's AC only if you take the full time to don the suit of armor. Doff. This is the time it takes to take off armor. If you have help, reduce this time by half. Donning and Doffing Armor Category Don Doff Light Armor 1 minute 1 minute Medium Armor 5 minutes 1 minute Heavy Armor 10 minutes 5 minutes Shield 1 action 1 action",
+    "source_refs": {
+      "official_document": "official/SRD_CC_v5.1.pdf",
+      "printed_pages": [
+        64
+      ],
+      "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+      "heading": "Getting Into and Out of Armor",
+      "source_text_sha256": "94763799f8de2cfba7685d1f92c7f388e0d011949ea6aa842c897d27336850f7"
+    }
+  },
+  "timing_match": false,
+  "summary": {
+    "armor_rows": 13,
+    "field_checks": 117,
+    "field_differences": 0,
+    "timing_categories": 4,
+    "runtime_verified": false
+  },
+  "snapshot_note": "Candidate snapshot before this invocation; rerun to compare the current candidate."
+}

@@ -516,3 +516,13 @@ require_lease 只读结果不能直接授权落稿。后续须在同一写事务
 - 新worker专项 **15 passed**，worker / jobs / commit联合 **52 passed**；独立修复后同组 **52 passed**，无本批阻断。前一P06d2/e2检查点全量 Python **817 passed**，未包含本批15项。
 
 未连接任务调度、前瞻触发、抢占、等待界面或发布。供应商物理调用停止与实时逻辑容量仍须P07验证；新目标和实体登记仍待补齐，不能把受限worker冒称动态玩法完成。大版本未完成、未推送，分队语音排除。
+
+## P02n · 13 护甲 / 盾牌与穿脱时间来源
+
+- 独立提取官方p63–64完整横表，不按左右列位置拼接：13条、117字段全部一致；完整AC键集、整库存及bool/int、缺失/null严格区分，未发现需改写的护甲数值。
+- 规范候选仅给现有equipment-categories/armor增加timing_reference，保存p64完整穿脱原文与四类表：轻1/1分钟、中5/1分钟、重10/5分钟、盾1/1动作；AC须完成穿戴，协助规则只标doff减半。fractional_action_timing保留待解释，不发明半动作执行。
+- timing明确reference_pending_execution / runtime_verified=false；盾牌原表+2在既有base=2字段中是加值，不是总AC2。原始档案、冻结legacy及2,322条候选库存不变。
+- tools/audit_armor.py可重做当前来源比较；official/armor-source-review.json是本批覆盖前快照，117字段零差异、timing_match=false。canonical初始化增加相同来源门禁，不激活候选、不生成总签收。
+- 新专项 **21 passed**；资料四组在新增空记录回归前 **58 passed**，修复后护甲 / 规则包 **48 passed**。独立来源 / 规则包 **47 passed**，发现的空盾牌记录崩溃已修复为返回字段及库存错误，独立最终护甲专项 **21 passed**。
+
+护甲熟练、敏捷负值、盾牌手占用及穿脱时序的实际处理仍归P08–P10；本批不签收完整装备规则或整个P02。大版本未完成、未推送。

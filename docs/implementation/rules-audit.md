@@ -86,3 +86,9 @@ Animal Friendship 第 115 页原始 PDF 自身存在 `additional beast t level` 
 `tools/audit_class_growth.py` 可复现 `official/class-growth-review.json`。固定官方 PDF / pages 摘要，2601 项数值零差异，覆盖240行熟练、160行施法表、240行ASI累计及现有职业成长字段；候选初始化将漂移或未审字段作为错误。显式公式是人工核对的来源转录，非从候选反推；grant_matrix 仅列证据，machine_approved_grant_rows 为0。
 
 `official/feature-body-review.json` 记录407特性初审和完整局限。Holy Nimbus p33缺失长休恢复句已补；其余子串 / 段落匹配不能证明来源块无遗漏，不能据本次初审签收全部特性、前置或执行。
+
+## 护甲 / 盾牌与穿脱时间来源
+
+P02n逐行提取p63–64完整横表，13条117字段零差异，保留原始行和严格字段 / AC键集 / 库存比较。盾牌+2是加值；轻甲使用完整敏捷修正、包括负值，中甲仅上限+2不把负值归零，重甲不计敏捷；本批只核数据，不签处理器。
+
+p64完整穿脱段及四类时间保存到现有护甲分类的timing_reference。协助只标doff减半，半动作计时未臆造，runtime_verified=false。原始及legacy不变，候选仍2,322条，资料总签收和启用门禁保留。来源比较可运行tools/audit_armor.py；保存的armor-source-review.json是补结构字段前快照。
