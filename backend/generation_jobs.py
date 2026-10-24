@@ -145,36 +145,41 @@ class GenerationJobs:
             row = db.execute('SELECT state FROM rooms WHERE id=?',(room_id,)).fetchone()
             if row is None:raise ValueError('房间不存在')
             state = scene_storage.for_actor(json.loads(row['state']),actor)
-            sid = uuid.uuid4().hex
-            auth = story_patches.grant(state,actor,frontier_id,job_id=sid,now=now,ttl=600)
-            _prune_room(db,room_id,now)
-            dedup_input = {key:value for key,value in auth.items() if key not in {'job_id','namespace','expires_at'}}
-            dedup_input['scope'] = {key:value for key,value in auth['scope'].items() if key not in {'actor_id','membership_epoch'}}
-            dedup = _hash(dedup_input)
-            old = db.execute("SELECT * FROM generation_jobs WHERE room_id=? AND dedup_key=? AND status IN ('queued','running','validated','retryable_failed')",(room_id,dedup)).fetchone()
-            if old:
-                existing = _decode(old)
-                # A required request can promote queued work without replacing
-                # its identity, budget, lease or original authority snapshot.
-                if now<existing['authorization']['expires_at']:
-                    existing['priority']=min(priority,existing['priority'])
-                    _save(db,existing)
-                    return deepcopy(existing)
-                existing.update(status='stale',error_code='dependency_changed',lease_token=None,lease_until=None,output=None,attempt_stage=None)
+            return self._enqueue_in_transaction(db,state,room_id,actor,frontier_id,priority=priority,budget=budget,now=now)
+
+    def _enqueue_in_transaction(self,db,state,room_id,actor,frontier_id,*,priority,budget,now):
+        if not db.in_transaction:
+            raise RuntimeError('入队须在调用方持有的事务内完成')
+        sid = uuid.uuid4().hex
+        auth = story_patches.grant(state,actor,frontier_id,job_id=sid,now=now,ttl=600)
+        _prune_room(db,room_id,now)
+        dedup_input = {key:value for key,value in auth.items() if key not in {'job_id','namespace','expires_at'}}
+        dedup_input['scope'] = {key:value for key,value in auth['scope'].items() if key not in {'actor_id','membership_epoch'}}
+        dedup = _hash(dedup_input)
+        old = db.execute("SELECT * FROM generation_jobs WHERE room_id=? AND dedup_key=? AND status IN ('queued','running','validated','retryable_failed')",(room_id,dedup)).fetchone()
+        if old:
+            existing = _decode(old)
+            # A required request can promote queued work without replacing
+            # its identity, budget, lease or original authority snapshot.
+            if now<existing['authorization']['expires_at']:
+                existing['priority']=min(priority,existing['priority'])
                 _save(db,existing)
-            exhausted = db.execute("SELECT * FROM generation_jobs WHERE room_id=? AND dedup_key=? AND status='terminal_failed' ORDER BY rowid DESC LIMIT 1",(room_id,dedup)).fetchone()
-            if exhausted:
-                # Repeated automatic triggers are not fresh generation budget.
-                # An explicit additional-budget/retry contract belongs to the
-                # logical waiting request, not to ordinary enqueue calls.
-                return deepcopy(_decode(exhausted))
-            count = db.execute("SELECT COUNT(*) FROM generation_jobs WHERE room_id=? AND status IN ('queued','running','validated','retryable_failed')",(room_id,)).fetchone()[0]
-            if count>=16:raise ValueError('当前冒险的续写队列已满')
-            job = Job(id=sid,room_id=room_id,dedup_key=dedup,status='queued',priority=priority,
-                      authorization=auth,budget=budget,dispatches=Dispatches(),created_at=now,next_run_at=now).model_dump(mode='json')
-            db.execute('INSERT INTO generation_jobs VALUES(?,?,?,?,?,?,?)',
-                       (sid,room_id,dedup,'queued',priority,None,json.dumps(job,ensure_ascii=False)))
-            return deepcopy(job)
+                return deepcopy(existing)
+            existing.update(status='stale',error_code='dependency_changed',lease_token=None,lease_until=None,output=None,attempt_stage=None)
+            _save(db,existing)
+        exhausted = db.execute("SELECT * FROM generation_jobs WHERE room_id=? AND dedup_key=? AND status='terminal_failed' ORDER BY rowid DESC LIMIT 1",(room_id,dedup)).fetchone()
+        if exhausted:
+            # Repeated automatic triggers are not fresh generation budget.
+            # An explicit additional-budget/retry contract belongs to the
+            # logical waiting request, not to ordinary enqueue calls.
+            return deepcopy(_decode(exhausted))
+        count = db.execute("SELECT COUNT(*) FROM generation_jobs WHERE room_id=? AND status IN ('queued','running','validated','retryable_failed')",(room_id,)).fetchone()[0]
+        if count>=16:raise ValueError('当前冒险的续写队列已满')
+        job = Job(id=sid,room_id=room_id,dedup_key=dedup,status='queued',priority=priority,
+                  authorization=auth,budget=budget,dispatches=Dispatches(),created_at=now,next_run_at=now).model_dump(mode='json')
+        db.execute('INSERT INTO generation_jobs VALUES(?,?,?,?,?,?,?)',
+                   (sid,room_id,dedup,'queued',priority,None,json.dumps(job,ensure_ascii=False)))
+        return deepcopy(job)
 
     def claim(self,job_id,*,now=None):
         now = float(story_patches._now(now))

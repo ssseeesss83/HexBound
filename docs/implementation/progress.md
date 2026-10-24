@@ -591,3 +591,13 @@ require_lease 只读结果不能直接授权落稿。后续须在同一写事务
 - 前一P07b检查点全量 **921 passed**，包含维护修复，不包含本批13个新专项。
 
 尚无等待与job的原子绑定、失败公开状态、浅层自动预取及持久token实耗。P06 / P07和大版本未完成，未推送，分队语音排除。
+
+## P07d · 等待与任务原子绑定
+
+- 内部bind在同一BEGIN IMMEDIATE内重查领队 / scene / epoch / transition / source，复用同连接enqueue并将job ID写入最新canonical对应场景等待；仅storage版本增加，action_revision、角色、事实、访问及奖励不变。
+- 预取命中仅提升原job优先级，保留原grant、lease和总预算；并发绑定只一任务、一关联、一次存档版本更新。入队或房间写入的任一步SQL故障都会共同回滚，没有嵌套数据库事务。
+- 已有绑定即使被抢占、取消、作废或耗尽也保留原身份；源变化标重新审核，不自动重新授权或改成新job。公开状态只含waiting / retrying / failed / review_required / ready_for_review，不公开job、读集、grant或复审报告。
+- 完成仅使等待可重新审核；取消后的等待不会因有效job迟到完成复活。两场景分别绑定任务，不能猜另一场景等待ID操作或读取其错误状态。
+- schema19保护绑定；18→19完整备份、恢复后同job/预算及旧18拒绝均验收。新专项 **17 passed**；独立requests / jobs / commit **54 passed**，无本批阻断。
+
+本批仍是内部接口，未接自动触发、通知或UI。相同依赖的耗尽任务不会因取消后重建transition而获得新预算；明确追加预算的玩家授权入口仍待实现，不能把当前取消路径称作完整重试功能。P06 / P07及大版本未完成、未推送，分队语音排除。

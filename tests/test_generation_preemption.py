@@ -130,7 +130,7 @@ def test_unknown_historical_dispatches_remain_unknown_after_schema18_upgrade(job
     assert paused['attempts']==1 and paused['dispatches'] is None
     assert asyncio.run(story_generation.run(upgraded,Provider(),job['id'],clock=lambda:103))['status']=='committed'
     assert upgraded.get(job['id'])['dispatches'] is None
-    assert list((tmp_path/'backups').glob('pre-schema-18-*.zip'))
+    assert list((tmp_path/'backups').glob(f'pre-schema-{maintenance.SCHEMA_VERSION}-*.zip'))
     monkeypatch.setattr(maintenance,'SCHEMA_VERSION',17)
     with pytest.raises(ValueError,match='newer server'):Store(service.store.path)
 
