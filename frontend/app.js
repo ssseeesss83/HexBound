@@ -284,7 +284,7 @@ function entryDialog(kind) {
         )
       )
         $("[name=scenario_id]", form).value = requestedScenario;
-      if(create){const scenarioSelect=$('[name=scenario_id]',form);const useScenarioLevel=()=>{const scenario=(catalog.publishedScenarios||[]).find(item=>item.id===scenarioSelect.value);$('[name=starting_level]',form).value=scenario?.starting_level||3;};scenarioSelect.onchange=useScenarioLevel;if(requestedScenario)useScenarioLevel();}
+      if(create){const scenarioSelect=$('[name=scenario_id]',form);if(!requestedScenario&&(catalog.publishedScenarios||[]).some(item=>item.id==='book-homeward-night'))scenarioSelect.value='book-homeward-night';const useScenarioLevel=()=>{const scenario=(catalog.publishedScenarios||[]).find(item=>item.id===scenarioSelect.value);$('[name=starting_level]',form).value=scenario?.starting_level||3;};scenarioSelect.onchange=useScenarioLevel;useScenarioLevel();}
       const showCharacter = () => {
         const c = (catalog.characters || []).find(
           (c) => c.id === characterSelect.value,

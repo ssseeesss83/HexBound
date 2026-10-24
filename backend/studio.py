@@ -66,7 +66,8 @@ def seed_items():
             node["text"] += " 旧绞盘锈死在梯旁，墙上刻着守夜誓言。"
         elif node["id"] == "tower":
             node["text"] += " 灯座中留着被盐壳束住的干燥灯芯。"
-    return [("skill", card) for card in skills] + [("monster", monster), ("scenario", scenario)]
+    from .homeward import book
+    return [("skill", card) for card in skills] + [("monster", monster), ("scenario", scenario), ('scenario', book())]
 
 
 class ContentService:

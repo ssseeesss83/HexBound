@@ -142,7 +142,7 @@ def test_draft_publish_revision_and_history_restore(setup):
     edited = client.put("/api/studio/items/new-check", headers=AUTH, json={"expected_revision": 2, "data": changed}).json()
     assert edited["revision"] == 3 and edited["published"]["name"] == "调查"
     public = client.get("/api/content?tag=调查").json()["items"]
-    assert public[0]["name"] == "调查"
+    assert next(item for item in public if item['id']=='new-check')["name"] == "调查"
     assert client.put("/api/studio/items/new-check", headers=AUTH, json={"expected_revision": 2, "data": changed}).status_code == 409
     history = client.get("/api/studio/items/new-check/history", headers=AUTH).json()["items"]
     assert [row["action"] for row in history] == ["update", "publish", "create"]
