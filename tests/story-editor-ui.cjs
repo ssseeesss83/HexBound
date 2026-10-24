@@ -145,5 +145,35 @@ assert.equal(book.edges[2].legacy_action_id,'ask-boatman');
 const converted=spawnSync(python,['-c',
   'import json,sys; from backend.story_graph import parse_book; parse_book(json.load(sys.stdin))'],{encoding:'utf8',input:JSON.stringify(book),env});
 assert.equal(converted.status,0,converted.stderr);
+const challengeFixture=spawnSync(python,['-c',
+  "import json,runpy,sys; sys.path.insert(0,'tests'); from backend.story_graph import parse_book; print(json.dumps(parse_book(runpy.run_path('tests/test_story_challenges.py')['authored']())))"],{encoding:'utf8',env});
+assert.equal(challengeFixture.status,0,challengeFixture.stderr);
+const authored=JSON.parse(challengeFixture.stdout);
+function renderChallenges(){root.innerHTML=editor.render(authored,{guard:'Guard'});editor.bind(root,authored,redraw=>{if(redraw)renderChallenges();});}
+renderChallenges();
+field('nodes.0.place_id','shared-wharf','input');
+assert.equal(authored.nodes[0].place_id,'shared-wharf');
+field('fact_definitions.1.id','weather-new');
+assert.deepEqual(authored.nodes[0].challenges[0].evidence_fact_ids,['weather-new']);
+field('fact_definitions.0.id','lens-new');
+assert.equal(authored.nodes[0].challenges[0].success_effects[0].ref,'lens-new');
+field('milestones.0.id','recover-new');
+assert.equal(authored.nodes[0].challenges[0].success_effects[1].ref,'recover-new');
+let warned=false;w.alert=()=>warned=true;
+field('nodes.0.place_id','','input');
+assert.equal(authored.nodes[0].place_id,null);
+field('nodes.0.kind','frontier');
+assert(warned && authored.nodes[0].kind==='key' && authored.nodes[0].challenges.length===1,'terminal conversion cannot drop native challenges');
+field('nodes.0.place_id','shared-wharf','input');
+const challengeAccepted=spawnSync(python,['-c',
+  'import json,sys; from backend.story_graph import parse_book; parse_book(json.load(sys.stdin))'],{encoding:'utf8',input:JSON.stringify(authored),env});
+assert.equal(challengeAccepted.status,0,challengeAccepted.stderr);
+// A place-only scene must not become an invalid frontier with an invisible field.
+authored.nodes[0].challenges=[];authored.nodes[0].kind='scene';authored.nodes[0].advancement_condition=null;authored.nodes[0].failure_consequences='';
+authored.edges=authored.edges.filter(edge=>edge.from!==authored.nodes[0].id);
+renderChallenges();warned=false;
+field('nodes.0.kind','frontier');
+assert(warned && authored.nodes[0].kind==='scene' && authored.nodes[0].place_id==='shared-wharf');
+assert(root.querySelector('[data-g-field="nodes.0.place_id"]'),'rejected conversion retains visible place control');
 console.log('Story editor DOM passed: sparse frontier, declaration scope, typed conditions, references, node/edge editing, finite tree and backend acceptance.');
 dom.window.close();

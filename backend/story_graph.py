@@ -97,6 +97,56 @@ class Continuation(StrictModel):
         return self
 
 
+class StoryEffect(StrictModel):
+    op: Literal['set_fact', 'milestone_state', 'event_occurred']
+    ref: Identifier
+    value: Value | None = None
+    state: Literal['achieved', 'failed', 'bypassed'] | None = None
+
+    @model_validator(mode='after')
+    def shape(self):
+        if (self.op == 'set_fact') != (self.value is not None):
+            raise ValueError('只有事实赋值必须带 value')
+        if (self.op == 'milestone_state') != (self.state is not None):
+            raise ValueError('只有里程碑变化必须带 state')
+        if isinstance(self.value, str) and len(self.value) > 500:
+            raise ValueError('事实值过长')
+        return self
+
+
+class StoryChallenge(StrictModel):
+    id: Identifier
+    objective_key: Identifier
+    question_id: Identifier
+    label: str = Field(min_length=1, max_length=100)
+    description: str = Field(default='', max_length=1500)
+    executor_ref: Literal['ability_check'] = 'ability_check'
+    skill_ids: list[Identifier] = Field(min_length=1, max_length=18)
+    dc: int = Field(ge=5, le=30)
+    attempt_scope: Literal['party', 'individual'] = 'party'
+    repeat_policy: Literal['once_per_evidence'] = 'once_per_evidence'
+    evidence_fact_ids: list[Identifier] = Field(default_factory=list, max_length=20)
+    condition: Condition | None = None
+    success_effects: list[StoryEffect] = Field(default_factory=list, max_length=20)
+    failure_effects: list[StoryEffect] = Field(default_factory=list, max_length=20)
+    success_text: str = Field(min_length=1, max_length=2000)
+    failure_text: str = Field(min_length=1, max_length=2000)
+
+    @model_validator(mode='after')
+    def choices(self):
+        from .compendium import SKILL_NAMES_ZH
+        if len(set(self.skill_ids)) != len(self.skill_ids) or set(self.skill_ids) - set(SKILL_NAMES_ZH):
+            raise ValueError('剧情挑战只能选择不重复的标准技能')
+        if len(set(self.evidence_fact_ids)) != len(self.evidence_fact_ids):
+            raise ValueError('相关证据引用不能重复')
+        for effects in [self.success_effects, self.failure_effects]:
+            if len({(row.op,row.ref) for row in effects}) != len(effects):
+                raise ValueError('同一结果不能重复修改相同目标')
+            if set(self.evidence_fact_ids) & {row.ref for row in effects if row.op == 'set_fact'}:
+                raise ValueError('挑战不能修改自己的重试证据')
+        return self
+
+
 class StoryNode(StrictModel):
     id: Identifier
     kind: Literal['key', 'scene', 'frontier', 'ending']
@@ -104,6 +154,7 @@ class StoryNode(StrictModel):
     text: str = Field(default='', max_length=5000)
     objective: str = Field(default='', max_length=300)
     main_path: bool = False
+    place_id: Identifier | None = None
     monster_ids: list[Identifier] = Field(default_factory=list, max_length=6)
     objects: list[SceneObject] = Field(default_factory=list, max_length=20)
     advancement_condition: Condition | None = None
@@ -112,6 +163,7 @@ class StoryNode(StrictModel):
     continuation: Continuation | None = None
     # Source provenance for migrated routes, never executed by this module.
     legacy_actions: list[NodeAction] = Field(default_factory=list, max_length=12)
+    challenges: list[StoryChallenge] = Field(default_factory=list, max_length=20)
 
     @model_validator(mode='after')
     def roles(self):
@@ -119,14 +171,18 @@ class StoryNode(StrictModel):
             raise ValueError('节点的怪兽或对象引用不能重复')
         if len({a.id for a in self.legacy_actions}) != len(self.legacy_actions):
             raise ValueError('节点内旧行动 ID 不能重复')
+        if len({row.id for row in self.challenges}) != len(self.challenges):
+            raise ValueError('节点内挑战 ID 不能重复')
         if self.kind != 'frontier' and not self.text:
             raise ValueError('可玩节点与结局需要正文')
         if (self.kind == 'frontier') != (self.continuation is not None):
             raise ValueError('只有 frontier 必须携带完整续写契约')
         if self.kind == 'frontier' and self.objects:
             raise ValueError('续写出口不能含环境对象')
-        if self.kind in {'frontier', 'ending'} and (self.monster_ids or self.legacy_actions):
+        if self.kind in {'frontier', 'ending'} and (self.monster_ids or self.legacy_actions or self.challenges):
             raise ValueError('末端节点不能含遭遇或旧行动')
+        if self.kind == 'frontier' and self.place_id is not None:
+            raise ValueError('续写占位不能冒充已存在地点')
         if self.kind == 'key' and (self.advancement_condition is None or not self.objective or not self.failure_consequences):
             raise ValueError('关键节点需要冲突目标、推进条件与失败后果')
         if self.kind != 'key' and (self.advancement_condition is not None or self.failure_consequences):
@@ -229,6 +285,8 @@ def graph_issues(book):
     goals = unique(book['npc_goals'], 'NPC目标', 'id')
     monsters = unique(book['monster_ids'], '怪兽')
     skills = unique(book['skill_ids'], '技能')
+    unique([row['id'] for node in book['nodes'] for row in node['challenges']], '剧情挑战')
+    objectives = {}
     if book['entry_node_id'] not in nodes or nodes[book['entry_node_id']]['kind'] in {'frontier', 'ending'}:
         issues.append('入口必须是存在的可玩节点')
     def condition(expr, location):
@@ -266,6 +324,31 @@ def graph_issues(book):
             issues.append(f'节点 {node["id"]} 怪兽不在剧本依赖中')
         condition(node['advancement_condition'], node['id'])
         condition(node['ending_condition'], node['id'])
+        for challenge in node['challenges']:
+            location = node['id'] + '/' + challenge['id']
+            condition(challenge['condition'], location)
+            if set(challenge['evidence_fact_ids']) - set(tables['fact_equals']):
+                issues.append(f'挑战 {location} 的相关证据有悬空引用')
+            for effects in [challenge['success_effects'],challenge['failure_effects']]:
+                for effect in effects:
+                    ref = effect['ref']
+                    if effect['op'] == 'set_fact':
+                        definition = tables['fact_equals'].get(ref)
+                        if not definition or not definition['mutable']:
+                            issues.append(f'挑战 {location} 不能改写此事实：{ref}')
+                        elif type(effect['value']) is not {'boolean':bool,'integer':int,'string':str}[definition['value_type']]:
+                            issues.append(f'挑战 {location} 事实赋值类型不匹配：{ref}')
+                    elif ref not in tables['milestone_state' if effect['op']=='milestone_state' else 'event_occurred']:
+                        issues.append(f'挑战 {location} 的结果有悬空引用：{ref}')
+            objective = (node['place_id'] or 'place:' + book['id'] + ':' + node['id'],challenge['objective_key'],challenge['question_id'])
+            mechanics = {key:challenge[key] for key in ['executor_ref','dc','attempt_scope','repeat_policy']}
+            for key in ['skill_ids','evidence_fact_ids']:
+                mechanics[key] = sorted(challenge[key])
+            for key in ['success_effects','failure_effects']:
+                mechanics[key] = sorted(challenge[key], key=lambda row:(row['op'],row['ref']))
+            previous = objectives.setdefault(objective, mechanics)
+            if previous != mechanics:
+                issues.append(f'挑战 {location} 为同一地点目标声明了矛盾规则')
         for action in node['legacy_actions']:
             if action['skill_id'] and action['skill_id'] not in skills:
                 issues.append(f'节点 {node["id"]} 旧技能不在依赖中')

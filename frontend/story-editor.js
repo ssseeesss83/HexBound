@@ -96,7 +96,8 @@
     let body = `<div class="field-grid">${field('节点名称',`${path}.title`,node.title)}${field('节点 ID',`${path}.id`,node.id)}${select('节点类型',`${path}.kind`,node.kind,kinds)}${field('主路径标记',`${path}.main_path`,node.main_path,'checkbox')}</div>${area('场景正文',`${path}.text`,node.text)}${field('冲突 / 当前目标',`${path}.objective`,node.objective)}`;
     if (node.kind==='key') body += area('失败后果',`${path}.failure_consequences`,node.failure_consequences)+`<h4>推进条件</h4>${condition(book,node.advancement_condition,`${path}.advancement_condition`)}`;
     if (node.kind==='ending') body += `<h4>结局适用条件</h4>${condition(book,node.ending_condition,`${path}.ending_condition`)}`;
-    if (['key','scene'].includes(node.kind)) body += choices('预设怪兽卡',`${path}.monster_ids`,node.monster_ids,monsters);
+    if (['key','scene'].includes(node.kind)) body += field('地点身份 · 同一地点可共用',`${path}.place_id`,node.place_id||'')+choices('预设怪兽卡',`${path}.monster_ids`,node.monster_ids,monsters);
+    if (node.challenges?.length) body += `<p class="helper">保留 ${node.challenges.length} 项原生挑战：${node.challenges.map(row=>esc(row.label)).join('、')}。当前可在原始数据区编辑规则与结果。</p>`;
     if (node.objects?.length) body += `<p class="helper">保留 ${node.objects.length} 个环境对象：${node.objects.map(obj=>esc(obj.name)).join('、')}。可在原始数据区编辑详情。</p>`;
     if (node.kind==='frontier') {
       const c = node.continuation || {};
@@ -139,6 +140,12 @@
       book.edges.forEach(edge=>walk(edge.condition));
       book.nodes.forEach(node=>{
         walk(node.advancement_condition);walk(node.ending_condition);
+        for(const challenge of node.challenges||[]) {
+          walk(challenge.condition);
+          if(collection==='fact_definitions')challenge.evidence_fact_ids=(challenge.evidence_fact_ids||[]).map(id=>id===before?after:id);
+          const effectOp={fact_definitions:'set_fact',milestones:'milestone_state'}[collection];
+          for(const effect of [...(challenge.success_effects||[]),...(challenge.failure_effects||[])])if(effect.op===effectOp&&effect.ref===before)effect.ref=after;
+        }
         const key={fact_definitions:'confirmed_fact_ids',milestones:'candidate_milestone_ids',npc_goals:'npc_goal_ids'}[collection];
         if(node.continuation&&key)node.continuation[key]=node.continuation[key].map(id=>id===before?after:id);
       });
@@ -172,10 +179,11 @@
         const fact=book.fact_definitions.find(row=>row.id===expression.ref);
         value=fact?.value_type==='boolean'?input.value==='true':fact?.value_type==='integer'?Number(input.value):input.value;
       }
-      if(path.endsWith('.fallback_scene_id'))value=value||null;
+      if(path.endsWith('.fallback_scene_id')||path.endsWith('.place_id'))value=value||null;
       if(path.endsWith('.kind')&&path.startsWith('nodes.')) {
         const node=get(book,path.split('.').slice(0,-1).join('.'));
-        if(['frontier','ending'].includes(value)&&(node.objects?.length||node.legacy_actions?.length||book.edges.some(e=>e.from===node.id))) {
+        if(value==='frontier'&&node.place_id){window.alert('请先清除地点身份，再将场景改为续写占位。');input.value=before;return;}
+        if(['frontier','ending'].includes(value)&&(node.objects?.length||node.legacy_actions?.length||node.challenges?.length||book.edges.some(e=>e.from===node.id))) {
           window.alert('请先移除遭遇、对象和旧行动连接，再改为末端节点。');input.value=before;return;
         }
         if(['frontier','ending'].includes(value)&&node.monster_ids?.length){window.alert('请先移除此节点的怪兽。');input.value=before;return;}
