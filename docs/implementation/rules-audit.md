@@ -124,3 +124,5 @@ p64完整穿脱段及四类时间保存到现有护甲分类的timing_reference�
 tools/audit_magic_bonus_variants.py核五类15条+1/+2/+3变体，先从来源header独立解析稀有度与数值，再核派生正文及类型 / 名称 / 来源归属。完整母项原文、明确bonus选择、source_text_kind与未执行标记保留；39处补注释，既有数值与正文无需修改。Shield延续既有完整来源门禁，Armor不同稀有度表不套错，Wand不加豁免DC。其余111变体与装备效果执行继续待验收。
 
 tools/audit_magic_consumable_variants.py独立消费四药水、十卷轴官方选择行，校验14变体112字段。卷轴child原uninterrupted条件反转与缺抄录段已更正，保留职业表、材料成分豁免、正常时间、被打断不损失、高阶检定失败消失、Wizard Arcana检定及无论成功失败销毁。药水恢复量与正文无差异；选择参数保留为reference，不宣称已接施法、治疗或消耗执行。
+
+tools/audit_magic_giant_variants.py按两张原表核十二腰带 / 药水变体，Stone/Frost共享行双映射、不同稀有度、完整力量不降低条件与药水1小时均保留。36缺派生说明 / 引用补齐、两处多余冠词清理；数值无需改动。未接Strength或计时执行。

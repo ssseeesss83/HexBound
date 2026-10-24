@@ -23304,6 +23304,780 @@
         "status": "reference_pending_execution",
         "runtime_verified": false
       }
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-hill-desc",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-hill"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "desc"
+      ],
+      "expected": [
+        "Wondrous item, rare (requires attunement)",
+        "While wearing this belt, your Strength score changes to a 21. If your Strength is already equal to or greater than the belt's score, the item has no Effect on you."
+      ],
+      "value": [
+        "Wondrous item, rare (requires attunement)",
+        "While wearing this belt, your Strength score changes to 21. If your Strength is already equal to or greater than the belt's score, the item has no effect on you."
+      ]
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-hill-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-hill"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/belt-of-giant-strength"
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-hill-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-hill"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-hill-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-hill"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "belt-of-giant-strength",
+        "selection_row": "Hill giant 21 Rare",
+        "selection": {
+          "giant_type": "hill",
+          "strength_score": 21,
+          "duration_wording": null
+        },
+        "complete_parent_text": "Wondrous item, rarity varies (requires attunement)\nWhile wearing this belt, your Strength score changes\nto a score granted by the belt. If your Strength is\nalready equal to or greater than the belt’s score, the\nitem has no effect on you.\nSix varieties of this belt exist, corresponding with\nand having rarity according to the six kinds of true\ngiants. The belt of stone giant strength and the belt of\nfrost giant strength look different, but they have the\nsame effect.\nType Strength Rarity\nHill giant 21 Rare\nStone/frost giant 23 Very rare\nFire giant 25 Very rare\nCloud giant 27 Legendary\nStorm giant 29 Legendary",
+        "printed_pages": [
+          211
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-stone-desc",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-stone"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "desc"
+      ],
+      "expected": [
+        "Wondrous item, very rare (requires attunement)",
+        "While wearing this belt, your Strength score changes to a 23. If your Strength is already equal to or greater than the belt's score, the item has no Effect on you."
+      ],
+      "value": [
+        "Wondrous item, very rare (requires attunement)",
+        "While wearing this belt, your Strength score changes to 23. If your Strength is already equal to or greater than the belt's score, the item has no effect on you."
+      ]
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-stone-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-stone"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/belt-of-giant-strength"
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-stone-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-stone"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-stone-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-stone"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "belt-of-giant-strength",
+        "selection_row": "Stone/frost giant 23 Very rare",
+        "selection": {
+          "giant_type": "stone",
+          "strength_score": 23,
+          "duration_wording": null
+        },
+        "complete_parent_text": "Wondrous item, rarity varies (requires attunement)\nWhile wearing this belt, your Strength score changes\nto a score granted by the belt. If your Strength is\nalready equal to or greater than the belt’s score, the\nitem has no effect on you.\nSix varieties of this belt exist, corresponding with\nand having rarity according to the six kinds of true\ngiants. The belt of stone giant strength and the belt of\nfrost giant strength look different, but they have the\nsame effect.\nType Strength Rarity\nHill giant 21 Rare\nStone/frost giant 23 Very rare\nFire giant 25 Very rare\nCloud giant 27 Legendary\nStorm giant 29 Legendary",
+        "printed_pages": [
+          211
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-frost-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-frost"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/belt-of-giant-strength"
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-frost-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-frost"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-frost-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-frost"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "belt-of-giant-strength",
+        "selection_row": "Stone/frost giant 23 Very rare",
+        "selection": {
+          "giant_type": "frost",
+          "strength_score": 23,
+          "duration_wording": null
+        },
+        "complete_parent_text": "Wondrous item, rarity varies (requires attunement)\nWhile wearing this belt, your Strength score changes\nto a score granted by the belt. If your Strength is\nalready equal to or greater than the belt’s score, the\nitem has no effect on you.\nSix varieties of this belt exist, corresponding with\nand having rarity according to the six kinds of true\ngiants. The belt of stone giant strength and the belt of\nfrost giant strength look different, but they have the\nsame effect.\nType Strength Rarity\nHill giant 21 Rare\nStone/frost giant 23 Very rare\nFire giant 25 Very rare\nCloud giant 27 Legendary\nStorm giant 29 Legendary",
+        "printed_pages": [
+          211
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-fire-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-fire"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/belt-of-giant-strength"
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-fire-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-fire"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-fire-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-fire"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "belt-of-giant-strength",
+        "selection_row": "Fire giant 25 Very rare",
+        "selection": {
+          "giant_type": "fire",
+          "strength_score": 25,
+          "duration_wording": null
+        },
+        "complete_parent_text": "Wondrous item, rarity varies (requires attunement)\nWhile wearing this belt, your Strength score changes\nto a score granted by the belt. If your Strength is\nalready equal to or greater than the belt’s score, the\nitem has no effect on you.\nSix varieties of this belt exist, corresponding with\nand having rarity according to the six kinds of true\ngiants. The belt of stone giant strength and the belt of\nfrost giant strength look different, but they have the\nsame effect.\nType Strength Rarity\nHill giant 21 Rare\nStone/frost giant 23 Very rare\nFire giant 25 Very rare\nCloud giant 27 Legendary\nStorm giant 29 Legendary",
+        "printed_pages": [
+          211
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-cloud-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-cloud"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/belt-of-giant-strength"
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-cloud-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-cloud"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-cloud-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-cloud"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "belt-of-giant-strength",
+        "selection_row": "Cloud giant 27 Legendary",
+        "selection": {
+          "giant_type": "cloud",
+          "strength_score": 27,
+          "duration_wording": null
+        },
+        "complete_parent_text": "Wondrous item, rarity varies (requires attunement)\nWhile wearing this belt, your Strength score changes\nto a score granted by the belt. If your Strength is\nalready equal to or greater than the belt’s score, the\nitem has no effect on you.\nSix varieties of this belt exist, corresponding with\nand having rarity according to the six kinds of true\ngiants. The belt of stone giant strength and the belt of\nfrost giant strength look different, but they have the\nsame effect.\nType Strength Rarity\nHill giant 21 Rare\nStone/frost giant 23 Very rare\nFire giant 25 Very rare\nCloud giant 27 Legendary\nStorm giant 29 Legendary",
+        "printed_pages": [
+          211
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-storm-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-storm"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/belt-of-giant-strength"
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-storm-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-storm"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-giant-belt-of-giant-strength-storm-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "belt-of-giant-strength-storm"
+      ],
+      "page": 211,
+      "heading": "Belt of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "belt-of-giant-strength",
+        "selection_row": "Storm giant 29 Legendary",
+        "selection": {
+          "giant_type": "storm",
+          "strength_score": 29,
+          "duration_wording": null
+        },
+        "complete_parent_text": "Wondrous item, rarity varies (requires attunement)\nWhile wearing this belt, your Strength score changes\nto a score granted by the belt. If your Strength is\nalready equal to or greater than the belt’s score, the\nitem has no effect on you.\nSix varieties of this belt exist, corresponding with\nand having rarity according to the six kinds of true\ngiants. The belt of stone giant strength and the belt of\nfrost giant strength look different, but they have the\nsame effect.\nType Strength Rarity\nHill giant 21 Rare\nStone/frost giant 23 Very rare\nFire giant 25 Very rare\nCloud giant 27 Legendary\nStorm giant 29 Legendary",
+        "printed_pages": [
+          211
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-giant-potion-of-giant-strength-hill-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-giant-strength-hill"
+      ],
+      "page": 234,
+      "heading": "Potion of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/potion-of-giant-strength"
+    },
+    {
+      "id": "official-magic-giant-potion-of-giant-strength-hill-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-giant-strength-hill"
+      ],
+      "page": 234,
+      "heading": "Potion of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-giant-potion-of-giant-strength-hill-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-giant-strength-hill"
+      ],
+      "page": 234,
+      "heading": "Potion of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "potion-of-giant-strength",
+        "selection_row": "Hill giant 21 Uncommon",
+        "selection": {
+          "giant_type": "hill",
+          "strength_score": 21,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, rarity varies\nWhen you drink this potion, your Strength score\nchanges for 1 hour. The type of giant determines the\nscore (see the table below). The potion has no effect\non you if your Strength is equal to or greater than\nthat score.\nThis potion’s transparent liquid has floating in it a\nsliver of fingernail from a giant of the appropriate\ntype. The potion of frost giant strength and the potion\nof stone giant strength have the same effect.\nType of Giant Strength Rarity\nHill giant 21 Uncommon\nFrost/stone giant 23 Rare\nFire giant 25 Rare\nCloud giant 27 Very rare\nStorm giant 29 Legendary",
+        "printed_pages": [
+          234
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-giant-potion-of-giant-strength-frost-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-giant-strength-frost"
+      ],
+      "page": 234,
+      "heading": "Potion of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/potion-of-giant-strength"
+    },
+    {
+      "id": "official-magic-giant-potion-of-giant-strength-frost-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-giant-strength-frost"
+      ],
+      "page": 234,
+      "heading": "Potion of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-giant-potion-of-giant-strength-frost-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-giant-strength-frost"
+      ],
+      "page": 234,
+      "heading": "Potion of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "potion-of-giant-strength",
+        "selection_row": "Frost/stone giant 23 Rare",
+        "selection": {
+          "giant_type": "frost",
+          "strength_score": 23,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, rarity varies\nWhen you drink this potion, your Strength score\nchanges for 1 hour. The type of giant determines the\nscore (see the table below). The potion has no effect\non you if your Strength is equal to or greater than\nthat score.\nThis potion’s transparent liquid has floating in it a\nsliver of fingernail from a giant of the appropriate\ntype. The potion of frost giant strength and the potion\nof stone giant strength have the same effect.\nType of Giant Strength Rarity\nHill giant 21 Uncommon\nFrost/stone giant 23 Rare\nFire giant 25 Rare\nCloud giant 27 Very rare\nStorm giant 29 Legendary",
+        "printed_pages": [
+          234
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-giant-potion-of-giant-strength-stone-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-giant-strength-stone"
+      ],
+      "page": 234,
+      "heading": "Potion of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/potion-of-giant-strength"
+    },
+    {
+      "id": "official-magic-giant-potion-of-giant-strength-stone-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-giant-strength-stone"
+      ],
+      "page": 234,
+      "heading": "Potion of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-giant-potion-of-giant-strength-stone-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-giant-strength-stone"
+      ],
+      "page": 234,
+      "heading": "Potion of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "potion-of-giant-strength",
+        "selection_row": "Frost/stone giant 23 Rare",
+        "selection": {
+          "giant_type": "stone",
+          "strength_score": 23,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, rarity varies\nWhen you drink this potion, your Strength score\nchanges for 1 hour. The type of giant determines the\nscore (see the table below). The potion has no effect\non you if your Strength is equal to or greater than\nthat score.\nThis potion’s transparent liquid has floating in it a\nsliver of fingernail from a giant of the appropriate\ntype. The potion of frost giant strength and the potion\nof stone giant strength have the same effect.\nType of Giant Strength Rarity\nHill giant 21 Uncommon\nFrost/stone giant 23 Rare\nFire giant 25 Rare\nCloud giant 27 Very rare\nStorm giant 29 Legendary",
+        "printed_pages": [
+          234
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-giant-potion-of-giant-strength-fire-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-giant-strength-fire"
+      ],
+      "page": 234,
+      "heading": "Potion of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/potion-of-giant-strength"
+    },
+    {
+      "id": "official-magic-giant-potion-of-giant-strength-fire-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-giant-strength-fire"
+      ],
+      "page": 234,
+      "heading": "Potion of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-giant-potion-of-giant-strength-fire-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-giant-strength-fire"
+      ],
+      "page": 234,
+      "heading": "Potion of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "potion-of-giant-strength",
+        "selection_row": "Fire giant 25 Rare",
+        "selection": {
+          "giant_type": "fire",
+          "strength_score": 25,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, rarity varies\nWhen you drink this potion, your Strength score\nchanges for 1 hour. The type of giant determines the\nscore (see the table below). The potion has no effect\non you if your Strength is equal to or greater than\nthat score.\nThis potion’s transparent liquid has floating in it a\nsliver of fingernail from a giant of the appropriate\ntype. The potion of frost giant strength and the potion\nof stone giant strength have the same effect.\nType of Giant Strength Rarity\nHill giant 21 Uncommon\nFrost/stone giant 23 Rare\nFire giant 25 Rare\nCloud giant 27 Very rare\nStorm giant 29 Legendary",
+        "printed_pages": [
+          234
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-giant-potion-of-giant-strength-cloud-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-giant-strength-cloud"
+      ],
+      "page": 234,
+      "heading": "Potion of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/potion-of-giant-strength"
+    },
+    {
+      "id": "official-magic-giant-potion-of-giant-strength-cloud-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-giant-strength-cloud"
+      ],
+      "page": 234,
+      "heading": "Potion of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-giant-potion-of-giant-strength-cloud-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-giant-strength-cloud"
+      ],
+      "page": 234,
+      "heading": "Potion of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "potion-of-giant-strength",
+        "selection_row": "Cloud giant 27 Very rare",
+        "selection": {
+          "giant_type": "cloud",
+          "strength_score": 27,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, rarity varies\nWhen you drink this potion, your Strength score\nchanges for 1 hour. The type of giant determines the\nscore (see the table below). The potion has no effect\non you if your Strength is equal to or greater than\nthat score.\nThis potion’s transparent liquid has floating in it a\nsliver of fingernail from a giant of the appropriate\ntype. The potion of frost giant strength and the potion\nof stone giant strength have the same effect.\nType of Giant Strength Rarity\nHill giant 21 Uncommon\nFrost/stone giant 23 Rare\nFire giant 25 Rare\nCloud giant 27 Very rare\nStorm giant 29 Legendary",
+        "printed_pages": [
+          234
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
+    },
+    {
+      "id": "official-magic-giant-potion-of-giant-strength-storm-derived_from",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-giant-strength-storm"
+      ],
+      "page": 234,
+      "heading": "Potion of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "derived_from"
+      ],
+      "expected": null,
+      "value": "magic-items/potion-of-giant-strength"
+    },
+    {
+      "id": "official-magic-giant-potion-of-giant-strength-storm-source_text_kind",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-giant-strength-storm"
+      ],
+      "page": 234,
+      "heading": "Potion of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "source_text_kind"
+      ],
+      "expected": null,
+      "value": "derived_table_variant"
+    },
+    {
+      "id": "official-magic-giant-potion-of-giant-strength-storm-official_variant_reference",
+      "kind": "magic-items",
+      "records": [
+        "potion-of-giant-strength-storm"
+      ],
+      "page": 234,
+      "heading": "Potion of Giant Strength",
+      "operation": "set_field",
+      "path": [
+        "official_variant_reference"
+      ],
+      "expected": null,
+      "value": {
+        "parent_id": "potion-of-giant-strength",
+        "selection_row": "Storm giant 29 Legendary",
+        "selection": {
+          "giant_type": "storm",
+          "strength_score": 29,
+          "duration_wording": "1 hour"
+        },
+        "complete_parent_text": "Potion, rarity varies\nWhen you drink this potion, your Strength score\nchanges for 1 hour. The type of giant determines the\nscore (see the table below). The potion has no effect\non you if your Strength is equal to or greater than\nthat score.\nThis potion’s transparent liquid has floating in it a\nsliver of fingernail from a giant of the appropriate\ntype. The potion of frost giant strength and the potion\nof stone giant strength have the same effect.\nType of Giant Strength Rarity\nHill giant 21 Uncommon\nFrost/stone giant 23 Rare\nFire giant 25 Rare\nCloud giant 27 Very rare\nStorm giant 29 Legendary",
+        "printed_pages": [
+          234
+        ],
+        "source_document_sha256": "2504d2a0abb0a4d491a939be4f17910a2dde0312570ab8d208080225ccf0a1f0",
+        "source_blocks_sha256": "adf5571f35d1f0c3d3d66006aa5bbf2bb748f107cc7b4f739dbaa67eb9f1a0da",
+        "status": "reference_pending_execution",
+        "runtime_verified": false
+      }
     }
   ],
   "record_additions": [
