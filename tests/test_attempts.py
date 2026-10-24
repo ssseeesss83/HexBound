@@ -1,5 +1,7 @@
 """Qualification is about server objectives and evidence, never prose or counters."""
 from copy import deepcopy
+import hashlib
+import json
 
 import pytest
 
@@ -121,3 +123,15 @@ def test_registered_lookup_has_no_model_defined_identity_and_ledger_stays_global
     migrated = scene_storage.unpack(canonical)
     assert attempts.lookup(migrated, 'search', object_id='crate') == search
     assert attempts.inspect(migrated, search, 'new-seat')['status'] == 'exhausted'
+
+
+def test_optional_native_definition_binding_keeps_existing_legacy_digest():
+    spec = challenge()
+    old_definition = spec.model_dump(exclude={'evidence','definition_ref'})
+    old_definition['evidence_keys'] = sorted(spec.evidence)
+    old_digest = hashlib.sha256(json.dumps(old_definition,sort_keys=True,ensure_ascii=False,
+        separators=(',',':'),allow_nan=False).encode()).hexdigest()
+    state = {}
+    settled(state,spec)
+    assert next(iter(state['attempt_ledger'].values()))['definition_digest'] == old_digest
+    assert attempts.inspect(state,spec,'hero')['status']=='exhausted'

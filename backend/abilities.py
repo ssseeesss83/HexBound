@@ -419,6 +419,14 @@ def _check_bonus(state, c, base):
     return base + bonus
 
 
+def reliable_talent(c, skill_id, result):
+    if (_class(c)=='rogue' and c.get('level',1)>=11 and skill_id in c.get('skills',[])
+            and result['selected']<10):
+        result.update(reliable_talent=True,selected=10,total=10+result['modifier'])
+        result['success'] = result['total'] >= result['dc']
+    return result
+
+
 def ability_check(state, c, ability, dc, skill_id=None, *, advantage=False, bonus=0):
     """Apply training only for an explicit skill, retaining authored ability variants."""
     from .characters import SKILL_ABILITIES, skill_bonus
@@ -436,7 +444,7 @@ def ability_check(state, c, ability, dc, skill_id=None, *, advantage=False, bonu
                          advantage=advantage or (ability == 'str' and bool(c.get('rage'))),
                          disadvantage=has_condition(state, c, 'poisoned'))
     result.update(ability=ability, skill_id=skill_id, proficiency_bonus=training, inspiration_bonus=inspiration)
-    return result
+    return reliable_talent(c,skill_id,result)
 
 
 def saving_throw(state, c, ability, dc):

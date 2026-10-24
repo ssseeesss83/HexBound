@@ -374,12 +374,8 @@ def _skill_check(character, skill_id, dc, *, advantage=False):
     bonus = _bonus(character, skill_id)
     result = rules.check(bonus, dc, advantage=advantage)
     # Reliable Talent applies only to a proficient rogue's ability checks.
-    if (character.get("class_id", character.get("class", character.get("template_id"))) == "rogue"
-            and character.get("level", 1) >= 11 and skill_id in character.get("skills", []) and result["selected"] < 10):
-        result["reliable_talent"] = True
-        result["selected"] = 10
-        result["total"] = 10 + bonus
-        result["success"] = result["total"] >= dc
+    from .abilities import reliable_talent
+    reliable_talent(character,skill_id,result)
     result.update(skill=skill_id, ability=SKILL_ABILITIES[skill_id], kind="check")
     return result
 

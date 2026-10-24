@@ -24,6 +24,7 @@ class Challenge(BaseModel):
     attempt_scope: Literal['party', 'individual'] = 'party'
     repeat_policy: Literal['once_per_evidence', 'repeat_with_cost'] = 'once_per_evidence'
     evidence: dict[Identifier, Fact] = Field(min_length=1, max_length=32)
+    definition_ref: Annotated[str, Field(pattern=r'^[0-9a-f]{64}$')] | None = None
     # Positive, authoritative costs must be enforced by the caller's executor.
     retry_cost: dict[Identifier, Annotated[int, Field(strict=True, ge=1)]] = Field(default_factory=dict, max_length=8)
 
@@ -44,7 +45,7 @@ def _digest(value):
 def _keys(challenge, actor):
     if not isinstance(actor, str) or not actor:
         raise ValueError('Attempt needs a server actor identity')
-    definition = challenge.model_dump(exclude={'evidence'})
+    definition = challenge.model_dump(exclude={'evidence'}, exclude_none=True)
     definition['evidence_keys'] = sorted(challenge.evidence)
     owner = actor if challenge.attempt_scope == 'individual' else 'party'
     identity = _digest([challenge.place_id, challenge.challenge_id, challenge.question, owner])
@@ -55,7 +56,11 @@ def inspect(state, challenge, actor):
     """Pure qualification. A previous result is internal, with no knowledge grant."""
     if not isinstance(challenge, Challenge):
         raise ValueError('Only a validated server challenge can qualify attempts')
-    identity, evidence, definition = _keys(challenge, actor)
+    owner = actor
+    if challenge.attempt_scope == 'individual':
+        member = next((row for row in state.get('members', []) if row['id']==actor),None)
+        owner = (member.get('hero_id') or actor) if member else actor
+    identity, evidence, definition = _keys(challenge, owner)
     bucket = state.get('attempt_ledger', {}).get(identity)
     if bucket and bucket['definition_digest'] != definition:
         raise ValueError('Challenge definition changed without a new identity')
@@ -101,7 +106,7 @@ command receipt. This function cannot spend resources or roll dice.
     ledger = state.setdefault('attempt_ledger', {})
     bucket = ledger.setdefault(qualified['identity'], dict(
         definition_digest=qualified['definition_digest'],
-        definition=challenge.model_dump(exclude={'evidence'}), evidence={}))
+        definition=challenge.model_dump(exclude={'evidence'}, exclude_none=True), evidence={}))
     bucket['evidence'][qualified['evidence_digest']] = result
     if success:
         bucket['completed'] = deepcopy(result)
@@ -116,6 +121,11 @@ def lookup(state, action_id, *, object_id=None):
     room revision, changing skills or changing party membership.
     """
     from . import campaign, content, free_actions, world_environment
+    if isinstance(action_id, str) and action_id.startswith('story-check:'):
+        if object_id is not None:
+            raise ValueError('剧情挑战不接受额外物件覆盖')
+        from .story_challenges import definition
+        return definition(state, action_id[len('story-check:'):])
     node_id = state.get('scene_id') or content.scene_for(state)['id']
     place = world_environment.place_id(state, node_id)
     if action_id == 'search':
@@ -194,7 +204,7 @@ def migrate(canonical):
     def consumed(spec, source):
         identity, _, definition = _keys(spec, 'legacy-party')
         bucket = result['attempt_ledger'].setdefault(identity, dict(
-            definition_digest=definition, definition=spec.model_dump(exclude={'evidence'}), evidence={}))
+            definition_digest=definition, definition=spec.model_dump(exclude={'evidence'}, exclude_none=True), evidence={}))
         bucket['legacy_consumed_unknown'] = True
         bucket.setdefault('legacy_sources', []).append(source)
 

@@ -266,6 +266,16 @@ def _preflight(data):
             todo.extend((v, depth, root) for v in value)
 
 
+def challenge_mechanics(challenge):
+    """Stable mechanical definition, independent of aliases and generated jobs."""
+    mechanics = {key:challenge[key] for key in ['executor_ref','dc','attempt_scope','repeat_policy']}
+    for key in ['skill_ids','evidence_fact_ids']:
+        mechanics[key] = sorted(challenge[key])
+    for key in ['success_effects','failure_effects']:
+        mechanics[key] = sorted(challenge[key], key=lambda row:(row['op'],row['ref']))
+    return mechanics
+
+
 def graph_issues(book):
     """No expression evaluation: only types, dependencies and structural exits."""
     issues = []
@@ -341,11 +351,7 @@ def graph_issues(book):
                     elif ref not in tables['milestone_state' if effect['op']=='milestone_state' else 'event_occurred']:
                         issues.append(f'挑战 {location} 的结果有悬空引用：{ref}')
             objective = (node['place_id'] or 'place:' + book['id'] + ':' + node['id'],challenge['objective_key'],challenge['question_id'])
-            mechanics = {key:challenge[key] for key in ['executor_ref','dc','attempt_scope','repeat_policy']}
-            for key in ['skill_ids','evidence_fact_ids']:
-                mechanics[key] = sorted(challenge[key])
-            for key in ['success_effects','failure_effects']:
-                mechanics[key] = sorted(challenge[key], key=lambda row:(row['op'],row['ref']))
+            mechanics = challenge_mechanics(challenge)
             previous = objectives.setdefault(objective, mechanics)
             if previous != mechanics:
                 issues.append(f'挑战 {location} 为同一地点目标声明了矛盾规则')

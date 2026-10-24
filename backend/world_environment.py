@@ -6,18 +6,27 @@ from . import world_state as world
 VIEW_KEYS = ("_object_read_set", "_object_origin_place")
 
 
+def _node_definition(room, node_id):
+    package = (room.get("campaign") or {}).get("package") or room.get("campaign_package") or {}
+    scenario = package.get("scenario", {})
+    nodes = scenario.get('nodes', [])
+    if scenario.get('schema_version') == 2:
+        from .story_runtime import effective_book
+        nodes = effective_book(scenario,(room.get('campaign') or {}).get('runtime_graph'))['book']['nodes']
+    return next((row for row in nodes if row['id']==node_id),{})
+
+
 def place_id(room, node_id):
     package = (room.get("campaign") or {}).get("package") or room.get("campaign_package") or {}
     scenario = package.get("scenario", {})
-    node = next((row for row in scenario.get("nodes", []) if row["id"] == node_id), {})
+    node = _node_definition(room,node_id)
     return node.get("place_id") or "place:" + str(scenario.get("id", "preset")) + ":" + str(node_id)
 
 
 def _definitions(room, node_id, scene=None):
     if scene and scene.get("id") == node_id:
         return scene.get("objects", [])
-    package = (room.get("campaign") or {}).get("package") or room.get("campaign_package") or {}
-    return next((row.get("objects", []) for row in package.get("scenario", {}).get("nodes", []) if row["id"] == node_id), [])
+    return _node_definition(room,node_id).get('objects', [])
 
 
 def _initial(definition, saved=None):

@@ -42,6 +42,16 @@ def snapshot(view, story_state, effects):
     return result
 
 
+def preflight(view, story_state, effects):
+    """Check an outcome without applying or simulating it, including terminal state."""
+    state = runtime.validate_state(view, story_state)
+    values = _effects(view, effects)
+    for effect in values:
+        if effect['op']=='milestone_state' and state['milestones'][effect['ref']]['value'] not in {'pending',effect['state']}:
+            raise ValueError('剧情结果与已结算里程碑冲突')
+    return snapshot(view,state,values)
+
+
 def apply(view, story_state, effects, *, receipt_id, source_ref, success, expected_reads):
     """Return one new state atomically; caller saves it with roll/action receipts.
 
