@@ -136,3 +136,5 @@ tools/audit_magic_bag_variants.py消费三种戏法袋的完整八面表，核24
 tools/audit_magic_scrying_variants.py核共同规则及七选定小节，水晶球Legendary来自明确变体前文；四元素统御戒指共同适用对象保留原文“elementals from the linked plane”，不收窄为同名卡。充能 / 解锁 / 专注例外及范围完整，仅资料签收。
 
 tools/audit_magic_feather_variants.py消费六符记区间与完整小节，修复子项共同single-use漏句；选择已定的GM随机句不用于显示，完整父来源与选定d100行保留。Whip第二段、各限制及结束条件完整，未接效果执行。
+
+tools/audit_magic_figurine_ioun_variants.py核23个完整白名单小节及稀有度，保留嵌套stats / 多子能力 / 尾段和规则例外，184检查零差异。69派生引用及23格式修正；9个profiles恰覆盖126规范变体，无重叠或漏项。尚非逐字段总签收，也不签机械执行。
