@@ -237,7 +237,7 @@ def test_schema14_upgrade_backup_and_wait_recovery_preserve_room(tmp_path,monkey
                    (state['id'],state['invite_code'],state['version'],json.dumps(scene_storage.pack(state))))
         db.execute('PRAGMA user_version=13')
     upgraded = Store(str(path))
-    assert list((tmp_path/'backups').glob('pre-schema-14-*.zip'))
+    assert list((tmp_path/'backups').glob(f'pre-schema-{maintenance.SCHEMA_VERSION}-*.zip'))
     recovered = upgraded.get(state['id'])
     before = deepcopy(recovered)
     routes.request(recovered,'p',routes.prepare(recovered,'p','follow-courier'),transition_id='persisted-wait')

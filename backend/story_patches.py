@@ -112,6 +112,7 @@ def grant(state, actor, frontier_id, *, job_id, now=None, ttl=120):
                 namespace=prefix,author_digest=view['author_digest'],base_graph_revision=view['graph_revision'],
                 package_digest=_hash(state['campaign']['package']),
                 audience=session_scope.audience_key(staged),read_set=reads,
+                member_epochs={m['id']:state.get('member_contexts',{}).get(m['id'],{}).get('epoch',1) for m in state['members']},
                 rejoin_node_ids=[contract['fallback_scene_id']] if contract['fallback_scene_id'] else [],
                 allowed_existing_place_ids=sorted(allowed_places),
                 place_read_set={pid:state.get('world_places',{}).get(pid,{}).get('revision') for pid in sorted(allowed_places)},

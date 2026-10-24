@@ -20,7 +20,8 @@ from zipfile import ZipFile, ZIP_DEFLATED
 # Version 11 protects persisted capability plans and their typed decisions.
 # Version 12 protects global challenge attempts from older reroll semantics.
 # Version 14 protects scene-local transition waits and durable request receipts.
-SCHEMA_VERSION = 14
+# Version 15 protects durable generation jobs and revocable worker leases.
+SCHEMA_VERSION = 15
 BACKUP_FORMAT = "hexbound-backup-v1"
 DATA_ROOT = Path(__file__).parent / "data"
 
