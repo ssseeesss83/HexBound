@@ -1,0 +1,38 @@
+{
+  "model": "deepseek-flash",
+  "max_calls": 2,
+  "calls": 2,
+  "usage": [
+    {
+      "prompt_tokens": 7486,
+      "completion_tokens": 921,
+      "total_tokens": 8407
+    },
+    {
+      "prompt_tokens": 2595,
+      "completion_tokens": 193,
+      "total_tokens": 2788
+    }
+  ],
+  "semantic": [
+    {
+      "verdict": "accept",
+      "reasons": [
+        "候选场景仅提供可调查线索（脚印、拖拽痕迹、双环结绳）与返回旧海关的路线，未声称任何检定已成功或角色行动已发生。",
+        "候选保留三艘归船受困与伊岚拒绝永久守夜的前提，未声称透镜已修复或自动救船。",
+        "候选未复活死者、未推翻既有事实、未预发资源或奖励、未强迫玩家动机；追查为可选支线，不强制进入下一续写。",
+        "新线索（信差双环结与拖拽纸卷痕迹）指向未解问题'谁把伊岚未寄出的信送到海关'，并非既有目标改名或简单搬到下一出口。",
+        "confirmed_fact_ids 仅引用已确认的 customs 事实，未引入新机械能力或未授权怪物。"
+      ],
+      "issues": []
+    }
+  ],
+  "validation": [],
+  "binding_differences": [],
+  "result": "committed",
+  "graph_revision": 1,
+  "cursor_unchanged": true,
+  "entered": true,
+  "rejoined": true,
+  "scope": "Live DeepSeek calls on a disposable Homeward Night room entered via ordinary HTTP; committed without automatic movement; reviewed entry and author rejoin both succeeded. Not a timed human playtest."
+}
