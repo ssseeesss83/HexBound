@@ -9,6 +9,24 @@ from backend import story_generation
 from test_generation_jobs import jobs, enqueue
 
 
+def test_prompt_example_passes_real_graph_review_and_is_detached_from_authority(jobs):
+    service,rid = jobs
+    job = enqueue(jobs)
+    state = service.store.get(rid)
+    auth = job['authorization']
+    original_authorization = deepcopy(auth)
+    before = deepcopy(state)
+    example = story_generation.context(state,auth)['minimal_structure_example']
+    reviewed = story_generation.story_patches.review(state,auth,example,now=101)
+    assert reviewed.job_id == job['id'] and state == before
+    assert example['new_nodes'][0]['kind'] == 'scene' and 'continuation' not in example['new_nodes'][0]
+    assert example['new_nodes'][1]['kind'] == 'frontier' and 'place_id' not in example['new_nodes'][1]
+    example['read_set'].clear()
+    example['new_nodes'][1]['continuation']['summary'] = 'mutated example'
+    assert auth == original_authorization and auth['read_set']
+    assert auth['continuation']['summary'] != 'mutated example'
+
+
 class Provider:
     configured = True
     def __init__(self,mode='valid',hook=None):

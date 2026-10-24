@@ -1,0 +1,115 @@
+{
+  "date": "2026-10-24",
+  "scope": "P11 preparation only; two synthetic worker probes, neither accepted as playable output",
+  "provider": "DeepSeek",
+  "requested_model": "deepseek-flash",
+  "reasoning_effort": "none",
+  "cases": [
+    {
+      "scope": "P11 preparation: one synthetic background worker, not full campaign acceptance",
+      "completion_requests": 1,
+      "prompt_tokens": 6167,
+      "completion_tokens": 1241,
+      "calls": [
+        {
+          "http_status": 200,
+          "finish_reason": "stop"
+        }
+      ],
+      "input_utf8_bytes": 18834,
+      "returned_node_count": 2,
+      "patch_validation_error_type": "ValidationError",
+      "patch_validation_fields": [
+        {
+          "location": [
+            "new_nodes",
+            0
+          ],
+          "type": "value_error"
+        }
+      ],
+      "current_node_unchanged": true,
+      "members_unchanged": true,
+      "graph_revision": 0,
+      "durable_dispatches": {
+        "generation": 1,
+        "semantic": 0
+      },
+      "room_unchanged": true,
+      "case": 1,
+      "status": "terminal_failed",
+      "request_max_tokens": 1600,
+      "max_attempts": 1,
+      "storage": "Disposable synthetic SQLite database; no live room or automatic scheduler",
+      "diagnostic_limitations": [
+        "Only validation field/type captured; exact role error cause was not retained."
+      ]
+    },
+    {
+      "scope": "P11 preparation: one synthetic background worker after role guidance, not full campaign acceptance",
+      "completion_requests": 2,
+      "prompt_tokens": 8888,
+      "completion_tokens": 1109,
+      "calls": [
+        {
+          "http_status": 200,
+          "finish_reason": "stop"
+        },
+        {
+          "http_status": 200,
+          "finish_reason": "stop"
+        }
+      ],
+      "input_utf8_bytes": 27490,
+      "returned_node_count": 2,
+      "contains_example_placeholder": false,
+      "node_roles": [
+        {
+          "kind": "scene",
+          "has_text": true,
+          "has_continuation": false,
+          "has_advancement_condition": false,
+          "has_failure_consequences": false
+        },
+        {
+          "kind": "frontier",
+          "has_text": false,
+          "has_continuation": true,
+          "has_advancement_condition": false,
+          "has_failure_consequences": false
+        }
+      ],
+      "semantic_verdict": "reject",
+      "current_node_unchanged": true,
+      "members_unchanged": true,
+      "graph_revision": 0,
+      "durable_dispatches": {
+        "generation": 1,
+        "semantic": 1
+      },
+      "room_unchanged": true,
+      "case": 2,
+      "status": "terminal_failed",
+      "request_max_tokens": 1600,
+      "max_attempts": 1,
+      "storage": "Disposable synthetic SQLite database; no live room or automatic scheduler",
+      "diagnostic_limitations": [
+        "Semantic reject issues and reasons were not retained; do not infer the rejection cause."
+      ]
+    }
+  ],
+  "session_totals_including_protocol_probes": {
+    "confirmed_completion_requests": 5,
+    "prompt_tokens": 15146,
+    "completion_tokens": 2360,
+    "total_tokens": 17506,
+    "completion_request_reservations": 6,
+    "completion_request_reservation_limit": 12
+  },
+  "limitations": [
+    "No full gameplay, strict-2014-rules, story-quality or multiplayer acceptance follows from these probes.",
+    "The second candidate passed structural review, then independent narrative review rejected it; graph revision stayed zero.",
+    "Only the explicit synthetic fixtures were sent; credential remained in isolated process/session memory.",
+    "No raw prompts, model story text, credentials or provider exception bodies are saved here."
+  ]
+}
