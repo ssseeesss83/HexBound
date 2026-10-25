@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import Annotated, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, model_validator, model_serializer
 
 Identifier = Annotated[str, Field(pattern=r"^[a-zA-Z0-9][a-zA-Z0-9_-]{0,63}$")]
 Dice = Annotated[str, Field(pattern=r"^(?:[1-9]|1[0-9]|20)d(?:4|6|8|10|12|20)$")]
@@ -13,6 +13,30 @@ Ability = Literal["str", "dex", "con", "int", "wis", "cha"]
 
 class StrictModel(BaseModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True, strict=True)
+
+
+class GridPoint(StrictModel):
+    x: int = Field(ge=0, le=19)
+    y: int = Field(ge=0, le=19)
+
+
+class Battlefield(StrictModel):
+    version: Literal['grid-v1'] = 'grid-v1'
+    width: int = Field(default=12, ge=8, le=20)
+    height: int = Field(default=10, ge=8, le=20)
+    walls: list[GridPoint] = Field(default_factory=list, max_length=80)
+    difficult: list[GridPoint] = Field(default_factory=list, max_length=80)
+    mechanic: Literal['none','anchors','storm','drain','crossfire'] = 'none'
+    briefing: str = Field(default='', max_length=1500)
+
+    @model_validator(mode='after')
+    def bounded(self):
+        for cells in [self.walls,self.difficult]:
+            if len({(p.x,p.y) for p in cells})!=len(cells) or any(p.x>=self.width or p.y>=self.height for p in cells):
+                raise ValueError('战场地形坐标重复或越界')
+        if any(p.x<3 or p.x>=self.width-3 for p in self.walls):
+            raise ValueError('两侧出生区不能设置墙体')
+        return self
 
 
 class SceneObject(StrictModel):
@@ -61,6 +85,13 @@ class SkillCard(Card):
 
 
 class MonsterCard(Card):
+    source_id: Identifier | None = None
+    source_note: str = Field(default='', max_length=2000)
+    speed: int = Field(default=30, ge=5, le=80)
+    attack_range: int = Field(default=5, ge=5, le=150)
+    attack_count: int = Field(default=1, ge=1, le=3)
+    damage_type: str = Field(default='bludgeoning', max_length=30)
+    behaviors: list[Literal['pack','poison','web','split','undead','regenerate','drain','breath','charge','skirmish','shield']] = Field(default_factory=list,max_length=6)
     xp: int = Field(default=50, ge=0, le=155000)
     hp: int = Field(ge=1, le=500)
     ac: int = Field(ge=5, le=30)
@@ -89,6 +120,13 @@ class NodeAction(StrictModel):
 
 
 class ScenarioNode(StrictModel):
+    battlefield: Battlefield | None = None
+
+    @model_serializer(mode='wrap')
+    def stable_optional(self, handler):
+        value = handler(self)
+        if self.battlefield is None: value.pop('battlefield',None)
+        return value
     id: Identifier
     title: str = Field(min_length=1, max_length=120)
     text: str = Field(min_length=1, max_length=5000)

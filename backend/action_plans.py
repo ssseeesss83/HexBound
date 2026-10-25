@@ -27,6 +27,7 @@ class Options(BaseModel):
     target_ids: list[Annotated[str, Field(min_length=1, max_length=80)]] = Field(default_factory=list, max_length=12)
     resource_amount: int | None = Field(default=None, ge=1, le=100)
     skill_id: str | None = Field(default=None, max_length=40)
+    destination: dict | None = None
 
 
 def _clock(now):
@@ -68,6 +69,8 @@ def _weapon_target(state, actor, target_id):
         raise ValueError('请选择存活的敌方目标')
     if c.get('position') == 'withdrawn' or target.get('position') == 'withdrawn':
         raise ValueError('目标已撤远，请先移动接近（抽象近战规则）')
+    from . import tactical
+    tactical.target(state,actor,target['id'],tactical.weapon_range(c))
     return target['id']
 
 
@@ -94,7 +97,17 @@ def prepare(state, actor, action_id, target_id=None, options=None, *, now=None):
     route_plan = None
     if opts['skill_id'] is not None and not action_id.startswith('story-check:'):
         raise ValueError('只有原生剧情挑战可选择检定方法')
-    if action_id.startswith('story-route:') or action_id=='story-cancel':
+    if opts['destination'] is not None and action_id!='grid:move':
+        raise ValueError('只有战场移动可以指定目标格')
+    if action_id.startswith('grid:'):
+        from . import tactical
+        if target_id or any(v not in (None,[]) for k,v in opts.items() if k!='destination'):
+            raise ValueError('战场操作不接受额外参数')
+        movement=tactical.prepare(state,actor,action_id,opts['destination'])
+        cap=dict(label=movement['label'],action_cost=movement['action_cost'],description=f"服务器校验路径和占位；移动消耗 {movement['cost']} 尺。")
+        ids=[]; normalized=dict(destination=movement['destination']) if 'destination' in movement else {}
+        executor='tactical'
+    elif action_id.startswith('story-route:') or action_id=='story-cancel':
         from . import story_transitions as routes
         if target_id is not None or any(value not in (None, []) for value in opts.values()):
             raise ValueError('路线只接受当前已登记的选择')
@@ -209,6 +222,9 @@ def prepare(state, actor, action_id, target_id=None, options=None, *, now=None):
         normalized['target_ids'] = ids
         target_id = ids[0] if len(ids) == 1 else None
     visible = {member['id']: member['name'] for member in state['members']}
+    if executor=='abilities':
+        from .tactical import ability_targets
+        ability_targets(state,actor,action_id,ids)
     visible.update({enemy['id']:enemy['name'] for enemy in (state.get('combat') or {}).get('enemies', [])})
     cost = cap.get('action_cost', 'none')
     budget = {}
@@ -299,4 +315,5 @@ def menu(state, actor):
                            targets=targets, action_cost='attack'))
     from .story_challenges import menu as story_menu
     from .story_transitions import menu as route_menu
-    return result + story_menu(state,actor) + route_menu(state,actor)
+    from .tactical import menu as grid_menu
+    return result + story_menu(state,actor) + route_menu(state,actor) + grid_menu(state,actor)

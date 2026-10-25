@@ -333,6 +333,12 @@ def _fallback(state, member_id, intent, policy, skill_id=None):
 
 
 async def propose(dm, state, member_id, intent, policy="balanced", *, skill_id=None):
+    from . import tactical
+    if tactical.board(state):
+        import re
+        move=re.search(r'(?:移动|走|move).*?[（(]?\s*(\d{1,2})\s*[,，、]\s*(\d{1,2})',intent,re.I)
+        if move:
+            return propose_selected(state,member_id,'grid:move',None,dict(destination=dict(x=int(move[1])-1,y=int(move[2])-1)))
     context = build_context(state, member_id, intent, policy, skill_id=skill_id)
     source = "local"
     if dm.configured:
@@ -452,7 +458,10 @@ def resolve(state, member_id, proposal):
     elif decision['kind'] == 'capability':
         from . import abilities
         plan = action_plans.revalidate(state, member_id, proposal['plan'])
-        if plan['executor'] == 'story':
+        if plan['executor'] == 'tactical':
+            from .tactical import resolve as resolve_tactical
+            events.extend(resolve_tactical(state,member_id,plan['action_id'],plan['options']))
+        elif plan['executor'] == 'story':
             from .story_challenges import resolve as resolve_story
             events.extend(resolve_story(state,member_id,plan['story_plan'],receipt_id=proposal['id']))
         elif plan['executor'] in {'story_route','story_cancel'}:

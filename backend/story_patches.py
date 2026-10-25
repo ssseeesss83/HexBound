@@ -180,6 +180,8 @@ def review(state, authorization, raw, *, now=None):
         raise ValueError('模型补丁不属于当前场景')
     prefix = authorization['namespace']
     nodes,edges,new_facts = patch['new_nodes'],patch['new_edges'],patch['new_fact_definitions']
+    if any(n.get('battlefield') for n in nodes):
+        raise ValueError('模型不能创建未由作者登记的战场')
     for rows in [nodes,edges,new_facts]:
         if any(not row['id'].startswith(prefix) for row in rows):
             raise ValueError('新条目必须使用任务专属命名空间')

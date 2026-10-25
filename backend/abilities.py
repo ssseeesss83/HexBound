@@ -242,6 +242,9 @@ def consume_attack_conditions(attacker, target):
 def prepare_enemy_melee(state, enemy, target):
     """Enemies stand/close using the same abstract movement; grapple stops closing."""
     from .free_actions import _grapple
+    from . import tactical
+    if tactical.board(state):
+        return False  # Grid enemies are exclusively handled by the DM controller.
     spent=0
     if has_condition(state,enemy,'prone') and not _grapple(state,enemy):
         spent+=15
@@ -397,6 +400,8 @@ def _selected_targets(state, actor, cap, target_id, options, max_targets):
     legal = {x['id'] for x in cap.get('targets', [])}
     if not set(supplied) <= legal:
         raise ValueError('目标不属于当前合法目标')
+    from .tactical import ability_targets
+    ability_targets(state,actor,cap['id'],supplied)
     return [next(e for e in state['combat']['enemies'] if e['id'] == sid) if cap['target'] == 'enemy' else member(state, sid)['character'] for sid in supplied], supplied
 
 
@@ -458,6 +463,8 @@ def saving_throw(state, c, ability, dc):
 
 
 def _damage_enemy(enemy, amount, damage_type):
+    enemy['last_damage_type']=damage_type
+    if enemy.get('warded'):amount//=2
     immune = enemy.get('damage_immunities', [])
     resist = enemy.get('damage_resistances', [])
     vulnerable = enemy.get('damage_vulnerabilities', [])
@@ -469,6 +476,10 @@ def _damage_enemy(enemy, amount, damage_type):
         amount *= 2
     before = enemy['hp']
     enemy['hp'] = max(0, before - amount)
+    if before>0 and enemy['hp']==0 and 'undead' in enemy.get('behaviors',[]) and damage_type!='radiant' and not enemy.get('undead_used'):
+        enemy['undead_used']=True;enemy['hp']=1
+    if amount and 'split' in enemy.get('behaviors',[]) and damage_type in {'slashing','lightning'} and not enemy.get('split_used') and enemy['hp']>0:
+        enemy['split_used']=True;enemy['hp']=min(enemy.get('max_hp',enemy['hp']),enemy['hp']+3)
     return amount
 
 
@@ -632,6 +643,8 @@ def weapon_attack(state, actor, target_id=None, *, smite=None, unarmed=False, sp
     target = next((e for e in living if e['id'] == target_id), None) if target_id else (living[0] if len(living) == 1 else None)
     if target is None:
         raise ValueError('请选择存活的敌方目标')
+    from . import tactical
+    tactical.target(state,actor,target['id'],tactical.weapon_range(c))
     if c.get('position') == 'withdrawn' or target.get('position') == 'withdrawn':
         raise ValueError('目标已撤远，请先移动接近（抽象近战规则）')
     if spend_action:

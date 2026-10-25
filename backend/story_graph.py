@@ -10,9 +10,9 @@ from copy import deepcopy
 import json
 from typing import Literal
 
-from pydantic import Field, model_validator
+from pydantic import Field, model_validator, model_serializer
 
-from .schemas import Card, Identifier, NodeAction, SceneObject, StrictModel, parse_card
+from .schemas import Card, Identifier, NodeAction, SceneObject, StrictModel, parse_card, Battlefield
 from .rules_identity import RULESET_ID, LEGACY_PACKAGE
 
 MAX_BYTES = 1_000_000
@@ -148,6 +148,13 @@ class StoryChallenge(StrictModel):
 
 
 class StoryNode(StrictModel):
+    battlefield: Battlefield | None = None
+
+    @model_serializer(mode='wrap')
+    def stable_optional(self, handler):
+        value = handler(self)
+        if self.battlefield is None: value.pop('battlefield',None)
+        return value
     id: Identifier
     kind: Literal['key', 'scene', 'frontier', 'ending']
     title: str = Field(min_length=1, max_length=120)
@@ -226,7 +233,7 @@ class StoryBook(Card):
     event_ids: list[Identifier] = Field(default_factory=list, max_length=200)
     ending_constraints: list[str] = Field(default_factory=list, max_length=30)
     skill_ids: list[Identifier] = Field(default_factory=list, max_length=40)
-    monster_ids: list[Identifier] = Field(default_factory=list, max_length=30)
+    monster_ids: list[Identifier] = Field(default_factory=list, max_length=60)
     nodes: list[StoryNode] = Field(min_length=2, max_length=200)
     # A valid v1 book may have 50 * 12 * 2 check exits.
     edges: list[StoryEdge] = Field(max_length=1200)

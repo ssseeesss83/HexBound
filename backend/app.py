@@ -110,6 +110,7 @@ class RetryCommit(Input):
 
 
 class ActionPayload(Input):
+    destination: dict | None = None
     action_id: str = Field(min_length=1, max_length=80)
     target_id: str | None = Field(default=None, max_length=80)
     slot_level: int | None = Field(default=None, ge=1, le=9, strict=True)
@@ -345,6 +346,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
             "progression": state.get("progression", {"mode":"xp","world_minutes":0}),
             "combat_capabilities": abilities.capabilities(state,viewer),
             "route_wait": coordinator.status(state,viewer),
+            "battlefield": __import__('backend.tactical',fromlist=['projection']).projection(state,viewer),
             "route_retry_available": coordinator.can_retry(state,viewer),
             "free_actions": free_actions.context(state,viewer),
             "director_proposals": [director.public_proposal(p,state) for actor,p in state.get("director",{}).get("proposals",{}).items() if actor==viewer],

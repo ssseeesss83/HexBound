@@ -121,6 +121,13 @@ def context(state, actor):
 
 
 def validate(state, actor, decision):
+    from . import tactical
+    if tactical.board(state):
+        rid=decision.get('action_id')
+        if rid in {'move','withdraw','shove-push','topple','search','interact','ignite','extinguish','barricade','hide'}:
+            raise ValueError('战棋场景请用目标格移动或场地装置；尚未登记网格语义的物件动作不可执行')
+        if decision.get('target_id'):
+            tactical.target(state,actor,decision['target_id'],5 if rid!='throw-sand' else 10)
     if decision.get('kind') not in (None, 'free_action'):
         raise ValueError('不是自由行动提案')
     if set(decision) - {'kind','action_id','target_id','object_id','label','text','success_text','failure_text'}:

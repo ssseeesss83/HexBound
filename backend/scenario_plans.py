@@ -76,6 +76,9 @@ def prepare(state, actor, action_id, target_id, options):
         ids = [actor]
     elif target_id is not None:
         raise ValueError('剧情检定与移动不接受客户端目标')
+    from .tactical import target as grid_target
+    for target_actor in ids:
+        if effect in {'attack','heal'}: grid_target(state,actor,target_actor,5)
     cap = deepcopy(cap)
     # Legacy weapon attacks and scenario skills each consume the whole action.
     cap['action_cost'] = 'action' if combat else 'none'

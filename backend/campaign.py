@@ -180,6 +180,8 @@ def _start_combat(state, node, events):
     order = [actor for _, actor in sorted(rolls, key=lambda x: (-x[0], x[1]))]
     state["combat"] = {"active": True, "round": 1, "index": 0, "order": order, "turn_actor_id": order[0], "action_used": False, "dodging": [], "enemies": enemies}
     state["combat"].update(encounter_id=uuid.uuid4().hex, scene_id=state.get("scene_id"), bonus_action_used=False, reactions_used=[])
+    from .tactical import initialize as initialize_board
+    initialize_board(state,node.get('battlefield'))
     bind(state, encounter_id)
     events.append(rules.event("combat", "遭遇开始。行动顺序已经由服务器确定。"))
     _auto(state, events)
@@ -210,6 +212,12 @@ def _auto(state, events):
         actor = c["turn_actor_id"]
         enemy = next((e for e in c["enemies"] if e["id"] == actor), None)
         if enemy:
+            from .tactical import board
+            if board(state):
+                from .enemy_dm import turn
+                turn(state,enemy,events)
+                _step(state)
+                continue
             targets = _conscious(state)
             if enemy["hp"] > 0 and targets:
                 target = targets[secrets.randbelow(len(targets))]
@@ -296,6 +304,8 @@ def _effect_attack(state, member_id, skill, target_id):
     target = next((e for e in living if e["id"] == target_id), None) if target_id else (living[0] if len(living) == 1 else None)
     if target is None:
         raise ValueError("请选择存活的敌方目标")
+    from .tactical import target as grid_target
+    grid_target(state,member_id,target['id'],5)
     ability = skill["ability"] if skill else character["weapon"]["ability"]
     bonus = rules.modifier(character["abilities"][ability]) + (skill.get("bonus", 0) if skill else 0)
     if skill:
@@ -314,6 +324,8 @@ def _effect_heal(state, member_id, skill, target_id):
     if skill["target"] == "self" and target["id"] != member_id:
         raise ValueError("该技能仅能作用于自己")
     tc = target["character"]
+    from .tactical import target as grid_target
+    grid_target(state,member_id,target['id'],5)
     if tc.get("dead") or tc["hp"] >= tc["max_hp"]:
         raise ValueError("目标死亡或无需治疗")
     _spend(state, member_id, skill)
