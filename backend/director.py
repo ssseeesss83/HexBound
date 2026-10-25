@@ -458,7 +458,10 @@ def resolve(state, member_id, proposal):
     elif decision['kind'] == 'capability':
         from . import abilities
         plan = action_plans.revalidate(state, member_id, proposal['plan'])
-        if plan['executor'] == 'tactical':
+        if plan['executor'] == 'puzzle':
+            from .story_puzzles import resolve as resolve_puzzle
+            events.extend(resolve_puzzle(state,member_id,plan['action_id'],plan['puzzle_plan']))
+        elif plan['executor'] == 'tactical':
             from .tactical import resolve as resolve_tactical
             events.extend(resolve_tactical(state,member_id,plan['action_id'],plan['options']))
         elif plan['executor'] == 'story':

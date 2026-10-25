@@ -63,6 +63,7 @@ class Card(StrictModel):
 
 
 class SkillCard(Card):
+    damage_type: str | None = Field(default=None,max_length=30)
     effect: Literal["attack", "heal", "check", "defend"]
     ability: Ability = "str"
     proficiency_skill: Literal["acrobatics","animal-handling","arcana","athletics","deception","history","insight","intimidation","investigation","medicine","nature","perception","performance","persuasion","religion","sleight-of-hand","stealth","survival"] | None = None
@@ -91,7 +92,10 @@ class MonsterCard(Card):
     attack_range: int = Field(default=5, ge=5, le=150)
     attack_count: int = Field(default=1, ge=1, le=3)
     damage_type: str = Field(default='bludgeoning', max_length=30)
-    behaviors: list[Literal['pack','poison','web','split','undead','regenerate','drain','breath','charge','skirmish','shield']] = Field(default_factory=list,max_length=6)
+    behaviors: list[Literal['pack','poison','web','split','undead','regenerate','drain','breath','charge','skirmish','shield','burn']] = Field(default_factory=list,max_length=6)
+    abilities: dict[str,int] = Field(default_factory=dict,max_length=6)
+    damage_resistances: list[str] = Field(default_factory=list,max_length=20)
+    damage_immunities: list[str] = Field(default_factory=list,max_length=20)
     xp: int = Field(default=50, ge=0, le=155000)
     hp: int = Field(ge=1, le=500)
     ac: int = Field(ge=5, le=30)

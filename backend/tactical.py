@@ -93,7 +93,8 @@ def target(state,actor,target_id,reach=5):
 def weapon_range(character):
     weapon=character.get('weapon',{})
     # Existing character weapons are melee adapters unless explicitly ranged.
-    return int(weapon.get('range',30)) if isinstance(weapon.get('range'),int) else 5
+    if type(weapon.get('range')) is int:return weapon['range']
+    return {'长弓':150,'Longbow':150,'短弓':80,'Shortbow':80,'轻弩':80,'Light Crossbow':80}.get(weapon.get('name'),5)
 
 
 def ability_targets(state,actor,action_id,ids):
@@ -103,6 +104,8 @@ def ability_targets(state,actor,action_id,ids):
         from . import abilities
         spell=abilities._spells()[action_id[5:]]
         text=spell.get('range','Touch')
+        area_reach={'burning-hands':15,'thunderwave':15,'cone-of-cold':60,'lightning-bolt':100}
+        if action_id[5:] in area_reach:text=str(area_reach[action_id[5:]])+' feet'
         number=re.search(r'\d+',text)
         reach=int(number.group()) if number else (0 if text=='Self' else 5)
         if text=='Self' and any(id!=actor for id in ids):raise ValueError('该法术只能作用于自己')
@@ -118,6 +121,7 @@ def ability_targets(state,actor,action_id,ids):
         if sid=='lightning-bolt':
             dx,dy=anchor['x']-origin['x'],anchor['y']-origin['y']
             if not (dx or dy):raise ValueError('请选择射线方向')
+            if any(dx*(b['positions'][id]['x']-origin['x'])+dy*(b['positions'][id]['y']-origin['y'])<=0 for id in ids):raise ValueError('闪电束目标须位于同一前向射线')
             if any(abs(dx*(b['positions'][id]['y']-origin['y'])-dy*(b['positions'][id]['x']-origin['x']))>max(abs(dx),abs(dy)) for id in ids):
                 raise ValueError('闪电束目标须在同一条5尺宽射线上')
         if sid in {'burning-hands','cone-of-cold'}:
@@ -151,7 +155,7 @@ def prepare(state,actor,action_id,destination=None):
         reason=abilities._budget_reason(state,actor,'action')
         if reason:raise ValueError(reason)
         switch=next((s for s in b['switches'] if s['id']==action_id[5:] and s['active']),None)
-        if not switch or distance(b['positions'][actor],switch)>5:raise ValueError('需要移动至装置旁5尺内')
+        if not switch or distance(b['positions'][actor],switch)>5 or not visible(b,b['positions'][actor],switch):raise ValueError('需要移动至装置旁5尺内')
         return dict(switch_id=switch['id'],cost=0,action_cost='action',label='关闭场地装置')
     raise ValueError('未知战场操作')
 
@@ -163,11 +167,14 @@ def resolve(state,actor,action_id,options):
         b['positions'][actor]=plan['destination'];state['combat']['movement_spent']=state['combat'].get('movement_spent',0)+plan['cost']
         c=creature(state,actor);c.pop('cover',None)
         c['conditions']=[x for x in c.get('conditions',[]) if x.get('id')!='hidden']
+        for unit in [m['character'] for m in state['members']]+state['combat']['enemies']:
+            unit['conditions']=[x for x in unit.get('conditions',[]) if x.get('id')!='grappled' or x in abilities.active_conditions(state,unit)]
         text=f"移动至 ({plan['destination']['x']+1},{plan['destination']['y']+1})，消耗 {plan['cost']} 尺移动。"
     else:
         next(s for s in b['switches'] if s['id']==plan['switch_id'])['active']=False
         if not any(s['active'] for s in b['switches']):
             for e in state['combat']['enemies']:e['warded']=False
+            b['telegraphs']=[w for w in b['telegraphs'] if w.get('source')!='scene']
         abilities._spend_budget(state,'action');text='关闭场地装置，消耗一个动作；装置不会因刷新恢复。'
     b['revision']+=1
     return [rules.event('movement' if action_id=='grid:move' else 'mechanism',text,actor_id=actor)]
@@ -184,7 +191,10 @@ def projection(state,actor):
     view['ranges']={'attack':weapon_range(creature(state,actor))}
     for cap in abilities.capabilities(state,actor):
         if cap['id'].startswith('cast:'):
-            text=abilities._spells()[cap['id'][5:]].get('range','Touch');number=re.search(r'\d+',text)
+            text=abilities._spells()[cap['id'][5:]].get('range','Touch')
+            area={'burning-hands':15,'thunderwave':15,'cone-of-cold':60,'lightning-bolt':100}
+            if cap['id'][5:] in area:text=str(area[cap['id'][5:]])+' feet'
+            number=re.search(r'\d+',text)
             view['ranges'][cap['id']]=int(number.group()) if number else (0 if text=='Self' else 5)
         elif cap['id'].startswith('feature:'):view['ranges'][cap['id']]=60 if cap['id']=='feature:bardic-inspiration' else 5
     origin=b['positions'].get(actor)

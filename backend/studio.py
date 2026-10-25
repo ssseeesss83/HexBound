@@ -39,6 +39,7 @@ def seed_items():
         {"id": "read-traces", "name": "辨认痕迹", "description": "调查机关、足迹与留下的文字。", "tags": ["探索"], "effect": "check", "ability": "int", "dice": "1d20", "bonus": 0, "dc": 12, "uses": None, "target": "scene"},
         {"id": "steady-voice", "name": "坚定交涉", "description": "用诚实与勇气说服徘徊者。", "tags": ["社交"], "effect": "check", "ability": "cha", "dice": "1d20", "bonus": 0, "dc": 10, "uses": None, "target": "scene"},
         {"id": "take-cover", "name": "谨慎闪避", "description": "专注保护自己，消耗本回合动作。", "tags": ["防御"], "effect": "defend", "ability": "dex", "dice": "1d4", "bonus": 0, "dc": 12, "uses": None, "target": "self"},
+        {"id":"beacon-hammer","name":"航标铜锤","description":"战役配发的近战工具，5尺范围，1d6钝击；消耗一个动作，无次数限制。可应对免疫斩击的泥怪。","effect":"attack","ability":"str","dice":"1d6","damage_type":"bludgeoning","target":"enemy"},
     ]
     monster = {"id": "salt-warden", "name": "盐壳守卫", "description": "忘却了姓名，仍在履行旧日职责的守卫。", "tags": ["雾港", "守卫"], "hp": 12, "ac": 11, "attack_bonus": 2, "damage_dice": "1d4", "damage_bonus": 0, "initiative_bonus": 0}
     def direct(id, label, target):
@@ -67,7 +68,8 @@ def seed_items():
         elif node["id"] == "tower":
             node["text"] += " 灯座中留着被盐壳束住的干燥灯芯。"
     from .homeward import book
-    return [("skill", card) for card in skills] + [("monster", monster), ("scenario", scenario), ('scenario', book())]
+    from . import beacons
+    return [("skill", card) for card in skills] + [("monster", monster), ("scenario", scenario), ('scenario', book())] + [('monster',card) for card in beacons.presets()] + [('scenario',beacons.book())]
 
 
 class ContentService:

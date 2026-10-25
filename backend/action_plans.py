@@ -67,7 +67,8 @@ def _weapon_target(state, actor, target_id):
     target = next((e for e in living if e['id'] == target_id), None) if target_id else (living[0] if len(living) == 1 else None)
     if not target:
         raise ValueError('请选择存活的敌方目标')
-    if c.get('position') == 'withdrawn' or target.get('position') == 'withdrawn':
+    from . import tactical
+    if not tactical.board(state) and (c.get('position') == 'withdrawn' or target.get('position') == 'withdrawn'):
         raise ValueError('目标已撤远，请先移动接近（抽象近战规则）')
     from . import tactical
     tactical.target(state,actor,target['id'],tactical.weapon_range(c))
@@ -95,11 +96,18 @@ def prepare(state, actor, action_id, target_id=None, options=None, *, now=None):
     executor = 'abilities'
     native_plan = None
     route_plan = None
+    puzzle_plan = None
     if opts['skill_id'] is not None and not action_id.startswith('story-check:'):
         raise ValueError('只有原生剧情挑战可选择检定方法')
     if opts['destination'] is not None and action_id!='grid:move':
         raise ValueError('只有战场移动可以指定目标格')
-    if action_id.startswith('grid:'):
+    if action_id.startswith('story-puzzle:'):
+        from . import story_puzzles
+        if target_id or any(v not in (None,[]) for v in opts.values()):raise ValueError('谜题不接受额外参数')
+        puzzle_plan=story_puzzles.prepare(state,actor,action_id)
+        cap=dict(label=puzzle_plan['label'],description='按现场线索选择；正确解法直接成功，错误方案仅首次造成2点擦伤，不会致死。',action_cost='none',party_action=True)
+        ids=[];normalized={};executor='puzzle'
+    elif action_id.startswith('grid:'):
         from . import tactical
         if target_id or any(v not in (None,[]) for k,v in opts.items() if k!='destination'):
             raise ValueError('战场操作不接受额外参数')
@@ -251,6 +259,7 @@ def prepare(state, actor, action_id, target_id=None, options=None, *, now=None):
         result['story_plan'] = native_plan
     if route_plan is not None:
         result['route_plan'] = route_plan
+    if puzzle_plan is not None: result['puzzle_plan']=puzzle_plan
     return result
 
 
@@ -271,6 +280,7 @@ def revalidate(state, actor, plan, *, now=None):
         raise ValueError('剧情检定的相关事实已变化，请重新裁定')
     if current.get('route_plan') != plan.get('route_plan'):
         raise ValueError('路线或等待已变化，请重新审核')
+    if current.get('puzzle_plan')!=plan.get('puzzle_plan'):raise ValueError('谜题状态已变化')
     return deepcopy(plan)
 
 
@@ -316,4 +326,5 @@ def menu(state, actor):
     from .story_challenges import menu as story_menu
     from .story_transitions import menu as route_menu
     from .tactical import menu as grid_menu
-    return result + story_menu(state,actor) + route_menu(state,actor) + grid_menu(state,actor)
+    from .story_puzzles import menu as puzzle_menu
+    return result + story_menu(state,actor) + route_menu(state,actor) + grid_menu(state,actor) + puzzle_menu(state,actor)

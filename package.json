@@ -2,6 +2,7 @@
   "name": "hexbound-ui-tests",
   "private": true,
   "scripts": {
+    "test:tactical": "node tests/tactical-board-ui.cjs",
     "test:ui": "node tests/ui-smoke.cjs",
     "test:studio": "node tests/studio-smoke.cjs",
     "test:accounts": "node tests/account-smoke.cjs",

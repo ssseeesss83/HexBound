@@ -123,7 +123,7 @@ async function main() {
   click(host, "#create");
   assert.equal(host.document.querySelector('[data-mode]'), null, 'one product mode');
   assert.equal(host.document.querySelector('[name=interaction_mode]'), null, 'no interaction policy selector');
-  assert.equal(host.document.querySelector('[name=scenario_id]').value, 'book-homeward-night', 'v0.9 recommends the complete adventure');
+  assert.equal(host.document.querySelector('[name=scenario_id]').value, 'book-eight-beacons', 'v0.10 recommends the tactical campaign');
   fill(host, 'scenario_id', ''); // This legacy regression exercises the classic short story.
   fill(host, "player_name", "灯塔旅人");
   fill(host, "starting_level", "1");

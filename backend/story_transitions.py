@@ -20,6 +20,10 @@ def _guard(state, actor, *, route=True):
     if state.get('status')!='playing' or state.get('completed'):
         raise ValueError('当前不能审核路线')
     leader = state.get('_scene_leader_id',state.get('host_id',state.get('host_member_id')))
+    leader_character = next((m['character'] for m in state['members'] if m['id']==leader),None)
+    if leader_character and leader_character.get('dead'):
+        survivors = campaign._conscious(state)
+        if survivors: leader = survivors[0]['id']
     if actor != leader:
         raise ValueError('只有当前场景领队可以管理路线等待')
     if not route:

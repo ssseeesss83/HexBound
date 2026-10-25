@@ -147,13 +147,36 @@ class StoryChallenge(StrictModel):
         return self
 
 
+class StoryPuzzle(StrictModel):
+    id: Identifier
+    question: str = Field(min_length=1,max_length=1000)
+    choices: dict[Identifier,str] = Field(min_length=2,max_length=5)
+    correct: Identifier
+    solved_fact: Identifier
+    success_text: str = Field(min_length=1,max_length=1500)
+    failure_text: str = Field(min_length=1,max_length=1500)
+
+    @model_validator(mode='after')
+    def answer_exists(self):
+        if self.correct not in self.choices or any(not s or len(s)>120 for s in self.choices.values()):
+            raise ValueError('谜题答案或选项无效')
+        return self
+
+
+class Checkpoint(StrictModel):
+    xp: int = Field(default=0,ge=0,le=20000)
+    rest: bool = False
+
+
 class StoryNode(StrictModel):
     battlefield: Battlefield | None = None
+    puzzles: list[StoryPuzzle] = Field(default_factory=list,max_length=3)
 
     @model_serializer(mode='wrap')
     def stable_optional(self, handler):
         value = handler(self)
         if self.battlefield is None: value.pop('battlefield',None)
+        if not self.puzzles:value.pop('puzzles',None)
         return value
     id: Identifier
     kind: Literal['key', 'scene', 'frontier', 'ending']
@@ -186,7 +209,7 @@ class StoryNode(StrictModel):
             raise ValueError('只有 frontier 必须携带完整续写契约')
         if self.kind == 'frontier' and self.objects:
             raise ValueError('续写出口不能含环境对象')
-        if self.kind in {'frontier', 'ending'} and (self.monster_ids or self.legacy_actions or self.challenges):
+        if self.kind in {'frontier', 'ending'} and (self.monster_ids or self.legacy_actions or self.challenges or self.puzzles or self.battlefield):
             raise ValueError('末端节点不能含遭遇或旧行动')
         if self.kind == 'frontier' and self.place_id is not None:
             raise ValueError('续写占位不能冒充已存在地点')
@@ -220,6 +243,13 @@ class StoryEdge(StrictModel):
 
 
 class StoryBook(Card):
+    checkpoints: dict[Identifier,Checkpoint] = Field(default_factory=dict,max_length=20)
+
+    @model_serializer(mode='wrap')
+    def stable_optional(self,handler):
+        value=handler(self)
+        if not self.checkpoints:value.pop('checkpoints',None)
+        return value
     schema_version: Literal[2]
     ruleset_id: Literal[RULESET_ID]
     rules_package_version: str = Field(min_length=1, max_length=100)
@@ -304,6 +334,10 @@ def graph_issues(book):
     monsters = unique(book['monster_ids'], '怪兽')
     skills = unique(book['skill_ids'], '技能')
     unique([row['id'] for node in book['nodes'] for row in node['challenges']], '剧情挑战')
+    unique([p['id'] for n in book['nodes'] for p in n.get('puzzles',[])],'谜题')
+    for id in book.get('checkpoints',{}):
+        if id not in nodes or nodes[id]['kind']!='scene' or nodes[id]['monster_ids']:
+            issues.append('补给与章节奖励必须绑定无战斗的普通场景')
     objectives = {}
     if book['entry_node_id'] not in nodes or nodes[book['entry_node_id']]['kind'] in {'frontier', 'ending'}:
         issues.append('入口必须是存在的可玩节点')
@@ -338,6 +372,10 @@ def graph_issues(book):
                 issues.append(f'边 {edge["id"]} 重复旧行动出口')
             legacy_edges[key] = edge
     for node in book['nodes']:
+        for puzzle in node.get('puzzles',[]):
+            definition=tables['fact_equals'].get(puzzle['solved_fact'])
+            if not definition or not definition['mutable'] or definition['value_type']!='boolean':
+                issues.append(f"谜题 {puzzle['id']} 需要可变 boolean 事实")
         if set(node['monster_ids']) - monsters:
             issues.append(f'节点 {node["id"]} 怪兽不在剧本依赖中')
         condition(node['advancement_condition'], node['id'])

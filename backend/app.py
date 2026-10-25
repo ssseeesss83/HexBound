@@ -18,7 +18,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 
-from . import content, rules, campaign, characters, abilities, compendium, director, progression, free_actions, character_builds, character_ai
+from . import content, rules, campaign, characters, abilities, compendium, director, progression, free_actions, character_builds, character_ai, tactical
 from .dm import DM,PlayerDM
 from .dm_scheduler import DMScheduler
 from .generation_jobs import GenerationJobs
@@ -164,7 +164,7 @@ class ProposalPayload(Input):
 
 
 def create_app(db_path: str | None = None) -> FastAPI:
-    app = FastAPI(title="HEXBOUND", version="0.9.0")
+    app = FastAPI(title="HEXBOUND", version="0.10.0")
     @app.exception_handler(RequestValidationError)
     async def invalid_request(request: Request, exc: RequestValidationError):
         # Validation responses must never echo passwords or other submitted secrets.
@@ -346,7 +346,7 @@ def create_app(db_path: str | None = None) -> FastAPI:
             "progression": state.get("progression", {"mode":"xp","world_minutes":0}),
             "combat_capabilities": abilities.capabilities(state,viewer),
             "route_wait": coordinator.status(state,viewer),
-            "battlefield": __import__('backend.tactical',fromlist=['projection']).projection(state,viewer),
+            "battlefield": tactical.projection(state,viewer),
             "route_retry_available": coordinator.can_retry(state,viewer),
             "free_actions": free_actions.context(state,viewer),
             "director_proposals": [director.public_proposal(p,state) for actor,p in state.get("director",{}).get("proposals",{}).items() if actor==viewer],
@@ -830,6 +830,8 @@ def create_app(db_path: str | None = None) -> FastAPI:
                         pool = [sid for sid in state["campaign_package"]["scenario"].get("skill_ids",[]) if state["campaign_package"]["skills"][sid]["effect"] != "check"]
                         chosen = player["character"].get("custom_skill_ids")
                         player["character"]["custom_skill_ids"] = pool[:4] if chosen is None else [sid for sid in chosen if sid in pool][:4]
+                        if state['campaign_package']['scenario']['id']=='book-eight-beacons' and 'beacon-hammer' not in player['character']['custom_skill_ids']:
+                            player['character']['custom_skill_ids']=player['character']['custom_skill_ids'][:3]+['beacon-hammer']
                     append_rule_events(state, campaign.start_campaign(state, state["campaign_package"]), member_id)
                     if state.get("completed"):
                         state["status"] = "finished"

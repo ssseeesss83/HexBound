@@ -203,8 +203,14 @@ def active_conditions(state, c):
         if condition.get('id') == 'grappled':
             source_id = condition.get('source')
             source = next((m['character'] for m in state.get('members',[]) if m['id']==source_id),None) or next((e for e in (state.get('combat') or {}).get('enemies',[]) if e['id']==source_id),None)
-            if not source or source.get('hp',0)<=0 or source.get('dead') or source.get('position')=='withdrawn' or c.get('position')=='withdrawn':
-                continue
+            from . import tactical
+            b=tactical.board(state)
+            target_id=next((m['id'] for m in state.get('members',[]) if m['character'] is c),None) or next((e['id'] for e in (state.get('combat') or {}).get('enemies',[]) if e is c),None)
+            if not source or source.get('hp',0)<=0 or source.get('dead'):continue
+            if b:
+                a=b['positions'].get(source_id);t=b['positions'].get(target_id)
+                if not a or not t or tactical.distance(a,t)>5 or not tactical.visible(b,a,t):continue
+            elif source.get('position')=='withdrawn' or c.get('position')=='withdrawn':continue
         owner = condition.get('concentration_owner')
         if owner:
             source = next((m['character'] for m in state['members'] if m['id'] == owner), None)
@@ -465,6 +471,7 @@ def saving_throw(state, c, ability, dc):
 def _damage_enemy(enemy, amount, damage_type):
     enemy['last_damage_type']=damage_type
     if enemy.get('warded'):amount//=2
+    if 'shield' in enemy.get('behaviors',[]):amount=max(0,amount-1)
     immune = enemy.get('damage_immunities', [])
     resist = enemy.get('damage_resistances', [])
     vulnerable = enemy.get('damage_vulnerabilities', [])
@@ -645,7 +652,7 @@ def weapon_attack(state, actor, target_id=None, *, smite=None, unarmed=False, sp
         raise ValueError('请选择存活的敌方目标')
     from . import tactical
     tactical.target(state,actor,target['id'],tactical.weapon_range(c))
-    if c.get('position') == 'withdrawn' or target.get('position') == 'withdrawn':
+    if not tactical.board(state) and (c.get('position') == 'withdrawn' or target.get('position') == 'withdrawn'):
         raise ValueError('目标已撤远，请先移动接近（抽象近战规则）')
     if spend_action:
         if not combat.get('action_used'):
@@ -664,13 +671,18 @@ def weapon_attack(state, actor, target_id=None, *, smite=None, unarmed=False, sp
         bonus_damage = 4 if c['level'] >= 16 else 3 if c['level'] >= 9 else 2
     else:
         bonus_damage = 0
-    advantage = attack_advantage(state,c,target)
-    disadvantage = attack_disadvantage(state,c)
+    melee=not tactical.board(state) or tactical.weapon_range(c)<=5 or unarmed
+    advantage = attack_advantage(state,c,target,melee=melee)
+    disadvantage = attack_disadvantage(state,c,target,melee=melee)
+    if tactical.board(state) and not melee:
+        disadvantage=disadvantage or any(e['hp']>0 and tactical.distance(tactical.board(state)['positions'][actor],tactical.board(state)['positions'][e['id']])<=5 for e in combat['enemies'])
     r = rules.attack_roll(_check_bonus(state, c, bonus + c.get('proficiency', 2)), armor_class(state, target), damage, bonus + bonus_damage, advantage=advantage, disadvantage=disadvantage)
     consume_attack_conditions(c,target)
     if r['success']:
         # In the abstract encounter model conscious allies engage the same foes.
         eligible = advantage or any(m['id'] != actor and m['character']['hp'] > 0 and not m['character'].get('dead') for m in state['members'])
+        if tactical.board(state):
+            eligible=advantage or any(m['id']!=actor and m['character']['hp']>0 and tactical.distance(tactical.board(state)['positions'][m['id']],tactical.board(state)['positions'][target['id']])<=5 for m in state['members'])
         if _class(c) == 'rogue' and not combat.get('sneak_used') and ability == 'dex' and eligible and not disadvantage:
             extra = rules.roll_dice(f"{(c['level'] + 1) // 2}d6", critical=r['critical'])
             r['damage'] += extra['total']

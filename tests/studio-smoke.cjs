@@ -92,7 +92,7 @@ async function run() {
   w.eval(fs.readFileSync(path.join(project, 'frontend/studio.js'), 'utf8'));
 
   await eventually(() => q('#auth'), 'Public catalog did not render');
-  assert.equal(document.querySelectorAll('[data-open]').length, 5);
+  assert.equal(document.querySelectorAll('[data-open]').length, 6);
   assert.equal(q('#new-item'), null, 'Public users must not see editing controls');
   click('#auth');
   q('[name=token]').value = 'incorrect-token';

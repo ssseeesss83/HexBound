@@ -90,3 +90,32 @@ def test_free_text_grid_move_uses_same_plan_and_cost():
 def test_old_combat_does_not_gain_board_on_read():
     s=battle();s['combat'].pop('board');before=deepcopy(s)
     assert g.projection(s,'p') is None and s==before
+
+
+def test_seal_obeys_corner_visibility_and_cancels_only_scene_warnings():
+    s=battle('storm');b=g.board(s);b['positions']['p']=dict(x=3,y=1);b['walls']=[dict(x=4,y=1)]
+    with pytest.raises(ValueError):g.prepare(s,'p','grid:seal-a')
+    b['walls']=[];b['switches'][1]['active']=False
+    b['telegraphs']=[dict(source='scene',cells=[],due=2),dict(source='breath',cells=[],due=2)]
+    g.resolve(s,'p','grid:seal-a',{})
+    assert [w['source'] for w in b['telegraphs']]==['breath']
+
+
+def test_self_area_spells_and_forward_lightning_have_spatial_limits():
+    s=battle();b=g.board(s);b['walls']=[];b['positions']['p']=dict(x=5,y=3)
+    b['positions']['foe']=dict(x=6,y=3);b['positions']['ally']=dict(x=4,y=3)
+    g.ability_targets(s,'p','cast:burning-hands',['foe'])
+    with pytest.raises(ValueError):g.ability_targets(s,'p','cast:lightning-bolt',['foe','ally'])
+    b['positions']['foe']=dict(x=10,y=3)
+    with pytest.raises(ValueError):g.ability_targets(s,'p','cast:burning-hands',['foe'])
+    with pytest.raises(ValueError):g.ability_targets(s,'p','cast:cure-wounds',['foe'])
+
+
+def test_grid_moving_away_releases_grapple_permanently():
+    s=battle();b=g.board(s);b['walls']=[];b['positions']['p']=dict(x=3,y=1);b['positions']['foe']=dict(x=4,y=1)
+    foe=s['combat']['enemies'][0];foe['conditions']=[dict(id='grappled',source='p')]
+    assert abilities.has_condition(s,foe,'grappled')
+    g.resolve(s,'p','grid:move',dict(destination=dict(x=3,y=6)))
+    assert not abilities.has_condition(s,foe,'grappled') and not foe['conditions']
+    b['positions']['p']=dict(x=3,y=1)
+    assert not abilities.has_condition(s,foe,'grappled')

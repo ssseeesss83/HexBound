@@ -160,6 +160,12 @@ def _start_combat(state, node, events):
     rolls = []
     for index, mid in enumerate(node["monster_ids"]):
         card = deepcopy(state["campaign"]["package"]["monsters"][mid])
+        if node.get('battlefield') and card.get('source_id'):
+            import math
+            count=len(state['members']);scale={1:.45,2:.65,3:.85,4:1,5:1.15,6:1.3}.get(count,1)
+            card['hp']=max(4,math.ceil(card['hp']*scale))
+            if count==1:card['damage_dice']='2d4' if card['damage_dice']=='2d6' else '1d4'
+            card['encounter_scaling']=dict(party_size=count,hp_factor=scale,preset='beacons-v1')
         card.update(id=f"enemy:{index}:{mid}", card_id=mid, max_hp=card["hp"])
         enemies.append(card)
     from .world_combat import begin, bind
@@ -311,7 +317,11 @@ def _effect_attack(state, member_id, skill, target_id):
     if skill:
         _spend(state, member_id, skill)
     r = rules.attack_roll(bonus + character["proficiency"], target["ac"], skill["dice"] if skill else character["weapon"]["dice"], bonus)
-    target["hp"] = max(0, target["hp"] - r["damage"])
+    from .tactical import board
+    if board(state):
+        from .abilities import _damage_enemy
+        r['damage']=_damage_enemy(target,r['damage'],(skill or {}).get('damage_type') or 'slashing')
+    else:target["hp"] = max(0, target["hp"] - r["damage"])
     events.append(rules.event("roll", f"{skill['name'] if skill else character['weapon']['name']}击向{target['name']}，造成 {r['damage']} 点伤害。", actor_id=member_id, target_id=target["id"], roll=r))
     return events[0]
 

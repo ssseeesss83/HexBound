@@ -9,3 +9,5 @@ render();assert.equal(d.querySelectorAll('[data-grid-x]').length,64);assert(d.qu
 d.querySelector('[data-grid-x="2"][data-grid-y="2"]').click();assert.equal(moved.x,2);assert.equal(moved.y,2);
 d.querySelector('[data-grid-mode="act"]').click();d.querySelector('[data-grid-unit="e"]').click();assert.equal(selected,'e');assert.deepEqual(acted,['attack','e']);
 assert(d.querySelector('button[aria-label*="下轮危险"]'));console.log('PASS tactical board: positions, walls, movement, selected target, attack intent and warnings');
+
+d.querySelector('#root').innerHTML='结算';assert.doesNotThrow(()=>w.HexBoundTactical.bind(d,room,'p',callbacks));

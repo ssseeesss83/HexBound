@@ -31,7 +31,7 @@ def mechanism(state,events):
         cells=([dict(x=x,y=p['y']) for x in range(b['width'])] if b['mechanic']=='crossfire'
                else [dict(x=x,y=y) for x in range(max(0,p['x']-1),min(b['width'],p['x']+2))
                      for y in range(max(0,p['y']-1),min(b['height'],p['y']+2))])
-        b['telegraphs'].append(dict(cells=cells,due=round+1,type='lightning'))
+        b['telegraphs'].append(dict(cells=cells,due=round+1,type='lightning',source='scene'))
         events.append(rules.event('mechanism','地面出现预警：下轮爆发前离开标记格，或关闭两处装置。'))
     boss=next((e for e in combat['enemies'] if e.get('attack_count',1)>1 and e['hp']>0),None)
     if boss and boss['hp']<=boss['max_hp']//2 and b['phase']==1:
@@ -75,7 +75,7 @@ def turn(state,enemy,events):
         dx,dy=aim['x']-source['x'],aim['y']-source['y']
         if dx or dy:
             end=dict(x=max(0,min(b['width']-1,source['x']+dx*4)),y=max(0,min(b['height']-1,source['y']+dy*4)))
-            b['telegraphs'].append(dict(cells=grid.line_cells(source,end)[1:],due=combat['round']+1,type='acid'))
+            b['telegraphs'].append(dict(cells=grid.line_cells(source,end)[1:],due=combat['round']+1,type='acid',source='breath'))
             enemy['breath_ready']=combat['round']+3
             events.append(rules.event('mechanism',f"DM：{enemy['name']}蓄积吐息，标记射线将于下轮爆发；本回合不进行普通攻击。",actor_id=enemy['id']));return
     if 'web' in behaviors and not enemy.get('web_used'):
@@ -88,7 +88,8 @@ def turn(state,enemy,events):
         roll=rules.attack_roll(enemy['attack_bonus'],a.armor_class(state,target['character']),enemy['damage_dice'],enemy.get('damage_bonus',0)+(2 if b['phase']==2 else 0),
             advantage=pack or a.attack_advantage(state,enemy,target['character']),
             disadvantage=target['id'] in combat.get('dodging',[]) or a.attack_disadvantage(state,enemy))
-        result=rules.damage_character(target['character'],roll['damage'],roll['critical'],enemy.get('damage_type','bludgeoning'),state)
+        result=rules.damage_character(target['character'],roll['damage']+(2 if roll['success'] and 'burn' in behaviors else 0),roll['critical'],enemy.get('damage_type','bludgeoning'),state)
+        roll['damage']=result['damage']
         if roll['success'] and 'poison' in behaviors:
             save=a.saving_throw(state,target['character'],'con',11)
             if not save['success']:a._condition(state,target['character'],'poisoned',1)
@@ -98,3 +99,10 @@ def turn(state,enemy,events):
         if 'drain' in behaviors:enemy['hp']=min(enemy['max_hp'],enemy['hp']+result['damage']//2)
         events.append(rules.event('roll',f"DM：{enemy['name']}攻击{target['name']}，造成 {result['damage']} 点伤害。",actor_id=enemy['id'],target_id=target['id'],roll=roll))
     combat['action_used']=True
+    if 'skirmish' in behaviors:
+        remaining=grid.paths(state,enemy['id'],grid.movement_remaining(state,enemy['id']))
+        point=max(remaining,key=lambda p:grid.distance(dict(x=p[0],y=p[1]),b['positions'][target['id']]))
+        route=remaining[point]
+        if route['cost']:
+            b['positions'][enemy['id']]=dict(x=point[0],y=point[1]);combat['movement_spent']+=route['cost'];b['revision']+=1
+            events.append(rules.event('movement',f"DM：{enemy['name']}利用剩余移动撤位 {route['cost']} 尺。",actor_id=enemy['id']))
