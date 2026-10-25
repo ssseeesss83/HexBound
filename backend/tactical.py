@@ -180,6 +180,15 @@ def projection(state,actor):
     view['movement_remaining']=movement_remaining(state,actor) if state['combat']['turn_actor_id']==actor else 0
     view['reachable']=[dict(x=x,y=y,cost=r['cost']) for (x,y),r in paths(state,actor,view['movement_remaining']).items()] if actor in b['positions'] else []
     view['attackable']=[]
+    from . import abilities
+    view['ranges']={'attack':weapon_range(creature(state,actor))}
+    for cap in abilities.capabilities(state,actor):
+        if cap['id'].startswith('cast:'):
+            text=abilities._spells()[cap['id'][5:]].get('range','Touch');number=re.search(r'\d+',text)
+            view['ranges'][cap['id']]=int(number.group()) if number else (0 if text=='Self' else 5)
+        elif cap['id'].startswith('feature:'):view['ranges'][cap['id']]=60 if cap['id']=='feature:bardic-inspiration' else 5
+    origin=b['positions'].get(actor)
+    view['visible_cells']=[dict(x=x,y=y) for x in range(b['width']) for y in range(b['height']) if origin and visible(b,origin,dict(x=x,y=y))]
     for enemy in state['combat']['enemies']:
         if enemy['hp']<=0:continue
         try:target(state,actor,enemy['id'],weapon_range(creature(state,actor)));view['attackable'].append(enemy['id'])

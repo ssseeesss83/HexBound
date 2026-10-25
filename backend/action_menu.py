@@ -9,5 +9,6 @@ def available(state, actor):
         base = [row for row in base if row['id'] != 'rest']
     from .story_challenges import menu
     from .story_transitions import menu as routes
+    from .tactical import menu as grid
     return base + [row for row in abilities.available_actions(state, actor)
-                   if row['id'] not in {item['id'] for item in base}] + menu(state,actor) + routes(state,actor)
+                   if row['id'] not in {item['id'] for item in base}] + menu(state,actor) + routes(state,actor) + grid(state,actor)
