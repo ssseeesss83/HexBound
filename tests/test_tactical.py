@@ -119,3 +119,14 @@ def test_grid_moving_away_releases_grapple_permanently():
     assert not abilities.has_condition(s,foe,'grappled') and not foe['conditions']
     b['positions']['p']=dict(x=3,y=1)
     assert not abilities.has_condition(s,foe,'grappled')
+
+
+def test_dm_multiattack_consumes_one_attack_advantage(monkeypatch):
+    s=battle();b=g.board(s);b['walls']=[];b['positions']['p']=dict(x=3,y=1);b['positions']['foe']=dict(x=4,y=1)
+    enemy=s['combat']['enemies'][0];enemy.update(attack_count=2,conditions=[dict(id='hidden')])
+    calls=[];original=rules.attack_roll
+    def capture(*args,**kwargs):
+        calls.append(kwargs['advantage']);return original(*args,**kwargs)
+    monkeypatch.setattr(rules,'attack_roll',capture);monkeypatch.setattr(rules.secrets,'randbelow',lambda n:0)
+    s['combat']['turn_actor_id']='foe';enemy_dm.turn(s,enemy,[])
+    assert calls==[True,False] and enemy['conditions']==[]

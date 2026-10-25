@@ -2,7 +2,7 @@
 
 The complete compendium is reference data. Only the explicit handlers below
 are executable. Area targets use an openly declared abstract encounter model;
-this module does not pretend that the application has a tactical grid.
+spatial constraints are delegated to the opt-in tactical grid adapter.
 """
 from __future__ import annotations
 

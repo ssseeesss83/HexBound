@@ -17,6 +17,7 @@ def initialize(state, config):
     for i,m in enumerate(state['members']): positions[m['id']] = dict(x=1,y=i+1)
     for i,e in enumerate(state['combat']['enemies']): positions[e['id']] = dict(x=config['width']-2,y=i+1)
     switches = [dict(id='seal-a',x=4,y=2,active=True),dict(id='seal-b',x=config['width']-5,y=config['height']-3,active=True)]
+    if config['mechanic']=='none':switches=[]
     occupied = {(p['x'],p['y']) for p in config['walls']}
     for s in switches:
         if (s['x'],s['y']) in occupied: config['walls'].remove(dict(x=s['x'],y=s['y']))

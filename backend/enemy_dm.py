@@ -85,16 +85,22 @@ def turn(state,enemy,events):
     for _ in range(enemy.get('attack_count',1)):
         if target['character']['hp']<=0:break
         pack='pack' in behaviors and any(e['id']!=enemy['id'] and e['hp']>0 and grid.distance(b['positions'][e['id']],b['positions'][target['id']])<=5 for e in combat['enemies'])
+        nearby=grid.distance(b['positions'][enemy['id']],b['positions'][target['id']])<=5
+        ranged_adjacent=reach>10 and any(m['character']['hp']>0 and grid.distance(b['positions'][enemy['id']],b['positions'][m['id']])<=5 for m in state['members'])
         roll=rules.attack_roll(enemy['attack_bonus'],a.armor_class(state,target['character']),enemy['damage_dice'],enemy.get('damage_bonus',0)+(2 if b['phase']==2 else 0),
-            advantage=pack or a.attack_advantage(state,enemy,target['character']),
-            disadvantage=target['id'] in combat.get('dodging',[]) or a.attack_disadvantage(state,enemy))
+            advantage=pack or a.attack_advantage(state,enemy,target['character'],melee=nearby),
+            disadvantage=target['id'] in combat.get('dodging',[]) or ranged_adjacent or a.attack_disadvantage(state,enemy,target['character'],melee=nearby))
+        a.consume_attack_conditions(enemy,target['character'])
         result=rules.damage_character(target['character'],roll['damage']+(2 if roll['success'] and 'burn' in behaviors else 0),roll['critical'],enemy.get('damage_type','bludgeoning'),state)
+        if result.get('concentration'):events.append(rules.event('roll','进行专注豁免。',actor_id=target['id'],roll=result['concentration']))
         roll['damage']=result['damage']
         if roll['success'] and 'poison' in behaviors:
             save=a.saving_throw(state,target['character'],'con',11)
+            events.append(rules.event('roll','DM：毒性命中，进行体质豁免。',actor_id=target['id'],roll=save))
             if not save['success']:a._condition(state,target['character'],'poisoned',1)
         if roll['success'] and 'charge' in behaviors and movement['cost']>=15:
             save=a.saving_throw(state,target['character'],'str',12)
+            events.append(rules.event('roll','DM：冲撞命中，进行力量豁免。',actor_id=target['id'],roll=save))
             if not save['success']:a._condition(state,target['character'],'prone',1)
         if 'drain' in behaviors:enemy['hp']=min(enemy['max_hp'],enemy['hp']+result['damage']//2)
         events.append(rules.event('roll',f"DM：{enemy['name']}攻击{target['name']}，造成 {result['damage']} 点伤害。",actor_id=enemy['id'],target_id=target['id'],roll=roll))

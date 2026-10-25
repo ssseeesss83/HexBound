@@ -33,3 +33,28 @@ def test_real_grid_entry_confirm_replay_restart_and_enemy_turn(release_setup,mon
     ended=command(client,session,'end_turn');assert ended.status_code==200,ended.text
     assert ended.json()['room']['battlefield']['positions'][actor]==settled['positions'][actor]
     assert any(e['text'].startswith('DM：') for e in ended.json()['room']['events'])
+
+
+def test_default_campaign_puzzle_to_grid_uses_public_commands(release_setup,monkeypatch):
+    app,client,admin=release_setup
+    monkeypatch.setattr('backend.rules.secrets.randbelow',lambda n:n-1)
+    session=room(client,scenario_id='book-eight-beacons');rid=session['room']['id']
+    assert command(client,session,'start').status_code==200
+    def enact(action,**options):
+        response=command(client,session,'capability_propose',dict(action_id=action,**options))
+        assert response.status_code==200,response.text
+        p=response.json()['room']['director_proposals'][0]
+        resolved=command(client,session,'director_resolve',dict(proposal_id=p['id']))
+        assert resolved.status_code==200,resolved.text
+        return resolved.json()['room']
+    enact('story-route:next-chapter-1')
+    view=enact('story-puzzle:puzzle-1:medicine')
+    assert view['scene']['id']=='chapter-1'
+    view=enact('story-route:enter-1-1')
+    assert view['scene']['id']=='encounter-1-1' and view['battlefield']
+    assert len(view['combat']['enemies'])==2
+    assert all(e['source_id'] for e in view['combat']['enemies'])
+    view=enact('grid:move',destination=dict(x=4,y=1))
+    assert view['battlefield']['positions'][session['member_id']]==dict(x=4,y=1)
+    from backend.store import Store
+    assert Store(app.state.store.path).get(rid)['combat']['board']['positions'][session['member_id']]==dict(x=4,y=1)

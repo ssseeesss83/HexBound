@@ -70,7 +70,6 @@ def _weapon_target(state, actor, target_id):
     from . import tactical
     if not tactical.board(state) and (c.get('position') == 'withdrawn' or target.get('position') == 'withdrawn'):
         raise ValueError('目标已撤远，请先移动接近（抽象近战规则）')
-    from . import tactical
     tactical.target(state,actor,target['id'],tactical.weapon_range(c))
     return target['id']
 
@@ -105,7 +104,7 @@ def prepare(state, actor, action_id, target_id=None, options=None, *, now=None):
         from . import story_puzzles
         if target_id or any(v not in (None,[]) for v in opts.values()):raise ValueError('谜题不接受额外参数')
         puzzle_plan=story_puzzles.prepare(state,actor,action_id)
-        cap=dict(label=puzzle_plan['label'],description='按现场线索选择；正确解法直接成功，错误方案仅首次造成2点擦伤，不会致死。',action_cost='none',party_action=True)
+        cap=dict(label=puzzle_plan['label'],description='按现场线索选择；正确解法直接成功，错误方案仅首次造成最多2点擦伤，不会致死。',action_cost='none',party_action=True)
         ids=[];normalized={};executor='puzzle'
     elif action_id.startswith('grid:'):
         from . import tactical
